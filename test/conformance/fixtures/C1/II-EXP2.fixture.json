@@ -1,0 +1,60 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP2",
+  "source": "BK2 printed p.7 = book2-3-4.pdf PDF p.13",
+  "tier": "C1",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1H/2H", "2H/3H", "3H/4H", "4H/5H", "5H/6Y",
+    "6Z/6+", "6Y/5X", "5Y/D16", "D1/1G", "1G/1C",
+    "1F/1-", "D2/2G", "2G/2C", "2F/2-", "D3/3G",
+    "3G/3C", "3F/3-", "D4/4G", "4G/4C", "4F/4-",
+    "D5/5G", "5G/5C", "5F/5-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1H/2H", "2H/3H", "3H/4H", "4H/5H", "5H/6Y",
+    "6Z/6+", "6Y/5X", "5Y/D16", "D1/1G", "1G/1C",
+    "1F/1-", "D2/2G", "2G/2C", "2F/2-", "D3/3G",
+    "3G/3C", "3F/3-", "D4/4G", "4G/4C", "4F/4-",
+    "D5/5G", "5G/5C", "5F/5-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "dialGrab", "targetUdeg": 90000000 } },
+    { "k": "advance", "ms": 1500 },
+    { "k": "do", "cmd": { "k": "button", "n": 5, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 100 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "indLamp4", "v": "on" }],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, step 1",
+      "quote": "Turn the DECIMAL INPUT-OUTPUT knob to number 4 and push pushbutton 5. This transmits the number \"four\" to the computer. Relay light 4 comes ON to indicate that a \"four\" is being stored."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 5, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 100 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "indLamp4", "v": "on" }],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, step 1",
+      "quote": "Relay light 4 comes ON to indicate that a \"four\" is being stored. Data has been communicated from the operator to MINIVAC 601 by turning the DECIMAL INPUT-OUTPUT knob to the desired number and by instructing the computer to remember the selected number by pushing pushbutton 5."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 100 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "indLamp4", "v": "off" }],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, step 2",
+      "quote": "Push pushbutton 6 and release. This action instructs the computer to forget all previous data, and relay light 4 goes OFF."
+    }
+  ],
+  "note": "Wire list image-read from the 300 dpi page; 23 connections, no errata entry for this page. Pushbuttons are pressed and released as separate steps. The dial is turned by hand to D4 (90 degrees, 22.5-degree pitch) before pushbutton 5 is pressed; no dial assertion is made because the page gives the knob position only as an instruction. The second expect (light 4 still ON after pushbutton 5 is released) rests on 'is being stored' and on step 2, which says light 4 goes OFF on pushbutton 6 and so presupposes it is ON until then. Not asserted: the other relay lights (the page never says they stay OFF), and the open-ended 'select another number yourself (between 1 and 5)' trial (no stated observable for any specific number)."
+}

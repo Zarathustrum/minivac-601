@@ -1,0 +1,1387 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP3-DERIVED",
+  "source": "Book IV printed pp.73-74 = book2-3-4.pdf PDF pp.79-80 (modification, rule and procedure), base wiring printed p.72 = PDF p.78 (Experiment 1, 44 wires), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+",
+    "3K/6W",
+    "3N/4N",
+    "6R/6K",
+    "4K/6U",
+    "5N/6N",
+    "5K/6T",
+    "6S/3J",
+    "6V/1J"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 50-wire topology and the p.73 rule 'If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.', not from printed answers, and is tagged FALLBACK-DERIVED-TOPOLOGY. Wiring: the page's remove/add modification of Experiment 1 (printed p.73 = PDF p.79) applied to the 44-wire list of printed p.72 = PDF p.78, 44 - 2 + 8 = 50, the same list as IV-EXP3; programs.json wiresEffective is still null (tools EFFECTIVE_UNRESOLVED), so the hand-resolved list from the Step 7 notes is used. ER-22 applies only to the alternate counter and is not applied. Checkpoints: count 0 at power-on; 7 after the printed seven UP pushes; each DOWN push 6, 5, 4 and 3 at rest (the Step 7 notes' derivation-worthy case, light 5 off at 5 against the p.71 chart row 11 misprint); the fourth DOWN push held, where the borrow runs through both stages; 3 + 1 = 4 after slide switch 6 goes back LEFT, which separates UP from DOWN; 0 after four more DOWN pushes; 7 after one DOWN push from 0 (the three-bit wrap). The DOWN path, unlike the printed endpoints, separates 7 - 4 from 7 + 4. Lamps asserted: lights 4-6 everywhere, and the E-node output lamp and both indicator lamps of each flip-flop at 0 (no current); lit indicator lamps and lit outLamp1-3 share coil current and are not asserted. Script choices, not printed: count 0 from power-on rather than a carried-over counter; each push, release and switch move is followed by settle 500 ms and a 200 ms advance (the slow pace of IV-EXP1-DERIVED); release steps carry the counter collapse tag; the page prints no timing.",
+  "wires": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+",
+    "3K/6W",
+    "3N/4N",
+    "6R/6K",
+    "4K/6U",
+    "5N/6N",
+    "5K/6T",
+    "6S/3J",
+    "6V/1J"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "sw6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure steps 1 and 2a: power ON, slide switch 6 LEFT, nothing pushed (count 0, not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; at power-on + reaches the counter only at 1G, 3G, 5G (open N.O. contacts) and 6Y (pushbutton up, 6Z unwired), so no coil, lamp or carry node has a source: all six relays out, all twelve lamps dark",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 2b: seven pushes with slide switch 6 LEFT (counter displaying 7); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; with slide switch 6 LEFT the carry routes are Experiment 1's, so seven push-release cycles count 0 to 7 = 111: every stage at 1, each odd relay latched on its nG, each even relay fed from its F node, lights 4, 5, 6 on from 1G, 3G, 5G",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "sw6",
+          "v": "no"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure steps 2c-2d, first DOWN push released (7 - 1 = 6 = 110, not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; slide switch 6 RIGHT at rest changes nothing (P is open, and 6R/6T and 6U/6W sit on the same dead nets through the operated relays); C at 1: + on 5E via 6H-6G drops relay 5 while relay 6 holds on 5F from P via 5J-5H; relay 5 out and 6 in is the UP carry, but 6K-6R is open on the RIGHT throw and 5K is open, so B sees nothing; release: 5F loses +, relay 6 drops; A and B hold on 1G and 3G: lights 4 on, 5 on, 6 off",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 2d, second DOWN push released (5 = 101, not printed; light 5 off against the p.71 chart row 11 misprint); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; C at 0: P via 5J-5H pulls relay 5 in, relay 6 held out (6E at + via 6J-6H); relay 5 in and 6 out feeds P via 6N-6L-5L-5K-6T-6S to the B input (borrow); B at 1: + on 3E via 4H-4G drops relay 3, relay 4 holds on 3F from the B input via 3J-3H; relay 3 out and 4 in is the UP carry, but 4K-6U is open on the RIGHT throw and 3K is open, so A sees nothing; release: relay 6 pulls in on 5G, relay 4 drops (3F loses +); A holds on 1G: lights 4 on, 5 off, 6 on",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 2d, third DOWN push released (4 = 100, not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; C at 1 falls to 0 with no borrow (as the first DOWN push); B and A untouched: lights 4 on, 5 off, 6 off",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 2d, fourth DOWN push, pushbutton 6 held (borrow through both stages, not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; C at 0: relay 5 pulls in through 5J-5H, relay 6 held out; borrow P-6N-6L-5L-5K-6T-6S to the B input; B at 0: relay 3 pulls in through 3J-3H, relay 4 held out (4E at + via 4J-4H); relay 3 in and 4 out feeds the B input via 4N-4L-3L-3K-6W-6V to the A input (borrow); A at 1: + on 1E via 2H-2G drops relay 1, relay 2 holds on 2F from the A input via 1J-1H; light 6 on from 5G, light 5 on from 3G, light 4 on from the borrow chain through 1J-1H",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 2d end: \"The counter is now displaying the answer: 7 - 4 = 3.\" (endpoint printed; the relay path to it is derived); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; release: P floats; relay 6 pulls in (6E freed, 6F on 5G), relay 4 pulls in (4E freed, 4F on 3G); the A input loses its borrow, 2F=1F floats (relay 1 out, 1G open), relay 2 drops: 011, lights 4 off, 5 on, 6 on; reached by four DOWN steps 7, 6, 5, 4, 3, not by the 7 + 4 = 11 = 3 mod 8 wrap",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "sw6",
+          "v": "nc"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 1 LEFT counts UP, and the closing note \"addition is carried out exactly as in experiment 2 when slide switch 6 is LEFT\" (3 + 1 = 4 = 100, not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; LEFT restores the UP routes: C at 1 drops relay 5, relay 6 in, carry P-5N-5L-6L-6K-6R-6S to the B input; B at 1 drops relay 3, relay 4 in, carry 3N-3L-4L-4K-6U-6V to the A input; A at 0 pulls relay 1 in through 1J-1H; release: relay 2 pulls in, relays 4 and 6 drop: 100, lights 4 on, 5 off, 6 off (a DOWN push from 3 would give 010)",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "sw6",
+          "v": "no"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 1 RIGHT counts DOWN, four more DOWN pushes from 4 (4, 3, 2, 1, 0; not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; DOWN steps: 4 to 3 borrows through B into A (as the fourth DOWN push), 3 to 2 is C 1 to 0 alone, 2 to 1 borrows from C into B (B 1 to 0, no borrow onward), 1 to 0 is C 1 to 0 alone; at 0 every node is floating: all relays out, all twelve lamps dark",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 intro and Procedure step 1 rule (slide switch 6 LEFT counts UP, RIGHT counts DOWN); Procedure step 1 RIGHT counts DOWN, one DOWN push from 0 (0 - 1 = 7 mod 8, the three-bit wrap; not printed); derived from the 50-wire topology (Experiment 1's 44 wires minus 3J/6K and 1J/4K, plus 3K/6W 3N/4N 6R/6K 4K/6U 5N/6N 5K/6T 6S/3J 6V/1J): 1C..6C on minus (6C/6-), each coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F=4A light 4, 1E=2G, input 1J=2H=6V, 2E=2J=1A light 1), B = relays 3/4 (3G +, 3H=3F=4F=5A light 5, 3E=4G, input 3J=4H=3N=4N=6S, 4E=4J=2A light 2), C = relays 5/6 (5G +, 5H=5F=6F=6A light 6, 5E=6G, input P=6X=5J=6H=5N=6N, 6E=6J=3A light 3); pushbutton 6 puts + on P (6Y/6+); a stage at 1 has both relays in (odd relay latched by nG-nH), at 0 both out with every node floating; + on a stage input toggles it while held (0: odd relay pulls in through nJ-nH, even relay held out with + on both coil ends; 1: odd relay dropped by + on nE through the even relay's nH-nG) and the even relay follows on release; carry nodes 5L=6L (fed from P by 5N with relay 5 out or 6N with relay 6 out) and 3L=4L (fed from the B input by 3N with relay 3 out or 4N with relay 4 out); slide switch 6 set 1 (arm 6S, LEFT 6R=6K, RIGHT 6T=5K) and set 2 (arm 6V, LEFT 6U=4K, RIGHT 6W=3K): LEFT carries C to B on 5N-5L-6L-6K-6R-6S-3J (relay 5 out, 6 in: C falling 1 to 0) and B to A on 3N-3L-4L-4K-6U-6V-1J (relay 3 out, 4 in), so UP is Experiment 1; RIGHT carries C to B on 6N-6L-5L-5K-6T-6S-3J (relay 5 in, 6 out: C rising 0 to 1, a borrow) and B to A on 4N-4L-3L-3K-6W-6V-1J (relay 3 in, 4 out), so each push subtracts 1 modulo 8; the unused route's K contact dead-ends on the open switch throw; light n+3 is flip-flop A/B/C, ON = 1; C at 0 rises (relay 5 in) and borrows into B; B at 0 rises (relay 3 in) and borrows into A; A at 0: A input + via 1J-1H pulls relay 1 in, relay 2 held out (2E at + via 2J-2H); A has no carry-out (1K, 1L, 1N unwired); release: relays 2, 4, 6 pull in: 111, lights 4, 5, 6 on",
+      "quote": "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

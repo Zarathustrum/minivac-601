@@ -1,0 +1,918 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-FARMER",
+  "source": "BK3 printed pp.60-63 = book2-3-4.pdf PDF pp.66-69 (program and procedure p.62 = PDF p.68, step 6 p.63 = PDF p.69); errata.pdf PDF p.2 (sheet carries no printed page number) 'page 62 Note' (ER-18) procedure note",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1J",
+    "1B/1-",
+    "1C/1G",
+    "1E/1U",
+    "1F/2F",
+    "1H/2H",
+    "1K/2K",
+    "1K/1+",
+    "1L/2L",
+    "1N/3K",
+    "1U/2V",
+    "1V/1X",
+    "1X/6X",
+    "1Y/1+",
+    "2A/2J",
+    "2B/2-",
+    "2E/2U",
+    "2C/2G",
+    "2F/3F",
+    "2H/3H",
+    "2N/3N",
+    "2W/3V",
+    "3A/3J",
+    "3B/3-",
+    "3C/3G",
+    "3E/3U",
+    "3F/4F",
+    "3H/4H",
+    "3K/4K",
+    "3L/5A",
+    "3N/4N",
+    "3W/4V",
+    "4A/4J",
+    "4B/4-",
+    "4C/4G",
+    "4E/4U",
+    "4F/4-",
+    "4H/4+",
+    "4L/6A",
+    "5B/5-",
+    "6B/6-",
+    "6Y/6-"
+  ],
+  "errata_applied": [],
+  "note": "ER-18 is a procedure note, not a wire change: it supplies the load / cross / unload cycle, which the script follows, and restates pushbutton 1 for the return trip (already printed in the p.62 conventions: 'Pushbutton 1 represents moving the boat from home.'). The objects carried on each trip (goose; alone; wolf; goose back; corn; alone; goose) are the operator's choice; the page prints no move sequence. Only printed observables are asserted: relay indicator lights 1-4 ON after the manual relay push (p.62 step 1), lights 5 and 6 OFF after each crossing (p.62 step 4; return trips on pushbutton 1 per the p.62 conventions and ER-18), output lights 1-4 ON with all four objects home (p.62 step 5). Per-crossing lamp and relay states and any error move are derived and left to Step 7. Trips the knife-edge trigger (minDecisionUa 0, a ramp-tick sampling artifact per the 2026-10-13 triage); blessed under BLESS-ROBUSTNESS, all six perturbations held.",
+  "wires": [
+    "1A/1J",
+    "1B/1-",
+    "1C/1G",
+    "1E/1U",
+    "1F/2F",
+    "1H/2H",
+    "1K/2K",
+    "1K/1+",
+    "1L/2L",
+    "1N/3K",
+    "1U/2V",
+    "1V/1X",
+    "1X/6X",
+    "1Y/1+",
+    "2A/2J",
+    "2B/2-",
+    "2E/2U",
+    "2C/2G",
+    "2F/3F",
+    "2H/3H",
+    "2N/3N",
+    "2W/3V",
+    "3A/3J",
+    "3B/3-",
+    "3C/3G",
+    "3E/3U",
+    "3F/4F",
+    "3H/4H",
+    "3K/4K",
+    "3L/5A",
+    "3N/4N",
+    "3W/4V",
+    "4A/4J",
+    "4B/4-",
+    "4C/4G",
+    "4E/4U",
+    "4F/4-",
+    "4H/4+",
+    "4L/6A",
+    "5B/5-",
+    "6B/6-",
+    "6Y/6-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 1
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 2
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 3
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 4
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.62 = book2-3-4.pdf PDF p.68",
+      "quote": "Turn power ON. Manually push relays 1 through 4 to the LEFT. The relay indicator lights will come ON to indicate that all objects are across the river."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 = book2-3-4.pdf PDF p.68",
+      "quote": "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 step 4 = book2-3-4.pdf PDF p.68; return trip on pushbutton 1 per p.62 conventions ('Pushbutton 1 represents moving the boat from home.') and ER-18 (errata.pdf PDF p.2, 'page 62 Note')",
+      "quote": "If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 = book2-3-4.pdf PDF p.68",
+      "quote": "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 step 4 = book2-3-4.pdf PDF p.68; return trip on pushbutton 1 per p.62 conventions ('Pushbutton 1 represents moving the boat from home.') and ER-18 (errata.pdf PDF p.2, 'page 62 Note')",
+      "quote": "If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 = book2-3-4.pdf PDF p.68",
+      "quote": "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 step 4 = book2-3-4.pdf PDF p.68; return trip on pushbutton 1 per p.62 conventions ('Pushbutton 1 represents moving the boat from home.') and ER-18 (errata.pdf PDF p.2, 'page 62 Note')",
+      "quote": "If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.62 = book2-3-4.pdf PDF p.68",
+      "quote": "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.62 = book2-3-4.pdf PDF p.68",
+      "quote": "Continue moving the boat back and forth across the river with the different objects until all four objects are at home (output lights 1 through 4 are ON.) Do not forget to remove objects from the boat when they have reached the other side (by moving the slide switch to the RIGHT)"
+    }
+  ]
+}

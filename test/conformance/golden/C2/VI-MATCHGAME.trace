@@ -1,0 +1,416 @@
+#!mv601-trace 1
+# id=VI-MATCHGAME contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=45
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=5 minTickGap=9 marginal=false
+     0.0 > dialGrab targetUdeg=337500000
+    46.8 * dial c0->gap
+    78.1 * dial gap->c15
+  3000.0 > dialRelease
+  3500.0 > power on
+     0.0 * power off->on
+     3.2 * indLamp6 off->dim
+    22.1 * indLamp6 dim->on
+   500.0 ? dial=c15  "[p.54:] \"The game is started with the rotary switch dial at 15.\" / [errata:] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\""
+   500.0 > button4 target=1000
+   511.2 * pb4 nc->mid
+   513.7 * pb4 mid->no
+   523.6 * indLamp4 off->dim
+   525.2 * relay4 nc->mid
+   526.5 * relay4 mid->no
+   550.0 > button4 target=0
+   558.0 * dial c15->gap
+   561.2 * pb4 no->mid
+   563.7 * pb4 mid->nc
+   564.2 * indLamp4 dim->on
+   578.3 * indLamp6 on->dim
+   578.9 * dial gap->c14
+   579.0 ? dial=c14  "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 1 match by pushing pushbutton 4\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+   590.9 * relay4 no->mid
+   591.8 * relay4 mid->nc
+   633.9 * indLamp6 dim->off
+  5579.0 ? dial=c14  "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 1 match by pushing pushbutton 4\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+  5579.0 > button6 target=1000
+  5590.2 * pb6 nc->mid
+  5592.7 * pb6 mid->no
+  5602.6 * indLamp6 off->dim
+  5604.6 * relay6 nc->mid
+  5605.9 * relay6 mid->no
+  5621.4 * dial c14->gap
+  5629.0 > button6 target=0
+  5629.0 ? dial=gap  "\"MINIVAC moves next: player must push pushbutton 6; the rotary switch will turn to the number of matches remaining after the machine's move.\""
+  5640.2 * pb6 no->mid
+  5641.8 * indLamp4 on->dim
+  5642.3 * dial gap->c13
+  5642.7 * pb6 mid->nc
+  5643.1 * indLamp6 dim->on
+  5645.6 * indLamp5 off->dim
+  5664.7 * indLamp5 dim->on
+  5697.4 * indLamp4 dim->off
+  5705.5 * dial c13->gap
+  5721.8 * indLamp5 on->dim
+  5726.3 * dial gap->c12
+  5737.1 * relay6 no->mid
+  5738.0 * relay6 mid->nc
+  5777.4 * indLamp5 dim->off
+ 10629.0 > button5 target=1000
+ 10640.2 * pb5 nc->mid
+ 10642.7 * pb5 mid->no
+ 10652.6 * indLamp5 off->dim
+ 10654.4 * relay5 nc->mid
+ 10655.7 * relay5 mid->no
+ 10672.5 * dial c12->gap
+ 10679.0 > button5 target=0
+ 10690.2 * pb5 no->mid
+ 10692.7 * pb5 mid->nc
+ 10692.9 * indLamp6 on->dim
+ 10693.1 * indLamp5 dim->on
+ 10693.3 * dial gap->c11
+ 10696.6 * indLamp4 off->dim
+ 10715.7 * indLamp4 dim->on
+ 10748.5 * indLamp6 dim->off
+ 10756.5 * dial c11->gap
+ 10772.8 * indLamp4 on->dim
+ 10777.3 * dial gap->c10
+ 10788.5 * relay5 no->mid
+ 10789.4 * relay5 mid->nc
+ 10828.4 * indLamp4 dim->off
+ 15679.0 > button6 target=1000
+ 15690.2 * pb6 nc->mid
+ 15692.7 * pb6 mid->no
+ 15702.6 * indLamp6 off->dim
+ 15704.6 * relay6 nc->mid
+ 15705.9 * relay6 mid->no
+ 15722.3 * dial c10->gap
+ 15729.0 > button6 target=0
+ 15740.2 * pb6 no->mid
+ 15742.7 * pb6 mid->nc  indLamp5 on->dim
+ 15743.1 * indLamp6 dim->on
+ 15743.2 * dial gap->c9
+ 15754.9 * relay6 no->mid
+ 15755.8 * relay6 mid->nc
+ 15798.3 * indLamp5 dim->off
+ 20729.0 > button4 target=1000
+ 20740.2 * pb4 nc->mid
+ 20742.7 * pb4 mid->no
+ 20752.6 * indLamp4 off->dim
+ 20754.2 * relay4 nc->mid
+ 20755.5 * relay4 mid->no
+ 20771.3 * dial c9->gap
+ 20779.0 > button4 target=0
+ 20790.2 * pb4 no->mid
+ 20791.7 * indLamp6 on->dim
+ 20792.2 * dial gap->c8
+ 20792.6 * indLamp4 dim->on
+ 20792.7 * pb4 mid->nc
+ 20804.6 * relay4 no->mid
+ 20805.5 * relay4 mid->nc
+ 20847.3 * indLamp6 dim->off
+ 25779.0 > button6 target=1000
+ 25790.2 * pb6 nc->mid
+ 25792.7 * pb6 mid->no
+ 25802.6 * indLamp6 off->dim
+ 25804.6 * relay6 nc->mid
+ 25805.9 * relay6 mid->no
+ 25821.0 * dial c8->gap
+ 25829.0 > button6 target=0
+ 25840.2 * pb6 no->mid
+ 25841.4 * indLamp4 on->dim
+ 25841.9 * dial gap->c7
+ 25842.7 * pb6 mid->nc
+ 25843.1 * indLamp6 dim->on
+ 25845.2 * indLamp5 off->dim
+ 25864.3 * indLamp5 dim->on
+ 25897.0 * indLamp4 dim->off
+ 25905.0 * dial c7->gap
+ 25921.3 * indLamp5 on->dim
+ 25925.9 * dial gap->c6
+ 25936.7 * relay6 no->mid
+ 25937.6 * relay6 mid->nc
+ 25976.9 * indLamp5 dim->off
+ 30829.0 > button5 target=1000
+ 30840.2 * pb5 nc->mid
+ 30842.7 * pb5 mid->no
+ 30852.6 * indLamp5 off->dim
+ 30854.4 * relay5 nc->mid
+ 30855.7 * relay5 mid->no
+ 30872.4 * dial c6->gap
+ 30879.0 > button5 target=0
+ 30890.2 * pb5 no->mid
+ 30892.7 * pb5 mid->nc
+ 30892.8 * indLamp6 on->dim
+ 30893.1 * indLamp5 dim->on
+ 30893.3 * dial gap->c5
+ 30896.6 * indLamp4 off->dim
+ 30915.7 * indLamp4 dim->on
+ 30948.4 * indLamp6 dim->off
+ 30956.5 * dial c5->gap
+ 30972.8 * indLamp4 on->dim
+ 30977.3 * dial gap->c4
+ 30988.5 * relay5 no->mid
+ 30989.4 * relay5 mid->nc
+ 31028.4 * indLamp4 dim->off
+ 35879.0 > button6 target=1000
+ 35890.2 * pb6 nc->mid
+ 35892.7 * pb6 mid->no
+ 35902.6 * indLamp6 off->dim
+ 35904.6 * relay6 nc->mid
+ 35905.9 * relay6 mid->no
+ 35922.3 * dial c4->gap
+ 35929.0 > button6 target=0
+ 35940.2 * pb6 no->mid
+ 35942.7 * pb6 mid->nc  indLamp5 on->dim
+ 35943.1 * dial gap->c3  indLamp6 dim->on
+ 35954.8 * relay6 no->mid
+ 35955.7 * relay6 mid->nc
+ 35998.3 * indLamp5 dim->off
+ 40929.0 > button4 target=1000
+ 40940.2 * pb4 nc->mid
+ 40942.7 * pb4 mid->no
+ 40952.6 * indLamp4 off->dim
+ 40954.2 * relay4 nc->mid
+ 40955.5 * relay4 mid->no
+ 40971.4 * dial c3->gap
+ 40979.0 > button4 target=0
+ 40990.2 * pb4 no->mid
+ 40991.8 * indLamp6 on->dim
+ 40992.3 * dial gap->c2
+ 40992.7 * pb4 mid->nc  indLamp4 dim->on
+ 41004.7 * relay4 no->mid
+ 41005.6 * relay4 mid->nc
+ 41047.4 * indLamp6 dim->off
+ 45979.0 > button6 target=1000
+ 45990.2 * pb6 nc->mid
+ 45992.7 * pb6 mid->no
+ 46002.6 * indLamp6 off->dim
+ 46004.6 * relay6 nc->mid
+ 46005.9 * relay6 mid->no
+ 46021.0 * dial c2->gap
+ 46029.0 > button6 target=0
+ 46040.2 * pb6 no->mid
+ 46041.4 * indLamp4 on->dim
+ 46041.9 * dial gap->c1
+ 46042.7 * pb6 mid->nc
+ 46043.1 * indLamp6 dim->on
+ 46045.2 * indLamp5 off->dim
+ 46064.3 * indLamp5 dim->on
+ 46097.0 * indLamp4 dim->off
+ 46105.0 * dial c1->gap
+ 46121.3 * indLamp5 on->dim
+ 46125.9 * dial gap->c0
+ 46129.2 * outLamp3 off->dim
+ 46137.1 * relay3 nc->mid
+ 46138.4 * relay3 mid->no
+ 46148.4 * outLamp3 dim->on
+ 46176.9 * indLamp5 dim->off
+ 46189.3 * dial c0->gap
+ 46210.3 * dial gap->c15
+ 46221.0 * relay6 no->mid
+ 46221.9 * relay6 mid->nc
+ 51029.0 > button3 target=1000
+ 51040.2 * pb3 nc->mid
+ 51042.7 * pb3 mid->no
+ 51050.3 * relay3 no->mid
+ 51051.2 * relay3 mid->nc
+ 51069.5 * outLamp3 on->dim
+ 51079.0 > button3 target=0
+ 51090.2 * pb3 no->mid
+ 51092.7 * pb3 mid->nc
+ 51125.2 * outLamp3 dim->off
+ 51579.0 > dialGrab targetUdeg=337500000
+ 54579.0 > dialRelease
+ 55079.0 ? dial=c15  "[p.54:] \"The game is started with the rotary switch dial at 15.\" / [errata:] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\""
+ 55079.0 > button5 target=1000
+ 55090.2 * pb5 nc->mid
+ 55092.7 * pb5 mid->no
+ 55102.6 * indLamp5 off->dim
+ 55104.4 * relay5 nc->mid
+ 55105.7 * relay5 mid->no
+ 55129.0 > button5 target=0
+ 55137.2 * dial c15->gap
+ 55140.2 * pb5 no->mid
+ 55142.7 * pb5 mid->nc
+ 55143.2 * indLamp5 dim->on
+ 55157.5 * indLamp6 on->dim
+ 55158.1 * dial gap->c14
+ 55161.4 * indLamp4 off->dim
+ 55180.5 * indLamp4 dim->on
+ 55213.1 * indLamp6 dim->off
+ 55221.2 * dial c14->gap
+ 55237.5 * indLamp4 on->dim
+ 55242.1 * dial gap->c13
+ 55242.2 ? dial=c13  "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 2 matches by pushing pushbutton 5\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+ 55253.2 * relay5 no->mid
+ 55254.1 * relay5 mid->nc
+ 55293.1 * indLamp4 dim->off
+ 60242.2 ? dial=c13  "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 2 matches by pushing pushbutton 5\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+ 60242.2 > button6 target=1000
+ 60253.4 * pb6 nc->mid
+ 60255.9 * pb6 mid->no
+ 60265.8 * indLamp6 off->dim
+ 60267.8 * relay6 nc->mid
+ 60269.1 * relay6 mid->no
+ 60285.5 * dial c13->gap
+ 60292.2 > button6 target=0
+ 60292.2 ? dial=gap  "\"MINIVAC moves next: player must push pushbutton 6; the rotary switch will turn to the number of matches remaining after the machine's move.\""
+ 60303.4 * pb6 no->mid
+ 60305.9 * pb6 mid->nc  indLamp5 on->dim
+ 60306.3 * indLamp6 dim->on
+ 60306.4 * dial gap->c12
+ 60318.1 * relay6 no->mid
+ 60319.0 * relay6 mid->nc
+ 60361.5 * indLamp5 dim->off
+ 65292.2 > button4 target=1000
+ 65303.4 * pb4 nc->mid
+ 65305.9 * pb4 mid->no
+ 65315.8 * indLamp4 off->dim
+ 65317.4 * relay4 nc->mid
+ 65318.7 * relay4 mid->no
+ 65334.6 * dial c12->gap
+ 65342.2 > button4 target=0
+ 65353.4 * pb4 no->mid
+ 65355.0 * indLamp6 on->dim
+ 65355.5 * dial gap->c11
+ 65355.9 * pb4 mid->nc  indLamp4 dim->on
+ 65367.9 * relay4 no->mid
+ 65368.8 * relay4 mid->nc
+ 65410.6 * indLamp6 dim->off
+ 70342.2 > button6 target=1000
+ 70353.4 * pb6 nc->mid
+ 70355.9 * pb6 mid->no
+ 70365.8 * indLamp6 off->dim
+ 70367.8 * relay6 nc->mid
+ 70369.1 * relay6 mid->no
+ 70384.2 * dial c11->gap
+ 70392.2 > button6 target=0
+ 70403.4 * pb6 no->mid
+ 70404.6 * indLamp4 on->dim
+ 70405.1 * dial gap->c10
+ 70405.9 * pb6 mid->nc
+ 70406.3 * indLamp6 dim->on
+ 70408.4 * indLamp5 off->dim
+ 70427.5 * indLamp5 dim->on
+ 70460.2 * indLamp4 dim->off
+ 70468.2 * dial c10->gap
+ 70484.5 * indLamp5 on->dim
+ 70489.1 * dial gap->c9
+ 70499.9 * relay6 no->mid
+ 70500.8 * relay6 mid->nc
+ 70540.1 * indLamp5 dim->off
+ 75392.2 > button5 target=1000
+ 75403.4 * pb5 nc->mid
+ 75405.9 * pb5 mid->no
+ 75415.8 * indLamp5 off->dim
+ 75417.6 * relay5 nc->mid
+ 75418.9 * relay5 mid->no
+ 75435.6 * dial c9->gap
+ 75442.2 > button5 target=0
+ 75453.4 * pb5 no->mid
+ 75455.9 * pb5 mid->nc
+ 75456.0 * indLamp6 on->dim
+ 75456.3 * indLamp5 dim->on
+ 75456.5 * dial gap->c8
+ 75459.8 * indLamp4 off->dim
+ 75478.9 * indLamp4 dim->on
+ 75511.6 * indLamp6 dim->off
+ 75519.6 * dial c8->gap
+ 75535.9 * indLamp4 on->dim
+ 75540.5 * dial gap->c7
+ 75551.7 * relay5 no->mid
+ 75552.6 * relay5 mid->nc
+ 75591.5 * indLamp4 dim->off
+ 80442.2 > button6 target=1000
+ 80453.4 * pb6 nc->mid
+ 80455.9 * pb6 mid->no
+ 80465.8 * indLamp6 off->dim
+ 80467.8 * relay6 nc->mid
+ 80469.1 * relay6 mid->no
+ 80485.4 * dial c7->gap
+ 80492.2 > button6 target=0
+ 80503.4 * pb6 no->mid
+ 80505.8 * indLamp5 on->dim
+ 80505.9 * pb6 mid->nc
+ 80506.3 * dial gap->c6  indLamp6 dim->on
+ 80518.0 * relay6 no->mid
+ 80518.9 * relay6 mid->nc
+ 80561.4 * indLamp5 dim->off
+ 85492.2 > button4 target=1000
+ 85503.4 * pb4 nc->mid
+ 85505.9 * pb4 mid->no
+ 85515.8 * indLamp4 off->dim
+ 85517.4 * relay4 nc->mid
+ 85518.7 * relay4 mid->no
+ 85534.5 * dial c6->gap
+ 85542.2 > button4 target=0
+ 85553.4 * pb4 no->mid
+ 85554.9 * indLamp6 on->dim
+ 85555.4 * dial gap->c5
+ 85555.8 * indLamp4 dim->on
+ 85555.9 * pb4 mid->nc
+ 85567.8 * relay4 no->mid
+ 85568.7 * relay4 mid->nc
+ 85610.5 * indLamp6 dim->off
+ 90542.2 > button6 target=1000
+ 90553.4 * pb6 nc->mid
+ 90555.9 * pb6 mid->no
+ 90565.8 * indLamp6 off->dim
+ 90567.8 * relay6 nc->mid
+ 90569.1 * relay6 mid->no
+ 90584.3 * dial c5->gap
+ 90592.2 > button6 target=0
+ 90603.4 * pb6 no->mid
+ 90604.7 * indLamp4 on->dim
+ 90605.2 * dial gap->c4
+ 90605.9 * pb6 mid->nc
+ 90606.3 * indLamp6 dim->on
+ 90608.5 * indLamp5 off->dim
+ 90627.6 * indLamp5 dim->on
+ 90660.3 * indLamp4 dim->off
+ 90668.3 * dial c4->gap
+ 90684.6 * indLamp5 on->dim
+ 90689.2 * dial gap->c3
+ 90700.0 * relay6 no->mid
+ 90700.9 * relay6 mid->nc
+ 90740.2 * indLamp5 dim->off
+ 95592.2 > button5 target=1000
+ 95603.4 * pb5 nc->mid
+ 95605.9 * pb5 mid->no
+ 95615.8 * indLamp5 off->dim
+ 95617.6 * relay5 nc->mid
+ 95618.9 * relay5 mid->no
+ 95635.6 * dial c3->gap
+ 95642.2 > button5 target=0
+ 95653.4 * pb5 no->mid
+ 95655.9 * pb5 mid->nc
+ 95656.0 * indLamp6 on->dim
+ 95656.3 * indLamp5 dim->on
+ 95656.5 * dial gap->c2
+ 95659.8 * indLamp4 off->dim
+ 95678.9 * indLamp4 dim->on
+ 95711.6 * indLamp6 dim->off
+ 95719.6 * dial c2->gap
+ 95735.9 * indLamp4 on->dim
+ 95740.5 * dial gap->c1
+ 95751.7 * relay5 no->mid
+ 95752.6 * relay5 mid->nc
+ 95791.5 * indLamp4 dim->off
+100642.2 > button6 target=1000
+100653.4 * pb6 nc->mid
+100655.9 * pb6 mid->no
+100665.8 * indLamp6 off->dim
+100667.8 * relay6 nc->mid
+100669.1 * relay6 mid->no
+100685.4 * dial c1->gap
+100692.2 > button6 target=0
+100703.4 * pb6 no->mid
+100705.8 * indLamp5 on->dim
+100705.9 * pb6 mid->nc
+100706.3 * dial gap->c0  indLamp6 dim->on
+100709.6 * outLamp3 off->dim
+100717.5 * relay3 nc->mid
+100718.8 * relay3 mid->no
+100728.8 * outLamp3 dim->on
+100761.4 * indLamp5 dim->off
+100769.7 * dial c0->gap
+100790.7 * dial gap->c15
+100801.5 * relay6 no->mid
+100802.4 * relay6 mid->nc

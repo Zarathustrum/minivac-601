@@ -1,0 +1,448 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP4-DERIVED",
+  "source": "Books V-VI printed pp.4-5 = book5-6.pdf PDF pp.10-11 (Experiment 4: The Traffic Light; wires and procedure p.5 = PDF p.11, narrative p.4 = PDF p.10); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4A/4+",
+    "4B/D11",
+    "5A/5+",
+    "5B/D7",
+    "6A/6+",
+    "6B/D1",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D11/D12",
+    "D12/D13",
+    "D13/D14",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M-",
+    "D18/M+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4A/4+",
+    "4B/D11",
+    "5A/5+",
+    "5B/D7",
+    "6A/6+",
+    "6B/D1",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D11/D12",
+    "D12/D13",
+    "D13/D14",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M-",
+    "D18/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; D17/M- and D18/M+ put RUN in the reverse of O-R11's increasing sense (D17 +, D18 -), so from the power-on rest at c0 the dial turns toward decreasing numbers and reaches D14 two pitches later, still on lamp 4's strap; lamps 5 and 6 have not been driven yet; increasing, D14 is 14 pitches away (about 1.2 s at the assumed 45 rpm), so the 600 ms window fails the wrong direction for run rates below about 85 rpm and passes for rates above about 15 rpm (script choice, rate range disclosed); no cord joins + to - except through a lamp or the R1-motor branch, so the breaker holds",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; decreasing, the wiper leaves lamp 4's strap after D11 and D10-D9-D8-D7 feed lamp 5, so the second light of the cycle is lamp 5 (amber) and lamp 6 is not yet driven; lamp 4 last driven three pitches earlier at D11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; decreasing, after D7 the wiper enters D6-D5-D4-D3-D2-D1, lamp 6's strap, so the third light is lamp 6 (green); lamp 5 last driven at D7, lamp 4 at D11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; decreasing, after D1 the wiper reaches D0, strapped to D15-D11, so the cycle returns to lamp 4 (red) and repeats while power is on; lamp 6 last driven four pitches earlier at D1",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 247500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c11"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; the knob held by hand on D11 (the friction drive slips; architecture hand-on-knob row): D11 is lamp 4's last pad, 4B/D11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; held on D10: D9/D10 joins it to lamp 5's strap and no D10/D11 strap exists, so lamp 4's dwell ends at D11 and lamp 5's begins at D10",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; held on D7: 5B/D7, lamp 5's last pad; D7-D10 is lamp 5's 4-pad dwell",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; held on D6: D5/D6 joins it to lamp 6's strap and no D6/D7 strap exists, so lamp 6's dwell begins at D6",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; held on D1: 6B/D1, lamp 6's last pad; D1-D6 is lamp 6's 6-pad dwell",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; held on D0: D15/D0 joins it to lamp 4's strap, so lamp 4's dwell is D11-D15 plus D0, 6 pads",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.5 = book5-6.pdf PDF p.11; rule: the rotary switch turns and lights 4, 5 and 6 go on and off in succession; derived from topology: lamp 4 is 4A/4+ to 4B/D11 on the D11-D12-D13-D14-D15-D0 strap (6 pads), lamp 5 is 5A/5+ to 5B/D7 on D7-D8-D9-D10 (4 pads), lamp 6 is 6A/6+ to 6B/D1 on D1-D2-D3-D4-D5-D6 (6 pads); no D6/D7 or D10/D11 strap; the wiper D16 is on M-, so the pad under the wiper lights its lamp and no other; released on D0, the motor resumes in the same decreasing sense and the wiper reaches D14 within lamp 4's strap (2 pitches; 600 ms window as in the first check); lamp 6 last driven at the D1 hold",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every until and expect is derived by hand from the 22-wire topology and the p.5 rule, not printed; the printed fixture C2/V-EXP4 covers the turning and each lamp coming on and going off, direction-free. No erratum touches Book V Experiment 4, so wires = as_printed (image-checked on PDF p.11). Topology: lamp 4 on D11-D15 and D0 (6 pads), lamp 5 on D7-D10 (4 pads), lamp 6 on D1-D6 (6 pads), wiper D16 on M-; RUN is D17 on M-, D18 on M+, the reverse of O-R11's increasing sense (D17 +, D18 -; Tom's ruling 2026-10-13, [likely]), so the dial turns toward decreasing numbers and the lamp order is 4, 5, 6, 4 (red, amber, green, red), as p.5 'turning lights 4, 5 and 6 on and off in succession' lists them. p.4 = PDF p.10 'follows a pre-programmed cycle from red to green to yellow and back to red' gives 4, 6, 5 and conflicts; this fixture follows the wiring under O-R11, so it fails if O-R11 is reversed. Checkpoints: lamp 4 at c14 within 600 ms of power-on (direction; the window passes for run rates above about 15 rpm and rejects the reverse below about 85 rpm, against the 45 rpm assumption, O-R3); lamp 5 alone at c8, lamp 6 alone at c3, lamp 4 alone at c13 on the next pass; then the knob held by hand (dialGrab, 1500 ms per hold, a script choice) on each block-edge pad c11, c10, c7, c6, c1, c0 to show the 6, 4, 6 pad dwell with the lamps settled; then release and the motor resumes decreasing to c14. Motor-run checks sit on interior pads so no lamp is asserted within one pitch of being driven or cut. Not asserted: lamps in a gap (break-before-make, filament lag), the outgoing lamp's state at the first pad of the next block, the colour names, and 'The length of time any given light remains on may be varied by changing the connections on the rotary switch' (needs an unprinted rewiring). Assumptions: a lamp undriven for three pitches or more reads off and a lamp on its pad reads on within that pad's dwell; the power-on rest is c0 (no printed start position); rotary geometry, run rate and coast are profile fallbacks O-R1, O-R3, O-R5.",
+  "digest": {
+    "eventCount": 82,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      68
+    ]
+  }
+}

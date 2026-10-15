@@ -1,0 +1,365 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-2BUTTONMEM-DERIVED",
+  "source": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA sheet p.1 (ER-05); Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1+/1H",
+    "1X/1C",
+    "1G/1C",
+    "1B/1-",
+    "2-/2Y",
+    "2Z/1F",
+    "1A/1C"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-05",
+      "from": "1A/1C",
+      "to": "1A/1G"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the corrected 8-wire topology and the p.11 rule, tagged FALLBACK-DERIVED-TOPOLOGY. The page prints no numbered procedure, so the script is: power on, push and release pushbutton 1, push and release pushbutton 2, then hold pushbutton 1 and add pushbutton 2, releasing 1 before 2. Indicator lamp 1 is asserted only where it is dark, because a lit lamp in series with a coil has a profile-dependent class. Light 1 is wired straight across 1G and minus, so it is asserted on at full rail. The both-buttons case is not printed: it follows from 1C = 1G, which puts pushbutton 1's + on light 1 independent of the relay. Script choices, not printed: each push and release is followed by settle 500 ms and a 200 ms advance.",
+  "wires": [
+    "1+/1Y",
+    "1+/1H",
+    "1X/1C",
+    "1G/1C",
+    "1B/1-",
+    "2-/2Y",
+    "2Z/1F",
+    "1A/1G"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), power-up, no button touched; rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); relay 1 cold and out, so 1H-1G is open; pushbutton 1 up, so 1Y-1X is open; P1 has no + source: coil 1, indicator lamp 1 and light 1 unfed (remembering 0)",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "pb1",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), pushbutton 1 held; rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); + -> 1Y-1X -> P1; P1 -> 1C - indicator lamp 1 - coil 1 - 1F - 2Z-2Y (pushbutton 2 up, N.C. closed) -> minus: relay 1 pulls in; light 1 across P1 (+) and minus at full rail",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), pushbutton 1 released after one push (forget 0 remember 1); rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); 1Y-1X opens, but relay 1 in closes 1H-1G: + -> 1H-1G -> P1 keeps the coil chain fed through 2Z-2Y, relay 1 holds itself; light 1 still on via 1G",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), pushbutton 2 held while remembering 1; rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); 2Y-2Z opens, 1F has no other connection, so the coil chain carries no current and relay 1 drops out; 1H-1G opens and pushbutton 1 is up, so P1 loses + and light 1 goes dark; no current through indicator lamp 1",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), pushbutton 2 released (forget 1 remember 0); rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); 2Y-2Z closes and returns 1F to minus, but P1 has no + source (1H-1G open with relay 1 out, 1Y-1X open): relay 1 stays out, light 1 and indicator lamp 1 dark (remembering 0)",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb1",
+          "v": "no"
+        },
+        {
+          "dev": "pb2",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), pushbutton 1 pushed and held, then pushbutton 2 pushed and held as well; rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); pushbutton 1 pulls relay 1 in; pushing pushbutton 2 opens 2Y-2Z so 1F floats and relay 1 drops out with no current in coil or indicator lamp 1; light 1 stays on because pushbutton 1 still puts + on P1 (1Y-1X-1C-1G-1A) independent of the relay",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Book II printed p.11 = book2-3-4.pdf PDF p.17, image-read; ERRATA ER-05 (1A/1C -> 1A/1G), pushbutton 1 released first, then pushbutton 2 released; rule: pushbutton 1 = forget 0 remember 1, pushbutton 2 = forget 1 remember 0; derived from topology: node P1 = 1C = 1G = 1A = 1X (wires 1X/1C, 1G/1C, 1A/1G); 1Y and 1H on +; 1B on minus, so output light 1 sits across P1 and minus; coil chain P1 = 1C - indicator lamp 1 - 1E - coil 1 - 1F; 1F = 2Z, 2Y on minus, so the chain returns to minus only through pushbutton 2's N.C. contact; the + sources onto P1 are pushbutton 1 N.O. (1Y-1X) and relay 1 set-1 N.O. (1H-1G, the self-hold); with pushbutton 2 still held when pushbutton 1 releases, relay 1 is out and 1H-1G open, so P1 loses its last + source; when 2Y-2Z recloses there is nothing on P1 to re-feed the coil: relay 1 stays out (remembering 0), light 1 and indicator lamp 1 dark",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

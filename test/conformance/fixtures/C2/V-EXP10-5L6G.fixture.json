@@ -1,0 +1,629 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP10-5L6G",
+  "source": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; errata.pdf p.3 right column ER-32 “page 12: program corrections for automatic toll collector”, applied except its remove 5L/6G row (Tom ruling O-C8, 2026-10-13); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4X",
+    "3L/3Y",
+    "3N/6Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4H/5N",
+    "4K/5N",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5L/6G",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-32",
+      "from": "3J/4X",
+      "to": "3J/4K"
+    },
+    {
+      "id": "ER-32",
+      "from": "3N/6Y",
+      "to": "3Y/4Y"
+    },
+    {
+      "id": "ER-32",
+      "from": "4H/5N",
+      "to": "4J/4X"
+    },
+    {
+      "id": "ER-32",
+      "from": "4K/5N",
+      "to": "4X/6L"
+    }
+  ],
+  "wires": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4K",
+    "3L/3Y",
+    "3Y/4Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4J/4X",
+    "4X/6L",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5L/6G",
+    "5N/6K",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.12 = book5-6.pdf PDF p.18; derived from topology: 3L (on + via 3G/3L) meets 2A through relay 3 N.C. 3N, so output light 2 lights while relay 3 is out; output light 1 (1A on 2E) has no feed while relay 3 N.O. 3K is open and relay 2 coil end 2F (2G, 4N) is unfed",
+      "quote": "[p.12:] Turn power on. Output light 2 comes on indicating “Stop—Pay Toll 10¢.”",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.12 = book5-6.pdf PDF p.18 toll rule (5¢ is short of the 10¢ toll); derived from topology: relays 5/6 are a two-relay pulse divider on input node 5J/5X/6H; pressing pushbutton 5 puts + on 5J, which reaches coil 5 at 5F through 5J-5H, so relay 5 pulls and latches through 5G(+)-5H-5F; on release 6E loses its feed through 6H-6J and coil 6 (6F = 5F, +) pulls relay 6 through 6E-lamps-6C(-). The carry 5E-5L-5N-6K-6L-4E needs relay 5 out and relay 6 in, so 4E is not fed and relays 3/4 stay out",
+      "quote": "[p.12:] We will assume that a 10¢ toll is to be collected. This toll can be paid by depositing: one dime two nickels one nickel and five pennies ten pennies",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.13 = book5-6.pdf PDF p.19 two nickels; derived from topology (ER-32 with 5L/6G kept, O-C8): the second press puts + on 5E through 6H-6G, shorting coil 5 (5F and 5E both +); relay 5 drops, closing 5L-5N, so + runs 5E-5L-5N-6K-6L(relay 6 in)-4X-4J-4E; with relays 3/4 out 4E reaches 3F through 4J-4H-3J-3H and relay 3 pulls and latches through 3G(+)-3H; on release relay 6 loses its feed (5F only meets the floating 5J) and drops, 4E is unfed and coil 4 (4F = 3F, +) pulls relay 4; relay 3 N.O. 3K puts + on 2E/1A (output light 1 on) and N.C. 3N opens (output light 2 off); relay 2 coil has + at 2E and an unfed 2F, so relays 2 and 1 stay out",
+      "quote": "[p.13:] When 10¢ has been deposited, output light 1 will come on indicating “Thank You—Go Ahead.”",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.13 = book5-6.pdf PDF p.19 drive away after payment; derived from topology: pushbutton 3 puts + on 3X/4L; relay 4 in routes it 4L-4K-4H-4G-3E, shorting coil 3 (3F and 3E both +) so relay 3 drops; on release 3F meets only the floating 3J/4H node and relay 4 drops; relay 4 N.C. 4N (to 2F) is never fed while 3X is live, so relay 2 (alarm latch) stays out, and with relay 3 out output light 2 is back on and output light 1 off",
+      "quote": "[p.13:] Push pushbutton 3 to “Drive Away.” The toll collector will re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.13 = book5-6.pdf PDF p.19 ten pennies; derived from topology: pushbutton 6 puts + on 6X = D16 (wiper) and D18; with D17 on - (D17/M-) the motor runs with D18 at +, which turns the dial toward decreasing numbers (rotary.md section 4, D17 + / D18 - turns toward increasing numbers, [likely]); the wiper on D10 is the first nickel pulse into 5J (D5/D10, 5X/D5), the wiper crossing D5 on the way down is the second, which carries to 4E exactly as the second nickel does; D0/D19 shorts STOP when the wiper reaches 0",
+      "quote": "[p.13:] When 10¢ has been deposited, output light 1 will come on indicating “Thank You—Go Ahead.”",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        }
+      ],
+      "cite": "BK5-6 printed p.13 = book5-6.pdf PDF p.19 over-deposit; derived from topology: with relays 3/4 in, pushbutton 4 puts + on 4E, shorting coil 4 (4F = 3F, +) so relay 4 drops while the button is held; relay 3 stays latched through 3G(+)-3H; on release 4E is unfed and coil 4 pulls relay 4 again, so the paid state is unchanged",
+      "quote": "[p.13:] If you deposit more than 10¢, the automatic toll collector will accept the extra money and do nothing about it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.13 = book5-6.pdf PDF p.19 drive away after an over-deposit; derived from topology: as after the two-nickel payment, 4L-4K-4H-4G-3E drops relay 3, relay 4 drops on release, and 4N never sees + while 3X is live",
+      "quote": "[p.13:] Push pushbutton 3 to “Drive Away.” The toll collector will re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1300
+    }
+  ],
+  "digest": {
+    "eventCount": 252,
+    "moverTransitions": [
+      0,
+      0,
+      8,
+      12,
+      12,
+      12,
+      0,
+      0,
+      8,
+      4,
+      12,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      52
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A, O-C8 variant): every expect is derived by hand from the 56-wire topology and the p.12-13 rule, not printed. Wiring: ER-32 applied except its remove 5L/6G row, so 5L/6G is kept and the added 5N/6K joins it (56 wires); errata_applied lists the four ER-32 rows that replace a wire, and 5N/6K is the fifth row’s addition with its removal not applied. Topology: relays 3/4 and relays 5/6 are each a two-relay pulse divider (P latches through PG(+)-PH-PF; PF = QF; Q set 1 routes the input to QE when Q is out and to PE when Q is in). Pushbutton 4 (dime) feeds 4E; pushbutton 5 (nickel) and the wiper on D5 or D10 (pushbutton 6 on D16) feed 5J; the 5/6 divider carries into 4E through 5E-5L-5N-6K-6L when relay 5 is out and relay 6 in, which exists only with 5L/6G kept. Relays 3 and 4 both in is the paid state: 3K feeds output light 1 and shorts coil 2 (alarm latch 2H(+)-2G-2F, set by pushbutton 3 through 4L-4N with relay 4 out), and 3N opens output light 2. Pushbutton 3 with relay 4 in pulses 4K into the 3/4 divider and re-sets it. Not asserted: lamps 3-6 and indicator lamps 2-6 (each shares a coil’s series current with a parallel lamp, so on/dim is a profile matter), the dial rest position, and the alarm (covered by the V-EXP10 printed fixture). Script choices, not printed: payment order (two nickels, ten pennies, an extra dime, one nickel and five pennies), 300 ms button holds, pushbutton 6 held 8000 ms until the D0/D19 stop, each payment from the re-set state with the 5/6 divider empty (the re-set does not clear relays 5/6). The final one-nickel-and-five-pennies checkpoint rests on the D5 wiper dwell (O-R1/O-R3/O-R5 [unverified]) and is expected to disagree with the simulator per O-C8; it is last so the earlier checkpoints stand on their own. The nickel-plus-five-pennies payment check was dropped: under the shipped motor timing the carry window is about 3 ms, shorter than relay 3 pull-in (O-C8; rests on O-R1/O-R3/O-R5)."
+}

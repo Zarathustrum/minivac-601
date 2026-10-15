@@ -1,0 +1,326 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-TICTACTOE",
+  "source": "BK6 printed pp.55-56 = book5-6.pdf PDF pp.61-62",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1N",
+    "1B/1-",
+    "1C/2C",
+    "1F/M11",
+    "1G/2A",
+    "1H/5X",
+    "1J/2F",
+    "1L/1Z",
+    "1N/3F",
+    "1X/2H",
+    "1X/2X",
+    "1Y/2Y",
+    "1Y/2G",
+    "2B/2-",
+    "2C/3C",
+    "2E/D16",
+    "2F/2H",
+    "2G/2K",
+    "2L/D18",
+    "2N/D19",
+    "2X/3X",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/4F",
+    "3G/D7",
+    "3G/4N",
+    "3H/M3b",
+    "3H/M7t",
+    "3J/3K",
+    "3K/D8",
+    "3L/M4b",
+    "3L/M8t",
+    "3N/6G",
+    "3X/4X",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5F",
+    "4G/D5",
+    "4H/M1b",
+    "4H/M5t",
+    "4J/4K",
+    "4K/D6",
+    "4L/M2b",
+    "4L/M6t",
+    "4G/5N",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5H/M7b",
+    "5H/M3t",
+    "5J/5K",
+    "5K/D4",
+    "5L/M8b",
+    "5L/M4t",
+    "5G/6N",
+    "5Y/M10",
+    "6+/6Y",
+    "6-/6C",
+    "6G/D1",
+    "6H/M1t",
+    "6H/M5b",
+    "6J/6K",
+    "6K/D2",
+    "6L/M2t",
+    "6L/M6b",
+    "6X/M10",
+    "6com/D9",
+    "M9b/M11",
+    "M-/D17",
+    "M10/free",
+    "M11/free"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/1N",
+    "1B/1-",
+    "1C/2C",
+    "1F/M11",
+    "1G/2A",
+    "1H/5X",
+    "1J/2F",
+    "1L/1Z",
+    "1N/3F",
+    "1X/2H",
+    "1X/2X",
+    "1Y/2Y",
+    "1Y/2G",
+    "2B/2-",
+    "2C/3C",
+    "2E/D16",
+    "2F/2H",
+    "2G/2K",
+    "2L/D18",
+    "2N/D19",
+    "2X/3X",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/4F",
+    "3G/D7",
+    "3G/4N",
+    "3H/M3b",
+    "3H/M7t",
+    "3J/3K",
+    "3K/D8",
+    "3L/M4b",
+    "3L/M8t",
+    "3N/6G",
+    "3X/4X",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5F",
+    "4G/D5",
+    "4H/M1b",
+    "4H/M5t",
+    "4J/4K",
+    "4K/D6",
+    "4L/M2b",
+    "4L/M6t",
+    "4G/5N",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5H/M7b",
+    "5H/M3t",
+    "5J/5K",
+    "5K/D4",
+    "5L/M8b",
+    "5L/M4t",
+    "5G/6N",
+    "5Y/M10",
+    "6+/6Y",
+    "6-/6C",
+    "6G/D1",
+    "6H/M1t",
+    "6H/M5b",
+    "6J/6K",
+    "6K/D2",
+    "6L/M2t",
+    "6L/M6b",
+    "6X/M10",
+    "6com/D9",
+    "M9b/M11",
+    "M-/D17"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6com#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; printed p.56 = PDF p.62; centre = matrix square 9 per the panel silkscreen (raw/photos/commons-minivac601-main.jpg, programs.md section 1); dial sector numerals 0-15 per panel.md; the knob's sector names the matrix terminal per printed p.56 '(as indicated by the pointer knob)'",
+      "quote": "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix. / Push pushbutton 6 and hold pushbutton 6 down while you push pushbutton 1. The pointer knob will turn to indicate the machine's first move."
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; printed p.56 = PDF p.62; centre = matrix square 9 per the panel silkscreen (raw/photos/commons-minivac601-main.jpg, programs.md section 1); dial sector numerals 0-15 per panel.md; the knob's sector names the matrix terminal per printed p.56 '(as indicated by the pointer knob)'",
+      "quote": "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix. / Push pushbutton 6 and hold pushbutton 6 down while you push pushbutton 1. The pointer knob will turn to indicate the machine's first move."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; printed p.56 = PDF p.62; centre = matrix square 9 per the panel silkscreen (raw/photos/commons-minivac601-main.jpg, programs.md section 1); dial sector numerals 0-15 per panel.md; the knob's sector names the matrix terminal per printed p.56 '(as indicated by the pointer knob)'",
+      "quote": "the machine's first move will always be to the center of the game matrix. / Release both pushbuttons 1 and 6. All succeeding moves are made as follows: Place the free end of the machine's \"play\" wire in the bottom contact of the matrix terminal corresponding to the machine's last move (as indicated by the pointer knob)."
+    }
+  ],
+  "digest": {
+    "eventCount": 85,
+    "moverTransitions": [
+      0,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      14
+    ]
+  },
+  "note": "First move only. Wires are the printed 72 less the two free-ended lines M10/free* and M11/free** (no errata change a wire; ER-44 is prose only), which are script cords 70 and 71 on the next free holes M10#3 and M11#3. The machine's play wire's free end goes in 6com#2 (6com#1 holds 6com/D9). Start dial position D0 is the construction state, not printed. Every machine reply after the first, and the light 1 / light 2 outcomes, depend on the unprinted 'squares to the right' direction (FALLBACK-TTT-RING-CW) and are left to Step 7. Rotary geometry, run rate and coast remain profile fallbacks. The c9 asserts rest on the panel numbering (matrix centre = 9; dial sectors 0-15), not on Book VI text, which prints only 'the center of the game matrix'."
+}

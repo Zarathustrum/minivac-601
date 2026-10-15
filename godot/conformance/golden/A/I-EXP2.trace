@@ -1,0 +1,9 @@
+#!mv601-trace 1
+# id=I-EXP2 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=2
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=189 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim
+    22.1 * outLamp1 dim->on
+    42.2 ? outLamp1=on  "Light 1 comes ON because current flows through the light."

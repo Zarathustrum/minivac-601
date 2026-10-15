@@ -1,0 +1,304 @@
+#!mv601-trace 1
+# id=III-MINDREADING contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=32
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=3 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > switch4 target=0
+   500.0 > switch5 target=0
+   500.0 > switch6 target=0
+   800.0 > button6 target=1000
+   811.2 * pb6 nc->mid
+   813.7 * pb6 mid->no
+   817.0 * outLamp4 off->dim  outLamp5 off->dim  outLamp6 off->dim
+   823.9 * indLamp5 off->dim  indLamp6 off->dim
+   826.2 * relay5 nc->mid
+   826.4 * relay6 nc->mid
+   827.5 * relay5 mid->no
+   827.7 * relay6 mid->no
+   836.4 * outLamp4 dim->on  outLamp5 dim->on  outLamp6 dim->on
+   846.1 * dial c0->gap
+   865.2 * indLamp5 dim->on  indLamp6 dim->on
+   867.3 * dial gap->c1
+   931.0 * dial c1->gap
+   952.2 * dial gap->c2
+  1015.7 * dial c2->gap
+  1036.9 * dial gap->c3
+  1100.5 * dial c3->gap
+  1121.7 * dial gap->c4
+  1185.3 * dial c4->gap
+  1206.5 * dial gap->c5
+  1270.1 * dial c5->gap
+  1291.3 * dial gap->c6
+  1354.8 * dial c6->gap
+  1376.0 * dial gap->c7
+  1376.1 ? dial=c7  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / Yes (Number) ( is 7 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+  9376.1 ? dial=c7  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / Yes (Number) ( is 7 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+  9376.1 > button6 target=0
+  9387.3 * pb6 no->mid
+  9389.8 * pb6 mid->nc
+  9394.3 * relay6 no->mid
+  9394.5 * relay5 no->mid
+  9395.2 * relay6 mid->nc
+  9395.4 * relay5 mid->nc
+  9405.6 * indLamp5 on->dim  indLamp6 on->dim
+  9410.2 * outLamp4 on->dim  outLamp5 on->dim  outLamp6 on->dim
+  9461.6 * indLamp5 dim->off  indLamp6 dim->off
+  9465.9 * outLamp4 dim->off  outLamp5 dim->off  outLamp6 dim->off
+ 12376.1 ? dial=c7  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / Yes (Number) ( is 7 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 12376.1 > switch4 target=1000
+ 12376.1 > switch5 target=0
+ 12376.1 > switch6 target=0
+ 12403.0 * sw4 nc->mid
+ 12409.1 * sw4 mid->no
+ 12676.1 > button6 target=1000
+ 12687.3 * pb6 nc->mid
+ 12689.8 * pb6 mid->no
+ 12693.1 * outLamp5 off->dim  outLamp6 off->dim
+ 12699.9 * indLamp5 off->dim  indLamp6 off->dim
+ 12702.1 * relay5 nc->mid
+ 12702.3 * relay6 nc->mid
+ 12703.4 * relay5 mid->no
+ 12703.6 * relay6 mid->no
+ 12712.4 * outLamp5 dim->on  outLamp6 dim->on
+ 12735.2 * dial c7->gap
+ 12741.0 * indLamp5 dim->on  indLamp6 dim->on
+ 12756.3 * dial gap->c8
+ 12819.7 * dial c8->gap
+ 12840.8 * dial gap->c9
+ 12904.1 * dial c9->gap
+ 12925.2 * dial gap->c10
+ 12988.5 * dial c10->gap
+ 13009.6 * dial gap->c11
+ 13072.9 * dial c11->gap
+ 13094.0 * dial gap->c12
+ 13157.3 * dial c12->gap
+ 13178.4 * dial gap->c13
+ 13241.8 * dial c13->gap
+ 13262.9 * dial gap->c14
+ 13326.2 * dial c14->gap
+ 13347.3 * dial gap->c15
+ 13410.6 * dial c15->gap
+ 13431.7 * dial gap->c0
+ 13495.0 * dial c0->gap
+ 13516.1 * dial gap->c1
+ 13579.4 * dial c1->gap
+ 13600.5 * dial gap->c2
+ 13663.8 * dial c2->gap
+ 13684.9 * dial gap->c3
+ 13685.0 ? dial=c3  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / Yes (Number) ( is 3 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 21685.0 ? dial=c3  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / Yes (Number) ( is 3 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 21685.0 > button6 target=0
+ 21696.2 * pb6 no->mid
+ 21698.7 * pb6 mid->nc
+ 21703.2 * relay6 no->mid
+ 21703.3 * relay5 no->mid
+ 21704.1 * relay6 mid->nc
+ 21704.2 * relay5 mid->nc
+ 21714.5 * indLamp5 on->dim  indLamp6 on->dim
+ 21719.3 * outLamp5 on->dim  outLamp6 on->dim
+ 21770.5 * indLamp5 dim->off  indLamp6 dim->off
+ 21775.0 * outLamp5 dim->off  outLamp6 dim->off
+ 24685.0 ? dial=c3  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / Yes (Number) ( is 3 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 24685.0 > switch4 target=0
+ 24685.0 > switch5 target=1000
+ 24685.0 > switch6 target=0
+ 24711.9 * sw4 no->mid  sw5 nc->mid
+ 24718.0 * sw4 mid->nc  sw5 mid->no
+ 24985.0 > button6 target=1000
+ 24996.2 * pb6 nc->mid
+ 24998.7 * pb6 mid->no
+ 25002.0 * outLamp4 off->dim  outLamp6 off->dim
+ 25008.8 * indLamp6 off->dim
+ 25011.2 * relay6 nc->mid
+ 25012.5 * relay6 mid->no
+ 25021.3 * outLamp4 dim->on  outLamp6 dim->on
+ 25043.9 * dial c3->gap
+ 25049.8 * indLamp6 dim->on
+ 25065.0 * dial gap->c4
+ 25128.2 * dial c4->gap
+ 25149.2 * dial gap->c5
+ 25149.3 ? dial=c5  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / Yes (Number) ( is 5 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 33149.3 ? dial=c5  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / Yes (Number) ( is 5 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 33149.3 > button6 target=0
+ 33160.5 * pb6 no->mid
+ 33163.0 * pb6 mid->nc
+ 33167.7 * relay6 no->mid
+ 33168.6 * relay6 mid->nc
+ 33179.3 * indLamp6 on->dim
+ 33182.5 * outLamp4 on->dim  outLamp6 on->dim
+ 33235.4 * indLamp6 dim->off
+ 33238.2 * outLamp4 dim->off  outLamp6 dim->off
+ 36149.3 ? dial=c5  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / Yes (Number) ( is 5 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 36149.3 > switch4 target=1000
+ 36149.3 > switch5 target=1000
+ 36149.3 > switch6 target=1000
+ 36176.2 * sw4 nc->mid  sw6 nc->mid
+ 36182.3 * sw4 mid->no  sw6 mid->no
+ 36449.3 > button6 target=1000
+ 36460.5 * pb6 nc->mid
+ 36463.0 * pb6 mid->no
+ 36507.2 * dial c5->gap
+ 36528.1 * dial gap->c6
+ 36590.6 * dial c6->gap
+ 36611.4 * dial gap->c7
+ 36673.9 * dial c7->gap
+ 36694.7 * dial gap->c8
+ 36757.2 * dial c8->gap
+ 36778.1 * dial gap->c9
+ 36840.6 * dial c9->gap
+ 36861.4 * dial gap->c10
+ 36923.9 * dial c10->gap
+ 36944.7 * dial gap->c11
+ 37007.2 * dial c11->gap
+ 37028.1 * dial gap->c12
+ 37090.6 * dial c12->gap
+ 37111.4 * dial gap->c13
+ 37173.9 * dial c13->gap
+ 37194.7 * dial gap->c14
+ 37257.2 * dial c14->gap
+ 37278.1 * dial gap->c15
+ 37340.6 * dial c15->gap
+ 37361.4 * dial gap->c0
+ 37361.5 ? dial=c0  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / No (Number) ( is 0 ) [errata p.2:] Note: Zero (0) is considered an even number for this problem. [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 45361.5 ? dial=c0  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / No (Number) ( is 0 ) [errata p.2:] Note: Zero (0) is considered an even number for this problem. [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 45361.5 > button6 target=0
+ 45372.7 * pb6 no->mid
+ 45375.2 * pb6 mid->nc
+ 48361.5 ? dial=c0  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / No (Number) ( is 0 ) [errata p.2:] Note: Zero (0) is considered an even number for this problem. [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 48361.5 > switch4 target=1000
+ 48361.5 > switch5 target=1000
+ 48361.5 > switch6 target=0
+ 48388.4 * sw6 no->mid
+ 48394.5 * sw6 mid->nc
+ 48661.5 > button6 target=1000
+ 48672.7 * pb6 nc->mid
+ 48675.2 * pb6 mid->no
+ 48678.5 * outLamp6 off->dim
+ 48685.3 * indLamp6 off->dim
+ 48687.6 * relay6 nc->mid
+ 48688.9 * relay6 mid->no
+ 48697.7 * outLamp6 dim->on
+ 48726.1 * indLamp6 dim->on
+ 48732.0 * dial c0->gap
+ 48752.9 * dial gap->c1
+ 48753.0 ? dial=c1  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / Yes (Number) ( is 1 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 56753.0 ? dial=c1  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / Yes (Number) ( is 1 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 56753.0 > button6 target=0
+ 56764.2 * pb6 no->mid
+ 56766.7 * pb6 mid->nc
+ 56771.4 * relay6 no->mid
+ 56772.3 * relay6 mid->nc
+ 56783.0 * indLamp6 on->dim
+ 56786.6 * outLamp6 on->dim
+ 56839.0 * indLamp6 dim->off
+ 56842.3 * outLamp6 dim->off
+ 59753.0 ? dial=c1  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / Yes (Number) ( is 1 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 59753.0 > switch4 target=0
+ 59753.0 > switch5 target=0
+ 59753.0 > switch6 target=1000
+ 59779.9 * sw4 no->mid  sw5 no->mid  sw6 nc->mid
+ 59786.0 * sw4 mid->nc  sw5 mid->nc  sw6 mid->no
+ 60053.0 > button6 target=1000
+ 60064.2 * pb6 nc->mid
+ 60066.7 * pb6 mid->no
+ 60070.0 * outLamp4 off->dim  outLamp5 off->dim
+ 60076.8 * indLamp5 off->dim
+ 60079.0 * relay5 nc->mid
+ 60080.3 * relay5 mid->no
+ 60089.3 * outLamp4 dim->on  outLamp5 dim->on
+ 60111.8 * dial c1->gap
+ 60117.8 * indLamp5 dim->on
+ 60132.9 * dial gap->c2
+ 60196.1 * dial c2->gap
+ 60217.1 * dial gap->c3
+ 60280.3 * dial c3->gap
+ 60301.3 * dial gap->c4
+ 60364.5 * dial c4->gap
+ 60385.6 * dial gap->c5
+ 60448.7 * dial c5->gap
+ 60469.8 * dial gap->c6
+ 60469.9 ? dial=c6  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / No (Number) ( is 6 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 68469.9 ? dial=c6  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / No (Number) ( is 6 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 68469.9 > button6 target=0
+ 68481.1 * pb6 no->mid
+ 68483.6 * pb6 mid->nc
+ 68488.4 * relay5 no->mid
+ 68489.3 * relay5 mid->nc
+ 68499.9 * indLamp5 on->dim
+ 68503.3 * outLamp4 on->dim  outLamp5 on->dim
+ 68556.0 * indLamp5 dim->off
+ 68558.9 * outLamp4 dim->off  outLamp5 dim->off
+ 71469.9 ? dial=c6  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / No (Number) ( is 6 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 71469.9 > switch4 target=1000
+ 71469.9 > switch5 target=0
+ 71469.9 > switch6 target=1000
+ 71496.8 * sw4 nc->mid
+ 71502.9 * sw4 mid->no
+ 71769.9 > button6 target=1000
+ 71781.1 * pb6 nc->mid
+ 71783.6 * pb6 mid->no
+ 71786.9 * outLamp5 off->dim
+ 71793.7 * indLamp5 off->dim
+ 71795.7 * relay5 nc->mid
+ 71797.0 * relay5 mid->no
+ 71806.0 * outLamp5 dim->on
+ 71828.3 * dial c6->gap
+ 71834.4 * indLamp5 dim->on
+ 71849.3 * dial gap->c7
+ 71912.2 * dial c7->gap
+ 71933.2 * dial gap->c8
+ 71996.1 * dial c8->gap
+ 72017.1 * dial gap->c9
+ 72080.0 * dial c9->gap
+ 72101.0 * dial gap->c10
+ 72163.9 * dial c10->gap
+ 72184.9 * dial gap->c11
+ 72247.8 * dial c11->gap
+ 72268.8 * dial gap->c12
+ 72331.7 * dial c12->gap
+ 72352.7 * dial gap->c13
+ 72415.6 * dial c13->gap
+ 72436.5 * dial gap->c14
+ 72499.5 * dial c14->gap
+ 72520.4 * dial gap->c15
+ 72583.3 * dial c15->gap
+ 72604.3 * dial gap->c0
+ 72667.2 * dial c0->gap
+ 72688.2 * dial gap->c1
+ 72751.1 * dial c1->gap
+ 72772.1 * dial gap->c2
+ 72772.2 ? dial=c2  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / No (Number) ( is 2 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 80772.2 ? dial=c2  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / No (Number) ( is 2 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 80772.2 > button6 target=0
+ 80783.4 * pb6 no->mid
+ 80785.9 * pb6 mid->nc
+ 80790.7 * relay5 no->mid
+ 80791.6 * relay5 mid->nc
+ 80802.2 * indLamp5 on->dim
+ 80805.6 * outLamp5 on->dim
+ 80858.3 * indLamp5 dim->off
+ 80861.3 * outLamp5 dim->off
+ 83772.2 ? dial=c2  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / No (Number) ( is 2 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 83772.2 > switch4 target=0
+ 83772.2 > switch5 target=1000
+ 83772.2 > switch6 target=1000
+ 83799.1 * sw4 no->mid  sw5 nc->mid
+ 83805.2 * sw4 mid->nc  sw5 mid->no
+ 84072.2 > button6 target=1000
+ 84083.4 * pb6 nc->mid
+ 84085.9 * pb6 mid->no
+ 84089.2 * outLamp4 off->dim
+ 84108.3 * outLamp4 dim->on
+ 84130.4 * dial c2->gap
+ 84151.3 * dial gap->c3
+ 84214.1 * dial c3->gap
+ 84235.0 * dial gap->c4
+ 84235.1 ? dial=c4  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / No (Number) ( is 4 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 92235.1 ? dial=c4  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / No (Number) ( is 4 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 92235.1 > button6 target=0
+ 92246.3 * pb6 no->mid
+ 92248.8 * pb6 mid->nc
+ 92266.4 * outLamp4 on->dim
+ 92322.1 * outLamp4 dim->off
+ 95235.1 ? dial=c4  "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / No (Number) ( is 4 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."

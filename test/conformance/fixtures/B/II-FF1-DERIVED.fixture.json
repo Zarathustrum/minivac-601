@@ -1,0 +1,381 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-FF1-DERIVED",
+  "source": "BK2 printed pp.11-12 = book2-3-4.pdf PDF pp.17-18 (rule p.11 = PDF p.17, program and diagram p.12 = PDF p.18), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1-/1B",
+    "1-/1C",
+    "1A/1E",
+    "1E/2G",
+    "1F/2F",
+    "1H/1F",
+    "1G/1Y",
+    "1Y/1+",
+    "1X/1J",
+    "1J/2H",
+    "2J/2E",
+    "2E/2A",
+    "2B/2-",
+    "2-/2C"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 14-wire topology and the p.11 rule, not printed. No erratum touches this program; ER-19 belongs to IV-FF1 (programs.md C-23). Nodes: plus = 1+/1Y/1G; minus = 1B/1C/2B/2C; P = 1F/2F/1H (both coils' F ends, relay 1 set-1 arm); Q = 1X/1J/2H (pushbutton N.O., relay 1 N.C., relay 2 set-1 arm); R = 2J/2E/2A (relay 2 N.C., relay 2 coil-lamp junction, lamp 2); S = 1A/1E/2G (lamp 1, relay 1 coil-lamp junction, relay 2 N.O.). Cycle derived: (r1,r2) 00 -press-> 10 -release-> 11 -press-> 01 -release-> 00; relay 1 changes on the press, relay 2 on the release, and light 1 reads relay 2 at rest. Lamps fed through a coil (coil into a parallel lamp pair) are predicted on by the same reading the printed II-FF1 fixture blesses for light 1 in the 1-state. The 200 ms advance after each settle lets filaments reach their class and is not from the source. Releases use collapse, as in II-FF1.",
+  "wires": [
+    "1-/1B",
+    "1-/1C",
+    "1A/1E",
+    "1E/2G",
+    "1F/2F",
+    "1H/1F",
+    "1G/1Y",
+    "1Y/1+",
+    "1X/1J",
+    "1J/2H",
+    "2J/2E",
+    "2E/2A",
+    "2B/2-",
+    "2-/2C"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 (rule), program and diagram p.12 = PDF p.18; rule: light 1 OFF when remembering 0; derived cold start: plus reaches the circuit only at 1G (relay 1 N.O., open) and 1Y (pushbutton 1 arm, N.O. 1X open), so nodes 1F/2F/1H, 1X/1J/2H and 2J/2E/2A (joined through 1H-1J and 2H-2J) and 1A/1E/2G carry no source; both coils and all four lamps are dead (cf. FALLBACK-PWRUP-COLD)",
+      "quote": "Light 1 will be ON when the flip-flop is remembering a 1, and will be OFF when the flip-flop is remembering a 0.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "pb1",
+          "v": "no"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 (rule), program and diagram p.12 = PDF p.18; rule: one push changes 0 to 1; derived, pushbutton 1 held from the 0 state: 1Y(+)-1X puts plus on 1X/1J/2H, through 1H-1J onto 1F/2F and through 2H-2J onto 2E/2A; relay 1 coil 1F-1E feeds 1A/1E/2G, which returns to minus through indicator lamp 1 (1E-1C) and output lamp 1 (1A-1B) in parallel, so relay 1 pulls in and both lamps light; once relay 1 transfers, 1H-1G holds 1F on plus; relay 2's coil has plus on both ends (2F from 1G, 2E from the button through 2H-2J), so relay 2 stays released while its indicator lamp (2E-2C) and output lamp 2 (2A-2B) sit directly across the rails",
+      "quote": "Once this circuit has been programmed on MINIVAC 601, pushing one pushbutton will signal the computer to remember a 1 or a 0.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 (rule), program and diagram p.12 = PDF p.18; rule: light 1 ON when remembering 1; derived, release edge: 1X loses plus, so 2E/2A is fed only through relay 2's coil from 1F/2F (plus via 1G-1H); relay 2 pulls in through indicator lamp 2 and output lamp 2 to minus and holds; relay 1 holds through its coil into 1E/1A; 2H-2G now ties the dead 1X/1J node to 1E/2G; the 1-state rests with both relays operated and each lamp pair lit in series with its coil",
+      "quote": "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "pb1",
+          "v": "no"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 (rule), program and diagram p.12 = PDF p.18; rule: one push changes 1 to 0; derived, pushbutton 1 held from the 1 state: 1Y(+)-1X through 2H-2G puts plus on 1A/1E/2G while 1G-1H keeps plus on 1F; relay 1's coil has plus on both ends and drops out; 1H-1J then keeps 1F/2F on plus from the button, so relay 2 holds through its coil and lamps; output lamp 1 and indicator lamp 1 sit directly across the rails, so light 1 stays lit while the button is held",
+      "quote": "Once this circuit has been programmed on MINIVAC 601, pushing one pushbutton will signal the computer to remember a 1 or a 0.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 (rule), program and diagram p.12 = PDF p.18; rule: light 1 OFF when remembering 0; derived, release edge: 1X loses plus; with relay 1 released 1G is open, so 1F/2F (through 1H-1J), 1X/1J/2H and (through 2H-2G) 1A/1E/2G carry no source; relay 2 drops and 2H-2J joins 2E/2A to the same dead net; every coil and lamp is dead, the cold-start 0 state again",
+      "quote": "If the relays are remembering a 1, pushing pushbutton 1 will signal them to \"forget 1 and start remembering 0\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 (rule), program and diagram p.12 = PDF p.18; rule: one push changes 0 to 1 every time, not once; derived: the 0 state reached by the second push is node-for-node the cold-start state, so the third press and release repeat the first cycle and end in the 1-state with both relays operated",
+      "quote": "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

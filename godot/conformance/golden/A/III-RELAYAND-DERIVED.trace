@@ -1,0 +1,43 @@
+#!mv601-trace 1
+# id=III-RELAYAND-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=10
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=252 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   520.1 ? relay1=nc relay2=nc outLamp3=off indLamp1=off indLamp2=off  "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."
+   520.1 > button1 target=1000
+   531.3 * pb1 nc->mid
+   533.8 * pb1 mid->no
+   543.7 * indLamp1 off->dim
+   544.8 * relay1 nc->mid
+   546.1 * relay1 mid->no
+   583.5 * indLamp1 dim->on
+  1071.4 ? relay1=no relay2=nc outLamp3=off indLamp1=on indLamp2=off  "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."
+  1071.4 > button2 target=1000
+  1082.6 * pb2 nc->mid
+  1085.1 * pb2 mid->no
+  1095.0 * indLamp2 off->dim
+  1096.3 * relay2 nc->mid
+  1097.6 * relay2 mid->no
+  1100.9 * outLamp3 off->dim
+  1119.8 * outLamp3 dim->on
+  1135.2 * indLamp2 dim->on
+  1655.3 ? relay1=no relay2=no outLamp3=on indLamp1=on indLamp2=on  "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."
+  1655.3 > button1 target=0
+  1666.5 * pb1 no->mid
+  1669.0 * pb1 mid->nc
+  1671.2 * relay1 no->mid
+  1672.1 * relay1 mid->nc
+  1677.7 * indLamp1 on->dim
+  1691.6 * outLamp3 on->dim
+  1733.3 * indLamp1 dim->off
+  1747.3 * outLamp3 dim->off
+  2211.7 ? relay1=nc relay2=no outLamp3=off indLamp1=off indLamp2=on  "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."
+  2211.7 > button2 target=0
+  2222.9 * pb2 no->mid
+  2225.4 * pb2 mid->nc
+  2227.6 * relay2 no->mid
+  2228.5 * relay2 mid->nc
+  2234.2 * indLamp2 on->dim
+  2289.8 * indLamp2 dim->off
+  2756.6 ? relay1=nc relay2=nc outLamp3=off indLamp1=off indLamp2=off  "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."

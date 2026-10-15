@@ -1,0 +1,752 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP18-DERIVED",
+  "source": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 (Experiment 18: Automatic Transmission with Differential Spacing); ERRATA ER-37 errata.pdf p.4 (prose only, no wire change); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "3E/3H",
+    "3F/3-",
+    "3J/6A",
+    "4C/5C",
+    "4C/4F",
+    "4E/5E",
+    "5C/5F",
+    "5E/D19",
+    "5F/6K",
+    "6A/D1",
+    "6B/6-",
+    "6C/6-",
+    "6E/D9",
+    "6F/6G",
+    "6G/D4",
+    "6H/D16",
+    "6L/D18",
+    "D1/D2",
+    "D2/D3",
+    "D3/D6",
+    "D6/D7",
+    "D7/D8",
+    "D8/D11",
+    "D11/D12",
+    "D12/D13",
+    "D16/D17",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "3E/3H",
+    "3F/3-",
+    "3J/6A",
+    "4C/5C",
+    "4C/4F",
+    "4E/5E",
+    "5C/5F",
+    "5E/D19",
+    "5F/6K",
+    "6A/D1",
+    "6B/6-",
+    "6C/6-",
+    "6E/D9",
+    "6F/6G",
+    "6G/D4",
+    "6H/D16",
+    "6L/D18",
+    "D1/D2",
+    "D2/D3",
+    "D3/D6",
+    "D6/D7",
+    "D7/D8",
+    "D8/D11",
+    "D11/D12",
+    "D12/D13",
+    "D16/D17",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: the wiper D16 is tied to + (6H/D16, D16/D17, D17/M+), so the motor runs from power on (D17 +, D18 -); D1-D2-D3 tie to 6A, so on D2 + reaches output light 6 (6B/6-); relay 6 is fed only from D4 (6G/D4) and has not reached it on the first revolution from c0, so it is out and its indicator lamp (6C-6E) is unfed",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: on D4 + reaches 6F/6G, coil 6F-6E and indicator lamp 6E-6C to 6C/6- pull relay 6 in, and it latches through 6H(+)-6G; D5 is unwired and D4 is not on the light-6 net, so light 6 and relay 3 (fed only through 6A-3J-3H-3E) have been unfed since D3",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: D6-D7-D8 tie to the light-6 net (the O dashes); relay 6 is still latched, so 6L(D18)-6K closes and puts coils and indicator lamps 4 and 5 (in parallel between 4E/5E/D19 and 4C/4F/5C/5F/6K) across the motor terminals D19-D18, shunting the motor so it turns slower over the dashes",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: on D9 + reaches 6E (6E/D9) while the latch holds 6F at +, so relay 6's coil has + on both ends and relay 6 drops, opening its latch and the motor shunt; D9 and D10 are off the light-6 net, so light 6 and relay 3 are unfed since D8",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c12"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: D11-D12-D13 tie to the light-6 net (the second S); relay 6 is not refed until D4, so 6H-6G and 6L-6K stay open, 6E/6F float (indicator lamp 6 dark) and the 4C/4F/5C/5F/6K node has no return, so relays 4 and 5 and their indicator lamps carry nothing",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: D14, D15 and D0 are unwired (the space after SOS), so nothing but the motor is fed",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: revolution 2 repeats revolution 1: D4 re-latches relay 6, and light 6 is fed on D7 with the motor shunted",
+      "quote": "The computer will continue to transmit \"SOS\" until the power is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: D9 released relay 6 again; D0 is unwired",
+      "quote": "The computer will continue to transmit \"SOS\" until the power is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held on D1, + reaches 6A and light 6; relay 6 has had no feed since D9",
+      "quote": "Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 33750000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held in the dead gap between D1 and D2 (gap centre, inside any arc below the 22.5 deg pitch), the wiper touches nothing, so light 6 and relay 3 are unfed",
+      "quote": "Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held on D2, + reaches the light-6 net",
+      "quote": "Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 56250000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held in the gap between D2 and D3, nothing is fed",
+      "quote": "Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held on D3, + reaches the light-6 net; relay 6 is still unfed",
+      "quote": "Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 78750000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held in the gap between D3 and D4, nothing is fed: three separate dots",
+      "quote": "Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held on D4, + on 6F/6G pulls relay 6 in through its indicator lamp (6C/6-) and it latches 6H-6G; D4 is off the light-6 net",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 800
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: passed D5 and D6 to D7: light-6 net fed, relay 6 still latched",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 800
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held on D9, + on 6E with + on 6F from the latch leaves relay 6's coil with no voltage, so it drops and its latch opens; indicator lamp 6 stays lit from 6E(+) to 6C(-); D9 is off the light-6 net",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 and ERRATA ER-37, errata.pdf p.4 (Book V 'page 31' note); rule: held back by hand, the three S dots separate; derived from topology: held on D10 (unwired), relay 6 stays out, 6E and 6F float, and with 6L-6K open relays 4 and 5 and their indicator lamps have no return",
+      "quote": "It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on. The program below illustrates a circuit with differential spacing by automatically transmitting the \"SOS\" distress signal in Morse Code:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: released, the motor (D17 +, D18 -) turns the wiper on through D11-D15, D0-D3, re-latches relay 6 at D4 and reaches the O",
+      "quote": "The computer will continue to transmit \"SOS\" until the power is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37; rule: dots and dashes distinguished by how long light 6 stays on, SOS = S dot dot dot, O dash dash dash, S dot dot dot; derived from topology: with power off the + rail is dead, so the wiper, the latch 6H-6G and every lamp and coil are unfed",
+      "quote": "The computer will continue to transmit \"SOS\" until the power is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 3016,
+    "moverTransitions": [
+      0,
+      0,
+      1110,
+      0,
+      0,
+      16,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      110
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 28-wire topology and the p.31 rule (dots and dashes told apart by how long light 6 is on; SOS), not printed; the printed fixture C2/V-EXP18 covers transmission starting at power on and stopping at power off. No erratum changes a wire (ER-37 is prose), so the wires are as printed. Topology: the wiper D16 is tied to + and D17 is +, D18 is -, so the motor runs whenever power is on; D1-D3, D6-D8 and D11-D13 tie to 6A (light 6, and relay 3 self-interrupting through its own N.C. contact 3J-3H-3E, so it buzzes on every lit contact and is asserted only where unfed); D4 sets relay 6 (6G/D4, coil in series with its indicator lamp to 6C/6-), which latches 6H(+)-6G-6F; D9 (6E/D9) puts + on both ends of the coil and releases it; relay 6's set 2 (6L/D18, 6K/5F) puts coils and indicator lamps 4 and 5, all in parallel between D19 and 4C/4F/5C/5F, across the motor terminals D19-D18 from D4 to D9, so the motor is shunted and slows over the O dashes (Book VII p.21 resistance across STOP slows the motor, rotary.md 3.2 condition 6). Relays 4 and 5 contacts are unwired; they are loads only, and whether they pull in under the shunt is not derivable (motor voltage), so they and their indicator lamps are asserted only while relay 6 is out. Script choices, not printed: the dial starts at c0 (construction state); lamp states are asserted only where the lamp has been unfed for at least one pad; maxMs values confine each until to the intended revolution. The ER-37 held-back revolution is scripted as dialGrab steps to pad centres and dead-gap centres (pad N at N x 22.5 deg, gap centre at N x 22.5 + 11.25 deg), which lie in the gap under any contact arc below the 22.5 deg pitch (O-R1); wiper_offset_udeg 0 is the profile assumption. Not asserted: the dash-versus-dot dwell ratio (needs a timing comparison and rests on the O-R5 motor resistances), light 6 in the gaps while running (lamp cooling is a profile constant), relay 3 on any lit contact (buzzing), relays 4 and 5 under the shunt, and the dial rest after power off. If relay 6 fails to latch in the D4 dwell at run speed, script[2] fails first."
+}

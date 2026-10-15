@@ -1,0 +1,181 @@
+#!mv601-trace 1
+# id=V-FLASHINGLIGHTS contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=24
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=191 marginal=false
+     0.0 > dialGrab targetUdeg=0
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp3 off->dim
+    22.3 * outLamp3 dim->on
+   500.0 ? power=on breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 outLamp1=off outLamp2=off outLamp3=on outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+   500.0 > dialGrab targetUdeg=157500000
+   546.8 * dial c0->gap
+   567.0 * outLamp3 on->dim
+   578.1 * dial gap->c1
+   581.4 * outLamp1 off->dim
+   600.5 * outLamp1 dim->on
+   622.7 * outLamp3 dim->off
+   671.8 * dial c1->gap
+   690.7 * outLamp1 on->dim
+   703.1 * dial gap->c2
+   706.4 * outLamp2 off->dim
+   725.5 * outLamp2 dim->on
+   746.3 * outLamp1 dim->off
+   796.8 * dial c2->gap
+   815.7 * outLamp2 on->dim
+   828.1 * dial gap->c3
+   831.4 * outLamp3 off->dim
+   850.5 * outLamp3 dim->on
+   871.3 * outLamp2 dim->off
+   921.8 * dial c3->gap
+   940.7 * outLamp3 on->dim
+   953.1 * dial gap->c4
+   956.4 * outLamp4 off->dim
+   975.5 * outLamp4 dim->on
+   996.3 * outLamp3 dim->off
+  1046.8 * dial c4->gap
+  1065.7 * outLamp4 on->dim
+  1078.1 * dial gap->c5
+  1081.4 * outLamp5 off->dim
+  1100.5 * outLamp5 dim->on
+  1121.3 * outLamp4 dim->off
+  1171.8 * dial c5->gap
+  1190.7 * outLamp5 on->dim
+  1203.1 * dial gap->c6
+  1206.4 * outLamp6 off->dim
+  1225.5 * outLamp6 dim->on
+  1246.3 * outLamp5 dim->off
+  1296.8 * dial c6->gap
+  1315.7 * outLamp6 on->dim
+  1328.1 * dial gap->c7
+  1371.3 * outLamp6 dim->off
+  2000.0 ? dial=c7 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2000.0 > dialRelease
+  2031.2 * dial c7->gap
+  2052.0 * dial gap->c8
+  2055.3 * outLamp5 off->dim
+  2074.4 * outLamp5 dim->on
+  2074.5 ? outLamp5=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2074.5 ? dial=c8  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2115.0 * dial c8->gap
+  2131.3 * outLamp5 on->dim
+  2135.8 * dial gap->c9
+  2139.1 * outLamp4 off->dim
+  2158.2 * outLamp4 dim->on
+  2158.3 ? outLamp4=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2158.3 ? dial=c9  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2186.9 * outLamp5 dim->off
+  2198.8 * dial c9->gap
+  2215.1 * outLamp4 on->dim
+  2219.6 * dial gap->c10
+  2222.9 * outLamp3 off->dim
+  2242.0 * outLamp3 dim->on
+  2242.1 ? outLamp3=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2242.1 ? dial=c10  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2270.7 * outLamp4 dim->off
+  2282.6 * dial c10->gap
+  2298.9 * outLamp3 on->dim
+  2303.4 * dial gap->c11
+  2306.7 * outLamp2 off->dim
+  2325.8 * outLamp2 dim->on
+  2325.9 ? outLamp2=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2325.9 ? dial=c11  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2354.5 * outLamp3 dim->off
+  2366.4 * dial c11->gap
+  2382.7 * outLamp2 on->dim
+  2387.2 * dial gap->c12
+  2390.5 * outLamp1 off->dim
+  2409.6 * outLamp1 dim->on
+  2409.7 ? outLamp1=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2409.7 ? dial=c12  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2438.3 * outLamp2 dim->off
+  2450.2 * dial c12->gap
+  2466.5 * outLamp1 on->dim
+  2471.0 * dial gap->c13
+  2474.3 * outLamp6 off->dim
+  2493.4 * outLamp6 dim->on
+  2493.5 ? outLamp6=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2493.5 ? dial=c13  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2522.1 * outLamp1 dim->off
+  2534.0 * dial c13->gap
+  2550.3 * outLamp6 on->dim
+  2554.8 * dial gap->c14
+  2558.1 * outLamp5 off->dim
+  2577.2 * outLamp5 dim->on
+  2577.3 ? outLamp5=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2577.3 ? dial=c14  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2605.9 * outLamp6 dim->off
+  2617.8 * dial c14->gap
+  2634.1 * outLamp5 on->dim
+  2638.6 * dial gap->c15
+  2641.9 * outLamp2 off->dim
+  2661.0 * outLamp2 dim->on
+  2661.1 ? outLamp2=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2661.1 ? dial=c15  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2689.7 * outLamp5 dim->off
+  2701.6 * dial c15->gap
+  2717.9 * outLamp2 on->dim
+  2722.4 * dial gap->c0
+  2725.7 * outLamp3 off->dim
+  2744.8 * outLamp3 dim->on
+  2744.9 ? outLamp3=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2744.9 ? dial=c0  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2773.5 * outLamp2 dim->off
+  2785.4 * dial c0->gap
+  2801.7 * outLamp3 on->dim
+  2806.2 * dial gap->c1
+  2809.5 * outLamp1 off->dim
+  2828.6 * outLamp1 dim->on
+  2828.7 ? outLamp1=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2828.7 ? dial=c1  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2857.3 * outLamp3 dim->off
+  2869.2 * dial c1->gap
+  2885.5 * outLamp1 on->dim
+  2890.0 * dial gap->c2
+  2893.1 * outLamp2 off->dim
+  2912.3 * outLamp2 dim->on
+  2912.4 ? outLamp2=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2912.4 ? dial=c2  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2941.1 * outLamp1 dim->off
+  2952.9 * dial c2->gap
+  2969.2 * outLamp2 on->dim
+  2973.8 * dial gap->c3
+  2976.9 * outLamp3 off->dim
+  2996.1 * outLamp3 dim->on
+  2996.2 ? outLamp3=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  2996.2 ? dial=c3  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3024.8 * outLamp2 dim->off
+  3036.7 * dial c3->gap
+  3053.0 * outLamp3 on->dim
+  3057.6 * dial gap->c4
+  3060.9 * outLamp4 off->dim
+  3080.0 * outLamp4 dim->on
+  3080.1 ? outLamp4=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3080.1 ? dial=c4  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3108.6 * outLamp3 dim->off
+  3120.5 * dial c4->gap
+  3136.8 * outLamp4 on->dim
+  3141.4 * dial gap->c5
+  3144.7 * outLamp5 off->dim
+  3163.8 * outLamp5 dim->on
+  3163.9 ? outLamp5=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3163.9 ? dial=c5  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3192.4 * outLamp4 dim->off
+  3204.3 * dial c5->gap
+  3220.6 * outLamp5 on->dim
+  3225.2 * dial gap->c6
+  3228.5 * outLamp6 off->dim
+  3247.6 * outLamp6 dim->on
+  3247.7 ? outLamp6=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3247.7 ? dial=c6  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3276.2 * outLamp5 dim->off
+  3288.1 * dial c6->gap
+  3304.4 * outLamp6 on->dim
+  3309.0 * dial gap->c7
+  3360.0 * outLamp6 dim->off
+  3371.5 * dial c7->gap
+  3392.3 * dial gap->c8
+  3395.4 * outLamp5 off->dim
+  3414.5 * outLamp5 dim->on
+  3414.6 ? outLamp5=on  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."
+  3414.6 ? dial=c8  "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine."

@@ -1,0 +1,686 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-FLASHINGLIGHTS",
+  "source": "BK5-6 printed p.45 = book5-6.pdf PDF p.51; Step 7 speculative derivation from topology unverified",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/D1",
+    "1B/1-",
+    "2A/D2",
+    "2B/2-",
+    "3A/D3",
+    "3B/3-",
+    "4A/D4",
+    "4B/4-",
+    "5A/D5",
+    "5B/5-",
+    "6A/D6",
+    "6B/6-",
+    "D1/D12",
+    "D2/D11",
+    "D3/D10",
+    "D4/D9",
+    "D5/D8",
+    "D6/D13",
+    "D8/D14",
+    "D10/D0",
+    "D11/D15",
+    "D16/M+",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/D1",
+    "1B/1-",
+    "2A/D2",
+    "2B/2-",
+    "3A/D3",
+    "3B/3-",
+    "4A/D4",
+    "4B/4-",
+    "5A/D5",
+    "5B/5-",
+    "6A/D6",
+    "6B/6-",
+    "D1/D12",
+    "D2/D11",
+    "D3/D10",
+    "D4/D9",
+    "D5/D8",
+    "D6/D13",
+    "D8/D14",
+    "D10/D0",
+    "D11/D15",
+    "D16/M+",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "power",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: dial held at 0 by hand; wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); the wiper puts + on the D0-D10-D3 net, so output light 3 (3A/D3, 3B/3-) is lit across the rail and no other lamp's A side is reached; no wire touches any relay C/E/F or contact terminal, so every relay is out and every indicator light dark; nothing shorts + to -, so the breaker holds",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: dial held at 7 by hand; D7 is the one rotary contact no program wire touches, so the wiper's + reaches no lamp and all six output lights are dark (the lights passed on the way, 3 1 2 3 4 5 6, have had over 500 ms to cool)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 5 is next reached at contact 8 through D8-D5-5A (D5/D8) (first lamp to light after release from 7)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 5 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D8 via D8-D5-5A (D5/D8)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 4 is next reached at contact 9 through D9-D4-4A (D4/D9)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 4 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D9 via D9-D4-4A (D4/D9)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 3 is next reached at contact 10 through D10-D3-3A (D3/D10)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 3 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D10 via D10-D3-3A (D3/D10)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 2 is next reached at contact 11 through D11-D2-2A (D2/D11)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c11"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 2 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D11 via D11-D2-2A (D2/D11)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 1 is next reached at contact 12 through D12-D1-1A (D1/D12)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c12"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 1 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D12 via D12-D1-1A (D1/D12)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 6 is next reached at contact 13 through D13-D6-6A (D6/D13)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 6 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D13 via D13-D6-6A (D6/D13)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 5 is next reached at contact 14 through D14-D8-D5-5A (D8/D14, D5/D8)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 5 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D14 via D14-D8-D5-5A (D8/D14, D5/D8)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 2 is next reached at contact 15 through D15-D11-D2-2A (D11/D15, D2/D11)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 2 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D15 via D15-D11-D2-2A (D11/D15, D2/D11)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 3 is next reached at contact 0 through D0-D10-D3-3A",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 3 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D0 via D0-D10-D3-3A",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 1 is next reached at contact 1 through D1-1A (D1/D12)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 1 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D1 via D1-1A (D1/D12)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 2 is next reached at contact 2 through D2-2A (D2/D11, D11/D15)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 2 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D2 via D2-2A (D2/D11, D11/D15)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 3 is next reached at contact 3 through D3-3A (D3/D10, D10/D0)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 3 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D3 via D3-3A (D3/D10, D10/D0)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 4 is next reached at contact 4 through D4-4A (D4/D9)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 4 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D4 via D4-4A (D4/D9)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 5 is next reached at contact 5 through D5-5A (D5/D8, D8/D14)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 5 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D5 via D5-5A (D5/D8, D8/D14)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 6 is next reached at contact 6 through D6-6A (D6/D13)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 6 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D6 via D6-6A (D6/D13)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: wiper D16 on M+ (plus rail), each lamp's nB on n- (minus rail); D17/M+ and D18/M- put RUN across the motor with D17 at + and D18 at -, so the unheld dial turns toward increasing numbers (rotary.md §4, Tom's ruling 2026-10-13); light 5 is next reached at contact 8 through D8-D5-5A (D5/D8) (second revolution; D7 is skipped because no lamp is on it)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK5-6 printed p.45 = book5-6.pdf PDF p.51, The Flashing Lights Circuit; rule: 'MINIVAC will perform as a blinking light machine'; derived from topology: light 5 lights only while the wiper is on a pad of its net; the first such pad after the previous checkpoint going up is D8 via D8-D5-5A (D5/D8)",
+      "quote": "This program provides a maximum number of flashing lights. With this circuit programmed on MINIVAC, turn the power on. MINIVAC will perform as a blinking light machine.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 94,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      48
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 24-wire printed topology (no erratum applies) and the p.45 rule, not printed. Topology: the wiper D16 is on the plus rail (D16/M+); each output light n has nA on a rotary net and nB on the minus rail; the nets are D0-D3-D10 light 3, D1-D12 light 1, D2-D11-D15 light 2, D4-D9 light 4, D5-D8-D14 light 5, D6-D13 light 6, and D7 is unwired; D17/M+ and D18/M- run the motor toward increasing numbers whenever the dial is not held. One revolution therefore lights 3 1 2 3 4 5 6 (dark) 5 4 3 2 1 6 5 2 for contacts 0 to 15, one light at a time, and no two adjacent contacts share a light. Script choices, not printed: holding the knob at 0 through power on (the page prints no start position; 0 is the construction state), the 500 ms and 1500 ms held settles, the hand move to 7 to show the dark contact at rest, and the 3000 ms until windows (over two revolutions at 45 rpm). Not asserted: which lights are off during motion (a light just left is still cooling and reads dim, a thermal-model matter the topology does not settle), the gaps between pads, and run speed. Rotary geometry, run rate and the D17 +/D18 - direction rest on O-R1, O-R3 and O-R11."
+}

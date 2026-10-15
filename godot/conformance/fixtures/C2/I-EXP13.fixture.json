@@ -1,0 +1,172 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP13",
+  "source": "BK1 printed p.23 = book1.pdf PDF p.25",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/D16",
+    "D2/6A",
+    "6-/6B",
+    "D1/5A",
+    "5B/6B",
+    "6+/5Y",
+    "5X/D17",
+    "5-/D18",
+    "6-/6Y",
+    "6X/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/D16",
+    "D2/6A",
+    "6-/6B",
+    "D1/5A",
+    "5B/6B",
+    "6+/5Y",
+    "5X/D17",
+    "5-/D18",
+    "6-/6Y",
+    "6X/D19"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3)",
+      "quote": "Push pushbutton 5. The motor rotates the pointer knob as in Experiment 11. As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3)",
+      "quote": "As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3)",
+      "quote": "As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3)",
+      "quote": "First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3)",
+      "quote": "First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3)",
+      "quote": "As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    }
+  ],
+  "digest": {
+    "eventCount": 53,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      40
+    ]
+  },
+  "note": "Printed claims only (Step 6). Wires are the 10 printed on BK1 p.23 (PDF p.25) in the combined program of Experiments 11 and 12, image-read against the repo render and matching programs.json; no erratum applies. Script follows steps 3-4. Power on comes from Experiment 12 step 2 ('Turn the power ON'), whose circuit step 1 reuses; Experiment 13 prints no power step. Pushbutton 5 is pushed and held, then pushbutton 6 is pushed while 5 is held. The 100 ms before pushbutton 5, pushing 6 the moment the second off/off until matches, and the 6000 ms tail are script choices. Asserted from step 3: light 5 comes on, light 6 comes on, both go off (a flash), and both light again on a later revolution (\"once each revolution\"). The until chain does not check the printed order \"First, light 5 flashes and then light 6 flashes\". A copy with the motor polarity reversed (light 6 lights first) passes all six untils, because each until only waits for its own lamp. Asserting the order from rest needs a negative or timing check, which is derived, so it is left to Step 7. The coded claim tools/motor-claims.ts I-EXP13/light-5-before-light-6 covers it. Each until has maxMs 6000, more than two revolutions at 25 rpm. Not asserted: (1) step 4 \"The pointer knob STOPS turning and the lights STOP flashing\": the page states no rest position and no lamp state after the stop (a lamp may stay lit if the knob stops on D1 or D2), and expect checks equality only, so encoding the stop would need a simulator-read dial value (in the trace the knob coasts to c4 and lamps stay dark); left to Step 7 as derived. (2) \"once\" as an exact count of one flash per lamp per revolution, and the knob rotation itself as a dial position: no dial value is printed on this page; the lamp untils depend on the wiper reaching D1 and D2. The knob start at 0 is the dial construction state, not a printed instruction. Rotary geometry, run rate, coast, and fitted motor resistances remain profile fallbacks O-R1, O-R3, and O-R5."
+}

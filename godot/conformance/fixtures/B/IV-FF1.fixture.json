@@ -1,0 +1,59 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-FF1",
+  "source": "BK4 printed pp.68-69 = book2-3-4.pdf PDF pp.74-75; ERRATA sheet p.2",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5+/5H", "5H/6H", "5G/5F", "6G/6F", "5C/6C", "6C/6-", "6H/6Y", "6X/5L",
+    "5K/6F", "5N/6E", "6Z/6L", "6K/5E", "6N/5F", "6G/6A", "6B/6-"
+  ],
+  "errata_applied": [],
+  "note": "ER-19 is prose-only and belongs only to this circuit. Each press is held for a fixed 40 ms before settle to encode the erratum's qualitative \"slowly\" instruction; 40 ms is not a source measurement.",
+  "wires": [
+    "5+/5H", "5H/6H", "5G/5F", "6G/6F", "5C/6C", "6C/6-", "6H/6Y", "6X/5L",
+    "5K/6F", "5N/6E", "6Z/6L", "6K/5E", "6N/5F", "6G/6A", "6B/6-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp6", "v": "off" }],
+      "cite": "ERRATA sheet PDF p.2; cold-start phase not printed",
+      "quote": "Light 6 will go off and on, indicating the state of the whole flip-flop.",
+      "tag": "unverified",
+      "source": "FALLBACK-PWRUP-COLD"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 40 },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp6", "v": "on" }],
+      "cite": "ERRATA sheet PDF p.2, BOOK IV printed p.69; absolute phase rests on the cold-start fallback",
+      "quote": "push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop.",
+      "tag": "unverified",
+      "source": "FALLBACK-PWRUP-COLD"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 40 },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp6", "v": "off" }],
+      "cite": "ERRATA sheet PDF p.2, BOOK IV printed p.69; absolute phase rests on the cold-start fallback",
+      "quote": "push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop.",
+      "tag": "unverified",
+      "source": "FALLBACK-PWRUP-COLD"
+    }
+  ]
+}

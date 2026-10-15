@@ -1,0 +1,670 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-PROBLEMS-DERIVED",
+  "source": "BK1 printed p.28 = book1.pdf PDF p.30 (problems 13-15); printed p.31 = book1.pdf PDF p.33 (Answers 13-15); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/6Y",
+    "6X/6A",
+    "6B/6-",
+    "6X/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/6Y",
+    "6X/6A",
+    "6B/6-",
+    "6X/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring); derived from topology: pushbutton 6 up rests arm 6Y (on +) on N.C. 6Z, which is unwired, so 6X floats: no current through light 6 (6A-lamp-6B-6-) and no supply at RUN D17, so the dial stays at its c0 start",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring); derived from topology: pushbutton 6 down closes 6Y(+)-6X, feeding light 6 through 6A-lamp-6B-6-",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring); derived from topology: the same 6X + reaches RUN D17 (R1 to D19, motor D19-D18, D18/M- on minus), so the motor turns; c4 is reached either way round within one revolution, so direction is not asserted",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring); derived from topology: pushbutton 6 released opens 6Y-6X; 6X floats, light 6 has no feed",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 270000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c12"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring); derived from topology: with pushbutton 6 up after a run, D17 has no supply, so the motor stays undriven and the pointer knob, set by hand to 12 (script choice), stays there",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 1
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 2
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 3
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 4
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 5,
+        "a": {
+          "k": "hole",
+          "hole": "5+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "5Y#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 6,
+        "a": {
+          "k": "hole",
+          "hole": "5Z#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6X#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 7,
+        "a": {
+          "k": "hole",
+          "hole": "6Y#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D17#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 8,
+        "a": {
+          "k": "hole",
+          "hole": "M-#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D18#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring); derived from topology: pushbutton 5 up joins 5Y(+)-5Z-6X; pushbutton 6 down joins 6X-6Y to RUN D17, D18 on minus, so the motor turns (motion only, direction not asserted)",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring); derived from topology: pushbutton 5 pushed while the dial turns moves arm 5Y off 5Z onto unwired 5X, so 6X floats and D17 loses supply although pushbutton 6 is still down; the knob, set by hand to 8 (script choice), stays there",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c12"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring); derived from topology: pushbutton 5 released restores 5Y-5Z-6X-6Y-D17 with pushbutton 6 still down, so the motor turns again (motion only)",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 5
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 6
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 7
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 8
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 9,
+        "a": {
+          "k": "hole",
+          "hole": "6+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6X#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 10,
+        "a": {
+          "k": "hole",
+          "hole": "6Y#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D17#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 11,
+        "a": {
+          "k": "hole",
+          "hole": "M-#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D18#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 12,
+        "a": {
+          "k": "hole",
+          "hole": "D18#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "5X#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 13,
+        "a": {
+          "k": "hole",
+          "hole": "5Y#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D19#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring); derived from topology: pushbutton 6 down joins 6X(+)-6Y to RUN D17, D18 on minus, STOP D18-D19 open because pushbutton 5 is up (5Y on unwired 5Z), so the motor turns (motion only)",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring); derived from topology: pushbutton 5 pushed while the dial turns closes 5Y(D19)-5X(D18), shorting STOP with RUN still live: the motor has no voltage across it and the supply current is limited by R1 (rotary.md 3.2 condition 3, a documented stop, not an overload); the knob, set by hand to 8 (script choice), stays there",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c12"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring); derived from topology: pushbutton 5 released opens the STOP short with pushbutton 6 still down, so the motor turns again (motion only)",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    }
+  ],
+  "digest": {
+    "eventCount": 115,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      12,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      88
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A) beside C2/I-PROBLEMS: every expect and until is derived by hand from the wiring of Book I Answers 13, 14 and 15 (the only image-verified answers, programs.md N-5) and the Problem 13 and 14 statements, not printed. Same layout as the printed fixture: wires are Answer 13's list (cords 0-4); with power off the script disconnects them and connects Answer 14 (cords 5-8), then Answer 15 (cords 9-13). No erratum touches Answers 13-15 (ER-03 is prose for Problems 7 and 18). Derived checks taken from docs/plans/phase-5-step7-notes.md (I-PROBLEMS): Problem 13's converse (dial still and light 6 off with pushbutton 6 up, at power-on and after a run), and pushbutton 5 pushed while the dial is already turning under pushbutton 6 (Answers 14 and 15), then the dial staying still. Where the dial rests after a stop depends on the invented coast (O-R5), so the script does not assert it: after each stop it waits 600 ms, the operator sets the pointer knob by hand to a pad centre (dialGrab, a script choice), releases it, waits 600 ms and asserts the knob is still on that pad (more than one pad pitch at 25 rpm, so a turning dial cannot pass). Answer 14 stops by removing the drive (5Y leaves 5Z, 6X floats); Answer 15 stops by shorting STOP (5Y-5X joins D19 to D18) with RUN live, which rotary.md 3.2 condition 3 documents as a normal stop, so the breaker is expected ok. Not asserted: direction of rotation (the three answers share the polarity D17 +, D18 - but no direction is printed and the observable set has none, O-C14), the stop pad after any release (O-R5 coast), and Answers 1-12 and 16-20 (OCR only). Position untils encode motion only. Rotary geometry, run rate, coast and motor resistances remain profile fallbacks O-R1, O-R3 and O-R5."
+}

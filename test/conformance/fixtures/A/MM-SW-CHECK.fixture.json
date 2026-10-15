@@ -1,0 +1,107 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "MM-SW-CHECK",
+  "source": "MAINT printed p.8 = maintenance-manual.pdf PDF p.10",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "+/S",
+    "+/V",
+    "T/1A",
+    "1B/1-",
+    "R/2A",
+    "2B/2-",
+    "W/3A",
+    "3B/3-",
+    "U/4A",
+    "4B/4-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1+/1S",
+    "1+/1V",
+    "1T/1A",
+    "1B/1-",
+    "1R/2A",
+    "2B/2-",
+    "1W/3A",
+    "3B/3-",
+    "1U/4A",
+    "4B/4-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" },
+        { "dev": "outLamp3", "v": "on" }
+      ],
+      "cite": "MAINT printed p.8 = maintenance-manual.pdf PDF p.10",
+      "quote": "Set the slide switch RIGHT. Turn power on. Lights 1 and 3 should come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "MAINT printed p.8 = maintenance-manual.pdf PDF p.10",
+      "quote": "Move the slide switch to the LEFT. Lights 1 and 3 should go off and lights 2 and 4 should come on."
+    }
+  ]
+}

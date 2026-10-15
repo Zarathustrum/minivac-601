@@ -1,0 +1,286 @@
+#!mv601-trace 1
+# id=IV-APX-2BITADDER contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=49
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+    26.9 * sw5 nc->mid  sw6 nc->mid
+    33.0 * sw5 mid->no  sw6 mid->no
+   500.0 > power on
+     0.0 * power off->on
+ 10000.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+ 10000.0 > switch6 target=0
+ 10026.9 * sw6 no->mid
+ 10033.0 * sw6 mid->nc
+ 10036.3 * outLamp6 off->dim
+ 10043.1 * indLamp6 off->dim
+ 10045.4 * relay6 nc->mid
+ 10046.7 * relay6 mid->no
+ 10055.5 * outLamp6 dim->on
+ 10077.0 * dial c0->gap
+ 10083.9 * indLamp6 dim->on
+ 10098.0 * dial gap->c1
+ 40000.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=no dial=c1 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=on  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+ 40000.0 > button6 target=1000
+ 40011.2 * pb6 nc->mid
+ 40013.7 * pb6 mid->no
+ 40017.2 * relay6 no->mid
+ 40018.1 * relay6 mid->nc
+ 40023.7 * indLamp5 off->dim
+ 40025.7 * relay5 nc->mid
+ 40027.0 * relay5 mid->no
+ 40027.6 * indLamp6 on->dim
+ 40030.3 * outLamp5 off->dim
+ 40035.9 * outLamp6 on->dim
+ 40037.1 * indLamp1 off->dim
+ 40038.4 * relay1 nc->mid
+ 40039.7 * relay1 mid->no
+ 40049.5 * outLamp5 dim->on
+ 40061.8 * dial c1->gap
+ 40064.6 * indLamp5 dim->on
+ 40077.9 * indLamp1 dim->on
+ 40082.9 * dial gap->c2
+ 40083.3 * indLamp6 dim->off
+ 40091.6 * outLamp6 dim->off
+ 70000.0 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=no relay6=nc dial=c2 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+ 70000.0 > button6 target=0
+ 70011.2 * pb6 no->mid
+ 70013.7 * pb6 mid->nc
+ 70015.8 * relay5 no->mid
+ 70016.7 * relay5 mid->nc
+ 70017.0 * outLamp6 off->dim
+ 70021.9 * indLamp5 on->dim
+ 70022.4 * relay1 no->mid
+ 70023.3 * relay1 mid->nc
+ 70023.8 * indLamp6 off->dim
+ 70026.1 * relay6 nc->mid
+ 70027.4 * relay6 mid->no
+ 70032.1 * indLamp1 on->dim
+ 70036.2 * outLamp6 dim->on
+ 70040.5 * outLamp5 on->dim
+ 70064.6 * indLamp6 dim->on
+ 70066.9 * dial c2->gap
+ 70077.5 * indLamp5 dim->off
+ 70087.9 * dial gap->c3  indLamp1 dim->off
+ 70096.1 * outLamp5 dim->off
+ 70150.8 * dial c3->gap
+ 70171.8 * dial gap->c4
+ 70234.7 * dial c4->gap
+ 70255.7 * dial gap->c5
+ 70318.6 * dial c5->gap
+ 70339.6 * dial gap->c6
+ 70402.5 * dial c6->gap
+ 70423.5 * dial gap->c7
+ 70486.4 * dial c7->gap
+ 70507.4 * dial gap->c8
+ 70570.3 * dial c8->gap
+ 70591.3 * dial gap->c9
+ 70654.2 * dial c9->gap
+ 70675.2 * dial gap->c10
+ 70738.1 * dial c10->gap
+ 70759.0 * dial gap->c11
+ 70822.0 * dial c11->gap
+ 70842.9 * dial gap->c12
+ 70905.9 * dial c12->gap
+ 70926.8 * dial gap->c13
+ 70989.7 * dial c13->gap
+ 71010.7 * dial gap->c14
+ 71073.6 * dial c14->gap
+ 71094.6 * dial gap->c15
+ 71157.5 * dial c15->gap
+ 71178.5 * dial gap->c0
+ 71241.4 * dial c0->gap
+ 71262.4 * dial gap->c1
+100000.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=no dial=c1 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=on  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+100000.0 > switch5 target=0
+100026.9 * sw5 no->mid
+100033.0 * sw5 mid->nc
+100043.0 * indLamp4 off->dim
+100044.9 * relay4 nc->mid
+100046.2 * relay4 mid->no
+100049.5 * outLamp5 off->dim
+100056.3 * indLamp1 off->dim
+100057.7 * relay1 nc->mid
+100059.0 * relay1 mid->no
+100068.8 * outLamp5 dim->on
+100084.3 * indLamp4 dim->on
+100097.5 * indLamp1 dim->on
+100102.6 * dial c1->gap
+100123.8 * dial gap->c2
+100187.2 * dial c2->gap
+100208.4 * dial gap->c3
+130000.0 ? relay1=no relay2=nc relay3=nc relay4=no relay5=nc relay6=no dial=c3 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=on  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+130000.0 > button6 target=1000
+130011.2 * pb6 nc->mid
+130013.7 * pb6 mid->no
+130017.2 * relay6 no->mid
+130018.1 * relay6 mid->nc
+130023.7 * indLamp5 off->dim
+130025.8 * relay5 nc->mid
+130027.1 * relay5 mid->no
+130027.5 * indLamp6 on->dim
+130030.4 * outLamp4 off->dim
+130032.5 * relay1 no->mid
+130033.4 * relay1 mid->nc
+130035.8 * outLamp6 on->dim
+130037.2 * indLamp2 off->dim  indLamp3 off->dim
+130038.7 * relay2 nc->mid
+130038.9 * relay3 nc->mid
+130040.0 * relay2 mid->no
+130040.2 * relay3 mid->no
+130042.1 * indLamp1 on->dim
+130049.6 * outLamp4 dim->on
+130050.5 * outLamp5 on->dim
+130062.2 * dial c3->gap
+130064.8 * indLamp5 dim->on
+130078.2 * indLamp2 dim->on  indLamp3 dim->on
+130083.2 * indLamp6 dim->off
+130083.4 * dial gap->c4
+130091.5 * outLamp6 dim->off
+130097.9 * indLamp1 dim->off
+130106.1 * outLamp5 dim->off
+160000.0 ? relay1=nc relay2=no relay3=no relay4=no relay5=no relay6=nc dial=c4 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+160000.0 > button5 target=1000
+160011.2 * pb5 nc->mid
+160013.7 * pb5 mid->no
+160015.8 * relay4 no->mid
+160016.7 * relay4 mid->nc
+160020.0 * outLamp5 off->dim
+160021.9 * indLamp4 on->dim
+160026.8 * indLamp1 off->dim
+160028.3 * relay1 nc->mid
+160029.6 * relay1 mid->no
+160039.3 * outLamp5 dim->on
+160068.0 * indLamp1 dim->on
+160073.4 * dial c4->gap
+160077.5 * indLamp4 dim->off
+160094.6 * dial gap->c5
+160158.3 * dial c5->gap
+160179.5 * dial gap->c6
+190000.0 ? relay1=no relay2=no relay3=no relay4=nc relay5=no relay6=nc dial=c6 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=on outLamp6=off  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+190000.0 > button5 target=0
+190000.0 > button6 target=0
+190011.2 * pb5 no->mid  pb6 no->mid
+190013.7 * pb5 mid->nc  pb6 mid->nc
+190015.8 * relay5 no->mid
+190016.7 * relay5 mid->nc
+190016.8 * relay3 no->mid
+190016.9 * relay2 no->mid
+190017.0 * outLamp6 off->dim
+190017.7 * relay3 mid->nc
+190017.8 * relay2 mid->nc
+190021.8 * indLamp5 on->dim
+190022.4 * relay1 no->mid
+190023.3 * relay1 mid->nc
+190023.8 * indLamp4 off->dim  indLamp6 off->dim
+190025.7 * relay4 nc->mid
+190025.9 * indLamp2 on->dim  indLamp3 on->dim
+190026.1 * relay6 nc->mid
+190027.0 * relay4 mid->no
+190027.4 * relay6 mid->no
+190035.8 * outLamp4 on->dim
+190036.2 * outLamp6 dim->on
+190041.6 * relay1 nc->mid
+190042.9 * relay1 mid->no
+190061.9 * dial c6->gap
+190064.9 * indLamp4 dim->on  indLamp6 dim->on
+190077.4 * indLamp5 dim->off
+190081.6 * indLamp2 dim->off  indLamp3 dim->off
+190083.0 * dial gap->c7
+190091.5 * outLamp4 dim->off
+190146.5 * dial c7->gap
+190167.7 * dial gap->c8
+190231.1 * dial c8->gap
+190252.3 * dial gap->c9
+190315.8 * dial c9->gap
+190336.9 * dial gap->c10
+190400.4 * dial c10->gap
+190421.6 * dial gap->c11
+190485.0 * dial c11->gap
+190506.2 * dial gap->c12
+190569.6 * dial c12->gap
+190590.8 * dial gap->c13
+190654.3 * dial c13->gap
+190675.4 * dial gap->c14
+190738.9 * dial c14->gap
+190760.0 * dial gap->c15
+190823.5 * dial c15->gap
+190844.7 * dial gap->c0
+190908.1 * dial c0->gap
+190929.3 * dial gap->c1
+190992.8 * dial c1->gap
+191013.9 * dial gap->c2
+191077.4 * dial c2->gap
+191098.5 * dial gap->c3
+220000.0 ? relay1=no relay2=nc relay3=nc relay4=no relay5=nc relay6=no dial=c3 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=on  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+220000.0 > switch6 target=1000
+220026.9 * sw6 nc->mid
+220032.9 * relay6 no->mid
+220033.0 * sw6 mid->no
+220033.8 * relay6 mid->nc
+220043.2 * indLamp6 on->dim
+220051.5 * outLamp6 on->dim
+220077.6 * dial c3->gap
+220098.6 * dial gap->c4
+220098.9 * indLamp6 dim->off
+220107.2 * outLamp6 dim->off
+220161.7 * dial c4->gap
+220182.7 * dial gap->c5
+220245.8 * dial c5->gap
+220266.8 * dial gap->c6
+220329.8 * dial c6->gap
+220350.9 * dial gap->c7
+220413.9 * dial c7->gap
+220434.9 * dial gap->c8
+220498.0 * dial c8->gap
+220519.0 * dial gap->c9
+220582.1 * dial c9->gap
+220603.1 * dial gap->c10
+220666.2 * dial c10->gap
+220687.2 * dial gap->c11
+220750.2 * dial c11->gap
+220771.2 * dial gap->c12
+220834.3 * dial c12->gap
+220855.3 * dial gap->c13
+220918.4 * dial c13->gap
+220939.4 * dial gap->c14
+221002.5 * dial c14->gap
+221023.5 * dial gap->c15
+221086.5 * dial c15->gap
+221107.6 * dial gap->c0
+221170.6 * dial c0->gap
+221191.6 * dial gap->c1
+221254.7 * dial c1->gap
+221275.7 * dial gap->c2
+250000.0 ? relay1=no relay2=nc relay3=nc relay4=no relay5=nc relay6=nc dial=c2 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"
+250000.0 > button5 target=1000
+250000.0 > button6 target=1000
+250011.2 * pb5 nc->mid  pb6 nc->mid
+250013.7 * pb5 mid->no  pb6 mid->no
+250015.8 * relay4 no->mid
+250016.7 * relay4 mid->nc
+250017.0 * outLamp4 off->dim  outLamp6 off->dim
+250021.9 * indLamp4 on->dim
+250022.4 * relay1 no->mid
+250023.3 * relay1 mid->nc
+250023.9 * indLamp2 off->dim  indLamp3 off->dim  indLamp6 off->dim
+250025.6 * relay2 nc->mid
+250025.8 * relay3 nc->mid
+250026.4 * relay6 nc->mid
+250026.9 * relay2 mid->no
+250027.1 * relay3 mid->no
+250027.7 * relay6 mid->no
+250032.1 * indLamp1 on->dim
+250036.4 * outLamp4 dim->on  outLamp6 dim->on
+250040.4 * outLamp5 on->dim
+250065.1 * indLamp2 dim->on  indLamp3 dim->on  indLamp6 dim->on
+250067.5 * dial c2->gap
+250077.5 * indLamp4 dim->off
+250087.8 * indLamp1 dim->off
+250088.7 * dial gap->c3
+250096.1 * outLamp5 dim->off
+250152.2 * dial c3->gap
+250173.3 * dial gap->c4
+250236.8 * dial c4->gap
+250257.9 * dial gap->c5
+280000.0 ? relay1=nc relay2=no relay3=no relay4=nc relay5=nc relay6=no dial=c5 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=on  "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)"

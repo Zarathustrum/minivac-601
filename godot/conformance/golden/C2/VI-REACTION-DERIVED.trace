@@ -1,0 +1,215 @@
+#!mv601-trace 1
+# id=VI-REACTION-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=51
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=23 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     1.0 > button3 target=1000
+    12.2 * pb3 nc->mid
+    14.7 * pb3 mid->no
+    31.2 * dial c0->gap
+    51.0 > button3 target=0
+    52.0 * dial gap->c1
+    62.2 * pb3 no->mid
+    64.7 * pb3 mid->nc
+   114.5 * dial c1->gap
+   135.4 * dial gap->c2
+   146.7 * relay5 nc->mid
+   146.9 * relay6 nc->mid
+   148.0 * relay5 mid->no
+   148.2 * relay6 mid->no
+   148.3 ? relay6=no  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+   148.3 ? relay5=no dial=c2  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+   151.5 * outLamp3 off->dim  outLamp4 off->dim
+   170.8 * outLamp3 dim->on  outLamp4 dim->on
+   199.1 * dial c2->gap
+   220.3 * dial gap->c3
+   283.9 * dial c3->gap
+   305.1 * dial gap->c4
+   348.3 ? relay5=no relay6=no outLamp1=off outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=off  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+   348.3 > button1 target=1000
+   359.5 * pb1 nc->mid
+   362.0 * pb1 mid->no
+   365.3 * outLamp1 off->dim
+   368.8 * dial c4->gap
+   373.3 * relay3 nc->mid
+   374.6 * relay3 mid->no
+   374.7 * dial gap->c5
+   384.7 * outLamp1 dim->on
+   448.3 > button6 target=1000
+   459.5 * pb6 nc->mid
+   462.0 * pb6 mid->no
+   548.3 > button1 target=0
+   549.3 > button6 target=0
+   559.5 * pb1 no->mid
+   560.5 * pb6 no->mid
+   562.0 * pb1 mid->nc
+   563.0 * pb6 mid->nc
+  1049.3 ? relay1=nc relay2=nc relay3=no relay4=nc relay5=no relay6=no outLamp1=on outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  1049.3 > button3 target=1000
+  1060.5 * pb3 nc->mid
+  1063.0 * pb3 mid->no
+  1067.3 * relay5 no->mid  relay6 no->mid
+  1067.5 * relay3 no->mid
+  1068.2 * relay5 mid->nc  relay6 mid->nc
+  1068.4 * relay3 mid->nc
+  1087.2 * outLamp3 on->dim  outLamp4 on->dim
+  1087.4 * outLamp1 on->dim
+  1127.2 * dial c5->gap
+  1142.9 * outLamp3 dim->off  outLamp4 dim->off
+  1143.1 * outLamp1 dim->off
+  1148.1 * dial gap->c6
+  1149.3 > button3 target=0
+  1160.5 * pb3 no->mid
+  1163.0 * pb3 mid->nc
+  1210.6 * dial c6->gap
+  1231.4 * dial gap->c7
+  1293.9 * dial c7->gap
+  1299.3 ? relay3=nc relay5=nc relay6=nc outLamp1=off outLamp3=off outLamp4=off  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  1314.7 * dial gap->c8
+  1377.2 * dial c8->gap
+  1398.1 * dial gap->c9
+  1460.6 * dial c9->gap
+  1481.4 * dial gap->c10
+  1543.9 * dial c10->gap
+  1564.7 * dial gap->c11
+  1627.2 * dial c11->gap
+  1648.1 * dial gap->c12
+  1710.6 * dial c12->gap
+  1731.4 * dial gap->c13
+  1793.9 * dial c13->gap
+  1814.7 * dial gap->c14
+  1877.2 * dial c14->gap
+  1898.1 * dial gap->c15
+  1960.6 * dial c15->gap
+  1981.4 * dial gap->c0
+  2043.9 * dial c0->gap
+  2064.7 * dial gap->c1
+  2127.2 * dial c1->gap
+  2148.1 * dial gap->c2
+  2159.4 * relay5 nc->mid
+  2159.6 * relay6 nc->mid
+  2160.7 * relay5 mid->no
+  2160.9 * relay6 mid->no
+  2161.0 ? relay6=no  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  2161.0 ? dial=c2  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  2164.2 * outLamp3 off->dim  outLamp4 off->dim
+  2183.5 * outLamp3 dim->on  outLamp4 dim->on
+  2211.8 * dial c2->gap
+  2233.0 * dial gap->c3
+  2296.6 * dial c3->gap
+  2317.8 * dial gap->c4
+  2361.0 > button6 target=1000
+  2372.2 * pb6 nc->mid
+  2374.7 * pb6 mid->no
+  2378.0 * outLamp6 off->dim
+  2381.5 * dial c4->gap
+  2386.2 * relay4 nc->mid
+  2387.5 * relay4 mid->no
+  2387.6 * dial gap->c5
+  2397.4 * outLamp6 dim->on
+  2461.0 > button1 target=1000
+  2472.2 * pb1 nc->mid
+  2474.7 * pb1 mid->no
+  2561.0 > button6 target=0
+  2562.0 > button1 target=0
+  2572.2 * pb6 no->mid
+  2573.2 * pb1 no->mid
+  2574.7 * pb6 mid->nc
+  2575.7 * pb1 mid->nc
+  3062.0 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=no relay6=no outLamp1=off outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=on  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  3062.0 > button3 target=1000
+  3073.2 * pb3 nc->mid
+  3075.7 * pb3 mid->no
+  3080.0 * relay5 no->mid  relay6 no->mid
+  3080.1 * relay4 no->mid
+  3080.9 * relay5 mid->nc  relay6 mid->nc
+  3081.0 * relay4 mid->nc
+  3099.9 * outLamp3 on->dim  outLamp4 on->dim
+  3100.1 * outLamp6 on->dim
+  3139.6 * dial c5->gap
+  3155.6 * outLamp3 dim->off  outLamp4 dim->off
+  3155.8 * outLamp6 dim->off
+  3160.5 * dial gap->c6
+  3162.0 > button3 target=0
+  3172.0 > button1 target=1000
+  3173.2 * pb3 no->mid
+  3175.7 * pb3 mid->nc
+  3183.2 * pb1 nc->mid
+  3185.7 * pb1 mid->no
+  3189.0 * outLamp2 off->dim
+  3196.6 * relay1 nc->mid
+  3197.9 * relay1 mid->no
+  3208.2 * outLamp2 dim->on
+  3272.0 > button1 target=0
+  3283.2 * pb1 no->mid
+  3285.7 * pb1 mid->nc
+  6272.0 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=on outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  6272.0 > button3 target=1000
+  6283.2 * pb3 nc->mid
+  6285.7 * pb3 mid->no
+  6293.6 * relay1 no->mid
+  6294.5 * relay1 mid->nc
+  6300.6 * dial c6->gap
+  6312.2 * outLamp2 on->dim
+  6321.4 * dial gap->c7
+  6367.9 * outLamp2 dim->off
+  6372.0 > button3 target=0
+  6382.0 > button6 target=1000
+  6383.2 * pb3 no->mid
+  6383.9 * dial c7->gap
+  6385.7 * pb3 mid->nc
+  6393.2 * pb6 nc->mid
+  6395.7 * pb6 mid->no
+  6399.0 * outLamp5 off->dim
+  6404.9 * dial gap->c8
+  6406.7 * relay2 nc->mid
+  6408.0 * relay2 mid->no
+  6418.2 * outLamp5 dim->on
+  6482.0 > button6 target=0
+  6493.2 * pb6 no->mid
+  6495.7 * pb6 mid->nc
+  9482.0 ? relay1=nc relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+  9482.0 > button3 target=1000
+  9493.2 * pb3 nc->mid
+  9495.7 * pb3 mid->no
+  9503.4 * relay2 no->mid
+  9504.3 * relay2 mid->nc
+  9522.2 * outLamp5 on->dim
+  9544.5 * dial c8->gap
+  9565.4 * dial gap->c9
+  9577.9 * outLamp5 dim->off
+  9582.0 > button3 target=0
+  9593.2 * pb3 no->mid
+  9595.7 * pb3 mid->nc
+  9627.9 * dial c9->gap
+  9648.7 * dial gap->c10
+  9711.2 * dial c10->gap
+  9732.0 * dial gap->c11
+  9794.5 * dial c11->gap
+  9815.4 * dial gap->c12
+  9877.9 * dial c12->gap
+  9898.7 * dial gap->c13
+  9961.2 * dial c13->gap
+  9982.0 * dial gap->c14
+ 10044.5 * dial c14->gap
+ 10065.4 * dial gap->c15
+ 10127.9 * dial c15->gap
+ 10148.7 * dial gap->c0
+ 10211.2 * dial c0->gap
+ 10232.0 * dial gap->c1
+ 10294.5 * dial c1->gap
+ 10315.4 * dial gap->c2
+ 10326.7 * relay5 nc->mid
+ 10326.9 * relay6 nc->mid
+ 10328.0 * relay5 mid->no
+ 10328.2 * relay6 mid->no
+ 10328.3 ? relay6=no  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+ 10328.3 ? dial=c2  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."
+ 10331.5 * outLamp3 off->dim  outLamp4 off->dim
+ 10350.8 * outLamp3 dim->on  outLamp4 dim->on
+ 10379.2 * dial c2->gap
+ 10400.4 * dial gap->c3
+ 10463.9 * dial c3->gap
+ 10485.1 * dial gap->c4
+ 10528.3 ? relay2=nc relay5=no relay6=no outLamp2=off outLamp3=on outLamp4=on outLamp5=off  "This game uses MINIVAC to judge which of two players has the faster reaction time. When lights 3 and 4 come on, each player tries to push his pushbutton down first. MINIVAC will indicate a winner, and will also indicate a foul—that is, when a player moves before the signal lights (3 and 4) come on."

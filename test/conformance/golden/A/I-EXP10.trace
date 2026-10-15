@@ -1,0 +1,18 @@
+#!mv601-trace 1
+# id=I-EXP10 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=6
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=61 marginal=false
+     0.0 > switch1 target=0
+    20.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim
+    22.1 * outLamp1 dim->on
+    42.2 ? outLamp1=on outLamp2=off  "Light 1 comes ON but light 2 remains OFF."
+    42.2 > switch1 target=1000
+    69.1 * sw1 nc->mid
+    75.2 * sw1 mid->no
+    78.5 * outLamp2 off->dim
+    86.4 * outLamp1 on->dim
+    97.4 * outLamp2 dim->on
+   142.0 * outLamp1 dim->off
+   152.1 ? outLamp1=off outLamp2=on  "Move switch 1 to the right. Light 1 goes OFF and light 2 comes ON."

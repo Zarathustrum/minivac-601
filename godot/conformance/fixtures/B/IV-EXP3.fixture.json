@@ -1,0 +1,509 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP3",
+  "source": "docs/research/programs.md#IV-EXP3",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+",
+    "3K/6W",
+    "3N/4N",
+    "6R/6K",
+    "4K/6U",
+    "5N/6N",
+    "5K/6T",
+    "6S/3J",
+    "6V/1J"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+",
+    "3K/6W",
+    "3N/4N",
+    "6R/6K",
+    "4K/6U",
+    "5N/6N",
+    "5K/6T",
+    "6S/3J",
+    "6V/1J"
+  ],
+  "note": "Experiment 3 prints a remove/add modification of the Experiment 1 counter (printed p.73 = PDF p.79, image-read at 400 dpi): REMOVE 6K/3J, 4K/1J (Experiment 1's 3J/6K, 1J/4K); ADD 3K/6W, 3N/4N, 6R/6K, 4K/6U, 5N/6N, 5K/6T, 6S/3J, 6V/1J. as_printed and wires are the Experiment 1 list of printed p.72 (PDF p.78, 44 wires) with that modification applied: 44 - 2 + 8 = 50. Experiment 1's 3N/4H and 5N/6H stay; the page adds 3N/4N and 5N/6N beside them. ER-22 (errata.pdf p.3, 'page 73') carries a different remove/add block that applies only 'if you used the alternate circuit for experiments 1 and 2' (ER-ALTCOUNTER), plus its own both-switches UP/DOWN rule; this fixture runs the printed counter, so ER-22 is not applied and errata_applied is empty. The counter is built fresh from power-on rather than carried over from Experiment 2; the page's step 2b ('the correct number of times') presumes it starts at 0, and no starting state is asserted. The lamp patterns combine the page's displayed number with the p.71 SEQUENCE OF OPERATIONS chart rows for that count, the light assignment printed on pp.72-73, and Experiment 1 step 1's 'Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001' (1 = ON, 0 = OFF), as IV-EXP2 does. Step 2d prints no count of presses beyond 'the smaller number (4)'; four presses are scripted. No intermediate down-count states are printed, so none are asserted. 7 − 4 and 7 + 4 are congruent mod 8 (both display 011), so the two printed endpoint asserts do not exercise the DOWN path: this script also passes, blessable, with the step 2c switch move deleted and on IV-EXP1's unmodified 44 wires (round-1 review mutation runs). Only the first expect depends on slide switch 6 (LEFT must count UP). Procedure step 1's DOWN claim is the discriminating check; it is derived and left to Step 7. The closing note ('addition is carried out exactly as in experiment 2 when slide switch 6 is LEFT') is not exercised. Press and release timing follows IV-EXP1-SLOW; the page prints no timing. Release steps carry the counter collapse tag.",
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 3 Procedure steps 2a-2b; lamp pattern for 7 from printed p.71 = PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 15 (ER-20), light assignment from Book IV printed p.72 = book2-3-4.pdf PDF p.78 last para, and printed p.73 = PDF p.79 first two lines; Light 4 = Flip-Flop A, Light 5 = Flip-Flop B, Light 6 = Flip-Flop C per the block diagram on printed p.71 = PDF p.77; lamp ON = 1 and OFF = 0 from Book IV printed p.72 = book2-3-4.pdf PDF p.78, Experiment 1 Procedure step 1",
+      "quote": "a. Move slide switch 6 to the LEFT. | b. Enter the larger number (7) by pushing pushbutton 6 the correct number of times. The counter is now displaying the larger number. | 1 | NO | 1 | NO | 1 | UP | 7 | the low order flip-flop (represented by light 6) changes each time the pushbutton is pushed and released. The low order flip-flop represents 1's (units). The next flip-flop to the left (represented by light 5) changes every other time the pushbutton is pushed and released. This flip-flop represents 2's. And of course, the high order flip-flop (represented by light 4) changes every fourth time the pushbutton is pushed and released; the high order flip-flop thus represents 4's. | Light 4 | FLIP-FLOP A | Light 5 | FLIP-FLOP B | Light 6 | FLIP-FLOP C | Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. The Binary Counter is displaying a 1."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed p.74 = book2-3-4.pdf PDF p.80, Experiment 3 Procedure steps 2c-2d; lamp pattern for 3 from printed p.71 = PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 7 (ER-20), light assignment from Book IV printed p.72 = book2-3-4.pdf PDF p.78 last para, and printed p.73 = PDF p.79 first two lines; Light 4 = Flip-Flop A, Light 5 = Flip-Flop B, Light 6 = Flip-Flop C per the block diagram on printed p.71 = PDF p.77; lamp ON = 1 and OFF = 0 from Book IV printed p.72 = book2-3-4.pdf PDF p.78, Experiment 1 Procedure step 1",
+      "quote": "c. Move slide switch 6 to the RIGHT. | d. Enter the smaller number (4) by pushing pushbutton 6. The counter is now displaying the answer: 7 — 4 = 3. | 0 | NO | 1 | NO | 1 | UP | 3 | the low order flip-flop (represented by light 6) changes each time the pushbutton is pushed and released. The low order flip-flop represents 1's (units). The next flip-flop to the left (represented by light 5) changes every other time the pushbutton is pushed and released. This flip-flop represents 2's. And of course, the high order flip-flop (represented by light 4) changes every fourth time the pushbutton is pushed and released; the high order flip-flop thus represents 4's. | Light 4 | FLIP-FLOP A | Light 5 | FLIP-FLOP B | Light 6 | FLIP-FLOP C | Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. The Binary Counter is displaying a 1."
+    }
+  ]
+}

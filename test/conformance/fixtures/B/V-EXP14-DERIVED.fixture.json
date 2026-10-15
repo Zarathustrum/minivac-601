@@ -1,0 +1,1224 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP14-DERIVED",
+  "source": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (Experiment 14: Sequence Control With Manual Operation), image-read; ERRATA sheet ER-34, errata.pdf p.3 'page 24: Experiment 14 program correction: change 4F/5G to 4F/4G'; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "1R/6com",
+    "1S/1X",
+    "1T/2T",
+    "1Y/2Y",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "2R/5com",
+    "2S/2X",
+    "2T/3T",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "3R/4com",
+    "3S/3X",
+    "3T/4T",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "4R/3com",
+    "4S/4X",
+    "4T/5T",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "5R/2com",
+    "5S/5X",
+    "5T/6T",
+    "5Y/6Y",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "6R/1com",
+    "6S/6X",
+    "6Y/6+"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-34",
+      "from": "4F/5G",
+      "to": "4F/4G"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 60-wire topology (ER-34 applied) and the p.24-25 rule, not printed; the printed end-state claim (light 1 after twelve steps) is in V-EXP14. Topology: relay n coil runs nF-coil-nE-indicator lamp-nC, the 1C..6C chain on minus, so each indicator lamp lights with its coil. Relay 6 latches from 6+ through 6H-6G = 6F; relay k (k = 5..1) latches through kH = (k+1)G, which is plus only while relay k+1 holds, so the chain holds from the top. Pushbutton j (arms 1Y..6Y on plus) feeds jX = jS; with slide switch j LEFT, jS-jR reaches (7-j)com; pushbutton 1 reaches 6com = 6F directly, and pushbutton j > 1 reaches (8-j)L, whose N.O. (8-j)K is the feed (7-j)F, so relay 7-j is called only while relay 8-j is in. Sneak paths checked: the 1T..6T chain joins only RIGHT-thrown switch arms and open pushbutton N.O. contacts; the 2N..6N chain joins only com junctions of released relays and their R contacts; neither reaches a coil feed or minus. Script choices, not printed: three wrong-order steps (pushbutton 1 before slide switch 1; slide switch 2 and pushbutton 2 before steps 1-2; slide switch 3 and pushbutton 3 after steps 1-2), each checked while the button is held, then undone by returning the slide switch RIGHT; one expect after each relay-calling push, with steps 9-11 merged; 200 ms advances before each expect to let lamp filaments settle.",
+  "wires": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "1R/6com",
+    "1S/1X",
+    "1T/2T",
+    "1Y/2Y",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "2R/5com",
+    "2S/2X",
+    "2T/3T",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "3R/4com",
+    "3S/3X",
+    "3T/4T",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "4R/3com",
+    "4S/4X",
+    "4T/5T",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "5R/2com",
+    "5S/5X",
+    "5T/6T",
+    "5Y/6Y",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "6R/1com",
+    "6S/6X",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (rule p.24, procedure p.25) initial settings; derived from topology: no relay coil feed (nF) has a path to plus with every pushbutton up, so all six relays are released and their series indicator lamps (nF-coil-nE-lamp-nC, nC chain on minus) dark; light 1 hangs on 1G = 1F, unfed; light 6 (6A/6J, 6B/6-) lights through relay 6 set 1 N.C. (6H on plus, 6H-6J closed)",
+      "quote": "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.25 = book5-6.pdf PDF p.31 wrong-order rule; derived from topology: pushbutton 1 held with slide switch 1 RIGHT puts plus on 1X = 1S, which goes to 1T and the 1T..6T chain, whose only other members are the RIGHT-thrown arms 2S..6S and the open pushbutton N.O. contacts 2X..6X; 1R (the only route to 6com = 6F) is open, so relay 6 is not called",
+      "quote": "If you attempt to carry out a step in the wrong order, nothing will happen. The system accepts as input only the proper steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.25 = book5-6.pdf PDF p.31 wrong-order rule; derived from topology: pushbutton 2 held with slide switch 2 LEFT puts plus on 2R = 5com = 6L; relay 6 is released, so 6L meets 6N, not 6K (= 5F); the 2N..6N chain reaches only 1com..4com through the released arms 2L..5L and from there the R contacts of slide switches 6..3, all RIGHT (open); no coil feed is reached, so relays 5 and 6 stay released",
+      "quote": "If you attempt to carry out a step in the wrong order, nothing will happen. The system accepts as input only the proper steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (rule p.24, procedure p.25) procedure steps 1-2; derived from topology: pushbutton 1 with slide switch 1 LEFT feeds 1Y(+)-1X-1S-1R-6com-6F, relay 6 pulls in and latches through its set 1 N.O. (6H on plus, 6H-6G = 6F) after pushbutton 1 is released; indicator lamp 6 is in series with the coil; 6H-6J opens, so light 6 goes out; relay 5 needs 5F, which only 6K (via 6L = 5com = 2R) or the 5H-5G latch reaches, and neither is fed",
+      "quote": "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.25 = book5-6.pdf PDF p.31 wrong-order rule; derived from topology: pushbutton 3 held with slide switch 3 LEFT puts plus on 3R = 4com = 5L; relay 5 is released, so 5L meets 5N, not 5K (= 4F); the N.C. chain reaches only 1com..3com through released arms 2L..4L (6L is on 6K, relay 6 being in) and from there the open R contacts of RIGHT slide switches 6, 5 and 4; relay 4 is not called and relay 6 holds on its own latch",
+      "quote": "If you attempt to carry out a step in the wrong order, nothing will happen. The system accepts as input only the proper steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (rule p.24, procedure p.25) procedure steps 3-4; derived from topology: pushbutton 2 with slide switch 2 LEFT feeds 2R-5com-6L-6K (relay 6 in)-5F; relay 5 latches through 5H (= 6G = 6F, plus while relay 6 holds)-5G = 5F",
+      "quote": "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (rule p.24, procedure p.25) procedure steps 5-6; derived from topology: pushbutton 3 with slide switch 3 LEFT feeds 3R-4com-5L-5K (relay 5 in)-4F; relay 4 latches through 4H (= 5G = 5F)-4G = 4F, the ER-34 corrected line 4F/4G",
+      "quote": "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (rule p.24, procedure p.25) procedure steps 7-8; derived from topology: pushbutton 4 with slide switch 4 LEFT feeds 4R-3com-4L-4K (relay 4 in)-3F; relay 3 latches through 3H (= 4G = 4F)-3G = 3F",
+      "quote": "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed pp.24-25 = book5-6.pdf PDF pp.30-31 (rule p.24, procedure p.25) procedure steps 9-11; derived from topology: pushbutton 5 with slide switch 5 LEFT feeds 5R-2com-3L-3K (relay 3 in)-2F; relay 2 latches through 2H (= 3G = 3F)-2G = 2F; setting slide switch 6 LEFT only joins 6S to 6R = 1com = 2L-2K = 1F, and 6S = 6X waits on the open pushbutton 6 N.O. contact, so 1F, relay 1 and light 1 (1A = 1G = 1F) stay unfed",
+      "quote": "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK5 printed p.25 = book5-6.pdf PDF p.31 procedure step 12; derived from topology: pushbutton 6 with slide switch 6 LEFT feeds 6R-1com-2L-2K (relay 2 in)-1F; relay 1 latches through 1H (= 2G = 2F)-1G = 1F; light 1 (1A = 1G, 1B on minus) is across the relay 1 feed; no wire reaches minus except through a lamp, so the breaker does not trip",
+      "quote": "When you have completed all twelve steps, light 1 will come on indicating \"operation complete.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.25 = book5-6.pdf PDF p.31 re-set, first half; derived from topology: every latch runs 6+-6H-6G-5H-5G-...-1H-1G through relay set 1 contacts only, with no slide switch contact in it, so throwing the six slide switches RIGHT drops nothing",
+      "quote": "To re-set the system, set all slide switches to the RIGHT and turn power off, then on again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.25 = book5-6.pdf PDF p.31 re-set, power cycled; derived from topology: power off drops every latch; on power-on with all slide switches RIGHT and pushbuttons up no coil feed has a path to plus, so the machine is back in its initial state with light 6 lit through 6H-6J",
+      "quote": "To re-set the system, set all slide switches to the RIGHT and turn power off, then on again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

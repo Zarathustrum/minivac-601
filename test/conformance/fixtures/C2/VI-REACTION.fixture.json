@@ -1,0 +1,462 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-REACTION",
+  "source": "BK6 printed p.60 = book5-6.pdf PDF p.66; errata.pdf PDF p.4 (sheet carries no printed page number) 'Reaction Time Tester (page 60): Note - to prevent the players' anticipating the start signal, either make dummy connections to the rotary switch or cover the dial with an inverted box.' (ER-46) procedure note",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/3F",
+    "1B/1-",
+    "1E/2E",
+    "1E/1-",
+    "1F/2A",
+    "1F/1G",
+    "1G/5J",
+    "1H/2H",
+    "1H/3Z",
+    "1K/2K",
+    "1L/2L",
+    "1X/5H",
+    "1Y/4J",
+    "2B/2-",
+    "2E/3E",
+    "2F/2G",
+    "2F/5A",
+    "2G/5N",
+    "2H/3H",
+    "2K/3K",
+    "2L/3L",
+    "3A/6K",
+    "3A/4A",
+    "3B/4B",
+    "3E/4E",
+    "3F/3G",
+    "3G/5G",
+    "3H/4H",
+    "3J/6Y",
+    "3K/4K",
+    "3L/4L",
+    "3Y/3+",
+    "3Z/6H",
+    "4B/4-",
+    "4F/6A",
+    "4F/4G",
+    "4G/5K",
+    "4K/D19",
+    "4L/4-",
+    "5B/5-",
+    "5E/6G",
+    "5F/5-",
+    "5L/6X",
+    "6B/6-",
+    "6E/6G",
+    "6E/D2",
+    "6F/6-",
+    "6L/6+",
+    "6L/D17",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/3F",
+    "1B/1-",
+    "1E/2E",
+    "1E/1-",
+    "1F/2A",
+    "1F/1G",
+    "1G/5J",
+    "1H/2H",
+    "1H/3Z",
+    "1K/2K",
+    "1L/2L",
+    "1X/5H",
+    "1Y/4J",
+    "2B/2-",
+    "2E/3E",
+    "2F/2G",
+    "2F/5A",
+    "2G/5N",
+    "2H/3H",
+    "2K/3K",
+    "2L/3L",
+    "3A/6K",
+    "3A/4A",
+    "3B/4B",
+    "3E/4E",
+    "3F/3G",
+    "3G/5G",
+    "3H/4H",
+    "3J/6Y",
+    "3K/4K",
+    "3L/4L",
+    "3Y/3+",
+    "3Z/6H",
+    "4B/4-",
+    "4F/6A",
+    "4F/4G",
+    "4G/5K",
+    "4K/D19",
+    "4L/4-",
+    "5B/5-",
+    "5E/6G",
+    "5F/5-",
+    "5L/6X",
+    "6B/6-",
+    "6E/6G",
+    "6E/D2",
+    "6F/6-",
+    "6L/6+",
+    "6L/D17",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.60 = book5-6.pdf PDF p.66",
+      "quote": "Push the re-set button (pushbutton 3). / As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton. / Lights 3 and 4 give the signal \"START\"."
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.60 = book5-6.pdf PDF p.66",
+      "quote": "As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton. MINIVAC will indicate the winner on the lights. / Light 1 indicates that player 1 wins."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.60 = book5-6.pdf PDF p.66",
+      "quote": "To start another game push the re-set button and proceed as above. / As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton. / Lights 3 and 4 give the signal \"START\"."
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.60 = book5-6.pdf PDF p.66",
+      "quote": "To start another game push the re-set button and proceed as above. / MINIVAC will indicate the winner on the lights. / Light 6 indicates that player 2 wins."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.60 = book5-6.pdf PDF p.66",
+      "quote": "If either player pushes his pushbutton before lights 3 and 4 come on, MINIVAC will indicate who has fouled and the game must be begun again. / Light 2 indicates that player 1 has fouled."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.60 = book5-6.pdf PDF p.66",
+      "quote": "If either player pushes his pushbutton before lights 3 and 4 come on, MINIVAC will indicate who has fouled and the game must be begun again. / Light 5 indicates that player 2 has fouled."
+    }
+  ],
+  "digest": {
+    "eventCount": 189,
+    "moverTransitions": [
+      4,
+      2,
+      4,
+      4,
+      8,
+      8,
+      12,
+      0,
+      16,
+      0,
+      0,
+      12,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      58
+    ]
+  },
+  "note": "Four games from the printed procedure: player 1 wins, player 2 wins, player 1 fouls, player 2 fouls, each begun with the re-set button (pb3 pressed and released). Wires are the printed 51 unchanged: no erratum changes a wire. ER-46 is prose only (cover the dial with an inverted box, or add dummy connections to the rotary switch, so players cannot anticipate the start signal); the dummy connections are optional and unspecified, so none is added and errata_applied is empty. Power-on is not in the printed procedure; the script turns power on and pushes re-set at once. Start dial position D0 is the construction state, not printed. When lights 3 and 4 come on after re-set is not printed (programs.json printedUnprinted), so the START asserts are until steps with a 10 s window (several revolutions even at 25 rpm). Win presses come 200 ms after START; in each win game the second player also presses 100 ms later, as both players try. Foul presses come 200 ms after re-set is released, while the dial is still far from the start contact; the lights-3-and-4-off precondition at those presses is not asserted (not stated as an observable). Not asserted, left to Step 7 as derived: the loser's win light staying dark after a late press, lights 3 and 4 staying dark after a foul ('the game must be begun again'), the dial stopping after a win or foul, and which dial contact gives START. Confidence verified: all 51 wires were image-read against a 300 dpi render of PDF p.66 by the author and independently by the round-1 fidelity reviewer, and match the printed list exactly; every asserted observable is quoted from that page. Rotary geometry, run rate and coast remain profile fallbacks."
+}

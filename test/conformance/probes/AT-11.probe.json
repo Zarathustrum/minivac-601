@@ -1,0 +1,29 @@
+{
+  "schema": "minivac.probe/1",
+  "id": "AT-11",
+  "source": "BK1 printed p.16 step 5 = book1.pdf PDF p.18; components.md §8.3",
+  "profile": "MV601-REF-A",
+  "cases": [{
+    "k": "machine", "name": "all-six-relays", "source": { "k": "fixture", "fixture": "I-EXP8-STEP5" },
+    "checkpoints": [{ "name": "after-step5-settle", "at": { "k": "fixtureStep", "scriptIndex": 2, "stepKind": "settle" }, "checks": [
+      { "k": "eventSeen", "name": "relay1-pullin", "event": { "k": "relay.pullIn", "n": 1 }, "expected": true },
+      { "k": "eventSeen", "name": "relay2-pullin", "event": { "k": "relay.pullIn", "n": 2 }, "expected": true },
+      { "k": "eventSeen", "name": "relay3-pullin", "event": { "k": "relay.pullIn", "n": 3 }, "expected": true },
+      { "k": "eventSeen", "name": "relay4-pullin", "event": { "k": "relay.pullIn", "n": 4 }, "expected": true },
+      { "k": "eventSeen", "name": "relay5-pullin", "event": { "k": "relay.pullIn", "n": 5 }, "expected": true },
+      { "k": "eventSeen", "name": "relay6-pullin", "event": { "k": "relay.pullIn", "n": 6 }, "expected": true },
+      { "k": "compare", "name": "relay1-operated", "left": { "k": "relay", "n": 1, "field": "travel" }, "op": "eq", "right": { "k": "literal", "value": 1000 } },
+      { "k": "compare", "name": "relay2-operated", "left": { "k": "relay", "n": 2, "field": "travel" }, "op": "eq", "right": { "k": "literal", "value": 1000 } },
+      { "k": "compare", "name": "relay3-operated", "left": { "k": "relay", "n": 3, "field": "travel" }, "op": "eq", "right": { "k": "literal", "value": 1000 } },
+      { "k": "compare", "name": "relay4-operated", "left": { "k": "relay", "n": 4, "field": "travel" }, "op": "eq", "right": { "k": "literal", "value": 1000 } },
+      { "k": "compare", "name": "relay5-operated", "left": { "k": "relay", "n": 5, "field": "travel" }, "op": "eq", "right": { "k": "literal", "value": 1000 } },
+      { "k": "compare", "name": "relay6-operated", "left": { "k": "relay", "n": 6, "field": "travel" }, "op": "eq", "right": { "k": "literal", "value": 1000 } },
+      { "k": "compare", "name": "relay1-holds", "left": { "k": "relay", "n": 1, "field": "coilUa" }, "op": "gt", "right": { "k": "relay", "n": 1, "field": "dropOutUa" } },
+      { "k": "compare", "name": "relay2-holds", "left": { "k": "relay", "n": 2, "field": "coilUa" }, "op": "gt", "right": { "k": "relay", "n": 2, "field": "dropOutUa" } },
+      { "k": "compare", "name": "relay3-holds", "left": { "k": "relay", "n": 3, "field": "coilUa" }, "op": "gt", "right": { "k": "relay", "n": 3, "field": "dropOutUa" } },
+      { "k": "compare", "name": "relay4-holds", "left": { "k": "relay", "n": 4, "field": "coilUa" }, "op": "gt", "right": { "k": "relay", "n": 4, "field": "dropOutUa" } },
+      { "k": "compare", "name": "relay5-holds", "left": { "k": "relay", "n": 5, "field": "coilUa" }, "op": "gt", "right": { "k": "relay", "n": 5, "field": "dropOutUa" } },
+      { "k": "compare", "name": "relay6-holds", "left": { "k": "relay", "n": 6, "field": "coilUa" }, "op": "gt", "right": { "k": "relay", "n": 6, "field": "dropOutUa" } }
+    ] }]
+  }]
+}

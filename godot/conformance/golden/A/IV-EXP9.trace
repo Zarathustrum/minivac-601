@@ -1,0 +1,147 @@
+#!mv601-trace 1
+# id=IV-EXP9 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=67
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=184 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.3 * outLamp1 off->dim  outLamp2 off->dim  outLamp3 off->dim  outLamp4 off->dim  outLamp6 off->dim
+    11.7 * relay4 nc->mid
+    13.0 * relay4 mid->no
+    16.3 * outLamp5 off->dim
+    22.7 * outLamp1 dim->on  outLamp2 dim->on  outLamp3 dim->on  outLamp4 dim->on  outLamp6 dim->on
+    35.6 * outLamp5 dim->on
+    55.7 > switch1 target=1000
+    55.7 > switch2 target=1000
+    55.7 > switch3 target=1000
+    55.7 > switch4 target=1000
+    55.7 > switch5 target=1000
+    55.7 > switch6 target=1000
+    82.6 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    88.4 * relay4 no->mid
+    88.7 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+    89.3 * relay4 mid->nc
+   100.8 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim  outLamp4 on->dim  outLamp6 on->dim
+   106.1 * outLamp5 on->dim
+   135.6 > button4 target=1000
+   135.6 > button5 target=1000
+   146.8 * pb4 nc->mid  pb5 nc->mid
+   149.3 * pb4 mid->no  pb5 mid->no
+   156.4 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off  outLamp4 dim->off  outLamp6 dim->off
+   159.2 * indLamp2 off->dim
+   160.6 * relay2 nc->mid
+   161.9 * relay2 mid->no
+   162.4 * outLamp4 off->dim
+   166.9 * outLamp5 dim->on
+   181.4 * outLamp4 dim->on
+   199.5 * indLamp2 dim->on
+  1219.6 ? outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=on outLamp6=off  "We will do this by pushing the appropriate pushbuttons (in this case, pushbuttons 4 and 5.) The slide switches should all be RIGHT. As we push the pushbuttons, the output lights display the number—000110."
+  1219.6 > button4 target=0
+  1219.6 > button5 target=0
+  1230.8 * pb4 no->mid  pb5 no->mid
+  1233.3 * pb4 mid->nc  pb5 mid->nc
+  1235.5 * relay2 no->mid
+  1236.4 * relay2 mid->nc
+  1241.9 * indLamp2 on->dim
+  1251.2 * outLamp5 on->dim
+  1255.9 * outLamp4 on->dim
+  1276.0 > switch1 target=1000
+  1276.0 > switch2 target=1000
+  1276.0 > switch3 target=1000
+  1276.0 > switch4 target=0
+  1276.0 > switch5 target=0
+  1276.0 > switch6 target=1000
+  1297.6 * indLamp2 dim->off
+  1302.9 * sw4 no->mid  sw5 no->mid
+  1306.8 * outLamp5 dim->off
+  1309.0 * sw4 mid->nc  sw5 mid->nc
+  1320.1 * relay4 nc->mid
+  1321.4 * relay4 mid->no
+  1322.6 * outLamp5 off->dim
+  1327.8 * outLamp4 dim->on
+  1341.6 * outLamp5 dim->on
+  1361.7 > switch1 target=1000
+  1381.7 > switch2 target=1000
+  1401.7 > switch3 target=0
+  1428.6 * sw3 no->mid
+  1434.7 * sw3 mid->nc
+  1438.0 * outLamp3 off->dim
+  1457.0 * outLamp3 dim->on
+  1481.6 > switch4 target=0
+  1501.6 > switch5 target=1000
+  1528.5 * sw5 nc->mid
+  1534.4 * relay4 no->mid
+  1534.6 * sw5 mid->no
+  1535.3 * relay4 mid->nc
+  1554.7 * outLamp5 on->dim
+  1581.5 > switch6 target=1000
+  1610.3 * outLamp5 dim->off
+  2601.5 ? outLamp1=off outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=off  "Enter the number which you recorded in the slide switches and perform a left shift one bit as described in experiment 8. The output lights will now read 001100."
+  2601.5 > switch1 target=1000
+  2621.5 > switch2 target=0
+  2648.4 * sw2 no->mid
+  2654.5 * sw2 mid->nc
+  2657.8 * outLamp2 off->dim
+  2676.8 * outLamp2 dim->on
+  2701.4 > switch3 target=0
+  2721.4 > switch4 target=1000
+  2748.3 * sw4 nc->mid
+  2754.4 * sw4 mid->no
+  2768.7 * outLamp4 on->dim
+  2801.3 > switch5 target=1000
+  2821.3 > switch6 target=1000
+  2824.3 * outLamp4 dim->off
+  3844.4 ? outLamp1=off outLamp2=on outLamp3=on outLamp4=off outLamp5=off outLamp6=off  "The next left-most bit of the multiplier is 0. We will add nothing to the accumulator, but will shift left one bit. The output lights now show 011000."
+  3844.4 > button4 target=1000
+  3844.4 > button5 target=1000
+  3855.6 * pb4 nc->mid  pb5 nc->mid
+  3858.1 * pb4 mid->no  pb5 mid->no
+  3861.4 * outLamp5 off->dim
+  3868.1 * indLamp2 off->dim
+  3869.5 * relay2 nc->mid
+  3870.8 * relay2 mid->no
+  3874.1 * outLamp4 off->dim
+  3880.5 * outLamp5 dim->on
+  3893.2 * outLamp4 dim->on
+  3908.7 * indLamp2 dim->on
+  4928.8 ? outLamp1=off outLamp2=on outLamp3=on outLamp4=on outLamp5=on outLamp6=off  "The next left-most bit of the multiplier is 1, so we will add—through the pushbuttons: 110 X 1 or 110 The output lights now show 011110."
+  4928.8 > button4 target=0
+  4928.8 > button5 target=0
+  4940.0 * pb4 no->mid  pb5 no->mid
+  4942.5 * pb4 mid->nc  pb5 mid->nc
+  4944.7 * relay2 no->mid
+  4945.6 * relay2 mid->nc
+  4951.0 * indLamp2 on->dim
+  4960.3 * outLamp5 on->dim
+  4965.0 * outLamp4 on->dim
+  4985.1 > switch1 target=1000
+  4985.1 > switch2 target=0
+  4985.1 > switch3 target=0
+  4985.1 > switch4 target=0
+  4985.1 > switch5 target=0
+  4985.1 > switch6 target=1000
+  5006.6 * indLamp2 dim->off
+  5012.0 * sw4 no->mid  sw5 no->mid
+  5015.9 * outLamp5 dim->off
+  5018.1 * sw4 mid->nc  sw5 mid->nc
+  5029.3 * relay4 nc->mid
+  5030.6 * relay4 mid->no
+  5031.8 * outLamp5 off->dim
+  5037.0 * outLamp4 dim->on
+  5050.9 * outLamp5 dim->on
+  5071.0 > switch1 target=0
+  5097.9 * sw1 no->mid
+  5104.0 * sw1 mid->nc
+  5107.3 * outLamp1 off->dim
+  5126.4 * outLamp1 dim->on
+  5150.9 > switch2 target=0
+  5170.9 > switch3 target=0
+  5190.9 > switch4 target=0
+  5210.9 > switch5 target=1000
+  5237.8 * sw5 nc->mid
+  5243.7 * relay4 no->mid
+  5243.9 * sw5 mid->no
+  5244.6 * relay4 mid->nc
+  5263.9 * outLamp5 on->dim
+  5290.8 > switch6 target=1000
+  5319.5 * outLamp5 dim->off
+  6310.8 ? outLamp1=on outLamp2=on outLamp3=on outLamp4=on outLamp5=off outLamp6=off  "Enter the number which you just recorded in the slide switches and shift left one bit. The output lights now show 11100. The low order bit of the multiplier is 0, so it is not necessary to add anything more into the accumulator. The binary output lights now show the final result: 11100 or 60. 110 X 1010 = 111100 or 6 X 10 = 60 | ERRATA: page 82: Note that decimal 60 is 111100 in binary. It is written incorrectly in two places."

@@ -1,0 +1,333 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-3GIRLS-BOOLEAN-DERIVED",
+  "source": "BK3 printed p.59 = book2-3-4.pdf PDF p.65; BK3 printed p.58 = PDF p.64 (error expressions); ERRATA ER-15 (prose only), ER-16 (diagram only); Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/2S",
+    "2S/3V",
+    "2T/3S",
+    "3T/3com",
+    "2R/1S",
+    "1T/3com",
+    "3U/2V",
+    "2V/1V",
+    "1W/2W",
+    "2W/3com",
+    "3A/3com",
+    "3B/3-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the wiring and the p.59 rule (light 3 ON = error; slide switch LEFT = the positive condition). Slide-switch roles per jack-map: S/V arms, R/U close LEFT, T/W close RIGHT; switch target 0 = LEFT, 1000 = RIGHT. Nodes: P = {+, 2S, 3V}; A = {2T, 3S}; B = {2R, 1S}; D = {3U, 2V, 1V}; COM = {3com, 3T, 1T, 2W, 1W, 3A}; 1R, 1U, 2U, 3R, 3W unwired. Light 3 is lit exactly when P reaches COM: 2S-2T-3S-3T (S-bar x W-bar), 2S-2R-1S-1T (C-bar x S), 3V-3U-2V-2W or 3V-3U-2V/1V-1W (W x (S-bar + C-bar)). These are the three p.58 error expressions (ER-15 form for the second), with no sneak path: light 3 is off only with switches 1 and 2 LEFT (Camille could, Sara should), for either position of switch 3, which agrees with the p.59 note that a riddle can have more than one complete solution. The script sweeps all eight settings in Gray order from all-LEFT and returns to all-LEFT. Switches are set LEFT before power-on so the first state is not the simulator's default switch position. The 500 ms advance before each expect lets the lamp finish its thermal transient; the page states no timing.",
+  "wires": [
+    "1+/2S",
+    "2S/3V",
+    "2T/3S",
+    "3T/3com",
+    "2R/1S",
+    "1T/3com",
+    "3U/2V",
+    "2V/1V",
+    "1W/2W",
+    "2W/3com",
+    "3A/3com",
+    "3B/3-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: power ON, switches 1, 2, 3 all LEFT (C, S, W): switch 1 LEFT opens 1S-1T and 1V-1W, switch 2 LEFT opens 2S-2T and 2V-2W, so the only arm paths are 2S-2R-1S (dead at 1R) and, with switch 3 LEFT, 3V-3U-2V-1V (dead at 2U and 1U); nothing reaches 3com, light 3 off; no error expression is true",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1, 2 LEFT, 3 RIGHT (C, S, W-bar): 3S-3T to 3com is fed only from 2T, open with switch 2 LEFT; 3V-3W dead; 2S-2R-1S dead at 1R with switch 1 LEFT; light 3 off, the second solution (switch 3 does not matter when C and S)",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1 LEFT, 2 RIGHT, 3 RIGHT (C, S-bar, W-bar): + (1+/2S) through 2S-2T, 2T/3S, 3S-3T, 3T/3com, 3com/3A, lamp 3, 3B/3-: light 3 on (S-bar x W-bar). The lamp is the 3A-3B output lamp; 3C/3E/3F are unwired, so relay 3 stays out and its indicator dark",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1 LEFT, 2 RIGHT, 3 LEFT (C, S-bar, W): + through 3V (2S/3V), 3V-3U, 3U/2V, 2V-2W, 2W/3com: light 3 on (W x S-bar)",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1 RIGHT, 2 RIGHT, 3 LEFT (C-bar, S-bar, W): 3V-3U-2V-2W-3com, and also 2V/1V-1W/2W: light 3 on (W x (S-bar + C-bar))",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1 RIGHT, 2 RIGHT, 3 RIGHT (C-bar, S-bar, W-bar): 2S-2T-3S-3T-3com: light 3 on (S-bar x W-bar)",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1 RIGHT, 2 LEFT, 3 RIGHT (C-bar, S, W-bar): 2S-2R, 2R/1S, 1S-1T, 1T/3com: light 3 on (C-bar x S)",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switches 1 RIGHT, 2 LEFT, 3 LEFT (C-bar, S, W): 2S-2R-1S-1T-3com, and 3V-3U-2V/1V-1W/2W-3com: light 3 on (C-bar x S, and W x C-bar)",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.59 = book2-3-4.pdf PDF p.65, rule 'Light 3 ON represents an error' with slide switch LEFT = positive condition (1 Camille could, 2 Sara should, 3 Wanda would); error expressions BK3 p.58 (PDF p.64) S-bar x W-bar, C-bar x S (ER-15), W x (S-bar + C-bar); derived from topology: switch 1 back LEFT, so switches 1, 2, 3 LEFT again (C, S, W): switch 1 LEFT opens 1S-1T and 1V-1W, switch 2 LEFT opens 2S-2T and 2V-2W, so the only arm paths are 2S-2R-1S (dead at 1R) and, with switch 3 LEFT, 3V-3U-2V-1V (dead at 2U and 1U); nothing reaches 3com, light 3 off; the error light goes OFF, a correct solution",
+      "quote": "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

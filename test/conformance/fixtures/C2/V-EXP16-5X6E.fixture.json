@@ -1,0 +1,437 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP16-5X6E",
+  "source": "BK5 printed pp.29-30 = book5-6.pdf PDF pp.35-36; errata.pdf PDF p.4 ER-36 deliberately not applied (O-C9 ruling 2026-10-13); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6E",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative variant (derivation A, O-C9 ruling 2026-10-13): the uncorrected as-printed 5X/6E, ER-36 not applied, asserting the clean pushbutton-5 stop that the ER-36 fixture V-EXP16 cannot. Every expect is derived by hand from the 20-wire topology, not printed. Topology: 6H, 6Y and 5Y sit on +; pushbutton 6 puts + on 6X/6G/6F/D17/D16; relay 6 pulls in through 6F-coil-6E-indicator lamp-6C(-) and latches through 6H-6G; D17 runs the motor through R1 to D19, D18 on M-; the wiper D16 carries + to lamp 5 on D3/D5/D8/D9/D11 (dash) and lamp 6 on D4/D6/D10 (dot), so one turn spells C (D3-D6), a space at D7, then Q (D8-D11). The stop: pushbutton 5 puts + on 6E, so with relay 6 latched both coil ends sit on + and it drops; no path joins + to -, so the breaker never trips (with 5X/6C and 6C/6- it would). The O-C9 'shorts out the coil' reading is incomplete: once relay 6 is out, + on 6E feeds the coil to 6F and on through D17-R1-motor branch (about 32 ohms) and the wiper's lamp to -, about 70 mA against relay 6's 45 mA pull-in, so relay 6 buzzes while pushbutton 5 is held. The stop is settled at the release: with 6E off +, the only re-latch drive is 6F-coil-6E-indicator lamp, which must reverse the coil current through zero below drop-out, and the N.O. contact breaks about 3.6 ms into the release stroke, long before the reversed current could climb back to pull-in (about 42 mA asymptote through the lamp heated by 13 V during the hold). That race is a profile-timing claim [unverified]. No expect is placed while pushbutton 5 is held, and the dial rest position after the stop coast is not predicted; the stopped motor is shown by hand-setting the dial to 3 and finding it still on 3, dark, a second after letting go. Script choices, not printed: holding the knob on D3, D4 and D7 to read the CQ pad map, the 100 ms presses, and the final restart with pushbutton 6.",
+  "wires": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6E",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36; Step 7 derivation from topology: no + reaches 6F before pushbutton 6",
+      "quote": "Set the rotary switch at 0 and turn power on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35 (purpose) and Books V-VI printed p.30 = book5-6.pdf PDF p.36 (C: dash dot dash dot, Q: dash dash dot dash; light 5 dash, light 6 dot); Step 7 derivation from topology: lamp 5 hangs on D3/D5/D8/D9/D11, lamp 6 on D4/D6/D10, D7 is the C-Q letter space",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35 (purpose) and Books V-VI printed p.30 = book5-6.pdf PDF p.36 (C: dash dot dash dot, Q: dash dash dot dash; light 5 dash, light 6 dot); Step 7 derivation from topology: lamp 5 hangs on D3/D5/D8/D9/D11, lamp 6 on D4/D6/D10, D7 is the C-Q letter space",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35 (purpose) and Books V-VI printed p.30 = book5-6.pdf PDF p.36 (C: dash dot dash dot, Q: dash dash dot dash; light 5 dash, light 6 dot); Step 7 derivation from topology: lamp 5 hangs on D3/D5/D8/D9/D11, lamp 6 on D4/D6/D10, D7 is the C-Q letter space",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35 (purpose) and Books V-VI printed p.30 = book5-6.pdf PDF p.36 (C: dash dot dash dot, Q: dash dash dot dash; light 5 dash, light 6 dot); Step 7 derivation from topology: lamp 5 hangs on D3/D5/D8/D9/D11, lamp 6 on D4/D6/D10, D7 is the C-Q letter space",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 stop step; O-C9 ruling 2026-10-13 (uncorrected 5X/6E, ER-36 not applied); Step 7 derivation from topology",
+      "quote": "To stop transmission, push pushbutton 5.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 stop step; O-C9 ruling 2026-10-13 (uncorrected 5X/6E, ER-36 not applied); Step 7 derivation from topology",
+      "quote": "To stop transmission, push pushbutton 5.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 start step; Step 7 derivation from topology: 6H(+)-6G-6F latch",
+      "quote": "Push pushbutton 6. This provides the input command \"start transmission.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 134,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      20,
+      0,
+      0,
+      0,
+      0,
+      4,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      45
+    ]
+  }
+}

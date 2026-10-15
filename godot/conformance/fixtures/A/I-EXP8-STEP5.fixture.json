@@ -1,0 +1,36 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP8-STEP5",
+  "source": "BK1 printed p.16 step 5 = book1.pdf PDF p.18",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y", "1X/1C", "1F/1-", "1+/1H", "1G/2C", "2F/2-", "2+/2H", "2G/2A", "2B/2-"
+  ],
+  "errata_applied": [],
+  "note": "The page prints the two-relay base list, then step 5 directs the reader to expand it through all six relays, with relay 6 turning light 6 on. The wires array is that literal five-stage expansion.",
+  "wires": [
+    "1+/1Y", "1X/1C", "1F/1-",
+    "1+/1H", "1G/2C", "2F/2-",
+    "2+/2H", "2G/3C", "3F/3-",
+    "3+/3H", "3G/4C", "4F/4-",
+    "4+/4H", "4G/5C", "5F/5-",
+    "5+/5H", "5G/6C", "6F/6-",
+    "6+/6H", "6G/6A", "6B/6-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp6", "v": "on" }
+      ],
+      "cite": "BK1 printed p.16 step 5 = book1.pdf PDF p.18",
+      "quote": "Expand the present circuit to use all six relays with each relay controlling the coil of the next. The last relay in the series, relay 6, should turn light 6 ON."
+    }
+  ]
+}

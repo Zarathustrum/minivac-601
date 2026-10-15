@@ -1,0 +1,1189 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP1-DERIVED",
+  "source": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78 (rule and chart p.71 = PDF p.77, program and procedure p.72 = PDF p.78), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "1J/4K",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3J/6K",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 44-wire topology and the p.71 rule, not from the printed chart, and is tagged FALLBACK-DERIVED-TOPOLOGY. The DOWN checkpoints read the chart's carry and flip-flop columns into relay positions through the topology: a 1 bit at rest is both relays of its pair in, a 0 bit both out; while pushbutton 6 is held a 0 to 1 stage has its odd relay in and even relay out, a 1 to 0 stage the reverse. Light 5 at count 5 is asserted off against the p.71 chart row 11 misprint. Lights 1, 2, 3 and the indicator lamps are asserted only where their pair is at 0 (dark), because a lit lamp in series with a coil has a profile-dependent class. ER-20 is prose only; ER-21 documents this circuit as marginal on physical hardware and substitutes ER-ALTCOUNTER (not applied); the 2026-09-01 marginal-counter ruling in docs/DECISIONS.md governs, and this fixture asserts only settled held and rest states, with no marginal flag. Script choices, not printed: each push and release is followed by settle 500 ms and a 200 ms advance (a slow pace, as IV-EXP1-SLOW); counts 3, 5, 6 and 7 assert only the rest state.",
+  "wires": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "1J/4K",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3J/6K",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 0 (chart row 'Times Pushed 0', power ON, pushbutton up); derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; the only + sources are 1G, 3G, 5G (relay set-1 N.O., open with every relay out) and 6Y (pushbutton 6 N.O., open), so no coil, output lamp or indicator lamp has a path from +",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, first push of pushbutton 6, held; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; P (+) -> 5J-5H (relay 5 N.C.) -> 5F: coil 5 fed 5F-coil-5E-indicator lamp 5-minus, relay 5 pulls in and holds through 5G-5H; coil 6 has + at both ends (6F=5F, 6E via 6J-6H=P), so relay 6 stays out; 6K open, no carry, relays 1-4 unfed; light 6 (6F) on at full rail, lights 4 and 5 unfed",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 1 after release; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; P loses +; 6E is no longer held at +, so coil 6 (6F + via 5G-5H) conducts to minus through indicator lamp 6 and light 3 and relay 6 pulls in; with relay 5 in, 5L sits on unwired 5K, so stages A and B have no + source: relays 1-4 out, their lamps and lights 1, 2, 4, 5 dark; light 6 on via 5G",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, second push of pushbutton 6, held; chart row 'Carry C to B YES'; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; P (+) -> 6H-6G (relay 6 in) -> 5E puts + on both coil 5 ends (5F via 5G), relay 5 drops; 5N-5L closes, P -> 5L-6L-6K -> 3J (carry C to B); relay 6 holds (6F = 5F, + via 5J-5H); 3J-3H -> 3F: coil 3 fed, relay 3 pulls in and holds through 3G; coil 4 has + at both ends (4F=3F, 4E via 4J-4H), relay 4 stays out; 3N opens when relay 3 pulls in, so no carry B to A, relays 1 and 2 unfed; lights 5 (4F) and 6 (6F) on at full rail",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 2 after release (procedure step 2: 'OFF, ON, OFF or 010'); derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; + only at 3G now (relay 5 out): coil 4 (4F + via 3G-3H) conducts to minus through 4E's lamps, relay 4 pulls in; relay 6 loses its only feed (5H on 5J, P floating) and drops, opening 6K; stage C and stage A then have no + source: relays 1, 2, 5, 6 out, their lamps and lights 1, 3, 4, 6 dark; light 5 on via 3G",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 3 after the third release; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; third push toggles stage C alone (relay 5 in, relay 6 out while held, 6K open so no carry); on release relay 6 pulls in through 5G; stage B holds on 3G; stage A has no + source (1J reaches 4K-4L with relay 4 in, but 3L sits on unwired 3K with relay 3 in, so 3N is open), so relays 1 and 2 out, light 1, light 4 and their indicator lamps dark",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, fourth push of pushbutton 6, held; chart row '1 | YES | 1 | YES | 1 | DOWN'; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; relay 5 drops (+ on 5E via 6G-6H) and carry C to B puts + on 3J=4H; 4H-4G (relay 4 in) -> 3E puts + on both coil 3 ends (3F via 3G), relay 3 drops; 3N-3L-4L-4K (relay 4 in) -> 1J carries B to A; 1J-1H -> 1F: relay 1 pulls in and holds via 1G; coil 2 has + at both ends (2F=1F, 2E via 2J-2H=1J), relay 2 stays out; relay 4 holds (4F via 3H-3J from the carry), relay 6 holds (6F via 5H-5J from P); lights 4 (2F), 5 (4F), 6 (6F) on",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 4 after release; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; + only at 1G: coil 2 (2F + via 1G-1H) conducts to minus through 2E's lamps, relay 2 pulls in; relays 4 and 6 can be fed only through 4F and 6F, which are lights 5 and 6's own terminals, and with relays 3 and 5 out no contact path brings + there (4K-4L opens once relay 4 drops, 2H sits on 2G): relays 3-6 out and stages B and C dark; light 4 on via 1G",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 5 after the fifth release; light 5 at count 5, the p.71 chart row 11 misprint (Flip-Flop B printed 1); derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; fifth push toggles stage C alone (relay 6 out while held, so 6K open and no carry C to B); stage B stays as count 4 left it, relays 3 and 4 out: 3J=4H is reached only through 6K (open with relay 5 in, 5L on unwired 5K) or through stage B's own contacts, and 4F has no + source with relay 3 out, so light 5 (4F) is dark; light 4 on via 1G, light 6 on via 5G; binary 101",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 6 after the sixth release; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; sixth push: relay 5 drops, carry C to B pulls relay 3 in (relay 4 out, 3N open, no carry to A); release: relay 4 pulls in on 3G, relay 6 drops; relays 1 and 2 hold on 1G; lights 4 and 5 on via 1G and 3G, stage C dark",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 7 after the seventh release; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; seventh push toggles stage C alone (relay 5 in, relay 6 out while held, no carry); release pulls relay 6 in; every pair holds on its own nG: all six relays in, lights 4, 5, 6 on via 1G, 3G, 5G",
+      "quote": "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, eighth push of pushbutton 6, held; chart row 16 '1 | YES | 1 | YES | 1 | DOWN'; derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; relay 5 drops, carry C to B drops relay 3 (+ on 3E via 4H-4G), carry B to A puts + on 1J -> 2H-2G -> 1E, + at both coil 1 ends (1F via 1G), relay 1 drops; relay 1 set 2 (1K/1L/1N) is unwired, no carry out; relays 2, 4, 6 hold, fed through 1H-1J, 3H-3J, 5H-5J from the carry chain; lights 4, 5, 6 on from the chain",
+      "quote": "You will notice that the counter repeats after it has reached 7.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78, count 8 after the eighth release (chart row 17 '0 or 8'); derived from topology: 1C..6C on minus (6C/6-), so each relay coil runs nF-coil-nE-indicator lamp-minus; flip-flop A = relays 1/2 (1G +, 1H=1F=2F, 1E=2G, input 1J=2H, 2E=2J), B = relays 3/4 (3G +, 3H=3F=4F, 3E=4G, input 3J=4H=3N, 4E=4J), C = relays 5/6 (5G +, 5H=5F=6F, 5E=6G, input P=5J=6H=5N=6X, 6E=6J); pushbutton 6 puts + on P (6Y/6+); carry C to B = P-5N-5L-6L-6K-3J (relay 5 out, relay 6 in), carry B to A = 3N-3L-4L-4K-1J (relay 3 out, relay 4 in); light 4 on 2F, light 5 on 4F, light 6 on 6F, light 1 on 2E, light 2 on 4E, light 3 on 6E; with relays 1, 3 and 5 out and pushbutton 6 up, every + source (1G, 3G, 5G, 6Y) is open: relays 2, 4, 6 lose all feed and drop, and nothing can pull relay 1, 3 or 5 in; all twelve lamps dark, the count-0 state",
+      "quote": "You will notice that the counter repeats after it has reached 7.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

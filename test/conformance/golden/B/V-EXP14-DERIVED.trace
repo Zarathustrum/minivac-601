@@ -1,0 +1,158 @@
+#!mv601-trace 1
+# id=V-EXP14-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=60
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=114 minTickGap=9 marginal=false
+     0.0 > switch1 target=1000
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+    26.9 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    33.0 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+    79.9 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+   242.2 ? breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps."
+   242.2 > button1 target=1000
+   253.4 * pb1 nc->mid
+   255.9 * pb1 mid->no
+   487.1 ? relay6=nc outLamp6=on indLamp6=off  "If you attempt to carry out a step in the wrong order, nothing will happen. The system accepts as input only the proper steps."
+   487.1 > button1 target=0
+   498.3 * pb1 no->mid
+   500.8 * pb1 mid->nc
+   532.0 > switch2 target=0
+   558.9 * sw2 no->mid
+   565.0 * sw2 mid->nc
+   611.9 > button2 target=1000
+   623.1 * pb2 nc->mid
+   625.6 * pb2 mid->no
+   856.8 ? relay5=nc relay6=nc outLamp6=on indLamp5=off indLamp6=off  "If you attempt to carry out a step in the wrong order, nothing will happen. The system accepts as input only the proper steps."
+   856.8 > button2 target=0
+   868.0 * pb2 no->mid
+   870.5 * pb2 mid->nc
+   901.7 > switch2 target=1000
+   928.6 * sw2 nc->mid
+   934.7 * sw2 mid->no
+   981.6 > switch1 target=0
+  1008.5 * sw1 no->mid
+  1014.6 * sw1 mid->nc
+  1061.5 > button1 target=1000
+  1072.7 * pb1 nc->mid
+  1075.2 * pb1 mid->no
+  1085.1 * indLamp6 off->dim
+  1087.1 * relay6 nc->mid
+  1088.4 * relay6 mid->no
+  1107.6 * outLamp6 on->dim
+  1124.9 * indLamp6 dim->on
+  1145.0 > button1 target=0
+  1156.2 * pb1 no->mid
+  1158.7 * pb1 mid->nc
+  1163.2 * outLamp6 dim->off
+  1389.9 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=no outLamp1=off outLamp6=off indLamp5=off indLamp6=on  "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps."
+  1389.9 > switch3 target=0
+  1416.8 * sw3 no->mid
+  1422.9 * sw3 mid->nc
+  1469.8 > button3 target=1000
+  1481.0 * pb3 nc->mid
+  1483.5 * pb3 mid->no
+  1714.7 ? relay4=nc relay5=nc relay6=no indLamp4=off indLamp5=off indLamp6=on  "If you attempt to carry out a step in the wrong order, nothing will happen. The system accepts as input only the proper steps."
+  1714.7 > button3 target=0
+  1725.9 * pb3 no->mid
+  1728.4 * pb3 mid->nc
+  1759.6 > switch3 target=1000
+  1786.5 * sw3 nc->mid
+  1792.6 * sw3 mid->no
+  1839.5 > switch2 target=0
+  1866.4 * sw2 no->mid
+  1872.5 * sw2 mid->nc
+  1919.4 > button2 target=1000
+  1930.6 * pb2 nc->mid
+  1933.1 * pb2 mid->no
+  1943.0 * indLamp5 off->dim
+  1944.8 * relay5 nc->mid
+  1946.1 * relay5 mid->no
+  1971.4 > button2 target=0
+  1982.6 * pb2 no->mid
+  1982.9 * indLamp5 dim->on
+  1985.1 * pb2 mid->nc
+  2216.3 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no indLamp4=off indLamp5=on  "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps."
+  2216.3 > switch3 target=0
+  2243.2 * sw3 no->mid
+  2249.3 * sw3 mid->nc
+  2296.2 > button3 target=1000
+  2307.4 * pb3 nc->mid
+  2309.9 * pb3 mid->no
+  2319.8 * indLamp4 off->dim
+  2321.5 * relay4 nc->mid
+  2322.8 * relay4 mid->no
+  2348.1 > button3 target=0
+  2359.3 * pb3 no->mid
+  2359.8 * indLamp4 dim->on
+  2361.8 * pb3 mid->nc
+  2593.0 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=no relay6=no indLamp3=off indLamp4=on  "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps."
+  2593.0 > switch4 target=0
+  2619.9 * sw4 no->mid
+  2626.0 * sw4 mid->nc
+  2672.9 > button4 target=1000
+  2684.1 * pb4 nc->mid
+  2686.6 * pb4 mid->no
+  2696.5 * indLamp3 off->dim
+  2698.0 * relay3 nc->mid
+  2699.3 * relay3 mid->no
+  2724.6 > button4 target=0
+  2735.8 * pb4 no->mid
+  2736.6 * indLamp3 dim->on
+  2738.3 * pb4 mid->nc
+  2969.5 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no indLamp2=off indLamp3=on  "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps."
+  2969.5 > switch5 target=0
+  2996.4 * sw5 no->mid
+  3002.5 * sw5 mid->nc
+  3049.4 > button5 target=1000
+  3060.6 * pb5 nc->mid
+  3063.1 * pb5 mid->no
+  3073.0 * indLamp2 off->dim
+  3074.4 * relay2 nc->mid
+  3075.7 * relay2 mid->no
+  3101.0 > button5 target=0
+  3112.2 * pb5 no->mid
+  3113.2 * indLamp2 dim->on
+  3114.7 * pb5 mid->nc
+  3145.9 > switch6 target=0
+  3172.8 * sw6 no->mid
+  3178.9 * sw6 mid->nc
+  3425.8 ? relay1=nc relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=off outLamp6=off indLamp1=off indLamp2=on indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "The control circuit provides that the first step in the process be taken before the second can be begun, and so on through twelve consecutive steps."
+  3425.8 > button6 target=1000
+  3437.0 * pb6 nc->mid
+  3439.5 * pb6 mid->no
+  3442.8 * outLamp1 off->dim
+  3449.5 * indLamp1 off->dim
+  3450.8 * relay1 nc->mid
+  3452.1 * relay1 mid->no
+  3461.8 * outLamp1 dim->on
+  3481.9 > button6 target=0
+  3490.0 * indLamp1 dim->on
+  3493.1 * pb6 no->mid
+  3495.6 * pb6 mid->nc
+  3726.8 ? breaker=ok relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=on outLamp6=off indLamp1=on indLamp2=on indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "When you have completed all twelve steps, light 1 will come on indicating \"operation complete.\""
+  3726.8 > switch1 target=1000
+  3726.8 > switch2 target=1000
+  3726.8 > switch3 target=1000
+  3726.8 > switch4 target=1000
+  3726.8 > switch5 target=1000
+  3726.8 > switch6 target=1000
+  3753.7 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+  3759.8 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+  4006.7 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=on  "To re-set the system, set all slide switches to the RIGHT and turn power off, then on again."
+  4006.7 > power off
+  4006.7 * power on->off
+  4010.2 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+  4011.1 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+  4017.6 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  4026.9 * outLamp1 on->dim
+  4047.0 > power on
+     0.0 * power off->on  outLamp1 dim->off  indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+   242.2 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "To re-set the system, set all slide switches to the RIGHT and turn power off, then on again."

@@ -1,0 +1,43 @@
+{
+  // "types": ["node"] is explicit because TypeScript 6 no longer pulls every node_modules/@types
+  // package in by default. test/encoding.spec.ts needs node:fs to read determinism rule 17's bytes.
+  // This pass covers src/** as well as test/**, so it is tsconfig.core.json's "types": [] that
+  // keeps node globals out of src/core/** -- `npm run typecheck` runs both passes with &&.
+  //
+  // moduleResolution "bundler" + allowImportingTsExtensions: every import in this repo carries
+  // its literal ".ts" extension, so the same source runs unchanged under vite/vitest and under
+  // node's native type stripping (`node tools/gen-solver-kat.ts`). verbatimModuleSyntax forces
+  // `import type` on type-only imports, which is what node's stripper needs to erase them.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "forceConsistentCasingInFileNames": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "strictBuiltinIteratorReturn": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "alwaysStrict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"]
+}

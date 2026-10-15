@@ -1,0 +1,27 @@
+#!mv601-trace 1
+# id=III-RELAYOR contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=11
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=252 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 > button1 target=1000
+     0.0 * power off->on
+    11.2 * pb1 nc->mid
+    13.7 * pb1 mid->no
+    23.6 * indLamp1 off->dim
+    24.7 * relay1 nc->mid
+    26.0 * relay1 mid->no
+    29.3 * outLamp3 off->dim
+    48.2 * outLamp3 dim->on
+    63.7 * indLamp1 dim->on
+    83.8 ? outLamp3=on  "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON."
+    83.8 > button1 target=0
+    83.8 > button2 target=1000
+    95.0 * pb1 no->mid  pb2 nc->mid
+    97.5 * pb1 mid->nc  pb2 mid->no
+    99.8 * relay1 no->mid
+   100.7 * relay1 mid->nc
+   102.2 * indLamp1 on->dim
+   107.4 * indLamp2 off->dim
+   108.7 * relay2 nc->mid
+   110.0 * relay2 mid->no
+   135.3 ? outLamp3=on  "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON."

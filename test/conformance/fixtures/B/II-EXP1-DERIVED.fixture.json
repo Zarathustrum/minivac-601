@@ -1,0 +1,702 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP1-DERIVED",
+  "source": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1X/2X",
+    "2X/3X",
+    "3X/4X",
+    "4X/5X",
+    "5X/6Y",
+    "6Z/6+",
+    "6Y/5H",
+    "5H/4H",
+    "4H/3H",
+    "3H/2H",
+    "2H/1H",
+    "1Y/1G",
+    "1G/1C",
+    "1F/1-",
+    "2Y/2G",
+    "2G/2C",
+    "2F/2-",
+    "3Y/3G",
+    "3G/3C",
+    "3F/3-",
+    "4Y/4G",
+    "4G/4C",
+    "4F/4-",
+    "5Y/5G",
+    "5G/5C",
+    "5F/5-"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 26-wire topology (image-read, six columns, column 6 holding only 5F/5-) and the page's binary input rule, not printed. No erratum touches this program. Topology: pushbutton 6 N.C. 6Z on + feeds arm 6Y, which is bussed to every relay set 1 arm 1H-5H and every pushbutton N.O. 1X-5X; section n (1-5) ties pushbutton arm nY to relay N.O. nG and to the coil-path end nC; the coil runs nC-indicator lamp n-nE-coil-nF to minus. Relay 6, every output lamp and 6X are unwired. Script: the page's steps 1-6 (steps 4 and 5 release after the push, following step 1's 'Push pushbutton 1 and release'), with the clear checked both while pushbutton 6 is held and after release; then a second number (01100, pushbuttons 2 and 3) as a script choice to exercise the rule after a clear. The 200 ms advance after each settle lets filaments reach their class and is not from the source.",
+  "wires": [
+    "1X/2X",
+    "2X/3X",
+    "3X/4X",
+    "4X/5X",
+    "5X/6Y",
+    "6Z/6+",
+    "6Y/5H",
+    "5H/4H",
+    "4H/3H",
+    "3H/2H",
+    "2H/1H",
+    "1Y/1G",
+    "1G/1C",
+    "1F/1-",
+    "2Y/2G",
+    "2G/2C",
+    "2F/2-",
+    "3Y/3G",
+    "3G/3C",
+    "3F/3-",
+    "4Y/4G",
+    "4G/4C",
+    "4F/4-",
+    "5Y/5G",
+    "5G/5C",
+    "5F/5-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, binary input rule, power on before any push; derived from topology: pushbutton 6 arm 6Y sits on N.C. 6Z on + (6Z/6+) while pushbutton 6 is up, and 6Y is chained to every relay set 1 arm (6Y/5H, 5H/4H, 4H/3H, 3H/2H, 2H/1H) and every pushbutton N.O. contact (5X/6Y, 4X/5X, 3X/4X, 2X/3X, 1X/2X), so 1H-5H and 1X-5X are the + bus; section n (1-5) wires pushbutton n arm nY to relay n N.O. nG (nY/nG) and nG to nC (nG/nC); the coil path is nC-indicator lamp n-nE-coil-nF, nF on minus (nF/n-). Every pushbutton is up, so each nY rests on its unwired N.C. nZ, and every relay is unoperated, so each nH-nG is open: no nC has a source, all five coils and their series relay lights carry nothing; relay 6 coil (6C-6F) and every output lamp (nA-nB) are unwired",
+      "quote": "This experiment uses MINIVAC 601 to demonstrate how a digital computer receives binary input data and instructions. The binary number \"one\" is given to the computer by pushing a pushbutton down. The binary number \"zero\" is given to the computer by leaving a pushbutton up. The instruction to forget all previous data (to \"clear\" the memory) is given to the computer by pushing pushbutton 6.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 1 with the binary input rule, pushbutton 1 pushed and released; derived from topology: pushed, 1Y touches N.O. 1X on the + bus, and 1Y/1G with 1G/1C puts + on 1C, so relay 1 pulls in through 1C-indicator lamp 1-1E-coil-1F-minus; operated, set 1 arm 1H (on the + bus, 2H/1H) touches N.O. 1G and holds 1C after 1Y leaves 1X; sections 2-5 keep nY on an unwired nZ and nH-nG open, so relays 2-5 stay out and their lights off; relay 6 and lamp 6 are unwired",
+      "quote": "Push pushbutton 1 and release. This transmits a \"one\" to section 1 of MINIVAC. The \"one\" is remembered by relay 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, steps 1-5 with the binary input rule, the whole 10011 pattern after pushbuttons 1, 4 and 5 were each pushed and released and 2 and 3 never pushed; derived from topology: pushbutton 6 arm 6Y sits on N.C. 6Z on + (6Z/6+) while pushbutton 6 is up, and 6Y is chained to every relay set 1 arm (6Y/5H, 5H/4H, 4H/3H, 3H/2H, 2H/1H) and every pushbutton N.O. contact (5X/6Y, 4X/5X, 3X/4X, 2X/3X, 1X/2X), so 1H-5H and 1X-5X are the + bus; section n (1-5) wires pushbutton n arm nY to relay n N.O. nG (nY/nG) and nG to nC (nG/nC); the coil path is nC-indicator lamp n-nE-coil-nF, nF on minus (nF/n-). Each pushed section n got + on nC through nY-nX, pulled relay n in, and holds through its own nH-nG from the bus; sections 2 and 3 never had a source on nC; the sections are joined only at the + bus and the minus rail, so one section's latch cannot feed another's coil; relay 6 coil and every output lamp are unwired",
+      "quote": "The binary number 10011 (19) has been communicated to MINIVAC 601 by using the BINARY INPUT pushbuttons. This input data is now being remembered (stored) in the first five sections of the computer.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 6 with the binary input rule, pushbutton 6 held down; derived from topology: pushed, 6Y leaves N.C. 6Z (6Z/6+) for N.O. 6X, which is unwired, so the bus 6Y-1H..5H-1X..5X loses +; relays 1, 4 and 5 lose their hold through nH-nG and drop, and pushbuttons 1-5 are up so nothing else feeds any nC; all relay lights are in the coil paths and go dark",
+      "quote": "Push pushbutton 6 and release. This action instructs the computer to forget all previous data.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 6 with the binary input rule, pushbutton 6 released; derived from topology: 6Y returns to 6Z and the bus regains +, but every relay is now unoperated, so each nH-nG is open, and every pushbutton 1-5 is up, so each nY rests on its unwired nZ: no nC has a source and nothing re-latches; the memory holds 00000",
+      "quote": "All relay lights go OFF, and the previous number is forgotten (\"cleared\" from the memory).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, binary input rule applied to a new number after the clear (script choice, not printed: 01100, pushbuttons 2 and 3 pushed and released); derived from topology: pushbutton 6 arm 6Y sits on N.C. 6Z on + (6Z/6+) while pushbutton 6 is up, and 6Y is chained to every relay set 1 arm (6Y/5H, 5H/4H, 4H/3H, 3H/2H, 2H/1H) and every pushbutton N.O. contact (5X/6Y, 4X/5X, 3X/4X, 2X/3X, 1X/2X), so 1H-5H and 1X-5X are the + bus; section n (1-5) wires pushbutton n arm nY to relay n N.O. nG (nY/nG) and nG to nC (nG/nC); the coil path is nC-indicator lamp n-nE-coil-nF, nF on minus (nF/n-). Pushed, 2Y-2X and 3Y-3X put + on 2C and 3C, relays 2 and 3 pull in and hold through 2H-2G and 3H-3G; sections 1, 4 and 5 were cleared and not pushed again, so they stay out",
+      "quote": "This experiment uses MINIVAC 601 to demonstrate how a digital computer receives binary input data and instructions. The binary number \"one\" is given to the computer by pushing a pushbutton down. The binary number \"zero\" is given to the computer by leaving a pushbutton up. The instruction to forget all previous data (to \"clear\" the memory) is given to the computer by pushing pushbutton 6.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+#!mv601-trace 1
+# id=III-ANDOR contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=6
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   320.1 ? outLamp4=off  "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D."
+   320.1 > button1 target=1000
+   331.3 * pb1 nc->mid
+   333.8 * pb1 mid->no
+   665.0 ? outLamp4=off  "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D."
+   665.0 > button2 target=1000
+   676.2 * pb2 nc->mid
+   678.7 * pb2 mid->no
+   682.0 * outLamp4 off->dim
+   700.9 * outLamp4 dim->on
+  1021.0 ? outLamp4=on  "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D."
+  1021.0 > button1 target=0
+  1032.2 * pb1 no->mid
+  1034.7 * pb1 mid->nc
+  1052.7 * outLamp4 on->dim
+  1108.3 * outLamp4 dim->off
+  1372.8 ? outLamp4=off  "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D."
+  1372.8 > button2 target=0
+  1384.0 * pb2 no->mid
+  1386.5 * pb2 mid->nc
+  1717.7 > button3 target=1000
+  1728.9 * pb3 nc->mid
+  1731.4 * pb3 mid->no
+  1734.7 * outLamp4 off->dim
+  1753.6 * outLamp4 dim->on
+  2073.7 ? outLamp4=on  "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D."
+  2073.7 > button3 target=0
+  2084.9 * pb3 no->mid
+  2087.4 * pb3 mid->nc
+  2105.4 * outLamp4 on->dim
+  2161.0 * outLamp4 dim->off
+  2425.5 ? outLamp4=off  "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D."

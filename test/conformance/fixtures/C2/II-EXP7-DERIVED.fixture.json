@@ -1,0 +1,420 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP7-DERIVED",
+  "source": "BK2-4 printed pp.15-16 = book2-3-4.pdf PDF pp.21-22; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1R/D1",
+    "1S/2S",
+    "2R/D2",
+    "2S/3S",
+    "3R/D3",
+    "3S/4S",
+    "4R/D4",
+    "4S/5S",
+    "5R/D5",
+    "5S/6S",
+    "6R/D6",
+    "6S/D19",
+    "D18/D16",
+    "D16/M-",
+    "D17/6X",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1R/D1",
+    "1S/2S",
+    "2R/D2",
+    "2S/3S",
+    "3R/D3",
+    "3S/4S",
+    "4R/D4",
+    "4S/5S",
+    "5R/D5",
+    "5S/6S",
+    "6R/D6",
+    "6S/D19",
+    "D18/D16",
+    "D16/M-",
+    "D17/6X",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 steps 2-3; derived from topology: the wiper D16 sits on the minus rail (D16/M-) and D18 is strapped to it (D18/D16); the slide-switch arms 1S-6S are one node (1S/2S ... 5S/6S) tied to D19 (6S/D19), and each LEFT contact nR goes to Dn (nR/Dn); pushbutton 6 N.O. puts + on D17 (6Y/6+, D17/6X), so with it down the motor runs (RUN across D17/D18) until the wiper makes the Dn of a LEFT switch, which joins D19 to D18 through nR-nS: the STOP short, motor and R2 shunted; switch 4 is the only LEFT switch, so D4 is the only stop pad",
+      "quote": "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 step 3; BK1 printed p.22 = book1.pdf PDF p.24 (RESISTORS) for the breaker; derived from topology: the wiper D16 sits on the minus rail (D16/M-) and D18 is strapped to it (D18/D16); the slide-switch arms 1S-6S are one node (1S/2S ... 5S/6S) tied to D19 (6S/D19), and each LEFT contact nR goes to Dn (nR/Dn); pushbutton 6 N.O. puts + on D17 (6Y/6+, D17/6X), so with it down the motor runs (RUN across D17/D18) until the wiper makes the Dn of a LEFT switch, which joins D19 to D18 through nR-nS: the STOP short, motor and R2 shunted; with the wiper on D4, + on D17 returns to minus only through R1 (D17-R1-D19-6S..4S-4R-D4-D16-M-), so the dial rests on 4 with pushbutton 6 held and the breaker holds",
+      "quote": "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 steps 1 and 4; derived from topology: releasing pushbutton 6 takes + off D17, so nothing drives the motor (R2 alone across D18-D19, no source); moving switch 4 RIGHT and switch 2 LEFT changes only which Dn joins D19, so the dial stays on 4 until pushbutton 6 gives the instruction",
+      "quote": "Pushbutton 6 will be used to give the computer the instruction: Indicate number in Secondary Storage using Decimal Output rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 step 4; derived from topology: the wiper D16 sits on the minus rail (D16/M-) and D18 is strapped to it (D18/D16); the slide-switch arms 1S-6S are one node (1S/2S ... 5S/6S) tied to D19 (6S/D19), and each LEFT contact nR goes to Dn (nR/Dn); pushbutton 6 N.O. puts + on D17 (6Y/6+, D17/6X), so with it down the motor runs (RUN across D17/D18) until the wiper makes the Dn of a LEFT switch, which joins D19 to D18 through nR-nS: the STOP short, motor and R2 shunted; switch 2 is the only LEFT switch, so the motor runs off D4 and the first pad that shorts STOP is D2 (2R/D2, 2S-3S-4S-5S-6S-D19)",
+      "quote": "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 step 4; BK1 printed p.22 = book1.pdf PDF p.24 (RESISTORS) for the breaker; derived from topology: the wiper on D2 holds the STOP short (D19-6S..2S-2R-D2-D16-M-, D18/D16), R1 alone limits the rail current from D17, so the dial rests on 2 (the stored number) with pushbutton 6 held and the breaker holds",
+      "quote": "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output. / The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 250
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 steps 1 and 4; derived from topology: with the dial already on D2 and switch 2 still LEFT, D19 is already shorted to D18 when pushbutton 6 puts + on D17, so the motor gets no voltage and the dial does not leave 2 (a running dial would be about 3 pads on after 250 ms at the profile's assumed rate); this also shows the dial stayed on 2 after the earlier release",
+      "quote": "Pushbutton 6 will be used to give the computer the instruction: Indicate number in Secondary Storage using Decimal Output rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 step 4; derived from topology: the wiper D16 sits on the minus rail (D16/M-) and D18 is strapped to it (D18/D16); the slide-switch arms 1S-6S are one node (1S/2S ... 5S/6S) tied to D19 (6S/D19), and each LEFT contact nR goes to Dn (nR/Dn); pushbutton 6 N.O. puts + on D17 (6Y/6+, D17/6X), so with it down the motor runs (RUN across D17/D18) until the wiper makes the Dn of a LEFT switch, which joins D19 to D18 through nR-nS: the STOP short, motor and R2 shunted; switch 6 is the only LEFT switch, so the first pad that shorts STOP is D6 (6R/D6, 6S/D19 direct)",
+      "quote": "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 step 4; BK1 printed p.22 = book1.pdf PDF p.24 (RESISTORS) for the breaker; derived from topology: the wiper on D6 holds the STOP short (D19-6S-6R-D6-D16-M-), R1 alone limits the rail current from D17, so the dial rests on 6 with pushbutton 6 held and the breaker holds",
+      "quote": "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output. / The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22 step 4; derived from topology: releasing pushbutton 6 removes + from D17 and the STOP short through switch 6 stays made, so nothing drives the motor and the dial stays on 6, the Decimal Output",
+      "quote": "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 105,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      16,
+      2,
+      6,
+      2,
+      6,
+      2,
+      4,
+      44
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 16 printed wires (no erratum) and the page's rule that pushbutton 6 makes the rotary switch show the number held in the slide switches, not from a printed answer beyond step 3's dial 4. Topology: wiper D16 and D18 on minus; the six slide-switch arms are one node on D19; each LEFT contact nR goes to Dn; pushbutton 6 N.O. feeds + to D17. Pushbutton 6 down gives RUN (D17 +, D18 -); the wiper reaching the Dn of a LEFT switch shorts D19 to D18 (STOP), so the dial rests on the stored number; R1 (D17-D19) limits the rail current, so the breaker holds. Script choices, not printed: switch 2 then switch 6 as step 4's 'another number' (one LEFT switch at a time, so the rest pad does not depend on direction of travel), the 5 s held windows, the 2 s release windows, the 250 ms re-press check, and holding then releasing pushbutton 6 each time. Not asserted: direction of travel, motor speed, the dial start position (construction state), the case of two or more LEFT switches (the first LEFT pad met in the direction of travel wins, a direction-dependent outcome the page's one-number rule does not cover), and the dial with every switch RIGHT (it turns while pushbutton 6 is held and its rest after release depends on the coast fallback O-R5). Lamps and relays are unwired."
+}

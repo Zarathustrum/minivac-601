@@ -1,0 +1,483 @@
+{
+  "topic": "Rotary switch contact angular geometry (pad width vs dead gap) and the motor angular-velocity law under all documented drive conditions",
+  "agent": "gap-rotary-contact-geometry-and-motor-law",
+  "date": "2026-08-30",
+  "scope_note": "MINIVAC 601 only. Book VII (Capacitor/Resistor Manual) is titled 'Minivac 601/6010' on its cover and is copyright 1962; it is cited here as applying to the 601, which its own title asserts. No 6010-only claims are made.",
+  "oracle_rule_compliance": "No emulator source code was opened, fetched, cloned, read or quoted. minivac.greg.technology and any associated repository were not visited. Web work in this pass was limited to search-result summaries about the EXISTENCE of a modern 3D-printed replica (Mike Gardi / Instructables / Thingiverse / Hackaday); no code was read and no replica measurement was imported as a fact about the original.",
+
+  "headline": "The dead gap is PROVEN to exist and to be operationally significant by three independent primary statements (break-before-make; 'momentarily connects'; the errata's documented elevator hang between D6 and D7), but no source gives its angular width. The motor circuit, by contrast, is now FULLY settled: two independent primary schematics (Book I printed p.22 and Maintenance Manual printed p.9) agree that R1 sits between D17 and D19 and that the motor AND R2 both sit between D18 and D19, with D19 as the mid-node. That topology explains every documented drive condition without inventing anything. Resistance values remain unknown; the only speed anchor remains Book V's assumed 45 rpm. A named fallback, the QUARTER-GAP CONTACT MODEL, is proposed with a primary-text argument that narrows the gap fraction to well under 0.5.",
+
+  "sources_read": [
+    "docs/research/raw/pdf/book1.pdf / book1.txt - Book I, sections 7 (ROTARY SWITCH, MOTOR DRIVE, RESISTORS, DECIMAL INPUT-OUTPUT), Experiments 11-14. Printed pp.20-24 (PDF pp.22-26).",
+    "docs/research/raw/pdf/pages/book1/p-22.png - Book I printed p.20, image-read (ROTARY SWITCH + VIEW UNDER PANEL figure).",
+    "scratchpad gap_b1p24-24.png (rendered from book1.pdf PDF p.24) - Book I printed p.22, image-read (MOTOR DRIVE schematic + RESISTORS paragraph).",
+    "docs/research/raw/pdf/book2-3-4.pdf / .txt - Book II printed p.8 (PDF p.14), 'The Binary Nature of Storage'.",
+    "docs/research/raw/pdf/book5-6.pdf / .txt - Book V printed pp.3-14 (Metronome, Traffic Light, Speed Timer, Elevators, Gray-code dialer); Book V printed pp.29-31 (Morse transmitters); Book VI printed pp.52-53 (Combination Lock, Electronic Maze).",
+    "docs/research/raw/pdf/maintenance-manual.pdf / .txt - full document; image-read of printed p.9 (PDF p.11).",
+    "docs/research/raw/pdf/pages/maintenance/p-11.png - Maintenance Manual printed p.9, image-read (Circuit Diagram - Rotary Switch Motor Drive).",
+    "docs/research/raw/pdf/errata.pdf / .txt - full document; image-read crop of PDF p.3 right column (notes to Book V page 11).",
+    "docs/research/raw/pdf/book7-capacitor-resistor.pdf / .txt - printed p.21 (PDF p.26), image-read.",
+    "docs/research/raw/pdf/pages/book7/p-26.png - Book VII printed p.21, image-read (motor-slowing resistor footnote).",
+    "docs/research/raw/find-rotary.json (prior pass, read for not_settled and open items)",
+    "docs/research/raw/verify-rotary.json (prior pass, read for downgrades on rpm and overrun)",
+    "WebSearch: 'Minivac 601 rotary switch under panel wiper contacts photograph restoration'",
+    "WebSearch: '\"Minivac 601\" rotary switch motor rpm speed restoration teardown'",
+    "WebSearch: '\"Minivac 6010\" rotary switch \"revolutions per minute\" OR rpm motor dial specification'",
+    "WebFetch: https://www.rfcafe.com/references/popular-science/scientific-development-minivac-601-popular-science-october-1961.htm",
+    "WebFetch: https://www.instructables.com/Minivac-601-Version-10-Motorized-Rotary-Switch/ (returned title only; no usable content)"
+  ],
+
+  "images_spent": [
+    "pages/maintenance/p-11.png (MM printed p.9) - decisive: settles the R1/R2/motor topology.",
+    "pages/book1/p-22.png (Book I printed p.20) - the VIEW UNDER PANEL figure; establishes that it is schematic and does NOT show pad geometry.",
+    "scratchpad gap_b1p24-24.png (Book I printed p.22) - second, independent drawing of the same motor circuit; confirms MM p.9.",
+    "pages/book7/p-26.png (Book VII printed p.21) - verbatim confirmation of the 15/22/33 ohm motor-slowing footnote and that the resistor goes ACROSS D18-D19.",
+    "scratchpad err_d67-3.png (errata PDF p.3 right column) - verbatim confirmation of the stuck-between-D6-and-D7 note."
+  ],
+
+  "claims": [
+
+    {
+      "id": "G01",
+      "tag": "[verified]",
+      "claim": "The dial has 16 positions, 0 through 15, at EQUAL angular spacing around a full circle. Pitch = 360/16 = 22.5 degrees per position.",
+      "citation": "Book V printed p.7 (book5-6.pdf PDF p.13): 'Since the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution...' The program registers at D15, i.e. 15 positions along, and the manual treats that as exactly 15/16 of a revolution. Corroborated by the dial face in Book I printed p.20 (book1.pdf PDF p.22), which draws 16 equal radial sectors numbered 0-15.",
+      "note": "This is the strongest primary statement that spacing is uniform: SDC's own arithmetic depends on it."
+    },
+
+    {
+      "id": "G02",
+      "tag": "[verified]",
+      "claim": "A dead gap between adjacent contacts exists BY DESIGN. The rotary switch is explicitly a break-before-make (non-shorting) switch.",
+      "citation": "Book I printed p.21 (book1.pdf PDF p.23), Experiment 11 step 3: 'Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as \"break-before-make,\" and thus is similar to the pushbutton switches.'",
+      "simulator_consequence": "contact_at(angle) must be able to return NO contact. It can never return two contacts simultaneously."
+    },
+
+    {
+      "id": "G03",
+      "tag": "[verified]",
+      "claim": "The wiper's connection to any one contact is transient as it sweeps: the manual's word is 'momentarily'.",
+      "citation": "Book I printed p.20 (book1.pdf PDF p.22): 'As the wiper arm and the pointer knob move around the circle of contacts, the wiper arm momentarily connects with each set of contacts on the rotary switch dial in turn.'"
+    },
+
+    {
+      "id": "G04",
+      "tag": "[verified]",
+      "claim": "The wiper can come to rest IN the dead gap and make contact with neither neighbouring terminal, and this is a documented, named failure mode of a shipped SDC program (the Three-Floor Elevator, Book V Experiment 9).",
+      "citation": "Errata sheet 'Notes and Corrections to the Minivac Manual', notes for BOOK V page 11 (errata.pdf PDF p.3, right column), image-verified verbatim: 'Note: It is possible for the \"elevator\" to get stuck at a floor. This happens when the pointer knob stops between adjacent terminals - for example, between D6 and D7 - and is not making proper connection with either. In such case, move the pointer knob so that it is pointing directly at one of the terminals.'",
+      "why_it_is_decisive": "D6 and D7 are not arbitrary: the Experiment 9 program contains the connection D6/D7, strapping them into the single 'floor 2' landing pad. So the wiper can rest in the physical gap BETWEEN two contacts that are electrically the same net, and connect to neither. A dead gap is therefore not a modelling nicety; it is the mechanism of a documented hang.",
+      "simulator_consequence": "The gap must be a first-class state of the rotary model, and the errata hang must be reproducible."
+    },
+
+    {
+      "id": "G05",
+      "tag": "[verified]",
+      "claim": "The same hazard is called out for HAND operation: the operator is told to make sure the knob points directly at a number.",
+      "citation": "Book V printed p.14 (book5-6.pdf PDF p.20), 'To use the program' for the Gray-code dialer: 'Slowly turn the rotary switch dial to the number you wish to \"dial\". (Be sure that the pointer knob is pointing directly at the number.)'",
+      "simulator_consequence": "Hand mode and motor mode share the same continuous-angle contact test. A UI that snaps the knob to detented integers would silently destroy both G04 and G05."
+    },
+
+    {
+      "id": "G06",
+      "tag": "[verified]",
+      "claim": "The angular width of a contact pad, and the angular width of the dead gap, are NOT given anywhere in any primary source. The one figure that purports to show the under-panel assembly is schematic and does not depict pad geometry.",
+      "citation": "Book I printed p.20 (book1.pdf PDF p.22), figure captioned 'VIEW UNDER PANEL', image-read. It draws a plain circle with 16 numbered positions, each rendered as a PAIR OF SMALL DOTS (the two taper-pin holes of the terminal), and a plain rectangular wiper arm labelled 'Wiper Arm Connected to D16'. There are no contact arcs, no pad outlines and no gap shown. The Maintenance Manual describes the contacts only materially ('the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper', printed p.2, PDF p.4) and never dimensionally.",
+      "status": "NOT SETTLED BY THE SOURCES. See the named fallback below."
+    },
+
+    {
+      "id": "G07",
+      "tag": "[verified]",
+      "claim": "In the under-panel view the numbers run counter-clockwise (0 at top, then 1, 2, 3 ... to the LEFT and down), i.e. mirrored relative to the top-panel dial where they run clockwise. This is the geometry a netlist-side implementation must use if it works in under-panel coordinates.",
+      "citation": "Book I printed p.20 (book1.pdf PDF p.22), 'VIEW UNDER PANEL' figure, image-read: 0 at 12 o'clock, 1 at about 11 o'clock, 4 at 9 o'clock, 8 at 6 o'clock, 12 at 3 o'clock. The top-panel dial in the same figure and in the panel photograph runs 0-15 clockwise.",
+      "caution": "This is a coordinate-frame fact only. The externally observable behaviour (pointer sweeps 0,1,2,... clockwise on the panel) is what programs care about. Do not let the mirrored figure flip the simulator's sense."
+    },
+
+    {
+      "id": "M01",
+      "tag": "[verified]",
+      "claim": "MOTOR CIRCUIT TOPOLOGY, settled by two independent primary schematics that agree exactly. There are two resistors. R1 is connected between terminal D17 and terminal D19. The motor is connected between terminal D18 and terminal D19. R2 is connected between terminal D18 and terminal D19, in parallel with the motor. D19 is therefore the mid-node between R1 and the motor.",
+      "citation": "(a) Maintenance Manual printed p.9 (maintenance-manual.pdf PDF p.11), figure 'Circuit Diagram - Rotary Switch Motor Drive', image-read: the D17 rail runs right and down through the right-hand resistor to the bottom rail, which carries D19; the D18 rail runs right and down through the middle resistor to the same bottom rail; the motor symbol sits on a separate vertical stub between the D18 rail and the bottom rail. (b) Book I printed p.22 (book1.pdf PDF p.24), unlabelled figure at the head of section 7 MOTOR DRIVE, image-read: identical topology, terminals labelled 17 / 18 / 19, with 'RUN' spanning 17-18, 'STOP' spanning 18-19, 'Motor' on the left branch and 'Resistors' arrowed to both zigzags.",
+      "consequences": [
+        "RUN (power across D17-D18) puts R1 in series with the parallel combination of the motor and R2. The motor sees a divided voltage.",
+        "STOP (short across D18-D19) shorts the motor and R2 together. Current still flows D17 -> R1 -> the short, limited by R1 alone, which is exactly why Book I says the resistors let you short the STOP terminals 'without over-loading the power supply'.",
+        "Power applied directly across D18-D19 puts the FULL supply on the motor with R1 out of circuit, which is exactly why the Maintenance Manual's diagnostic says the knob 'should turn very rapidly'.",
+        "Any external resistance a program hangs across D18-D19 parallels the motor and reduces its speed, which is exactly what Book VII's optional 15/22/33 ohm connection does."
+      ],
+      "note": "Every documented behaviour of the drive falls out of this one topology. Nothing else needs to be invented."
+    },
+
+    {
+      "id": "M02",
+      "tag": "[verified]",
+      "claim": "The motor is a DC motor and drives the rotary switch through a FRICTION drive, not a gear train or a positive coupling.",
+      "citation": "Book I printed p.22 (book1.pdf PDF p.24), image-read: 'A DC motor turns the rotary switch through a friction drive.' Maintenance Manual printed p.10 (maintenance-manual.pdf PDF p.12): '5. To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel.' Spare parts list, printed p.11: part 6471 Motor $4.00, 6472 Drive Wheel Assembly $2.00, 6473 Complete Rotary Switch Assembly $20.00.",
+      "simulator_consequence": "The coupling can slip. The operator can turn or hold the dial against a running motor without stalling or damaging anything, and there is no positive index between motor position and dial position."
+    },
+
+    {
+      "id": "M03",
+      "tag": "[verified]",
+      "claim": "The operator is explicitly instructed to retard the dial by hand while the motor is running, as an ordinary operating technique.",
+      "citation": "Errata sheet, notes for BOOK V page 31 (errata.pdf PDF p.4): 'Note - Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.'",
+      "simulator_consequence": "A hand-drag interaction must be able to co-exist with the motor drive, slowing or overriding it, without a stall state."
+    },
+
+    {
+      "id": "M04",
+      "tag": "[verified]",
+      "claim": "Rotation reverses when the RUN polarity reverses.",
+      "citation": "Maintenance Manual printed p.9 (PDF p.11): 'Check the motor drive by connecting power to the RUN terminals (D17 and D18). Turn power on. The rotary switch pointer knob should turn. Reverse the power connections: the pointer knob should turn in the opposite direction.' Book I printed p.24, Experiment 14 'MOTOR REVERSING': 'This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.'"
+    },
+
+    {
+      "id": "M05",
+      "tag": "[verified]",
+      "claim": "The motor is run far below its rating in normal service. 'The drive motor is operated at less than one-third rated voltage.'",
+      "citation": "Maintenance Manual printed p.2 (maintenance-manual.pdf PDF p.4), 'Adjustment and Repair'.",
+      "note": "Same paragraph: 'The power supply is rated at 1.5 amps continuous with a nominal 12 volts output.' And printed p.3 step 3: 'The unloaded power supply outlet voltage should be approximately 13 volts.'"
+    },
+
+    {
+      "id": "M06",
+      "tag": "[verified]",
+      "claim": "An external resistor placed ACROSS the STOP terminals D18-D19 slows the motor, and SDC's own suggested values are 15, 22 or 33 ohms.",
+      "citation": "Book VII, 'Minivac 601/6010 Capacitor/Resistor Manual' (c) 1962, printed p.21 (book7-capacitor-resistor.pdf PDF p.26), image-read. The optional program connection is written as the pair (D18/Omega) (Omega/D19), flagged with an asterisk, and the footnote reads: '* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.'",
+      "why_it_matters": "It independently confirms M01. A resistor across D18-D19 can only slow the motor if the motor is directly across D18-D19 and there is a series element (R1) upstream. It also gives the only quantitative handle anywhere on the resistance scale of the drive network."
+    },
+
+    {
+      "id": "M07",
+      "tag": "[verified]",
+      "claim": "The resistors get hot under sustained direct power. 'Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds. If a resistor does not heat up, it is defective.'",
+      "citation": "Maintenance Manual printed p.10 (maintenance-manual.pdf PDF p.12), step 3."
+    },
+
+    {
+      "id": "M08",
+      "tag": "[verified]",
+      "claim": "The knob-to-wiper angular relationship is a loose, adjustable, per-unit quantity, set by a service procedure that uses a lamp to find the contact window.",
+      "citation": "Maintenance Manual printed p.2 (maintenance-manual.pdf PDF p.4): 'Remove the pointer knob of the rotary switch and put two or three drops of oil on the bearing... Replace the pointer knob and realign it by connecting a light through one of the switch contacts on the rotary switch dial. Adjust the position of the knob on the shaft so the light comes on when the knob is pointing at the connected switch position.' Also printed p.10: 'Check the knob alignment to be sure that the knob has not turned on the drive shaft.'",
+      "simulator_consequence": "Expose a wiper_offset_deg parameter, default 0. It is the one parameter the original hardware itself treated as adjustable and drifting."
+    },
+
+    {
+      "id": "M09",
+      "tag": "[verified]",
+      "claim": "D16 is the wiper arm's own terminal; D0-D15 are the fixed contacts.",
+      "citation": "Maintenance Manual printed p.10 (PDF p.12): 'Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, DO through D15' (OCR 'DO' = D0). Book I printed p.20: 'The contact on the wiper arm is referred to as \"D16.\"'"
+    },
+
+    {
+      "id": "S01",
+      "tag": "[verified]",
+      "claim": "Contacts are made SEQUENTIALLY. There is no legal jump-to-destination optimisation, under motor drive or under hand.",
+      "citation": "Book I printed p.22 (book1.pdf PDF p.24), image-read: 'The rotary switch connections are made sequentially whether the pointer is turned by hand or driven by the motor.'",
+      "corroboration": "Book VI printed p.52, The Combination Lock: the optional connection 'D8/6E*' with the footnote '* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point,' plus 'When you are designing a combination, you must not include any connection which will touch off a connection further along.' The Combination Lock is entirely hand-driven (D16/M+, no D17/D18/D19 wiring), so the sequential rule must hold for hand motion too."
+    },
+
+    {
+      "id": "S02",
+      "tag": "[verified]",
+      "claim": "The only numeric speed figure anywhere in the corpus is an ASSUMED example, and SDC tells the owner to measure his own unit rather than supplying a specification.",
+      "citation": "Book V printed p.7 (book5-6.pdf PDF p.13), Experiment 6, the Automobile Speed Timer. Step 3 of the dial-plate procedure: 'Count the number of complete revolutions which your rotary switch makes in one minute and note this number.' Worked example: 'For example: assume that the checkpoints are 50 yards apart, and that the rotary switch turns 45 full revolutions per minute.'",
+      "derivation": "45 rev/min = 0.75 rev/s = 12 contact positions per second = 83.33 ms per 22.5-degree pitch.",
+      "trap_restated": "The 48 on the same page is NOT a dial speed. It is 45 x 16/15, the rate at which the PROGRAM registers revolutions, because the program's count fires at D15 which is 15/16 of the way round. Do not import 48 as an rpm. (This upholds verify-rotary's correction of find-rotary D07.)",
+      "further": "Step 3's instruction to count your own unit's revolutions is itself evidence that SDC expected unit-to-unit variation and did not consider the speed a specified constant."
+    },
+
+    {
+      "id": "S03",
+      "tag": "[verified]",
+      "claim": "The Book II sentence 'the rotary switch system requires more than a second to go from zero to nine' is about a HUMAN setting a decimal dial versus a human pressing a binary button. It is not a motor speed.",
+      "citation": "Book II printed p.8 (book2-3-4.pdf PDF p.14), section 'The Binary Nature of Storage': '...Using the rotary switch mechanism involves many different physical positions which must be communicated by the switching system to the computer. The mechanism used to do this involves physical motion and several moving parts. In addition, the rotary switch system requires more than a second to go from zero to nine. In contrast to the decimal system, the binary input button involves only one moving part and, since it has only two physical positions, is simpler in construction and can be moved from one position to another in a fraction of a second.'",
+      "note": "Recorded here only to keep the next agent from resurrecting it as an rpm bound. (This upholds verify-rotary's downgrade.) For the record, if it WERE read as a motor figure it would imply under 33.75 rpm; it should not be so read."
+    },
+
+    {
+      "id": "S04",
+      "tag": "[likely]",
+      "claim": "Under a steady applied voltage the dial turns at a constant angular velocity. Elapsed time is proportional to the number of contact positions traversed.",
+      "citation_and_argument": "Two shipped programs are built on this and say so. (a) Book V printed p.4, Experiment 4 Traffic Light: the program straps D1-D6 to light 6, D7-D10 to light 5, and D11,D12,D13,D14,D15,D0 to light 4, and the text says 'The length of time any given light remains on may be varied by changing the connections on the rotary switch.' With uniform 22.5-degree spacing (G01), that statement is only true if angular velocity is constant. (b) Book V printed p.3, Experiment 3 Metronome: 'only four periods can be produced using the positions of slide switches 4 and 5 to determine the period,' with the four selected turn-round contacts being D3, D5, D7 and D9 against a fixed D1 (program lines 4R/D3, 4T/D5, 4U/D7, 4W/D9, 6G/D1). The four periods correspond to arcs of 2, 4, 6 and 8 positions; a metronome only works if period scales with arc.",
+      "tag_reason": "No source states 'constant speed' in words. This is an inference from two program descriptions, so it is tagged down."
+    },
+
+    {
+      "id": "S05",
+      "tag": "[verified]",
+      "claim": "A momentary contact is sufficient to drive latching logic. Programs are designed around pulses from the wiper, not around dwell.",
+      "citation": "Book V printed p.3, Metronome: 'Turn power on. The rotary switch dial will begin to turn back and forth, generating a periodic signal.' The reversal at each end is triggered by the wiper touching a single contact (D1 at one end, one of D3/D5/D7/D9 at the other) and is held by a relay latch (6J/6K, 6E/D16). Book I printed p.23, Experiment 13: 'As the pointer knob turns, light 5 and light 6 flash ON in sequence... First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch.'",
+      "simulator_consequence": "Contact events must be delivered as edges into the relay solver, at whatever timestep resolution the netlist runs. A single-contact pulse of tens of milliseconds must be able to pick and latch a relay."
+    },
+
+    {
+      "id": "S06",
+      "tag": "[verified]",
+      "claim": "By contrast, LEVEL-sensing programs widen their landing pad by strapping ADJACENT contacts together, and the three-floor elevator does exactly this: floor 1 = D0-D1, floor 2 = D6-D7, floor 3 = D12-D13.",
+      "citation": "Book V printed p.11 (book5-6.pdf PDF p.17), Experiment 9, the table 'Floor 1 / pushbutton 1 / output light 1 / D0-D1; Floor 2 / pushbutton 2 / output light 2 / D6-D7; Floor 3 / pushbutton 3 / output light 3 / D12-D13', and the program lines D0/D1, D6/D7, D12/D13.",
+      "why_it_matters": "This is the designer's own mitigation for the stopping problem: two pitches of landing instead of one. The errata (G04) records that even a two-contact pad is not always enough. Together they bracket the coast: the coast can exceed one pad but the design expected it to usually fall inside two."
+    },
+
+    {
+      "id": "C01",
+      "tag": "[unverified]",
+      "claim": "COAST / OVERRUN IS REAL: after the drive is removed the wiper continues to travel a non-zero angle before stopping. This is the most economical explanation of the errata's documented hang, and I believe it is the intended reading, but no source uses the words coast, overrun, momentum or inertia.",
+      "argument": "The Three-Floor Elevator's own step list (Book V printed p.11) says: '8. When it reaches the stored destination, the \"elevator\" will stop and clear the destination from its memory.' Arrival is sensed by the wiper touching the strapped destination pad (2E/D7 for floor 2, 1E/D1 for floor 1, 3E/D13 for floor 3). If the wiper stopped dead the instant it made contact, it would by construction always stop ON a contact and could never rest between D6 and D7. The errata says it can. Therefore the wiper travels some distance after arrival is sensed and the drive is cut. The errata's own wording supports this reading: the elevator gets 'stuck AT A FLOOR' and the knob 'STOPS between adjacent terminals' - the machine puts it there, not the operator.",
+      "competing_reading_recorded_honestly": "Experiment 9's setup instruction is 'Set the \"elevator\" at the first floor by setting the pointer knob at D0', so an operator CAN park the knob in a gap by hand at setup and produce the same symptom. The errata note does not distinguish the two. If the hand reading is the whole story, no coast is needed. I judge the machine reading more likely because the note is filed under 'get stuck at a floor' rather than under the setup instruction, and because the errata immediately preceding it is a separate correction to the Experiment 8 setup instruction - SDC clearly distinguished setup problems from run-time problems.",
+      "tag_reason": "Inference from a primary text, not a primary statement. Tagged down per the project rule. This is a strictly better-supported version of the argument than find-rotary's X02 (which appealed to the Philosophic Tug of War and was correctly demolished by verify-rotary); the elevator argument does not depend on any claim about operator timing."
+    },
+
+    {
+      "id": "C02",
+      "tag": "[unverified]",
+      "claim": "Two distinct braking regimes follow from the verified topology M01, and they should produce different coast distances. (a) STOP shorted: the motor armature is DEAD SHORTED, giving maximum dynamic braking and a short coast. (b) RUN de-energised with nothing across STOP: the armature is not open, it is loaded by R2, which is permanently across D18-D19. So even 'power off' is a braked stop, not a free coast - but a weaker one than (a).",
+      "basis": "Standard permanent-magnet DC machine behaviour applied to the verified circuit. No source discusses it.",
+      "simulator_consequence": "Two separate coast parameters, not one. The elevator hang (C01) happens in regime (b), because the elevator's arrival logic clears the stored destination and thus drops the RUN drive; the shorted-STOP regime (a) is used by the pushbutton stop in Book I Experiment 12."
+    },
+
+    {
+      "id": "C03",
+      "tag": "[unverified]",
+      "claim": "SPEED RATIO ESTIMATE: applying power directly across the STOP terminals should give roughly 3x the normal RUN speed.",
+      "argument": "M05 says the motor normally runs at 'less than one-third rated voltage'. Putting the supply directly across D18-D19 removes R1 from the circuit and applies the full supply to the motor. If 'rated' means the nominal 12 V supply, the normal RUN voltage is under 4 V and the direct-drive voltage is ~13 V unloaded, a ratio of a bit over 3. For a PMDC motor at light load, speed tracks applied voltage nearly linearly, so speed ratio ~3x. The Maintenance Manual's qualitative word for this is 'very rapidly'.",
+      "citation_for_the_qualitative_part": "Maintenance Manual printed p.9 (PDF p.11): 'If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly.' [that sentence alone is verified]",
+      "caveat": "'Rated voltage' may refer to the motor's own rating, which is unknown and need not be 12 V. The 3x is an estimate, not a measurement."
+    },
+
+    {
+      "id": "C04",
+      "tag": "[unverified]",
+      "claim": "RESISTANCE SCALE ESTIMATE: R1 is plausibly in the low tens of ohms, and R2 in parallel with the motor's effective running resistance is plausibly of the same order.",
+      "argument": "Three independent squeezes, none conclusive. (1) Book VII (M06) says adding 15, 22 or 33 ohms in parallel with the motor 'decreases the speed of the motor' by a useful amount; for that to be true the existing parallel branch must be within an order of magnitude of those values, so R2 || R_motor is roughly tens of ohms. (2) With STOP shorted, the entire load on the supply is R1, and the supply is 'rated at 1.5 amps continuous with a nominal 12 volts output' (M05); a sustained short must not exceed that, so R1 >= 13/1.5 ~ 8.7 ohms, and prudently more. (3) The resistors 'should heat up in about 20 seconds' at ~13 V direct (M07); for R in 20-50 ohms that is 3.4-8.5 W into a small resistor, which warms it in about that time. Together these bracket R1 loosely at roughly 15-50 ohms. Combining with M05's under-one-third-voltage divider ratio gives R1 ~ 2 x (R2 || R_motor).",
+      "status": "Estimate only. The exact values remain unknown and would need a surviving unit or an SDC parts drawing.",
+      "simulator_consequence": "Do NOT derive the RUN speed from a divider using invented resistances. Model the RUN speed as a directly configured parameter and model the resistance network only where a program varies it (M06)."
+    },
+
+    {
+      "id": "GF01",
+      "tag": "[unverified]",
+      "claim": "GAP FRACTION IS BOUNDED WELL BELOW 0.5 BY A PRIMARY TEXT. The dead gap is a minority of the pitch, not half of it.",
+      "argument": "Two shipped Morse programs and one errata note constrain it. (i) Book V printed p.31, Experiment 18, Automatic Transmission with Differential Spacing: the SOS program straps runs of adjacent contacts (program lines D1/D2, D2/D3, D3/D6, D6/D7, D7/D8, D8/D11, D11/D12, D12/D13) and the text says 'Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot.' A dash is a run of adjacent strapped contacts read as ONE longer mark. If the gap were a large fraction of the pitch, a dash would be seen as a stutter of separate flashes, not as one longer mark. (ii) The errata for Book V page 31 says of the three dots: 'The three successive dots may be so rapid and so close together that they are almost indistinguishable.' Three dots are three separate single contacts, separated by exactly two dead gaps. SDC describes those gaps as making the dots 'almost indistinguishable' - i.e. the dark interval is short relative to the lit interval, but not zero. (iii) A 0.5 gap fraction at the Book V example speed would give 42 ms on, 42 ms off - a clean 12 Hz square wave that no one would describe as 'almost indistinguishable'.",
+      "quantitative_check_of_the_proposed_default": "At 45 rpm (83.33 ms per pitch) with a 0.25 gap fraction: each dot is lit for 62.5 ms and dark for 20.8 ms between dots. That is 'very briefly' and 'almost indistinguishable', and a three-contact dash reads as ~229 ms of nearly continuous light with two shallow 21 ms dips that a warm lamp filament partly fills in. The proposed default reproduces the errata's described perception; 0.5 does not.",
+      "tag_reason": "The manual's words are primary; the numeric conversion into a gap fraction is my inference."
+    },
+
+    {
+      "id": "GF02",
+      "tag": "[unverified]",
+      "claim": "GAP FRACTION IS BOUNDED AWAY FROM ZERO. It is wide enough that landing in it is a common enough event to be worth a printed erratum, and wide enough that knob alignment on the shaft is a checkable service adjustment.",
+      "argument": "(i) SDC printed a correction note about the elevator hang (G04). A gap of a few percent of the pitch would make that a rare curiosity, not something owners wrote in about. (ii) The realignment procedure (M08) tells the owner to adjust the knob on the shaft until the lamp comes on with the knob pointing at the connected position. That procedure only has resolution if the ON window is meaningfully narrower than the full pitch; with a near-zero gap, almost any knob position would pass. A 0.25 gap gives an ON half-window of about 8.4 degrees, which is a sane eyeball tolerance for a consumer product.",
+      "tag_reason": "Engineering inference from primary procedures, not a primary measurement."
+    },
+
+    {
+      "id": "GF03",
+      "tag": "[verified]",
+      "claim": "GEOMETRIC CONSTRAINT ON ANY MODEL WITH A FINITE-WIDTH WIPER: break-before-make (G02) requires that the wiper's contact face be narrower than the pad-to-pad gap. If the wiper face has angular width w and the pads have width c with pitch 22.5 = c + g, then break-before-make holds if and only if w < g, and the resulting electrical ON window per position is c + w.",
+      "citation": "Derived directly from G02 (Book I printed p.21) and G01. The geometry is arithmetic, not an assumption.",
+      "simulator_consequence": "Modelling the wiper as a POINT (w = 0) and the pad as an arc of width c is a strictly simpler equivalent formulation, and it is the one recommended below. The single free parameter is then the ON arc, and the gap is 22.5 minus it."
+    }
+  ],
+
+  "the_four_plus_documented_drive_conditions": {
+    "note": "The task named four. The sources actually document six distinct conditions plus a hand mode. All are listed; the four core ones are marked CORE.",
+    "conditions": [
+      {
+        "id": "D1",
+        "name": "RUN energised, normal polarity (CORE)",
+        "wiring": "power across D17 (+) and D18 (-)",
+        "circuit": "supply -> R1 -> D19 -> (motor || R2) -> D18",
+        "documented_behaviour": "'Power must be supplied to terminals 17 and 18 (run) to operate the motor drive.' Book I printed p.22. 'Turn power on. The rotary switch pointer knob should turn.' MM printed p.9.",
+        "velocity_law": "omega -> +omega_run, constant (S04). The direction that increases dial number as seen on the panel.",
+        "tag": "[verified] for the behaviour; the constancy is [likely]"
+      },
+      {
+        "id": "D2",
+        "name": "RUN energised, reversed polarity (CORE)",
+        "wiring": "power across D17 (-) and D18 (+)",
+        "documented_behaviour": "'Reverse the power connections: the pointer knob should turn in the opposite direction.' MM printed p.9. Book I Experiment 14 wires this through two sets of slide-switch contacts.",
+        "velocity_law": "omega -> -omega_run, same magnitude.",
+        "tag": "[verified]"
+      },
+      {
+        "id": "D3",
+        "name": "STOP shorted while RUN is still energised (CORE)",
+        "wiring": "short across D18 and D19",
+        "circuit": "motor and R2 both shorted; supply current flows D17 -> R1 -> short, limited by R1",
+        "documented_behaviour": "'A short circuit may be connected across terminals 18 and 19 (stop) to halt the motor drive.' Book I printed p.22. 'The motor stops when pushbutton 6 is pushed because a short circuit is created across the STOP terminals (D18 and D19). Current flows through pushbutton 6 instead of through the motor.' Book I printed p.23, Experiment 12. 'The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.' Book I printed p.22.",
+        "velocity_law": "omega -> 0. The armature is dead-shorted, so this is the HARD brake: shortest coast.",
+        "tag": "[verified] for the stop; the dead-short braking mechanism and the short coast are [unverified]"
+      },
+      {
+        "id": "D4",
+        "name": "RUN de-energised (CORE)",
+        "wiring": "no power at D17/D18; R2 still sits across the motor",
+        "documented_behaviour": "'Release pushbutton 5. The motor drive again stops, this time because power is no longer connected to the motor circuit.' Book I printed p.23, Experiment 12, step 5.",
+        "velocity_law": "omega -> 0, but braked only through R2 (C02), so a LONGER coast than D3. This is the regime in which the elevator hang occurs.",
+        "tag": "[verified] for the stop; the R2 loading and the longer coast are [unverified]"
+      },
+      {
+        "id": "D5",
+        "name": "Power applied directly across the STOP terminals (diagnostic)",
+        "wiring": "power across D18 and D19, R1 out of circuit",
+        "documented_behaviour": "'If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly.' MM printed p.9.",
+        "velocity_law": "omega -> omega_fast, estimated ~3x omega_run (C03).",
+        "tag": "[verified] qualitatively; the 3x is [unverified]"
+      },
+      {
+        "id": "D6",
+        "name": "External resistance across the STOP terminals (program-controlled slow speed)",
+        "wiring": "15, 22 or 33 ohms across D18 and D19, in parallel with the motor and R2",
+        "documented_behaviour": "'* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.' Book VII printed p.21.",
+        "velocity_law": "omega scales down continuously with the shunt: V_motor = V_supply * Rp/(R1+Rp) where Rp = R2 || R_ext || R_motor.",
+        "tag": "[verified]"
+      },
+      {
+        "id": "D7",
+        "name": "Hand operation, including retarding a running motor",
+        "wiring": "any; the friction drive slips",
+        "documented_behaviour": "'The rotary switch may be positioned either by hand or by the motor drive.' Book I printed p.22. 'To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.' Errata, Book V page 31. 'Note - always turn the pointer knob clockwise when indicating a letter for coding.' Errata, Book V page 33.",
+        "velocity_law": "Operator-imposed. Contacts still fire sequentially (S01). No stall, no damage, because of the friction drive (M02).",
+        "tag": "[verified]"
+      }
+    ]
+  },
+
+  "named_fallback": {
+    "name": "QUARTER-GAP CONTACT MODEL",
+    "one_line": "16 pads at 22.5-degree pitch; each pad is an arc 16.875 degrees wide (0.75 of pitch) centred on its nominal angle; the dead gap between pads is 5.625 degrees (0.25 of pitch); the wiper is a point.",
+    "why_this_and_not_something_else": [
+      "The pitch, 22.5 degrees, is [verified] (G01). Only the split between pad and gap is free.",
+      "Gap must be > 0: break-before-make is stated outright (G02), the wiper 'momentarily' connects (G03), and the errata documents a rest position in the gap (G04).",
+      "Gap must be well under 0.5: SDC describes a strapped run of adjacent contacts as ONE longer Morse mark, and describes three single-contact dots as 'almost indistinguishable' (GF01). Half-and-half would read as a clean square wave, which contradicts both descriptions.",
+      "Gap must not be tiny: SDC printed an erratum about landing in it, and the field realignment procedure needs the ON window to be narrower than the pitch to have any resolution (GF02).",
+      "0.25 is the round number in the middle of that band, and it is also the classic proportion for a mid-century 16-position non-shorting rotary wafer switch.",
+      "It reproduces the errata's own perceptual description at the Book V example speed: 62.5 ms lit, 20.8 ms dark between successive dots."
+    ],
+    "exact_interface": {
+      "signature": "contact_at(theta_deg) -> Optional[int]",
+      "parameters": [
+        "pitch_deg = 22.5  (derived, not tunable)",
+        "contact_arc_deg = 16.875  (TUNABLE; the one free parameter. Equivalent to gap_fraction = 0.25)",
+        "wiper_offset_deg = 0.0  (TUNABLE; models the knob-on-shaft alignment of M08)"
+      ],
+      "algorithm": "phi = normalise(theta_deg - wiper_offset_deg); k = round(phi / 22.5) mod 16; delta = angular_difference(phi, k * 22.5); return k if abs(delta) <= contact_arc_deg / 2 else None",
+      "invariants": [
+        "Never returns two contacts. Break-before-make is structural, not a special case.",
+        "Returns None on exactly 25% of the circle by default.",
+        "The sweep must be integrated, not jumped: every intermediate pad between the old and new angle must be visited in order, with its own make and break edges. No jump-to-destination is legal (S01)."
+      ]
+    },
+    "motor_law": {
+      "form": "First-order. omega_dot = (omega_target - omega) / tau, with omega_target set by the drive condition table above and tau set by the braking regime.",
+      "defaults": [
+        "run_rpm = 45.0  (TUNABLE; Book V's assumed example, S02. Framed in the code comment as an ASSUMPTION, never as a specification.)",
+        "fast_rpm = 135.0  (TUNABLE; 3 x run_rpm, from C03. Only reachable by wiring power across D18-D19.)",
+        "coast_deg_drive_removed = 10.0  (TUNABLE; regime D4/C02. Chosen so the DEFAULT build does not hang: entering a pad at its leading edge and coasting 10 degrees leaves the wiper inside the same 16.875-degree pad.)",
+        "coast_deg_stop_shorted = 2.5  (TUNABLE; regime D3, the hard brake.)",
+        "spin_up_tau_ms = 40.0  (TUNABLE; pure engineering choice, no source.)"
+      ],
+      "reasoning_for_the_coast_defaults": "Take the floor-2 pad of the Three-Floor Elevator. D6's pad spans 126.56 to 143.44 degrees, the gap runs 143.44 to 148.13, D7's pad spans 148.13 to 165.00. Arriving from D5 the drive is cut at 126.56. A coast under 16.88 degrees rests on D6 (safe). A coast between 16.88 and 21.56 rests in the gap (HANG). A coast between 21.56 and 38.44 rests on D7 (safe). Above 38.44 it overshoots the floor entirely, which no source describes. The default of 10 degrees is comfortably safe; the hang is a 4.7-degree-wide window inside a 38-degree span, which is exactly the 'it is possible' frequency the errata implies.",
+      "unresolved_by_design": "The coast values are not derivable from any source. They are exposed precisely so the errata's failure can be dialled in as a test rather than asserted as physics."
+    },
+    "regression_case_required_by_this_finding": {
+      "name": "errata_elevator_hangs_between_D6_and_D7",
+      "setup": "Load the Book V Experiment 9 Three-Floor Elevator program (book5-6.pdf printed p.11) with the errata applied: 4G/4H -> 4G/5H and D16/M- -> D16/M+. Set coast_deg_drive_removed = 19.0 (inside the hang window). Park the pointer at D0, power on, verify output light 1 lit. Push pushbutton 2.",
+      "expected": "The dial sweeps D1..D6 firing every intermediate contact in order, arrival is sensed at D6, the destination clears, the drive drops, the wiper coasts 19 degrees and comes to rest at 145.6 degrees - in the dead gap between D6 and D7. contact_at returns None. Output light 2 does NOT light. No floor indicator is lit. Subsequent pushbutton presses do nothing, because the system cannot determine where it is. The machine is HUNG, exactly as the errata describes.",
+      "then_assert_the_errata_remedy": "Programmatically move the knob to D6 or D7 ('move the pointer knob so that it is pointing directly at one of the terminals'). Output light 2 lights and pushbuttons respond again.",
+      "and_the_default_must_pass_too": "With coast_deg_drive_removed at its default 10.0, the same scenario must NOT hang: the wiper rests on D6 and light 2 lights.",
+      "why_this_test_earns_its_keep": "It is the only test in the corpus that exercises the gap parameter at all. If someone later flattens contact_at to a snap-to-integer, this test fails, which is the whole point."
+    },
+    "what_would_overturn_this_fallback": [
+      "An under-panel photograph of an original SDC 6473 rotary switch assembly showing the fixed contact ring. Measuring pad arc against gap arc off such a photograph settles contact_arc_deg outright and would also settle whether the wiper is a single finger or bifurcated, and how D16 is taken off (slip ring versus concentric collector ring).",
+      "A physical measurement of a surviving 6473 with a protractor or an ohmmeter and a marked dial: rotate slowly, record the make and break angles for one position.",
+      "A timed video of an original unit running the Book V Traffic Light or Experiment 13, at a known frame rate. Counting frames per revolution settles the real rpm; counting the dark frames between two adjacent strapped contacts settles the gap fraction directly.",
+      "A video of an original executing the three-floor elevator, showing how far past the arrival contact the pointer actually travels. That settles both coast parameters.",
+      "An SDC engineering drawing, parts drawing or supplier data sheet for part 6471 (Motor) or 6473 (Complete Rotary Switch Assembly). That would settle R1, R2, the motor rating and the drive-wheel reduction in one document.",
+      "Any second-edition Minivac manual. The errata sheet ends 'Scientific Development Corporation is preparing for a second edition of the MINIVAC Manual' (signed Linda G. Sprague, Editor). A second edition might state the speed or fix the elevator properly."
+    ]
+  },
+
+  "verbatim_primary_quotes": {
+    "book1_p20_wiper": "The rotary switch, labeled \"Decimal Input-Output,\" may be manually rotated or motor driven. Connected directly with the pointer knob there is a wiper arm underneath the computer panel. As the wiper arm and the pointer knob move around the circle of contacts, the wiper arm momentarily connects with each set of contacts on the rotary switch dial in turn.",
+    "book1_p20_d16": "The wiper arm rotates with the pointer knob and makes an electrical connection with each set of contacts in turn around the rotary switch dial (see the following illustration). The contacts are designated by: D = Decimal Input-Output, 8 = terminal number (1 to 19) ... for example D8. The contact on the wiper arm is referred to as \"D16.\" For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.",
+    "book1_p21_break_before_make": "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON. Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as \"break-before-make,\" and thus is similar to the pushbutton switches.",
+    "book1_p22_motor_drive": "The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive. The rotary switch connections are made sequentially whether the pointer is turned by hand or driven by the motor.",
+    "book1_p22_terminals": "Terminals 17, 18 and 19 are located on the panel just to the left of the pointer knob and rotary switch terminals. Power must be supplied to terminals 17 and 18 (run) to operate the motor drive. A short circuit may be connected across terminals 18 and 19 (stop) to halt the motor drive.",
+    "book1_p22_resistors": "The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil. The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.",
+    "book1_p23_exp12": "Turn the power ON. Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate. While holding pushbutton 5 down, push pushbutton 6. The motor stops when pushbutton 6 is pushed because a short circuit is created across the STOP terminals (D18 and D19). Current flows through pushbutton 6 instead of through the motor. While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed. Release pushbutton 5. The motor drive again stops, this time because power is no longer connected to the motor circuit.",
+    "book2_p8_decimal_vs_binary": "Using the rotary switch mechanism involves many different physical positions which must be communicated by the switching system to the computer. The mechanism used to do this involves physical motion and several moving parts. In addition, the rotary switch system requires more than a second to go from zero to nine. In contrast to the decimal system, the binary input button involves only one moving part and, since it has only two physical positions, is simpler in construction and can be moved from one position to another in a fraction of a second.",
+    "book5_p3_metronome": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal. Commercial metronomes can produce signals with a wide range of periods; with this circuit, however, only four periods can be produced using the positions of slide switches 4 and 5 to determine the period. Through an appropriate circuit, the MINIVAC is capable of generating 15 different periods.",
+    "book5_p4_traffic_light": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. Light 4 represents \"red\", light 5 represents \"amber\", and light 6 represents \"green\". The length of time any given light remains on may be varied by changing the connections on the rotary switch.",
+    "book5_p7_speed_timer_step3": "Count the number of complete revolutions which your rotary switch makes in one minute and note this number. Since the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution, we must multiply the number of complete revolutions in a minute by 16/15 to obtain a \"revolutions per minute\" figure for the dial plate.",
+    "book5_p7_speed_timer_example": "For example: assume that the checkpoints are 50 yards apart, and that the rotary switch turns 45 full revolutions per minute.",
+    "book5_p11_elevator_step8": "8. When it reaches the stored destination, the \"elevator\" will stop and clear the destination from its memory.",
+    "book5_p11_elevator_floors": "Floor 1 / call button pushbutton 1 / indicator light output light 1 / D0-D1 ; Floor 2 / pushbutton 2 / output light 2 / D6-D7 ; Floor 3 / pushbutton 3 / output light 3 / D12-D13",
+    "book5_p14_dial_directly": "Slowly turn the rotary switch dial to the number you wish to \"dial\". (Be sure that the pointer knob is pointing directly at the number.)",
+    "book5_p31_sos": "Turn power on. The system will immediately begin transmitting \"SOS\". Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off.",
+    "book6_p52_combination_lock_trap": "* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point.",
+    "book6_p52_combination_lock_design_rule": "When you are designing a combination, you must not include any connection which will touch off a connection further along. Also, you must make connections to each of the six common terminals in order.",
+    "book7_p21_slow_resistor": "* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.",
+    "mm_p2_materials_and_ratings": "The power supply is rated at 1.5 amps continuous with a nominal 12 volts output. All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps. To provide low contact resistance, the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper; the drive shaft is made of stainless steel running in an oil-impregnated bronze bearing. The drive motor is operated at less than one-third rated voltage.",
+    "mm_p2_realign": "Remove the pointer knob of the rotary switch and put two or three drops of oil on the bearing. Work the oil into the bearing by turning the shaft back and forth a few times. Replace the pointer knob and realign it by connecting a light through one of the switch contacts on the rotary switch dial. Adjust the position of the knob on the shaft so the light comes on when the knob is pointing at the connected switch position.",
+    "mm_p9_motor_check": "Check the motor drive by connecting power to the RUN terminals (D17 and D18). Turn power on. The rotary switch pointer knob should turn. Reverse the power connections: the pointer knob should turn in the opposite direction. Connect a short circuit across the STOP terminals (D18 and D19): the pointer knob should stop turning. If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly. If the knob does turn, the trouble may be a bad connection or an open resistor. If the knob does not turn, the trouble may be a bad connection or a defective motor. It is also possible that the motor shaft is not properly engaging the drive wheel.",
+    "mm_p10_rotary_check": "Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, D0 through D15. Check the knob alignment to be sure that the knob has not turned on the drive shaft. If proper contacts are not being made, check the assembly under the panel: the rotary switch contacts may require cleaning.",
+    "mm_p10_mechanism": "The rotary switch mechanism is accessible when the bottom panel of the computer is removed. If the motor does not turn the rotary switch: 1. Check all electrical connections. 2. Check the drive wheel to be sure that it is free to rotate. 3. Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds. If a resistor does not heat up, it is defective. Replace a defective resistor by cutting its leads and soldering a new unit of the same resistance in place. 4. Check the motor by unsoldering the motor leads and connecting them directly to the power terminals. If the motor does not rotate it is defective and must be replaced with a new unit. 5. To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel.",
+    "mm_p11_spare_parts_rotary": "6471 Motor 4.00 ; 6472 Drive Wheel Assembly 2.00 ; 6473 Complete Rotary Switch Assembly 20.00",
+    "errata_elevator_hang": "Note: It is possible for the \"elevator\" to get stuck at a floor. This happens when the pointer knob stops between adjacent terminals - for example, between D6 and D7 - and is not making proper connection with either. In such case, move the pointer knob so that it is pointing directly at one of the terminals.",
+    "errata_slow_by_hand": "Note - Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+    "errata_clockwise": "Note to Experiment 19 - always turn the pointer knob clockwise when indicating a letter for coding.",
+    "errata_slow_operation_general": "Also, try carrying out the procedure slowly; some programs are not designed for high-speed operation."
+  },
+
+  "simulator_spec_summary": {
+    "rotary_geometry": [
+      "16 positions, pitch 22.5 degrees, equally spaced. [verified]",
+      "Contact model: point wiper, pad arcs. contact_arc_deg default 16.875 (gap fraction 0.25), TUNABLE. [unverified default, bounded argument]",
+      "contact_at(theta) returns exactly one contact index or None. Never two. [verified requirement]",
+      "wiper_offset_deg parameter, default 0, models the knob-on-shaft alignment the Maintenance Manual treats as adjustable. [verified that the adjustment exists]",
+      "The sweep is integrated, not jumped. Every intermediate contact between old and new angle fires in order, with make and break edges, under motor drive AND under hand drag. [verified]"
+    ],
+    "electrical_model": [
+      "Three drive terminals: D17, D18, D19. R1 between D17 and D19. Motor between D18 and D19. R2 between D18 and D19, parallel with the motor. D19 is the mid-node. [verified from two independent primary schematics]",
+      "Any external network a program hangs across D18-D19 parallels the motor. Any short across D18-D19 stops it. Power across D18-D19 drives it at full supply. [verified]",
+      "R1 and R2 ohmic values unknown; estimated low tens of ohms. Do NOT derive RUN speed from a divider. Configure the RUN speed directly. [unverified]"
+    ],
+    "motor_law": [
+      "First-order approach to a target angular velocity set by the drive condition; direction set by RUN polarity.",
+      "run_rpm default 45.0, labelled in code as Book V's ASSUMPTION, not a specification. 45 rpm = 12 contacts/s = 83.33 ms per pitch. [verified as an example figure]",
+      "fast_rpm default 135.0 for the power-across-STOP case. [unverified estimate]",
+      "Two distinct coast parameters: coast_deg_stop_shorted (hard brake, default 2.5) and coast_deg_drive_removed (R2-loaded brake, default 10.0). [unverified; exposed precisely because unverified]",
+      "Constant angular velocity under steady voltage. [likely]",
+      "Friction drive: hand input always wins; no stall state; no positive index between motor and dial. [verified]"
+    ],
+    "required_regression_tests": [
+      "errata_elevator_hangs_between_D6_and_D7 (see named_fallback). Exercises the gap parameter; must hang at coast 19.0 and must NOT hang at the default 10.0.",
+      "combination_lock_D8_trap: hand-drag the dial past position 8 on the way to a later number and assert the error light fires. Exercises the no-jump rule (S01) in HAND mode.",
+      "traffic_light_duty: run the Book V Experiment 4 program and assert light 4 is on for 6 pitches, light 5 for 4, light 6 for 6, with the correct number of brief gap-interruptions inside each run. Exercises the gap parameter in a way a snap-to-integer model would pass wrongly.",
+      "sos_differential_spacing: run Book V Experiment 18 and assert a strapped run reads as one longer mark than a single contact. Exercises GF01.",
+      "metronome_reversal: run Book V Experiment 3 and assert the four slide-switch settings give periods in the ratio 2:4:6:8 arcs. Exercises S04 and the reversal path."
+    ]
+  },
+
+  "not_settled_by_the_sources": [
+    "The angular width of a contact pad versus the dead gap. No primary source gives it, the one 'VIEW UNDER PANEL' figure is schematic and shows only terminal holes, and no under-panel photograph of an original exists in the corpus or was findable on the open web. This is the single unresolved parameter of the whole rotary model.",
+    "The angular width of the wiper contact face, and whether the wiper is a single finger or bifurcated. The Maintenance Manual says 'contact fingers' (plural), but in context that plural is most naturally read as the fixed contacts, not the arm.",
+    "How D16 is taken off the rotating arm - central slip ring or concentric collector ring. Never illustrated.",
+    "Ohmic values of R1 and R2. Bracketed at roughly 15-50 ohms for R1 by three weak arguments; never stated.",
+    "Motor make, model, rated voltage, no-load rpm. Only 'SDC part 6471, Motor, $4.00'.",
+    "Drive wheel diameter and motor shaft diameter, hence the friction reduction ratio. Only 'SDC part 6472, Drive Wheel Assembly, $2.00'.",
+    "Actual as-built rpm of any real unit. SDC did not specify one; Book V's procedure tells the owner to measure his own, which is itself evidence that units varied.",
+    "Coast angle, spin-up time and reversal time. Nothing quantitative, and the words coast, overrun, momentum and inertia appear nowhere in any of the seven documents.",
+    "Whether the errata's elevator hang is caused by machine coast or by an operator parking the knob in a gap during setup. The note does not say. I judge coast the more likely reading and give the argument, but it is not settled.",
+    "Whether the friction drive slips under load during normal running, which would make even the RUN speed load-dependent. The manual's 'spring the motor shaft against the edge of the drive wheel' adjustment implies slip is a live failure mode, but nothing quantifies it."
+  ],
+
+  "things_the_next_agent_should_do": [
+    "Treat the gap fraction as the one deliberately-unresolved constant in the rotary model and give it a named constant with a comment pointing at this file, so nobody later 'cleans it up' into a snap-to-integer dial.",
+    "Do NOT let the panel photograph be asked to settle contact geometry. The contacts are under the panel; no top-down photograph can ever show them. Any future claim about pad width must come from an under-panel photograph, a physical measurement, or a video.",
+    "The R1/R2 topology in claim M01 is now settled from two independent primary drawings and should be treated as fixed. If a later pass finds a schematic that disagrees, that is a genuine primary discrepancy and must be reported, not silently reconciled.",
+    "Book VII (Capacitor/Resistor Manual) is a real primary source for the 601 by its own cover ('Minivac 601/6010') and it was never opened by the original find-rotary pass. Anyone modelling the capacitor terminals or the resistor terminals should read it in full; this pass only mined its motor footnote.",
+    "The Book V Experiment 18 SOS program's rotary strapping (D1/D2, D2/D3, D3/D6, D6/D7, D7/D8, D8/D11, D11/D12, D12/D13) was transcribed here for the gap argument but its relay logic was NOT analysed. If SOS goes in the regression corpus, someone needs to work out how the differential spacing circuit distinguishes dot from dash."
+  ]
+}

@@ -1,0 +1,124 @@
+#!mv601-trace 1
+# id=V-EXP16-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=20
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=141 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 ? breaker=ok relay6=nc dial=c0 outLamp5=off outLamp6=off indLamp6=off  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+   500.0 > button6 target=1000
+   511.2 * pb6 nc->mid
+   513.7 * pb6 mid->no
+   523.7 * indLamp6 off->dim
+   525.8 * relay6 nc->mid
+   527.1 * relay6 mid->no
+   545.1 * dial c0->gap
+   564.2 * indLamp6 dim->on
+   566.0 * dial gap->c1
+   600.0 > button6 target=0
+   611.2 * pb6 no->mid
+   613.7 * pb6 mid->nc
+   628.6 * dial c1->gap
+   649.5 * dial gap->c2
+   712.2 * dial c2->gap
+   733.1 * dial gap->c3
+   736.4 * outLamp5 off->dim
+   755.5 * outLamp5 dim->on
+   755.6 ? dial=c3 outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+   796.2 * dial c3->gap
+   812.5 * outLamp5 on->dim
+   817.1 * dial gap->c4
+   820.4 * outLamp6 off->dim
+   839.5 * outLamp6 dim->on
+   839.6 ? dial=c4 outLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+   868.1 * outLamp5 dim->off
+   880.2 * dial c4->gap
+   896.5 * outLamp6 on->dim
+   901.0 * dial gap->c5
+   903.0 * outLamp5 off->dim
+   922.1 * outLamp5 dim->on
+   922.2 ? dial=c5 outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+   952.1 * outLamp6 dim->off
+   964.1 * dial c5->gap
+   980.6 * outLamp5 on->dim
+   985.0 * dial gap->c6
+   987.0 * outLamp6 off->dim
+  1006.1 * outLamp6 dim->on
+  1006.2 ? dial=c6 outLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1036.2 * outLamp5 dim->off
+  1048.1 * dial c6->gap
+  1064.6 * outLamp6 on->dim
+  1069.0 * dial gap->c7
+  1120.2 * outLamp6 dim->off
+  1131.6 * dial c7->gap
+  1152.5 * dial gap->c8
+  1155.6 * outLamp5 off->dim
+  1174.8 * outLamp5 dim->on
+  1174.9 ? dial=c8 outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1215.6 * dial c8->gap
+  1231.9 * outLamp5 on->dim
+  1236.5 * dial gap->c9
+  1240.7 * outLamp5 dim->on
+  1240.8 ? dial=c9 outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1299.5 * dial c9->gap
+  1317.6 * outLamp5 on->dim
+  1320.3 * dial gap->c10
+  1323.6 * outLamp6 off->dim
+  1342.7 * outLamp6 dim->on
+  1342.8 ? dial=c10 outLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1373.3 * outLamp5 dim->off
+  1383.5 * dial c10->gap
+  1399.8 * outLamp6 on->dim
+  1404.3 * dial gap->c11
+  1406.2 * outLamp5 off->dim
+  1425.4 * outLamp5 dim->on
+  1425.5 ? dial=c11 outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1455.4 * outLamp6 dim->off
+  1467.4 * dial c11->gap
+  1483.9 * outLamp5 on->dim
+  1488.3 * dial gap->c12
+  1539.5 * outLamp5 dim->off
+  1551.0 * dial c12->gap
+  1571.8 * dial gap->c13
+  1634.5 * dial c13->gap
+  1655.4 * dial gap->c14
+  1655.5 ? dial=c14  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1655.5 ? breaker=ok relay6=no outLamp5=off outLamp6=off indLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1655.5 > button5 target=1000
+  1666.7 * pb5 nc->mid
+  1669.2 * pb5 mid->no
+  1669.4 * breaker ok->tripped
+  1672.9 * relay6 no->mid
+  1673.8 * relay6 mid->nc
+  1680.3 * indLamp6 on->dim
+  1735.9 * indLamp6 dim->off
+  1955.5 > button5 target=0
+  1966.7 * pb5 no->mid
+  1969.2 * pb5 mid->nc
+  2455.5 ? breaker=tripped relay6=nc outLamp5=off outLamp6=off indLamp6=off  "To stop transmission, push pushbutton 5."
+  2455.5 > breaker reset
+  2455.5 * breaker tripped->ok
+  2955.5 ? breaker=ok relay6=nc outLamp5=off outLamp6=off indLamp6=off  "To stop transmission, push pushbutton 5."
+  2955.5 > button6 target=1000
+  2966.7 * pb6 nc->mid
+  2969.2 * pb6 mid->no
+  2979.2 * indLamp6 off->dim
+  2981.3 * relay6 nc->mid
+  2982.6 * relay6 mid->no
+  2982.7 * dial c14->gap
+  3003.6 * dial gap->c15
+  3019.7 * indLamp6 dim->on
+  3055.5 > button6 target=0
+  3066.3 * dial c15->gap
+  3066.7 * pb6 no->mid
+  3069.2 * pb6 mid->nc
+  3087.1 * dial gap->c0
+  3149.8 * dial c0->gap
+  3170.7 * dial gap->c1
+  3233.3 * dial c1->gap
+  3254.2 * dial gap->c2
+  3255.5 ? breaker=ok relay6=no indLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  3316.9 * dial c2->gap
+  3337.8 * dial gap->c3
+  3341.1 * outLamp5 off->dim
+  3360.2 * outLamp5 dim->on
+  3360.3 ? dial=c3 outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."

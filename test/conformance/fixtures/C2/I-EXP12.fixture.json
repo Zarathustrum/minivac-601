@@ -1,0 +1,73 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP12",
+  "source": "BK1 printed p.23 = book1.pdf PDF p.25",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/5Y",
+    "5X/D17",
+    "6-/D18",
+    "6-/6Y",
+    "6X/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/5Y",
+    "5X/D17",
+    "6-/D18",
+    "6-/6Y",
+    "6X/D19"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 5, "target": 1000 } },
+    {
+      "k": "until",
+      "obs": [{ "dev": "dial", "v": "c8" }],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 2)",
+      "quote": "Turn the power ON. Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate."
+    },
+    {
+      "k": "until",
+      "obs": [{ "dev": "dial", "v": "c0" }],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 2)",
+      "quote": "Turn the power ON. Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 3000 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "breaker", "v": "ok" }],
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 3); BK1 printed p.22 = book1.pdf PDF p.24 (RESISTORS); BK1 printed p.3 = book1.pdf PDF p.5 (POWER SUPPLY: circuit breaker)",
+      "quote": "[p.23:] While holding pushbutton 5 down, push pushbutton 6. The motor stops when pushbutton 6 is pushed because a short circuit is created across the STOP terminals (D18 and D19). [p.22:] The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply. [p.3:] The red button above the power switch labeled CIRCUIT BREAKER is a safety switch which automatically turns off the power supply when it is overloaded."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 } },
+    {
+      "k": "until",
+      "obs": [{ "dev": "dial", "v": "c8" }],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 4); BK1 printed p.22 = book1.pdf PDF p.24 (MOTOR DRIVE: the motor turns the rotary switch)",
+      "quote": "[p.23:] While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed. [p.22:] The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive."
+    },
+    {
+      "k": "until",
+      "obs": [{ "dev": "dial", "v": "c0" }],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.23 = book1.pdf PDF p.25 (step 4); BK1 printed p.22 = book1.pdf PDF p.24 (MOTOR DRIVE: the motor turns the rotary switch)",
+      "quote": "[p.23:] While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed. [p.22:] The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 5, "target": 0 } },
+    { "k": "advance", "ms": 3000 }
+  ],
+  "digest": {
+    "eventCount": 73,
+    "moverTransitions": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 64]
+  },
+  "note": "Printed claims only (Phase 5 Step 6). Wires are the printed 5, image-read from book1.pdf PDF p.25 (printed p.23) and identical to wiresPrinted; no erratum touches Book I p.23, so wires = as_printed and errata_applied is empty. Script follows printed steps 2-5: power on, push pushbutton 5, push pushbutton 6 while holding 5, release 6 while holding 5, release 5. The 100 ms before pushbutton 5, the 3000 ms hold of pushbutton 6, the moment each button changes (pushbutton 6 is pushed and pushbutton 5 released as soon as the preceding until matches) and the 3000 ms tail are script choices. Asserted: the pointer turns after pushbutton 5 is pushed (step 2, 'causes the pointer of the rotary switch to rotate') and turns again after pushbutton 6 is released (step 4, 'The motor drive operates again', with Book I p.22 = PDF p.24 'The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive.' tying the motor drive to the pointer). The state vector has no motor observable, so each is two pass-through untils on contacts c8 then c0, opposite pads whichever way the dial turns, so passing both proves the wiper moved from any rest position; 6000 ms caps cover more than two revolutions at 25 rpm. Also asserted, for step 3's STOP short: the breaker is still ok at the end of the 3000 ms pushbutton 6 hold. The sources are Book I p.22 = PDF p.24, 'The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply', and Book I p.3 = PDF p.5, where the CIRCUIT BREAKER 'automatically turns off the power supply when it is overloaded'. Book I p.3 = PDF p.5 says 'A short circuit occurs when + is wired directly to - without a component in between', and the STOP short is not one: the Book I p.22 diagram puts a resistor between terminals 17 and 19, in series with pushbutton 6. Not asserted, left to Step 7: step 3 'The motor stops' and step 5 'The motor drive again stops', because the only way to assert a stopped dial is an expect on the contact it rests on, and that rest contact comes from the invented STOP-short and drive-removed coasts (O-R5), not from the page; consequently the step 4 untils would also pass if pushbutton 6 failed to stop the motor. Step 3 'Current flows through pushbutton 6 instead of through the motor' and step 2 'This supplies power to the RUN terminals (D17 and D18)' name no observable in the obs set (it has no terminal voltage). Direction of rotation and the start position c0 (construction state) are not printed. At MV601-REF-A (fnv1a64:92c1419fd8cdd210, drive-removed coast 9.54 deg) the trace shows the dial resting on c0 for the whole pushbutton 6 hold and still on c0 after pushbutton 5 is released (at fnv1a64:e25b2257499508da, the earlier invented 20 deg, it stepped c0->c1); both rests come from the coast offsets (O-R5) and neither is asserted. Rotary geometry, run rate, coast and fitted motor resistances remain profile fallbacks O-R1, O-R3, and O-R5."
+}

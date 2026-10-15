@@ -1,0 +1,595 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP21-DERIVED",
+  "source": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42 (Experiment 21: 'Search and Track' Radar; rule and program p.35 = PDF p.41, track-mode procedure p.36 = PDF p.42); ERRATA ER-39 errata.pdf p.4 (prose only, no wire change); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E",
+    "1B/1-",
+    "2A/3E",
+    "2B/2-",
+    "2C/3C",
+    "2E/3G",
+    "2F/3F",
+    "2F/2H",
+    "2G/2+",
+    "2J/3H",
+    "2K/3N",
+    "2K/2-",
+    "2L/D17",
+    "2N/3K",
+    "3A/5E",
+    "3H/4F",
+    "3B/3-",
+    "3C/4C",
+    "3E/3J",
+    "3K/3+",
+    "3L/D18",
+    "4C/5C",
+    "4F/5K",
+    "4G/5E",
+    "4H/5H",
+    "5C/6E",
+    "5F/5G",
+    "5F/6G",
+    "5H/6H",
+    "5L/6J",
+    "6A/6V",
+    "6B/6-",
+    "6E/6-",
+    "6F/6U",
+    "6H/6+",
+    "6V/D16",
+    "M+/D1"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/2E",
+    "1B/1-",
+    "2A/3E",
+    "2B/2-",
+    "2C/3C",
+    "2E/3G",
+    "2F/3F",
+    "2F/2H",
+    "2G/2+",
+    "2J/3H",
+    "2K/3N",
+    "2K/2-",
+    "2L/D17",
+    "2N/3K",
+    "3A/5E",
+    "3H/4F",
+    "3B/3-",
+    "3C/4C",
+    "3E/3J",
+    "3K/3+",
+    "3L/D18",
+    "4C/5C",
+    "4F/5K",
+    "4G/5E",
+    "4H/5H",
+    "5C/6E",
+    "5F/5G",
+    "5F/6G",
+    "5H/6H",
+    "5L/6J",
+    "6A/6V",
+    "6B/6-",
+    "6E/6-",
+    "6F/6U",
+    "6H/6+",
+    "6V/D16",
+    "M+/D1"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39; rule: search mode signals the object on light 6 (ER-39); derived from topology: M+/D1 puts + on D1, the wiper net D16/6V/6A lights light 6 (6B/6-) only while the wiper is on D1",
+      "quote": "[p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39; rule: in search mode the system is a simple signalling system (light 6, not light 3); derived from topology: slide switch 6 RIGHT parks arm 6V on the unwired 6W, so 6U/6F and relay 6 coil (6E/6-) are cut off from the wiper; relay 5 is fed only by 6G (relay 6 N.O.) or its own latch 5H-5G; N_X (2J/3H/4F/5K) is fed only through 5L-5K; with relays 5 and 6 out nothing feeds relays 2, 3, 4 or lights 1 (2E), 2 (3E), 3 (5E)",
+      "quote": "[p.35:] While in the search mode, the radar system is a simple signalling system. [p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: search mode scans continuously; derived from topology: relays 2 and 3 out give D17 + (2L-2N, 2N/3K/3+) and D18 - (3L-3N, 3N/2K/2-), the motor runs toward increasing numbers and nothing reverses it",
+      "quote": "[p.35:] When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: search mode scans continuously; derived from topology: no relay operates in search mode (see the c1 expect), D9 is an unwired contact, so the wiper net carries no + and light 6 is dark",
+      "quote": "[p.35:] When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: track mode follows the object; derived from topology: slide switch 6 LEFT joins 6V-6U, so relay 6 coil (6F/6U to 6E/6-) is fed + when the wiper reaches D1",
+      "quote": "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: track mode follows the object; derived from topology: only D1 can feed relay 6 and the relay operates well inside one contact dwell, so the wiper is on c1; relay 5 is fed (6H-6G-5F) only from this tick, so it is still out; N_X has had no feed since power-on, so relays 2, 3, 4 are out and lights 1 and 2 are unfed (forward state: D17 +, D18 -)",
+      "quote": "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "no"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; rule: reverse the scan when the object signal is lost; derived from topology: relay 5 latched (5H-5G) on c1; when the wiper leaves D1 relay 6 drops, 6H-6J-5L-5K puts + on N_X: relay 2 pulls in (2F via 2H-2J, 2E to - through lights 1 and ind 2) and latches 2G-2H, relay 4 pulls in (4F, through ind 4) and 4G puts + on 5E, shorting relay 5 coil, so relay 5 drops and N_X loses +; relay 3 (3F + by 2G, 3E no longer + by 3J) then pulls in: D17 - (2L-2K), D18 + (3L-3K), the motor reverses",
+      "quote": "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; rule: reverse the scan when the object signal is lost; derived from topology: relay 3 can energize only with N_X unfed and 3F +, which needs relay 2 in (2G); N_X unfed means relay 5 has left N.O. (relay 6 is out: the wiper has left D1 and the pulse needs 6H-6J); relay 5 has no feed once 5G and 6G are open",
+      "quote": "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: returning to the object signal; derived from topology: reversed drive brings the wiper back onto D1",
+      "quote": "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: returning to the object signal; derived from topology: no pulse can occur before relay 5 latches again (it needs 6G), so relays 2 and 3 hold (2G latch, 3F +, 3E to - through light 2 and ind 3); the wiper arrives on c1 from the c2 side (D17 -, D18 +)",
+      "quote": "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; rule: reverse the scan when the object signal is lost; derived from topology: relay 5 latches on c1, relay 6 drops as the wiper leaves D1, N_X gets + (5L-5K): 3H-3G puts + on 2E, shorting relay 2 coil, relay 2 drops and 2H-2J feeds 3F from N_X; relay 4 pulls in, relay 5 drops, N_X loses +, relay 3 drops: D17 + (2L-2N), D18 - (3L-3N), forward again",
+      "quote": "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; rule: reverse the scan when the object signal is lost; derived from topology: 3F loses feed only when relay 2 is out (2G open) and N_X is unfed (relay 5 off N.O.); relay 6 dropped to start the pulse and the wiper is moving away from D1",
+      "quote": "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: oscillates about the object signal; derived from topology: forward drive brings the wiper back onto D1",
+      "quote": "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: oscillates about the object signal; derived from topology: in the forward state N_X, 2F/3F/2H, 2E and 3E have no source, so relays 2, 3, 4 are out; relay 5 is fed only from this tick (6G); consecutive arrivals at c1 alternate reverse and forward state, i.e. the dial reverses each time it loses the signal",
+      "quote": "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; rule: reverse the scan when the object signal is lost; derived from topology: same toggle as the first reversal (forward to reverse); the signal is moved at this tick, with the drive reversed (D17 -, D18 +) and the wiper on the c2 side of c1",
+      "quote": "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 36
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 37,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D9#1"
+        }
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: after a move the system searches until it finds the new location; derived from topology: D1 is now unwired and D9 carries + (M+/D9 script cord)",
+      "quote": "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42; rule: after a move the system searches until it finds the new location; derived from topology: with no + contact under the wiper relay 6 stays out, relay 5 cannot latch and N_X stays unfed, so the reverse state (relays 2 and 3 in, D17 -, D18 +) holds and the search continues toward decreasing numbers (c1, c0, c15 ... c10) to reach c9 from the c10 side",
+      "quote": "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; rule: reverse the scan when the object signal is lost; derived from topology: same toggle as the second reversal (reverse to forward) on leaving D9 toward c8",
+      "quote": "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed p.36 = book5-6.pdf PDF p.42; rule: resume tracking at the new location; derived from topology: forward drive brings the wiper back onto D9",
+      "quote": "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.36 = book5-6.pdf PDF p.42; rule: resume tracking at the new location; derived from topology: forward state as at the second return to c1, now about D9",
+      "quote": "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 287,
+    "moverTransitions": [
+      0,
+      8,
+      8,
+      16,
+      16,
+      18,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      66
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 37-wire topology and the p.35 rule (reverse the scan immediately when the object signal is lost), not printed; the printed fixture C2/V-EXP21 covers the light 6 flashes, the search sweep and the oscillation as contact changes. No erratum changes a wire (ER-39 is prose: light 6, not light 3, signals in search mode), so the wires are as printed. Topology: + reaches 2G, 2N, 3K, 4H, 5H, 6H and D1; - reaches 2K, 3N, 6E and the indicator-lamp ends 2C-5C. Slide switch 6 set 2 (6V on the wiper net with light 6) feeds relay 6 coil (6F/6U) only when LEFT. Relay 6 N.O. (6G) starts relay 5, which latches 5H-5G-5F through light 3 and ind 5 (5E); on loss of the signal relay 6 N.C. (6H-6J-5L) and relay 5 set 2 (5K) put + on N_X (2J/3H/4F/5K) as a one-shot: relay 4 (through ind 4) puts + on 5E and drops relay 5. Relays 2 and 3 are a toggle stepped by that pulse: relay 2 sets on it, relay 3 follows when it ends; next pulse relay 2 resets (3H-3G puts + on 2E), relay 3 follows when it ends. Motor: relays 2/3 out = D17 +, D18 - (toward increasing numbers, the DECISIONS 2026-10-13 [likely] polarity ruling); both in = D17 -, D18 +; mixed = both RUN terminals on one rail, stopped. Script choices, not printed: object signal D1, then moved to D9 by cord 37 (M+#1/D9#1) at the third reversal, so the move happens in the reverse state; switch 6 thrown LEFT at c9. Checks assert relay states at the tick an until resolves on a relay contact, and only where the topology forces the order. Dial c1/c9 at a relay 6 pull-in relies on relay 6 operating inside one contact dwell. Not asserted: the overshoot (how far the dial runs past the signal before reversing; it rests on the invented coasts O-R5); lamp states while a lamp is in a coil path (lights 1, 2, 3 and ind lamps 2-5 in the reverse state and during the pulse) or warming or cooling (light 6 at a relay 6 pull-in); relay 4 in the reverse state, where N_X joins 2E through 3H-3G and relay 4 sees a sneak current through relay 2 coil (by hand about 12 mA against its 17 mA drop-out). If relay 4 held there, 4G would keep + on 5E, relay 5 could not latch and the dial would run on past the signal; a failure at script[14] points there."
+}

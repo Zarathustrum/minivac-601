@@ -1,0 +1,19 @@
+{
+  "schema": "minivac.w3-derived-kat/1",
+  "source": {
+    "profileKat": "data/kat/profile-kat.json",
+    "profileId": "MV601-KAT-A",
+    "profileHash": "8fb3c78e1d2c9a09"
+  },
+  "derived": {
+    "tripDelayTicks": 2000,
+    "deadShortUa": 19402985,
+    "rMotorParUohm": 10312500,
+    "vMotorRunMv": 4065,
+    "relayCycleTicks": 200,
+    "buttonCycleTicks": 500,
+    "switchCycleTicks": 1200,
+    "dialCycleTicks": 833,
+    "settleCapTicks": 5000
+  }
+}

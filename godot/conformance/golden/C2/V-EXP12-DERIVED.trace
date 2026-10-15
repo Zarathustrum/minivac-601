@@ -1,0 +1,123 @@
+#!mv601-trace 1
+# id=V-EXP12-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=38
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=4 minTickGap=9 marginal=false
+     0.0 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+     0.0 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+     0.0 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+     0.0 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+     0.0 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+     0.0 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+     0.0 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+     0.0 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > disconnect cord=38
+   500.0 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+   500.0 > disconnect cord=39
+   500.0 > connect cord=39 a=hole:M10#4 b=hole:M3t#1 r_uohm=0
+   500.0 > disconnect cord=40
+   500.0 > connect cord=40 a=hole:M10#5 b=hole:M4t#2 r_uohm=0
+   500.0 > disconnect cord=41
+   500.0 > connect cord=41 a=hole:M10#6 b=hole:M5t#2 r_uohm=0
+   500.0 > disconnect cord=42
+   500.0 > connect cord=42 a=hole:M11#2 b=hole:M9t#2 r_uohm=0
+   800.0 > button6 target=1000
+   811.2 * pb6 nc->mid
+   813.7 * pb6 mid->no
+   823.7 * indLamp1 off->dim  indLamp2 off->dim  indLamp5 off->dim
+   824.9 * relay1 nc->mid
+   825.1 * relay2 nc->mid
+   825.6 * relay5 nc->mid
+   826.2 * relay1 mid->no
+   826.4 * relay2 mid->no
+   826.9 * relay5 mid->no
+   845.3 * dial c0->gap
+   864.4 * indLamp1 dim->on  indLamp2 dim->on  indLamp5 dim->on
+   866.3 * dial gap->c1
+   929.2 * dial c1->gap
+   950.2 * dial gap->c2
+  1013.2 * dial c2->gap
+  1034.1 * dial gap->c3
+  1097.1 * dial c3->gap
+  1118.1 * dial gap->c4
+  1181.0 * dial c4->gap
+  1202.0 * dial gap->c5
+  1265.0 * dial c5->gap
+  1285.9 * dial gap->c6
+  1348.9 * dial c6->gap
+  1369.9 * dial gap->c7
+  1432.8 * dial c7->gap
+  1453.8 * dial gap->c8
+  1516.7 * dial c8->gap
+  1537.7 * dial gap->c9
+  1537.8 ? dial=c9  "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code."
+  6537.8 ? relay1=no relay2=no relay3=nc relay4=nc relay5=no relay6=nc dial=c9  "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code."
+  6537.8 > button6 target=0
+  6549.0 * pb6 no->mid
+  6551.5 * pb6 mid->nc
+  6555.8 * relay5 no->mid
+  6556.3 * relay2 no->mid
+  6556.5 * relay1 no->mid
+  6556.7 * relay5 mid->nc
+  6557.2 * relay2 mid->nc
+  6557.4 * relay1 mid->nc
+  6566.6 * indLamp1 on->dim  indLamp2 on->dim  indLamp5 on->dim
+  6622.4 * indLamp1 dim->off  indLamp2 dim->off  indLamp5 dim->off
+  8537.8 > disconnect cord=38
+  8537.8 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+  8537.8 > disconnect cord=39
+  8537.8 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+  8537.8 > disconnect cord=40
+  8537.8 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+  8537.8 > disconnect cord=41
+  8537.8 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+  8537.8 > disconnect cord=42
+  8537.8 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+  9037.8 > disconnect cord=38
+  9037.8 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+  9037.8 > disconnect cord=39
+  9037.8 > connect cord=39 a=hole:M10#4 b=hole:M4t#2 r_uohm=0
+  9037.8 > disconnect cord=40
+  9037.8 > connect cord=40 a=hole:M10#5 b=hole:M6t#2 r_uohm=0
+  9037.8 > disconnect cord=41
+  9037.8 > connect cord=41 a=hole:M10#6 b=hole:M8t#2 r_uohm=0
+  9337.8 > button6 target=1000
+  9349.0 * pb6 nc->mid
+  9351.5 * pb6 mid->no
+  9361.5 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+  9363.1 * relay3 nc->mid
+  9363.3 * relay4 nc->mid
+  9363.4 * relay5 nc->mid
+  9364.4 * relay3 mid->no
+  9364.6 * relay4 mid->no
+  9364.7 * relay5 mid->no
+  9396.2 * dial c9->gap
+  9402.2 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on
+  9417.2 * dial gap->c10
+  9480.1 * dial c10->gap
+  9501.1 * dial gap->c11
+  9564.1 * dial c11->gap
+  9585.1 * dial gap->c12
+  9648.0 * dial c12->gap
+  9669.0 * dial gap->c13
+  9731.9 * dial c13->gap
+  9752.9 * dial gap->c14
+  9815.9 * dial c14->gap
+  9836.8 * dial gap->c15
+  9899.8 * dial c15->gap
+  9920.8 * dial gap->c0
+  9920.9 ? dial=c0  "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code."
+ 14920.9 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=nc dial=c0 indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=on indLamp6=off  "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code."
+ 14920.9 > button6 target=0
+ 14932.1 * pb6 no->mid
+ 14934.6 * pb6 mid->nc
+ 14938.9 * relay5 no->mid
+ 14939.1 * relay4 no->mid
+ 14939.2 * relay3 no->mid
+ 14939.8 * relay5 mid->nc
+ 14940.0 * relay4 mid->nc
+ 14940.1 * relay3 mid->nc
+ 14949.7 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim
+ 15005.5 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+ 16920.9 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code."

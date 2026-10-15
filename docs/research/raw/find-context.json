@@ -1,0 +1,783 @@
+{
+  "topic": "MINIVAC 601 - history, artifacts, replicas, existing emulators, and missing-source acquisition",
+  "agent": "find-context",
+  "date_generated": "2026-08-30",
+  "scope_note": "MINIVAC 601 only. Every MINIVAC 6010 statement is explicitly labelled as a 6010 delta. Tags: [verified] = read by me in a primary source (a manual page image/text, or a photograph of a real panel); [likely] = consistent secondary sources agree, no primary read; [unverified] = single weak source, or my inference.",
+  "oracle_only_compliance": {
+    "ruling": "Tom's ORACLE-ONLY ruling: do not open, fetch, clone, read or quote the source code of any existing Minivac emulator, in particular Greg Sadetsky's simulator at minivac.greg.technology and its GitHub repository.",
+    "what_i_did_not_do": [
+      "Did NOT clone, fetch, browse or read any file in github.com/gregsadetsky/minivac (nor its former name minivac-601-simulator, nor package.json, nor any blob URL).",
+      "Did NOT fetch any .js / bundle / asset from minivac.greg.technology.",
+      "Did NOT fetch or read the source of github.com/jkoets/Minivac-601-Emulator (a second, newly-found emulator) - same caution applied pre-emptively, pending Tom's ruling on whether it is in scope.",
+      "Did NOT read Willy McAllister's circuit-sandbox source (the library the Sadetsky simulator is stated to be built on)."
+    ],
+    "what_i_did_do": [
+      "Read the GitHub REST metadata record for the repository (name, description, homepage, dates, star count, licence field). This returns repository metadata only and contains no source code.",
+      "Read third-party write-ups (FOSSi Foundation, Hackster headline) and the author's own public Hacker News comments.",
+      "Attempted one WebFetch of the site root https://minivac.greg.technology/ with an explicit instruction to return only user-visible text and no code; it returned only the page <title> ('Minivac 601 Simulator') because the page is script-rendered. No code reached me."
+    ]
+  },
+  "acquisitions": {
+    "summary": "Both missing primary documents were found and downloaded. Both live in the same archive.org item as the six instruction books, under filenames that do not contain the words 'errata' or 'maintenance' in the form usually searched for ('erratas', not 'errata').",
+    "found": [
+      {
+        "document": "MINIVAC 601 Maintenance Manual",
+        "local_path": "docs/research/raw/pdf/minivac601-maintenance-manual.pdf",
+        "local_text": "docs/research/raw/pdf/minivac601-maintenance-manual.txt",
+        "rendered_pages": "docs/research/raw/pdf/pages/maintenance/p-01.png ... p-13.png (all 13 pages, 200 dpi). Pages read visually by this agent: p-05 (power supply diagram), p-09 (relay check), p-10 (slide switch check), p-11 (rotary switch motor drive), p-13 (spare parts list).",
+        "download_url_used": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-maintenance-manual.pdf",
+        "canonical_publisher_scan_url": "https://ccapitalia.net/descarga/docs/1961-minivac601-maintenance-manual.pdf",
+        "canonical_url_verified": "HTTP 200, content-length 231416 - byte-identical size to the archive.org copy. NOTE: ccapitalia.net 403s a bare curl; it requires a browser User-Agent.",
+        "bytes": 231416,
+        "md5": "6294aa4933971c6564f94a98a1c5ed40",
+        "pages": 13,
+        "page_size_pts": "419.55 x 595.45",
+        "pdf_metadata": {
+          "Title": "Minivac 601 - Book I",
+          "Subject": "Maintenance Manual",
+          "Keywords": "Minivac 601, Claude Shannon",
+          "Author": "Scientific Development Corporation, 1961",
+          "Producer": "ABBYY FineReader 11",
+          "CreationDate": "2014-01-13",
+          "Encrypted": "yes (print:yes copy:yes change:no addNotes:no, AES) - text extraction works"
+        },
+        "tag": "[verified]"
+      },
+      {
+        "document": "MINIVAC 601 Errata sheet - 'Notes and Corrections to the Minivac Manual'",
+        "local_path": "docs/research/raw/pdf/minivac601-errata.pdf",
+        "local_text": "docs/research/raw/pdf/minivac601-errata.txt",
+        "download_url_used": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-erratas.pdf",
+        "canonical_publisher_scan_url": "https://ccapitalia.net/descarga/docs/1961-minivac601-erratas.pdf",
+        "canonical_url_verified": "HTTP 200, content-length 140730",
+        "bytes": 140730,
+        "md5": "f78de9222b01596b9073e8655e27fff1",
+        "pages": 4,
+        "page_size_pts": "612 x 792 (US Letter)",
+        "pdf_metadata": {
+          "Title": "Minivac 601",
+          "Subject": "Notes and Corrections to the Minivac Manual",
+          "Keywords": "Minivac 601, Claude Shannon",
+          "Author": "Scientific Development Corporation, 1961",
+          "Producer": "ABBYY FineReader 11",
+          "CreationDate": "2014-01-13"
+        },
+        "tag": "[verified]"
+      }
+    ],
+    "provenance_of_the_scans": {
+      "archive_item": "https://archive.org/details/1961Minivac601Book234  ('Minivac 601 (1961) Owner Manuals')",
+      "archive_item_uploaded": "2015-07-06 by <withheld>",
+      "archive_item_stated_source": "http://www.ccapitalia.net/?p=1257 (Spanish)",
+      "original_scanner": "Adolfo Garcia Yague / ccapitalia.net - every page of every one of the five PDFs carries an 'EX LIBRIS ccapitalia.net' watermark line, and the ccapitalia article is dated 16 January 2014, matching the PDF CreationDates.",
+      "all_five_originals_in_the_item": [
+        "1961-minivac601-book1.pdf (1714771 B)",
+        "1961-minivac601-book2,3&4.pdf (2933205 B)",
+        "1961-minivac601-book5&6.pdf (1929436 B)",
+        "1961-minivac601-erratas.pdf (140730 B)",
+        "1961-minivac601-maintenance-manual.pdf (231416 B)"
+      ],
+      "tag": "[verified]"
+    },
+    "photographs_acquired": [
+      {
+        "local_path": "docs/research/raw/photos/commons-minivac601-main.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Minivac_601.jpg",
+        "direct": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Minivac_601.jpg",
+        "resolution": "4208 x 2457",
+        "licence": "CC BY-SA 4.0",
+        "author": "Wikimedia user 'Autopilot', own work, 2015-05-12",
+        "why_it_matters": "Best flat-on whole-panel photograph found. Sharper and squarer than raw/prebrief/images/image_3.jpg; all six bands, the MATRIX, POWER and DECIMAL INPUT-OUTPUT sub-panels are legible, and the logo-plate fine print resolves at full crop. Use this as the primary panel-geometry artifact.",
+        "tag": "[verified]"
+      },
+      {
+        "local_path": "docs/research/raw/photos/commons-minivac601-DSCF1392.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Minivac_601_DSCF1392.jpg",
+        "direct": "https://upload.wikimedia.org/wikipedia/commons/6/61/Minivac_601_DSCF1392.jpg",
+        "resolution": "4288 x 2848",
+        "licence": "CC BY 2.0",
+        "author": "Mike Rosenberg, via https://www.flickr.com/photos/aleutia/7068639095/ , 2012-04-10",
+        "why_it_matters": "Second independent high-resolution unit - a cross-check for panel variants. NOT yet inspected in detail by me.",
+        "tag": "[verified] (file acquired; contents not yet fully read)"
+      },
+      {
+        "local_path": "docs/research/raw/photos/commons-minivac6010-mit-museum.jpg",
+        "url": "https://commons.wikimedia.org/wiki/File:Minivac_6010_Computer,_Scientific_Development_Corporation,_1962_-_MIT_Museum_-_Cambridge,_MA_-_DSC09163.jpg",
+        "resolution": "5161 x 2759",
+        "licence": "CC0 public domain dedication",
+        "author": "Wikimedia user 'Daderot', MIT Museum exhibit, photographed 2026-04-17",
+        "why_it_matters": "6010 ONLY. This is the single best lead for settling whether the 6010 panel is electrically/topologically the same as the 601's. Do not mine it for 601 geometry.",
+        "tag": "[verified]"
+      }
+    ],
+    "where_i_looked_and_found_nothing_further": [
+      "ccapitalia.net - guessed filenames under /descarga/docs/ (403 to bare curl; once a browser UA was used, the article page ?p=1257 listed exactly the five PDFs above and nothing else). No schematic pack, no dealer literature, no 6010 manual.",
+      "archive.org - the item 1961Minivac601Book234 is the only Minivac item; it holds five originals, all now local.",
+      "bitsavers - no Minivac / Scientific Development Corporation directory surfaced in search.",
+      "worldradiohistory.com - nothing Minivac-specific surfaced; the Popular Science ads are on Google Books, not there.",
+      "Scribd - a 'Minivac 601' document exists (scribd.com/document/371661752/Minivac-601) but is a re-upload of the same book scans behind a paywall; not fetched.",
+      "manualslib / manualzz - both are re-hosts of the ccapitalia scans.",
+      "Museum sites (System Source, Centre for Computing History, Computer History Museum, MIT Museum) - catalogue records only, no scanned documents offered."
+    ],
+    "still_missing_after_the_hunt": [
+      "A MINIVAC 6010 manual or schematic of any kind. Nothing found anywhere. This is the blocker for answering 'are the 601 and 6010 internals identical?'",
+      "Any SDC dealer/service bulletin, parts drawing, or panel silkscreen artwork.",
+      "The 'second edition of the MINIVAC Manual' that the errata sheet says SDC was preparing. No evidence it was ever published.",
+      "Resistor values for the rotary-switch motor drive network. The maintenance manual draws the two resistors but prints no values.",
+      "Relay coil resistance / pull-in and drop-out voltages, and lamp current. The maintenance manual gives ratings for the supply, switches and contacts but not for coils or lamps."
+    ]
+  },
+  "claims": [
+    {
+      "tag": "[verified]",
+      "area": "history/shannon",
+      "claim": "The MINIVAC manuals themselves never claim Shannon designed, invented or built the machine. Across all six books the name 'Shannon' appears exactly once, in the Boolean-algebra introduction: \"The application of the operations and techniques of Boolean Algebra to switching circuits was first suggested in 1938 by Dr. Claude Shannon of the Massachusetts Institute of Technology. It was Dr. Shannon's original development work which led to the MINIVAC 601.\" That is a claim of intellectual lineage from his 1938 thesis, not of authorship of the product.",
+      "citation": "Book III ('How Computers Make Logical Decisions'), printed page 44; local OCR raw/pdf/book2-3-4.txt lines 2205-2207. Verified by exhaustive grep for 'shannon' across book1.txt, book2-3-4.txt and book5-6.txt - zero hits in Books I, V and VI.",
+      "note": "This is the cleanest documented-vs-marketing separation available. The manuals were written by SDC's own staff and they stop short of crediting him with the design."
+    },
+    {
+      "tag": "[verified]",
+      "area": "history/authorship",
+      "claim": "All six books credit themselves to the company, not to any individual: 'The Minivac Manual was prepared and edited by the staff of Scientific Development Corporation.' First Printing - August, 1961.",
+      "citation": "Book I front matter (raw/pdf/book1.txt lines 92-99); Books II-IV front matter (book2-3-4.txt lines 24-31); Books V-VI front matter (book5-6.txt lines 29-36)."
+    },
+    {
+      "tag": "[verified]",
+      "area": "history/sdc-staff",
+      "claim": "One named SDC individual survives in the primary record: the errata sheet closes 'Scientific Development Corporation is preparing for a second edition of the MINIVAC Manual. Your comments and suggestions will be appreciated. We are particularly interested in new circuits, games, etc., for the MINIVAC. Please address correspondence of this nature to the Editor of the MINIVAC Manual: Linda G. Sprague.'",
+      "citation": "Errata sheet, final paragraph; raw/pdf/minivac601-errata.txt.",
+      "note": "A research lead: Linda G. Sprague is a traceable name and the only SDC employee named in any primary document I found. Any biographical identification would be inference - not made here."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/shannon",
+      "claim": "The 'Shannon created it' claim originates in SDC advertising, not in the product documentation. The October 1961 Popular Science advertisement (p.33) reads that the MINIVAC 601 was 'created as a private project by Dr. Claude E. Shannon, now Donner Professor of Science, MIT' and developed by the SDC staff.",
+      "citation": "RF Cafe reproduction/transcription of the Oct-1961 Popular Science ad: https://www.rfcafe.com/references/popular-science/scientific-development-minivac-601-popular-science-october-1961.htm ; the same phrase is quoted independently by IEEE Spectrum (Magoun, 2016) and by oldcomputermuseum.com.",
+      "note": "Two independent secondary reproductions of the same primary ad agree verbatim. Tagged [likely] because I did not read the printed page itself. The original is Google Books id XCEDAAAAMBAJ p.33."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/shannon",
+      "claim": "IEEE Spectrum investigated and found no trace of the MINIVAC in Shannon's own record: the device does not appear in Shannon's papers at the U.S. Library of Congress, nor at the Charles Babbage Institute, nor in the papers/accounts of his known home-computer collaborators Edmund Berkeley and Oliver Garfield. Spectrum's conclusion: 'The nature of Shannon's association with the MINIVAC remains unsolved.' The article ends by asking readers for help.",
+      "citation": "Alexander B. Magoun, 'Did Claude Shannon Invent a Groundbreaking Personal Computer?', IEEE Spectrum, 28 April 2016. https://spectrum.ieee.org/did-claude-shannon-invent-a-groundbreaking-personal-computer",
+      "note": "A related peer-reviewed treatment exists: 'The Mystery of Claude Shannon's Personal Computer', IEEE conference publication, https://ieeexplore.ieee.org/abstract/document/9039960/ - not read (paywalled)."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/shannon",
+      "claim": "Magoun notes SDC in Watertown was about 3.2 km from Berkeley Enterprises in Newton, i.e. the two known Shannon-licensed home-computer ventures were geographic neighbours of SDC.",
+      "citation": "IEEE Spectrum, Magoun, 2016 (as above).",
+      "note": "Suggestive only; Magoun draws no conclusion from it and neither should we."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "history/shannon",
+      "claim": "NET POSITION on Shannon: documented = his 1938 relay-switching thesis is the intellectual ancestor of the machine (SDC's own manual says so). Marketing = 'created as a private project by Dr. Claude E. Shannon' (advertising copy only). Undocumented = any design contribution, contract, royalty, or correspondence. Nothing found in this pass changes Spectrum's 2016 verdict.",
+      "citation": "Synthesis of the three claims above.",
+      "note": "This is my inference from the sources, hence [unverified] as a claim about the world."
+    },
+    {
+      "tag": "[verified]",
+      "area": "history/address",
+      "claim": "Every printed SDC document I hold gives the same address: 'Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'. It appears on the copyright page of Book I, of Books II-IV and of Books V-VI, on the back cover of Books I and V-VI, on the errata sheet masthead and footer, and on the title page and spare-parts page of the Maintenance Manual.",
+      "citation": "raw/pdf/book1.txt:105 and :1794; book2-3-4.txt:4287; book5-6.txt:42 and :3196; minivac601-errata.txt (masthead and footer); minivac601-maintenance-manual.txt (title page)."
+    },
+    {
+      "tag": "[verified]",
+      "area": "history/address",
+      "claim": "The Maintenance Manual spare-parts order address adds the pre-ZIP postal zone: 'Scientific Development Corporation / 372 Main Street / Watertown 72, Massachusetts.'",
+      "citation": "Maintenance Manual, printed page 11 (PDF page 13), read from the rendered page image raw/pdf/pages/maintenance/p-13.png.",
+      "note": "'Watertown 72' is a US postal-zone number, in use until ZIP codes arrived on 1 July 1963. Consistent with a 1961-62 imprint."
+    },
+    {
+      "tag": "[verified]",
+      "area": "history/address",
+      "claim": "The panel legend on real units reads 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.' - printed in small type directly beneath the 'Minivac 601' logotype on the right-hand logo plate. I confirmed this on TWO INDEPENDENT UNITS: the prebrief photograph and the Wikimedia Commons photograph by 'Autopilot'.",
+      "citation": "raw/prebrief/images/image_3.jpg (logo-plate crop) AND raw/photos/commons-minivac601-main.jpg (full-resolution crop of the same region, an entirely different physical machine photographed in 2015).",
+      "note": "No Watertown-legend panel has been found. No panel variant of any kind has been found."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "history/address",
+      "claim": "THE WATERTOWN / CAMBRIDGE DISCREPANCY IS NOT RESOLVED BY THE SOURCES. Two primary streams disagree and both are internally consistent: every piece of paper says Watertown, every panel says Cambridge. Wikipedia asserts 'Cambridge, Massachusetts, later in Watertown, Massachusetts' but attaches NO citation to that ordering - it is an uncited editorial claim, not evidence.",
+      "citation": "Wikipedia 'Minivac 601' infobox, raw wikitext fetched 2026-08-30, https://en.wikipedia.org/wiki/Minivac_601 - the 'manufacturer' field carries no reference.",
+      "note": "Candidate explanations, ALL of them my inference and none of them supported: (a) the silkscreen artwork was cut while SDC was in Cambridge and never re-cut after the move; (b) Cambridge was a later address and the surviving panels are late; (c) two premises were in use. What would settle it: a Massachusetts corporate-registration record or a Boston/Cambridge city directory entry for Scientific Development Corporation, 1960-1963; or a dated 1961 advertisement carrying a Cambridge address. I could not reach the USPTO or Justia trademark databases (both blocked automated access) - a MINIVAC trademark registration would carry the owner's address of record and the first-use-in-commerce date, and is the highest-value single document still outstanding."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/company",
+      "claim": "In the October 1961 Popular Science advertisement the seller is styled 'Scientific Development Corporation, Consumer Products Division, 372 Main Street, Watertown, Massachusetts.'",
+      "citation": "RF Cafe transcription of the Oct-1961 ad (URL above)."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "history/company",
+      "claim": "The Consumer Products Division was 'soon renamed' the 'Digital Equipment Division', evidenced by the November 1961 Popular Science ad (p.31).",
+      "citation": "Wikipedia citing Popular Science 1961-11 p.31, Google Books id VSEDAAAAMBAJ. I did not read the ad.",
+      "note": "Single-source, and the reading of the ad is Wikipedia's, not mine."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "history/company",
+      "claim": "SDC also sold analog-electronics educational kits: an advertisement for 'Basic Communications Kits' ran in Popular Science, June 1962, p.16.",
+      "citation": "Wikipedia citing Popular Science 1962-06 p.16, Google Books id yCADAAAAMBAJ. Not read by me.",
+      "note": "This is the only evidence found of any SDC product other than the MINIVAC line."
+    },
+    {
+      "tag": "[verified]",
+      "area": "history/date",
+      "claim": "The instruction manuals carry 'First Printing - August, 1961' and 'Copyright (c) 1961'.",
+      "citation": "Book I, Books II-IV and Books V-VI front matter (citations above).",
+      "note": "This is the firmest date anchor in the primary record: the documentation set was in print by August 1961."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/date",
+      "claim": "Consumer launch was autumn 1961; the Centre for Computing History dates the launch to 1 October 1961, and the first known advertisement is the October 1961 Popular Science.",
+      "citation": "https://www.computinghistory.org.uk/det/499/minivac-601/ ; IEEE Spectrum (Magoun 2016) says 'in the fall of 1961, advertisements appeared'."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/price",
+      "claim": "List price was $85.00. This figure is given in the Oct-1961 Popular Science ad itself and is repeated independently by IEEE Spectrum, the System Source Computer Museum, the Centre for Computing History, the Old Computer Museum and the Time-Line Computer Archive.",
+      "citation": "RF Cafe ad transcription; https://spectrum.ieee.org/did-claude-shannon-invent-a-groundbreaking-personal-computer ; https://museumlegacy.syssrc.com/artifact/205/ ; https://www.computinghistory.org.uk/det/499/minivac-601/ ; https://t-lcarchive.org/minivac-601/",
+      "note": "Inflation-adjusted figures quoted by sources vary with their publication year: ~$675 (Spectrum, 2016), ~$718-720 (2019 sources), ~$916 (Wikipedia, 2025 dollars)."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "history/price",
+      "claim": "A widely-repeated price history says the 601 sold at $79.95 and the 6010 at $479. The $79.95 figure traces to a SINGLE source - a 2011 marketing textbook anecdote (Lodish, Morgan & Archambeau, 'Marketing That Works', ch.3 p.11) - and it CONFLICTS with the $85.00 printed in the period advertisement. Every other source that repeats $79.95 is downstream of Wikipedia, which is downstream of that textbook.",
+      "citation": "Wikipedia reference 4, quoting Lodish et al.: '...he increased the price from $79.95 to $479. The MINIVAC 6010 sold very well to the corporate segment at $479...'; archived PDF at https://web.archive.org/web/20160408043633/http://mbi.dirkjanswagerman.nl/static/files/MBI/Module%206/READINGS_Lodish_etal_Chapter3Pricing.pdf",
+      "note": "Treat $79.95 as unreliable. It is a business-school anecdote written 50 years after the fact. The primary ad says $85.00. Do NOT let a simulator's UI or docs repeat $79.95 as fact. Whether SDC ever discounted to $79.95 is unknown."
+    },
+    {
+      "tag": "[likely]",
+      "area": "history/spare-parts-pricing",
+      "claim": "SDC's own 1961 spare-parts prices set a lower bound on the machine's bill of materials: relay $6.00, complete rotary switch assembly $20.00, transformer $10.00, rectifier $3.00, motor $4.00, drive wheel assembly $2.00, light assembly $1.00, circuit breaker $1.00, pushbutton switch $0.75, slide switch $0.50, set of 100 programming wires $12.00, set of 2 test wires with clips $1.00. Handling charge 25 cents on orders under $5.00.",
+      "citation": "Maintenance Manual printed page 11 (PDF p.13), read from the rendered image raw/pdf/pages/maintenance/p-13.png. Full table transcribed below under transcriptions.spare_parts_list.",
+      "note": "Tagged [likely] rather than [verified] only for the two prices the OCR mangled and the scan renders ambiguously - see the transcription note. Everything else on the page is [verified]."
+    },
+    {
+      "tag": "[likely]",
+      "area": "6010-delta",
+      "claim": "6010 ONLY. The MINIVAC 6010 was announced as an 'advanced and improved' version, in a gunmetal-grey metal case rather than the 601's blue-painted wooden case, released late 1961 / early 1962.",
+      "citation": "https://en.wikipedia.org/wiki/Minivac_601 ; http://www.oldcomputermuseum.com/minivac_6010.html ; https://t-lcarchive.org/minivac-601/"
+    },
+    {
+      "tag": "[likely]",
+      "area": "6010-delta",
+      "claim": "6010 ONLY. The documented changes are all cosmetic-plus-accessory: new case colour and material, switches 'upgraded to higher tolerances', and additional patch cords carrying special resistors, capacitors and diodes.",
+      "citation": "Wikipedia (citing Old Computer Museum and Lodish et al.); http://www.oldcomputermuseum.com/minivac_6010.html"
+    },
+    {
+      "tag": "[unverified]",
+      "area": "6010-delta",
+      "claim": "6010 ONLY. Whether the 601 and 6010 are electrically identical is NOT SETTLED. The 'same basic kit' claim traces entirely to the Lodish marketing anecdote. No 6010 manual, schematic or parts list was found anywhere. The patch cords carrying resistors, capacitors and diodes are a real functional addition, not a cosmetic one - they extend what circuits are constructible even if the console is unchanged.",
+      "citation": "Absence of evidence across archive.org, ccapitalia, bitsavers, museum catalogues and general search.",
+      "note": "SETTLEABLE: the CC0 MIT Museum photograph (raw/photos/commons-minivac6010-mit-museum.jpg, 5161x2759) is a direct top-view of a 6010 panel. Comparing its band layout, terminal lettering and jack counts against the 601 photographs would settle the panel question without any document. I have not done that comparison - it is out of my topic and belongs with the panel-geometry agent, explicitly labelled as a 6010 delta."
+    },
+    {
+      "tag": "[likely]",
+      "area": "6010-delta",
+      "claim": "6010 ONLY. The repositioning worked commercially: the 601 was rejected by corporate buyers as 'just a toy', and the identical-function 6010 at a much higher price sold well into the corporate segment.",
+      "citation": "Lodish, Morgan & Archambeau, 'Marketing That Works', ch.3 p.11 (quoted in Wikipedia ref 4); echoed by oldcomputermuseum.com and t-lcarchive.org.",
+      "note": "The story is consistent across sources but they are all downstream of the same textbook anecdote. Treat the mechanism as plausible and the numbers as unreliable."
+    },
+    {
+      "tag": "[likely]",
+      "area": "artifacts/museum",
+      "claim": "System Source Computer Museum (Hunt Valley, MD) holds a MINIVAC 601, artifact 205, dated 1961, price noted $85. Provenance: donated by Dr. Richard Taylor, who received the unit as a Bar Mitzvah gift. One photograph on the record.",
+      "citation": "https://museumlegacy.syssrc.com/artifact/205/  (the older URL https://museum.syssrc.com/artifact/205/ 301-redirects there)."
+    },
+    {
+      "tag": "[likely]",
+      "area": "artifacts/museum",
+      "claim": "Centre for Computing History (Cambridge, UK) holds a MINIVAC 601, catalogue CH499, dated 1 October 1961, price $85. One photograph on the record. The museum also runs a manufacturer page for Scientific Development Corporation.",
+      "citation": "https://www.computinghistory.org.uk/det/499/minivac-601/  and https://www.computinghistory.org.uk/det/564/Minivac-601-Computer-Launched/"
+    },
+    {
+      "tag": "[likely]",
+      "area": "artifacts/museum",
+      "claim": "Computer History Museum (Mountain View) holds a MINIVAC 601, catalog number 102622941, accession X2079.2001, gift of Gene Mandel. Catalogued as Scientific Development Corporation, Watertown MA, ca. 1963. SERIAL NUMBER 1886. Weight 10 lb. The lot comprises the main unit in its original cardboard box (the box lid bears the original owner's name and address), three bags of jumper cables, and SIX ELECTROLYTIC CAPACITORS.",
+      "citation": "https://www.computerhistory.org/collections/catalog/102622941",
+      "note": "Two things matter here for the build. (1) A serial number of 1886 is a real production-quantity datum - it is the only serial number I found. (2) The six loose electrolytic capacitors confirm that the panel's CAPACITOR terminals took user-inserted discrete capacitors supplied with the machine, one per section. The Wikipedia dimensions field (5 1/8 x 24 x 13 1/4 in) is sourced to this same CHM record."
+    },
+    {
+      "tag": "[verified]",
+      "area": "artifacts/museum",
+      "claim": "6010 ONLY. The MIT Museum (Cambridge, MA) exhibits a MINIVAC 6010 attributed to Scientific Development Corporation, 1962.",
+      "citation": "Wikimedia Commons file 'Minivac 6010 Computer, Scientific Development Corporation, 1962 - MIT Museum - Cambridge, MA - DSC09163.jpg', CC0, photographed in the museum 2026-04-17; local copy raw/photos/commons-minivac6010-mit-museum.jpg."
+    },
+    {
+      "tag": "[likely]",
+      "area": "artifacts/private",
+      "claim": "Trammell Hudson (trmm.net) owns a unit and describes it as 'six relays, six switches, six buttons, twelve indicator lamps, a 3x3 matrix plug board and a 16-position rotating input/output device'. Two photographs on Flickr.",
+      "citation": "https://trmm.net/Minivac_601/",
+      "note": "Useful independent cross-check on lamp count: TWELVE panel indicator lamps (6 binary output + 6 relay indicator), with the POWER lamp separate. Mike Gardi's replica uses 13 lamps total, which is the same count plus the power lamp."
+    },
+    {
+      "tag": "[likely]",
+      "area": "artifacts/private",
+      "claim": "At least one collector reports owning multiple units ('I have a stack of these ... they still work (they are fairly easy to fix)'), and a unit was offered for sale on the Vintage Computer Federation forums in 2021 for $500. A restorer who used one at age 11 in 1972 reports acquiring one for restoration.",
+      "citation": "Hacker News item 45950396 (2025-11-17), comments by users 'anonzzzies' and 'mrandish'; https://retrocomputingforum.com/t/minivac601-claude-shannon/711 comment by 'aiuto'.",
+      "note": "Relevant because these are the people who could answer the rotary-motor-speed question that no document answers."
+    },
+    {
+      "tag": "[verified]",
+      "area": "artifacts/film",
+      "claim": "THE '1961 SDC PROMOTIONAL FILM' APPEARS NOT TO EXIST, or at least is not findable. The only moving-image candidate is a YouTube video titled 'Minivac 601 - Scientific Development Corporation, 1961' - but it is a 2 min 36 s demonstration video uploaded 16 January 2014 by the channel 'ccapitalia', with a Spanish-language description linking to ccapitalia.net/?p=1257. The '1961' in the title is the machine's date, not the film's.",
+      "citation": "https://www.youtube.com/watch?v=q6OA8HfnxxU - metadata read directly from the page: lengthSeconds 156, uploadDate 2014-01-16, ownerChannelName 'ccapitalia'.",
+      "note": "Also searched for a period 16 mm / Prelinger-style promotional film: nothing. A separate YouTube playlist exists (https://www.youtube.com/playlist?list=PLBA083FD49484104B) - not examined. Do not cite a '1961 SDC promotional film' as a source without new evidence."
+    },
+    {
+      "tag": "[verified]",
+      "area": "artifacts/variants",
+      "claim": "No panel variant of any kind was found. Two independently photographed units carry an identical logo plate, identical band layout and identical sub-panel arrangement (BINARY OUTPUT / +- power strip / STORAGE-PROCESSING / COMMON-CAPACITOR strip / SECONDARY STORAGE / BINARY INPUT, with the right-hand column carrying the logo plate, MATRIX, POWER and DECIMAL INPUT-OUTPUT).",
+      "citation": "raw/prebrief/images/image_3.jpg and raw/photos/commons-minivac601-main.jpg (whole-panel read at 900px plus a full-resolution logo-plate crop).",
+      "note": "This does NOT rule out variants; it means none surfaced in the photographs available."
+    },
+    {
+      "tag": "[verified]",
+      "area": "replicas/gardi",
+      "claim": "CRITICAL CAVEAT ON THE GARDI REPLICA: Mike Gardi measured NOTHING from an original. In his own words: 'I don't have a \"vintage\" unit so this replica has been constructed based on photos and from the original manuals that were available online.' His panel geometry is therefore inference from photographs - the same evidence we have - not measurement. He must not be treated as an authority on original dimensions, jack spacing, or panel material.",
+      "citation": "Instructables 'Minivac 601 Replica (Version 0.9)', author megardi, published 2019-06-12, step 1. https://www.instructables.com/Minivac-601-Replica-Version-09/  (text retrieved via the Instructables JSON API; licence CC BY-NC-SA 4.0).",
+      "note": "This is the single most important finding about the replica. It inverts its evidentiary status: it is a downstream reconstruction, not an upstream source."
+    },
+    {
+      "tag": "[verified]",
+      "area": "replicas/gardi",
+      "claim": "Gardi's explicit statements of uncertainty - each marks a point where the original is undetermined: (a) panel material: 'I'm not sure what the top panels were constructed from' (he 3D-printed his); (b) relay appearance: he sourced relays that 'don't look too bad' and could be made to match better by removing the clear dust covers; (c) lamp appearance: the lamps he found 'did not have the right look' so he 3D-printed caps 'more in line with the photographs'; (d) pushbuttons: 'considerably larger than the original's'.",
+      "citation": "Instructables v0.9, step 1 and step 5 (parts list)."
+    },
+    {
+      "tag": "[verified]",
+      "area": "replicas/gardi",
+      "claim": "Gardi's substitutions, in full. Power: a 12 V 2 A external wall-wart plus a T7812 regulator, replacing the original's internal transformer and 110 VAC mains; he replaced the circuit breaker on the Power Panel with a 2.1 mm barrel jack. Lamps: 13 x 12 V panel-mount, ~15 mm mounting diameter. Slide switches: 7 x DPDT panel-mount sliders, mounting holes 28 mm centre-to-centre, mounted UNDER the panel, from a surplus store, which he says 'seem pretty much identical' to the original and happen to have red sliders. Pushbuttons: 6 x SPDT arcade-style, Digi-Key 1568-1476-ND. Relays: 6 x NTE R14-11D10-12, DPDT, 12 V. Rotary switch: entirely his own 3D-printed design using 16 reed switches. Jacks: 388 rivets by his count - 0.089 in (2.26 mm) tin-plated brass eyelets (Digi-Key 36-35-ND) with smooth-edge solder lugs (36-4004-ND) behind. Patch cords: Spaenaur 239-497 taper pins on 20 AWG wire, 20 x 8 in yellow, 20 x 16 in red, 10 x 24 in blue, 'because the original did so as well'. Frame: laser-cut 1/8 in plywood from a 2 x 4 ft sheet, painted light blue 'close to the original's'.",
+      "citation": "Instructables v0.9, steps 2-9.",
+      "note": "The 388-rivet count is a count of HIS replica's jack holes, not the original's. It implies 194 two-hole terminals. Useful as a sanity check on any independently derived jack census, nothing more."
+    },
+    {
+      "tag": "[verified]",
+      "area": "replicas/gardi",
+      "claim": "Version 0.9 (2019-06-12) does NOT implement the motorised rotary switch - 'For this version I am asking the operator to be the motor.' Version 1.0, a drop-in replacement Decimal Input-Output panel published 2019-07-09, adds it: a friction drive, as in the original, using a 12 V speed-reduction motor, a 3D-printed flywheel with a 4 mm urethane round-belt tyre, ball bearings, and a 12 V SOLENOID that engages and disengages the motor from the wheel so the switch turns freely by hand when the motor is idle.",
+      "citation": "Instructables 'Minivac 601 (Version 1.0) Motorized Rotary Switch', megardi, 2019-07-09, CC BY-NC-SA 4.0. https://www.instructables.com/Minivac-601-Version-10-Motorized-Rotary-Switch/",
+      "note": "The solenoid disengagement is Gardi's own invention, NOT a feature of the original - the original's motor drives the wheel by permanent friction contact ('To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel', Maintenance Manual p.10). Do not model a clutch."
+    },
+    {
+      "tag": "[likely]",
+      "area": "replicas/gardi",
+      "claim": "Design files and coverage: Thingiverse thing:3689581 'Minivac 601 Replica (Version 0.9)'. Press: Hackaday 'A Faithful Replica Of An Early Computer Trainer' (2019-06-17) and 'Minivac 601 Replica Gets A Custom Motorized Rotary Switch' (2019-07-13); Boing Boing (2019-06-18); Hackster.io; EDN 'Mega-Cool Replica of the Classic Minivac 601'.",
+      "citation": "https://www.thingiverse.com/thing:3689581 ; https://hackaday.com/2019/06/17/a-faithful-replica-of-an-early-computer-trainer/ ; https://hackaday.com/2019/07/13/minivac-601-replica-gets-a-custom-motorized-rotary-switch/ ; https://boingboing.net/2019/06/18/complete-instructions-for-maki.html ; https://www.edn.com/mega-cool-replica-of-the-classic-minivac-601/"
+    },
+    {
+      "tag": "[verified]",
+      "area": "emulators/sadetsky",
+      "claim": "ORACLE-ONLY COMPLIANCE STATEMENT: the source code of Greg Sadetsky's Minivac 601 Simulator was DELIBERATELY NOT READ. No repository file was cloned, fetched or opened; no script or bundle was fetched from minivac.greg.technology; the GitHub repository's code was not visited. Everything recorded about it below comes from repository METADATA (GitHub REST record: name, description, homepage, dates, licence field), from third-party articles, and from the author's own public Hacker News comments.",
+      "citation": "This document."
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "Greg Sadetsky's browser simulator lives at https://minivac.greg.technology/ , with the simulator itself at /simulator/ , mirrors of the original manuals at /manuals/ , and a 'Relay Tetris' demo at /tetris/ . Its GitHub repository is github.com/gregsadetsky/minivac (created 2025-11-16, renamed from 'minivac-601-simulator'; homepage field points at the site; 14 stars; last pushed 2026-08-28).",
+      "citation": "GitHub REST search metadata for repositories named 'minivac', queried 2026-08-30; https://minivac.greg.technology/ page title 'Minivac 601 Simulator'; Hacker News items 45945762, 45950396, 49466268."
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "LICENCE: none declared. The GitHub licence field is null, and the FOSSi Foundation newsletter describes the project as available 'under an unspecified licence'. Absent a declared licence, default copyright applies - a further practical reason, beyond Tom's ruling, not to derive anything from it.",
+      "citation": "GitHub REST metadata (license: null); FOSSi Foundation, El Correo Libre issue 92, 2025-12-11, https://fossi-foundation.org/blog/2025-12-11-ecl92"
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "WHAT IT MODELS: it is a real DC circuit solver, not a boolean-gate simulator. Sadetsky: 'The biggest unlock was finding Willy McAllister's excellent Circuit Sandbox, which provides the Minivac Simulator's underlying electrical math. I tried so many approaches to simulate electricity (a doomed DIY approach, Falstad, Spice...) but Circuit Sandbox's DC analysis did the job perfectly.'",
+      "citation": "Greg Sadetsky, Hacker News item 45950396, 2025-11-17. Circuit Sandbox: https://spinningnumbers.org/a/circuit-sandbox.html",
+      "note": "This matters for oracle use: differences between our simulator and his may be differences in circuit-solver behaviour (e.g. what a short circuit does), not differences in Minivac semantics."
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "STATED FEATURE LIST / STATUS, in the site's own words: 'This site is a work in progress. For now, you can peruse the original Minivac manuals (don't forget to check the erratas) and play around with the simulator.' Third-party summary: runs entirely in-browser; drag wires; connect components; make short circuits; optional simulated relay clack sound; the original 1961 manuals are included so you can follow their projects.",
+      "citation": "FOSSi Foundation El Correo Libre 92 (quoting the site); Hackster.io news article 'Greg Sadetsky Brings Back Claude Shannon's 1961 Minivac 601 Relay Computer - On the Web' (https://www.hackster.io/news/greg-sadetsky-brings-back-claude-shannon-s-1961-minivac-601-relay-computer-on-the-web-89aa0454ad9f - returned HTTP 403 to direct fetch; content read via search-result summary)."
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "EXTERNALLY OBSERVABLE BEHAVIOUR, from the author's own descriptions: (a) a relay click sound is played when a relay turns ON and when it turns OFF, and at no other time - pressing a pushbutton on an empty simulator produces no sound; (b) the sound is NOT a recording of a real Minivac relay ('I'm using (gasp) not the original Minivac Relay sound'); (c) a wired circuit is shareable as a URL of the form https://minivac.greg.technology/simulator/#wires=1%2B%2F1C%2C... - i.e. the fragment carries the manuals' own slash shorthand ('1+/1C'), percent-encoded and comma-separated.",
+      "citation": "Greg Sadetsky, Hacker News item 45950396, 2025-11-17, replies to users 'JKCalhoun' and 'don-bright'.",
+      "note": "The #wires= URL scheme is the practical hook for using it as an oracle: a program listing lifted from a manual page can be turned into a URL mechanically and compared against our engine's result, with no code read."
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "STATED LIMITATIONS as of November 2025: the rotary/motor wheel is not user-controllable - 'One of the crucial things I didn't get to yet is making that wheel controllable - some circuits in the manuals do require you to turn it. That's high in the todo list (with mobile support).' The author has also never handled a physical machine: 'Once/if I get to see a Minivac in real life, I may learn that buttons do make sounds.'",
+      "citation": "Greg Sadetsky, Hacker News item 45950396, 2025-11-17.",
+      "note": "Consequence for oracle use: any manual experiment that requires turning the dial cannot be cross-checked against his simulator, at least at that snapshot. Re-check current behaviour before relying on it."
+    },
+    {
+      "tag": "[likely]",
+      "area": "emulators/sadetsky",
+      "claim": "INDEPENDENT CONFIRMATION THAT THE ROTARY MOTOR IS UNDOCUMENTED: Sadetsky publicly asked a Minivac owner for help 'to figure out some specifics about the motor wheel (its speed and whether it experiences any speed up)'. He is the other person who has read these manuals closely and he could not find the answer either.",
+      "citation": "Greg Sadetsky, Hacker News item 45950396, 2025-11-17, reply to user 'anonzzzies'.",
+      "note": "Strong corroboration for our own 'not settled' list: the manuals do not state the dial's rotation rate or its acceleration behaviour."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "emulators/other",
+      "claim": "A SECOND emulator exists: github.com/jkoets/Minivac-601-Emulator, described as 'A TypeScript emulator core for the Minivac 601 (Scientific Development Corp., 1961) - the relay-logic educational computer designed under Claude Shannon. For teaching digital logic and computer history (and just fun).' Created 2026-06-12, last pushed 2026-06-13, no licence declared, 0 stars.",
+      "citation": "GitHub REST repository-search metadata, queried 2026-08-30.",
+      "note": "Its code was NOT read. Tom's oracle-only ruling names Sadetsky's simulator specifically; I applied the same caution here pre-emptively. TOM NEEDS TO RULE on whether this one is in scope. Recording existence only."
+    },
+    {
+      "tag": "[unverified]",
+      "area": "emulators/other",
+      "claim": "A homebrew hardware MINIVAC 601 relay computer is described in a Facebook group post ('My homebrew MINIVAC 601 relay computer. Couldn't afford ...'). Not accessible without login; existence only.",
+      "citation": "https://www.facebook.com/groups/402177264898386/posts/775075254275250/ - appeared in search results, not fetched."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/power-nets",
+      "claim": "SINGLE GLOBAL POWER NET. 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.'",
+      "citation": "Errata sheet, page 1, column 1 (raw/pdf/minivac601-errata.txt).",
+      "note": "Model every '+' terminal on the panel as one node and every '-' terminal as one node, including the M+ and M- terminals in the matrix block. This is the first thing to get right and the manuals never say it - only the errata does."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/commons",
+      "claim": "COMMON TERMINALS. 'In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.' And: 'If you should run out of long programming wires, you can use shorter wires by programming through any common terminals not being used in the circuit.' Worked example: '...to make the connections 1X/6A without using the longest wires, you can make the two connections 1X/4R and 4R/6A. If slide switch 4 is being used in the circuit, you can make the connections 1X/4com and 4com/6A. Either of the two examples just given will produce the same result as making the single connection 1X/6A.'",
+      "citation": "Errata sheet, page 1, column 1.",
+      "note": "Two consequences. (1) A terminal designation can carry MORE THAN TWO holes: M10 has six, 3com has four, 6R has two. Book I's 'each terminal has two holes side by side' is therefore not universal - or 'terminals' here counts holes. That ambiguity is NOT settled by the errata text alone and must be resolved against the panel photograph by the geometry agent. (2) Any spare hole on a node is a legal free junction: the simulator must treat multiple pins in one terminal as one node and allow daisy-chaining."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/relay-lamp-series",
+      "claim": "THE RELAY INDICATOR LAMP IS IN SERIES WITH THE RELAY COIL, and it drops enough voltage to matter. Errata, Book IV p.72: 'the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit. ... The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.'",
+      "citation": "Errata sheet, page 3, 'BOOK IV / page 72' note, with a full 48-connection alternate program listing for a three-bit binary counter (transcribed in raw/pdf/minivac601-errata.txt).",
+      "note": "This is a first-order electrical fact for a faithful relay-level model: coil drive through the indicator lamp is marginal, and the errata's alternate circuits exist specifically to route around it. A pure-boolean simulator cannot reproduce the failure this note describes."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/power-supply",
+      "claim": "POWER SUPPLY RATINGS. 'The power supply is rated at 1.5 amps continuous with a nominal 12 volts output.' 'The unloaded power supply outlet voltage should be approximately 13 volts.' Input is a 110-volt AC outlet. 'All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps.' 'The lights are operated at less than their rated voltage to extend their operating life.' 'The drive motor is operated at less than one-third rated voltage.' 'To provide low contact resistance, the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper [sic]; the drive shaft is made of stainless steel running in an oil-impregnated bronze bearing.'",
+      "citation": "Maintenance Manual, printed pages 1-2 (PDF pages 3-4); raw/pdf/minivac601-maintenance-manual.txt."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/power-supply",
+      "claim": "POWER SUPPLY TOPOLOGY, read from the schematic. Power cord -> power switch, in series with the black-wire transformer primary -> transformer -> centre-tapped secondary on two yellow/black wires -> two-diode rectifier; the transformer centre tap (yellow wire) is the other DC rail. A circuit breaker is in series on the rail from the transformer, and the power light sits across the DC output. Labelled elements in the drawing: POWER CORD, POWER SWITCH, BLACK WIRE (x2), TRANSFORMER, YELLOW/BLACK WIRE (x2), YELLOW WIRE, RECTIFIER (its output marked +), CIRCUIT BREAKER, POWER LIGHT.",
+      "citation": "Maintenance Manual, printed page 3 (PDF page 5), 'Power Supply Circuit Diagram', read from the rendered image raw/pdf/pages/maintenance/p-05.png.",
+      "note": "It is a classic full-wave centre-tapped rectifier. NO FILTER CAPACITOR IS DRAWN - so the 12 V rail is very likely unsmoothed 120 Hz pulsating DC, which would explain both the ~13 V unloaded reading and the relays' tolerance of it. That last sentence is MY INFERENCE from the absence of a component in a schematic, and is [unverified]."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/rotary-motor",
+      "claim": "ROTARY SWITCH MOTOR DRIVE TOPOLOGY, read from the schematic. Three terminals: D17 (top), D18 (middle), D19 (bottom). The MOTOR is connected between the D18 node and the D19 node. One resistor sits in parallel with the motor, also across D18-D19. A second resistor connects the D17 node to the D19 node. RUN is the pair D17+D18; STOP is the pair D18+D19. Labels in the drawing: 'D 17', 'RUN', 'D 18', 'STOP', 'MOTOR', 'RESISTORS' (an arrow to each of the two).",
+      "citation": "Maintenance Manual, printed page 9 (PDF page 11), 'Circuit Diagram - Rotary Switch Motor Drive', read from the rendered image raw/pdf/pages/maintenance/p-11.png.",
+      "note": "The manual's own test procedure confirms the reading: power across D17/D18 runs the motor (through the series resistor); reversing the connections reverses the direction; a short across D18/D19 short-circuits the motor and stops it; power applied momentarily across D18/D19 bypasses the series resistor and 'the knob should turn very rapidly'. NO RESISTOR VALUES ARE PRINTED. The manual's only characterisation is 'Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds.'"
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/rotary",
+      "claim": "ROTARY SWITCH TERMINAL ASSIGNMENT. 'Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, D0 through D15.' So: D0-D15 are the sixteen dial positions, D16 is the wiper/arm, and D17/D18 = RUN, D18/D19 = STOP - D18 IS SHARED BETWEEN THE RUN PAIR AND THE STOP PAIR.",
+      "citation": "Maintenance Manual, printed pages 9-10 (PDF pages 11-12).",
+      "note": "This refines the prebrief's '16 ARM, 17, 18 RUN, 19 STOP'. Confirmed by both the schematic and the test text."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/rotary",
+      "claim": "THE WIPER HAS A DEAD ZONE - it is break-before-make with a gap. Errata, Book V p.11: 'It is possible for the \"elevator\" to get stuck at a floor. This happens when the pointer knob stops between adjacent terminals - for example, between D6 and D7 - and is not making proper connection with either. In such case, move the pointer knob so that it is pointing directly at one of the terminals.'",
+      "citation": "Errata sheet, page 4, 'page 11: Experiment 9' note.",
+      "note": "Model the wiper as capable of connecting to exactly one contact or to NONE. Do not model make-before-break, and do not assume the arm is always on a contact."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/slide-switch",
+      "claim": "SLIDE SWITCH TERMINALS AND POLARITY. Six terminals per slide switch, lettered R, S, T (first pole) and U, V, W (second pole). S and V are the COMMONS. RIGHT closes S-T and V-W; LEFT closes S-R and V-U.",
+      "citation": "Maintenance Manual, printed page 8 (PDF page 10), 'Circuit Diagram - Slide Switch Check', read from the rendered image raw/pdf/pages/maintenance/p-10.png: lights are wired 1A<-T, 2A<-R, 3A<-W, 4A<-U with S and V wired to +, and the accompanying text reads 'Set the slide switch RIGHT. Turn power on. Lights 1 and 3 should come on. Move the slide switch to the LEFT. Lights 1 and 3 should go off and lights 2 and 4 should come on.' Cross-checked against a Book I program listing that reads '1A/1R  2A/1W' with '1S/1+' and '1V/1S' (raw/pdf/book1.txt lines 978-979), which independently establishes S and V as the commons.",
+      "note": "The LEFT/RIGHT-to-throw mapping is my reading of a scanned figure plus its caption text; it is corroborated but a geometry agent should confirm against Book I's own slide-switch page before it is frozen into the model."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/relay",
+      "claim": "EIGHT ELECTRICAL CONNECTIONS PER RELAY. 'To replace a defective relay, disconnect the eight connections to the relay and remove the unit by unscrewing the relay mounting screws.'",
+      "citation": "Maintenance Manual, printed page 8 (PDF page 10).",
+      "note": "Eight is consistent with a DPDT relay wired out as 2 coil + 2 common + 4 throw = 8. That decomposition is my inference, [unverified]; the count of eight is [verified]."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/relay",
+      "claim": "THE RELAY HAS A PLASTIC CROSSBAR ACTUATING BOTH POLES, and the contacts are user-serviceable. 'Clean the relay contacts by drawing a piece of clean, dry paper between the closed contacts. Do not use a cleaning solution. To clean the normally open contacts, gently push the plastic crossbar to the left to close the contacts.' Also: 'The switch arm should engage the normally open and normally closed contacts and should push them slightly as they meet.'",
+      "citation": "Maintenance Manual, printed pages 1 and 8 (PDF pages 3 and 10)."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/panel",
+      "claim": "PHYSICAL CONSTRUCTION DETAILS from the maintenance manual: the power cord stores in a compartment under the power panel, reached 'through the three-inch hole in the bottom of the computer'; the bottom panel comes off 'by unscrewing the screws from the rubber feet'; the power panel 'push[es] out of the computer console through the holes in the dividing section'; the machine shipped with a transparent bag for the programming wires and a cardboard shipping box; slide switches and the power switch are RIVETED in place (replacement requires drilling out the rivets); pushbuttons have a red plastic button that pulls off to expose a mounting screw.",
+      "citation": "Maintenance Manual, printed pages 1, 2, 4, 5, 7, 9 (PDF pages 3, 4, 6, 7, 9, 11)."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/programming",
+      "claim": "OPERATIONAL RULE THE BOOKS DO NOT STATE: 'Always be certain that the power is OFF when you are either wiring a program or removing one from the board of the MINIVAC. This will prevent any accidental short circuit...' and, if a programming error has shorted the supply, 'push the circuit breaker after correcting the error.' Programs can also fail purely from speed: 'try carrying out the procedure slowly; some programs are not designed for high-speed operation', and relays can be physically blocked by their own patch wires: 'check to see that the relays are free to operate. If necessary, replace short programming wires with longer ones so that the wires do not interfere with the movement of the relay arms.'",
+      "citation": "Errata sheet, page 1, columns 1-2."
+    },
+    {
+      "tag": "[verified]",
+      "area": "technical/errata-scope",
+      "claim": "THE ERRATA IS NOT COSMETIC - IT CORRECTS WIRING. It contains outright program corrections (e.g. Book II p.11 'change 1A/1C to 1A/1G; delete 1A/1C connection on circuit diagram'; Book II p.14 'change 2Z/2C to 2X/2C'; Book III p.43 'change 2+/2H to 1G/2H'; Book III p.54 'change 5V/45 to 5V/4S'), corrected circuit diagrams (Book I p.13 'delete line connecting 1B and 2B'; Book I p.24 'change 6Y to 6V'; Book III p.59 'change 1R, 1S, 1T on far right slide switch to 3R, 3S, 3T'), a corrected Boolean law set (Book III p.46), a whole replacement three-bit counter program, and a set of Book V/VI program fixes.",
+      "citation": "Errata sheet, pages 2-4, complete text in raw/pdf/minivac601-errata.txt.",
+      "note": "ACTION FOR THE PROJECT: every program listing taken from the six books must be errata-corrected before it is used as a test vector. Building test cases from an uncorrected book page will produce false failures."
+    }
+  ],
+  "transcriptions": {
+    "spare_parts_list": {
+      "source": "MINIVAC 601 Maintenance Manual, printed page 11 (PDF page 13). Read from the rendered image raw/pdf/pages/maintenance/p-13.png at 200 dpi.",
+      "heading": "MINIVAC 601 - SPARE PARTS",
+      "intro": "The following spare parts are available from Scientific Development Corporation for repairing MINIVAC 601:",
+      "columns": [
+        "Part No.",
+        "Description",
+        "Price"
+      ],
+      "rows": [
+        [
+          "6431",
+          "Circuit Breaker",
+          "1.00"
+        ],
+        [
+          "6432",
+          "Slide Switch",
+          ".50"
+        ],
+        [
+          "6433",
+          "Rectifier",
+          "3.00"
+        ],
+        [
+          "6434",
+          "Transformer",
+          "10.00"
+        ],
+        [
+          "6435",
+          "Light Assembly",
+          "1.00"
+        ],
+        [
+          "6436",
+          "Pushbutton Switch",
+          ".75"
+        ],
+        [
+          "6437",
+          "Relay",
+          "6.00"
+        ],
+        [
+          "6471",
+          "Motor",
+          "4.00"
+        ],
+        [
+          "6472",
+          "Drive Wheel Assembly",
+          "2.00"
+        ],
+        [
+          "6473",
+          "Complete Rotary Switch Assembly",
+          "20.00"
+        ],
+        [
+          "6490",
+          "Set of 100 Programming Wires",
+          "12.00"
+        ],
+        [
+          "6491",
+          "Set of 2 test wires with clips",
+          "1.00"
+        ]
+      ],
+      "order_address": "Scientific Development Corporation / 372 Main Street / Watertown 72, Massachusetts",
+      "terms": "To avoid C.O.D. charges please send check or money order with your spare parts order directly to [the above]. There is a handling charge of 25 cents for orders less than $5.00.",
+      "notes": [
+        "The pdftotext OCR mangled two prices ('T.00' for the circuit breaker and 'io.oo' for the transformer); the rendered page image resolves them unambiguously as 1.00 and 10.00.",
+        "A previous owner's pencil arithmetic is written below the rule in the scan: '6 1.25 / 2.50 / 6 3.75' (approximate reading). Not part of the printed document.",
+        "Part-number structure: 64xx for console components, 647x for rotary-switch subassembly parts, 649x for wire sets. Consistent with the drive train (motor, drive wheel, complete rotary switch assembly) being a distinct subassembly.",
+        "'Set of 100 Programming Wires' at $12.00 implies the machine shipped with on the order of 100 wires; the Computer History Museum's unit came with three bags of jumper cables."
+      ]
+    },
+    "power_supply_diagram": {
+      "source": "Maintenance Manual printed page 3 (PDF page 5); image raw/pdf/pages/maintenance/p-05.png",
+      "labels_as_printed": [
+        "POWER CORD",
+        "POWER SWITCH",
+        "BLACK WIRE",
+        "TRANSFORMER",
+        "YELLOW/BLACK WIRE",
+        "YELLOW WIRE",
+        "RECTIFIER",
+        "CIRCUIT BREAKER",
+        "POWER LIGHT"
+      ],
+      "topology_as_drawn": "Mains cord -> power switch in series with the black-wire primary -> transformer. Secondary: two yellow/black wires to the two rectifier diodes; the centre tap (yellow wire) is the return rail. Rectifier output marked '+'. The circuit breaker is in series in the rail coming from the transformer side. The power light is connected across the DC output terminals.",
+      "not_printed": [
+        "diode part numbers",
+        "transformer turns ratio or secondary voltage",
+        "circuit breaker trip current",
+        "any filter capacitor (none is drawn)"
+      ]
+    },
+    "rotary_switch_motor_drive_diagram": {
+      "source": "Maintenance Manual printed page 9 (PDF page 11); image raw/pdf/pages/maintenance/p-11.png",
+      "labels_as_printed": [
+        "D 17",
+        "RUN",
+        "D 18",
+        "STOP",
+        "MOTOR",
+        "D 19",
+        "RESISTORS"
+      ],
+      "topology_as_drawn": "D17 runs right along the top to a node. From that node a resistor (R_series) descends to the bottom rail, which runs left to D19. D18 runs right along a middle rail; from it the MOTOR descends to the bottom rail, and a second resistor (R_parallel) also descends from the D18 rail to the bottom rail, in parallel with the motor.",
+      "behaviour_stated_in_text": [
+        "Power across the RUN terminals (D17 and D18) turns the pointer knob.",
+        "Reversing the power connections reverses the direction of rotation.",
+        "A short circuit across the STOP terminals (D18 and D19) stops the knob turning.",
+        "Power applied momentarily across the STOP terminals makes the knob 'turn very rapidly'.",
+        "'Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds. If a resistor does not heat up, it is defective.'",
+        "'To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel.'"
+      ],
+      "not_printed": [
+        "resistor values",
+        "motor rated voltage",
+        "motor rated or actual RPM",
+        "gear/friction ratio",
+        "spin-up time"
+      ]
+    },
+    "slide_switch_check_diagram": {
+      "source": "Maintenance Manual printed page 8 (PDF page 10); image raw/pdf/pages/maintenance/p-10.png",
+      "terminals_shown": [
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "+ (x2)"
+      ],
+      "wiring_as_drawn": "Two + terminals feed the two pole commons S and V. Pole 1: common S, throws T and R. Pole 2: common V, throws U and W. T -> 1A, R -> 2A, W -> 3A, U -> 4A. Each output light N is drawn between terminals NA and NB, with NB strapped to the adjacent N- terminal.",
+      "text_as_printed": "Set the slide switch RIGHT. Turn power on. Lights 1 and 3 should come on. Move the slide switch to the LEFT. Lights 1 and 3 should go off and lights 2 and 4 should come on.",
+      "derived": "RIGHT => S-T and V-W closed. LEFT => S-R and V-U closed."
+    },
+    "errata_full_text": {
+      "note": "The complete errata sheet is transcribed verbatim in raw/pdf/minivac601-errata.txt (pdftotext -layout, 18 KB). It is short, dense and almost entirely load-bearing. It is NOT reproduced inline here because the text file is the pristine capture; read it directly.",
+      "structure": [
+        "Header and general notes (power off while wiring; all +/- terminals common; routing through unused commons; troubleshooting sequence).",
+        "Notes and Corrections by page: BOOK I (pp.13, 24, 28), BOOK II (pp.10, 11, 14), BOOK III (pp.36, 38, 40, 41, 43, 46, 54, 58, 59, 61, 62), BOOK IV (pp.69, 71, 72, 73, 77, 79, 80, 82, 83), BOOK V (pp.2, 10, 11, 12, 21-22, 24, 25, 30, 31, 33, 35), BOOK VI (pp.51, 52, 53, 55, 57, 60).",
+        "A complete 48-connection alternate THREE-BIT BINARY COUNTER program (middle stage only) with its own circuit figure, plus modifications to turn it into a universal up/down counter and into a subtractor.",
+        "Closing: second-edition solicitation, Editor Linda G. Sprague, footer '372 Main Street, Watertown, Massachusetts'."
+      ]
+    },
+    "maintenance_manual_contents": {
+      "note": "Complete text in raw/pdf/minivac601-maintenance-manual.txt.",
+      "sections": [
+        "ROUTINE MAINTENANCE - Cleaning; Storage; Relay Contacts; Oiling (rotary switch shaft and motor shaft, once or twice a year; knob realignment procedure).",
+        "Adjustment and Repair - component ratings paragraph.",
+        "Power Supply - 12-step fault isolation, with the Power Supply Circuit Diagram at step 6.",
+        "Program Wires - handling, replacement, pointer to the spare parts list.",
+        "Lights - test and replacement (cut leads 3/8 in from the terminal; solder in a new light assembly).",
+        "Pushbuttons - Circuit Diagram, Pushbutton Check, plus replacement procedure.",
+        "Relays - Circuit Diagram, Relay Check, plus contact adjustment and replacement (eight connections).",
+        "Slide Switches - Circuit Diagram, Slide Switch Check, plus replacement (six connections, drill out rivets).",
+        "Rotary Switch - Circuit Diagram, Rotary Switch Motor Drive, motor/resistor/drive-wheel fault isolation.",
+        "MINIVAC 601 - SPARE PARTS price list and order address."
+      ]
+    }
+  },
+  "not_settled": [
+    {
+      "question": "Watertown vs Cambridge: which address is earlier, and why do the panels and the paper disagree?",
+      "status": "Both are primary and both are consistent within their own medium. Not resolved.",
+      "what_would_settle_it": "A MINIVAC trademark registration record (owner address of record + first-use-in-commerce date) - the USPTO and Justia trademark search endpoints both blocked automated access, so this is a live, reachable lead for a human. Failing that, a Massachusetts corporate registration for Scientific Development Corporation, or a 1960-63 Cambridge/Boston city directory entry, or any dated advertisement carrying a Cambridge address."
+    },
+    {
+      "question": "What was Claude Shannon's actual role, if any?",
+      "status": "Unchanged from IEEE Spectrum's 2016 open question. The manuals credit only the 1938 thesis lineage; only the advertising claims he created it.",
+      "what_would_settle_it": "SDC business records, or correspondence in the papers of Linda G. Sprague or other SDC staff. The Spectrum article explicitly solicited reader help; checking whether Spectrum ever published a follow-up, and reading the paywalled IEEE conference paper 'The Mystery of Claude Shannon's Personal Computer' (ieeexplore.ieee.org/abstract/document/9039960/), are the two cheapest next steps."
+    },
+    {
+      "question": "Are the MINIVAC 601 and 6010 electrically identical?",
+      "status": "No 6010 document of any kind was found. The 'same basic kit' claim rests on one 2011 marketing-textbook anecdote. The 6010's resistor/capacitor/diode patch cords are a real functional addition regardless.",
+      "what_would_settle_it": "A 6010 manual (none online). Cheaper partial answer: compare the CC0 MIT Museum 6010 photograph now in raw/photos/ against the 601 panel photographs, band by band and terminal by terminal."
+    },
+    {
+      "question": "Resistor values in the rotary-switch motor drive network.",
+      "status": "The schematic draws two resistors and prints no values. The only characterisation given is that each 'should heat up in about 20 seconds' when power is applied across it.",
+      "what_would_settle_it": "A measurement from a surviving unit. Several collectors are reachable (see the artifacts/private claim)."
+    },
+    {
+      "question": "Rotary dial rotation rate and whether it accelerates.",
+      "status": "Not in any manual. Independently confirmed unsettled: the author of the existing browser simulator publicly asked an owner for exactly this figure.",
+      "what_would_settle_it": "Timing a real unit, or a frame-count from video of one running."
+    },
+    {
+      "question": "Relay coil resistance, pull-in and drop-out voltage; lamp operating current.",
+      "status": "The maintenance manual gives supply, switch and contact ratings but no coil or lamp figures. The errata establishes that a lamp in series with a coil is enough to make marginal circuits fail - so these values are needed to reproduce that failure faithfully.",
+      "what_would_settle_it": "Measurement from a surviving unit, or identification of the exact relay and lamp parts from a high-resolution under-panel photograph."
+    },
+    {
+      "question": "How many holes does a terminal actually have, and which designations have more than two?",
+      "status": "Book I says two holes per terminal; the errata says 'the two terminals at 6R, the six at M10, or the four at 3com'. Whether the errata is counting holes or interconnected terminals is ambiguous in the text.",
+      "what_would_settle_it": "Direct count from raw/photos/commons-minivac601-main.jpg at full resolution. This belongs to the panel-geometry agent and is fully answerable from the photograph now on disk."
+    },
+    {
+      "question": "Does the 12 V rail have a filter capacitor?",
+      "status": "None is drawn in the power-supply schematic, but a schematic omission is not proof of absence.",
+      "what_would_settle_it": "An under-chassis photograph of a surviving unit's power panel."
+    },
+    {
+      "question": "Whether a period SDC promotional film exists at all.",
+      "status": "No evidence found. The only candidate is a 2014 fan-made video whose title contains '1961'.",
+      "what_would_settle_it": "A search of the Prelinger / AV Geeks / Internet Moving Images collections under 'Scientific Development Corporation'. Not attempted beyond general web search."
+    },
+    {
+      "question": "Production quantity and how many units survive.",
+      "status": "Unknown. The single hard datum is CHM's unit, serial number 1886.",
+      "what_would_settle_it": "A serial-number census across museum records and collector reports."
+    }
+  ],
+  "sources_read": [
+    "LOCAL PRIMARY - raw/pdf/book1.txt, book2-3-4.txt, book5-6.txt (targeted greps: Shannon, Watertown, Cambridge, copyright, printing, slide switch, terminal letters)",
+    "LOCAL PRIMARY (NEWLY ACQUIRED) - raw/pdf/minivac601-maintenance-manual.pdf + .txt, 13 pp, read in full; pages 3, 7, 8, 9, 11 read as 200 dpi images",
+    "LOCAL PRIMARY (NEWLY ACQUIRED) - raw/pdf/minivac601-errata.pdf + .txt, 4 pp, read in full",
+    "LOCAL PRIMARY - raw/prebrief/images/image_3.jpg, logo-plate crop at 3x",
+    "PRIMARY (NEWLY ACQUIRED) - raw/photos/commons-minivac601-main.jpg, whole panel + full-resolution logo-plate crop",
+    "https://archive.org/metadata/1961Minivac601Book234 (item file manifest and metadata)",
+    "https://archive.org/details/1961Minivac601Book234",
+    "https://www.ccapitalia.net/?p=1257 (Adolfo Garcia Yague, 16 Jan 2014; the origin of every Minivac scan in circulation)",
+    "https://ccapitalia.net/descarga/docs/1961-minivac601-maintenance-manual.pdf (HEAD verified)",
+    "https://ccapitalia.net/descarga/docs/1961-minivac601-erratas.pdf (HEAD verified)",
+    "https://spectrum.ieee.org/did-claude-shannon-invent-a-groundbreaking-personal-computer (Magoun, 28 Apr 2016)",
+    "https://en.wikipedia.org/wiki/Minivac_601 (raw wikitext, for exact reference targets)",
+    "https://www.rfcafe.com/references/popular-science/scientific-development-minivac-601-popular-science-october-1961.htm",
+    "https://museumlegacy.syssrc.com/artifact/205/ (System Source Computer Museum)",
+    "https://www.computinghistory.org.uk/det/499/minivac-601/ (Centre for Computing History)",
+    "https://www.computerhistory.org/collections/catalog/102622941 (Computer History Museum)",
+    "http://www.oldcomputermuseum.com/minivac_601.html and /minivac_6010.html",
+    "https://t-lcarchive.org/minivac-601/ (Time-Line Computer Archive)",
+    "https://trmm.net/Minivac_601/ (Trammell Hudson)",
+    "https://retrocomputingforum.com/t/minivac601-claude-shannon/711",
+    "https://www.instructables.com/Minivac-601-Replica-Version-09/ (full step text via the Instructables JSON API)",
+    "https://www.instructables.com/Minivac-601-Version-10-Motorized-Rotary-Switch/ (full step text via the Instructables JSON API)",
+    "https://fossi-foundation.org/blog/2025-12-11-ecl92 (FOSSi Foundation, El Correo Libre 92)",
+    "Hacker News items 45945762, 45950396, 49466268 via the Algolia API (Greg Sadetsky's own comments)",
+    "GitHub REST repository-search metadata for repositories named 'minivac' (metadata only - no code)",
+    "https://www.youtube.com/watch?v=q6OA8HfnxxU (page metadata: title, duration, upload date, channel, description)",
+    "Wikimedia Commons API, Category:Minivac601 (file list, resolutions, licences, authorship)"
+  ]
+}

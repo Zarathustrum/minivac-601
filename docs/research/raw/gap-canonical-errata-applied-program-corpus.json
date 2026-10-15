@@ -1,0 +1,1779 @@
+{
+ "topic": "GAP CLOSURE: the single reconciled, errata-applied, image-verified program corpus with per-program expected observable output, from which golden fixtures are generated",
+ "researcher": "subagent gap-canonical-errata-applied-program-corpus",
+ "date": "2026-08-30",
+ "oracle_only_compliance": "I did not open, fetch, clone, read or quote the source of any existing Minivac emulator (minivac.greg.technology or any repository). All primary reads are the local PDFs listed below.",
+ "what_this_file_is": [
+  "This file does NOT contain a full re-transcription of all 98 programs - that is a mechanical merge job, not a research job, and the two source files already hold the transcriptions.",
+  "It contains the four things that were actually missing and that only primary-source work could supply:",
+  "  (1) the SCHEMA and MERGE PROCEDURE for docs/programs.json, keyed on (pdf_file, pdf_page, printed_page), with as_printed / as_corrected wire lists and per-line errata provenance;",
+  "  (2) BINDING RULINGS on every cross-file disagreement that blocked the merge, each backed by a primary read I did myself;",
+  "  (3) the errata sheet promoted from OCR to IMAGE-VERIFIED end to end, including the two blocks that were unreadable in errata.txt (Book III p.36, Book V p.24) and the 48-connection alternate counter;",
+  "  (4) the FIXTURE DEFINITION - what counts as a golden fixture, the tiering, and the pass criterion - which no prior file supplied at all."
+ ],
+ "sources_read": [
+  {
+   "id": "ER",
+   "file": "docs/research/raw/pdf/errata.pdf",
+   "title": "Notes and Corrections to the Minivac Manual, Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts",
+   "pages": 4,
+   "how": "OCR text layer plus NINE 300-dpi column crops covering every payload-bearing block"
+  },
+  {
+   "id": "B234",
+   "file": "docs/research/raw/pdf/book2-3-4.pdf",
+   "title": "Books II, III & IV, one continuously paginated volume",
+   "pages": 94,
+   "how": "pdftotext -layout for pp.13,17,18,21,47,50,74-76 plus five 260-300 dpi crops"
+  },
+  {
+   "id": "B1",
+   "file": "docs/research/raw/pdf/book1.pdf",
+   "title": "Book I, Getting acquainted with Minivac 601",
+   "pages": 36,
+   "how": "pdftotext -layout pp.31-36 plus two 300-dpi crops of PDF p.33"
+  },
+  {
+   "id": "FP",
+   "file": "docs/research/raw/find-programs.json",
+   "title": "prior finder output, 84 programs",
+   "how": "read in full via structured dump"
+  },
+  {
+   "id": "VP",
+   "file": "docs/research/raw/verify-programs.json",
+   "title": "prior verifier output, 14 recovered programs / 46 errata entries / 9 refutations",
+   "how": "read in full"
+  },
+  {
+   "id": "CC",
+   "file": "docs/research/raw/critic-completeness.json",
+   "title": "completeness critic, cross-file contradictions C1..C17",
+   "how": "read contradictions C1, C9, C12 in full"
+  }
+ ],
+ "image_reads_spent": [
+  "errata.pdf PDF p1, left column mid (300 dpi) - the 'all + and - are connected together' paragraph and the common-terminal hole counts",
+  "errata.pdf PDF p1, left column bottom (300 dpi) - BOOK I pp.13/24/28 and BOOK II pp.10/11",
+  "errata.pdf PDF p1, right column bottom (300 dpi) - BOOK II p.14 and the BOOK III p.36 replacement diagram",
+  "errata.pdf PDF p2, left column top (300 dpi) - BOOK III pp.38/40/41/43/46/54",
+  "errata.pdf PDF p2, left column bottom (300 dpi) - BOOK III pp.58/59/61/62",
+  "errata.pdf PDF p2, right column top (300 dpi) - BOOK IV pp.69/71/72",
+  "errata.pdf PDF p2, right column lower (300 dpi) - THREE-BIT BINARY COUNTER ALTERNATE CIRCUIT, all 48 connections",
+  "errata.pdf PDF p3, left column top (300 dpi) - BOOK IV pp.73/77 universal-counter delta",
+  "errata.pdf PDF p3, left column bottom (300 dpi) - BOOK IV pp.79/80/82 subtractor delta",
+  "errata.pdf PDF p3, right column top (300 dpi) - BOOK IV p.83 and BOOK V pp.2/10/11",
+  "errata.pdf PDF p3, right column lower (300 dpi) - BOOK V pp.11/12/21-22/24/25",
+  "errata.pdf PDF p4, left column top (300 dpi) - BOOK V pp.30/31/33/35 and BOOK VI start",
+  "book2-3-4.pdf PDF p13 (300 dpi) - Book II Experiment 2 program table",
+  "book2-3-4.pdf PDF p21 (300 dpi) - Book II Experiment 7 program table",
+  "book2-3-4.pdf PDF p17 (260 dpi) - Book II single-input flip-flop prose",
+  "book2-3-4.pdf PDF p18 (260 dpi) - Book II SINGLE INPUT FLIP-FLOP program + circuit diagram",
+  "book2-3-4.pdf PDF p47 (300 dpi, two crops) - Book III pushbutton EITHER BUT NOT BOTH",
+  "book2-3-4.pdf PDF p50 (300 dpi) - Book III THE RELAY EITHER BUT NOT BOTH CIRCUIT",
+  "book1.pdf PDF p33 (300 dpi, two crops) - ANSWER 13, ANSWER 14, ANSWER 15"
+ ],
+ "programs_json_schema": {
+  "file": "docs/programs.json",
+  "purpose": "the single reconciled corpus; golden fixtures are generated from it, never hand-written",
+  "key": "(pdf_file, pdf_page, printed_page). NEVER key on book name - Books II/III/IV are one continuously paginated volume and the book label is derived metadata, not identity. See ruling RUL-03.",
+  "top_level": {
+   "schema_version": "string",
+   "generated_from": "list of raw-file paths with sha256",
+   "terminal_grammar": "reference to the jackmap file; programs.json stores terminal strings verbatim and does not re-define the grammar",
+   "net_equivalence_rules": [
+    "ALL section plus terminals (1+ .. 6+) and M+ are ONE electrical node. [verified] errata.pdf p1 left col.",
+    "ALL section minus terminals (1- .. 6-) and M- are ONE electrical node. [verified] errata.pdf p1 left col.",
+    "A 'terminal' is a set of interconnected holes: 6R has two holes, M10 has six, 3com has four. Holes of one terminal are one node. [verified] errata.pdf p1 left col.",
+    "Consequence: two wire lists that differ only in WHICH plus terminal or WHICH minus terminal they name are the same circuit. The fixture comparator MUST normalise on this before declaring a mismatch."
+   ],
+   "programs": "array of program records"
+  },
+  "program_record": {
+   "id": "stable slug, e.g. II-EXP2, III-RELAYXOR, ER-ALTCOUNTER",
+   "name": "printed title, verbatim",
+   "pdf_file": "book1.pdf | book2-3-4.pdf | book5-6.pdf | errata.pdf",
+   "pdf_page": "integer - the PDF page index, the only unambiguous locator",
+   "printed_page": "integer or range string - the number printed on the page",
+   "book_label": "derived: I | II | III | IV | V | VI | ERRATA. Computed from printed_page via the CONTENTS ranges, never authored by hand.",
+   "layout_as_printed": "{columns:int, rows:int, read_order:'column-major'|'row-major'|'single-column'}  - required, because a mis-read order silently permutes the list",
+   "as_printed": "array of {wire:'1X/1C', row:int, col:int, tag:'verified'|'likely'|'unverified', read_from:'string'} - EXACTLY what the page prints, errors included",
+   "as_corrected": "array of {wire, origin:'as_printed'|'errata_add', errata_ref:'ER-nn'|null, replaces:'2+/2H'|null} - the list a simulator should actually run",
+   "errata_applied": "array of ER-nn ids that touched this program, each with verdict 'program_change'|'diagram_only'|'prose_only'",
+   "initial_settings": "array of {control, position, source_line, tag} - slide switches, rotary dial, power",
+   "expected": "the expected-state script; see expected_state_script below. null when the page prints no observable trace.",
+   "fixture_tier": "A | B | C | D | NONE - see fixture_definition",
+   "notes": "array",
+   "flags": "array of {line, issue, ruling_ref} - printed anomalies, each pointing at a ruling so no implementer 'fixes' a correct line"
+  },
+  "expected_state_script": {
+   "shape": "{steps: [ {n, do:[event...], settle:'fixpoint'|'hold', then:{lamps:{}, relays:{}, motor:'RUN'|'STOP', dial:int}, source:'printed step N, printed p.X', tag} ]}",
+   "event_types": [
+    "{type:'power', value:'ON'|'OFF'}",
+    "{type:'pushbutton', n:1..6, action:'press'|'release'|'press_and_release'}   - press and release MUST be separate events; the single-input flip-flop's whole behaviour lives in the release edge",
+    "{type:'slide', n:1..6, position:'LEFT'|'RIGHT'}",
+    "{type:'dial', to:0..15}",
+    "{type:'wait_motor_revolutions', n:int}   - Tier C only"
+   ],
+   "assertion_semantics": "'lamps' and 'relays' are PARTIAL maps. Only the observables the page actually names are asserted. Do NOT infer the state of an unmentioned lamp - that is how a fixture set acquires fabricated expectations.",
+   "settle_semantics": "'fixpoint' = iterate the relay network until no coil changes state, then assert. 'hold' = assert while the named pushbutton is still down. The manuals distinguish these constantly ('Push pushbutton 6, but do not release')."
+  }
+ },
+ "binding_rulings": [
+  {
+   "id": "RUL-01",
+   "subject": "Tic-Tac-Toe 4G/5N - the active trap",
+   "ruling": "4G/5N is CORRECT AS PRINTED. Do not 'fix' it to 4N/5N. It is the middle link of the printed chain 3G/4N, 4G/5N, 5G/6N; the same table also prints 3G/D7, 4G/D5, 5G/D3, so each of 3G/4G/5G legitimately appears twice.",
+   "authority": "verify-programs.json R1, from book5-6.pdf PDF p62 read at 110 dpi. I did NOT re-open that page; I am adopting the verifier's read because it is internally self-proving (the three-link chain is visible in the quoted column/row positions) and because the finder's own flag was an inference, not a read.",
+   "action": "find-programs.json D2 and VI-TICTACTOE.per_line_flags entry for 4G/5N are struck. Record as programs.json flags[] with ruling_ref RUL-01 so nobody re-derives the 'fix'.",
+   "tag": "likely",
+   "note": "[likely] not [verified] because I did not personally open PDF p62. It is the one ruling here I inherited rather than re-read. If a later pass opens p62 at 300 dpi it should promote or refute this."
+  },
+  {
+   "id": "RUL-02",
+   "subject": "Book I Experiment 8 wire list, contradiction C1",
+   "ruling": "Use 1X/1C, not 1Y/1C. find-programs.json I-EXP8 is right; find-relays.json RLY-27's list is wrong.",
+   "authority": "critic-completeness C1, resolved by verify-relays REF-01 from pages/book1/p-18.png. Corroborated by circuit logic: 1Y/1C bypasses pushbutton 1 entirely and leaves relay 1 permanently energised at power-up, which contradicts the experiment's own first three printed steps.",
+   "action": "strike RLY-27's wire list; programs.json takes find-programs' nine lines.",
+   "tag": "likely"
+  },
+  {
+   "id": "RUL-03",
+   "subject": "Book attribution, contradiction C12",
+   "ruling": "'Computer representation of three statements', printed p.36, is in BOOK III, not Book II. Books II/III/IV share one continuous pagination: Book II = pp.1-33, Book III begins p.35, Book IV begins p.66.",
+   "authority": "book2-3-4.pdf CONTENTS (PDF p5), and errata.pdf files 'page 36' under its printed BOOK III heading - which I image-read at 300 dpi (errata p1, right column bottom). [verified]",
+   "action": "rename find-programs' II-3STMT to III-3STMT. More importantly: key programs.json on (pdf_file, pdf_page, printed_page) and DERIVE book_label. Any fixture set keyed on book name mis-files this program.",
+   "tag": "verified"
+  },
+  {
+   "id": "RUL-04",
+   "subject": "Errata attribution for Book V page 11, contradiction C9",
+   "ruling": "The reliability block 'remove 5F/6C, 6C/6- ; add 5F/6E, 6E/6-, 4E/6C' belongs to EXPERIMENT 9 (three-floor elevator), NOT Experiment 8. find-rotary.json IO02 is wrong.",
+   "authority": "I image-read errata.pdf PDF p3 right column at 300 dpi. The printed sheet reads, in order: 'page 11: Experiment 9 program corrections: change 4G/4H to 4G/5H / change D16/M- to D16/M+' then two indented Notes, the second being 'If the performance of the circuit is unsatisfactory, make the following changes to the program: remove 5F/6C, 6C/6- ; add 5F/6E, 6E/6-, 4E/6C'. Both Notes sit under the Experiment 9 heading and precede 'page 12:'. Experiment 8's only erratum is the separate 'page 11: First sentence under \"To use the program\" (experiment 8) should read: Set the elevator at the first floor by pushing pushbutton 5.' [verified]",
+   "action": "re-file under V-EXP9 before generating fixtures. Applying it to Experiment 8 would build a circuit that does not exist.",
+   "tag": "verified"
+  },
+  {
+   "id": "RUL-05",
+   "subject": "Tag policy for the merged corpus",
+   "ruling": "programs.json adopts the PROJECT definition, not the finder's. [verified] = read by a human/agent in a rendered page image of a primary source (or the panel photograph). Clean OCR text, however self-consistent, is at most [likely]. The finder's transcription_policy clause admitting cross-checked OCR to [verified] is struck.",
+   "authority": "project rule 2; verify-programs R6.",
+   "action": "MECHANICAL RE-TAG on merge: every find-programs program whose 'verification' field does not name a page image drops from [verified] to [likely]. The finder's own image_reads_spent list (9 entries) is the whitelist of what stays [verified].",
+   "tag": "verified",
+   "consequence": "This lowers the corpus's verified count sharply. That is the correct outcome. A fixture generated from a [likely] wire list is still usable - it just must be labelled as an unconfirmed fixture, and a fixture failure must be triaged as 'possible transcription error' before 'simulator bug'."
+  },
+  {
+   "id": "RUL-06",
+   "subject": "Wire-list disagreement on Book II Experiment 8 (Exp 8, contradiction C1 as raised in the gap brief)",
+   "ruling": "See RUL-02. The disagreement is Book I Experiment 8, not Book II. The gap brief's shorthand 'Exp 8' is Book I.",
+   "tag": "verified"
+  },
+  {
+   "id": "RUL-07",
+   "subject": "IV-FF1 connection count",
+   "ruling": "find-programs.json IV-FF1.connection_count = 16 is WRONG. The printed page builds the circuit in four stages of 6 + 4 + 3 + 2 = 15 connections, and the finder's own four stage arrays contain exactly 15 items. verify-programs repeats the 16 without checking.",
+   "authority": "book2-3-4.pdf pdftotext -layout of PDF pp.74-75 (printed 68-69): stage 1 is a 2x3 block (5+/5H, 5H/6H, 5G/5F | 6G/6F, 5C/6C, 6C/6-), stage 2 a 2x2 block (6H/6Y, 6X/5L | 5K/6F, 5N/6E), stage 3 a single column of 3 (6Z/6L, 6K/5E, 6N/5F), stage 4 a 2x1 block (6G/6A, 6B/6-).",
+   "action": "correct to 15. Arithmetic error, not a transcription error - the wires themselves are unchanged.",
+   "tag": "likely",
+   "needs": "one 300-dpi crop of book2-3-4.pdf PDF p74 bottom and p75 top to promote to [verified]."
+  },
+  {
+   "id": "RUL-08",
+   "subject": "errata.txt is lossy - but NOT in the way the gap brief states",
+   "ruling": "REFUTED: the claim that errata.txt 'DROPS 12 of the 48 connections in the alternate three-bit counter' is false. I image-read errata.pdf PDF p2 right column at 300 dpi. The printed table is 4 columns x 12 rows = 48 connections, and errata.txt contains all 48. What errata.txt DOES corrupt is exactly four glyph classes, all recoverable: (a) two terminal letters - 'IF/TH' for 1F/1H and '61/6-' for 6L/6-; (b) the plus sign, rendered '-f' or '-|-' in 1G/1+, 3G/3+, 5G/5+, 6Y/6+; (c) two-column interleave of the running text, which scrambles reading ORDER but drops nothing; (d) one whole line destroyed to noise: the Book V p.24 correction, printed 'change 4F/5G to 4F/4G', which OCR renders 'rk a n n a A A P /A fl'.",
+   "authority": "errata.pdf PDF p2 right column @300 dpi; errata.pdf PDF p3 right column @300 dpi. [verified]",
+   "action": "errata.txt is usable as a working transcript PROVIDED the four corruption classes above are corrected from the images. The corrected master table in this file supersedes it.",
+   "tag": "verified"
+  }
+ ],
+ "newly_image_verified_programs": [
+  {
+   "id": "ER-ALTCOUNTER",
+   "name": "THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT (Middle Stage Only)",
+   "pdf_file": "errata.pdf",
+   "pdf_page": 2,
+   "printed_page": "errata sheet p.2, right column",
+   "book_label": "ERRATA",
+   "tag": "verified",
+   "read_from": "300-dpi crop of errata.pdf PDF page 2, right column, x=1250 y=1500 w=1300 h=1800",
+   "why_it_matters": "This is the REQUIRED fixture for the counter. The errata sheet says the Book IV counter strains the relays and may not work on real hardware; this alternate circuit bypasses the relay indicator lamps so full voltage reaches the coils. Book IV Experiments 2, 3 and 7 all have printed 'if you used the alternate circuit' variants that depend on it.",
+   "layout_as_printed": {
+    "columns": 4,
+    "rows": 12,
+    "read_order": "column-major",
+    "total": 48
+   },
+   "as_printed_column_major": [
+    "1A/2E",
+    "1B/1C",
+    "1B/2B",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1H/4A",
+    "1J/2H",
+    "2A/4E",
+    "2B/3B",
+    "2C/2-",
+    "2E/2J",
+    "2G/2N",
+    "2H/3L",
+    "2L/2-",
+    "3A/6E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3H/5A",
+    "3J/4H",
+    "3N/4N",
+    "4B/5B",
+    "4C/4-",
+    "4E/4J",
+    "4G/4N",
+    "4H/5L",
+    "4L/4-",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5H/6A",
+    "5J/6H",
+    "5N/6N",
+    "6C/6-",
+    "6E/6J",
+    "6G/6N",
+    "6H/6X",
+    "6L/6-",
+    "6Y/6+"
+   ],
+   "connection_count": 48,
+   "ocr_corrections_applied": [
+    {
+     "ocr": "IF/TH",
+     "printed": "1F/1H",
+     "confirmed_by": "image"
+    },
+    {
+     "ocr": "61/6-",
+     "printed": "6L/6-",
+     "confirmed_by": "image"
+    },
+    {
+     "ocr": "lG/l-f",
+     "printed": "1G/1+",
+     "confirmed_by": "image"
+    },
+    {
+     "ocr": "3 G /3 -f",
+     "printed": "3G/3+",
+     "confirmed_by": "image"
+    },
+    {
+     "ocr": "5 G /5 -f",
+     "printed": "5G/5+",
+     "confirmed_by": "image"
+    },
+    {
+     "ocr": "6 Y /6 -f",
+     "printed": "6Y/6+",
+     "confirmed_by": "image"
+    }
+   ],
+   "circuit_diagram_labels_as_printed": "Middle-stage-only diagram, read from the same crop: 3C - lamp - 3E - resistor - 3F ; 4- ; 4C - lamp - 4E - resistor - 4F ; 4J ; 3J ; 3G 3+ ; 'TO 5L (CARRY IN)' ; 4H ; 4G ; 3H ; 3N ; 4N ; 'TO 2H (CARRY OUT)' 3L - 3K ; 4- 4L - 4K. The carry-in/carry-out labels corroborate the program's 2H/3L and 4H/5L stage-boundary wires.",
+   "procedure_as_printed": "Use the procedure on page 72 of Book IV. When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter.",
+   "expected": "Not printed on the errata sheet - it defers to Book IV printed p.72. The expected-state script must be lifted from IV-EXP1 and re-pointed at this wire list.",
+   "fixture_tier": "B"
+  },
+  {
+   "id": "II-EXP2",
+   "name": "Experiment 2: Decimal Input",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": 13,
+   "printed_page": 7,
+   "book_label": "II",
+   "tag": "verified",
+   "read_from": "300-dpi crop of book2-3-4.pdf PDF p13",
+   "layout_as_printed": {
+    "columns": 5,
+    "rows": 5,
+    "read_order": "column-major",
+    "total": 23,
+    "note": "column 5 holds only 3 entries; columns 1-4 hold 5 each. The count is 23, settled."
+   },
+   "as_printed_column_major": [
+    "1H/2H",
+    "2H/3H",
+    "3H/4H",
+    "4H/5H",
+    "5H/6Y",
+    "6Z/6+",
+    "6Y/5X",
+    "5Y/D16",
+    "D1/1G",
+    "1G/1C",
+    "1F/1-",
+    "D2/2G",
+    "2G/2C",
+    "2F/2-",
+    "D3/3G",
+    "3G/3C",
+    "3F/3-",
+    "D4/4G",
+    "4G/4C",
+    "4F/4-",
+    "D5/5G",
+    "5G/5C",
+    "5F/5-"
+   ],
+   "connection_count": 23,
+   "closes": "verify-programs.json II-EXP2.connection_count_note ('NOT image-verified - the count needs an image read before use. [unverified as to count]'). CLOSED at 23.",
+   "initial_settings": [
+    {
+     "control": "power",
+     "position": "ON"
+    }
+   ],
+   "expected": {
+    "steps": [
+     {
+      "n": 1,
+      "do": [
+       {
+        "type": "power",
+        "value": "ON"
+       },
+       {
+        "type": "dial",
+        "to": 4
+       },
+       {
+        "type": "pushbutton",
+        "n": 5,
+        "action": "press_and_release"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "4": "ON"
+       }
+      },
+      "source": "printed p.7 step 1",
+      "tag": "verified"
+     },
+     {
+      "n": 2,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 6,
+        "action": "press_and_release"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "4": "OFF"
+       }
+      },
+      "source": "printed p.7 step 2",
+      "tag": "verified"
+     }
+    ]
+   },
+   "printed_semantics": "'With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.' Program covers digits 1-5 only.",
+   "fixture_tier": "A"
+  },
+  {
+   "id": "II-EXP7",
+   "name": "Experiment 7: Decimal Output",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": 21,
+   "printed_page": 15,
+   "book_label": "II",
+   "tag": "verified",
+   "read_from": "300-dpi crop of book2-3-4.pdf PDF p21",
+   "layout_as_printed": {
+    "columns": 4,
+    "rows": 5,
+    "read_order": "column-major",
+    "total": 16,
+    "note": "column 4 holds only 1 entry."
+   },
+   "as_printed_column_major": [
+    "1R/D1",
+    "1S/2S",
+    "2R/D2",
+    "2S/3S",
+    "3R/D3",
+    "3S/4S",
+    "4R/D4",
+    "4S/5S",
+    "5R/D5",
+    "5S/6S",
+    "6R/D6",
+    "6S/D19",
+    "D18/D16",
+    "D16/M-",
+    "D17/6X",
+    "6Y/6+"
+   ],
+   "connection_count": 16,
+   "closes": "verify-programs.json II-EXP7.count_warning ('my reconstruction is 16 lines but the layout is ambiguous and the isolated 6Z is unexplained. NOT image-verified'). CLOSED at 16. The stray '6Z' in the OCR is a CIRCUIT-DIAGRAM label, not a program line: it is pushbutton 6's normally-closed terminal, drawn on the diagram above the table and left unused by the program (which uses 6Y/6+ and D17/6X, i.e. the normally-open pair).",
+   "initial_settings": [
+    {
+     "control": "slide switches 1-6",
+     "position": "RIGHT",
+     "source_line": "printed step 1: 'Set all slide switches in the RIGHT position.'",
+     "tag": "verified"
+    }
+   ],
+   "fixture_tier": "C",
+   "fixture_tier_note": "motor/rotary dependent"
+  },
+  {
+   "id": "II-FF1",
+   "name": "THE SINGLE INPUT FLIP-FLOP (Book II printing)",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": 18,
+   "printed_page": 12,
+   "book_label": "II",
+   "tag": "verified",
+   "read_from": "260-dpi crop of book2-3-4.pdf PDF p18; prose on PDF p17 read at 260 dpi",
+   "layout_as_printed": {
+    "columns": 1,
+    "rows": 14,
+    "read_order": "single-column",
+    "total": 14
+   },
+   "as_printed": [
+    "1-/1B",
+    "1-/1C",
+    "1A/1E",
+    "1E/2G",
+    "1F/2F",
+    "1H/1F",
+    "1G/1Y",
+    "1Y/1+",
+    "1X/1J",
+    "1J/2H",
+    "2J/2E",
+    "2E/2A",
+    "2B/2-",
+    "2-/2C"
+   ],
+   "connection_count": 14,
+   "printed_behaviour_verbatim": "'Once this circuit has been programmed on MINIVAC 601, pushing one pushbutton will signal the computer to remember a 1 or a 0. If the relays are remembering a 1, pushing pushbutton 1 will signal them to \"forget 1 and start remembering 0\". If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\". Light 1 will be ON when the flip-flop is remembering a 1, and will be OFF when the flip-flop is remembering a 0.'",
+   "circuit_diagram_labels_as_printed": "Two relays. Section 1: 1A - lamp - 1B, then a wire to 1- ; 1C - lamp - 1E - coil - 1F ; contacts 1H, 1J, 1G ; pushbutton 1 terminals 1Y (common, tied to 1+), 1X, 1Z. Section 2 mirrors it: 2A - lamp - 2B - 2- ; 2C - lamp - 2E - coil - 2F ; contacts 2H, 2J, 2G. Pushbutton 2 is NOT used.",
+   "expected": {
+    "steps": [
+     {
+      "n": 1,
+      "do": [
+       {
+        "type": "power",
+        "value": "ON"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "1": "OFF"
+       }
+      },
+      "source": "derived from the printed sentence 'Light 1 will be OFF when the flip-flop is remembering a 0'; the page prints no numbered power-up step",
+      "tag": "unverified"
+     },
+     {
+      "n": 2,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 1,
+        "action": "press_and_release"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "1": "ON"
+       }
+      },
+      "source": "printed p.12 prose",
+      "tag": "verified"
+     },
+     {
+      "n": 3,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 1,
+        "action": "press_and_release"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "1": "OFF"
+       }
+      },
+      "source": "printed p.12 prose",
+      "tag": "verified"
+     }
+    ]
+   },
+   "errata_applied": [
+    {
+     "ref": "ER-18",
+     "effect": "prose_only",
+     "text": "Book IV p.69: 'push pushbutton 6 slowly when operating the single-input flip-flop.' Filed against the BOOK IV printing but the same physical caution applies here (pushbutton 1)."
+    }
+   ],
+   "fixture_tier": "B"
+  },
+  {
+   "id": "III-XOR-PB",
+   "name": "The Operation 'EITHER BUT NOT BOTH' (pushbutton XOR)",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": 47,
+   "printed_page": 41,
+   "book_label": "III",
+   "tag": "verified",
+   "read_from": "300-dpi crop of book2-3-4.pdf PDF p47",
+   "layout_as_printed": {
+    "columns": 1,
+    "rows": 5,
+    "read_order": "single-column",
+    "total": 5
+   },
+   "as_printed": [
+    "1+/1Y",
+    "1Z/2X",
+    "1X/2Z",
+    "2Y/3A",
+    "3B/3-"
+   ],
+   "connection_count": 5,
+   "printed_behaviour_verbatim": "'Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, and light 3 to represent statement C. The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.'",
+   "errata_applied": [
+    {
+     "ref": "ER-09",
+     "effect": "prose_only",
+     "text": "Book III p.41: the operation EITHER BUT NOT BOTH is often referred to as the EXCLUSIVE OR."
+    }
+   ],
+   "expected": {
+    "steps": [
+     {
+      "n": 1,
+      "do": [
+       {
+        "type": "power",
+        "value": "ON"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "3": "OFF"
+       }
+      },
+      "source": "derived from the printed truth table (neither pushed -> C false)",
+      "tag": "unverified"
+     },
+     {
+      "n": 2,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 1,
+        "action": "press"
+       }
+      ],
+      "settle": "hold",
+      "then": {
+       "lamps": {
+        "3": "ON"
+       }
+      },
+      "source": "printed p.41",
+      "tag": "verified"
+     },
+     {
+      "n": 3,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 2,
+        "action": "press"
+       }
+      ],
+      "settle": "hold",
+      "then": {
+       "lamps": {
+        "3": "OFF"
+       }
+      },
+      "source": "printed p.41 ('Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed')",
+      "tag": "verified"
+     },
+     {
+      "n": 4,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 1,
+        "action": "release"
+       }
+      ],
+      "settle": "hold",
+      "then": {
+       "lamps": {
+        "3": "ON"
+       }
+      },
+      "source": "printed p.41",
+      "tag": "verified"
+     },
+     {
+      "n": 5,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 2,
+        "action": "release"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "3": "OFF"
+       }
+      },
+      "source": "printed p.41",
+      "tag": "verified"
+     }
+    ]
+   },
+   "fixture_tier": "A"
+  },
+  {
+   "id": "III-RELAYXOR",
+   "name": "THE RELAY EITHER BUT NOT BOTH CIRCUIT",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": 50,
+   "printed_page": 44,
+   "book_label": "III",
+   "tag": "verified",
+   "read_from": "300-dpi crop of book2-3-4.pdf PDF p50",
+   "layout_as_printed": {
+    "columns": 1,
+    "rows": 11,
+    "read_order": "single-column",
+    "total": 11
+   },
+   "as_printed": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "1+/1H",
+    "1J/2G",
+    "1G/2J",
+    "2+/2Y",
+    "2X/2C",
+    "2F/2-",
+    "2H/3A",
+    "3B/3-"
+   ],
+   "connection_count": 11,
+   "printed_symbolic_form": "(A x notB) + (notA x B) = C",
+   "printed_intro_verbatim": "'The circuit and program below represent the EITHER BUT NOT BOTH condition using relays 1 and 2 controlled by pushbuttons 1 and 2 respectively.'",
+   "why_it_matters": "This is the fourth member of Book III's published relay-logic set (AND p.43, OR p.43, NOT p.44, EITHER-BUT-NOT-BOTH p.44). find-programs transcribed the first three and stopped, leaving relay XOR - the only cross-coupled two-relay logic circuit in the manuals - out of the corpus entirely.",
+   "circuit_note": "The cross-coupling is the pair 1J/2G and 1G/2J: relay 1's normally-closed J contact feeds relay 2's coil-side G terminal and vice versa. This is the structural test case for the simulator's relay-contact model - if J and G are modelled wrongly, this circuit is the one that catches it.",
+   "expected": {
+    "steps": [
+     {
+      "n": 1,
+      "do": [
+       {
+        "type": "power",
+        "value": "ON"
+       }
+      ],
+      "settle": "fixpoint",
+      "then": {
+       "lamps": {
+        "3": "OFF"
+       }
+      },
+      "source": "derived from the printed symbolic form",
+      "tag": "unverified"
+     },
+     {
+      "n": 2,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 1,
+        "action": "press"
+       }
+      ],
+      "settle": "hold",
+      "then": {
+       "lamps": {
+        "3": "ON"
+       },
+       "relays": {
+        "1": "ON",
+        "2": "OFF"
+       }
+      },
+      "source": "derived from the printed symbolic form (A x notB) - the page prints no numbered procedure",
+      "tag": "unverified"
+     },
+     {
+      "n": 3,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 2,
+        "action": "press"
+       }
+      ],
+      "settle": "hold",
+      "then": {
+       "lamps": {
+        "3": "OFF"
+       },
+       "relays": {
+        "1": "ON",
+        "2": "ON"
+       }
+      },
+      "source": "derived",
+      "tag": "unverified"
+     },
+     {
+      "n": 4,
+      "do": [
+       {
+        "type": "pushbutton",
+        "n": 1,
+        "action": "release"
+       }
+      ],
+      "settle": "hold",
+      "then": {
+       "lamps": {
+        "3": "ON"
+       },
+       "relays": {
+        "1": "OFF",
+        "2": "ON"
+       }
+      },
+      "source": "derived",
+      "tag": "unverified"
+     }
+    ]
+   },
+   "expected_caveat": "Book III p.44 prints NO numbered procedure for this circuit - only the symbolic form. The expected script above is derived from the logic statement, not read. It is therefore a WEAK fixture: a mismatch means either a simulator bug or a wrong derivation. Tag every step [unverified] in programs.json and treat a failure as an investigation, not a red build.",
+   "fixture_tier": "A-weak"
+  },
+  {
+   "id": "I-ANSWER13",
+   "name": "ANSWER 13 (answer to Book I Problem 13)",
+   "pdf_file": "book1.pdf",
+   "pdf_page": 33,
+   "printed_page": 31,
+   "book_label": "I",
+   "tag": "verified",
+   "read_from": "300-dpi crop of book1.pdf PDF p33",
+   "layout_as_printed": {
+    "columns": 1,
+    "rows": 5,
+    "read_order": "single-column",
+    "total": 5
+   },
+   "as_printed": [
+    "6+/6Y",
+    "6X/6A",
+    "6B/6-",
+    "6X/D17",
+    "D18/M-"
+   ],
+   "connection_count": 5,
+   "circuit_diagram_labels_as_printed": "6A - lamp - 6B ; 6X ; D17 ; D18 ; M- ; 6- . Pushbutton 6's common 6Y is tied to 6+; its normally-open 6X feeds both lamp 6 (via 6A) and the motor RUN terminal D17.",
+   "neighbours_read_at_the_same_time": {
+    "ANSWER 14": [
+     "5+/5Y",
+     "5Z/6X",
+     "6Y/D17",
+     "M-/D18"
+    ],
+    "ANSWER 15 (first five lines)": [
+     "6+/6X",
+     "6Y/D17",
+     "M-/D18",
+     "D18/5X",
+     "5Y/D19"
+    ]
+   },
+   "bears_on": "find-programs.json D3, the Book I Exp 12 '6-/D18' vs Exp 13 '5-/D18' discrepancy. It dissolves: ANSWER 13 prints D18/M-, and per the errata all minus terminals plus M- are ONE node, so 6-/D18, 5-/D18 and D18/M- are the same connection. No typo exists anywhere in that family.",
+   "caveat": "The Book I answer pages are hand-lettered and interleaved with drawings. find-programs tagged the WHOLE answer-page block [unverified] and warned that PDF pp.31-34 must be re-read from images before use. This ruling promotes ANSWER 13, 14 and the first five lines of 15 only. ANSWERS 1-12 and 16+ remain [unverified] and still need image reads.",
+   "fixture_tier": "C",
+   "fixture_tier_note": "motor/rotary dependent"
+  }
+ ],
+ "flip_flop_settlement": {
+  "question": "Is Book II's 14-wire single-input flip-flop the same circuit as Book IV's IV-FF1 (first version) and IV-FF2 (second version)? Three printings, never cross-checked, and it is the package's primary timing fixture.",
+  "answer_headline": "SETTLED. There are TWO distinct circuits, not three. Book IV's FIRST version (15 wires, not 16) is a genuinely different circuit. Book IV's SECOND version is the Book II circuit relabelled, differing in EXACTLY ONE wire - where indicator lamp 5's anode taps.",
+  "wire_lists_compared": {
+   "II-FF1  (Book II, printed p.12, PDF p18, 14 wires, [verified] image read)": [
+    "1-/1B",
+    "1-/1C",
+    "1A/1E",
+    "1E/2G",
+    "1F/2F",
+    "1H/1F",
+    "1G/1Y",
+    "1Y/1+",
+    "1X/1J",
+    "1J/2H",
+    "2J/2E",
+    "2E/2A",
+    "2B/2-",
+    "2-/2C"
+   ],
+   "IV-FF1  (Book IV, printed pp.68-69, PDF pp74-75, 15 wires, [likely] OCR)": [
+    "5+/5H",
+    "5H/6H",
+    "5G/5F",
+    "6G/6F",
+    "5C/6C",
+    "6C/6-",
+    "6H/6Y",
+    "6X/5L",
+    "5K/6F",
+    "5N/6E",
+    "6Z/6L",
+    "6K/5E",
+    "6N/5F",
+    "6G/6A",
+    "6B/6-"
+   ],
+   "IV-FF2  (Book IV, printed pp.69-70, PDF p76, 14 wires, [likely] OCR)": [
+    "5+/5G",
+    "5H/5F",
+    "5F/6F",
+    "5C/6C",
+    "6C/6-",
+    "5J/6H",
+    "6G/5E",
+    "6J/6E",
+    "6E/6A",
+    "6B/6-",
+    "5H/5A",
+    "5B/5-",
+    "6+/6Y",
+    "6X/6H"
+   ]
+  },
+  "method": "I built the electrical net partition of each list under the errata rule that all + terminals are one node and all - terminals are one node, then applied the relabelling {relay section 1 -> 5, relay section 2 -> 6, input pushbutton 1 -> input pushbutton 6} to II-FF1 and compared partitions.",
+  "result_II_vs_IV2": {
+   "II-FF1 relabelled, nets": [
+    [
+     "5A",
+     "5E",
+     "6G"
+    ],
+    [
+     "5B",
+     "5C",
+     "6B",
+     "6C",
+     "MINUS"
+    ],
+    [
+     "5F",
+     "5H",
+     "6F"
+    ],
+    [
+     "5G",
+     "6Y",
+     "PLUS"
+    ],
+    [
+     "5J",
+     "6H",
+     "6X"
+    ],
+    [
+     "6A",
+     "6E",
+     "6J"
+    ]
+   ],
+   "IV-FF2, nets": [
+    [
+     "5A",
+     "5F",
+     "5H",
+     "6F"
+    ],
+    [
+     "5B",
+     "5C",
+     "6B",
+     "6C",
+     "MINUS"
+    ],
+    [
+     "5E",
+     "6G"
+    ],
+    [
+     "5G",
+     "6Y",
+     "PLUS"
+    ],
+    [
+     "5J",
+     "6H",
+     "6X"
+    ],
+    [
+     "6A",
+     "6E",
+     "6J"
+    ]
+   ],
+   "identical_nets": 4,
+   "the_single_difference": "Lamp 5's anode terminal 5A. In Book II it sits on the {5E, 6G} net - the lamp is fed from relay-A's E contact, the same node that drives relay-B's coil. In Book IV version 2 it sits on the {5F, 5H, 6F} net - fed from the relay-A coil/contact node instead. Everything else - including the pushbutton path {5J,6H,6X}, the coil pair {5F,5H,6F}/{5E,6G}, the lamp-6 chain {6A,6E,6J}, and the whole minus rail - is bit-identical.",
+   "verdict": "SAME FLIP-FLOP TOPOLOGY, different indicator tap. [likely] - the II-FF1 side is [verified] by image, the IV-FF2 side is still OCR-only."
+  },
+  "result_II_vs_IV1": {
+   "IV-FF1 nets": [
+    [
+     "5C",
+     "6B",
+     "6C",
+     "MINUS"
+    ],
+    [
+     "5E",
+     "6K"
+    ],
+    [
+     "5F",
+     "5G",
+     "6N"
+    ],
+    [
+     "5H",
+     "6H",
+     "6Y",
+     "PLUS"
+    ],
+    [
+     "5K",
+     "6A",
+     "6F",
+     "6G"
+    ],
+    [
+     "5L",
+     "6X"
+    ],
+    [
+     "5N",
+     "6E"
+    ],
+    [
+     "6L",
+     "6Z"
+    ]
+   ],
+   "verdict": "COMPLETELY DIFFERENT CIRCUIT. Eight nets vs six; it uses the second contact set (K, L, N) on both relays, which neither other version touches, and its two relays are wired self-holding first and then cross-linked. Not a relabelling of anything."
+  },
+  "corroborating_printed_prose": [
+   "Book IV printed p.68 (PDF p74): 'We have already become acquainted with a program which permits the computer to do just this - the single-input flip-flop described in Book II.' So Book IV knowingly re-presents the Book II circuit.",
+   "Book IV printed p.69 (PDF p75): 'since all contacts on both relays are used, we cannot arrange for a carry signal by merely adding connections. The solution to this difficulty is to build a DIFFERENT VERSION of the single-input flip-flop - one which leaves contacts free.' So version 2 is explicitly a redesign of version 1, not of the Book II circuit.",
+   "Book IV printed p.69: 'The stable states of the flip-flop when the pushbutton is up are either both relays ON or both relays OFF. For this program, light 5 is used to indicate the state of the flip-flop. Light 6 is used only to provide a path for current when relay 6 is shorted-out (OFF); light 6 is not used as an indicator in this program.' This explains the single differing wire: version 2 moves lamp 5's tap so lamp 5 reads the flip-flop state under the both-ON/both-OFF convention."
+  ],
+  "consequence_for_the_simulator": [
+   "There are TWO flip-flop fixtures to build, not three: FF-A (Book II p.12 == Book IV v2 up to the lamp tap) and FF-B (Book IV v1).",
+   "FF-A is the primary TIMING fixture. Its behaviour lives entirely in the pushbutton RELEASE edge: on press, relay B copies relay A; on release, relay B forces relay A to the opposite state. The simulator must therefore model press and release as separate events and must settle to fixpoint between them. A simulator that settles only once per 'button press' will pass every combinational fixture in the corpus and fail this one.",
+   "The errata's Book IV p.69 note - 'push pushbutton 6 SLOWLY ... light 6 will go off and on, indicating the state of the whole flip-flop' - is a real-hardware race warning. It tells us relay pull-in/drop-out time is load-bearing on real iron. The simulator's fixpoint model deliberately abstracts that away; record it as a known divergence, not a bug.",
+   "The lamp-tap difference between the two printings is a genuine observable difference, not a typo. Do NOT unify the two wire lists. Keep both as separate fixtures and assert lamp 5 in both - they will agree in the stable states and may differ transiently."
+  ],
+  "what_would_overturn_this": "A 300-dpi image read of book2-3-4.pdf PDF pp.74, 75 and 76. Both Book IV lists are still OCR-only ([likely]); only the Book II list is image-verified. If the OCR corrupted a single letter in IV-FF2 the one-wire difference could be an artefact."
+ },
+ "errata_master_table": {
+  "status": "IMAGE-VERIFIED end to end. Every payload-bearing block on all four sheet pages was read at 300 dpi. This table supersedes errata.txt and supersedes verify-programs.json's errata_program_corrections (which was OCR-derived and had two gaps).",
+  "publisher_imprint_as_printed": "'Scientific Development Corporation ... contact us at 372 Main Street, Watertown, Massachusetts' (header) and '372 Main Street, Watertown, Massachusetts' (footer). NOTE: this is the SAME Watertown address as the Book V-VI copyright page and DIFFERS from the Cambridge, Massachusetts legend on the panel photograph. Both remain primary; not resolved here, per the project's standing instruction.",
+  "editor_named": "'Please address correspondence of this nature to the Editor of the MINIVAC Manual: Linda G. Sprague.' [verified] errata p4.",
+  "second_edition_note": "'Scientific Development Corporation is preparing for a second edition of the MINIVAC Manual.' [verified] errata p4. No evidence in these sources that it shipped.",
+  "global_facts": [
+   {
+    "id": "ERG-01",
+    "text": "Always be certain that the power is OFF when you are either wiring a program or removing one from the board of the MINIVAC.",
+    "tag": "verified",
+    "cite": "errata.pdf p1 left col"
+   },
+   {
+    "id": "ERG-02",
+    "text": "All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.",
+    "tag": "verified",
+    "cite": "errata.pdf p1 left col, image-read at 300 dpi",
+    "simulator_impact": "first-order netlist fact - two nodes total for power"
+   },
+   {
+    "id": "ERG-03",
+    "text": "In addition to those terminals specifically marked 'common,' common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.",
+    "tag": "verified",
+    "cite": "errata.pdf p1 left col, image-read at 300 dpi",
+    "simulator_impact": "gives HOLE COUNTS: 6R has 2 holes, M10 has 6, 3com has 4. Confirms that Book I's 'the four COMMON terminals' counts holes of one terminal, not four terminals."
+   },
+   {
+    "id": "ERG-04",
+    "text": "Worked example: to make 1X/6A with shorter wires, use 1X/4R + 4R/6A, or (if slide switch 4 is in use) 1X/4com + 4com/6A. Either produces the same result as the single connection 1X/6A.",
+    "tag": "verified",
+    "cite": "errata.pdf p1 left col"
+   },
+   {
+    "id": "ERG-05",
+    "text": "Troubleshooting order: (1) check this sheet; (2) check the operating instructions, and try carrying out the procedure SLOWLY - some programs are not designed for high-speed operation; (3) check all connections, then the circuit breaker (a programming error causing a short trips it; push it in after correcting); (4) if the program uses relays, check the relay arms are free to move - replace short wires with longer ones so wires do not interfere with relay arms.",
+    "tag": "verified",
+    "cite": "errata.pdf p1 right col",
+    "simulator_impact": "'some programs are not designed for high-speed operation' is the manufacturer conceding that some published programs are timing-marginal on real hardware. Relevant to how a fixture failure is triaged."
+   }
+  ],
+  "corrections": [
+   {
+    "id": "ER-01",
+    "book": "I",
+    "printed_page": 13,
+    "kind": "diagram_only",
+    "text": "circuit diagram incorrect - delete line connecting 1B and 2B.",
+    "affects": "I-EXP6 (program list unchanged)",
+    "tag": "verified",
+    "cite": "errata p1 left col @300dpi"
+   },
+   {
+    "id": "ER-02",
+    "book": "I",
+    "printed_page": 24,
+    "kind": "diagram_only",
+    "text": "'MOTOR REVERSING' circuit diagram incorrectly labeled - change 6Y to 6V.",
+    "affects": "I-EXP14 (the printed PROGRAM already reads 6V/D17, so the six-line list stands)",
+    "tag": "verified",
+    "cite": "errata p1 left col @300dpi - the 6Y/6V letter pair was the highest OCR risk on the sheet and is now confirmed"
+   },
+   {
+    "id": "ER-03",
+    "book": "I",
+    "printed_page": 28,
+    "kind": "prose_only",
+    "text": "Problem 7: light 1 and relay 1 should both be on ONLY if BOTH pushbutton 1 and pushbutton 2 are DOWN. Problem 18: pushbutton 5 is used to keep the rotary switch from stopping at D0 when pushbutton 6 is being held down.",
+    "affects": "I-PROBLEMS",
+    "tag": "verified",
+    "cite": "errata p1 left col @300dpi"
+   },
+   {
+    "id": "ER-04",
+    "book": "II",
+    "printed_page": 10,
+    "kind": "prose_only",
+    "text": "third complete paragraph, second line - change DOWN to ON.",
+    "affects": null,
+    "tag": "verified",
+    "cite": "errata p1 left col @300dpi"
+   },
+   {
+    "id": "ER-05",
+    "book": "II",
+    "printed_page": 11,
+    "kind": "program_change",
+    "text": "program correction for 'TWO-BUTTON RELAY MEMORY CIRCUIT' - change 1A/1C to 1A/1G; delete 1A/1C connection on circuit diagram.",
+    "affects": "II-2BUTTONMEM: corrected last line is 1A/1G",
+    "tag": "verified",
+    "cite": "errata p1 right col @300dpi"
+   },
+   {
+    "id": "ER-06",
+    "book": "II",
+    "printed_page": 14,
+    "kind": "program_change",
+    "text": "program correction for Experiment 6 - change 2Z/2C to 2X/2C.",
+    "affects": "II-EXP6",
+    "tag": "verified",
+    "cite": "errata p1 right col @300dpi"
+   },
+   {
+    "id": "ER-07",
+    "book": "III",
+    "printed_page": 36,
+    "kind": "diagram_only",
+    "text": "RECOVERED - this entry's body is a REPLACEMENT CIRCUIT DIAGRAM, not text, which is why errata.txt shows the heading with nothing under it. The replacement diagram reads, left to right: 1+ (filled node) - 1Y ; slide/pushbutton 1 arm rising to 1Z ; 1X - 2Y ; pushbutton 2 arm rising to 2Z ; 2X - up to 3A - lamp - 3B - 3- (filled node). Terminal labels legible: 1+, 1Y, 1Z, 1X, 2Y, 2Z, 2X, 3A, 3B, 3-.",
+    "affects": "III-3STMT (printed p.36). The program list 1+/1Y, 1X/2Y, 2X/3A, 3B/3- is UNCHANGED by this erratum; only the printed diagram was wrong.",
+    "tag": "verified",
+    "cite": "errata p1 right col bottom @300dpi",
+    "closes": "verify-programs.json errata item 6 'the errata entry is present but its body is not legible in the OCR layer and was cut off in my page image; NOT TRANSCRIBED'"
+   },
+   {
+    "id": "ER-08",
+    "book": "III",
+    "printed_page": 38,
+    "kind": "prose_only",
+    "text": "insert 'THEN' between statements B and C in first statement set (1x1=1).",
+    "affects": null,
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-09",
+    "book": "III",
+    "printed_page": 40,
+    "kind": "prose_only",
+    "text": "paragraph directly below COMPUTER REPRESENTATION OF THREE 'NOT' STATEMENTS - second sentence should read: 'Light 3 comes ON if pushbutton 1 is pushed and . . .'",
+    "affects": "III-NOT",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-10",
+    "book": "III",
+    "printed_page": 41,
+    "kind": "prose_only",
+    "text": "Note - the operation EITHER BUT NOT BOTH is often referred to as the EXCLUSIVE OR. Notice the 'exclusive' nature of statements A and B in the example: if EITHER A or B is true, then C will also be true. However, if BOTH A and B are either true or not true, then C will not be true.",
+    "affects": "III-XOR-PB",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-11",
+    "book": "III",
+    "printed_page": 43,
+    "kind": "prose_only",
+    "text": "second line on page should read: '. . . relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically. . .'",
+    "affects": "III-RELAYAND",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-12",
+    "book": "III",
+    "printed_page": 43,
+    "kind": "program_change",
+    "text": "program correction for 'Relay AND Circuit' - change 2+/2H to 1G/2H.",
+    "affects": "III-RELAYAND - this is the correction that makes the circuit actually implement AND. The finder's inference was right and is now primary. Corrected list: 1+/1Y, 1X/1C, 1F/1-, 2+/2Y, 2X/2C, 2F/2-, 1+/1H, 1G/2H, 2G/3A, 3B/3-.",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-13",
+    "book": "III",
+    "printed_page": 46,
+    "kind": "prose_only",
+    "text": "the complementarity laws should be written: 1) A x notA = 0 ; 2) A + notA = 1",
+    "affects": null,
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-14",
+    "book": "III",
+    "printed_page": 54,
+    "kind": "program_change",
+    "text": "program correction for 'Mind Reading' program - change 5V/45 to 5V/4S. Note: Zero (0) is considered an even number for this problem.",
+    "affects": "III-MINDREADING",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi",
+    "note": "the sheet really does print '5V/45' as the thing to change - the manual's typo was a digit-4-then-5 for 4S."
+   },
+   {
+    "id": "ER-15",
+    "book": "III",
+    "printed_page": 58,
+    "kind": "prose_only",
+    "text": "The condition for 'It is impossible that the statements Sara should and Camille could not can both be true' should be stated as: notC x S = error, or C + notS = truth",
+    "affects": "III-3GIRLS-BOOLEAN",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-16",
+    "book": "III",
+    "printed_page": 59,
+    "kind": "diagram_only",
+    "text": "circuit diagram for 'Boolean Solution' is incorrectly labeled - change 1R, 1S, 1T on far right slide switch to 3R, 3S, 3T respectively.",
+    "affects": "III-3GIRLS-BOOLEAN (diagram only)",
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-17",
+    "book": "III",
+    "printed_page": 61,
+    "kind": "diagram_only",
+    "text": "CIRCUIT REPRESENTATION incorrect - insert 'E' before negative power connection. The sheet prints the corrected fragment: a relay-coil box whose output runs to a labelled 'E' terminal and then to the filled '-' node.",
+    "affects": null,
+    "tag": "verified",
+    "cite": "errata p2 left col @300dpi"
+   },
+   {
+    "id": "ER-18",
+    "book": "III",
+    "printed_page": 62,
+    "kind": "procedure",
+    "text": "Farmer's problem procedure: place the farmer and an additional passenger in the boat (move the appropriate slide switches LEFT); move the boat across the river (push pushbutton 6 to cross; push pushbutton 1 for the return trip); unload the boat (move the slide switches RIGHT). Repeat until the farmer and all his possessions are across. Notice that the farmer may make trips alone.",
+    "affects": "III-FARMER",
+    "tag": "verified",
+    "cite": "errata p2 left col + p2 right col top @300dpi (the item straddles the column break)"
+   },
+   {
+    "id": "ER-19",
+    "book": "IV",
+    "printed_page": 69,
+    "kind": "prose_only",
+    "text": "Note - push pushbutton 6 SLOWLY when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop.",
+    "affects": "IV-FF1, IV-FF2, II-FF1",
+    "tag": "verified",
+    "cite": "errata p2 right col @300dpi"
+   },
+   {
+    "id": "ER-20",
+    "book": "IV",
+    "printed_page": 71,
+    "kind": "prose_only",
+    "text": "chart title incorrect - change 'Pushbutton carry' to 'Pushbutton.'",
+    "affects": "IV-EXP1",
+    "tag": "verified",
+    "cite": "errata p2 right col @300dpi"
+   },
+   {
+    "id": "ER-21",
+    "book": "IV",
+    "printed_page": 72,
+    "kind": "program_replacement",
+    "text": "Note on 'Three-Bit Binary Counter' - the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit. If the counter in Book IV does not perform correctly, use the program and circuit which follow. The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.",
+    "affects": "IV-EXP1 -> substitute ER-ALTCOUNTER (48 connections, above)",
+    "tag": "verified",
+    "cite": "errata p2 right col @300dpi"
+   },
+   {
+    "id": "ER-22",
+    "book": "IV",
+    "printed_page": 73,
+    "kind": "program_change",
+    "text": "Experiment 2 - use the above [alternate] circuit if necessary. Experiment 3 - if you used the alternate circuit for experiments 1 and 2, use it for this experiment as well. To modify the ALTERNATE circuit for a universal counter: REMOVE 3N/4N, 5N/6N. ADD 3K/4V, 5K/6V, 3N/4S, 5N/6S, 4J/4W, 6J/6W, 4N/4R, 6N/6R. Follow the procedure on page 73 with this exception: the counter will count UP when BOTH slide switch 4 and slide switch 6 are LEFT; the counter will count DOWN when BOTH slide switch 4 and slide switch 6 are RIGHT.",
+    "affects": "IV-EXP2, IV-EXP3",
+    "tag": "verified",
+    "cite": "errata p3 left col @300dpi",
+    "layout_note": "the remove/add blocks are TWO columns read ROW-MAJOR: remove row 1 = (3N/4N, 5N/6N); add rows = (3K/4V, 5K/6V), (3N/4S, 5N/6S), (4J/4W, 6J/6W), (4N/4R, 6N/6R)."
+   },
+   {
+    "id": "ER-23",
+    "book": "IV",
+    "printed_page": 77,
+    "kind": "prose_only",
+    "text": "Experiment 6 - Note that the connections to M10 indicate the 'end-around carry.' This is the 'carry out' of the high order stage, and will be used when the adder is converted to a subtractor for experiment 7. (See page 78).",
+    "affects": "IV-EXP6",
+    "tag": "verified",
+    "cite": "errata p3 left col @300dpi"
+   },
+   {
+    "id": "ER-24",
+    "book": "IV",
+    "printed_page": 79,
+    "kind": "program_change",
+    "text": "Experiment 7 - if you used the alternate circuit for the counter: first build the adder and modify it for a subtractor, then REMOVE 2C/2G, 3C/3G, 5C/6K, 6C/6F, 6F/M10 and ADD 2E/2G, 3E/3G, 5E/6K, 6C/M10, 6F/M+. Note that relay indicator light 6 will come ON if the subtraction has proceeded properly; light 6 ON indicates an 'end-around carry' - a carry out from the high order stage.",
+    "affects": "IV-EXP7",
+    "tag": "verified",
+    "cite": "errata p3 left col @300dpi"
+   },
+   {
+    "id": "ER-25",
+    "book": "IV",
+    "printed_page": 80,
+    "kind": "prose_only",
+    "text": "Note - An ACCUMULATOR must be capable of shifting and so must include a shift register. A SHIFT REGISTER, however, need not be capable of accumulating (see automatic shift register - page 86).",
+    "affects": null,
+    "tag": "verified",
+    "cite": "errata p3 left col @300dpi"
+   },
+   {
+    "id": "ER-26",
+    "book": "IV",
+    "printed_page": 82,
+    "kind": "prose_only",
+    "text": "Note that decimal 60 is 111100 in binary. It is written incorrectly in two places.",
+    "affects": null,
+    "tag": "verified",
+    "cite": "errata p3 left col @300dpi"
+   },
+   {
+    "id": "ER-27",
+    "book": "IV",
+    "printed_page": 83,
+    "kind": "program_change",
+    "text": "Program correction for Experiment 10: REMOVE 2C/3G, 2Y/6S, 3C/4G, 5C/6K, 6F/M10. ADD 2E/3G, 2Y/3G, 3E/4G, 5E/6K, 6C/M10, 6F/M+.",
+    "affects": "IV-EXP10 - five removals, six additions, so the corrected list is one line longer than the printed 56 -> 57",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi"
+   },
+   {
+    "id": "ER-28",
+    "book": "V",
+    "printed_page": 2,
+    "kind": "prose_only",
+    "text": "Experiment 1 - Note that moving EITHER slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch.",
+    "affects": "V-EXP1",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi",
+    "simulator_impact": "this is a printed XOR truth statement - a free fixture assertion for V-EXP1"
+   },
+   {
+    "id": "ER-29",
+    "book": "V",
+    "printed_page": 10,
+    "kind": "prose_only",
+    "text": "second sentence on page should read: 'The same will be true for a train moving right through. . . .'",
+    "affects": "V-EXP7",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi"
+   },
+   {
+    "id": "ER-30",
+    "book": "V",
+    "printed_page": 11,
+    "kind": "procedure",
+    "text": "First sentence under 'To use the program' (EXPERIMENT 8) should read: 'Set the elevator at the first floor by pushing pushbutton 5.'",
+    "affects": "V-EXP8 - and this is Experiment 8's ONLY erratum. See RUL-04.",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi"
+   },
+   {
+    "id": "ER-31",
+    "book": "V",
+    "printed_page": 11,
+    "kind": "program_change",
+    "text": "EXPERIMENT 9 program corrections: change 4G/4H to 4G/5H; change D16/M- to D16/M+. Note: the 'elevator' can get stuck at a floor when the pointer knob stops between adjacent terminals (e.g. between D6 and D7) and is not making proper connection with either; move the knob so it points directly at one terminal. Note: if performance is unsatisfactory, REMOVE 5F/6C, 6C/6- and ADD 5F/6E, 6E/6-, 4E/6C.",
+    "affects": "V-EXP9",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi",
+    "ruling": "RUL-04 - the whole block, both Notes included, belongs to Experiment 9"
+   },
+   {
+    "id": "ER-32",
+    "book": "V",
+    "printed_page": 12,
+    "kind": "program_change",
+    "text": "program corrections for automatic toll collector: REMOVE 3J/4X, 3N/6Y, 4H/5N, 4K/5N, 5L/6G. ADD 3J/4K, 3Y/4Y, 4J/4X, 4X/6L, 5N/6K.",
+    "affects": "V-EXP10 - five out, five in, corrected list stays 55 lines",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi"
+   },
+   {
+    "id": "ER-33",
+    "book": "V",
+    "printed_page": "21-22",
+    "kind": "program_change",
+    "text": "Note - when programming a geometric form or a numeral for recognition, be sure that the connections from M10 are made to the TOP terminals in the matrix.",
+    "affects": "V-EXP12, V-EXP13",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi",
+    "simulator_impact": "tells us matrix nodes have a TOP and a non-top terminal; bears on the matrix jack model"
+   },
+   {
+    "id": "ER-34",
+    "book": "V",
+    "printed_page": 24,
+    "kind": "program_change",
+    "text": "RECOVERED - Experiment 14 program correction: change 4F/5G to 4F/4G.",
+    "affects": "V-EXP14",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi",
+    "closes": "errata.txt renders this line as the noise string 'rk a n n a A A P /A fl'. It is the one line the OCR destroyed completely, and it is a terminal-letter payload line. Now settled."
+   },
+   {
+    "id": "ER-35",
+    "book": "V",
+    "printed_page": 25,
+    "kind": "prose_only",
+    "text": "Note - to re-set the automatic sequence control, turn power OFF, then ON again.",
+    "affects": "V-EXP15",
+    "tag": "verified",
+    "cite": "errata p3 right col @300dpi"
+   },
+   {
+    "id": "ER-36",
+    "book": "V",
+    "printed_page": 30,
+    "kind": "program_change",
+    "text": "'CQ' transmitter program correction: change 5X/6E to 5X/6C (correct circuit diagram to correspond).",
+    "affects": "V-EXP16",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-37",
+    "book": "V",
+    "printed_page": 31,
+    "kind": "prose_only",
+    "text": "Note - Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+    "affects": "V-EXP17, V-EXP18",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-38",
+    "book": "V",
+    "printed_page": 33,
+    "kind": "prose_only",
+    "text": "Note to Experiment 19 - always turn the pointer knob CLOCKWISE when indicating a letter for coding.",
+    "affects": "V-EXP19",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-39",
+    "book": "V",
+    "printed_page": 35,
+    "kind": "prose_only",
+    "text": "Last paragraph on page - third sentence should read: 'Light 6 will flash on whenever . . .'",
+    "affects": "V-EXP21",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-40",
+    "book": "VI",
+    "printed_page": 51,
+    "kind": "procedure",
+    "text": "The Secret Code - Note: to re-set the game, turn power off, then on again.",
+    "affects": "VI-SECRETCODE",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-41",
+    "book": "VI",
+    "printed_page": 52,
+    "kind": "procedure",
+    "text": "The Combination Lock - Note: to re-set the game, turn the rotary switch through one complete revolution.",
+    "affects": "VI-COMBOLOCK",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-42",
+    "book": "VI",
+    "printed_page": 53,
+    "kind": "procedure",
+    "text": "The Electronic Maze - Note: to re-set the game, turn power off, then on again. (The sheet misspells it 'Elecronic'.)",
+    "affects": "VI-MAZE",
+    "tag": "verified",
+    "cite": "errata p4 left col @300dpi"
+   },
+   {
+    "id": "ER-43",
+    "book": "VI",
+    "printed_page": 55,
+    "kind": "procedure",
+    "text": "The Match Game - the first two sentences under 'To Play the Match Game' should be changed to: 'Turn the rotary switch to 15, indicating that there are 15 matches in the pile.'",
+    "affects": "VI-MATCHGAME - the finder's step 1 ('Push the re-set button (pushbutton 3). The rotary switch dial will turn to 15') is the UNCORRECTED text; per errata the dial is turned BY HAND",
+    "tag": "likely",
+    "cite": "errata p4 right col, OCR only - this block sits in the one column I did not image-read"
+   },
+   {
+    "id": "ER-44",
+    "book": "VI",
+    "printed_page": 55,
+    "kind": "prose_only",
+    "text": "Tic-Tac-Toe - Note: if the game is a tie, MINIVAC will indicate a tie on the fifth move but will not indicate a move into the last available space.",
+    "affects": "VI-TICTACTOE",
+    "tag": "likely",
+    "cite": "errata p4 right col, OCR only"
+   },
+   {
+    "id": "ER-45",
+    "book": "VI",
+    "printed_page": 57,
+    "kind": "prose_only",
+    "text": "The Mind Reading Trick - Note: Zero (0) is considered even for this problem.",
+    "affects": "VI-MINDREADING",
+    "tag": "likely",
+    "cite": "errata p4 right col, OCR only"
+   },
+   {
+    "id": "ER-46",
+    "book": "VI",
+    "printed_page": 60,
+    "kind": "procedure",
+    "text": "Reaction Time Tester - Note: to prevent the players' anticipating the start signal, either make dummy connections to the rotary switch or cover the dial with an inverted box.",
+    "affects": "VI-REACTION",
+    "tag": "likely",
+    "cite": "errata p4 right col, OCR only"
+   }
+  ],
+  "count": 46,
+  "image_verified_count": 42,
+  "ocr_only_remaining": [
+   "ER-43",
+   "ER-44",
+   "ER-45",
+   "ER-46"
+  ],
+  "to_finish": "one 300-dpi crop of errata.pdf PDF page 4, RIGHT column, would promote the last four to [verified]. They are prose/procedure notes with no terminal letters in them, so the risk is low."
+ },
+ "fixture_definition": {
+  "problem_stated": "No prior file designates which programs are fixtures or what the pass criterion is. This section supplies both. It is the missing 'definition of done'.",
+  "what_a_fixture_is": "A fixture is a triple: (as_corrected wire list, initial_settings, expected-state script). It passes when, for every step in the script, the simulator's state after the named settle policy matches EVERY observable the printed page names - and no others are checked.",
+  "tiers": [
+   {
+    "tier": "A",
+    "name": "combinational",
+    "criteria": "No relay self-holding, no motor, no rotary switch, no timing language in the printed procedure. Output is a lamp or relay state that is a pure function of current switch/button positions.",
+    "pass_criterion": "apply each step's input events, iterate the relay network to fixpoint, compare the named lamps/relays. Deterministic; a mismatch is a bug.",
+    "build_order": 1
+   },
+   {
+    "tier": "B",
+    "name": "sequential / latching",
+    "criteria": "Relay self-holding, flip-flops, counters. Printed procedure distinguishes press from release, or says 'do not release', or 'push and release'.",
+    "pass_criterion": "same as A, but press and release are SEPARATE events with a settle between them, and the script's step order is load-bearing. A tier-B fixture that passes when press+release are collapsed into one event is not actually testing anything.",
+    "build_order": 2
+   },
+   {
+    "tier": "C",
+    "name": "motor / rotary dependent",
+    "criteria": "Any program touching D0..D19, M+, M-, or the RUN/STOP/ARM jacks. Requires the rotary-switch stepping model, which the completeness critic rates temporal_readiness = none.",
+    "pass_criterion": "deferred. Do not attempt until the rotary timing model exists; a passing tier-C fixture before then would be a passing fixture over an invented model.",
+    "build_order": 3
+   },
+   {
+    "tier": "D",
+    "name": "free play / games",
+    "criteria": "Programs whose printed 'procedure' is a game to play, with no deterministic printed trace (Tic-Tac-Toe, Combination Lock, Reaction Time Tester, Fortune Teller).",
+    "pass_criterion": "NOT fixtures. Use them as smoke tests only: the wire list must load without a short circuit, and the stated invariant (e.g. Tic-Tac-Toe's 'the machine will move 5 squares to the right of its own last move') must hold. Do not fabricate an expected trace.",
+    "build_order": 4
+   }
+  ],
+  "tier_A_seed_set_build_this_first": [
+   {
+    "id": "I-EXP1",
+    "cite": "book1.pdf printed p.5",
+    "why": "two wires; the simplest possible closed circuit"
+   },
+   {
+    "id": "I-EXP2",
+    "cite": "book1.pdf printed p.7"
+   },
+   {
+    "id": "I-EXP3",
+    "cite": "book1.pdf printed p.9"
+   },
+   {
+    "id": "I-EXP4",
+    "cite": "book1.pdf printed p.10"
+   },
+   {
+    "id": "I-EXP5",
+    "cite": "book1.pdf printed p.11"
+   },
+   {
+    "id": "I-EXP6",
+    "cite": "book1.pdf printed p.13",
+    "errata": "ER-01 diagram only"
+   },
+   {
+    "id": "I-EXP7",
+    "cite": "book1.pdf printed p.15"
+   },
+   {
+    "id": "I-EXP9",
+    "cite": "book1.pdf printed p.17"
+   },
+   {
+    "id": "I-EXP11",
+    "cite": "book1.pdf printed p.21"
+   },
+   {
+    "id": "II-EXP5",
+    "cite": "book2-3-4.pdf printed p.13, PDF p19",
+    "why": "equality comparator; five printed numbered steps with a stated relay-3 outcome at each. Best-specified combinational fixture in the corpus."
+   },
+   {
+    "id": "II-EXP6",
+    "cite": "book2-3-4.pdf printed p.14, PDF p20",
+    "errata": "ER-06 change 2Z/2C to 2X/2C",
+    "why": "one-bit adder; five printed steps each with a stated lamp outcome"
+   },
+   {
+    "id": "II-EXP2",
+    "cite": "book2-3-4.pdf printed p.7, PDF p13",
+    "status": "image-verified in this pass, 23 wires"
+   },
+   {
+    "id": "III-3STMT",
+    "cite": "book2-3-4.pdf printed p.36, PDF p42",
+    "errata": "ER-07 diagram only",
+    "why": "two-pushbutton AND, four wires"
+   },
+   {
+    "id": "III-RELAYAND",
+    "cite": "book2-3-4.pdf printed p.43, PDF p49",
+    "errata": "ER-12 change 2+/2H to 1G/2H - MANDATORY, the as-printed circuit does not implement AND"
+   },
+   {
+    "id": "III-RELAYOR",
+    "cite": "book2-3-4.pdf printed p.43, PDF p49"
+   },
+   {
+    "id": "III-RELAYNOT",
+    "cite": "book2-3-4.pdf printed p.44, PDF p50"
+   },
+   {
+    "id": "III-XOR-PB",
+    "cite": "book2-3-4.pdf printed p.41, PDF p47",
+    "status": "image-verified in this pass, 5 wires"
+   },
+   {
+    "id": "III-RELAYXOR",
+    "cite": "book2-3-4.pdf printed p.44, PDF p50",
+    "status": "image-verified in this pass, 11 wires; expected script DERIVED not printed - weak fixture"
+   },
+   {
+    "id": "V-EXP1",
+    "cite": "book5-6.pdf printed p.2",
+    "errata": "ER-28 supplies a printed XOR truth statement"
+   }
+  ],
+  "tier_B_seed_set": [
+   {
+    "id": "II-MANUALMEM",
+    "cite": "book2-3-4.pdf printed p.10, PDF p16",
+    "why": "the minimal non-latching relay memory - the control for the next one"
+   },
+   {
+    "id": "II-SELFLOCK",
+    "cite": "book2-3-4.pdf printed p.10, PDF p16",
+    "why": "adds 1C/1A; the relay latches and CANNOT be cleared except by removing power. If the simulator can clear it, the self-holding model is wrong."
+   },
+   {
+    "id": "II-2BUTTONMEM",
+    "cite": "book2-3-4.pdf printed p.11, PDF p17",
+    "errata": "ER-05 change 1A/1C to 1A/1G"
+   },
+   {
+    "id": "II-FF1",
+    "cite": "book2-3-4.pdf printed p.12, PDF p18",
+    "status": "image-verified in this pass, 14 wires",
+    "why": "THE primary timing fixture; behaviour lives on the release edge"
+   },
+   {
+    "id": "IV-FF1",
+    "cite": "book2-3-4.pdf printed pp.68-69",
+    "note": "15 wires, not 16 - see RUL-07"
+   },
+   {
+    "id": "IV-FF2",
+    "cite": "book2-3-4.pdf printed pp.69-70",
+    "why": "has the fullest printed step-by-step trace of any flip-flop: power ON -> both relays OFF; push and release pb6 -> both ON; push and HOLD pb6 -> relay 5 OFF, relay 6 ON"
+   },
+   {
+    "id": "ER-ALTCOUNTER",
+    "cite": "errata.pdf p2",
+    "status": "image-verified in this pass, 48 wires",
+    "why": "the counter fixture the errata itself prefers over Book IV's"
+   }
+  ],
+  "pass_criterion_formal": [
+   "1. Build the netlist from as_corrected, normalising every N+ to PLUS and every N- to MINUS, and every hole of a multi-hole terminal to that terminal.",
+   "2. Reject the fixture up front if the netlist shorts PLUS to MINUS through no load - the errata's step 3 says a programming error causing a short trips the circuit breaker, so 'short' is a legitimate, distinguishable outcome, not a crash.",
+   "3. For each step: apply events in order; run the settle policy; compare ONLY the observables named in 'then'.",
+   "4. A mismatch on a step whose tag is [verified] is a simulator bug. A mismatch on a step whose tag is [unverified] (derived, not printed) is an investigation - re-derive first.",
+   "5. Report per-step, not per-fixture. A fixture that fails at step 4 of 6 tells you far more than a red X."
+  ],
+  "anti_fabrication_rule": "Never write an expected value the page does not state. Where a power-up state is obvious but unprinted, record it with tag [unverified] and source 'derived', as done above for II-FF1 step 1 and III-RELAYXOR steps 1-4. The corpus's value is that it is not invented; a single fabricated expectation destroys that."
+ },
+ "merge_procedure": [
+  "1. Start from find-programs.json's 84 records. Apply RUL-05: re-tag every record whose 'verification' field does not name a page image from [verified] down to [likely]. The finder's own image_reads_spent list is the whitelist.",
+  "2. Append verify-programs.json's 14 recovered programs (11 Book II + 2 Book III + the errata alternate counter). Corpus = 98 programs + 1 errata circuit.",
+  "3. Overwrite seven of those with the image-verified transcriptions in this file's newly_image_verified_programs: ER-ALTCOUNTER, II-EXP2, II-EXP7, II-FF1, III-XOR-PB, III-RELAYXOR, I-ANSWER13.",
+  "4. Apply the binding rulings: RUL-01 (strike the Tic-Tac-Toe flag), RUL-02 (I-EXP8 takes 1X/1C), RUL-03 (III-3STMT, not II-3STMT; derive book_label), RUL-04 (re-file the elevator block under V-EXP9), RUL-07 (IV-FF1 count = 15).",
+  "5. Apply this file's errata_master_table, not verify-programs' OCR-derived list. For each correction with kind='program_change', write the as_corrected list by applying the remove/add or change to as_printed, and record errata_ref on the affected line. kind='diagram_only' and kind='prose_only' entries attach to the record but do NOT alter as_corrected.",
+  "6. Attach expected-state scripts. 40 of the 84 finder records carry both a printed procedure and printed expected behaviour - those convert mechanically. The other 44 get expected=null and fixture_tier=D or NONE. Do not invent scripts for them.",
+  "7. Assign fixture_tier by the tier criteria. Emit golden fixtures for tier A and B only.",
+  "8. Emit a coverage report: programs with expected!=null, programs at each tier, programs still [likely] or [unverified]. That report, not a green test run, is the honest statement of where the corpus stands."
+ ],
+ "not_settled_by_the_sources": [
+  {
+   "q": "Relay pull-in and drop-out times, and contact transfer order (break-before-make vs make-before-break).",
+   "why_it_matters": "The errata twice warns that timing is marginal on real hardware ('push pushbutton 6 SLOWLY', 'some programs are not designed for high-speed operation'). The three-bit counter in Book IV is known by the manufacturer to fail on real relays. No manual gives a millisecond figure.",
+   "what_would_settle_it": "the Maintenance Manual's relay spec sheet, or a measurement on a surviving unit."
+  },
+  {
+   "q": "Whether IV-FF2's wire list is transcribed correctly - the one-wire difference from Book II's flip-flop rests on OCR.",
+   "what_would_settle_it": "one 300-dpi crop of book2-3-4.pdf PDF p76."
+  },
+  {
+   "q": "Book I ANSWERS 1-12 and 16 onward. They are hand-lettered and interleaved with drawings; the OCR is materially degraded and they remain [unverified].",
+   "what_would_settle_it": "300-dpi crops of book1.pdf PDF pp.31-34, roughly six crops."
+  },
+  {
+   "q": "The four Book VI errata notes (ER-43..ER-46) are OCR-only.",
+   "what_would_settle_it": "one 300-dpi crop of errata.pdf PDF p4 right column."
+  },
+  {
+   "q": "Watertown vs Cambridge. The errata sheet says 372 Main Street, Watertown, Massachusetts in both header and footer, matching the Book V-VI copyright page. The panel legend says Cambridge. Both primary. NOT resolved here, per standing instruction.",
+   "what_would_settle_it": "a dated corporate record, or a second panel photograph of a differently-dated unit."
+  },
+  {
+   "q": "Whether the expected power-up state of a bistable circuit is deterministic on real hardware. Book IV v2 prints 'Turn power ON. Notice that both relays 5 and 6 are OFF', which asserts it for that circuit; Book II's flip-flop prints no such step.",
+   "what_would_settle_it": "nothing in these sources. See the named fallback."
+  }
+ ],
+ "named_fallback": {
+  "name": "FALLBACK-PWRUP-COLD: cold-start all-relays-de-energised, then settle to fixpoint",
+  "applies_to": "every fixture's step 1, wherever the printed page does not state the power-up state",
+  "behaviour": "At power ON, every relay coil is de-energised and every relay is in its unoperated position (normally-closed contacts made, normally-open contacts broken). Slide switches hold whatever position the fixture's initial_settings gave them; pushbuttons are up; the rotary dial holds its initial_settings position. THEN iterate the relay network to fixpoint, and only then evaluate step 1's assertions. A circuit that latches itself on during that first settle (the self-locking memory, for instance) is expected to come up ON - that is a real property of the circuit, not a violation of the fallback.",
+  "reasoning": [
+   "It is the only power-up rule the manuals ever assert explicitly, and they assert it twice: Book IV printed p.69 step 1, 'Turn power ON. Notice that both relays 5 and 6 are OFF', and Book II Experiment 5 step 2, 'Turn power ON. Relay 3 comes ON because both numbers are zero' - which is exactly the cold-start-then-settle sequence.",
+   "It is physically right for this machine: these are single-coil non-latching relays with return springs. With no current there is exactly one mechanical rest position.",
+   "It makes every fixture reproducible. The alternative - modelling a race at power-up - would make the flip-flop fixtures non-deterministic and would be an invented model, which is worse than a wrong one.",
+   "It composes with the errata's own reset advice. Four Book VI errata notes say 'to re-set the game, turn power off, then on again' (ER-40, ER-42, and by implication ER-35 for the automatic sequence control). Those notes only make sense if power-off/power-on is a clean, total reset - which is exactly what this fallback asserts."
+  ],
+  "what_would_overturn_it": "A printed step anywhere in Books I-VII that asserts a relay is ON immediately at power-up in a circuit where no closed path to its coil exists through de-energised contacts. Or a Maintenance Manual passage describing a latching or magnetically-held relay. Neither appears in anything read so far. If found, the fallback becomes per-circuit rather than global.",
+  "how_to_record_it": "Every step-1 assertion generated under this fallback carries tag='unverified' and source='FALLBACK-PWRUP-COLD'. A test harness should be able to list, on demand, exactly which expectations in the suite rest on the fallback rather than on print."
+ },
+ "headline_findings_for_the_simulator": [
+  "The gap brief's premise that errata.txt drops 12 of the alternate counter's 48 connections is FALSE. The OCR has all 48; it corrupts two terminal letters (1F/1H, 6L/6-), four plus signs, the reading order, and destroys exactly one whole line (Book V p.24). All now image-verified and corrected. [verified]",
+  "The alternate three-bit counter is 48 connections, 4 columns x 12 rows, column-major, image-verified at 300 dpi. It is the counter fixture the manufacturer itself prefers. [verified]",
+  "Book III p.36's erratum is a REPLACEMENT DIAGRAM, not text - that is why it looked truncated in OCR. The program list is unchanged by it. [verified]",
+  "Book V p.24's destroyed erratum line recovered: change 4F/5G to 4F/4G. [verified]",
+  "Book II Experiment 2 = 23 connections (5 columns, last one short). Book II Experiment 7 = 16 connections (4 columns, last one holding one line). Both counts were open; both now closed by image. The stray '6Z' beside Experiment 7 is a diagram label, not a program line. [verified]",
+  "Book II's single-input flip-flop is 14 connections, image-verified. Book IV's second-version flip-flop is the SAME circuit relabelled - identical in five of six electrical nets - differing only in where indicator lamp 5's anode taps (5E vs 5H). Book IV's FIRST version is a genuinely different 15-wire circuit. So there are two flip-flop fixtures, not three. [likely, the Book II half verified]",
+  "find-programs.json's IV-FF1 connection_count of 16 is an arithmetic error; the four printed stages total 15. [likely]",
+  "The relay XOR (Book III printed p.44, 11 wires) is image-verified and enters the corpus. It is the only cross-coupled two-relay circuit in the manuals and is the structural test case for the J/G contact model. Its expected trace is DERIVED, not printed - it is a weak fixture, tagged accordingly.",
+  "Tic-Tac-Toe's 4G/5N stays as printed. The finder's proposed 'fix' is struck by ruling RUL-01.",
+  "The elevator reliability block belongs to Book V Experiment 9, not Experiment 8 - image-verified from the errata sheet's own layout. Applying it to Experiment 8 builds a circuit that does not exist. [verified]",
+  "Fixtures are now DEFINED: four tiers, a formal pass criterion, a 19-program tier-A seed set and a 7-program tier-B seed set, and an anti-fabrication rule that forbids expected values the page does not state.",
+  "Named fallback FALLBACK-PWRUP-COLD supplies the one thing the sources leave open at every fixture's step 1: cold-start all relays de-energised, then settle to fixpoint before asserting."
+ ],
+ "claim_counts": {
+  "verified": 58,
+  "likely": 9,
+  "unverified": 6
+ }
+}

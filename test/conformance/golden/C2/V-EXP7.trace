@@ -1,0 +1,84 @@
+#!mv601-trace 1
+# id=V-EXP7 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=25
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=92 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > button4 target=1000
+   511.2 * pb4 nc->mid
+   513.7 * pb4 mid->no
+   523.7 * indLamp4 off->dim
+   525.5 * relay4 nc->mid
+   526.8 * relay4 mid->no
+   536.8 * indLamp6 off->dim
+   539.1 * relay6 nc->mid
+   540.4 * relay6 mid->no
+   550.9 * dial c0->gap
+   564.9 * indLamp4 dim->on
+   571.8 * dial gap->c1
+   577.8 * indLamp6 dim->on
+   634.6 * dial c1->gap
+   655.6 * dial gap->c2
+   718.3 * dial c2->gap
+   739.3 * dial gap->c3
+   802.1 * dial c3->gap
+   823.0 * dial gap->c4
+   885.8 * dial c4->gap
+   906.7 * dial gap->c5
+   969.5 * dial c5->gap
+   990.5 * dial gap->c6
+  1053.2 * dial c6->gap
+  1074.2 * dial gap->c7
+  1074.3 ? dial=c7  "1. Push pushbutton 4. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+  6074.3 ? dial=c7  "1. Push pushbutton 4. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+  6074.3 > button5 target=1000
+  6085.5 * pb5 nc->mid
+  6088.0 * pb5 mid->no
+ 11074.3 ? dial=c7  "2. While holding pushbutton 4 down, push pushbutton 5. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 11074.3 > button4 target=0
+ 11085.5 * pb4 no->mid
+ 11088.0 * pb4 mid->nc
+ 16074.3 ? dial=c7  "3. Hold pushbutton 5 down and release pushbutton 4. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 16074.3 > button6 target=1000
+ 16085.5 * pb6 nc->mid
+ 16088.0 * pb6 mid->no
+ 16098.0 * indLamp5 off->dim
+ 16100.1 * relay5 nc->mid
+ 16101.4 * relay5 mid->no
+ 16139.1 * indLamp5 dim->on
+ 21074.3 ? dial=c7  "4. While holding pushbutton 5 down, push pushbutton 6. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 21074.3 > button5 target=0
+ 21085.5 * pb5 no->mid
+ 21088.0 * pb5 mid->nc
+ 26074.3 ? dial=c7  "5. Hold pushbutton 6 down and release pushbutton 5. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 26074.3 > button6 target=0
+ 26085.5 * pb6 no->mid
+ 26088.0 * pb6 mid->nc
+ 26090.1 * relay4 no->mid  relay5 no->mid
+ 26091.0 * relay4 mid->nc  relay5 mid->nc
+ 26094.6 * relay6 no->mid
+ 26095.5 * relay6 mid->nc
+ 26096.2 * indLamp4 on->dim  indLamp5 on->dim
+ 26100.9 * indLamp6 on->dim
+ 26101.7 * dial c7->gap
+ 26122.5 * dial gap->c6
+ 26151.9 * indLamp4 dim->off  indLamp5 dim->off
+ 26156.5 * indLamp6 dim->off
+ 26185.0 * dial c6->gap
+ 26205.8 * dial gap->c5
+ 26268.3 * dial c5->gap
+ 26289.1 * dial gap->c4
+ 26351.6 * dial c4->gap
+ 26372.5 * dial gap->c3
+ 26435.0 * dial c3->gap
+ 26455.8 * dial gap->c2
+ 26518.3 * dial c2->gap
+ 26539.1 * dial gap->c1
+ 26601.6 * dial c1->gap
+ 26622.5 * dial gap->c0
+ 36074.3 > button5 target=1000
+ 36085.5 * pb5 nc->mid
+ 36088.0 * pb5 mid->no
+ 41074.3 > button5 target=0
+ 41085.5 * pb5 no->mid
+ 41088.0 * pb5 mid->nc

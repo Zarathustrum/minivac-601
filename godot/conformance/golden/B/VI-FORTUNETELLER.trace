@@ -1,0 +1,628 @@
+#!mv601-trace 1
+# id=VI-FORTUNETELLER contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=40
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=5 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "With this program, MINIVAC will answer questions—after \"thinking\" about them."
+    20.1 > button4 target=1000
+    31.3 * pb4 nc->mid
+    33.8 * pb4 mid->no
+    37.1 * outLamp4 off->dim
+    56.0 * outLamp4 dim->on
+   376.1 ? relay3=nc relay4=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off  "With this program, MINIVAC will answer questions—after \"thinking\" about them."
+   376.1 > button4 target=0
+   387.3 * pb4 no->mid
+   389.8 * pb4 mid->nc
+   407.8 * outLamp4 on->dim
+   463.4 * outLamp4 dim->off
+   727.9 > button2 target=1000
+   739.1 * pb2 nc->mid
+   741.6 * pb2 mid->no
+   752.3 * relay2 nc->mid
+   753.6 * relay2 mid->no
+   756.9 * outLamp6 off->dim  indLamp6 off->dim
+   765.0 * relay3 nc->mid
+   765.4 * relay5 nc->mid
+   766.3 * relay3 mid->no
+   766.5 * outLamp5 off->dim  indLamp1 off->dim  indLamp3 off->dim  indLamp5 off->dim
+   766.7 * relay5 mid->no
+   770.5 * indLamp2 off->dim  indLamp4 off->dim
+   775.2 * relay4 nc->mid
+   776.5 * relay4 mid->no
+   781.1 * relay6 nc->mid
+   782.4 * relay6 mid->no
+   796.0 * outLamp5 dim->on  indLamp5 dim->on
+   797.1 * relay5 no->mid
+   798.0 * relay5 mid->nc
+   803.1 * outLamp6 dim->on  indLamp6 dim->on
+   811.6 * relay6 no->mid
+   812.5 * relay6 mid->nc
+   827.8 * relay5 nc->mid
+   829.1 * relay5 mid->no
+   844.5 * relay6 nc->mid
+   845.8 * relay6 mid->no
+   856.1 * indLamp1 dim->on  indLamp3 dim->on
+   859.3 * relay5 no->mid
+   860.0 * indLamp1 on->dim  indLamp3 on->dim
+   860.2 * relay5 mid->nc
+   867.2 * indLamp2 dim->on  indLamp4 dim->on
+   873.2 * relay6 no->mid
+   874.1 * relay6 mid->nc
+   875.2 * indLamp2 on->dim  indLamp4 on->dim
+   889.5 * relay5 nc->mid
+   890.8 * relay5 mid->no
+   895.0 * indLamp1 dim->on  indLamp3 dim->on
+   906.3 * relay6 nc->mid
+   907.6 * relay6 mid->no
+   912.1 * indLamp2 dim->on  indLamp4 dim->on
+   921.0 * relay5 no->mid
+   921.9 * relay5 mid->nc
+   933.3 * indLamp1 on->dim  indLamp3 on->dim
+   934.9 * relay6 no->mid
+   935.8 * relay6 mid->nc
+   945.6 * indLamp2 on->dim  indLamp4 on->dim
+   949.4 * indLamp1 dim->on  indLamp3 dim->on
+   951.2 * relay5 nc->mid
+   952.5 * relay5 mid->no
+   968.0 * relay6 nc->mid
+   969.3 * relay6 mid->no  indLamp2 dim->on  indLamp4 dim->on
+   982.7 * relay5 no->mid
+   983.6 * relay5 mid->nc
+   996.6 * relay6 no->mid
+   997.1 * indLamp1 on->dim  indLamp3 on->dim
+   997.5 * relay6 mid->nc
+  1009.0 * indLamp2 on->dim  indLamp4 on->dim
+  1009.2 * indLamp1 dim->on  indLamp3 dim->on
+  1012.9 * relay5 nc->mid
+  1014.2 * relay5 mid->no
+  1029.7 * relay6 nc->mid
+  1030.0 * indLamp2 dim->on  indLamp4 dim->on
+  1031.0 * relay6 mid->no
+  1044.4 * relay5 no->mid
+  1045.3 * relay5 mid->nc
+  1058.3 * relay6 no->mid
+  1059.0 * indLamp1 on->dim  indLamp3 on->dim
+  1059.2 * relay6 mid->nc
+  1070.6 * indLamp1 dim->on  indLamp3 dim->on
+  1071.0 * indLamp2 on->dim  indLamp4 on->dim
+  1074.6 * relay5 nc->mid
+  1075.9 * relay5 mid->no
+  1091.4 * relay6 nc->mid
+  1091.5 * indLamp2 dim->on  indLamp4 dim->on
+  1092.7 * relay6 mid->no
+  1106.1 * relay5 no->mid
+  1107.0 * relay5 mid->nc
+  1120.0 * relay6 no->mid
+  1120.8 * indLamp1 on->dim  indLamp3 on->dim
+  1120.9 * relay6 mid->nc
+  1132.2 * indLamp1 dim->on  indLamp3 dim->on
+  1132.7 * indLamp2 on->dim  indLamp4 on->dim
+  1136.3 * relay5 nc->mid
+  1137.6 * relay5 mid->no
+  1153.1 * relay6 nc->mid
+  1153.2 * indLamp2 dim->on  indLamp4 dim->on
+  1154.4 * relay6 mid->no
+  1167.8 * relay5 no->mid
+  1168.7 * relay5 mid->nc
+  1181.7 * relay6 no->mid
+  1182.5 * indLamp1 on->dim  indLamp3 on->dim
+  1182.6 * relay6 mid->nc
+  1193.9 * indLamp1 dim->on  indLamp3 dim->on
+  1194.4 * indLamp2 on->dim  indLamp4 on->dim
+  1198.0 * relay5 nc->mid
+  1199.3 * relay5 mid->no
+  1214.8 * relay6 nc->mid
+  1214.9 * indLamp2 dim->on  indLamp4 dim->on
+  1216.1 * relay6 mid->no
+  1229.5 * relay5 no->mid
+  1230.4 * relay5 mid->nc
+  1243.4 * relay6 no->mid
+  1244.2 * indLamp1 on->dim  indLamp3 on->dim
+  1244.3 * relay6 mid->nc
+  1255.6 * indLamp1 dim->on  indLamp3 dim->on
+  1256.1 * indLamp2 on->dim  indLamp4 on->dim
+  1259.7 * relay5 nc->mid
+  1261.0 * relay5 mid->no
+  1276.5 * relay6 nc->mid
+  1276.6 * indLamp2 dim->on  indLamp4 dim->on
+  1277.8 * relay6 mid->no
+  1291.2 * relay5 no->mid
+  1292.1 * relay5 mid->nc
+  1305.1 * relay6 no->mid
+  1305.9 * indLamp1 on->dim  indLamp3 on->dim
+  1306.0 * relay6 mid->nc
+  1317.3 * indLamp1 dim->on  indLamp3 dim->on
+  1317.8 * indLamp2 on->dim  indLamp4 on->dim
+  1321.4 * relay5 nc->mid
+  1322.7 * relay5 mid->no
+  1338.2 * relay6 nc->mid
+  1338.3 * indLamp2 dim->on  indLamp4 dim->on
+  1339.5 * relay6 mid->no
+  1352.9 * relay5 no->mid
+  1353.8 * relay5 mid->nc
+  1366.8 * relay6 no->mid
+  1367.6 * indLamp1 on->dim  indLamp3 on->dim
+  1367.7 * relay6 mid->nc
+  1379.0 * indLamp1 dim->on  indLamp3 dim->on
+  1379.5 * indLamp2 on->dim  indLamp4 on->dim
+  1383.1 * relay5 nc->mid
+  1384.4 * relay5 mid->no
+  1399.9 * relay6 nc->mid
+  1400.0 * indLamp2 dim->on  indLamp4 dim->on
+  1401.2 * relay6 mid->no
+  1414.6 * relay5 no->mid
+  1415.5 * relay5 mid->nc
+  1428.5 * relay6 no->mid
+  1429.3 * indLamp1 on->dim  indLamp3 on->dim
+  1429.4 * relay6 mid->nc
+  1440.7 * indLamp1 dim->on  indLamp3 dim->on
+  1441.2 * indLamp2 on->dim  indLamp4 on->dim
+  1444.8 * relay5 nc->mid
+  1446.1 * relay5 mid->no
+  1461.6 * relay6 nc->mid
+  1461.7 * indLamp2 dim->on  indLamp4 dim->on
+  1462.9 * relay6 mid->no
+  1476.3 * relay5 no->mid
+  1477.2 * relay5 mid->nc
+  1490.2 * relay6 no->mid
+  1491.0 * indLamp1 on->dim  indLamp3 on->dim
+  1491.1 * relay6 mid->nc
+  1502.4 * indLamp1 dim->on  indLamp3 dim->on
+  1502.9 * indLamp2 on->dim  indLamp4 on->dim
+  1506.5 * relay5 nc->mid
+  1507.8 * relay5 mid->no
+  1523.3 * relay6 nc->mid
+  1523.4 * indLamp2 dim->on  indLamp4 dim->on
+  1524.6 * relay6 mid->no
+  1538.0 * relay5 no->mid
+  1538.9 * relay5 mid->nc
+  1551.9 * relay6 no->mid
+  1552.7 * indLamp1 on->dim  indLamp3 on->dim
+  1552.8 * relay6 mid->nc
+  1564.1 * indLamp1 dim->on  indLamp3 dim->on
+  1564.6 * indLamp2 on->dim  indLamp4 on->dim
+  1568.2 * relay5 nc->mid
+  1569.5 * relay5 mid->no
+  1585.0 * relay6 nc->mid
+  1585.1 * indLamp2 dim->on  indLamp4 dim->on
+  1586.3 * relay6 mid->no
+  1599.7 * relay5 no->mid
+  1600.6 * relay5 mid->nc
+  1613.6 * relay6 no->mid
+  1614.4 * indLamp1 on->dim  indLamp3 on->dim
+  1614.5 * relay6 mid->nc
+  1625.8 * indLamp1 dim->on  indLamp3 dim->on
+  1626.3 * indLamp2 on->dim  indLamp4 on->dim
+  1629.9 * relay5 nc->mid
+  1631.2 * relay5 mid->no
+  1646.7 * relay6 nc->mid
+  1646.8 * indLamp2 dim->on  indLamp4 dim->on
+  1648.0 * relay6 mid->no
+  1661.4 * relay5 no->mid
+  1662.3 * relay5 mid->nc
+  1675.3 * relay6 no->mid
+  1676.1 * indLamp1 on->dim  indLamp3 on->dim
+  1676.2 * relay6 mid->nc
+  1687.5 * indLamp1 dim->on  indLamp3 dim->on
+  1688.0 * indLamp2 on->dim  indLamp4 on->dim
+  1691.6 * relay5 nc->mid
+  1692.9 * relay5 mid->no
+  1708.4 * relay6 nc->mid
+  1708.5 * indLamp2 dim->on  indLamp4 dim->on
+  1709.7 * relay6 mid->no
+  1723.1 * relay5 no->mid
+  1724.0 * relay5 mid->nc
+  1737.0 * relay6 no->mid
+  1737.8 * indLamp1 on->dim  indLamp3 on->dim
+  1737.9 * relay6 mid->nc
+  1749.2 * indLamp1 dim->on  indLamp3 dim->on
+  1749.7 * indLamp2 on->dim  indLamp4 on->dim
+  1753.3 * relay5 nc->mid
+  1754.6 * relay5 mid->no
+  1770.1 * relay6 nc->mid
+  1770.2 * indLamp2 dim->on  indLamp4 dim->on
+  1771.4 * relay6 mid->no
+  1784.8 * relay5 no->mid
+  1785.7 * relay5 mid->nc
+  1798.7 * relay6 no->mid
+  1799.5 * indLamp1 on->dim  indLamp3 on->dim
+  1799.6 * relay6 mid->nc
+  1810.9 * indLamp1 dim->on  indLamp3 dim->on
+  1811.4 * indLamp2 on->dim  indLamp4 on->dim
+  1815.0 * relay5 nc->mid
+  1816.3 * relay5 mid->no
+  1831.8 * relay6 nc->mid
+  1831.9 * indLamp2 dim->on  indLamp4 dim->on
+  1833.1 * relay6 mid->no
+  1846.5 * relay5 no->mid
+  1847.4 * relay5 mid->nc
+  1860.4 * relay6 no->mid
+  1861.2 * indLamp1 on->dim  indLamp3 on->dim
+  1861.3 * relay6 mid->nc
+  1872.6 * indLamp1 dim->on  indLamp3 dim->on
+  1873.1 * indLamp2 on->dim  indLamp4 on->dim
+  1876.7 * relay5 nc->mid
+  1878.0 * relay5 mid->no
+  1893.5 * relay6 nc->mid
+  1893.6 * indLamp2 dim->on  indLamp4 dim->on
+  1894.8 * relay6 mid->no
+  1908.2 * relay5 no->mid
+  1909.1 * relay5 mid->nc
+  1922.1 * relay6 no->mid
+  1922.9 * indLamp1 on->dim  indLamp3 on->dim
+  1923.0 * relay6 mid->nc
+  1934.3 * indLamp1 dim->on  indLamp3 dim->on
+  1934.8 * indLamp2 on->dim  indLamp4 on->dim
+  1938.4 * relay5 nc->mid
+  1939.7 * relay5 mid->no
+  1955.2 * relay6 nc->mid
+  1955.3 * indLamp2 dim->on  indLamp4 dim->on
+  1956.5 * relay6 mid->no
+  1969.9 * relay5 no->mid
+  1970.8 * relay5 mid->nc
+  1983.8 * relay6 no->mid
+  1984.6 * indLamp1 on->dim  indLamp3 on->dim
+  1984.7 * relay6 mid->nc
+  1996.0 * indLamp1 dim->on  indLamp3 dim->on
+  1996.5 * indLamp2 on->dim  indLamp4 on->dim
+  2000.1 * relay5 nc->mid
+  2001.4 * relay5 mid->no
+  2016.9 * relay6 nc->mid
+  2017.0 * indLamp2 dim->on  indLamp4 dim->on
+  2018.2 * relay6 mid->no
+  2031.6 * relay5 no->mid
+  2032.5 * relay5 mid->nc
+  2045.5 * relay6 no->mid
+  2046.3 * indLamp1 on->dim  indLamp3 on->dim
+  2046.4 * relay6 mid->nc
+  2057.7 * indLamp1 dim->on  indLamp3 dim->on
+  2058.2 * indLamp2 on->dim  indLamp4 on->dim
+  2061.8 * relay5 nc->mid
+  2063.1 * relay5 mid->no
+  2078.6 * relay6 nc->mid
+  2078.7 * indLamp2 dim->on  indLamp4 dim->on
+  2079.9 * relay6 mid->no
+  2093.3 * relay5 no->mid
+  2094.2 * relay5 mid->nc
+  2107.2 * relay6 no->mid
+  2108.0 * indLamp1 on->dim  indLamp3 on->dim
+  2108.1 * relay6 mid->nc
+  2119.4 * indLamp1 dim->on  indLamp3 dim->on
+  2119.9 * indLamp2 on->dim  indLamp4 on->dim
+  2123.5 * relay5 nc->mid
+  2124.8 * relay5 mid->no
+  2140.3 * relay6 nc->mid
+  2140.4 * indLamp2 dim->on  indLamp4 dim->on
+  2141.6 * relay6 mid->no
+  2155.0 * relay5 no->mid
+  2155.9 * relay5 mid->nc
+  2168.9 * relay6 no->mid
+  2169.7 * indLamp1 on->dim  indLamp3 on->dim
+  2169.8 * relay6 mid->nc
+  2181.1 * indLamp1 dim->on  indLamp3 dim->on
+  2181.6 * indLamp2 on->dim  indLamp4 on->dim
+  2185.2 * relay5 nc->mid
+  2186.5 * relay5 mid->no
+  2202.0 * relay6 nc->mid
+  2202.1 * indLamp2 dim->on  indLamp4 dim->on
+  2203.3 * relay6 mid->no
+  2216.7 * relay5 no->mid
+  2217.6 * relay5 mid->nc
+  2230.6 * relay6 no->mid
+  2231.4 * indLamp1 on->dim  indLamp3 on->dim
+  2231.5 * relay6 mid->nc
+  2242.8 * indLamp1 dim->on  indLamp3 dim->on
+  2243.3 * indLamp2 on->dim  indLamp4 on->dim
+  2246.9 * relay5 nc->mid
+  2248.2 * relay5 mid->no
+  2263.7 * relay6 nc->mid
+  2263.8 * indLamp2 dim->on  indLamp4 dim->on
+  2265.0 * relay6 mid->no
+  2278.4 * relay5 no->mid
+  2279.3 * relay5 mid->nc
+  2292.3 * relay6 no->mid
+  2293.1 * indLamp1 on->dim  indLamp3 on->dim
+  2293.2 * relay6 mid->nc
+  2304.5 * indLamp1 dim->on  indLamp3 dim->on
+  2305.0 * indLamp2 on->dim  indLamp4 on->dim
+  2308.6 * relay5 nc->mid
+  2309.9 * relay5 mid->no
+  2325.4 * relay6 nc->mid
+  2325.5 * indLamp2 dim->on  indLamp4 dim->on
+  2326.7 * relay6 mid->no
+  2340.1 * relay5 no->mid
+  2341.0 * relay5 mid->nc
+  2354.0 * relay6 no->mid
+  2354.8 * indLamp1 on->dim  indLamp3 on->dim
+  2354.9 * relay6 mid->nc
+  2366.2 * indLamp1 dim->on  indLamp3 dim->on
+  2366.7 * indLamp2 on->dim  indLamp4 on->dim
+  2370.3 * relay5 nc->mid
+  2371.6 * relay5 mid->no
+  2387.1 * relay6 nc->mid
+  2387.2 * indLamp2 dim->on  indLamp4 dim->on
+  2388.4 * relay6 mid->no
+  2401.8 * relay5 no->mid
+  2402.7 * relay5 mid->nc
+  2415.7 * relay6 no->mid
+  2416.5 * indLamp1 on->dim  indLamp3 on->dim
+  2416.6 * relay6 mid->nc
+  2427.9 * indLamp1 dim->on  indLamp3 dim->on
+  2428.4 * indLamp2 on->dim  indLamp4 on->dim
+  2432.0 * relay5 nc->mid
+  2433.3 * relay5 mid->no
+  2448.8 * relay6 nc->mid
+  2448.9 * indLamp2 dim->on  indLamp4 dim->on
+  2450.1 * relay6 mid->no
+  2463.5 * relay5 no->mid
+  2464.4 * relay5 mid->nc
+  2477.4 * relay6 no->mid
+  2478.2 * indLamp1 on->dim  indLamp3 on->dim
+  2478.3 * relay6 mid->nc
+  2489.6 * indLamp1 dim->on  indLamp3 dim->on
+  2490.1 * indLamp2 on->dim  indLamp4 on->dim
+  2493.7 * relay5 nc->mid
+  2495.0 * relay5 mid->no
+  2510.5 * relay6 nc->mid
+  2510.6 * indLamp2 dim->on  indLamp4 dim->on
+  2511.8 * relay6 mid->no
+  2525.2 * relay5 no->mid
+  2526.1 * relay5 mid->nc
+  2539.1 * relay6 no->mid
+  2539.9 * indLamp1 on->dim  indLamp3 on->dim
+  2540.0 * relay6 mid->nc
+  2551.3 * indLamp1 dim->on  indLamp3 dim->on
+  2551.8 * indLamp2 on->dim  indLamp4 on->dim
+  2555.4 * relay5 nc->mid
+  2556.7 * relay5 mid->no
+  2572.2 * relay6 nc->mid
+  2572.3 * indLamp2 dim->on  indLamp4 dim->on
+  2573.5 * relay6 mid->no
+  2586.9 * relay5 no->mid
+  2587.8 * relay5 mid->nc
+  2600.8 * relay6 no->mid
+  2601.6 * indLamp1 on->dim  indLamp3 on->dim
+  2601.7 * relay6 mid->nc
+  2613.0 * indLamp1 dim->on  indLamp3 dim->on
+  2613.5 * indLamp2 on->dim  indLamp4 on->dim
+  2617.1 * relay5 nc->mid
+  2618.4 * relay5 mid->no
+  2633.9 * relay6 nc->mid
+  2634.0 * indLamp2 dim->on  indLamp4 dim->on
+  2635.2 * relay6 mid->no
+  2648.6 * relay5 no->mid
+  2649.5 * relay5 mid->nc
+  2662.5 * relay6 no->mid
+  2663.3 * indLamp1 on->dim  indLamp3 on->dim
+  2663.4 * relay6 mid->nc
+  2674.7 * indLamp1 dim->on  indLamp3 dim->on
+  2675.2 * indLamp2 on->dim  indLamp4 on->dim
+  2678.8 * relay5 nc->mid
+  2680.1 * relay5 mid->no
+  2695.6 * relay6 nc->mid
+  2695.7 * indLamp2 dim->on  indLamp4 dim->on
+  2696.9 * relay6 mid->no
+  2710.3 * relay5 no->mid
+  2711.2 * relay5 mid->nc
+  2724.2 * relay6 no->mid
+  2725.0 * indLamp1 on->dim  indLamp3 on->dim
+  2725.1 * relay6 mid->nc
+  2736.4 * indLamp1 dim->on  indLamp3 dim->on
+  2736.9 * indLamp2 on->dim  indLamp4 on->dim
+  2740.5 * relay5 nc->mid
+  2741.8 * relay5 mid->no
+  2757.3 * relay6 nc->mid
+  2757.4 * indLamp2 dim->on  indLamp4 dim->on
+  2758.6 * relay6 mid->no
+  2772.0 * relay5 no->mid
+  2772.9 * relay5 mid->nc
+  2785.9 * relay6 no->mid
+  2786.7 * indLamp1 on->dim  indLamp3 on->dim
+  2786.8 * relay6 mid->nc
+  2798.1 * indLamp1 dim->on  indLamp3 dim->on
+  2798.6 * indLamp2 on->dim  indLamp4 on->dim
+  2802.2 * relay5 nc->mid
+  2803.5 * relay5 mid->no
+  2819.0 * relay6 nc->mid
+  2819.1 * indLamp2 dim->on  indLamp4 dim->on
+  2820.3 * relay6 mid->no
+  2833.7 * relay5 no->mid
+  2834.6 * relay5 mid->nc
+  2847.6 * relay6 no->mid
+  2848.4 * indLamp1 on->dim  indLamp3 on->dim
+  2848.5 * relay6 mid->nc
+  2859.8 * indLamp1 dim->on  indLamp3 dim->on
+  2860.3 * indLamp2 on->dim  indLamp4 on->dim
+  2863.9 * relay5 nc->mid
+  2865.2 * relay5 mid->no
+  2880.7 * relay6 nc->mid
+  2880.8 * indLamp2 dim->on  indLamp4 dim->on
+  2882.0 * relay6 mid->no
+  2895.4 * relay5 no->mid
+  2896.3 * relay5 mid->nc
+  2909.3 * relay6 no->mid
+  2910.1 * indLamp1 on->dim  indLamp3 on->dim
+  2910.2 * relay6 mid->nc
+  2921.5 * indLamp1 dim->on  indLamp3 dim->on
+  2922.0 * indLamp2 on->dim  indLamp4 on->dim
+  2925.6 * relay5 nc->mid
+  2926.9 * relay5 mid->no
+  2942.4 * relay6 nc->mid
+  2942.5 * indLamp2 dim->on  indLamp4 dim->on
+  2943.7 * relay6 mid->no
+  2957.1 * relay5 no->mid
+  2958.0 * relay5 mid->nc
+  2971.0 * relay6 no->mid
+  2971.8 * indLamp1 on->dim  indLamp3 on->dim
+  2971.9 * relay6 mid->nc
+  2983.2 * indLamp1 dim->on  indLamp3 dim->on
+  2983.7 * indLamp2 on->dim  indLamp4 on->dim
+  2987.3 * relay5 nc->mid
+  2988.6 * relay5 mid->no
+  3004.1 * relay6 nc->mid
+  3004.2 * indLamp2 dim->on  indLamp4 dim->on
+  3005.4 * relay6 mid->no
+  3018.8 * relay5 no->mid
+  3019.7 * relay5 mid->nc
+  3032.7 * relay6 no->mid
+  3033.5 * indLamp1 on->dim  indLamp3 on->dim
+  3033.6 * relay6 mid->nc
+  3044.9 * indLamp1 dim->on  indLamp3 dim->on
+  3045.4 * indLamp2 on->dim  indLamp4 on->dim
+  3049.0 * relay5 nc->mid
+  3050.3 * relay5 mid->no
+  3065.8 * relay6 nc->mid
+  3065.9 * indLamp2 dim->on  indLamp4 dim->on
+  3067.1 * relay6 mid->no
+  3080.5 * relay5 no->mid
+  3081.4 * relay5 mid->nc
+  3094.4 * relay6 no->mid
+  3095.2 * indLamp1 on->dim  indLamp3 on->dim
+  3095.3 * relay6 mid->nc
+  3106.6 * indLamp1 dim->on  indLamp3 dim->on
+  3107.1 * indLamp2 on->dim  indLamp4 on->dim
+  3110.7 * relay5 nc->mid
+  3112.0 * relay5 mid->no
+  3127.5 * relay6 nc->mid
+  3127.6 * indLamp2 dim->on  indLamp4 dim->on
+  3128.8 * relay6 mid->no
+  3142.2 * relay5 no->mid
+  3143.1 * relay5 mid->nc
+  3156.1 * relay6 no->mid
+  3156.9 * indLamp1 on->dim  indLamp3 on->dim
+  3157.0 * relay6 mid->nc
+  3168.3 * indLamp1 dim->on  indLamp3 dim->on
+  3168.8 * indLamp2 on->dim  indLamp4 on->dim
+  3172.4 * relay5 nc->mid
+  3173.7 * relay5 mid->no
+  3189.2 * relay6 nc->mid
+  3189.3 * indLamp2 dim->on  indLamp4 dim->on
+  3190.5 * relay6 mid->no
+  3203.9 * relay5 no->mid
+  3204.8 * relay5 mid->nc
+  3217.8 * relay6 no->mid
+  3218.6 * indLamp1 on->dim  indLamp3 on->dim
+  3218.7 * relay6 mid->nc
+  3230.0 * indLamp1 dim->on  indLamp3 dim->on
+  3230.5 * indLamp2 on->dim  indLamp4 on->dim
+  3234.1 * relay5 nc->mid
+  3235.4 * relay5 mid->no
+  3250.9 * relay6 nc->mid
+  3251.0 * indLamp2 dim->on  indLamp4 dim->on
+  3252.2 * relay6 mid->no
+  3265.6 * relay5 no->mid
+  3266.5 * relay5 mid->nc
+  3279.5 * relay6 no->mid
+  3280.3 * indLamp1 on->dim  indLamp3 on->dim
+  3280.4 * relay6 mid->nc
+  3291.7 * indLamp1 dim->on  indLamp3 dim->on
+  3292.2 * indLamp2 on->dim  indLamp4 on->dim
+  3295.8 * relay5 nc->mid
+  3297.1 * relay5 mid->no
+  3312.6 * relay6 nc->mid
+  3312.7 * indLamp2 dim->on  indLamp4 dim->on
+  3313.9 * relay6 mid->no
+  3327.3 * relay5 no->mid
+  3328.2 * relay5 mid->nc
+  3341.2 * relay6 no->mid
+  3342.0 * indLamp1 on->dim  indLamp3 on->dim
+  3342.1 * relay6 mid->nc
+  3353.4 * indLamp1 dim->on  indLamp3 dim->on
+  3353.9 * indLamp2 on->dim  indLamp4 on->dim
+  3357.5 * relay5 nc->mid
+  3358.8 * relay5 mid->no
+  3374.3 * relay6 nc->mid
+  3374.4 * indLamp2 dim->on  indLamp4 dim->on
+  3375.6 * relay6 mid->no
+  3389.0 * relay5 no->mid
+  3389.9 * relay5 mid->nc
+  3402.9 * relay6 no->mid
+  3403.7 * indLamp1 on->dim  indLamp3 on->dim
+  3403.8 * relay6 mid->nc
+  3415.1 * indLamp1 dim->on  indLamp3 dim->on
+  3415.6 * indLamp2 on->dim  indLamp4 on->dim
+  3419.2 * relay5 nc->mid
+  3420.5 * relay5 mid->no
+  3436.0 * relay6 nc->mid
+  3436.1 * indLamp2 dim->on  indLamp4 dim->on
+  3437.3 * relay6 mid->no
+  3450.7 * relay5 no->mid
+  3451.6 * relay5 mid->nc
+  3464.6 * relay6 no->mid
+  3465.4 * indLamp1 on->dim  indLamp3 on->dim
+  3465.5 * relay6 mid->nc
+  3476.8 * indLamp1 dim->on  indLamp3 dim->on
+  3477.3 * indLamp2 on->dim  indLamp4 on->dim
+  3480.9 * relay5 nc->mid
+  3482.2 * relay5 mid->no
+  3497.7 * relay6 nc->mid
+  3497.8 * indLamp2 dim->on  indLamp4 dim->on
+  3499.0 * relay6 mid->no
+  3512.4 * relay5 no->mid
+  3513.3 * relay5 mid->nc
+  3526.3 * relay6 no->mid
+  3527.1 * indLamp1 on->dim  indLamp3 on->dim
+  3527.2 * relay6 mid->nc
+  3538.5 * indLamp1 dim->on  indLamp3 dim->on
+  3539.0 * indLamp2 on->dim  indLamp4 on->dim
+  3542.6 * relay5 nc->mid
+  3543.9 * relay5 mid->no
+  3559.4 * relay6 nc->mid
+  3559.5 * indLamp2 dim->on  indLamp4 dim->on
+  3560.7 * relay6 mid->no
+  3574.1 * relay5 no->mid
+  3575.0 * relay5 mid->nc
+  3588.0 * relay6 no->mid
+  3588.8 * indLamp1 on->dim  indLamp3 on->dim
+  3588.9 * relay6 mid->nc
+  3600.2 * indLamp1 dim->on  indLamp3 dim->on
+  3600.7 * indLamp2 on->dim  indLamp4 on->dim
+  3604.3 * relay5 nc->mid
+  3605.6 * relay5 mid->no
+  3621.1 * relay6 nc->mid
+  3621.2 * indLamp2 dim->on  indLamp4 dim->on
+  3622.4 * relay6 mid->no
+  3635.8 * relay5 no->mid
+  3636.7 * relay5 mid->nc
+  3649.7 * relay6 no->mid
+  3650.5 * indLamp1 on->dim  indLamp3 on->dim
+  3650.6 * relay6 mid->nc
+  3661.9 * indLamp1 dim->on  indLamp3 dim->on
+  3662.4 * indLamp2 on->dim  indLamp4 on->dim
+  3666.0 * relay5 nc->mid
+  3667.3 * relay5 mid->no
+  3682.8 * relay6 nc->mid
+  3682.9 * indLamp2 dim->on  indLamp4 dim->on
+  3684.1 * relay6 mid->no
+  3697.5 * relay5 no->mid
+  3698.4 * relay5 mid->nc
+  3711.4 * relay6 no->mid
+  3712.2 * indLamp1 on->dim  indLamp3 on->dim
+  3712.3 * relay6 mid->nc
+  3723.6 * indLamp1 dim->on  indLamp3 dim->on
+  3724.1 * indLamp2 on->dim  indLamp4 on->dim
+  3727.7 * relay5 nc->mid
+  3727.9 ? relay2=no outLamp1=off outLamp2=off outLamp3=off outLamp4=off  "With this program, MINIVAC will answer questions—after \"thinking\" about them."
+  3727.9 > button2 target=0
+  3729.0 * relay5 mid->no
+  3739.1 * pb2 no->mid
+  3741.6 * pb2 mid->nc
+  3744.5 * relay6 nc->mid
+  3744.6 * indLamp2 dim->on  indLamp4 dim->on
+  3745.0 * relay2 no->mid
+  3745.1 * indLamp2 on->dim  indLamp4 on->dim
+  3745.8 * relay6 mid->no
+  3745.9 * relay2 mid->nc
+  3758.6 * indLamp2 dim->on  indLamp4 dim->on
+  3778.7 > button4 target=1000
+  3789.9 * pb4 nc->mid
+  3792.4 * pb4 mid->no
+  3795.7 * outLamp1 off->dim
+  3814.7 * outLamp1 dim->on
+  4134.8 > button4 target=0
+  4146.0 * pb4 no->mid
+  4148.5 * pb4 mid->nc
+  4166.3 * outLamp1 on->dim
+  4222.0 * outLamp1 dim->off
+  4486.4 ? relay2=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off  "With this program, MINIVAC will answer questions—after \"thinking\" about them."

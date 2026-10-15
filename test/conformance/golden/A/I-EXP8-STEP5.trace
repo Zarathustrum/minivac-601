@@ -1,0 +1,36 @@
+#!mv601-trace 1
+# id=I-EXP8-STEP5 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=21
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=53 minTickGap=13 marginal=false
+     0.0 > power on
+     0.0 > button1 target=1000
+     0.0 * power off->on
+    11.2 * pb1 nc->mid
+    13.7 * pb1 mid->no
+    23.6 * indLamp1 off->dim
+    24.7 * relay1 nc->mid
+    26.0 * relay1 mid->no
+    35.9 * indLamp2 off->dim
+    37.2 * relay2 nc->mid
+    38.5 * relay2 mid->no
+    48.4 * indLamp3 off->dim
+    49.9 * relay3 nc->mid
+    51.2 * relay3 mid->no
+    61.1 * indLamp4 off->dim
+    62.8 * relay4 nc->mid
+    63.6 * indLamp1 dim->on
+    64.1 * relay4 mid->no
+    74.1 * indLamp5 off->dim
+    75.9 * relay5 nc->mid
+    76.0 * indLamp2 dim->on
+    77.2 * relay5 mid->no
+    87.2 * indLamp6 off->dim
+    88.6 * indLamp3 dim->on
+    89.2 * relay6 nc->mid
+    90.5 * relay6 mid->no
+    93.8 * outLamp6 off->dim
+   101.5 * indLamp4 dim->on
+   112.8 * outLamp6 dim->on
+   114.6 * indLamp5 dim->on
+   127.7 * indLamp6 dim->on
+   147.8 ? outLamp6=on  "Expand the present circuit to use all six relays with each relay controlling the coil of the next. The last relay in the series, relay 6, should turn light 6 ON."

@@ -1,0 +1,196 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-3GIRLS-BOOLEAN",
+  "source": "BK3 printed p.59 = book2-3-4.pdf PDF p.65; ERRATA sheet p.2 (errata.pdf PDF p.2): ER-15 'page 58' (prose only), ER-16 'page 59' (diagram only)",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/2S",
+    "2S/3V",
+    "2T/3S",
+    "3T/3com",
+    "2R/1S",
+    "1T/3com",
+    "3U/2V",
+    "2V/1V",
+    "1W/2W",
+    "2W/3com",
+    "3A/3com",
+    "3B/3-"
+  ],
+  "errata_applied": [],
+  "note": "Printed procedure: power ON, try combinations of slide switches 1-3 until light 3 goes OFF. The page prints no setting and no light-3 state for any of the eight combinations (the solving combination is derived, Step 7). ER-15 is prose only; ER-16 is diagram only: the wire list already names the far-right switch 3S and 3T (2T/3S, 3T/3com); 3R is unused. No expect steps: the script sweeps all eight switch settings (Gray order) so the trace records them.",
+  "wires": [
+    "1+/2S",
+    "2S/3V",
+    "2T/3S",
+    "3T/3com",
+    "2R/1S",
+    "1T/3com",
+    "3U/2V",
+    "2V/1V",
+    "1W/2W",
+    "2W/3com",
+    "3A/3com",
+    "3B/3-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    }
+  ]
+}

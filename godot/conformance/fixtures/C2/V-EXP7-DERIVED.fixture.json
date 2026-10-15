@@ -1,0 +1,854 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP7-DERIVED",
+  "source": "Books V-VI printed pp.8-10 = book5-6.pdf PDF pp.14-16 (Experiment 7: The Train Gate Control; rule p.8 = PDF p.14 and p.9 = PDF p.15, program and procedure p.9 = PDF p.15, input table and observations p.10 = PDF p.16); ERRATA ER-29 errata.pdf PDF p.3 (prose only, no wire change); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4C/5C",
+    "4F/4X",
+    "4F/4K",
+    "4G/5G",
+    "4H/5H",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6X",
+    "5F/5K",
+    "5G/6F",
+    "5H/5+",
+    "5L/5X",
+    "5Y/6Y",
+    "6C/6-",
+    "6G/6N",
+    "6H/6-",
+    "6J/6K",
+    "6J/D17",
+    "6L/6+",
+    "6L/6Y",
+    "6N/D18",
+    "D0/M+",
+    "D7/M-",
+    "D16/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4C/5C",
+    "4F/4X",
+    "4F/4K",
+    "4G/5G",
+    "4H/5H",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6X",
+    "5F/5K",
+    "5G/6F",
+    "5H/5+",
+    "5L/5X",
+    "5Y/6Y",
+    "6C/6-",
+    "6G/6N",
+    "6H/6-",
+    "6J/6K",
+    "6J/D17",
+    "6L/6+",
+    "6L/6Y",
+    "6N/D18",
+    "D0/M+",
+    "D7/M-",
+    "D16/D19"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (setup); rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); at power-on every + source sits on an open N.O. contact or pushbutton, relay 6 out and the wiper on D0 shorts D18(+) to D19, so the motor holds at 0",
+      "quote": "Turn power on and set the pointer knob of the rotary switch at 0. The rotary switch at 0 represents the gate up.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 step 1, Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); pb4 4Y-4X feeds 4F, relay 4 in, 4H-4G feeds 6F, relay 6 in, motor runs to D7",
+      "quote": "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 step 1, Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); relay 5 coil (5F) fed only by 6X or 5K, both open; indicator lamps 4 and 6 in series with their energised coils (nC on -)",
+      "quote": "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 steps 2-3, Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); with pb4 released relay 4 holds through 5Y-5X-4L-4K-4F; relay 5 still unfed",
+      "quote": "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 steps 4-5, Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); pb6 6Y-6X feeds 5F, relay 5 in; with pb5 released 6X-5K-5L feeds 4L-4K-4F, so relay 4 still holds",
+      "quote": "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 step 6, Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); with every pushbutton up the 4F/4K, 4L/5L/5X, 5F/5K/6X loop has no + source, relays 4 and 5 drop, 6F loses 4G and 5G, relay 6 drops and the motor reverses to the D0 short",
+      "quote": "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 step 6, Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); gate up at rest once no switch is on",
+      "quote": "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); pb5 5Y-5X puts + on 4L and 5L only, whose N.O. contacts 4K and 5K are open (4N, 5N unwired), so no coil is fed and the dial stays on D0",
+      "quote": "Push pushbutton 5. This represents a car passing over the center of the crossing. Notice that the gate does not close.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "errata.pdf PDF p.3 ER-29 (page 10, second sentence); Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); pb6 6Y-6X feeds 5F, relay 5 in, 5H-5G feeds 6F, relay 6 in, motor runs to D7",
+      "quote": "The same will be true for a train moving right through. . . .",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "errata.pdf PDF p.3 ER-29 (page 10, second sentence); Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); relay 4 coil (4F) fed only by 4X or 4K, both open",
+      "quote": "The same will be true for a train moving right through. . . .",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "errata.pdf PDF p.3 ER-29 (page 10, second sentence); Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); with pb6 released relay 5 holds through 5Y-5X-5L-5K-5F; relay 4 still unfed",
+      "quote": "The same will be true for a train moving right through. . . .",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "errata.pdf PDF p.3 ER-29 (page 10, second sentence); Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); pb4 4Y-4X feeds 4F, relay 4 in; with pb5 released 4X-4K-4L feeds 5L-5K-5F, so relay 5 still holds",
+      "quote": "The same will be true for a train moving right through. . . .",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "errata.pdf PDF p.3 ER-29 (page 10, second sentence); Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); with every pushbutton up the relay 4/5 loop has no + source, all three relays drop and the motor returns to the D0 short",
+      "quote": "The same will be true for a train moving right through. . . .",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "errata.pdf PDF p.3 ER-29 (page 10, second sentence); Books V-VI printed p.10 = book5-6.pdf PDF p.16; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); gate up at rest once no switch is on",
+      "quote": "The same will be true for a train moving right through. . . .",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16 second sentence; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); pb4 feeds 4F, relay 4 in, relay 6 in via 4H-4G, motor runs to D7",
+      "quote": "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16 second sentence; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); backing off pb5 leaves pb4 on: relay 4 fed by 4Y-4X, relay 5 never fed (6X, 5K open), gate stays closed",
+      "quote": "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16 second sentence; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); with pb4 up 4F/4K reaches only 4L/5L/5X, which has no + source, relay 4 drops, relay 6 drops, the motor returns to the D0 short",
+      "quote": "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16 second sentence; rule: any of pushbuttons 4, 5, 6 closes the gate (dial 7) and it stays closed until none is on, except that pushbutton 5 (centre of the crossing) alone does not close it; derived from topology: pushbutton arms 4Y/5Y/6Y and arms 4H/5H/6L on +, relay C terminals and 6H on -; relay 6 coil (6F) fed by 4H-4G or 5H-5G; relay 6 out puts - on D17 (6H-6J) and + on D18 (6L-6N), wiper D16=D19 shorts STOP at D0(+); relay 6 in puts + on D17 (6L-6K) and - on D18 (6H-6G), STOP short at D7(-); gate up at rest once no switch is on",
+      "quote": "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 25-wire topology and the stated rule (p.8 \"When any of these switches is activated, the gate closes and remains closed until none of the switches is on.\", p.9 \"The switch in the middle of the crossing must be so designed that cars passing over it will not close the gate.\"), not printed; the printed fixture C2/V-EXP7 asserts dial 7 for steps 1-5. ER-29 is prose only, so the wires are as printed. Topology: + on 4Y/5Y/6Y, 4H/5H, 6L, D0; - on 4C/5C/6C, 6H, D7. Relay 4 is set by pushbutton 4 (4X-4F), relay 5 by pushbutton 6 (6X-5F); each holds through its own set-2 N.O. contact (4K-4L, 5K-5L) onto the shared net 4L/5L/5X, which pushbutton 5 or the other held relay keeps at +. Pushbutton 5 alone feeds only that shared net, whose contacts are open, so it closes nothing. Relay 6 follows relay 4 OR relay 5 (4G/5G/6F) and reverses the motor: out, D17 - and D18 +, STOP short on D0; in, D17 + and D18 -, STOP short on D7. Derived: the return to 0 after step 6, pushbutton 5 alone, the right-to-left run (ER-29), a train that enters from the left, stops on pushbutton 5 and backs out, and per-step relay states, including relay 4 still held after step 5 by pushbutton 6 through 5K-5L-4L-4K. Indicator lamps 4-6 are in series with their coils (nC on -) and so follow the relays. Script choices, not printed: 2 s holds per input, 10 s until windows, the back-out sequence 4, 4+5, 4, none. Rest positions c7 and c0 depend on the STOP-short coast (O-R5); direction of travel is not asserted.",
+  "digest": {
+    "eventCount": 217,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      12,
+      8,
+      12,
+      0,
+      0,
+      0,
+      12,
+      16,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      84
+    ]
+  }
+}

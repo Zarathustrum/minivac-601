@@ -1,0 +1,29 @@
+#!mv601-trace 1
+# id=V-EXP1 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=61 marginal=false
+     0.0 > switch1 target=0
+    20.0 > switch2 target=0
+    40.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim
+    22.1 * outLamp1 dim->on
+    42.2 ? outLamp1=on  "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch."
+    42.2 > switch2 target=1000
+    69.1 * sw2 nc->mid
+    75.2 * sw2 mid->no
+    86.4 * outLamp1 on->dim
+   142.0 * outLamp1 dim->off
+   162.1 ? outLamp1=off  "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch."
+   162.1 > switch1 target=1000
+   189.0 * sw1 nc->mid
+   195.1 * sw1 mid->no
+   197.6 * outLamp1 off->dim
+   216.5 * outLamp1 dim->on
+   242.0 ? outLamp1=on  "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch."
+   242.0 > switch2 target=0
+   268.9 * sw2 no->mid
+   275.0 * sw2 mid->nc
+   286.8 * outLamp1 on->dim
+   342.4 * outLamp1 dim->off
+   361.9 ? outLamp1=off  "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch."

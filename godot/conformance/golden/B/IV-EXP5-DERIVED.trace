@@ -1,0 +1,112 @@
+#!mv601-trace 1
+# id=IV-EXP5-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=15
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=70 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp5 off->dim
+    11.6 * relay5 nc->mid
+    12.9 * relay5 mid->no
+    16.2 * outLamp6 off->dim
+    35.1 * outLamp6 dim->on
+    49.9 * indLamp5 dim->on
+   170.0 > switch6 target=1000
+   196.9 * sw6 nc->mid
+   201.5 * relay5 no->mid
+   202.4 * relay5 mid->nc
+   203.0 * sw6 mid->no
+   208.0 * indLamp5 on->dim
+   221.9 * outLamp6 on->dim
+   263.6 * indLamp5 dim->off
+   277.5 * outLamp6 dim->off
+   349.9 ? relay5=nc relay6=nc outLamp5=off outLamp6=off indLamp5=off indLamp6=off  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+   349.9 > switch6 target=0
+   376.8 * sw6 no->mid
+   382.9 * sw6 mid->nc
+   392.5 * indLamp5 off->dim
+   394.6 * relay5 nc->mid
+   395.9 * relay5 mid->no
+   399.0 * outLamp6 off->dim
+   417.9 * outLamp6 dim->on
+   432.6 * indLamp5 dim->on
+   552.7 ? relay5=no relay6=nc outLamp5=off outLamp6=on  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+   552.7 > relayGrab6 target=1000
+   558.0 * relay6 nc->mid
+   559.3 * relay6 mid->no
+   562.6 * outLamp5 off->dim
+   578.3 * outLamp6 on->dim
+   581.5 * outLamp5 dim->on
+   634.0 * outLamp6 dim->off
+   701.6 ? relay5=no relay6=no outLamp5=on outLamp6=off  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+   701.6 > relayRelease6
+   705.1 * relay6 no->mid
+   706.0 * relay6 mid->nc
+   708.8 * outLamp6 off->dim
+   725.3 * outLamp5 on->dim
+   727.7 * outLamp6 dim->on
+   781.0 * outLamp5 dim->off
+   847.8 ? relay5=no relay6=nc outLamp5=off outLamp6=on  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+   847.8 > button6 target=1000
+   859.0 * pb6 nc->mid
+   861.5 * pb6 mid->no
+   863.6 * relay5 no->mid
+   864.4 * outLamp5 off->dim
+   864.5 * relay5 mid->nc
+   870.2 * indLamp5 on->dim
+   883.3 * outLamp5 dim->on
+   883.9 * outLamp6 on->dim
+   925.8 * indLamp5 dim->off
+   939.5 * outLamp6 dim->off
+  1004.0 ? relay5=nc relay6=nc outLamp5=on outLamp6=off indLamp5=off  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+  1004.0 > relayGrab6 target=1000
+  1009.3 * relay6 nc->mid
+  1010.6 * relay6 mid->no
+  1013.4 * outLamp6 off->dim
+  1032.3 * outLamp6 dim->on
+  1152.4 ? relay5=nc relay6=no outLamp5=on outLamp6=on  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+  1152.4 > switch6 target=1000
+  1179.3 * sw6 nc->mid
+  1185.4 * sw6 mid->no
+  1195.3 * indLamp5 off->dim
+  1197.1 * relay5 nc->mid
+  1198.4 * relay5 mid->no
+  1217.5 * outLamp6 on->dim
+  1235.3 * indLamp5 dim->on
+  1273.1 * outLamp6 dim->off
+  1355.4 ? relay5=no relay6=no outLamp5=on outLamp6=off  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+  1355.4 > button6 target=0
+  1366.6 * pb6 no->mid
+  1369.1 * pb6 mid->nc
+  1371.2 * relay5 no->mid
+  1372.1 * relay5 mid->nc
+  1375.1 * outLamp6 off->dim
+  1377.6 * indLamp5 on->dim
+  1391.6 * outLamp5 on->dim
+  1394.0 * outLamp6 dim->on
+  1433.2 * indLamp5 dim->off
+  1447.2 * outLamp5 dim->off
+  1514.1 ? relay5=nc relay6=no outLamp5=off outLamp6=on indLamp5=off  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+  1514.1 > relayRelease6
+  1517.6 * relay6 no->mid
+  1518.5 * relay6 mid->nc
+  1537.9 * outLamp6 on->dim
+  1593.5 * outLamp6 dim->off
+  1658.0 > button6 target=1000
+  1669.2 * pb6 nc->mid
+  1671.7 * pb6 mid->no
+  1681.6 * indLamp5 off->dim
+  1683.4 * relay5 nc->mid
+  1684.7 * relay5 mid->no
+  1687.7 * outLamp6 off->dim
+  1706.6 * outLamp6 dim->on
+  1721.7 * indLamp5 dim->on
+  1841.8 ? relay5=no relay6=nc outLamp5=off outLamp6=on  "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal."
+  1841.8 > button6 target=0
+  1853.0 * pb6 no->mid
+  1855.5 * pb6 mid->nc
+  1857.6 * relay5 no->mid
+  1858.5 * relay5 mid->nc
+  1864.0 * indLamp5 on->dim
+  1878.0 * outLamp6 on->dim
+  1919.6 * indLamp5 dim->off
+  1933.6 * outLamp6 dim->off

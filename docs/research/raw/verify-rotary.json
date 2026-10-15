@@ -1,0 +1,382 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of find-rotary.json — the 16-position motorized DECIMAL INPUT-OUTPUT rotary switch of the MINIVAC 601",
+  "agent": "verify-rotary",
+  "date": "2026-08-30",
+  "target_file": "docs/research/raw/find-rotary.json",
+  "scope_note": "MINIVAC 601 only. One newly-used source (book7-capacitor-resistor.pdf) is titled 'Minivac 601/6010'; every use of it below is flagged as joint-scope.",
+  "oracle_rule_compliance": "No emulator source code was opened, fetched, cloned, read or quoted. minivac.greg.technology and any associated repository were NOT visited.",
+
+  "method": {
+    "approach": "Every [verified] claim in find-rotary.json that depends on a figure, a jack label, a terminal letter, a number, or a wiring list was re-checked against the primary source itself. Where the OCR could be wrong, the page was rendered and read as an image. Where the finder cited an absence, the absence was re-tested with whitespace-insensitive matching (the OCR breaks words into spaced letters, so the finder's plain greps were not a valid absence test).",
+    "page_images_opened": [
+      "book1.pdf PDF p.24 (printed p.22), left column — MOTOR DRIVE body text",
+      "book1.pdf PDF p.24 (printed p.22), figure region x950..1950 — the RUN/STOP/motor/resistor schematic",
+      "book1.pdf PDF p.22 (printed p.20), upper right — panel perspective drawing of the dial",
+      "book1.pdf PDF p.22 (printed p.20), lower right — 'D = Decimal Input-Output / 8 = terminal number (1 to 19)' block",
+      "book1.pdf PDF p.22 (printed p.20), lower left — VIEW UNDER PANEL figure",
+      "maintenance-manual.pdf PDF p.11 — 'Circuit Diagram — Rotary Switch Motor Drive'",
+      "book5-6.pdf PDF p.10 (printed p.4) — CIRCUIT DIAGRAM—METRONOME and CIRCUIT DIAGRAM—TRAFFIC LIGHT, plus both program lists",
+      "book7-capacitor-resistor.pdf PDF p.26 (printed p.21) — motor speed resistor footnote and full automatic-counter program",
+      "book5-6.pdf PDF p.58 (printed p.52) — Combination Lock combination/connections table",
+      "prebrief/images/image_3.jpg — whole panel",
+      "prebrief/images/image_3.jpg — DECIMAL INPUT-OUTPUT quadrant, crop (1140,560)-(1536,900) upscaled 4x",
+      "prebrief/images/image_3.jpg — logo plate legend, crop (1145,232) 400x40 upscaled 7x"
+    ],
+    "corpus_note": "find-rotary.json repeatedly states that the Maintenance Manual and the errata sheet are 'NOT present in the local docs/research/raw tree — should be downloaded'. That is FALSE as of the time find-rotary.json was written. File mtimes: maintenance-manual.pdf/.txt and errata.pdf/.txt landed at 07:19-07:26; find-rotary.json was written at 07:35. Both were local. A third local primary, pdf/book7-capacitor-resistor.pdf (07:24), was never opened by the finder at all and contains material rotary-switch content. Downstream agents should ignore find-rotary.json's 'things_the_next_agent_should_do' item #1."
+  },
+
+  "headline": [
+    "The finder's single most load-bearing electrical claim (E01, the internal RUN/STOP/motor/resistor topology) is CORRECT and I independently image-verified it from TWO primary drawings.",
+    "The finder's program transcriptions are unusually accurate. Eleven multi-wire lists were checked wire-for-wire against the printed pages; nine were exact. One dropped a line; one was silently partial.",
+    "One [verified] claim is a logic error and is REFUTED: X04's derivation of dial direction from Book VI. The panel and Book VI actually CONTRADICT each other on clockwise/counterclockwise, and that discrepancy must be reported, not resolved.",
+    "Several [verified] tags are arguments from silence or mechanism derivations and must be downgraded to [likely] or [unverified].",
+    "The finder never opened book7-capacitor-resistor.pdf. It contains a numeric datum on the motor circuit (15/22/33 ohm) and a fourth electrical idiom for the STOP pair that the simulator must model."
+  ],
+
+  "refuted": [
+    {
+      "finder_claim_id": "X04",
+      "finder_tag": "[verified]",
+      "finder_text": "Direction convention on the real panel, cross-checked two ways: numbers increase clockwise. Book VI states the dial 'turns counterclockwise (towards 9)... clockwise (towards 7)' in a game whose contested region is 7-8-9 — consistent only if decreasing numbers = counterclockwise, i.e. increasing numbers = clockwise. This agrees with the photograph.",
+      "verdict": "REFUTED. The deduction is inverted, and the two sources do not agree.",
+      "correction": "The panel is unambiguous: 0 at 12 o'clock, numbers increasing CLOCKWISE (photo: 15-0-1 across the top, 2-3-4-5-6 down the right, 7-8-9 across the bottom right-to-left, 10-11-12-13-14-15 up the left). Book I printed p.20's perspective drawing shows the identical arrangement. Under that arrangement, moving from 7 towards 9 IS clockwise and moving from 9 towards 7 IS counterclockwise. Book VI printed p.56 says the exact opposite: 'counterclockwise (towards 9) ... clockwise (towards 7)'. So Book VI's direction words are INVERTED with respect to the panel. This is a genuine primary-source discrepancy and is NOT resolved here.",
+      "evidence": "PHOTO image_3.jpg, DECIMAL INPUT-OUTPUT quadrant crop, all sixteen sector numbers legible [verified]. B1 printed p.20 perspective illustration, image-read [verified]. B56 printed p.56 (book5-6.pdf PDF p.63), verbatim: 'The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.' [verified].",
+      "hypothesis_not_asserted": "One unproven explanation: the Book VI author described the direction as seen from BENEATH the panel. Book I's 'VIEW UNDER PANEL' figure is mirrored (0 top, 1..15 running counterclockwise), and under that view 'towards 9' does read as counterclockwise. Tag: [unverified] inference; do not put it in the spec.",
+      "simulator_consequence": "Do NOT derive the panel's rotation sense from Book VI prose. Take it from the panel photograph and Book I p.20 only: increasing dial number = clockwise as seen by the operator."
+    },
+    {
+      "finder_claim_id": "G07 (sub-claim)",
+      "finder_tag": "[verified]",
+      "finder_text": "B1 printed p.20 literal text: '8 = terminal number (1 to 19) . . . for example D8' — the '8' is the OCR/print of the '#' placeholder.",
+      "verdict": "REFUTED in part. The main claim (the printed range reads '1 to 19', which omits D0) is CONFIRMED. The parenthetical explanation is wrong.",
+      "correction": "There is no '#' placeholder. The manual literally prints a digit as an exemplar and then uses the SAME digit in the worked example: '8 = terminal number (1 to 19) ... for example D8'. Book I printed p.25 does the identical thing for the matrix: '6 = terminal number (1 to 11) ... for example M6t'. Image-read at 200 dpi; the glyphs are a clean '8' and a clean '6', not a degraded '#'.",
+      "evidence": "book1.pdf PDF p.22 rendered at 200 dpi, crop (1000,1350) 1100x950 — reads 'D = Decimal Input-Output / 8 = terminal number (1 to 19) / . . . for example D8 / The contact on the wiper arm is referred to as \"D16.\"' [verified]. book1.txt printed p.25 matrix block for the parallel construction [verified].",
+      "residual": "The substantive point stands and is upheld: the printed range '(1 to 19)' excludes D0, yet D0 exists on the panel [verified from photo] and is used in printed programs [verified: B56 traffic light D15/D0; B234 mind-reading D0/6N; B234 binary-to-decimal 5N/D0; B1 Answer 18 5Y/D0]. The Maintenance Manual gives the correct range, 'D0 through D15'. Calling it an 'erratum' is a reasonable characterization; the factory errata sheet does not correct it."
+    },
+    {
+      "finder_claim_id": "IO02 errata field / B56_experiment_8_two_floor_elevator.errata",
+      "finder_tag": "[verified]",
+      "finder_text": "Experiment 8 errata: '... Plus an optional reliability change: remove 5F/6C and 6C/6—, add 5F/6E, 6E/6—, 4E/6C.'",
+      "verdict": "REFUTED. Misattributed. Those changes belong to EXPERIMENT 9 (the three-floor elevator), not Experiment 8.",
+      "correction": "The errata sheet's Book V page 11 block reads, in order: (a) 'First sentence under \"To use the program\" (experiment 8) should read: \"Set the elevator at the first floor by pushing pushbutton 5.\"' — this one IS Experiment 8; then a SEPARATE heading (b) 'page 11: Experiment 9 program corrections: change 4G/4H to 4G/5H; change D16/M— to D16/M+; Note: It is possible for the \"elevator\" to get stuck at a floor...; Note: If the performance of the circuit is unsatisfactory, make the following changes to the program: remove 5F/6C, 6C/6— ; add 5F/6E, 6E/6-, 4E/6C.' Everything under (b) is Experiment 9.",
+      "evidence": "pdf/errata.txt, Book V page 11 entries [verified]. Decisive cross-check: Experiment 8's printed program contains NEITHER 5F/6C nor 6C/6— (it has 5F/6X and 6C/6G); Experiment 9's printed program contains BOTH 5F/6C and 6C/6—, and also 4G/4H and D16/M—, exactly the wires the errata names. B56 printed pp.10-11 (book5-6.pdf PDF pp.16-17) [verified].",
+      "simulator_consequence": "If a regression corpus is built from these programs, applying the errata to Experiment 8 would produce a circuit that does not exist."
+    },
+    {
+      "finder_claim_id": "full_transcriptions.B56_experiment_6_automobile_speed_timer",
+      "finder_tag": "implied verified transcription",
+      "finder_text": "34-wire program list for the Automobile Speed Timer.",
+      "verdict": "REFUTED as complete. One line is missing.",
+      "correction": "The printed program has 35 wires. The finder's list omits '6C/6G' (printed p.6, column 3, last entry). Corrected full list is given under corrected_transcriptions below.",
+      "evidence": "B56 printed p.6 (book5-6.pdf PDF p.12), four-column program block, column 3 ends '5X/6E' then '6C/6G'; column 4 begins '6C/6X' [verified from pdftotext -layout of the isolated page]. Corroboration: the Automatic Sequence Control on printed p.25 is the same counter circuit expanded, and it DOES contain 6C/6G — which the finder transcribed correctly there."
+    },
+    {
+      "finder_claim_id": "full_transcriptions.B56_experiment_19_morse_encoder_and_20_decoder.encoder_decimal_side",
+      "finder_tag": "implied verified transcription",
+      "finder_text": "Encoder decimal side: 3E/D0, 4com/D12, 5F/D13, 6com/D1, D1/D9, D2/D10, D3/D11, D4/D12, D5/D13, D6/D14, D7/D15, D16/M+ (12 wires).",
+      "verdict": "REFUTED as complete. Five decimal-side wires are missing.",
+      "correction": "The printed encoder program also contains 2F/D15, 3G/D8, 4F/D14, 5com/D2 and 6F/D3. The full decimal-side set is 17 wires, listed under corrected_transcriptions.",
+      "evidence": "B56 printed p.32-33 (book5-6.pdf PDF p.38-39) program block [verified from pdftotext -layout]. The decoder list (Experiment 20) was checked the same way and IS complete and correct."
+    },
+    {
+      "finder_claim_id": "sources_read.MAINT / sources_read.ERRATA / things_the_next_agent_should_do[0]",
+      "finder_tag": "stated as fact",
+      "finder_text": "'Not present in the local docs/research/raw tree — should be downloaded.'",
+      "verdict": "REFUTED. Both were already in the local corpus when find-rotary.json was written.",
+      "correction": "docs/research/raw/pdf/maintenance-manual.pdf (+.txt) and docs/research/raw/pdf/errata.pdf (+.txt) exist, with duplicate copies named minivac601-maintenance-manual.* and minivac601-errata.*. mtimes 07:19-07:26 vs find-rotary.json at 07:36. Also present and never opened: pdf/book7-capacitor-resistor.pdf (+.txt), mtime 07:24.",
+      "evidence": "ls -laT of docs/research/raw/pdf/ [verified]."
+    }
+  ],
+
+  "downgraded": [
+    {
+      "finder_claim_id": "X01",
+      "was": "[verified]",
+      "should_be": "[likely]",
+      "reason": "Argument from silence, and the finder's evidence method was invalid. The claim is 'There is NO ratchet, NO detent, NO indexing spring, and NO click stop anywhere in the mechanism', justified by 'exhaustive grep over book1.txt, book2-3-4.txt, book5-6.txt for detent|ratchet|click|index|coast|momentum|inertia|friction|brake|slip returned only the friction drive hits'. That grep cannot have worked as described: the OCR spaces letters out ('frictio n d riv e'), so a plain grep for 'friction' returns ZERO hits in book1.txt even though Book I printed p.22 contains the phrase. I re-ran the test whitespace-insensitively over book1.txt, book2-3-4.txt, book5-6.txt, book7-capacitor-resistor.txt, maintenance-manual.txt and errata.txt; the only hits for detent|ratchet|clickstop|brake|braking|coast|momentum|inertia|frictiondrive|indexing|springloaded are 'frictiondrive' in book1.txt and maintenance-manual.txt. So the word-absence itself IS confirmed. But absence of the words in an OCR text layer (which excludes all figure callouts) does not verify absence of the mechanism.",
+      "positive_support_that_survives": "The errata's documented hang — the pointer knob coming to rest BETWEEN adjacent contacts and making neither — is strong positive evidence against detents, because a detented switch cannot rest between positions. That, plus the MAINT parts list naming only Motor / Drive Wheel Assembly / Complete Rotary Switch Assembly, makes [likely] the right tag."
+    },
+    {
+      "finder_claim_id": "D02",
+      "was": "[verified]",
+      "should_be": "split",
+      "reason": "'The friction coupling is the bare MOTOR SHAFT bearing on the RIM of a drive wheel' is [verified] — MAINT step 5 says 'spring the motor shaft against the edge of the drive wheel'. 'held in contact by a sprung motor bracket' is [likely] — in that sentence 'spring' is a VERB ('to spring X against Y'), and no spring part is named anywhere; the parts list has no spring. 'It is permanently engaged — there is no clutch, no solenoid, and nothing that disengages the motor when it is not powered' is [likely], an argument from silence, not [verified]."
+    },
+    {
+      "finder_claim_id": "D08",
+      "was": "[verified]",
+      "should_be": "[unverified] as a motor-speed datum",
+      "reason": "The quote is real and I confirmed it verbatim (B234 printed p.6: 'the rotary switch system requires more than a second to go from zero to nine'). But the finder reads it as a MOTOR speed and computes '<= ~9 positions/s, i.e. <= ~34 rpm'. Read in context it is not obviously about the motor at all: the whole paragraph is arguing why binary beats decimal for INPUT, comparing 'the decimal input device' — which 'involves physical motion and several moving parts' — against 'the binary input button [which] involves only one moving part and ... can be moved from one position to another in a fraction of a second'. The comparison is between a human setting a dial and a human pressing a button. Treating it as a motor RPM specification, and then declaring it 'in tension' with the 45 rpm example, is inference dressed as a verified measurement.",
+      "evidence": "B234 printed p.6, full paragraph, section 'The Binary Nature of Storage' [verified verbatim]."
+    },
+    {
+      "finder_claim_id": "X02",
+      "was": "[verified]",
+      "should_be": "[unverified]",
+      "reason": "The claim is 'OVERRUN IS REAL AND PROGRAMS DEPEND ON IT ... The dial must therefore carry enough momentum past the strapped group during the release window to escape it.' Nothing in the sources says that. The manual's words are only 'Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn.' A simpler and equally consistent reading is that the operator simply holds pushbutton 4 until the wiper has left the D7/D8/D9 arc. The word 'momentum' — and 'overrun', 'coast' and 'inertia' — appear nowhere in any source (whitespace-insensitive test). The wiring the finder describes IS correct and verified (D16/D19 puts the arm on D19; 4Y/D18 and 4Z/D9 put D18 on the D7-D8-D9 arc through pushbutton 4's normally-closed Y-Z pair, so releasing 4 arms the stop). Only the momentum conclusion is unsupported.",
+      "evidence": "B56 printed pp.56-57 program and 'To start' text [verified]. Pushbutton terminal roles X=N.O., Y=ARM, Z=N.C. read off the BINARY INPUT legend in PHOTO image_3.jpg [verified].",
+      "simulator_consequence": "Coast/overrun may still be the right physical model, but it must be justified from the PMDC-motor physics, not cited to the manual. Nothing primary quantifies or even asserts it."
+    },
+    {
+      "finder_claim_id": "G02",
+      "was": "[verified]",
+      "should_be": "[likely]",
+      "reason": "The positive half — 'Position 0 is an ordinary contact, wired and used exactly like the other fifteen' — is [verified] (traffic light straps D15/D0 and lights lamp 4 from that arc; Book I Answer 18 stops on D0; Book V Experiment 9 uses D0-D1 as floor 1). The negative half — 'No source describes any automatic homing, indexing or power-on reset of the dial' — is an argument from silence over an OCR corpus, so [likely]. It is well supported: every program that wants the dial at a known position instructs the OPERATOR to set it by hand, and every documented reset is 'turn power OFF, then ON again' or 'turn the rotary switch through one complete revolution'."
+    },
+    {
+      "finder_claim_id": "IO02 (mechanism half)",
+      "was": "[verified]",
+      "should_be": "[likely]",
+      "reason": "The 23-wire Experiment 8 program is transcribed exactly right [verified]. But the sentence 'The relay therefore chooses both the direction of travel AND which target's polarity matches D18 — so the machine drives toward, and stops at, the selected target' is a derivation from relay contact conventions, not a manual statement. The manual says only that the dial at 1 = first floor and at 7 = second floor, and which pushbutton calls which. Tag the mechanism as derived."
+    },
+    {
+      "finder_claim_id": "G03",
+      "was": "[verified]",
+      "should_be": "[verified], but re-cite",
+      "reason": "The fact is right — D16, D17, D18, D19 are a vertical column of four two-hole jack pairs to the LEFT of the dial, image-verified from the photograph. But the Book I citation the finder attaches does not support the '16' part: Book I printed p.22 says only 'Terminals 17, 18 and 19 are located on the panel just to the left of the pointer knob and rotary switch terminals.' It never places terminal 16. The photograph is the sole authority for D16's location. Cite it that way."
+    },
+    {
+      "finder_claim_id": "D07",
+      "was": "[verified as an example figure]",
+      "should_be": "upheld, with a trap flagged",
+      "reason": "Tag and caveat are both right, and the arithmetic (45 rpm -> 12 contacts/s -> ~83 ms per position) is right for the PHYSICAL dial. Flagging a trap for downstream: the same page also derives '48 revolutions per minute'. That 48 is NOT a physical speed — it is the count the PROGRAM registers, because 'the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution', so 45 x 16/15 = 48 counts/min. Do not import 48 as a dial speed."
+    },
+    {
+      "finder_claim_id": "citation precision (several)",
+      "was": "[verified]",
+      "should_be": "upheld with corrected page numbers",
+      "reason": "Minor printed-page slips that would send a later reader to the wrong page: (a) G02 cites 'B56 printed p.8' for 'set the pointer knob of the rotary switch at 0' — that sentence is on printed p.9, with the train-gate program. (b) G02 cites 'B56 printed p.29' for 'Set the rotary switch at 0 and turn power on' — that is on printed p.30 (the errata's own heading for the CQ program is 'page 30'). (c) M04 cites 'B56 printed p.33' for 'Turn the rotary switch clockwise until the pointer knob is pointing at the letter you wish to code' — the sentence sits at the head of printed p.34."
+    }
+  ],
+
+  "upheld": [
+    {
+      "finder_claim_id": "E01",
+      "verdict": "CONFIRMED, and now independently image-verified from TWO primary drawings. This is the finder's most important claim and it is correct.",
+      "what_the_drawings_show": "Terminal 17 runs right along a top rail and down through resistor R1 to a bottom rail. That bottom rail IS terminal 19. Terminal 18 runs right along a middle rail; from that middle rail the MOTOR hangs down to the bottom rail, and a second resistor R2 hangs down to the bottom rail in parallel with the motor. A curly leader labelled 'Resistors' (Book I) / 'RESISTORS' (Maintenance Manual) points at both zigzags. Net: R1 between 17 and 19; motor between 18 and 19; R2 between 18 and 19, parallel with the motor.",
+      "evidence": "book1.pdf PDF p.24 (printed p.22), figure region, rendered 220 dpi [verified]. maintenance-manual.pdf PDF p.11, figure captioned 'Circuit Diagram — Rotary Switch Motor Drive', rendered 200 dpi [verified]. The two drawings are topologically identical.",
+      "note": "The finder's prose statement of the topology is correct; the ASCII sketch embedded in E01 is garbled and should be discarded in favour of the prose."
+    },
+    {"finder_claim_id": "G01", "verdict": "CONFIRMED [verified]. Sixteen sectors, 0 at 12 o'clock, numbers increasing clockwise. Read directly off the PHOTO crop (15-0-1 across the top; 2,3,4,5,6 down the right; 7,8,9 across the bottom; 10,11,12,13,14,15 up the left) and independently off the Book I printed p.20 perspective drawing."},
+    {"finder_claim_id": "G04", "verdict": "CONFIRMED [verified]. The PHOTO crop shows a two-hole pair in the outer annulus of every one of the sixteen sectors, and a two-hole pair beside each of 16, 17, 18, 19. 40 holes in the block. Book I printed p.2's two-holes-per-terminal statement holds here."},
+    {"finder_claim_id": "G05", "verdict": "CONFIRMED [verified] from the PHOTO crop, legend by legend: '16' with 'ARM' printed beneath; a bracket joining 17 and 18 labelled 'RUN'; a second bracket joining 18 and 19 labelled 'STOP'; terminal 18 shared by both brackets; block title 'DECIMAL INPUT-OUTPUT'."},
+    {"finder_claim_id": "G06", "verdict": "CONFIRMED [verified]. Book I printed p.20, image-read: 'D = Decimal Input-Output', 'for example D8', 'The contact on the wiper arm is referred to as \"D16.\"'"},
+    {"finder_claim_id": "C01", "verdict": "CONFIRMED [verified]. The VIEW UNDER PANEL figure on Book I printed p.20, image-read, shows exactly one radial bar labelled 'Wiper Arm Connected to D16', pivoting on a filled hub at the centre, with a double-headed arrow for bidirectional rotation, sweeping a single circle of sixteen contact positions (each drawn as a PAIR of dots, matching the two-hole jacks). No second deck is drawn or mentioned anywhere."},
+    {"finder_claim_id": "C03", "verdict": "CONFIRMED [verified] and image-verified. The printed CIRCUIT DIAGRAM—TRAFFIC LIGHT on B56 printed p.4 draws D1..D6 as one commoned bundle, D7..D10 as a second, and D11,D12,D13,D14,D15,D0 as a third. The bottom terminal of the third bundle is drawn and labelled 'D 0'. This is the cleanest primary proof that the ring wraps D15 -> D0."},
+    {"finder_claim_id": "C04", "verdict": "CONFIRMED [verified]. Book I printed p.21 break-before-make paragraph quoted accurately, verbatim."},
+    {"finder_claim_id": "C05 / X03", "verdict": "CONFIRMED [verified]. Errata, Book V page 11, Experiment 9, quoted accurately. The example gap it names — between D6 and D7 — is exactly the floor-2 contact pair of Experiment 9 (whose program straps D6/D7), which makes the reading airtight: the wiper can rest in the physical gap between two contacts that are electrically strapped together, and connect to neither. Strongest single piece of evidence in the whole file for a continuous-angle dial model with a dead zone."},
+    {"finder_claim_id": "C06, C07, D04, E08, E09", "verdict": "CONFIRMED [verified]. All quoted verbatim and correctly from the Maintenance Manual: beryllium-copper contact fingers / silver-plated circuits / stainless shaft in oil-impregnated bronze bearing; the knob-realignment-by-lamp procedure; 'The drive motor is operated at less than one-third rated voltage'; 'The resistors should heat up in about 20 seconds'; '1.5 amps continuous with a nominal 12 volts output', 'approximately 13 volts' unloaded, switches 3 A, relay contacts in excess of 3 A. The manual's misspelling 'berryllium' is reproduced correctly."},
+    {"finder_claim_id": "D01, D03, D05, D06, M01, M03, M04, M05, M06, M07", "verdict": "CONFIRMED [verified]. All quotations checked against the source text and are accurate. D05's errata note ('Book I page 24: change 6Y to 6V', diagram only) is correct."},
+    {"finder_claim_id": "E02, E03, E04, E05, E06", "verdict": "CONFIRMED [verified]. All quotations accurate. E05 in particular is a good catch: the MAINT diagnostic 'connect power momentarily across the STOP terminals: the knob should turn very rapidly' is decisive independent confirmation that 18/19 are the motor's own terminals and that R1 is the dropper in the RUN path."},
+    {"finder_claim_id": "E10", "verdict": "CONFIRMED [verified]. Errata general notes, first page, verbatim: 'All + and — terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2— is the same as a connection to 4—, 5—, or M—.' The finder is right that this is critical for the net model. The same errata page adds a second commoning rule the finder did not quote but which matters for the same reason — see missed[] item 'errata common-terminal rule'."},
+    {"finder_claim_id": "X05", "verdict": "CONFIRMED [verified] and image-verified. The VIEW UNDER PANEL figure is mirrored: 0 at top, then 1,2,3,...,8 running counterclockwise down the LEFT side to the bottom, then 9..15 up the right. It is a drafting convention. The finder is right that it is not a second numbering."},
+    {"finder_claim_id": "CLK03 / CLK04", "verdict": "CONFIRMED. The 17-wire metronome program is transcribed exactly. The printed CIRCUIT DIAGRAM—METRONOME, which I image-read, independently corroborates the finder's derivation: it draws the relay-6 coil as a squiggle between terminals 6E and 6F, with 6C tapped through the indicator lamp (drawn as a circled symbol) to the same coil node; 6+ to 6J; 6- to 6N/6G; the arms feeding D17 and D18; and the two slide-switch decks (arm 4S between throws 4R->D3 and 4T->D5; arm 4V between throws 4U->D7 and 4W->D9; arm 5S between throws 5R and 5T). The slide-switch arm letters S and V are confirmed independently from the SECONDARY STORAGE panel legend in the PHOTO ('R ARM T' over R-S-T and 'U ARM W' over U-V-W). The derivation is sound; keep the finder's own tag [verified topology, derived operation]."},
+    {"finder_claim_id": "CLK06", "verdict": "CONFIRMED [verified] and image-verified. 22-wire traffic-light program exact. Note the finder's own observation is right and worth keeping: with D17 at M- and D18 at M+ the motor runs forever with no relay involvement at all."},
+    {"finder_claim_id": "IO01, IO03, IO04, IO05, IO06, IO07", "verdict": "TRANSCRIPTIONS CONFIRMED wire-for-wire. Exp 7 Decimal Output (16 wires), Exp 11 Decimal-to-Binary (49 wires), Exp 12 Binary-to-Decimal (50 wires), CQ transmitter (20 wires), Reaction Time Tester decimal side (5 wires), Match Game decimal side (19 wires) all match the printed pages exactly. The IO06 relay-as-brake reasoning also checks out: 4K/D19 with 4L/4- and D18/M- means relay 4 pulling in closes K-L and shorts 18 to 19."},
+    {"finder_claim_id": "ADDR01", "verdict": "CONFIRMED [verified], and correctly left unresolved. I image-read the logo plate at 7x: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.' The Watertown attestations are equally real (Book II-IV back page 'MINIVAC 601 AND THE MINIVAC MANUAL ARE PRODUCTS OF: ... 372 Main Street, Watertown, Massachusetts'; Maintenance Manual cover and order address 'Watertown 72'; errata sheet header and footer). Do not resolve."},
+    {"finder_claim_id": "source_credibility_correction (Gardi)", "verdict": "UPHELD in principle and it is the right instinct. Not re-verified — I did not re-fetch the Instructables pages. Downstream should treat S01/S02/S03/S04 as unverified-by-this-pass."},
+    {"finder_claim_id": "full_transcriptions (rest)", "verdict": "CHECKED AND EXACT: B1 Exp 11 (5 wires), B1 Exp 12 (5), B1 Exp 13 combined (10, including the printed '5-/D18' which the finder correctly flagged as differing from Exp 12's '6-/D18' and correctly noted is electrically identical under E10), B1 Exp 14 (6), B1 Problem 17 text and Answer 17 (11 wires, exactly eleven as the problem demands), B1 Answer 18 (6), B1 Answer 19 (16), B234 Exp 4 (9), B234 Exp 7 (16), B234 Exp 11 (49), B234 Exp 12 (50), B234 shift-register decimal side (9), B234 Book III Mind Reading decimal side (13), B56 Exp 3 metronome (17), B56 Exp 4 traffic light (22), B56 Exp 5 pedestrian (26), B56 Exp 7 train gate (25), B56 Exp 8 elevator (23), B56 Automatic Sequence Control (47), B56 CQ (20), B56 Morse decoder decimal side (20), B56 Match Game decimal side (19), B56 Tic-Tac-Toe decimal side (13), B56 Reaction Time decimal side (5), B56 Philosophic Tug of War (16)."}
+  ],
+
+  "missed": [
+    {
+      "id": "MISS-1",
+      "severity": "high",
+      "title": "book7-capacitor-resistor.pdf was never opened. It is a primary SDC manual, it is in the local corpus, and it carries the only numeric datum in the whole corpus about the motor circuit's impedance.",
+      "source": "Minivac 601/6010 Capacitor/Resistor Manual, Scientific Development Corporation, copyright 1962. Local: docs/research/raw/pdf/book7-capacitor-resistor.pdf",
+      "scope_flag": "Cover reads 'Minivac 601/6010'. Joint-scope document. The content below is written for the six-relay 601 (it references Book IV p.67, M+, the 601 relay terminals) and is not a 6010-only delta, but downstream must record the joint scope.",
+      "finding": "Printed page 21 (PDF page 26), footnote to the automatic-counter program, IMAGE-VERIFIED at 150 dpi: '* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.' The connection it annotates is the pair (D18/omega, omega/D19) — i.e. an EXTERNAL RESISTOR BRIDGED ACROSS THE STOP TERMINALS, in parallel with the motor and with the internal R2.",
+      "tag": "[verified]",
+      "why_it_matters": [
+        "It is a FOURTH electrical idiom for the STOP pair, which the finder's model does not have. The finder's motor law is binary: 18-19 open (run), 18-19 shorted (stop), 18-19 driven (full speed). Reality is a continuum: any resistance placed across 18-19 shunts the motor and slows it proportionally. The simulator's D18/D19 net must accept an arbitrary resistance, not just short/open.",
+        "It bounds the impedance scale. For a 15-33 ohm shunt to 'decrease the speed of the motor' appreciably, the motor's effective resistance in parallel with the internal R2 must be of the same order — tens of ohms. That is the only quantitative handle anyone has on R1/R2, whose values the manuals never print.",
+        "It gives the operator a documented period-500 way to slow the machine, alongside the errata's 'hold the pointer knob back'."
+      ],
+      "also_on_that_page": "The same program uses 1K/D18 (a relay N.O. contact driving D18), 1cap/D16 (the wiper tied to the relay's capacitor terminal), 2L/D0, D15/M—, D17/M+, and stops the dial at 0 after exactly one revolution."
+    },
+    {
+      "id": "MISS-2",
+      "severity": "high",
+      "title": "The Combination Lock (Book VI printed p.52) — the corpus's best primary statement about sweep semantics, and a rotary idiom the finder does not have.",
+      "cite": "B56 printed p.52 (book5-6.pdf PDF p.58), combination/connections table IMAGE-VERIFIED at 200 dpi.",
+      "tag": "[verified]",
+      "decimal_side": ["D16/M+", "D13/6com", "D2/5com", "D11/4com", "D10/3com", "D6/2com", "D9/1com", "D8/6E (optional)"],
+      "printed_table": "Combination 'left to 13' -> D13/6com ; 'right to 2' -> D2/5com ; 'left to 10' -> D11/4com and D10/3com ; 'right to 6' -> D6/2com ; 'left to 9' -> D9/1com and D8/6E*",
+      "verbatim_1": "'* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point.'",
+      "verbatim_2": "'When you are designing a combination, you must not include any connection which will touch off a connection further along.'",
+      "verbatim_3": "'You may wish to add dummy connections to the rotary switch dial so that the pertinent connections will not be obvious.'",
+      "why_it_matters": [
+        "'it will cause the machine to indicate an error if 8 is passed at any point' and 'you must not include any connection which will touch off a connection further along' are direct primary evidence that the wiper MOMENTARILY ENERGISES EVERY CONTACT IT SWEEPS OVER, and that period programs were designed around that. A simulator that only samples the destination contact will not reproduce this game.",
+        "It is a fully hand-driven use of the dial: D16/M+, no motor wiring at all, no D17/D18/D19.",
+        "The 'left/right' labels are flavour only — the wiring encodes no direction. Worth stating explicitly so nobody builds a direction-sensitive input from them.",
+        "Errata (Book VI page 52): 'to re-set the game, turn the rotary switch through one complete revolution.' The finder quoted this errata line but never connected it to the program."
+      ]
+    },
+    {
+      "id": "MISS-3",
+      "severity": "medium",
+      "title": "Experiment 9, the Three-Floor Elevator (Book V printed p.11) — never transcribed, despite being the very program the errata's dead-gap hang note attaches to.",
+      "cite": "B56 printed p.11 (book5-6.pdf PDF p.17).",
+      "tag": "[verified]",
+      "program": ["1A/1E","1B/1—","1C/2C","1E/D1","1F/1G","1G/1X","1H/1+","1H/1L","1J/2H","1K/5E","1Y/2Y","2A/2E","2B/2—","2C/3C","2E/D7","2F/2G","2G/2X","2J/3H","2X/6H","2Y/3Y","3A/3E","3B/3—","3C/4C","3E/D13","3F/3G","3G/3X","3J/4E","3Y/4J","4C/5F","4F/4+","4G/4H","4H/4+","4L/D19","4N/D18","5C/5G","5E/6G","5F/6C","5G/5N","5J/5K","5J/D17","5L/5—","5N/D18","6C/6—","6F/D12","D0/D1","D6/D7","D12/D13","D16/M—"],
+      "printed_floor_table": [
+        {"floor": 1, "call_button": "pushbutton 1", "indicator": "output light 1", "contacts": "D0-D1"},
+        {"floor": 2, "call_button": "pushbutton 2", "indicator": "output light 2", "contacts": "D6-D7"},
+        {"floor": 3, "call_button": "pushbutton 3", "indicator": "output light 3", "contacts": "D12-D13"}
+      ],
+      "errata_that_applies": "change 4G/4H to 4G/5H ; change D16/M— to D16/M+ ; plus the optional reliability change remove 5F/6C and 6C/6—, add 5F/6E, 6E/6-, 4E/6C ; plus the stuck-between-terminals note.",
+      "why_it_matters": "It is the only program with THREE seek targets, it uses TWO separate relay contacts as brakes (4L/D19 and 4N/D18, 5N/D18), and it is the documented failure case for the dead gap. It belongs in any regression corpus."
+    },
+    {
+      "id": "MISS-4",
+      "severity": "medium",
+      "title": "Two-Bit Adder with Automatic Decimal Conversion (Books II-IV printed p.87) — a rotary output program the finder's transcription list stops one page short of.",
+      "cite": "B234 printed p.87 (last content page of book2-3-4.pdf).",
+      "tag": "[verified]",
+      "decimal_side": ["2G/D5","2J/D1","2K/D4","2N/D0","3G/D7","3J/D3","3K/D6","3N/D2","D16/D19","D17/M+","D18/M—"],
+      "usage_verbatim": "'Enter a 2-bit binary number in slide switches 5 and 6. Enter a second 2-bit binary number on pushbuttons 5 and 6. The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.)'",
+      "why_it_matters": "It is the seek-and-stop idiom with the OPPOSITE rail assignment from Experiment 12 (D17/M+ and D18/M— hard-wired to the rails, rather than D17 gated by a pushbutton), and it is the corpus's only arithmetic-result-on-the-dial program outside Book VI."
+    },
+    {
+      "id": "MISS-5",
+      "severity": "low",
+      "title": "Book I Answers 13, 14 and 15 are rotary-switch answers and were not transcribed.",
+      "cite": "B1 printed p.31 (book1.pdf PDF p.33).",
+      "tag": "[verified] for 14 and 15; [unverified] for 13 (OCR of the answer block is degraded)",
+      "answer_14": ["5+/5Y", "5Z/6X", "6Y/D17", "M-/D18"],
+      "answer_14_note": "The minimal RUN circuit in the whole corpus: four wires, motor runs only while pushbutton 6 is down and pushbutton 5 is up.",
+      "answer_15": ["6+/6X", "6Y/D17", "M-/D18", "D18/5X", "5Y/D19"],
+      "answer_15_note": "The minimal STOP circuit: pushbutton 5's normally-open pair 5X-5Y bridges D18 to D19. Answers 14 and 15 together are the cleanest two-program demonstration of the RUN and STOP semantics and are good simulator smoke tests.",
+      "answer_13_ocr": ["6+/6Y", "6?/6A (OCR '6 )/6 A')", "6B/6-", "6?/D17 (OCR '6V D 17')", "D18/M-"],
+      "answer_13_note": "Not settled by OCR; would need a page image of book1.pdf PDF p.33 upper region."
+    },
+    {
+      "id": "MISS-6",
+      "severity": "medium",
+      "title": "The errata's SECOND commoning rule, which the finder quoted only the first half of.",
+      "cite": "pdf/errata.txt, general notes, first page.",
+      "tag": "[verified]",
+      "verbatim": "'If you should run out of long programming wires, you can use shorter wires by programming through any common terminals not being used in the circuit. In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.'",
+      "why_it_matters": "The finder captured the +/- commoning rule (E10) and correctly called it critical for the net model, but stopped there. This second rule states the general principle the net model must implement: any set of holes that is internally strapped is ONE node and may be used as a free junction. It is the rule that makes 'the two terminals at 6R' (a slide-switch throw's two holes) a legal wiring junction, and it is what licenses D-contact strapping chains like the traffic light's."
+    },
+    {
+      "id": "MISS-7",
+      "severity": "low",
+      "title": "Two unlabelled brass fasteners inside the DECIMAL INPUT-OUTPUT block, upper left, above the '16 ARM' jack pair.",
+      "cite": "PHOTO image_3.jpg, decimal quadrant crop.",
+      "tag": "[verified] that they exist; [unverified] what they are",
+      "finding": "The photograph shows two filled brass/gold discs, offset diagonally, at the top-left of the decimal panel, above and left of the 16/ARM pair. They render as solid heads, not as the dark two-hole jacks used everywhere else on the panel, so they are almost certainly rivets or screw heads rather than terminals. They carry no silkscreen legend.",
+      "what_would_settle_it": "A higher-resolution or oblique photograph of that corner, or an under-panel photograph. Do NOT model them as terminals."
+    },
+    {
+      "id": "MISS-8",
+      "severity": "low",
+      "title": "The Maintenance Manual's own figure was never opened; the finder cited MAINT's rotary section only from OCR text, which drops the figure entirely.",
+      "note": "Opening it would have given the finder a second, independent image-verification of E01 in the same pass. It does. See upheld/E01."
+    }
+  ],
+
+  "corrected_transcriptions": {
+    "note": "Only the two lists that were wrong are restated. Everything else in find-rotary.json's full_transcriptions block passed wire-for-wire and should be used as-is.",
+
+    "B56_experiment_6_automobile_speed_timer": {
+      "cite": "Books V-VI, printed p.6 (book5-6.pdf PDF p.12)",
+      "tag": "[verified]",
+      "wire_count": 35,
+      "program": ["1C/1G","1C/2K","1F/1-","1H/1+","1H/2H","2C/2G","2C/3K","2F/2—","2H/3H","2L/D11","3C/3G","3C/4K","3F/3—","3H/4H","3L/D12","4C/4G","4C/5K","4F/4—","4H/5H","4L/D13","5C/5G","5C/D15","5F/5—","5L/D14","5X/6E","5Y/5—","6C/6G","6C/6X","6F/6—","6H/6+","6H/6L","6K/D17","6Y/6+","D16/M+","D18/M—"],
+      "diff_from_finder": "added 6C/6G (finder had 34 wires)"
+    },
+
+    "B56_experiment_19_morse_encoder_decimal_side": {
+      "cite": "Books V-VI, printed pp.32-33 (book5-6.pdf PDF pp.38-39)",
+      "tag": "[verified]",
+      "wire_count": 17,
+      "decimal_side": ["2F/D15","3E/D0","3G/D8","4F/D14","4com/D12","5F/D13","5com/D2","6F/D3","6com/D1","D1/D9","D2/D10","D3/D11","D4/D12","D5/D13","D6/D14","D7/D15","D16/M+"],
+      "diff_from_finder": "added 2F/D15, 3G/D8, 4F/D14, 5com/D2, 6F/D3 (finder had 12)",
+      "usage_verbatim": "'Set the rotary switch dial to 0 and turn power on. Turn the rotary switch clockwise until the pointer knob is pointing at the letter you wish to code. Read the Morse Code representation of the letter starting with output light 3. If the letter you wish to code is in band 1 of the dial plate, read only light 3. If the letter is in band 2, read lights 3 and 4. If the letter is in band 3, read lights 3, 4, 5. If the letter is in band 4, read lights 3, 4, 5 and 6.'"
+    }
+  },
+
+  "verbatim_primary_quotes_added_by_this_pass": {
+    "book7_motor_speed_resistor": {
+      "cite": "Minivac 601/6010 Capacitor/Resistor Manual, printed p.21 (book7-capacitor-resistor.pdf PDF p.26), footnote — IMAGE-VERIFIED",
+      "text": "* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.",
+      "annotated_connection": "(D18/omega , omega/D19) — the resistor bridges the STOP terminals."
+    },
+    "book7_one_revolution_stop": {
+      "cite": "Minivac 601/6010 Capacitor/Resistor Manual, printed p.21 — IMAGE-VERIFIED",
+      "text": "Set the rotary switch at 0 and turn power on. When the counter reaches 10000 (16), the counter stops and the rotary switch makes a full revolution. When the rotary switch has returned to 0 it stops and the counter begins counting again from zero."
+    },
+    "book7_dial_as_operand": {
+      "cite": "Minivac 601/6010 Capacitor/Resistor Manual, printed pp.22-24 (OCR, degraded — tag [likely] until image-verified)",
+      "text": "Enter the divisor on the rotary switch by removing the rotary switch connection from the number to the next higher number. (For example, to enter 5, remove D5/D6.)  ...  Enter the larger number on the rotary switch by removing the rotary switch connection from the number to the next higher number. (For example, to enter 8 remove D8/D9.)",
+      "why_it_matters": "A fifth idiom: strap ALL sixteen contacts into one chain and encode a number by REMOVING one strap. The dial then behaves as a single break in a ring. Neither the finder nor any Books I-VI program uses this."
+    },
+    "combination_lock_sweep_rule": {
+      "cite": "Books V-VI, printed p.52 — table IMAGE-VERIFIED",
+      "text_a": "* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point.",
+      "text_b": "When you are designing a combination, you must not include any connection which will touch off a connection further along."
+    },
+    "errata_second_commoning_rule": {
+      "cite": "pdf/errata.txt, general notes",
+      "text": "In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com."
+    }
+  },
+
+  "simulator_spec_deltas": [
+    {
+      "area": "D18/D19 net",
+      "finder_model": "Short (V_motor = 0, braked) or open (coast) or driven (full speed).",
+      "corrected_model": "Add a third case: an arbitrary RESISTANCE across D18-D19 shunts the motor and reduces its speed continuously. Primary-sourced values are 15, 22 and 33 ohm (book7 p.21). The internal R2 is already permanently in that position, so the model is simply 'whatever external network the program puts across 18-19 parallels the motor and R2'.",
+      "tag": "[verified]"
+    },
+    {
+      "area": "wiper sweep semantics",
+      "finder_model": "contact_at(angle) returns 0..15 or NONE; whatever is wired to the contact under the arm is energised.",
+      "corrected_model": "Unchanged, but note explicitly that programs DEPEND on intermediate contacts firing as the wiper passes. The Combination Lock's optional D8/6E trap ('indicate an error if 8 is passed at any point') is a period program that only works if every swept contact is momentarily live. Any optimisation that jumps the wiper to a destination is wrong.",
+      "tag": "[verified]"
+    },
+    {
+      "area": "rotation sense",
+      "finder_model": "increasing angle = clockwise = increasing dial number, cross-checked against Book VI.",
+      "corrected_model": "Keep the model (it is right, from the panel and Book I p.20). DELETE the Book VI cross-check: Book VI p.56 contradicts it. Record the contradiction in the spec as an unresolved primary discrepancy.",
+      "tag": "[verified] for the model; the discrepancy is [verified] as a discrepancy"
+    },
+    {
+      "area": "speed defaults",
+      "finder_model": "Configurable, 30-45 rpm band, 'more than a second zero to nine' anchoring the slow end.",
+      "corrected_model": "The only defensible primary anchor is the Book V worked example, 45 physical revolutions per minute = 0.75 rev/s = 12 contacts/s = ~83 ms per contact, and even that is framed as 'assume that'. The Book II 'more than a second from zero to nine' sentence is about the decimal INPUT device versus a pushbutton in a passage arguing for binary; do not treat it as a motor RPM. Keep the parameter configurable; drop the manufactured 30-45 'band'. Do not import the derived figure 48 (that is the program's registered-revolution count, not a dial speed).",
+      "tag": "[verified] for the 45 rpm example; the band is [unverified]"
+    },
+    {
+      "area": "coast / overrun",
+      "finder_model": "'Overrun is real and programs depend on it' [verified], from the Philosophic Tug of War.",
+      "corrected_model": "No primary source asserts coast, overrun, momentum or inertia. Model it if the PMDC physics demand it, but tag it [unverified] and stop citing the tug-of-war for it. What the tug-of-war DOES verify is the stop wiring: D16/D19 puts the arm on D19, and 4Y/D18 + 4Z/D9 put D18 on the strapped D7-D8-D9 arc through pushbutton 4's normally-closed Y-Z pair, so releasing the reset button arms a stop over that whole arc.",
+      "tag": "[unverified]"
+    }
+  ],
+
+  "not_settled_by_the_sources": [
+    "Resistance values of the internal R1 and R2. Still unknown. NEW partial handle: an external 15-33 ohm resistor across D18-D19 measurably slows the motor (book7 p.21), which puts the motor's effective resistance in the tens of ohms. Would need an original unit or an SDC parts drawing to close.",
+    "Angular width of a contact versus the dead gap between contacts. Unknown. Would need an under-panel photograph or a measured original rotary switch assembly, SDC part 6473.",
+    "Motor make, model, rated voltage, no-load rpm, drive-wheel diameter, effective reduction ratio. Only 'SDC part 6471, Motor, $4.00'.",
+    "Spin-up, spin-down, coast angle, reversal time. Nothing quantitative, and nothing qualitative either — the vocabulary of momentum does not appear in any source.",
+    "Whether the drive wheel is held against the motor shaft by an actual spring or merely by a bent bracket. MAINT uses 'spring' as a verb; no spring is in the parts list.",
+    "Whether the wiper reaches D16 via a centre hub, a slip ring, or a concentric collector ring. Book I's VIEW UNDER PANEL draws a filled pivot at the centre of the arm, which is suggestive of a hub take-off but is a schematic, not a mechanical drawing.",
+    "Which physical slide-switch position (LEFT or RIGHT) selects which throw in the Book V metronome. Not stated.",
+    "What the two brass fasteners at the top-left of the DECIMAL INPUT-OUTPUT block are. Almost certainly rivets or screws, not terminals; not settled.",
+    "Whether Book I Experiment 13's combined program prints '5-/D18' or '6-/D18'. Electrically irrelevant under the errata's +/- commoning rule. Still not image-verified.",
+    "Book I Answer 13's exact wire list. OCR degraded; would need book1.pdf PDF p.33 rendered.",
+    "WHY the panel plate says Cambridge while every paper source says Watertown. Deliberately unresolved per the brief. Both primary; 'Watertown 72' is a pre-ZIP postal zone, consistent with 1961.",
+    "WHY Book VI printed p.56 labels the direction towards 9 'counterclockwise' when the panel numbering runs clockwise. Deliberately unresolved. Both are primary."
+  ],
+
+  "things_the_next_agent_should_do": [
+    "Ignore find-rotary.json's instruction to download the Maintenance Manual and errata — they are already at docs/research/raw/pdf/maintenance-manual.pdf and errata.pdf (with duplicate copies under minivac601-*).",
+    "Read docs/research/raw/pdf/book7-capacitor-resistor.pdf properly. It is a joint 601/6010 SDC manual, it is primary, and it changes the motor model. Its OCR is poor; the pages that matter must be read as images. Start at PDF p.26.",
+    "Image-verify book7's 'remove D5/D6 to enter 5' ring-with-one-break idiom (PDF pp.27-33) before it goes in the spec — the OCR there is badly degraded.",
+    "Render book1.pdf PDF p.33 upper region to settle Book I Answer 13.",
+    "Whoever owns the net/power model must read BOTH errata commoning rules, not just the +/- one.",
+    "The dead-gap state (wiper resting between contacts, connected to nothing) must be first-class. The three-floor elevator is a documented period hang on exactly that."
+  ]
+}

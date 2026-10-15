@@ -1,0 +1,218 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-ANDOR",
+  "source": "BK3 printed pp.38-39 = book2-3-4.pdf PDF p.45; wire list image-read on PDF p.45 at 300 dpi (six lines); Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1Y/3Y",
+    "1X/2Y",
+    "2X/3X",
+    "3X/4A",
+    "4B/4-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the wiring and the p.39 rule A X B + C = D (pushbuttons 1, 2, 3 represent A, B, C; light 4 represents D); the page prints no lamp state for any button combination. Wire list: the page image and the PDF text layer both print six lines, 1+/1Y, 1Y/3Y, 1X/2Y, 2X/3X, 3X/4A, 4B/4-, and the circuit diagram agrees (1+ to 1Y). programs.json wiresCorrected/wiresEffective and programs.md list five, dropping 1+/1Y (the same '+' glyph OCR break as III-NOT); without it nothing reaches plus and light 4 can never light. This fixture wires the six printed lines; the corpus record is not edited here. Topology: pushbutton arm Y, N.O. X (jack-map, Book I p.8). Series branch 1+-1Y-1X-2Y-2X (A and B, N.O. contacts) in parallel with 1Y-3Y-3X (C, N.O.), both into 3X-4A, lamp 4, 4B-4-. ER-08 inserts THEN in the p.38 prose only; no wire change. The 300 ms advance before each expect is a script choice for the lamp's thermal transient; the page states no timing.",
+  "wires": [
+    "1+/1Y",
+    "1Y/3Y",
+    "1X/2Y",
+    "2X/3X",
+    "3X/4A",
+    "4B/4-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.39 = book2-3-4.pdf PDF p.45, rule A X B + C = D with pushbuttons 1, 2, 3 = A, B, C and light 4 = D; derived from topology: no pushbutton down (A, B, C all false): 1Y-1X and 3Y-3X open, 4A has no path to 1+",
+      "quote": "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.39 = book2-3-4.pdf PDF p.45, rule A X B + C = D with pushbuttons 1, 2, 3 = A, B, C and light 4 = D; derived from topology: pushbutton 1 alone (A only): 1+-1Y-1X-2Y reaches 2Y but 2Y-2X is open and 3Y-3X is open",
+      "quote": "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.39 = book2-3-4.pdf PDF p.45, rule A X B + C = D with pushbuttons 1, 2, 3 = A, B, C and light 4 = D; derived from topology: pushbuttons 1 and 2 down (A X B): 1+-1Y-1X-2Y-2X-3X-4A-lamp-4B-4-",
+      "quote": "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.39 = book2-3-4.pdf PDF p.45, rule A X B + C = D with pushbuttons 1, 2, 3 = A, B, C and light 4 = D; derived from topology: pushbutton 2 alone (B only): 1Y-1X open so 2Y is dead; 3Y-3X open",
+      "quote": "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.39 = book2-3-4.pdf PDF p.45, rule A X B + C = D with pushbuttons 1, 2, 3 = A, B, C and light 4 = D; derived from topology: pushbutton 3 alone (C): 1+-1Y-3Y-3X-4A-lamp-4B-4-",
+      "quote": "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.39 = book2-3-4.pdf PDF p.45, rule A X B + C = D with pushbuttons 1, 2, 3 = A, B, C and light 4 = D; derived from topology: all pushbuttons released again: 3Y-3X opens, 1Y-1X open, 4A dead",
+      "quote": "This combination of relationships may be expressed symbolically as: A X B + C = D The program and circuit representing this set of relationships in indicated below. Pushbutton 1 is used to represent statement A, pushbutton 2 to represent statement B, pushbutton 3 to represent statement C and light 4 to represent statement D.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

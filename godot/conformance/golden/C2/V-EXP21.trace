@@ -1,0 +1,1487 @@
+#!mv601-trace 1
+# id=V-EXP21 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=37
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > switch6 target=1000
+    26.9 * sw6 nc->mid
+    33.0 * sw6 mid->no
+   200.0 > power on
+     0.0 * power off->on
+    31.2 * dial c0->gap
+    52.0 * dial gap->c1
+    55.3 * outLamp6 off->dim
+    74.4 * outLamp6 dim->on
+    74.5 ? dial=c1 outLamp6=on  "[p.35 program:] M+/D1, 2, etc.* [footnote:] * Connection can be made between M+ and any point on the rotary switch dial. [p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\""
+   115.0 * dial c1->gap
+   131.3 * outLamp6 on->dim
+   135.8 * dial gap->c2
+   186.9 * outLamp6 dim->off
+   187.0 ? outLamp6=off  "[p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+   198.3 * dial c2->gap
+   219.2 * dial gap->c3
+   281.7 * dial c3->gap
+   302.5 * dial gap->c4
+   365.0 * dial c4->gap
+   385.8 * dial gap->c5
+   448.3 * dial c5->gap
+   469.2 * dial gap->c6
+   531.7 * dial c6->gap
+   552.5 * dial gap->c7
+   615.0 * dial c7->gap
+   635.8 * dial gap->c8
+   698.3 * dial c8->gap
+   719.2 * dial gap->c9
+   719.3 ? dial=c9  "[p.35:] When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan. [p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode."
+   781.7 * dial c9->gap
+   802.5 * dial gap->c10
+   865.0 * dial c10->gap
+   885.8 * dial gap->c11
+   948.3 * dial c11->gap
+   969.2 * dial gap->c12
+  1031.7 * dial c12->gap
+  1052.5 * dial gap->c13
+  1115.0 * dial c13->gap
+  1135.8 * dial gap->c14
+  1198.3 * dial c14->gap
+  1219.2 * dial gap->c15
+  1281.7 * dial c15->gap
+  1302.5 * dial gap->c0
+  1365.0 * dial c0->gap
+  1385.8 * dial gap->c1
+  1389.1 * outLamp6 off->dim
+  1408.2 * outLamp6 dim->on
+  1408.3 ? dial=c1 outLamp6=on  "[p.35 program:] M+/D1, 2, etc.* [footnote:] * Connection can be made between M+ and any point on the rotary switch dial. [p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\""
+  1448.8 * dial c1->gap
+  1465.1 * outLamp6 on->dim
+  1469.6 * dial gap->c2
+  1520.7 * outLamp6 dim->off
+  1520.8 ? outLamp6=off  "[p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+  1520.8 > disconnect cord=36
+  1520.8 > connect cord=37 a=hole:M+#1 b=hole:D5#1 r_uohm=0
+  1532.1 * dial c2->gap
+  1553.0 * dial gap->c3
+  1615.5 * dial c3->gap
+  1636.3 * dial gap->c4
+  1698.8 * dial c4->gap
+  1719.6 * dial gap->c5
+  1722.9 * outLamp6 off->dim
+  1742.0 * outLamp6 dim->on
+  1742.1 ? dial=c5 outLamp6=on  "[p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). You may move the object signal by changing the connection on the rotary switch dial. [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+  1782.6 * dial c5->gap
+  1798.9 * outLamp6 on->dim
+  1803.4 * dial gap->c6
+  1854.5 * outLamp6 dim->off
+  1854.6 ? outLamp6=off  "[p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). You may move the object signal by changing the connection on the rotary switch dial. [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+  1854.6 > switch6 target=0
+  1865.9 * dial c6->gap
+  1881.5 * sw6 no->mid
+  1886.8 * dial gap->c7
+  1887.6 * sw6 mid->nc
+  1949.3 * dial c7->gap
+  1970.1 * dial gap->c8
+  2032.6 * dial c8->gap
+  2053.4 * dial gap->c9
+  2115.9 * dial c9->gap
+  2136.8 * dial gap->c10
+  2199.3 * dial c10->gap
+  2220.1 * dial gap->c11
+  2282.6 * dial c11->gap
+  2303.4 * dial gap->c12
+  2365.9 * dial c12->gap
+  2386.8 * dial gap->c13
+  2449.3 * dial c13->gap
+  2470.1 * dial gap->c14
+  2532.6 * dial c14->gap
+  2553.4 * dial gap->c15
+  2615.9 * dial c15->gap
+  2636.8 * dial gap->c0
+  2699.3 * dial c0->gap
+  2720.1 * dial gap->c1
+  2782.6 * dial c1->gap
+  2803.4 * dial gap->c2
+  2865.9 * dial c2->gap
+  2886.8 * dial gap->c3
+  2949.3 * dial c3->gap
+  2970.1 * dial gap->c4
+  3032.6 * dial c4->gap
+  3053.4 * dial gap->c5
+  3053.5 ? dial=c5  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal."
+  3056.7 * outLamp6 off->dim
+  3065.0 * relay6 nc->mid
+  3066.3 * relay6 mid->no
+  3075.9 * outLamp6 dim->on
+  3078.0 * relay5 nc->mid
+  3079.2 * outLamp3 off->dim  indLamp5 off->dim
+  3079.3 * relay5 mid->no
+  3116.8 * dial c5->gap
+  3126.6 * relay6 no->mid
+  3127.5 * relay6 mid->nc
+  3130.8 * outLamp2 off->dim  indLamp3 off->dim
+  3137.6 * indLamp4 off->dim
+  3138.0 * dial gap->c6
+  3139.0 * relay2 nc->mid
+  3139.7 * relay4 nc->mid
+  3140.3 * relay2 mid->no
+  3141.0 * relay4 mid->no
+  3141.3 * outLamp1 off->dim  indLamp2 off->dim
+  3142.9 * outLamp3 dim->on  indLamp5 dim->on
+  3143.1 * outLamp6 on->dim
+  3150.0 * outLamp2 dim->on  indLamp3 dim->on
+  3154.7 * relay5 no->mid
+  3155.6 * relay5 mid->nc
+  3165.0 * relay4 no->mid
+  3165.9 * relay3 nc->mid  relay4 mid->nc
+  3167.2 * relay3 mid->no
+  3177.4 * outLamp3 on->dim  indLamp5 on->dim
+  3198.9 * outLamp6 dim->off
+  3202.9 * dial c6->gap
+  3223.8 * dial gap->c5
+  3225.5 * outLamp6 off->dim
+  3233.0 * outLamp3 dim->off  indLamp5 dim->off
+  3235.5 * relay6 nc->mid
+  3236.8 * relay6 mid->no
+  3239.9 * outLamp3 off->dim  indLamp5 off->dim
+  3241.3 * outLamp1 dim->on  indLamp2 dim->on
+  3244.7 * outLamp6 dim->on
+  3248.8 * relay5 nc->mid
+  3250.1 * relay5 mid->no
+  3287.6 * dial c5->gap
+  3297.3 * relay6 no->mid
+  3298.2 * relay6 mid->nc
+  3308.7 * dial gap->c4
+  3311.0 * relay4 nc->mid
+  3312.3 * relay4 mid->no
+  3313.0 * outLamp3 dim->on  indLamp5 dim->on
+  3313.3 * relay2 no->mid
+  3314.0 * outLamp6 on->dim
+  3314.2 * relay2 mid->nc
+  3323.5 * indLamp4 dim->on
+  3326.0 * relay5 no->mid
+  3326.9 * relay5 mid->nc
+  3332.4 * indLamp4 on->dim
+  3332.7 * relay4 no->mid
+  3333.6 * relay4 mid->nc
+  3334.4 * relay3 no->mid
+  3334.5 * outLamp2 on->dim  indLamp3 on->dim
+  3335.3 * relay3 mid->nc
+  3344.3 * outLamp3 on->dim  indLamp5 on->dim
+  3346.5 * outLamp1 on->dim  indLamp2 on->dim
+  3369.8 * outLamp6 dim->off
+  3374.2 * dial c4->gap
+  3389.4 * indLamp4 dim->off
+  3391.7 * outLamp2 dim->off  indLamp3 dim->off
+  3395.1 * dial gap->c5
+  3396.8 * outLamp6 off->dim
+  3399.9 * outLamp3 dim->off  indLamp5 dim->off
+  3402.3 * outLamp1 dim->off  indLamp2 dim->off
+  3406.7 * relay6 nc->mid
+  3408.0 * relay6 mid->no
+  3412.5 * outLamp3 off->dim  indLamp5 off->dim
+  3416.0 * outLamp6 dim->on
+  3419.9 * relay5 nc->mid
+  3421.2 * relay5 mid->no
+  3458.4 * dial c5->gap
+  3468.2 * relay6 no->mid
+  3469.1 * relay6 mid->nc
+  3472.0 * outLamp2 off->dim  indLamp3 off->dim
+  3478.3 * indLamp4 off->dim
+  3479.6 * dial gap->c6
+  3480.5 * outLamp1 off->dim  indLamp2 off->dim
+  3480.6 * relay2 nc->mid
+  3481.3 * relay4 nc->mid
+  3481.9 * relay2 mid->no
+  3482.6 * relay4 mid->no
+  3483.5 * outLamp3 dim->on  indLamp5 dim->on
+  3484.9 * outLamp6 on->dim
+  3491.2 * outLamp2 dim->on  indLamp3 dim->on
+  3496.3 * relay5 no->mid
+  3497.2 * relay5 mid->nc
+  3506.5 * relay4 no->mid
+  3507.4 * relay4 mid->nc
+  3507.5 * relay3 nc->mid
+  3508.8 * relay3 mid->no
+  3519.1 * outLamp3 on->dim  indLamp5 on->dim
+  3540.7 * outLamp6 dim->off
+  3544.5 * dial c6->gap
+  3565.5 * dial gap->c5
+  3567.2 * outLamp6 off->dim
+  3574.8 * outLamp3 dim->off  indLamp5 dim->off
+  3577.2 * relay6 nc->mid
+  3578.5 * relay6 mid->no
+  3581.1 * outLamp1 dim->on  indLamp2 dim->on
+  3581.6 * outLamp3 off->dim  indLamp5 off->dim
+  3586.4 * outLamp6 dim->on
+  3590.5 * relay5 nc->mid
+  3591.8 * relay5 mid->no
+  3629.2 * dial c5->gap
+  3638.9 * relay6 no->mid
+  3639.8 * relay6 mid->nc
+  3650.4 * dial gap->c4
+  3652.6 * relay4 nc->mid
+  3653.9 * relay4 mid->no
+  3654.6 * outLamp3 dim->on  indLamp5 dim->on
+  3654.9 * relay2 no->mid
+  3655.6 * outLamp6 on->dim
+  3655.8 * relay2 mid->nc
+  3665.1 * indLamp4 dim->on
+  3667.6 * relay5 no->mid
+  3668.5 * relay5 mid->nc
+  3674.0 * indLamp4 on->dim
+  3674.3 * relay4 no->mid
+  3675.2 * relay4 mid->nc
+  3676.0 * relay3 no->mid
+  3676.1 * outLamp2 on->dim  indLamp3 on->dim
+  3676.9 * relay3 mid->nc
+  3685.9 * outLamp3 on->dim  indLamp5 on->dim
+  3688.1 * outLamp1 on->dim  indLamp2 on->dim
+  3711.4 * outLamp6 dim->off
+  3715.8 * dial c4->gap
+  3731.0 * indLamp4 dim->off
+  3733.3 * outLamp2 dim->off  indLamp3 dim->off
+  3736.6 * dial gap->c5
+  3738.3 * outLamp6 off->dim
+  3741.5 * outLamp3 dim->off  indLamp5 dim->off
+  3743.9 * outLamp1 dim->off  indLamp2 dim->off
+  3748.2 * relay6 nc->mid
+  3749.5 * relay6 mid->no
+  3754.0 * outLamp3 off->dim  indLamp5 off->dim
+  3757.5 * outLamp6 dim->on
+  3761.4 * relay5 nc->mid
+  3762.7 * relay5 mid->no
+  3799.9 * dial c5->gap
+  3809.7 * relay6 no->mid
+  3810.6 * relay6 mid->nc
+  3813.5 * outLamp2 off->dim  indLamp3 off->dim
+  3819.8 * indLamp4 off->dim
+  3821.2 * dial gap->c6
+  3822.0 * outLamp1 off->dim  indLamp2 off->dim
+  3822.1 * relay2 nc->mid
+  3822.8 * relay4 nc->mid
+  3823.4 * relay2 mid->no
+  3824.1 * relay4 mid->no
+  3825.0 * outLamp3 dim->on  indLamp5 dim->on
+  3826.4 * outLamp6 on->dim
+  3832.7 * outLamp2 dim->on  indLamp3 dim->on
+  3837.8 * relay5 no->mid
+  3838.7 * relay5 mid->nc
+  3848.0 * relay4 no->mid
+  3848.9 * relay4 mid->nc
+  3849.0 * relay3 nc->mid
+  3850.3 * relay3 mid->no
+  3860.6 * outLamp3 on->dim  indLamp5 on->dim
+  3882.2 * outLamp6 dim->off
+  3885.9 * dial c6->gap
+  3906.9 * dial gap->c5
+  3908.6 * outLamp6 off->dim
+  3916.3 * outLamp3 dim->off  indLamp5 dim->off
+  3918.6 * relay6 nc->mid
+  3919.9 * relay6 mid->no
+  3922.6 * outLamp1 dim->on  indLamp2 dim->on
+  3922.9 * outLamp3 off->dim  indLamp5 off->dim
+  3927.8 * outLamp6 dim->on
+  3931.9 * relay5 nc->mid
+  3933.2 * relay5 mid->no
+  3970.6 * dial c5->gap
+  3980.3 * relay6 no->mid
+  3981.2 * relay6 mid->nc
+  3991.8 * dial gap->c4
+  3994.0 * relay4 nc->mid
+  3995.3 * relay4 mid->no
+  3996.0 * outLamp3 dim->on  indLamp5 dim->on
+  3996.3 * relay2 no->mid
+  3997.0 * outLamp6 on->dim
+  3997.2 * relay2 mid->nc
+  4006.5 * indLamp4 dim->on
+  4009.0 * relay5 no->mid
+  4009.9 * relay5 mid->nc
+  4015.4 * indLamp4 on->dim
+  4015.7 * relay4 no->mid
+  4016.6 * relay4 mid->nc
+  4017.4 * relay3 no->mid
+  4017.5 * outLamp2 on->dim  indLamp3 on->dim
+  4018.3 * relay3 mid->nc
+  4027.3 * outLamp3 on->dim  indLamp5 on->dim
+  4029.5 * outLamp1 on->dim  indLamp2 on->dim
+  4052.8 * outLamp6 dim->off
+  4057.2 * dial c4->gap
+  4072.4 * indLamp4 dim->off
+  4074.7 * outLamp2 dim->off  indLamp3 dim->off
+  4078.0 * dial gap->c5
+  4079.7 * outLamp6 off->dim
+  4082.9 * outLamp3 dim->off  indLamp5 dim->off
+  4085.3 * outLamp1 dim->off  indLamp2 dim->off
+  4089.6 * relay6 nc->mid
+  4090.9 * relay6 mid->no
+  4095.4 * outLamp3 off->dim  indLamp5 off->dim
+  4098.9 * outLamp6 dim->on
+  4102.8 * relay5 nc->mid
+  4104.1 * relay5 mid->no
+  4141.3 * dial c5->gap
+  4151.1 * relay6 no->mid
+  4152.0 * relay6 mid->nc
+  4154.9 * outLamp2 off->dim  indLamp3 off->dim
+  4161.2 * indLamp4 off->dim
+  4162.6 * dial gap->c6
+  4163.4 * outLamp1 off->dim  indLamp2 off->dim
+  4163.5 * relay2 nc->mid
+  4164.2 * relay4 nc->mid
+  4164.8 * relay2 mid->no
+  4165.5 * relay4 mid->no
+  4166.4 * outLamp3 dim->on  indLamp5 dim->on
+  4167.8 * outLamp6 on->dim
+  4174.1 * outLamp2 dim->on  indLamp3 dim->on
+  4179.2 * relay5 no->mid
+  4180.1 * relay5 mid->nc
+  4189.4 * relay4 no->mid
+  4190.3 * relay4 mid->nc
+  4190.4 * relay3 nc->mid
+  4191.7 * relay3 mid->no
+  4202.0 * outLamp3 on->dim  indLamp5 on->dim
+  4223.6 * outLamp6 dim->off
+  4227.4 * dial c6->gap
+  4248.3 * dial gap->c5
+  4250.0 * outLamp6 off->dim
+  4257.7 * outLamp3 dim->off  indLamp5 dim->off
+  4260.0 * relay6 nc->mid
+  4261.3 * relay6 mid->no
+  4264.0 * outLamp1 dim->on  indLamp2 dim->on
+  4264.3 * outLamp3 off->dim  indLamp5 off->dim
+  4269.2 * outLamp6 dim->on
+  4273.3 * relay5 nc->mid
+  4274.6 * relay5 mid->no
+  4312.1 * dial c5->gap
+  4321.8 * relay6 no->mid
+  4322.7 * relay6 mid->nc
+  4333.2 * dial gap->c4
+  4335.5 * relay4 nc->mid
+  4336.8 * relay4 mid->no
+  4337.5 * outLamp3 dim->on  indLamp5 dim->on
+  4337.8 * relay2 no->mid
+  4338.5 * outLamp6 on->dim
+  4338.7 * relay2 mid->nc
+  4348.0 * indLamp4 dim->on
+  4350.5 * relay5 no->mid
+  4351.4 * relay5 mid->nc
+  4356.9 * indLamp4 on->dim
+  4357.2 * relay4 no->mid
+  4358.1 * relay4 mid->nc
+  4358.9 * relay3 no->mid
+  4359.0 * outLamp2 on->dim  indLamp3 on->dim
+  4359.8 * relay3 mid->nc
+  4368.8 * outLamp3 on->dim  indLamp5 on->dim
+  4371.0 * outLamp1 on->dim  indLamp2 on->dim
+  4394.3 * outLamp6 dim->off
+  4398.7 * dial c4->gap
+  4413.9 * indLamp4 dim->off
+  4416.2 * outLamp2 dim->off  indLamp3 dim->off
+  4419.6 * dial gap->c5
+  4421.3 * outLamp6 off->dim
+  4424.4 * outLamp3 dim->off  indLamp5 dim->off
+  4426.8 * outLamp1 dim->off  indLamp2 dim->off
+  4431.2 * relay6 nc->mid
+  4432.5 * relay6 mid->no
+  4437.0 * outLamp3 off->dim  indLamp5 off->dim
+  4440.5 * outLamp6 dim->on
+  4444.4 * relay5 nc->mid
+  4445.7 * relay5 mid->no
+  4482.9 * dial c5->gap
+  4492.7 * relay6 no->mid
+  4493.6 * relay6 mid->nc
+  4496.5 * outLamp2 off->dim  indLamp3 off->dim
+  4502.8 * indLamp4 off->dim
+  4504.1 * dial gap->c6
+  4505.0 * outLamp1 off->dim  indLamp2 off->dim
+  4505.1 * relay2 nc->mid
+  4505.8 * relay4 nc->mid
+  4506.4 * relay2 mid->no
+  4507.1 * relay4 mid->no
+  4508.0 * outLamp3 dim->on  indLamp5 dim->on
+  4509.4 * outLamp6 on->dim
+  4515.7 * outLamp2 dim->on  indLamp3 dim->on
+  4520.8 * relay5 no->mid
+  4521.7 * relay5 mid->nc
+  4531.0 * relay4 no->mid
+  4531.9 * relay4 mid->nc
+  4532.0 * relay3 nc->mid
+  4533.3 * relay3 mid->no
+  4543.6 * outLamp3 on->dim  indLamp5 on->dim
+  4565.2 * outLamp6 dim->off
+  4569.0 * dial c6->gap
+  4590.0 * dial gap->c5
+  4591.7 * outLamp6 off->dim
+  4599.3 * outLamp3 dim->off  indLamp5 dim->off
+  4601.7 * relay6 nc->mid
+  4603.0 * relay6 mid->no
+  4605.6 * outLamp1 dim->on  indLamp2 dim->on
+  4606.1 * outLamp3 off->dim  indLamp5 off->dim
+  4610.9 * outLamp6 dim->on
+  4615.0 * relay5 nc->mid
+  4616.3 * relay5 mid->no
+  4653.7 * dial c5->gap
+  4663.4 * relay6 no->mid
+  4664.3 * relay6 mid->nc
+  4674.9 * dial gap->c4
+  4677.1 * relay4 nc->mid
+  4678.4 * relay4 mid->no
+  4679.1 * outLamp3 dim->on  indLamp5 dim->on
+  4679.4 * relay2 no->mid
+  4680.1 * outLamp6 on->dim
+  4680.3 * relay2 mid->nc
+  4689.6 * indLamp4 dim->on
+  4692.1 * relay5 no->mid
+  4693.0 * relay5 mid->nc
+  4698.5 * indLamp4 on->dim
+  4698.8 * relay4 no->mid
+  4699.7 * relay4 mid->nc
+  4700.5 * relay3 no->mid
+  4700.6 * outLamp2 on->dim  indLamp3 on->dim
+  4701.4 * relay3 mid->nc
+  4710.4 * outLamp3 on->dim  indLamp5 on->dim
+  4712.6 * outLamp1 on->dim  indLamp2 on->dim
+  4735.9 * outLamp6 dim->off
+  4740.3 * dial c4->gap
+  4755.5 * indLamp4 dim->off
+  4757.8 * outLamp2 dim->off  indLamp3 dim->off
+  4761.1 * dial gap->c5
+  4762.8 * outLamp6 off->dim
+  4766.0 * outLamp3 dim->off  indLamp5 dim->off
+  4768.4 * outLamp1 dim->off  indLamp2 dim->off
+  4772.7 * relay6 nc->mid
+  4774.0 * relay6 mid->no
+  4778.5 * outLamp3 off->dim  indLamp5 off->dim
+  4782.0 * outLamp6 dim->on
+  4785.9 * relay5 nc->mid
+  4787.2 * relay5 mid->no
+  4824.4 * dial c5->gap
+  4834.2 * relay6 no->mid
+  4835.1 * relay6 mid->nc
+  4838.0 * outLamp2 off->dim  indLamp3 off->dim
+  4844.3 * indLamp4 off->dim
+  4845.7 * dial gap->c6
+  4846.5 * outLamp1 off->dim  indLamp2 off->dim
+  4846.6 * relay2 nc->mid
+  4847.3 * relay4 nc->mid
+  4847.9 * relay2 mid->no
+  4848.6 * relay4 mid->no
+  4849.5 * outLamp3 dim->on  indLamp5 dim->on
+  4850.9 * outLamp6 on->dim
+  4857.2 * outLamp2 dim->on  indLamp3 dim->on
+  4862.3 * relay5 no->mid
+  4863.2 * relay5 mid->nc
+  4872.5 * relay4 no->mid
+  4873.4 * relay4 mid->nc
+  4873.5 * relay3 nc->mid
+  4874.8 * relay3 mid->no
+  4885.1 * outLamp3 on->dim  indLamp5 on->dim
+  4906.7 * outLamp6 dim->off
+  4910.4 * dial c6->gap
+  4931.4 * dial gap->c5
+  4933.1 * outLamp6 off->dim
+  4940.8 * outLamp3 dim->off  indLamp5 dim->off
+  4943.1 * relay6 nc->mid
+  4944.4 * relay6 mid->no
+  4947.1 * outLamp1 dim->on  indLamp2 dim->on
+  4947.4 * outLamp3 off->dim  indLamp5 off->dim
+  4952.3 * outLamp6 dim->on
+  4956.4 * relay5 nc->mid
+  4957.7 * relay5 mid->no
+  4995.1 * dial c5->gap
+  5004.8 * relay6 no->mid
+  5005.7 * relay6 mid->nc
+  5016.3 * dial gap->c4
+  5018.5 * relay4 nc->mid
+  5019.8 * relay4 mid->no
+  5020.5 * outLamp3 dim->on  indLamp5 dim->on
+  5020.8 * relay2 no->mid
+  5021.5 * outLamp6 on->dim
+  5021.7 * relay2 mid->nc
+  5031.0 * indLamp4 dim->on
+  5033.5 * relay5 no->mid
+  5034.4 * relay5 mid->nc
+  5039.9 * indLamp4 on->dim
+  5040.2 * relay4 no->mid
+  5041.1 * relay4 mid->nc
+  5041.9 * relay3 no->mid
+  5042.0 * outLamp2 on->dim  indLamp3 on->dim
+  5042.8 * relay3 mid->nc
+  5051.8 * outLamp3 on->dim  indLamp5 on->dim
+  5054.0 * outLamp1 on->dim  indLamp2 on->dim
+  5077.3 * outLamp6 dim->off
+  5081.7 * dial c4->gap
+  5096.9 * indLamp4 dim->off
+  5099.2 * outLamp2 dim->off  indLamp3 dim->off
+  5102.5 * dial gap->c5
+  5104.2 * outLamp6 off->dim
+  5107.4 * outLamp3 dim->off  indLamp5 dim->off
+  5109.8 * outLamp1 dim->off  indLamp2 dim->off
+  5114.1 * relay6 nc->mid
+  5115.4 * relay6 mid->no
+  5119.9 * outLamp3 off->dim  indLamp5 off->dim
+  5123.4 * outLamp6 dim->on
+  5127.3 * relay5 nc->mid
+  5128.6 * relay5 mid->no
+  5165.8 * dial c5->gap
+  5175.6 * relay6 no->mid
+  5176.5 * relay6 mid->nc
+  5179.4 * outLamp2 off->dim  indLamp3 off->dim
+  5185.7 * indLamp4 off->dim
+  5187.0 * dial gap->c6
+  5187.9 * outLamp1 off->dim  indLamp2 off->dim
+  5188.0 * relay2 nc->mid
+  5188.7 * relay4 nc->mid
+  5189.3 * relay2 mid->no
+  5190.0 * relay4 mid->no
+  5190.9 * outLamp3 dim->on  indLamp5 dim->on
+  5192.3 * outLamp6 on->dim
+  5198.6 * outLamp2 dim->on  indLamp3 dim->on
+  5203.7 * relay5 no->mid
+  5204.6 * relay5 mid->nc
+  5213.9 * relay4 no->mid
+  5214.8 * relay4 mid->nc
+  5214.9 * relay3 nc->mid
+  5216.2 * relay3 mid->no
+  5226.5 * outLamp3 on->dim  indLamp5 on->dim
+  5248.1 * outLamp6 dim->off
+  5251.9 * dial c6->gap
+  5272.8 * dial gap->c5
+  5274.5 * outLamp6 off->dim
+  5282.2 * outLamp3 dim->off  indLamp5 dim->off
+  5284.5 * relay6 nc->mid
+  5285.8 * relay6 mid->no
+  5288.5 * outLamp1 dim->on  indLamp2 dim->on
+  5288.8 * outLamp3 off->dim  indLamp5 off->dim
+  5293.7 * outLamp6 dim->on
+  5297.8 * relay5 nc->mid
+  5299.1 * relay5 mid->no
+  5336.6 * dial c5->gap
+  5346.3 * relay6 no->mid
+  5347.2 * relay6 mid->nc
+  5357.7 * dial gap->c4
+  5360.0 * relay4 nc->mid
+  5361.3 * relay4 mid->no
+  5362.0 * outLamp3 dim->on  indLamp5 dim->on
+  5362.3 * relay2 no->mid
+  5363.0 * outLamp6 on->dim
+  5363.2 * relay2 mid->nc
+  5372.5 * indLamp4 dim->on
+  5375.0 * relay5 no->mid
+  5375.9 * relay5 mid->nc
+  5381.4 * indLamp4 on->dim
+  5381.7 * relay4 no->mid
+  5382.6 * relay4 mid->nc
+  5383.4 * relay3 no->mid
+  5383.5 * outLamp2 on->dim  indLamp3 on->dim
+  5384.3 * relay3 mid->nc
+  5393.3 * outLamp3 on->dim  indLamp5 on->dim
+  5395.5 * outLamp1 on->dim  indLamp2 on->dim
+  5418.8 * outLamp6 dim->off
+  5423.2 * dial c4->gap
+  5438.4 * indLamp4 dim->off
+  5440.7 * outLamp2 dim->off  indLamp3 dim->off
+  5444.1 * dial gap->c5
+  5445.8 * outLamp6 off->dim
+  5448.9 * outLamp3 dim->off  indLamp5 dim->off
+  5451.3 * outLamp1 dim->off  indLamp2 dim->off
+  5455.7 * relay6 nc->mid
+  5457.0 * relay6 mid->no
+  5461.5 * outLamp3 off->dim  indLamp5 off->dim
+  5465.0 * outLamp6 dim->on
+  5468.9 * relay5 nc->mid
+  5470.2 * relay5 mid->no
+  5507.4 * dial c5->gap
+  5517.2 * relay6 no->mid
+  5518.1 * relay6 mid->nc
+  5521.0 * outLamp2 off->dim  indLamp3 off->dim
+  5527.3 * indLamp4 off->dim
+  5528.6 * dial gap->c6
+  5529.5 * outLamp1 off->dim  indLamp2 off->dim
+  5529.6 * relay2 nc->mid
+  5530.3 * relay4 nc->mid
+  5530.9 * relay2 mid->no
+  5531.6 * relay4 mid->no
+  5532.5 * outLamp3 dim->on  indLamp5 dim->on
+  5533.9 * outLamp6 on->dim
+  5540.2 * outLamp2 dim->on  indLamp3 dim->on
+  5545.3 * relay5 no->mid
+  5546.2 * relay5 mid->nc
+  5555.5 * relay4 no->mid
+  5556.4 * relay4 mid->nc
+  5556.5 * relay3 nc->mid
+  5557.8 * relay3 mid->no
+  5568.1 * outLamp3 on->dim  indLamp5 on->dim
+  5589.7 * outLamp6 dim->off
+  5593.5 * dial c6->gap
+  5614.5 * dial gap->c5
+  5616.2 * outLamp6 off->dim
+  5623.8 * outLamp3 dim->off  indLamp5 dim->off
+  5626.2 * relay6 nc->mid
+  5627.5 * relay6 mid->no
+  5630.1 * outLamp1 dim->on  indLamp2 dim->on
+  5630.6 * outLamp3 off->dim  indLamp5 off->dim
+  5635.4 * outLamp6 dim->on
+  5639.5 * relay5 nc->mid
+  5640.8 * relay5 mid->no
+  5678.2 * dial c5->gap
+  5687.9 * relay6 no->mid
+  5688.8 * relay6 mid->nc
+  5699.4 * dial gap->c4
+  5701.6 * relay4 nc->mid
+  5702.9 * relay4 mid->no
+  5703.6 * outLamp3 dim->on  indLamp5 dim->on
+  5703.9 * relay2 no->mid
+  5704.6 * outLamp6 on->dim
+  5704.8 * relay2 mid->nc
+  5714.1 * indLamp4 dim->on
+  5716.6 * relay5 no->mid
+  5717.5 * relay5 mid->nc
+  5723.0 * indLamp4 on->dim
+  5723.3 * relay4 no->mid
+  5724.2 * relay4 mid->nc
+  5725.0 * relay3 no->mid
+  5725.1 * outLamp2 on->dim  indLamp3 on->dim
+  5725.9 * relay3 mid->nc
+  5734.9 * outLamp3 on->dim  indLamp5 on->dim
+  5737.1 * outLamp1 on->dim  indLamp2 on->dim
+  5760.4 * outLamp6 dim->off
+  5764.8 * dial c4->gap
+  5780.0 * indLamp4 dim->off
+  5782.3 * outLamp2 dim->off  indLamp3 dim->off
+  5785.6 * dial gap->c5
+  5787.3 * outLamp6 off->dim
+  5790.5 * outLamp3 dim->off  indLamp5 dim->off
+  5792.9 * outLamp1 dim->off  indLamp2 dim->off
+  5797.2 * relay6 nc->mid
+  5798.5 * relay6 mid->no
+  5803.0 * outLamp3 off->dim  indLamp5 off->dim
+  5806.5 * outLamp6 dim->on
+  5810.4 * relay5 nc->mid
+  5811.7 * relay5 mid->no
+  5848.9 * dial c5->gap
+  5858.7 * relay6 no->mid
+  5859.6 * relay6 mid->nc
+  5862.5 * outLamp2 off->dim  indLamp3 off->dim
+  5868.8 * indLamp4 off->dim
+  5870.2 * dial gap->c6
+  5871.0 * outLamp1 off->dim  indLamp2 off->dim
+  5871.1 * relay2 nc->mid
+  5871.8 * relay4 nc->mid
+  5872.4 * relay2 mid->no
+  5873.1 * relay4 mid->no
+  5874.0 * outLamp3 dim->on  indLamp5 dim->on
+  5875.4 * outLamp6 on->dim
+  5881.7 * outLamp2 dim->on  indLamp3 dim->on
+  5886.8 * relay5 no->mid
+  5887.7 * relay5 mid->nc
+  5897.0 * relay4 no->mid
+  5897.9 * relay4 mid->nc
+  5898.0 * relay3 nc->mid
+  5899.3 * relay3 mid->no
+  5909.6 * outLamp3 on->dim  indLamp5 on->dim
+  5931.2 * outLamp6 dim->off
+  5934.9 * dial c6->gap
+  5955.9 * dial gap->c5
+  5957.6 * outLamp6 off->dim
+  5965.3 * outLamp3 dim->off  indLamp5 dim->off
+  5967.6 * relay6 nc->mid
+  5968.9 * relay6 mid->no
+  5971.6 * outLamp1 dim->on  indLamp2 dim->on
+  5971.9 * outLamp3 off->dim  indLamp5 off->dim
+  5976.8 * outLamp6 dim->on
+  5980.9 * relay5 nc->mid
+  5982.2 * relay5 mid->no
+  6019.7 * dial c5->gap
+  6029.4 * relay6 no->mid
+  6030.3 * relay6 mid->nc
+  6040.8 * dial gap->c4
+  6043.1 * relay4 nc->mid
+  6044.4 * relay4 mid->no
+  6045.1 * outLamp3 dim->on  indLamp5 dim->on
+  6045.4 * relay2 no->mid
+  6046.1 * outLamp6 on->dim
+  6046.3 * relay2 mid->nc
+  6055.6 * indLamp4 dim->on
+  6058.1 * relay5 no->mid
+  6059.0 * relay5 mid->nc
+  6064.5 * indLamp4 on->dim
+  6064.8 * relay4 no->mid
+  6065.7 * relay4 mid->nc
+  6066.5 * relay3 no->mid
+  6066.6 * outLamp2 on->dim  indLamp3 on->dim
+  6067.4 * relay3 mid->nc
+  6076.4 * outLamp3 on->dim  indLamp5 on->dim
+  6078.6 * outLamp1 on->dim  indLamp2 on->dim
+  6101.9 * outLamp6 dim->off
+  6106.3 * dial c4->gap
+  6106.4 ? dial=gap  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  6121.5 * indLamp4 dim->off
+  6123.8 * outLamp2 dim->off  indLamp3 dim->off
+  6127.2 * dial gap->c5
+  6127.3 ? dial=c5  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  6128.9 * outLamp6 off->dim
+  6132.0 * outLamp3 dim->off  indLamp5 dim->off
+  6134.4 * outLamp1 dim->off  indLamp2 dim->off
+  6138.8 * relay6 nc->mid
+  6140.1 * relay6 mid->no
+  6144.6 * outLamp3 off->dim  indLamp5 off->dim
+  6148.1 * outLamp6 dim->on
+  6152.0 * relay5 nc->mid
+  6153.3 * relay5 mid->no
+  6190.5 * dial c5->gap
+  6190.6 ? dial=gap  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  6200.3 * relay6 no->mid
+  6201.2 * relay6 mid->nc
+  6204.1 * outLamp2 off->dim  indLamp3 off->dim
+  6210.4 * indLamp4 off->dim
+  6211.7 * dial gap->c6
+  6212.6 * outLamp1 off->dim  indLamp2 off->dim
+  6212.7 * relay2 nc->mid
+  6213.4 * relay4 nc->mid
+  6214.0 * relay2 mid->no
+  6214.7 * relay4 mid->no
+  6215.6 * outLamp3 dim->on  indLamp5 dim->on
+  6217.0 * outLamp6 on->dim
+  6223.3 * outLamp2 dim->on  indLamp3 dim->on
+  6228.4 * relay5 no->mid
+  6229.3 * relay5 mid->nc
+  6238.6 * relay4 no->mid
+  6239.5 * relay4 mid->nc
+  6239.6 * relay3 nc->mid
+  6240.9 * relay3 mid->no
+  6251.2 * outLamp3 on->dim  indLamp5 on->dim
+  6272.8 * outLamp6 dim->off
+  6276.6 * dial c6->gap
+  6297.6 * dial gap->c5
+  6297.7 ? dial=c5  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  6299.3 * outLamp6 off->dim
+  6306.9 * outLamp3 dim->off  indLamp5 dim->off
+  6309.3 * relay6 nc->mid
+  6310.6 * relay6 mid->no
+  6313.2 * outLamp1 dim->on  indLamp2 dim->on
+  6313.7 * outLamp3 off->dim  indLamp5 off->dim
+  6318.5 * outLamp6 dim->on
+  6322.6 * relay5 nc->mid
+  6323.9 * relay5 mid->no
+  6361.3 * dial c5->gap
+  6361.4 ? dial=gap  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  6371.0 * relay6 no->mid
+  6371.9 * relay6 mid->nc
+  6382.4 * dial gap->c4
+  6384.7 * relay4 nc->mid
+  6386.0 * relay4 mid->no
+  6386.7 * outLamp3 dim->on  indLamp5 dim->on
+  6387.0 * relay2 no->mid
+  6387.7 * outLamp6 on->dim
+  6387.9 * relay2 mid->nc
+  6397.2 * indLamp4 dim->on
+  6399.7 * relay5 no->mid
+  6400.6 * relay5 mid->nc
+  6406.1 * indLamp4 on->dim
+  6406.4 * relay4 no->mid
+  6407.3 * relay4 mid->nc
+  6408.1 * relay3 no->mid
+  6408.2 * outLamp2 on->dim  indLamp3 on->dim
+  6409.0 * relay3 mid->nc
+  6418.0 * outLamp3 on->dim  indLamp5 on->dim
+  6420.2 * outLamp1 on->dim  indLamp2 on->dim
+  6443.5 * outLamp6 dim->off
+  6447.9 * dial c4->gap
+  6463.1 * indLamp4 dim->off
+  6465.4 * outLamp2 dim->off  indLamp3 dim->off
+  6468.7 * dial gap->c5
+  6468.8 ? dial=c5  "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  6468.8 > disconnect cord=37
+  6468.8 > connect cord=38 a=hole:M+#1 b=hole:D9#1 r_uohm=0
+  6473.6 * outLamp3 dim->off  indLamp5 dim->off
+  6476.0 * outLamp1 dim->off  indLamp2 dim->off
+  6531.2 * dial c5->gap
+  6552.1 * dial gap->c6
+  6614.6 * dial c6->gap
+  6635.4 * dial gap->c7
+  6697.9 * dial c7->gap
+  6718.7 * dial gap->c8
+  6781.2 * dial c8->gap
+  6802.1 * dial gap->c9
+  6802.2 ? dial=c9  "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial."
+  6805.4 * outLamp6 off->dim
+  6813.7 * relay6 nc->mid
+  6815.0 * relay6 mid->no
+  6824.6 * outLamp6 dim->on
+  6826.7 * relay5 nc->mid
+  6827.9 * outLamp3 off->dim  indLamp5 off->dim
+  6828.0 * relay5 mid->no
+  6865.4 * dial c9->gap
+  6875.2 * relay6 no->mid
+  6876.1 * relay6 mid->nc
+  6879.4 * outLamp2 off->dim  indLamp3 off->dim
+  6886.2 * indLamp4 off->dim
+  6886.7 * dial gap->c10
+  6887.6 * relay2 nc->mid
+  6888.3 * relay4 nc->mid
+  6888.9 * relay2 mid->no
+  6889.6 * relay4 mid->no
+  6889.9 * outLamp1 off->dim  indLamp2 off->dim
+  6891.5 * outLamp3 dim->on  indLamp5 dim->on
+  6891.7 * outLamp6 on->dim
+  6898.6 * outLamp2 dim->on  indLamp3 dim->on
+  6903.3 * relay5 no->mid
+  6904.2 * relay5 mid->nc
+  6913.6 * relay4 no->mid
+  6914.5 * relay3 nc->mid  relay4 mid->nc
+  6915.8 * relay3 mid->no
+  6926.0 * outLamp3 on->dim  indLamp5 on->dim
+  6947.5 * outLamp6 dim->off
+  6951.4 * dial c10->gap
+  6972.4 * dial gap->c9
+  6974.1 * outLamp6 off->dim
+  6981.6 * outLamp3 dim->off  indLamp5 dim->off
+  6984.1 * relay6 nc->mid
+  6985.4 * relay6 mid->no
+  6988.5 * outLamp3 off->dim  indLamp5 off->dim
+  6989.9 * outLamp1 dim->on  indLamp2 dim->on
+  6993.3 * outLamp6 dim->on
+  6997.4 * relay5 nc->mid
+  6998.7 * relay5 mid->no
+  7036.1 * dial c9->gap
+  7045.8 * relay6 no->mid
+  7046.7 * relay6 mid->nc
+  7057.3 * dial gap->c8
+  7059.5 * relay4 nc->mid
+  7060.8 * relay4 mid->no
+  7061.5 * outLamp3 dim->on  indLamp5 dim->on
+  7061.8 * relay2 no->mid
+  7062.5 * outLamp6 on->dim
+  7062.7 * relay2 mid->nc
+  7072.0 * indLamp4 dim->on
+  7074.5 * relay5 no->mid
+  7075.4 * relay5 mid->nc
+  7080.9 * indLamp4 on->dim
+  7081.2 * relay4 no->mid
+  7082.1 * relay4 mid->nc
+  7082.9 * relay3 no->mid
+  7083.0 * outLamp2 on->dim  indLamp3 on->dim
+  7083.8 * relay3 mid->nc
+  7092.8 * outLamp3 on->dim  indLamp5 on->dim
+  7095.0 * outLamp1 on->dim  indLamp2 on->dim
+  7118.3 * outLamp6 dim->off
+  7122.7 * dial c8->gap
+  7137.9 * indLamp4 dim->off
+  7140.2 * outLamp2 dim->off  indLamp3 dim->off
+  7143.5 * dial gap->c9
+  7145.2 * outLamp6 off->dim
+  7148.4 * outLamp3 dim->off  indLamp5 dim->off
+  7150.8 * outLamp1 dim->off  indLamp2 dim->off
+  7155.1 * relay6 nc->mid
+  7156.4 * relay6 mid->no
+  7160.9 * outLamp3 off->dim  indLamp5 off->dim
+  7164.4 * outLamp6 dim->on
+  7168.3 * relay5 nc->mid
+  7169.6 * relay5 mid->no
+  7206.8 * dial c9->gap
+  7216.6 * relay6 no->mid
+  7217.5 * relay6 mid->nc
+  7220.4 * outLamp2 off->dim  indLamp3 off->dim
+  7226.7 * indLamp4 off->dim
+  7228.1 * dial gap->c10
+  7228.9 * outLamp1 off->dim  indLamp2 off->dim
+  7229.0 * relay2 nc->mid
+  7229.7 * relay4 nc->mid
+  7230.3 * relay2 mid->no
+  7231.0 * relay4 mid->no
+  7231.9 * outLamp3 dim->on  indLamp5 dim->on
+  7233.3 * outLamp6 on->dim
+  7239.6 * outLamp2 dim->on  indLamp3 dim->on
+  7244.7 * relay5 no->mid
+  7245.6 * relay5 mid->nc
+  7254.9 * relay4 no->mid
+  7255.8 * relay4 mid->nc
+  7255.9 * relay3 nc->mid
+  7257.2 * relay3 mid->no
+  7267.5 * outLamp3 on->dim  indLamp5 on->dim
+  7289.1 * outLamp6 dim->off
+  7292.8 * dial c10->gap
+  7313.8 * dial gap->c9
+  7315.5 * outLamp6 off->dim
+  7323.2 * outLamp3 dim->off  indLamp5 dim->off
+  7325.5 * relay6 nc->mid
+  7326.8 * relay6 mid->no
+  7329.5 * outLamp1 dim->on  indLamp2 dim->on
+  7329.8 * outLamp3 off->dim  indLamp5 off->dim
+  7334.7 * outLamp6 dim->on
+  7338.8 * relay5 nc->mid
+  7340.1 * relay5 mid->no
+  7377.5 * dial c9->gap
+  7387.2 * relay6 no->mid
+  7388.1 * relay6 mid->nc
+  7398.7 * dial gap->c8
+  7400.9 * relay4 nc->mid
+  7402.2 * relay4 mid->no
+  7402.9 * outLamp3 dim->on  indLamp5 dim->on
+  7403.2 * relay2 no->mid
+  7403.9 * outLamp6 on->dim
+  7404.1 * relay2 mid->nc
+  7413.4 * indLamp4 dim->on
+  7415.9 * relay5 no->mid
+  7416.8 * relay5 mid->nc
+  7422.3 * indLamp4 on->dim
+  7422.6 * relay4 no->mid
+  7423.5 * relay4 mid->nc
+  7424.3 * relay3 no->mid
+  7424.4 * outLamp2 on->dim  indLamp3 on->dim
+  7425.2 * relay3 mid->nc
+  7434.2 * outLamp3 on->dim  indLamp5 on->dim
+  7436.4 * outLamp1 on->dim  indLamp2 on->dim
+  7459.7 * outLamp6 dim->off
+  7464.1 * dial c8->gap
+  7479.3 * indLamp4 dim->off
+  7481.6 * outLamp2 dim->off  indLamp3 dim->off
+  7484.9 * dial gap->c9
+  7486.6 * outLamp6 off->dim
+  7489.8 * outLamp3 dim->off  indLamp5 dim->off
+  7492.2 * outLamp1 dim->off  indLamp2 dim->off
+  7496.5 * relay6 nc->mid
+  7497.8 * relay6 mid->no
+  7502.3 * outLamp3 off->dim  indLamp5 off->dim
+  7505.8 * outLamp6 dim->on
+  7509.7 * relay5 nc->mid
+  7511.0 * relay5 mid->no
+  7548.2 * dial c9->gap
+  7558.0 * relay6 no->mid
+  7558.9 * relay6 mid->nc
+  7561.8 * outLamp2 off->dim  indLamp3 off->dim
+  7568.1 * indLamp4 off->dim
+  7569.4 * dial gap->c10
+  7570.3 * outLamp1 off->dim  indLamp2 off->dim
+  7570.4 * relay2 nc->mid
+  7571.1 * relay4 nc->mid
+  7571.7 * relay2 mid->no
+  7572.4 * relay4 mid->no
+  7573.3 * outLamp3 dim->on  indLamp5 dim->on
+  7574.7 * outLamp6 on->dim
+  7581.0 * outLamp2 dim->on  indLamp3 dim->on
+  7586.1 * relay5 no->mid
+  7587.0 * relay5 mid->nc
+  7596.3 * relay4 no->mid
+  7597.2 * relay4 mid->nc
+  7597.3 * relay3 nc->mid
+  7598.6 * relay3 mid->no
+  7608.9 * outLamp3 on->dim  indLamp5 on->dim
+  7630.5 * outLamp6 dim->off
+  7634.3 * dial c10->gap
+  7655.2 * dial gap->c9
+  7656.9 * outLamp6 off->dim
+  7664.6 * outLamp3 dim->off  indLamp5 dim->off
+  7666.9 * relay6 nc->mid
+  7668.2 * relay6 mid->no
+  7670.9 * outLamp1 dim->on  indLamp2 dim->on
+  7671.2 * outLamp3 off->dim  indLamp5 off->dim
+  7676.1 * outLamp6 dim->on
+  7680.2 * relay5 nc->mid
+  7681.5 * relay5 mid->no
+  7719.0 * dial c9->gap
+  7728.7 * relay6 no->mid
+  7729.6 * relay6 mid->nc
+  7740.1 * dial gap->c8
+  7742.4 * relay4 nc->mid
+  7743.7 * relay4 mid->no
+  7744.4 * outLamp3 dim->on  indLamp5 dim->on
+  7744.7 * relay2 no->mid
+  7745.4 * outLamp6 on->dim
+  7745.6 * relay2 mid->nc
+  7754.9 * indLamp4 dim->on
+  7757.4 * relay5 no->mid
+  7758.3 * relay5 mid->nc
+  7763.8 * indLamp4 on->dim
+  7764.1 * relay4 no->mid
+  7765.0 * relay4 mid->nc
+  7765.8 * relay3 no->mid
+  7765.9 * outLamp2 on->dim  indLamp3 on->dim
+  7766.7 * relay3 mid->nc
+  7775.7 * outLamp3 on->dim  indLamp5 on->dim
+  7777.9 * outLamp1 on->dim  indLamp2 on->dim
+  7801.2 * outLamp6 dim->off
+  7805.6 * dial c8->gap
+  7820.8 * indLamp4 dim->off
+  7823.1 * outLamp2 dim->off  indLamp3 dim->off
+  7826.5 * dial gap->c9
+  7828.2 * outLamp6 off->dim
+  7831.3 * outLamp3 dim->off  indLamp5 dim->off
+  7833.7 * outLamp1 dim->off  indLamp2 dim->off
+  7838.1 * relay6 nc->mid
+  7839.4 * relay6 mid->no
+  7843.9 * outLamp3 off->dim  indLamp5 off->dim
+  7847.4 * outLamp6 dim->on
+  7851.3 * relay5 nc->mid
+  7852.6 * relay5 mid->no
+  7889.8 * dial c9->gap
+  7899.6 * relay6 no->mid
+  7900.5 * relay6 mid->nc
+  7903.4 * outLamp2 off->dim  indLamp3 off->dim
+  7909.7 * indLamp4 off->dim
+  7911.0 * dial gap->c10
+  7911.9 * outLamp1 off->dim  indLamp2 off->dim
+  7912.0 * relay2 nc->mid
+  7912.7 * relay4 nc->mid
+  7913.3 * relay2 mid->no
+  7914.0 * relay4 mid->no
+  7914.9 * outLamp3 dim->on  indLamp5 dim->on
+  7916.3 * outLamp6 on->dim
+  7922.6 * outLamp2 dim->on  indLamp3 dim->on
+  7927.7 * relay5 no->mid
+  7928.6 * relay5 mid->nc
+  7937.9 * relay4 no->mid
+  7938.8 * relay4 mid->nc
+  7938.9 * relay3 nc->mid
+  7940.2 * relay3 mid->no
+  7950.5 * outLamp3 on->dim  indLamp5 on->dim
+  7972.1 * outLamp6 dim->off
+  7975.9 * dial c10->gap
+  7996.9 * dial gap->c9
+  7998.6 * outLamp6 off->dim
+  8006.2 * outLamp3 dim->off  indLamp5 dim->off
+  8008.6 * relay6 nc->mid
+  8009.9 * relay6 mid->no
+  8012.5 * outLamp1 dim->on  indLamp2 dim->on
+  8013.0 * outLamp3 off->dim  indLamp5 off->dim
+  8017.8 * outLamp6 dim->on
+  8021.9 * relay5 nc->mid
+  8023.2 * relay5 mid->no
+  8060.6 * dial c9->gap
+  8070.3 * relay6 no->mid
+  8071.2 * relay6 mid->nc
+  8081.8 * dial gap->c8
+  8084.0 * relay4 nc->mid
+  8085.3 * relay4 mid->no
+  8086.0 * outLamp3 dim->on  indLamp5 dim->on
+  8086.3 * relay2 no->mid
+  8087.0 * outLamp6 on->dim
+  8087.2 * relay2 mid->nc
+  8096.5 * indLamp4 dim->on
+  8099.0 * relay5 no->mid
+  8099.9 * relay5 mid->nc
+  8105.4 * indLamp4 on->dim
+  8105.7 * relay4 no->mid
+  8106.6 * relay4 mid->nc
+  8107.4 * relay3 no->mid
+  8107.5 * outLamp2 on->dim  indLamp3 on->dim
+  8108.3 * relay3 mid->nc
+  8117.3 * outLamp3 on->dim  indLamp5 on->dim
+  8119.5 * outLamp1 on->dim  indLamp2 on->dim
+  8142.8 * outLamp6 dim->off
+  8147.2 * dial c8->gap
+  8162.4 * indLamp4 dim->off
+  8164.7 * outLamp2 dim->off  indLamp3 dim->off
+  8168.0 * dial gap->c9
+  8169.7 * outLamp6 off->dim
+  8172.9 * outLamp3 dim->off  indLamp5 dim->off
+  8175.3 * outLamp1 dim->off  indLamp2 dim->off
+  8179.6 * relay6 nc->mid
+  8180.9 * relay6 mid->no
+  8185.4 * outLamp3 off->dim  indLamp5 off->dim
+  8188.9 * outLamp6 dim->on
+  8192.8 * relay5 nc->mid
+  8194.1 * relay5 mid->no
+  8231.3 * dial c9->gap
+  8241.1 * relay6 no->mid
+  8242.0 * relay6 mid->nc
+  8244.9 * outLamp2 off->dim  indLamp3 off->dim
+  8251.2 * indLamp4 off->dim
+  8252.6 * dial gap->c10
+  8253.4 * outLamp1 off->dim  indLamp2 off->dim
+  8253.5 * relay2 nc->mid
+  8254.2 * relay4 nc->mid
+  8254.8 * relay2 mid->no
+  8255.5 * relay4 mid->no
+  8256.4 * outLamp3 dim->on  indLamp5 dim->on
+  8257.8 * outLamp6 on->dim
+  8264.1 * outLamp2 dim->on  indLamp3 dim->on
+  8269.2 * relay5 no->mid
+  8270.1 * relay5 mid->nc
+  8279.4 * relay4 no->mid
+  8280.3 * relay4 mid->nc
+  8280.4 * relay3 nc->mid
+  8281.7 * relay3 mid->no
+  8292.0 * outLamp3 on->dim  indLamp5 on->dim
+  8313.6 * outLamp6 dim->off
+  8317.3 * dial c10->gap
+  8338.3 * dial gap->c9
+  8340.0 * outLamp6 off->dim
+  8347.7 * outLamp3 dim->off  indLamp5 dim->off
+  8350.0 * relay6 nc->mid
+  8351.3 * relay6 mid->no
+  8354.0 * outLamp1 dim->on  indLamp2 dim->on
+  8354.3 * outLamp3 off->dim  indLamp5 off->dim
+  8359.2 * outLamp6 dim->on
+  8363.3 * relay5 nc->mid
+  8364.6 * relay5 mid->no
+  8402.0 * dial c9->gap
+  8411.7 * relay6 no->mid
+  8412.6 * relay6 mid->nc
+  8423.2 * dial gap->c8
+  8425.4 * relay4 nc->mid
+  8426.7 * relay4 mid->no
+  8427.4 * outLamp3 dim->on  indLamp5 dim->on
+  8427.7 * relay2 no->mid
+  8428.4 * outLamp6 on->dim
+  8428.6 * relay2 mid->nc
+  8437.9 * indLamp4 dim->on
+  8440.4 * relay5 no->mid
+  8441.3 * relay5 mid->nc
+  8446.8 * indLamp4 on->dim
+  8447.1 * relay4 no->mid
+  8448.0 * relay4 mid->nc
+  8448.8 * relay3 no->mid
+  8448.9 * outLamp2 on->dim  indLamp3 on->dim
+  8449.7 * relay3 mid->nc
+  8458.7 * outLamp3 on->dim  indLamp5 on->dim
+  8460.9 * outLamp1 on->dim  indLamp2 on->dim
+  8484.2 * outLamp6 dim->off
+  8488.6 * dial c8->gap
+  8503.8 * indLamp4 dim->off
+  8506.1 * outLamp2 dim->off  indLamp3 dim->off
+  8509.4 * dial gap->c9
+  8511.1 * outLamp6 off->dim
+  8514.3 * outLamp3 dim->off  indLamp5 dim->off
+  8516.7 * outLamp1 dim->off  indLamp2 dim->off
+  8521.0 * relay6 nc->mid
+  8522.3 * relay6 mid->no
+  8526.8 * outLamp3 off->dim  indLamp5 off->dim
+  8530.3 * outLamp6 dim->on
+  8534.2 * relay5 nc->mid
+  8535.5 * relay5 mid->no
+  8572.7 * dial c9->gap
+  8582.5 * relay6 no->mid
+  8583.4 * relay6 mid->nc
+  8586.3 * outLamp2 off->dim  indLamp3 off->dim
+  8592.6 * indLamp4 off->dim
+  8593.9 * dial gap->c10
+  8594.8 * outLamp1 off->dim  indLamp2 off->dim
+  8594.9 * relay2 nc->mid
+  8595.6 * relay4 nc->mid
+  8596.2 * relay2 mid->no
+  8596.9 * relay4 mid->no
+  8597.8 * outLamp3 dim->on  indLamp5 dim->on
+  8599.2 * outLamp6 on->dim
+  8605.5 * outLamp2 dim->on  indLamp3 dim->on
+  8610.6 * relay5 no->mid
+  8611.5 * relay5 mid->nc
+  8620.8 * relay4 no->mid
+  8621.7 * relay4 mid->nc
+  8621.8 * relay3 nc->mid
+  8623.1 * relay3 mid->no
+  8633.4 * outLamp3 on->dim  indLamp5 on->dim
+  8655.0 * outLamp6 dim->off
+  8658.8 * dial c10->gap
+  8679.8 * dial gap->c9
+  8681.5 * outLamp6 off->dim
+  8689.1 * outLamp3 dim->off  indLamp5 dim->off
+  8691.5 * relay6 nc->mid
+  8692.8 * relay6 mid->no
+  8695.4 * outLamp1 dim->on  indLamp2 dim->on
+  8695.9 * outLamp3 off->dim  indLamp5 off->dim
+  8700.7 * outLamp6 dim->on
+  8704.8 * relay5 nc->mid
+  8706.1 * relay5 mid->no
+  8743.5 * dial c9->gap
+  8753.2 * relay6 no->mid
+  8754.1 * relay6 mid->nc
+  8764.6 * dial gap->c8
+  8766.9 * relay4 nc->mid
+  8768.2 * relay4 mid->no
+  8768.9 * outLamp3 dim->on  indLamp5 dim->on
+  8769.2 * relay2 no->mid
+  8769.9 * outLamp6 on->dim
+  8770.1 * relay2 mid->nc
+  8779.4 * indLamp4 dim->on
+  8781.9 * relay5 no->mid
+  8782.8 * relay5 mid->nc
+  8788.3 * indLamp4 on->dim
+  8788.6 * relay4 no->mid
+  8789.5 * relay4 mid->nc
+  8790.3 * relay3 no->mid
+  8790.4 * outLamp2 on->dim  indLamp3 on->dim
+  8791.2 * relay3 mid->nc
+  8800.2 * outLamp3 on->dim  indLamp5 on->dim
+  8802.4 * outLamp1 on->dim  indLamp2 on->dim
+  8825.7 * outLamp6 dim->off
+  8830.1 * dial c8->gap
+  8845.3 * indLamp4 dim->off
+  8847.6 * outLamp2 dim->off  indLamp3 dim->off
+  8851.0 * dial gap->c9
+  8852.7 * outLamp6 off->dim
+  8855.8 * outLamp3 dim->off  indLamp5 dim->off
+  8858.2 * outLamp1 dim->off  indLamp2 dim->off
+  8862.6 * relay6 nc->mid
+  8863.9 * relay6 mid->no
+  8868.4 * outLamp3 off->dim  indLamp5 off->dim
+  8871.9 * outLamp6 dim->on
+  8875.8 * relay5 nc->mid
+  8877.1 * relay5 mid->no
+  8914.3 * dial c9->gap
+  8924.1 * relay6 no->mid
+  8925.0 * relay6 mid->nc
+  8927.9 * outLamp2 off->dim  indLamp3 off->dim
+  8934.2 * indLamp4 off->dim
+  8935.5 * dial gap->c10
+  8936.4 * outLamp1 off->dim  indLamp2 off->dim
+  8936.5 * relay2 nc->mid
+  8937.2 * relay4 nc->mid
+  8937.8 * relay2 mid->no
+  8938.5 * relay4 mid->no
+  8939.4 * outLamp3 dim->on  indLamp5 dim->on
+  8940.8 * outLamp6 on->dim
+  8947.1 * outLamp2 dim->on  indLamp3 dim->on
+  8952.2 * relay5 no->mid
+  8953.1 * relay5 mid->nc
+  8962.4 * relay4 no->mid
+  8963.3 * relay4 mid->nc
+  8963.4 * relay3 nc->mid
+  8964.7 * relay3 mid->no
+  8975.0 * outLamp3 on->dim  indLamp5 on->dim
+  8996.6 * outLamp6 dim->off
+  9000.4 * dial c10->gap
+  9021.4 * dial gap->c9
+  9023.1 * outLamp6 off->dim
+  9030.7 * outLamp3 dim->off  indLamp5 dim->off
+  9033.1 * relay6 nc->mid
+  9034.4 * relay6 mid->no
+  9037.0 * outLamp1 dim->on  indLamp2 dim->on
+  9037.5 * outLamp3 off->dim  indLamp5 off->dim
+  9042.3 * outLamp6 dim->on
+  9046.4 * relay5 nc->mid
+  9047.7 * relay5 mid->no
+  9085.1 * dial c9->gap
+  9094.8 * relay6 no->mid
+  9095.7 * relay6 mid->nc
+  9106.3 * dial gap->c8
+  9108.5 * relay4 nc->mid
+  9109.8 * relay4 mid->no
+  9110.5 * outLamp3 dim->on  indLamp5 dim->on
+  9110.8 * relay2 no->mid
+  9111.5 * outLamp6 on->dim
+  9111.7 * relay2 mid->nc
+  9121.0 * indLamp4 dim->on
+  9123.5 * relay5 no->mid
+  9124.4 * relay5 mid->nc
+  9129.9 * indLamp4 on->dim
+  9130.2 * relay4 no->mid
+  9131.1 * relay4 mid->nc
+  9131.9 * relay3 no->mid
+  9132.0 * outLamp2 on->dim  indLamp3 on->dim
+  9132.8 * relay3 mid->nc
+  9141.8 * outLamp3 on->dim  indLamp5 on->dim
+  9144.0 * outLamp1 on->dim  indLamp2 on->dim
+  9167.3 * outLamp6 dim->off
+  9171.7 * dial c8->gap
+  9186.9 * indLamp4 dim->off
+  9189.2 * outLamp2 dim->off  indLamp3 dim->off
+  9192.5 * dial gap->c9
+  9194.2 * outLamp6 off->dim
+  9197.4 * outLamp3 dim->off  indLamp5 dim->off
+  9199.8 * outLamp1 dim->off  indLamp2 dim->off
+  9204.1 * relay6 nc->mid
+  9205.4 * relay6 mid->no
+  9209.9 * outLamp3 off->dim  indLamp5 off->dim
+  9213.4 * outLamp6 dim->on
+  9217.3 * relay5 nc->mid
+  9218.6 * relay5 mid->no
+  9255.8 * dial c9->gap
+  9265.6 * relay6 no->mid
+  9266.5 * relay6 mid->nc
+  9269.4 * outLamp2 off->dim  indLamp3 off->dim
+  9275.7 * indLamp4 off->dim
+  9277.1 * dial gap->c10
+  9277.9 * outLamp1 off->dim  indLamp2 off->dim
+  9278.0 * relay2 nc->mid
+  9278.7 * relay4 nc->mid
+  9279.3 * relay2 mid->no
+  9280.0 * relay4 mid->no
+  9280.9 * outLamp3 dim->on  indLamp5 dim->on
+  9282.3 * outLamp6 on->dim
+  9288.6 * outLamp2 dim->on  indLamp3 dim->on
+  9293.7 * relay5 no->mid
+  9294.6 * relay5 mid->nc
+  9303.9 * relay4 no->mid
+  9304.8 * relay4 mid->nc
+  9304.9 * relay3 nc->mid
+  9306.2 * relay3 mid->no
+  9316.5 * outLamp3 on->dim  indLamp5 on->dim
+  9338.1 * outLamp6 dim->off
+  9341.8 * dial c10->gap
+  9362.8 * dial gap->c9
+  9364.5 * outLamp6 off->dim
+  9372.2 * outLamp3 dim->off  indLamp5 dim->off
+  9374.5 * relay6 nc->mid
+  9375.8 * relay6 mid->no
+  9378.5 * outLamp1 dim->on  indLamp2 dim->on
+  9378.8 * outLamp3 off->dim  indLamp5 off->dim
+  9383.7 * outLamp6 dim->on
+  9387.8 * relay5 nc->mid
+  9389.1 * relay5 mid->no
+  9426.6 * dial c9->gap
+  9436.3 * relay6 no->mid
+  9437.2 * relay6 mid->nc
+  9447.7 * dial gap->c8
+  9450.0 * relay4 nc->mid
+  9451.3 * relay4 mid->no
+  9452.0 * outLamp3 dim->on  indLamp5 dim->on
+  9452.3 * relay2 no->mid
+  9453.0 * outLamp6 on->dim
+  9453.2 * relay2 mid->nc
+  9462.5 * indLamp4 dim->on
+  9465.0 * relay5 no->mid
+  9465.9 * relay5 mid->nc
+  9471.4 * indLamp4 on->dim
+  9471.7 * relay4 no->mid
+  9472.6 * relay4 mid->nc
+  9473.4 * relay3 no->mid
+  9473.5 * outLamp2 on->dim  indLamp3 on->dim
+  9474.3 * relay3 mid->nc
+  9483.3 * outLamp3 on->dim  indLamp5 on->dim
+  9485.5 * outLamp1 on->dim  indLamp2 on->dim
+  9508.8 * outLamp6 dim->off
+  9513.2 * dial c8->gap
+  9528.4 * indLamp4 dim->off
+  9530.7 * outLamp2 dim->off  indLamp3 dim->off
+  9534.1 * dial gap->c9
+  9535.8 * outLamp6 off->dim
+  9538.9 * outLamp3 dim->off  indLamp5 dim->off
+  9541.3 * outLamp1 dim->off  indLamp2 dim->off
+  9545.7 * relay6 nc->mid
+  9547.0 * relay6 mid->no
+  9551.5 * outLamp3 off->dim  indLamp5 off->dim
+  9555.0 * outLamp6 dim->on
+  9558.9 * relay5 nc->mid
+  9560.2 * relay5 mid->no
+  9597.4 * dial c9->gap
+  9607.2 * relay6 no->mid
+  9608.1 * relay6 mid->nc
+  9611.0 * outLamp2 off->dim  indLamp3 off->dim
+  9617.3 * indLamp4 off->dim
+  9618.6 * dial gap->c10
+  9619.5 * outLamp1 off->dim  indLamp2 off->dim
+  9619.6 * relay2 nc->mid
+  9620.3 * relay4 nc->mid
+  9620.9 * relay2 mid->no
+  9621.6 * relay4 mid->no
+  9622.5 * outLamp3 dim->on  indLamp5 dim->on
+  9623.9 * outLamp6 on->dim
+  9630.2 * outLamp2 dim->on  indLamp3 dim->on
+  9635.3 * relay5 no->mid
+  9636.2 * relay5 mid->nc
+  9645.5 * relay4 no->mid
+  9646.4 * relay4 mid->nc
+  9646.5 * relay3 nc->mid
+  9647.8 * relay3 mid->no
+  9658.1 * outLamp3 on->dim  indLamp5 on->dim
+  9679.7 * outLamp6 dim->off
+  9683.5 * dial c10->gap
+  9704.5 * dial gap->c9
+  9706.2 * outLamp6 off->dim
+  9713.8 * outLamp3 dim->off  indLamp5 dim->off
+  9716.2 * relay6 nc->mid
+  9717.5 * relay6 mid->no
+  9720.1 * outLamp1 dim->on  indLamp2 dim->on
+  9720.6 * outLamp3 off->dim  indLamp5 off->dim
+  9725.4 * outLamp6 dim->on
+  9729.5 * relay5 nc->mid
+  9730.8 * relay5 mid->no
+  9768.2 * dial c9->gap
+  9777.9 * relay6 no->mid
+  9778.8 * relay6 mid->nc
+  9789.3 * dial gap->c8
+  9791.6 * relay4 nc->mid
+  9792.9 * relay4 mid->no
+  9793.6 * outLamp3 dim->on  indLamp5 dim->on
+  9793.9 * relay2 no->mid
+  9794.6 * outLamp6 on->dim
+  9794.8 * relay2 mid->nc
+  9804.1 * indLamp4 dim->on
+  9806.6 * relay5 no->mid
+  9807.5 * relay5 mid->nc
+  9813.0 * indLamp4 on->dim
+  9813.3 * relay4 no->mid
+  9814.2 * relay4 mid->nc
+  9815.0 * relay3 no->mid
+  9815.1 * outLamp2 on->dim  indLamp3 on->dim
+  9815.9 * relay3 mid->nc
+  9824.9 * outLamp3 on->dim  indLamp5 on->dim
+  9827.1 * outLamp1 on->dim  indLamp2 on->dim
+  9850.4 * outLamp6 dim->off
+  9854.8 * dial c8->gap
+  9854.9 ? dial=gap  "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  9870.0 * indLamp4 dim->off
+  9872.3 * outLamp2 dim->off  indLamp3 dim->off
+  9875.6 * dial gap->c9
+  9875.7 ? dial=c9  "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  9877.3 * outLamp6 off->dim
+  9880.5 * outLamp3 dim->off  indLamp5 dim->off
+  9882.9 * outLamp1 dim->off  indLamp2 dim->off
+  9887.2 * relay6 nc->mid
+  9888.5 * relay6 mid->no
+  9893.0 * outLamp3 off->dim  indLamp5 off->dim
+  9896.5 * outLamp6 dim->on
+  9900.4 * relay5 nc->mid
+  9901.7 * relay5 mid->no
+  9939.0 * dial c9->gap
+  9939.1 ? dial=gap  "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  9948.8 * relay6 no->mid
+  9949.7 * relay6 mid->nc
+  9952.6 * outLamp2 off->dim  indLamp3 off->dim
+  9958.9 * indLamp4 off->dim
+  9960.2 * dial gap->c10
+  9961.1 * outLamp1 off->dim  indLamp2 off->dim
+  9961.2 * relay2 nc->mid
+  9961.9 * relay4 nc->mid
+  9962.5 * relay2 mid->no
+  9963.2 * relay4 mid->no
+  9964.1 * outLamp3 dim->on  indLamp5 dim->on
+  9965.5 * outLamp6 on->dim
+  9971.8 * outLamp2 dim->on  indLamp3 dim->on
+  9976.9 * relay5 no->mid
+  9977.8 * relay5 mid->nc
+  9987.1 * relay4 no->mid
+  9988.0 * relay4 mid->nc
+  9988.1 * relay3 nc->mid
+  9989.4 * relay3 mid->no
+  9999.7 * outLamp3 on->dim  indLamp5 on->dim
+ 10021.3 * outLamp6 dim->off
+ 10025.1 * dial c10->gap
+ 10046.1 * dial gap->c9
+ 10046.2 ? dial=c9  "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+ 10047.8 * outLamp6 off->dim
+ 10055.4 * outLamp3 dim->off  indLamp5 dim->off
+ 10057.8 * relay6 nc->mid
+ 10059.1 * relay6 mid->no
+ 10061.7 * outLamp1 dim->on  indLamp2 dim->on
+ 10062.2 * outLamp3 off->dim  indLamp5 off->dim
+ 10067.0 * outLamp6 dim->on
+ 10071.1 * relay5 nc->mid
+ 10072.4 * relay5 mid->no
+ 10109.8 * dial c9->gap
+ 10109.9 ? dial=gap  "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+ 10119.5 * relay6 no->mid
+ 10120.4 * relay6 mid->nc
+ 10131.0 * dial gap->c8
+ 10133.2 * relay4 nc->mid
+ 10134.5 * relay4 mid->no
+ 10135.2 * outLamp3 dim->on  indLamp5 dim->on
+ 10135.5 * relay2 no->mid
+ 10136.2 * outLamp6 on->dim
+ 10136.4 * relay2 mid->nc
+ 10145.7 * indLamp4 dim->on
+ 10148.2 * relay5 no->mid
+ 10149.1 * relay5 mid->nc
+ 10154.6 * indLamp4 on->dim
+ 10154.9 * relay4 no->mid
+ 10155.8 * relay4 mid->nc
+ 10156.6 * relay3 no->mid
+ 10156.7 * outLamp2 on->dim  indLamp3 on->dim
+ 10157.5 * relay3 mid->nc
+ 10166.5 * outLamp3 on->dim  indLamp5 on->dim
+ 10168.7 * outLamp1 on->dim  indLamp2 on->dim
+ 10192.0 * outLamp6 dim->off
+ 10196.4 * dial c8->gap
+ 10211.6 * indLamp4 dim->off
+ 10213.9 * outLamp2 dim->off  indLamp3 dim->off
+ 10217.2 * dial gap->c9
+ 10217.3 ? dial=c9  "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."

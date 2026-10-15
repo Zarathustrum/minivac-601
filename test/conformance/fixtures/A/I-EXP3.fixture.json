@@ -1,0 +1,34 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP3",
+  "source": "BK1 printed p.9 = book1.pdf PDF p.11",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1X/1A", "1-/1B", "1Z/2A", "2B/2-"],
+  "errata_applied": [],
+  "wires": ["1+/1Y", "1X/1A", "1-/1B", "1Z/2A", "2B/2-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp2", "v": "on" }],
+      "cite": "BK1 printed p.9 = book1.pdf PDF p.11",
+      "quote": "Light 2 comes on as soon as power is turned ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" },
+        { "dev": "outLamp2", "v": "off" }
+      ],
+      "cite": "BK1 printed p.9 = book1.pdf PDF p.11",
+      "quote": "Push down on pushbutton 1. Light 2 goes OFF and light 1 comes ON."
+    }
+  ]
+}

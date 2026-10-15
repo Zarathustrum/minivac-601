@@ -1,0 +1,40 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP4",
+  "source": "BK1 printed p.10 = book1.pdf PDF p.12",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1X/2Y", "2X/2A", "2B/2-"],
+  "errata_applied": [],
+  "wires": ["1+/1Y", "1X/2Y", "2X/2A", "2B/2-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp2", "v": "off" }],
+      "cite": "BK1 printed p.10 = book1.pdf PDF p.12",
+      "quote": "It does NOT light because the connection from + to the light is broken by pushbutton 2."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp2", "v": "off" }],
+      "cite": "BK1 printed p.10 = book1.pdf PDF p.12",
+      "quote": "It still does NOT light because the connection from + to the light is now broken by pushbutton 1."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp2", "v": "on" }],
+      "cite": "BK1 printed p.10 = book1.pdf PDF p.12",
+      "quote": "Push down both pushbutton 1 and pushbutton 2 at the same time and see light 2 go ON."
+    }
+  ]
+}

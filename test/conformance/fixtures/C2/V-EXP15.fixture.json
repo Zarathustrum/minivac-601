@@ -1,0 +1,471 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP15",
+  "source": "BK5-6 printed p.25 = book5-6.pdf PDF p.31; errata.pdf PDF p.3 (sheet carries no printed page number) 'page 25: Note — to re-set the automatic sequence control, turn power OFF, then ON again.'",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/6G",
+    "1B/1-",
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1G/6A",
+    "1H/1+",
+    "1H/2H",
+    "2A/5G",
+    "2B/2-",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2G/5A",
+    "2H/3H",
+    "2L/D11",
+    "3A/4G",
+    "3B/3-",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3G/4A",
+    "3H/4H",
+    "3L/D12",
+    "4B/4-",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5B/5-",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/M-",
+    "6B/6-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/6G",
+    "1B/1-",
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1G/6A",
+    "1H/1+",
+    "1H/2H",
+    "2A/5G",
+    "2B/2-",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2G/5A",
+    "2H/3H",
+    "2L/D11",
+    "3A/4G",
+    "3B/3-",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3G/4A",
+    "3H/4H",
+    "3L/D12",
+    "4B/4-",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5B/5-",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/M-",
+    "6B/6-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Lights 1 through 6 will come on in order, representing the completion of six successive steps."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.25 = book5-6.pdf PDF p.31",
+      "quote": "Notice that the sequence can be stopped at any time by pushing pushbutton 5."
+    }
+  ],
+  "digest": {
+    "eventCount": 320,
+    "moverTransitions": [
+      4,
+      4,
+      4,
+      6,
+      6,
+      8,
+      0,
+      0,
+      0,
+      0,
+      8,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      189
+    ]
+  },
+  "note": "Wire table image-read at 300 dpi from book5-6.pdf PDF p.31 (Phase 5 Step 6, 2026-10-13): all 47 lines match wiresPrinted; ER-35 is prose only, so wires = as_printed and errata_applied is empty. Script follows the printed procedure twice. Run 1: power on, push pushbutton 6, lights 1 through 6 come on in order, then push pushbutton 5 when light 6 has come on. Then the ER-35 re-set (errata.pdf PDF p.3, 'page 25: Note — to re-set the automatic sequence control, turn power OFF, then ON again.'): power off, power on. Run 2: push pushbutton 6 again, and push pushbutton 5 as soon as light 3 has come on, to exercise 'the sequence can be stopped at any time'. Asserted, printed text only: each light comes on (until), and 'in order' as every later light still off at the moment each light comes on; after the run-2 stop, lights 4, 5 and 6 still off after a 10 s window. Not asserted: 'pushing pushbutton 5 will turn the system off' names no observable (in this simulator lights 2-6 stay lit, relays 1-5 holding through their own N.O. contacts; ER-35's power OFF/ON re-set note is consistent with that), so the run-1 pushbutton 5 press carries no expect; the re-set's resulting state is not printed; timing against dial position, whether earlier lights stay on, and the motor stopping are not printed (Step 7). Run 1's start dial position c0 is the construction state, not printed: the page sets no rotary position. Run 2 starts where run 1's stop left the dial (the c11-c12 gap, after the drive-removed coast offset, 9.54 deg since 2026-10-14; c12 at the earlier invented 20 deg). Run 2's asserts hold for any run-1 rest position except D15, where the wiper (D16/M+) feeds 5C/D15 at power-on and light 2 lights before pushbutton 6 is pushed. Run 2's own stop leaves the dial in the c14-c15 gap at 9.54 deg (on D15 at the earlier 20 deg). From that gap the wiper touches no pad at power-on, so this script no longer leads to the D15 case; from D15 a further ER-35 re-set would not clear light 2 (O-C10). Both are derived and not asserted (Step 7). Rotary geometry, run rate, coast and fitted motor resistances remain profile fallbacks O-R1, O-R3 and O-R5."
+}

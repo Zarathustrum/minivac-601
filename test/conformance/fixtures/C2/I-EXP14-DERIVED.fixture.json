@@ -1,0 +1,188 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP14-DERIVED",
+  "source": "BK1 printed p.24 = book1.pdf PDF p.26; ERRATA sheet p.1 diagram-only 6Y-to-6V correction (ER-02, no wire changed); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/6R",
+    "6+/6W",
+    "6-/6T",
+    "6T/6U",
+    "6S/D18",
+    "6V/D17"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/6R",
+    "6+/6W",
+    "6-/6T",
+    "6T/6U",
+    "6S/D18",
+    "6V/D17"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 400,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 step 4 \"Turn power ON and notice the direction of rotation.\"; derived from topology: switch 6 LEFT: 6S-6R puts D18 on 6+, 6V-6U puts D17 on 6- (6U/6T, 6T/6-), so the motor sees D17 - / D18 +, which per open-questions.md O-R11 ruling (D17 + / D18 - turns toward increasing numbers, [likely]) turns the dial toward decreasing numbers; from the D0 start the first contact made is D15 (one half-pad plus one gap; the long way is 15 pitches, beyond maxMs)",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "maxMs": 400,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 step 4 \"notice the direction of rotation\"; derived from topology: switch 6 LEFT: 6S-6R puts D18 on 6+, 6V-6U puts D17 on 6- (6U/6T, 6T/6-); decreasing rotation continues from D15 to D14, one pitch (the long way is 15 pitches, beyond maxMs)",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 step 5 \"Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction.\" and step 3 \"The current flow through the motor is reversed when the switch position is changed.\"; derived from topology: switch 6 RIGHT: 6S-6T puts D18 on 6-, 6V-6W puts D17 on 6+, so the motor polarity is swapped and the wiper turns back from D14 to D15, the contact it came from (continuing without reversal would need 15 pitches, beyond maxMs)",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 400,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 step 5 \"the pointer knob turns in the opposite direction\"; derived from topology: switch 6 RIGHT: 6S-6T puts D18 on 6-, 6V-6W puts D17 on 6+ gives D17 + / D18 -, increasing per open-questions.md O-R11 ruling (D17 + / D18 - turns toward increasing numbers, [likely]); the wiper continues from D15 to D0, one pitch",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "sw6",
+          "v": "no"
+        },
+        {
+          "dev": "power",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 steps 1-2 program; derived from topology: 6R and 6W are on 6+, 6T and 6U on 6-, and the arms 6S and 6V go only to D18 and D17, so neither switch position joins + to - and the breaker holds",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 step 5 \"Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction.\"; derived from topology: switch 6 LEFT: 6S-6R puts D18 on 6+, 6V-6U puts D17 on 6- (6U/6T, 6T/6-) restores D17 - / D18 +, so the wiper turns back from D0 to D15 (continuing without reversal would need 15 pitches, beyond maxMs)",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "sw6",
+          "v": "nc"
+        },
+        {
+          "dev": "power",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26 steps 1-2 program; derived from topology: with switch 6 back LEFT no path joins + to -, so the breaker holds",
+      "quote": "This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 19,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      10
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A). Every assert is derived by hand from the 6-wire topology and the printed rule (p.24 step 5: changing switch 6 reverses the motor), not from printed dial positions; the page prints no direction. Topology: 6R and 6W on 6+, 6T and 6U on 6- (6-/6T, 6T/6U); arm 6S feeds D18 and arm 6V feeds D17. Switch LEFT (rest, nc): D18 +, D17 -. Switch RIGHT (no): D18 -, D17 +. The absolute sense (D17 + / D18 - toward increasing numbers) is the O-R11 ruling, [likely], not printed on this page. The reversal is encoded without a direction observable (O-C14) by pad-by-pad until steps: each one-pitch leg has maxMs 400 and each reversal leg maxMs 600, both well under the 15 pitches the wiper would need going the long way round, so a dial that kept its direction, or ran the other sense, fails. The window rests on the run rate (O-R3, 45 rpm fallback): the legs pass from about 13 rpm and stay decisive up to about 85 rpm. The reversal legs tolerate any coast during the slide's break-before-make stroke (O-R5) up to about one pitch. Start position D0 is the construction default, not printed. Rotary geometry, run rate and coast remain profile fallbacks O-R1, O-R3 and O-R5."
+}

@@ -1,0 +1,564 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-ASSOCMEM",
+  "source": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, image-read",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1K",
+    "1B/1-",
+    "1C/2C",
+    "1F/4H",
+    "1F/1X",
+    "1G/6F",
+    "1H/3K",
+    "1K/2H",
+    "1L/2L",
+    "1L/1Y",
+    "1Y/2Y",
+    "2A/2K",
+    "2B/2-",
+    "2C/3C",
+    "2F/5H",
+    "2F/2X",
+    "2G/4F",
+    "2K/3H",
+    "2L/3L",
+    "2Y/3Y",
+    "3A/3K",
+    "3B/3-",
+    "3C/4C",
+    "3F/6H",
+    "3F/3X",
+    "3G/5F",
+    "3L/4L",
+    "4C/5C",
+    "4F/4K",
+    "4G/5H",
+    "4H/6G",
+    "4L/5L",
+    "5C/6C",
+    "5F/5K",
+    "5G/6H",
+    "5L/6L",
+    "6C/6-",
+    "6F/6K",
+    "6L/6Z",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Light n belongs to pushbutton n: the page states 'pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on'. Asserted: individual presses (light n on, the other two off, per 'the single light'); after pushing 2 and 3 together, pushing either lights 2 and 3; after pushing all three together, pushing any one lights all three (the pairing is not forgotten in between, as the page continues the sequence). Not asserted: lamp states after release, light 1 alone after the 2+3 association, and the state after the 'forget' button (pushbutton 6), since the page states no observable beyond 'ready to learn'. The forget press is scripted but carries no expect.",
+  "wires": [
+    "1A/1K",
+    "1B/1-",
+    "1C/2C",
+    "1F/4H",
+    "1F/1X",
+    "1G/6F",
+    "1H/3K",
+    "1K/2H",
+    "1L/2L",
+    "1L/1Y",
+    "1Y/2Y",
+    "2A/2K",
+    "2B/2-",
+    "2C/3C",
+    "2F/5H",
+    "2F/2X",
+    "2G/4F",
+    "2K/3H",
+    "2L/3L",
+    "2Y/3Y",
+    "3A/3K",
+    "3B/3-",
+    "3C/4C",
+    "3F/6H",
+    "3F/3X",
+    "3G/5F",
+    "3L/4L",
+    "4C/5C",
+    "4F/4K",
+    "4G/5H",
+    "4H/6G",
+    "4L/5L",
+    "5C/6C",
+    "5F/5K",
+    "5G/6H",
+    "5L/6L",
+    "6C/6-",
+    "6F/6K",
+    "6L/6Z",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push pushbutton 1, 2 and 3 individually. Notice that each pushbutton turns on the single light associated with it."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push pushbutton 1, 2 and 3 individually. Notice that each pushbutton turns on the single light associated with it."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push pushbutton 1, 2 and 3 individually. Notice that each pushbutton turns on the single light associated with it."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Now push two pushbuttons simultaneously— for example, pushbuttons 2 and 3. From now on, pushing either of the associated pushbuttons will turn on both of the associated lights."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Now push two pushbuttons simultaneously— for example, pushbuttons 2 and 3. From now on, pushing either of the associated pushbuttons will turn on both of the associated lights."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push all three pushbuttons simultaneously. Now pushing any one of the pushbuttons will turn on all three lights."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push all three pushbuttons simultaneously. Now pushing any one of the pushbuttons will turn on all three lights."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory (second paragraph) and To use the program",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push all three pushbuttons simultaneously. Now pushing any one of the pushbuttons will turn on all three lights."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    }
+  ]
+}

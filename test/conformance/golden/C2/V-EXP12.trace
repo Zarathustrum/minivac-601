@@ -1,0 +1,653 @@
+#!mv601-trace 1
+# id=V-EXP12 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=38
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+     0.0 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+     0.0 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+     0.0 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+     0.0 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+     0.0 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+     0.0 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+     0.0 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > disconnect cord=38
+   500.0 > connect cord=38 a=hole:M10#3 b=hole:M1t#1 r_uohm=0
+   500.0 > disconnect cord=39
+   500.0 > connect cord=39 a=hole:M10#4 b=hole:M2t#1 r_uohm=0
+   500.0 > disconnect cord=40
+   500.0 > connect cord=40 a=hole:M10#5 b=hole:M3t#1 r_uohm=0
+   500.0 > disconnect cord=41
+   500.0 > connect cord=41 a=hole:M10#6 b=hole:M7t#2 r_uohm=0
+   500.0 > disconnect cord=42
+   500.0 > connect cord=42 a=hole:M11#2 b=hole:M9t#2 r_uohm=0
+   800.0 > button6 target=1000
+   811.2 * pb6 nc->mid
+   813.7 * pb6 mid->no
+   823.7 * indLamp1 off->dim  indLamp6 off->dim
+   824.9 * relay1 nc->mid
+   825.8 * relay6 nc->mid
+   826.2 * relay1 mid->no
+   827.1 * relay6 mid->no
+   845.2 * dial c0->gap
+   864.3 * indLamp1 dim->on  indLamp6 dim->on
+   866.1 * dial gap->c1
+   928.9 * dial c1->gap
+   949.9 * dial gap->c2
+  1012.7 * dial c2->gap
+  1033.6 * dial gap->c3
+  1096.4 * dial c3->gap
+  1117.3 * dial gap->c4
+  1180.1 * dial c4->gap
+  1201.0 * dial gap->c5
+  1263.8 * dial c5->gap
+  1284.8 * dial gap->c6
+  1347.6 * dial c6->gap
+  1368.5 * dial gap->c7
+  1368.6 ? dial=c7  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 7 drawn on the matrix dots; CODE column:] 12379 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+  6368.6 ? dial=c7  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 7 drawn on the matrix dots; CODE column:] 12379 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+  6368.6 > button6 target=0
+  6379.8 * pb6 no->mid
+  6382.3 * pb6 mid->nc
+  6386.7 * relay6 no->mid
+  6387.5 * relay1 no->mid
+  6387.6 * relay6 mid->nc
+  6388.4 * relay1 mid->nc
+  6397.9 * indLamp1 on->dim  indLamp6 on->dim
+  6453.8 * indLamp1 dim->off  indLamp6 dim->off
+  8368.6 ? dial=c7  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 7 drawn on the matrix dots; CODE column:] 12379 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+  8368.6 > disconnect cord=38
+  8368.6 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+  8368.6 > disconnect cord=39
+  8368.6 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+  8368.6 > disconnect cord=40
+  8368.6 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+  8368.6 > disconnect cord=41
+  8368.6 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+  8368.6 > disconnect cord=42
+  8368.6 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+  8368.6 > disconnect cord=43
+  8368.6 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+  8368.6 > disconnect cord=44
+  8368.6 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+  8368.6 > disconnect cord=45
+  8368.6 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+  8868.6 > disconnect cord=38
+  8868.6 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+  8868.6 > disconnect cord=39
+  8868.6 > connect cord=39 a=hole:M10#4 b=hole:M3t#1 r_uohm=0
+  8868.6 > disconnect cord=40
+  8868.6 > connect cord=40 a=hole:M10#5 b=hole:M5t#2 r_uohm=0
+  8868.6 > disconnect cord=41
+  8868.6 > connect cord=41 a=hole:M10#6 b=hole:M6t#2 r_uohm=0
+  8868.6 > disconnect cord=42
+  8868.6 > connect cord=42 a=hole:M11#2 b=hole:M7t#2 r_uohm=0
+  8868.6 > disconnect cord=43
+  8868.6 > connect cord=43 a=hole:M11#3 b=hole:M8t#2 r_uohm=0
+  8868.6 > disconnect cord=44
+  8868.6 > connect cord=44 a=hole:M11#4 b=hole:M9t#2 r_uohm=0
+  9168.6 > button6 target=1000
+  9179.8 * pb6 nc->mid
+  9182.3 * pb6 mid->no
+  9192.3 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp6 off->dim
+  9193.5 * relay1 nc->mid
+  9193.7 * relay2 nc->mid
+  9193.9 * relay3 nc->mid
+  9194.1 * relay4 nc->mid
+  9194.5 * relay6 nc->mid
+  9194.8 * relay1 mid->no
+  9195.0 * relay2 mid->no
+  9195.2 * relay3 mid->no
+  9195.4 * relay4 mid->no
+  9195.8 * relay6 mid->no
+  9227.1 * dial c7->gap
+  9233.2 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp6 dim->on
+  9248.2 * dial gap->c8
+  9311.5 * dial c8->gap
+  9332.5 * dial gap->c9
+  9395.8 * dial c9->gap
+  9416.9 * dial gap->c10
+  9480.1 * dial c10->gap
+  9501.2 * dial gap->c11
+  9564.5 * dial c11->gap
+  9585.5 * dial gap->c12
+  9648.8 * dial c12->gap
+  9669.9 * dial gap->c13
+  9733.1 * dial c13->gap
+  9754.2 * dial gap->c14
+  9817.4 * dial c14->gap
+  9838.5 * dial gap->c15
+  9901.8 * dial c15->gap
+  9922.8 * dial gap->c0
+  9986.1 * dial c0->gap
+ 10007.2 * dial gap->c1
+ 10070.4 * dial c1->gap
+ 10091.5 * dial gap->c2
+ 10091.6 ? dial=c2  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 2 drawn on the matrix dots; CODE column:] 2356789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 15091.6 ? dial=c2  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 2 drawn on the matrix dots; CODE column:] 2356789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 15091.6 > button6 target=0
+ 15102.8 * pb6 no->mid
+ 15105.3 * pb6 mid->nc
+ 15109.1 * relay6 no->mid
+ 15109.4 * relay4 no->mid
+ 15109.5 * relay3 no->mid
+ 15109.7 * relay2 no->mid
+ 15109.8 * relay1 no->mid
+ 15110.0 * relay6 mid->nc
+ 15110.3 * relay4 mid->nc
+ 15110.4 * relay3 mid->nc
+ 15110.6 * relay2 mid->nc
+ 15110.7 * relay1 mid->nc
+ 15119.5 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp6 on->dim
+ 15175.2 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp6 dim->off
+ 17091.6 ? dial=c2  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 2 drawn on the matrix dots; CODE column:] 2356789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 17091.6 > disconnect cord=38
+ 17091.6 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 17091.6 > disconnect cord=39
+ 17091.6 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 17091.6 > disconnect cord=40
+ 17091.6 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 17091.6 > disconnect cord=41
+ 17091.6 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 17091.6 > disconnect cord=42
+ 17091.6 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 17091.6 > disconnect cord=43
+ 17091.6 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 17091.6 > disconnect cord=44
+ 17091.6 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 17091.6 > disconnect cord=45
+ 17091.6 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 17591.6 > disconnect cord=38
+ 17591.6 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+ 17591.6 > disconnect cord=39
+ 17591.6 > connect cord=39 a=hole:M10#4 b=hole:M3t#1 r_uohm=0
+ 17591.6 > disconnect cord=40
+ 17591.6 > connect cord=40 a=hole:M10#5 b=hole:M4t#2 r_uohm=0
+ 17591.6 > disconnect cord=41
+ 17591.6 > connect cord=41 a=hole:M10#6 b=hole:M5t#2 r_uohm=0
+ 17591.6 > disconnect cord=42
+ 17591.6 > connect cord=42 a=hole:M11#2 b=hole:M9t#2 r_uohm=0
+ 17891.6 > button6 target=1000
+ 17902.8 * pb6 nc->mid
+ 17905.3 * pb6 mid->no
+ 17915.3 * indLamp1 off->dim  indLamp2 off->dim  indLamp5 off->dim
+ 17916.5 * relay1 nc->mid
+ 17916.7 * relay2 nc->mid
+ 17917.2 * relay5 nc->mid
+ 17917.8 * relay1 mid->no
+ 17918.0 * relay2 mid->no
+ 17918.5 * relay5 mid->no
+ 17950.1 * dial c2->gap
+ 17956.0 * indLamp1 dim->on  indLamp2 dim->on  indLamp5 dim->on
+ 17971.1 * dial gap->c3
+ 18034.0 * dial c3->gap
+ 18055.0 * dial gap->c4
+ 18118.0 * dial c4->gap
+ 18139.0 * dial gap->c5
+ 18201.9 * dial c5->gap
+ 18222.9 * dial gap->c6
+ 18285.8 * dial c6->gap
+ 18306.8 * dial gap->c7
+ 18369.8 * dial c7->gap
+ 18390.8 * dial gap->c8
+ 18453.7 * dial c8->gap
+ 18474.7 * dial gap->c9
+ 18474.8 ? dial=c9  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 9 drawn on the matrix dots; CODE column:] 23459 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 23474.8 ? dial=c9  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 9 drawn on the matrix dots; CODE column:] 23459 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 23474.8 > button6 target=0
+ 23486.0 * pb6 no->mid
+ 23488.5 * pb6 mid->nc
+ 23492.8 * relay5 no->mid
+ 23493.3 * relay2 no->mid
+ 23493.5 * relay1 no->mid
+ 23493.7 * relay5 mid->nc
+ 23494.2 * relay2 mid->nc
+ 23494.4 * relay1 mid->nc
+ 23503.6 * indLamp1 on->dim  indLamp2 on->dim  indLamp5 on->dim
+ 23559.4 * indLamp1 dim->off  indLamp2 dim->off  indLamp5 dim->off
+ 25474.8 ? dial=c9  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 9 drawn on the matrix dots; CODE column:] 23459 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 25474.8 > disconnect cord=38
+ 25474.8 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 25474.8 > disconnect cord=39
+ 25474.8 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 25474.8 > disconnect cord=40
+ 25474.8 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 25474.8 > disconnect cord=41
+ 25474.8 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 25474.8 > disconnect cord=42
+ 25474.8 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 25474.8 > disconnect cord=43
+ 25474.8 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 25474.8 > disconnect cord=44
+ 25474.8 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 25474.8 > disconnect cord=45
+ 25474.8 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 25974.8 > disconnect cord=38
+ 25974.8 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+ 25974.8 > disconnect cord=39
+ 25974.8 > connect cord=39 a=hole:M10#4 b=hole:M4t#2 r_uohm=0
+ 25974.8 > disconnect cord=40
+ 25974.8 > connect cord=40 a=hole:M10#5 b=hole:M6t#2 r_uohm=0
+ 25974.8 > disconnect cord=41
+ 25974.8 > connect cord=41 a=hole:M10#6 b=hole:M8t#2 r_uohm=0
+ 25974.8 > disconnect cord=42
+ 25974.8 > connect cord=42 a=hole:M11#2 b=hole:M9t#2 r_uohm=0
+ 26274.8 > button6 target=1000
+ 26286.0 * pb6 nc->mid
+ 26288.5 * pb6 mid->no
+ 26298.5 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+ 26299.7 * relay1 nc->mid
+ 26300.1 * relay3 nc->mid
+ 26300.3 * relay4 nc->mid
+ 26300.5 * relay5 nc->mid
+ 26301.0 * relay1 mid->no
+ 26301.4 * relay3 mid->no
+ 26301.6 * relay4 mid->no
+ 26301.8 * relay5 mid->no
+ 26333.3 * dial c9->gap
+ 26339.3 * indLamp1 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on
+ 26354.3 * dial gap->c10
+ 26417.4 * dial c10->gap
+ 26438.5 * dial gap->c11
+ 26501.5 * dial c11->gap
+ 26522.6 * dial gap->c12
+ 26585.7 * dial c12->gap
+ 26606.7 * dial gap->c13
+ 26669.8 * dial c13->gap
+ 26690.8 * dial gap->c14
+ 26753.9 * dial c14->gap
+ 26774.9 * dial gap->c15
+ 26838.0 * dial c15->gap
+ 26859.1 * dial gap->c0
+ 26922.1 * dial c0->gap
+ 26943.2 * dial gap->c1
+ 27006.3 * dial c1->gap
+ 27027.3 * dial gap->c2
+ 27090.4 * dial c2->gap
+ 27111.4 * dial gap->c3
+ 27174.5 * dial c3->gap
+ 27195.5 * dial gap->c4
+ 27195.6 ? dial=c4  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 4 drawn on the matrix dots; CODE column:] 24689 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 32195.6 ? dial=c4  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 4 drawn on the matrix dots; CODE column:] 24689 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 32195.6 > button6 target=0
+ 32206.8 * pb6 no->mid
+ 32209.3 * pb6 mid->nc
+ 32213.4 * relay5 no->mid
+ 32213.6 * relay4 no->mid
+ 32213.7 * relay3 no->mid
+ 32214.0 * relay1 no->mid
+ 32214.3 * relay5 mid->nc
+ 32214.5 * relay4 mid->nc
+ 32214.6 * relay3 mid->nc
+ 32214.9 * relay1 mid->nc
+ 32223.9 * indLamp1 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim
+ 32279.7 * indLamp1 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+ 34195.6 ? dial=c4  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 4 drawn on the matrix dots; CODE column:] 24689 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 34195.6 > disconnect cord=38
+ 34195.6 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 34195.6 > disconnect cord=39
+ 34195.6 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 34195.6 > disconnect cord=40
+ 34195.6 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 34195.6 > disconnect cord=41
+ 34195.6 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 34195.6 > disconnect cord=42
+ 34195.6 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 34195.6 > disconnect cord=43
+ 34195.6 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 34195.6 > disconnect cord=44
+ 34195.6 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 34195.6 > disconnect cord=45
+ 34195.6 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 34695.6 > disconnect cord=38
+ 34695.6 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+ 34695.6 > disconnect cord=39
+ 34695.6 > connect cord=39 a=hole:M10#4 b=hole:M6t#2 r_uohm=0
+ 34695.6 > disconnect cord=40
+ 34695.6 > connect cord=40 a=hole:M10#5 b=hole:M9t#2 r_uohm=0
+ 34995.6 > button6 target=1000
+ 35006.8 * pb6 nc->mid
+ 35009.3 * pb6 mid->no
+ 35019.3 * indLamp1 off->dim  indLamp3 off->dim
+ 35020.5 * relay1 nc->mid
+ 35020.9 * relay3 nc->mid
+ 35021.8 * relay1 mid->no
+ 35022.2 * relay3 mid->no
+ 35053.9 * dial c4->gap
+ 35059.9 * indLamp1 dim->on  indLamp3 dim->on
+ 35074.9 * dial gap->c5
+ 35137.7 * dial c5->gap
+ 35158.6 * dial gap->c6
+ 35221.4 * dial c6->gap
+ 35242.3 * dial gap->c7
+ 35305.1 * dial c7->gap
+ 35326.1 * dial gap->c8
+ 35388.9 * dial c8->gap
+ 35409.8 * dial gap->c9
+ 35472.6 * dial c9->gap
+ 35493.5 * dial gap->c10
+ 35556.3 * dial c10->gap
+ 35577.2 * dial gap->c11
+ 35640.0 * dial c11->gap
+ 35661.0 * dial gap->c12
+ 35723.8 * dial c12->gap
+ 35744.7 * dial gap->c13
+ 35807.5 * dial c13->gap
+ 35828.4 * dial gap->c14
+ 35891.2 * dial c14->gap
+ 35912.1 * dial gap->c15
+ 35974.9 * dial c15->gap
+ 35995.9 * dial gap->c0
+ 36058.7 * dial c0->gap
+ 36079.6 * dial gap->c1
+ 36079.7 ? dial=c1  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 1 drawn on the matrix dots; CODE column:] 269 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 41079.7 ? dial=c1  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 1 drawn on the matrix dots; CODE column:] 269 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 41079.7 > button6 target=0
+ 41090.9 * pb6 no->mid
+ 41093.4 * pb6 mid->nc
+ 41098.3 * relay3 no->mid
+ 41098.6 * relay1 no->mid
+ 41099.2 * relay3 mid->nc
+ 41099.5 * relay1 mid->nc
+ 41109.2 * indLamp1 on->dim  indLamp3 on->dim
+ 41165.1 * indLamp1 dim->off  indLamp3 dim->off
+ 43079.7 ? dial=c1  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 1 drawn on the matrix dots; CODE column:] 269 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 43079.7 > disconnect cord=38
+ 43079.7 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 43079.7 > disconnect cord=39
+ 43079.7 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 43079.7 > disconnect cord=40
+ 43079.7 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 43079.7 > disconnect cord=41
+ 43079.7 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 43079.7 > disconnect cord=42
+ 43079.7 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 43079.7 > disconnect cord=43
+ 43079.7 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 43079.7 > disconnect cord=44
+ 43079.7 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 43079.7 > disconnect cord=45
+ 43079.7 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 43579.7 > disconnect cord=38
+ 43579.7 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+ 43579.7 > disconnect cord=39
+ 43579.7 > connect cord=39 a=hole:M10#4 b=hole:M4t#2 r_uohm=0
+ 43579.7 > disconnect cord=40
+ 43579.7 > connect cord=40 a=hole:M10#5 b=hole:M5t#2 r_uohm=0
+ 43579.7 > disconnect cord=41
+ 43579.7 > connect cord=41 a=hole:M10#6 b=hole:M6t#2 r_uohm=0
+ 43579.7 > disconnect cord=42
+ 43579.7 > connect cord=42 a=hole:M11#2 b=hole:M9t#2 r_uohm=0
+ 43879.7 > button6 target=1000
+ 43890.9 * pb6 nc->mid
+ 43893.4 * pb6 mid->no
+ 43903.4 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp5 off->dim
+ 43904.7 * relay1 nc->mid
+ 43904.9 * relay2 nc->mid
+ 43905.1 * relay3 nc->mid
+ 43905.5 * relay5 nc->mid
+ 43906.0 * relay1 mid->no
+ 43906.2 * relay2 mid->no
+ 43906.4 * relay3 mid->no
+ 43906.8 * relay5 mid->no
+ 43944.3 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp5 dim->on
+ 43950.1 * dial c1->gap
+ 43971.1 * dial gap->c2
+ 44034.2 * dial c2->gap
+ 44055.2 * dial gap->c3
+ 44118.3 * dial c3->gap
+ 44139.4 * dial gap->c4
+ 44202.5 * dial c4->gap
+ 44223.5 * dial gap->c5
+ 44286.6 * dial c5->gap
+ 44307.6 * dial gap->c6
+ 44307.7 ? dial=c6  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 6 drawn on the matrix dots; CODE column:] 24569 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 49307.7 ? dial=c6  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 6 drawn on the matrix dots; CODE column:] 24569 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 49307.7 > button6 target=0
+ 49318.9 * pb6 no->mid
+ 49321.4 * pb6 mid->nc
+ 49325.5 * relay5 no->mid
+ 49325.8 * relay3 no->mid
+ 49326.0 * relay2 no->mid
+ 49326.1 * relay1 no->mid
+ 49326.4 * relay5 mid->nc
+ 49326.7 * relay3 mid->nc
+ 49326.9 * relay2 mid->nc
+ 49327.0 * relay1 mid->nc
+ 49336.0 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp5 on->dim
+ 49391.8 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp5 dim->off
+ 51307.7 ? dial=c6  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 6 drawn on the matrix dots; CODE column:] 24569 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 51307.7 > disconnect cord=38
+ 51307.7 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 51307.7 > disconnect cord=39
+ 51307.7 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 51307.7 > disconnect cord=40
+ 51307.7 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 51307.7 > disconnect cord=41
+ 51307.7 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 51307.7 > disconnect cord=42
+ 51307.7 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 51307.7 > disconnect cord=43
+ 51307.7 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 51307.7 > disconnect cord=44
+ 51307.7 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 51307.7 > disconnect cord=45
+ 51307.7 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 51807.7 > disconnect cord=38
+ 51807.7 > connect cord=38 a=hole:M10#3 b=hole:M1t#1 r_uohm=0
+ 51807.7 > disconnect cord=39
+ 51807.7 > connect cord=39 a=hole:M10#4 b=hole:M2t#1 r_uohm=0
+ 51807.7 > disconnect cord=40
+ 51807.7 > connect cord=40 a=hole:M10#5 b=hole:M6t#2 r_uohm=0
+ 51807.7 > disconnect cord=41
+ 51807.7 > connect cord=41 a=hole:M10#6 b=hole:M7t#2 r_uohm=0
+ 51807.7 > disconnect cord=42
+ 51807.7 > connect cord=42 a=hole:M11#2 b=hole:M8t#2 r_uohm=0
+ 51807.7 > disconnect cord=43
+ 51807.7 > connect cord=43 a=hole:M11#3 b=hole:M9t#2 r_uohm=0
+ 52107.7 > button6 target=1000
+ 52118.9 * pb6 nc->mid
+ 52121.4 * pb6 mid->no
+ 52131.4 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp6 off->dim
+ 52132.6 * relay1 nc->mid
+ 52133.0 * relay3 nc->mid
+ 52133.2 * relay4 nc->mid
+ 52133.6 * relay6 nc->mid
+ 52133.9 * relay1 mid->no
+ 52134.3 * relay3 mid->no
+ 52134.5 * relay4 mid->no
+ 52134.9 * relay6 mid->no
+ 52166.2 * dial c6->gap
+ 52172.2 * indLamp1 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp6 dim->on
+ 52187.3 * dial gap->c7
+ 52250.4 * dial c7->gap
+ 52271.4 * dial gap->c8
+ 52334.5 * dial c8->gap
+ 52355.6 * dial gap->c9
+ 52418.7 * dial c9->gap
+ 52439.7 * dial gap->c10
+ 52502.8 * dial c10->gap
+ 52523.8 * dial gap->c11
+ 52586.9 * dial c11->gap
+ 52607.9 * dial gap->c12
+ 52671.0 * dial c12->gap
+ 52692.0 * dial gap->c13
+ 52755.1 * dial c13->gap
+ 52776.2 * dial gap->c14
+ 52839.3 * dial c14->gap
+ 52860.3 * dial gap->c15
+ 52923.4 * dial c15->gap
+ 52944.4 * dial gap->c0
+ 53007.5 * dial c0->gap
+ 53028.5 * dial gap->c1
+ 53091.6 * dial c1->gap
+ 53112.6 * dial gap->c2
+ 53175.7 * dial c2->gap
+ 53196.8 * dial gap->c3
+ 53196.9 ? dial=c3  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 3 drawn on the matrix dots; CODE column:] 126789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 58196.9 ? dial=c3  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 3 drawn on the matrix dots; CODE column:] 126789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 58196.9 > button6 target=0
+ 58208.1 * pb6 no->mid
+ 58210.6 * pb6 mid->nc
+ 58214.6 * relay6 no->mid
+ 58214.9 * relay4 no->mid
+ 58215.0 * relay3 no->mid
+ 58215.3 * relay1 no->mid
+ 58215.5 * relay6 mid->nc
+ 58215.8 * relay4 mid->nc
+ 58215.9 * relay3 mid->nc
+ 58216.2 * relay1 mid->nc
+ 58225.2 * indLamp1 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp6 on->dim
+ 58281.0 * indLamp1 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp6 dim->off
+ 60196.9 ? dial=c3  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 3 drawn on the matrix dots; CODE column:] 126789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 60196.9 > disconnect cord=38
+ 60196.9 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 60196.9 > disconnect cord=39
+ 60196.9 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 60196.9 > disconnect cord=40
+ 60196.9 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 60196.9 > disconnect cord=41
+ 60196.9 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 60196.9 > disconnect cord=42
+ 60196.9 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 60196.9 > disconnect cord=43
+ 60196.9 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 60196.9 > disconnect cord=44
+ 60196.9 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 60196.9 > disconnect cord=45
+ 60196.9 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 60696.9 > disconnect cord=38
+ 60696.9 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+ 60696.9 > disconnect cord=39
+ 60696.9 > connect cord=39 a=hole:M10#4 b=hole:M3t#1 r_uohm=0
+ 60696.9 > disconnect cord=40
+ 60696.9 > connect cord=40 a=hole:M10#5 b=hole:M6t#2 r_uohm=0
+ 60696.9 > disconnect cord=41
+ 60696.9 > connect cord=41 a=hole:M10#6 b=hole:M7t#2 r_uohm=0
+ 60696.9 > disconnect cord=42
+ 60696.9 > connect cord=42 a=hole:M11#2 b=hole:M9t#2 r_uohm=0
+ 60996.9 > button6 target=1000
+ 61008.1 * pb6 nc->mid
+ 61010.6 * pb6 mid->no
+ 61020.6 * indLamp1 off->dim  indLamp3 off->dim  indLamp6 off->dim
+ 61021.8 * relay1 nc->mid
+ 61022.2 * relay3 nc->mid
+ 61022.7 * relay6 nc->mid
+ 61023.1 * relay1 mid->no
+ 61023.5 * relay3 mid->no
+ 61024.0 * relay6 mid->no
+ 61055.3 * dial c3->gap
+ 61061.3 * indLamp1 dim->on  indLamp3 dim->on  indLamp6 dim->on
+ 61076.3 * dial gap->c4
+ 61139.2 * dial c4->gap
+ 61160.2 * dial gap->c5
+ 61223.2 * dial c5->gap
+ 61244.2 * dial gap->c6
+ 61307.1 * dial c6->gap
+ 61328.1 * dial gap->c7
+ 61391.0 * dial c7->gap
+ 61412.0 * dial gap->c8
+ 61412.1 ? dial=c8  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 8 drawn on the matrix dots; CODE column:] 23679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.23:] For instance, the \"8\" is a bit lop-sided."
+ 66412.1 ? dial=c8  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 8 drawn on the matrix dots; CODE column:] 23679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.23:] For instance, the \"8\" is a bit lop-sided."
+ 66412.1 > button6 target=0
+ 66423.3 * pb6 no->mid
+ 66425.8 * pb6 mid->nc
+ 66430.0 * relay6 no->mid
+ 66430.4 * relay3 no->mid
+ 66430.8 * relay1 no->mid
+ 66430.9 * relay6 mid->nc
+ 66431.3 * relay3 mid->nc
+ 66431.7 * relay1 mid->nc
+ 66440.9 * indLamp1 on->dim  indLamp3 on->dim  indLamp6 on->dim
+ 66496.7 * indLamp1 dim->off  indLamp3 dim->off  indLamp6 dim->off
+ 68412.1 ? dial=c8  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 8 drawn on the matrix dots; CODE column:] 23679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.23:] For instance, the \"8\" is a bit lop-sided."
+ 68412.1 > disconnect cord=38
+ 68412.1 > connect cord=38 a=hole:M10#3 b=free r_uohm=0
+ 68412.1 > disconnect cord=39
+ 68412.1 > connect cord=39 a=hole:M10#4 b=free r_uohm=0
+ 68412.1 > disconnect cord=40
+ 68412.1 > connect cord=40 a=hole:M10#5 b=free r_uohm=0
+ 68412.1 > disconnect cord=41
+ 68412.1 > connect cord=41 a=hole:M10#6 b=free r_uohm=0
+ 68412.1 > disconnect cord=42
+ 68412.1 > connect cord=42 a=hole:M11#2 b=free r_uohm=0
+ 68412.1 > disconnect cord=43
+ 68412.1 > connect cord=43 a=hole:M11#3 b=free r_uohm=0
+ 68412.1 > disconnect cord=44
+ 68412.1 > connect cord=44 a=hole:M11#4 b=free r_uohm=0
+ 68412.1 > disconnect cord=45
+ 68412.1 > connect cord=45 a=hole:M11#5 b=free r_uohm=0
+ 68912.1 > disconnect cord=38
+ 68912.1 > connect cord=38 a=hole:M10#3 b=hole:M2t#1 r_uohm=0
+ 68912.1 > disconnect cord=39
+ 68912.1 > connect cord=39 a=hole:M10#4 b=hole:M3t#1 r_uohm=0
+ 68912.1 > disconnect cord=40
+ 68912.1 > connect cord=40 a=hole:M10#5 b=hole:M4t#2 r_uohm=0
+ 68912.1 > disconnect cord=41
+ 68912.1 > connect cord=41 a=hole:M10#6 b=hole:M5t#2 r_uohm=0
+ 68912.1 > disconnect cord=42
+ 68912.1 > connect cord=42 a=hole:M11#2 b=hole:M6t#2 r_uohm=0
+ 68912.1 > disconnect cord=43
+ 68912.1 > connect cord=43 a=hole:M11#3 b=hole:M7t#2 r_uohm=0
+ 68912.1 > disconnect cord=44
+ 68912.1 > connect cord=44 a=hole:M11#4 b=hole:M9t#2 r_uohm=0
+ 69212.1 > button6 target=1000
+ 69223.3 * pb6 nc->mid
+ 69225.8 * pb6 mid->no
+ 69235.8 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 69237.0 * relay1 nc->mid
+ 69237.2 * relay2 nc->mid
+ 69237.4 * relay3 nc->mid
+ 69237.8 * relay5 nc->mid
+ 69238.0 * relay6 nc->mid
+ 69238.3 * relay1 mid->no
+ 69238.5 * relay2 mid->no
+ 69238.7 * relay3 mid->no
+ 69239.1 * relay5 mid->no
+ 69239.3 * relay6 mid->no
+ 69270.7 * dial c8->gap
+ 69276.7 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 69291.8 * dial gap->c9
+ 69355.1 * dial c9->gap
+ 69376.2 * dial gap->c10
+ 69439.4 * dial c10->gap
+ 69460.5 * dial gap->c11
+ 69523.7 * dial c11->gap
+ 69544.8 * dial gap->c12
+ 69608.1 * dial c12->gap
+ 69629.2 * dial gap->c13
+ 69692.4 * dial c13->gap
+ 69713.5 * dial gap->c14
+ 69776.7 * dial c14->gap
+ 69797.8 * dial gap->c15
+ 69861.1 * dial c15->gap
+ 69882.1 * dial gap->c0
+ 69945.4 * dial c0->gap
+ 69966.5 * dial gap->c1
+ 70029.7 * dial c1->gap
+ 70050.8 * dial gap->c2
+ 70114.0 * dial c2->gap
+ 70135.1 * dial gap->c3
+ 70198.4 * dial c3->gap
+ 70219.4 * dial gap->c4
+ 70282.7 * dial c4->gap
+ 70303.8 * dial gap->c5
+ 70303.9 ? dial=c5  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 5 drawn on the matrix dots; CODE column:] 2345679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 75303.9 ? dial=c5  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 5 drawn on the matrix dots; CODE column:] 2345679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+ 75303.9 > button6 target=0
+ 75315.1 * pb6 no->mid
+ 75317.6 * pb6 mid->nc
+ 75321.4 * relay6 no->mid
+ 75321.5 * relay5 no->mid
+ 75321.8 * relay3 no->mid
+ 75322.0 * relay2 no->mid
+ 75322.1 * relay1 no->mid
+ 75322.3 * relay6 mid->nc
+ 75322.4 * relay5 mid->nc
+ 75322.7 * relay3 mid->nc
+ 75322.9 * relay2 mid->nc
+ 75323.0 * relay1 mid->nc
+ 75331.8 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 75387.5 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 77303.9 ? dial=c5  "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 5 drawn on the matrix dots; CODE column:] 2345679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."

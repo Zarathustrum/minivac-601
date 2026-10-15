@@ -1,0 +1,267 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-RELAYAND-DERIVED",
+  "source": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; ERRATA ER-11 (prose), ER-12 (wire 2+/2H to 1G/2H); Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "2+/2Y",
+    "2X/2C",
+    "2F/2-",
+    "1+/1H",
+    "2+/2H",
+    "2G/3A",
+    "3B/3-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-12",
+      "from": "2+/2H",
+      "to": "1G/2H"
+    }
+  ],
+  "note": "Speculative (Step 7): every expect is derived by hand from the corrected wiring and the p.43 rule (light 3 ON only when relay 1 AND relay 2 are ON), covering all four input combinations. Only both-pressed -> light 3 ON is printed (A/III-RELAYAND); light 3 with either relay OFF and the pushbutton-to-relay drive are unprinted (programs.json printedUnprinted). Topology: pushbutton n (nY on n+, nX on nC) drives relay n C-F through its indicator lamp (BK1 p.14: C-F drive lights the indicator); light 3 is the series chain 1+/1H-1G/2H-2G/3A, 3B/3- through the two normally open set-1 contacts. No contact feeds a coil, so there is no latch and each input set has one settled state. The 500 ms advance before each expect lets the lamps finish their thermal transients; the page states no timing.",
+  "wires": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "2+/2Y",
+    "2X/2C",
+    "2F/2-",
+    "1+/1H",
+    "1G/2H",
+    "2G/3A",
+    "3B/3-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49, stated AND rule (ER-11 reading of line 2, ER-12 wire 1G/2H); derived from topology: 0 AND 0 = 0. Both pushbuttons up: 1Y-1X and 2Y-2X open, so neither coil path 1C-1E-1F / 2C-2E-2F carries current; relays 1 and 2 out, indicators dark; light 3 needs 1H-1G and 2H-2G both closed, neither is",
+      "quote": "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49, stated AND rule (ER-11 reading of line 2, ER-12 wire 1G/2H); derived from topology: 1 AND 0 = 0. Pushbutton 1 down: 1+/1Y-1X/1C-indicator 1-1E-coil 1-1F/1- (C-F drive, indicator lit), relay 1 in; 1H-1G closes and puts + on 2H, but relay 2 is out so 2H-2G is open and light 3 (2G/3A, 3B/3-) is dark",
+      "quote": "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49, stated AND rule (ER-11 reading of line 2, ER-12 wire 1G/2H); derived from topology: 1 AND 1 = 1. Both pushbuttons down: relay 2 in by 2+/2Y-2X/2C-indicator 2-2E-coil 2-2F/2-, relay 1 still in; light 3 lit by 1+/1H-1G/2H-2G/3A-lamp 3-3B/3-",
+      "quote": "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49, stated AND rule (ER-11 reading of line 2, ER-12 wire 1G/2H); derived from topology: 0 AND 1 = 0. Pushbutton 1 released, pushbutton 2 held: relay 1 drops (1Y-1X open), so 1H-1G opens and 2H is dead; relay 2 stays in but its closed 2H-2G passes nothing, light 3 dark. This is the case ER-12 corrects: the printed 2+/2H would light light 3 on relay 2 alone",
+      "quote": "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49, stated AND rule (ER-11 reading of line 2, ER-12 wire 1G/2H); derived from topology: 0 AND 0 = 0 again after both releases: no hold path exists (no contact feeds either coil), so both relays drop and light 3 is dark",
+      "quote": "The following circuit and program represent the condition that if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A X B = C: ... Pushing pushbutton 1 causes relay 1 to close by providing current to the coil of relay 1. In a similar manner, pushbutton 2 controls the flow of current to the coil of relay 2. The normally open contacts of the two relays are used to effect the \"AND\" condition. Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

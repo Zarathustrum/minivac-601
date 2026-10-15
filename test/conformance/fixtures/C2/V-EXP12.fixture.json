@@ -1,0 +1,3210 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP12",
+  "source": "BK5-6 printed pp.22-23 = book5-6.pdf PDF pp.28-29",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/2C",
+    "1F/M9t",
+    "1G/6com",
+    "1H/4K",
+    "1J/D0",
+    "2C/3C",
+    "2F/M5t",
+    "2G/D2",
+    "2H/4G",
+    "2J/D3",
+    "3C/4C",
+    "3F/M6t",
+    "3G/D6",
+    "3H/4N",
+    "3J/D9",
+    "3K/D8",
+    "3L/4J",
+    "3N/D7",
+    "4C/5C",
+    "4F/M8t",
+    "4H/5J",
+    "4L/5K",
+    "5C/6C",
+    "5F/M4t",
+    "5G/D5",
+    "5H/6G",
+    "5L/6J",
+    "5N/D1",
+    "6C/6-",
+    "6F/M7t",
+    "6H/6-",
+    "6X/M10",
+    "6X/D17",
+    "6Y/6+",
+    "6com/D4",
+    "M10/M11",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/2C",
+    "1F/M9t",
+    "1G/6com",
+    "1H/4K",
+    "1J/D0",
+    "2C/3C",
+    "2F/M5t",
+    "2G/D2",
+    "2H/4G",
+    "2J/D3",
+    "3C/4C",
+    "3F/M6t",
+    "3G/D6",
+    "3H/4N",
+    "3J/D9",
+    "3K/D8",
+    "3L/4J",
+    "3N/D7",
+    "4C/5C",
+    "4F/M8t",
+    "4H/5J",
+    "4L/5K",
+    "5C/6C",
+    "5F/M4t",
+    "5G/D5",
+    "5H/6G",
+    "5L/6J",
+    "5N/D1",
+    "6C/6-",
+    "6F/M7t",
+    "6H/6-",
+    "6X/M10",
+    "6X/D17",
+    "6Y/6+",
+    "6com/D4",
+    "M10/M11",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M1t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 7, code 12379); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 7 drawn on the matrix dots; CODE column:] 12379 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 7, code 12379); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 7 drawn on the matrix dots; CODE column:] 12379 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 7, code 12379); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 7 drawn on the matrix dots; CODE column:] 12379 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M8t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 2, code 2356789); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 2 drawn on the matrix dots; CODE column:] 2356789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 2, code 2356789); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 2 drawn on the matrix dots; CODE column:] 2356789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 2, code 2356789); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 2 drawn on the matrix dots; CODE column:] 2356789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 9, code 23459); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 9 drawn on the matrix dots; CODE column:] 23459 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 9, code 23459); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 9 drawn on the matrix dots; CODE column:] 23459 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 9, code 23459); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 9 drawn on the matrix dots; CODE column:] 23459 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M8t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 4, code 24689); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 4 drawn on the matrix dots; CODE column:] 24689 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 4, code 24689); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 4 drawn on the matrix dots; CODE column:] 24689 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 4, code 24689); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 4 drawn on the matrix dots; CODE column:] 24689 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 1, code 269); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 1 drawn on the matrix dots; CODE column:] 269 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 1, code 269); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 1 drawn on the matrix dots; CODE column:] 269 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 1, code 269); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 1 drawn on the matrix dots; CODE column:] 269 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 6, code 24569); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 6 drawn on the matrix dots; CODE column:] 24569 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 6, code 24569); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 6 drawn on the matrix dots; CODE column:] 24569 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 6, code 24569); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 6 drawn on the matrix dots; CODE column:] 24569 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M1t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M8t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 3, code 126789); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 3 drawn on the matrix dots; CODE column:] 126789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 3, code 126789); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 3 drawn on the matrix dots; CODE column:] 126789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 3, code 126789); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 3 drawn on the matrix dots; CODE column:] 126789 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 8, code 23679); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 8 drawn on the matrix dots; CODE column:] 23679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.23:] For instance, the \"8\" is a bit lop-sided."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 8, code 23679); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 8 drawn on the matrix dots; CODE column:] 23679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.23:] For instance, the \"8\" is a bit lop-sided."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 8, code 23679); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 8 drawn on the matrix dots; CODE column:] 23679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.23:] For instance, the \"8\" is a bit lop-sided."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 45
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 5, code 2345679); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 5 drawn on the matrix dots; CODE column:] 2345679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 5, code 2345679); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 5 drawn on the matrix dots; CODE column:] 2345679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (CHARACTER FORMS AND CODES: form 5, code 2345679); printed p.23 = PDF p.29; code digits are matrix cell numbers 1 2 3 / 8 9 4 / 7 6 5 per jack-map.md section 3 (panel); corners M1/M3 top, M7/M5 bottom printed p.20 = PDF p.26 and p.21 = PDF p.27; dial sector numerals 0-15 per panel.md",
+      "quote": "[p.22, CHARACTER FORMS AND CODES; FORM column: the numeral 5 drawn on the matrix dots; CODE column:] 2345679 [p.23:] \"Draw\" this number on the top terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code previously presented. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix."
+    }
+  ],
+  "digest": {
+    "eventCount": 591,
+    "moverTransitions": [36, 16, 28, 12, 16, 20, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 170]
+  },
+  "note": "Printed claims only (Step 6). Wires are the printed 38; no erratum changes a wire. ER-33 (errata sheet, Book V pages 21 and 22: \"be sure that the connections from M10 are made to the TOP terminals in the matrix\") is prose and is honoured by drawing every numeral on Mnt top terminals only; errata_applied is empty because ER-33 has no from/to pair. The eight free-ended wires (p.23 \"Now connect four short programming wires to M10, leaving one end of each free. Also, connect four short programming wires to M11, leaving one end of each free.\") are script cords 38-41 on M10#3..#6 and 42-45 on M11#2..#5 (M10#1 holds 6X/M10; M10#2 and M11#1 hold M10/M11). M10/M11 makes the two one net, so which free wire lands on which cell does not matter. A drawn end goes in Mnt#2 for cells 4-9 (Mnt#1 holds the relay feed) and Mnt#1 for cells 1-3. The CHARACTER FORMS AND CODES table on printed p.22 is legible on the page image (PDF p.28, 300 dpi): 1=269, 2=2356789, 3=126789, 4=24689, 5=2345679, 6=24569, 7=12379, 8=23679, 9=23459, and a tenth form, a diamond, =2468. programs.md and programs.json printedUnprinted call this table unreadable; that record is stale. Code digits are read as matrix cell numbers on the panel numbering 1 2 3 / 8 9 4 / 7 6 5 (jack-map.md section 3), which agrees with p.20's M1/M3/M5/M7 corners; dial sector numerals per panel.md. Script: power on; numerals 7, 2, 9, 4, 1, 6, 3, 8, 5 in that order (a script choice, so most runs travel or wrap); for each, draw the code, hold pb6 until the knob stops, assert the knob reaches the numeral and is still on it 5 s later, release pb6, assert it still reads the numeral 2 s later, then free all eight wires (p.23 \"To try another number, be sure that all eight wires to M10 and M11 are free.\"). The hold length is a script choice: 6X/D17 is the motor's only feed, so a momentary push cannot reach a far numeral. Start position D0 is the construction state, not printed, not asserted. Left out: the diamond (2468) is 0 only by elimination from p.21 \"We can uniquely define the numbers 0 through 9 ... The result will be ten forms\", so it is derived (Step 7); \"Select a number from 0 to 10\" prints no form for 10. SIMULATOR DEFECT, RESOLVED (O-R13): on pb6 release the relay coils' flyback current runs out through Mnt -> M10 -> 6X -> D17 -> R1 -> D19 -> motor, jogs the armature backwards (peak -1616 mrpm, about -1.6 rpm, at 6386.9 ms; about 0.036 deg of travel), and before COAST-SCALES-WITH-SPEED the fixed-size one-shot coast_udeg_drive_removed (20 deg, invented, O-R5) carried the wiper back a full sector, so every numeral except 1 (whose D1 pad stays STOP-shorted through the released relay tree) read N-1 after release. Before that rule the full 20 deg coast moved the dial one pad back after the pb6 release (O-R13); with COAST-SCALES-WITH-SPEED the post-release expects pass. Trips the knife-edge trigger (minDecisionUa 0, relay 6 pull-in at 61402.1 ms in the numeral 8 run); blessed under BLESS-ROBUSTNESS, all six perturbations held. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; untils allow 15 s, sized for a run rate as slow as 25 rpm."
+}

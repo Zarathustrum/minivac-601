@@ -1,0 +1,347 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-FF1-DERIVED",
+  "source": "BK4 printed pp.68-69 = book2-3-4.pdf PDF pp.74-75 (two-relay rule, stage-1 wires and stage-2 press relation p.68 = PDF p.74; stage-2 wires, stage-3 release relation, stage-4 indicator light and circuit diagram p.69 = PDF p.75), image-read; ERRATA sheet p.2 (ER-19, prose-only); Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5+/5H",
+    "5H/6H",
+    "5G/5F",
+    "6G/6F",
+    "5C/6C",
+    "6C/6-",
+    "6H/6Y",
+    "6X/5L",
+    "5K/6F",
+    "5N/6E",
+    "6Z/6L",
+    "6K/5E",
+    "6N/5F",
+    "6G/6A",
+    "6B/6-"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 15-wire topology and the p.68 rule, not printed. The page states the press relation (relay 6 goes to relay 5's state) for the 10-wire stage and the release relation (relay 5 goes opposite to relay 6) for the 13-wire stage; this fixture reads both on the final circuit. Topology: + reaches relay 5 set-1 arm 5H, relay 6 set-1 arm 6H and pushbutton 6 arm 6Y; each relay holds through its own set-1 N.O. (5G/5F, 6G/6F) with its indicator lamp in series (5C/6C, 6C/6-); pushbutton 6 N.O. 6X feeds relay 5 set-2 arm 5L, whose N.O. 5K drives 6F and whose N.C. 5N shorts relay 6 at 6E; pushbutton 6 N.C. 6Z feeds relay 6 set-2 arm 6L, whose N.O. 6K shorts relay 5 at 5E and whose N.C. 6N drives 5F; output lamp 6 hangs on 6G/6F (6G/6A, 6B/6-). Relay 5 pulls in at power-on through 6Z-6L-6N, so no cold-start fallback is needed for the phase. Script choices, not from the source: power on, three push-and-release cycles, a 200 ms advance after each settle so filaments reach their class, and a fixed 50 ms hold on the second push, asserted before release. Why the second push is short: once relay 6 drops on that push, 6E(+) feeds 6F through relay 6's coil and output lamp 6 to minus, the lamp-fed path of AT-01; under MV601-REF-A that series path settles near 46.0 mA against relay 6's 45.2 mA pull-in, reached only as the hot output lamp cools, so a long hold is predicted by hand to re-pull relay 6, which then shorts itself again through 6G: a buzz, not a state. The 50 ms read sits after the drop and well before that cooling. ER-19's 'push pushbutton 6 slowly' is not quantified; its light-6 alternation is the outLamp6 sequence off, on, off, on here.",
+  "wires": [
+    "5+/5H",
+    "5H/6H",
+    "5G/5F",
+    "6G/6F",
+    "5C/6C",
+    "6C/6-",
+    "6H/6Y",
+    "6X/5L",
+    "5K/6F",
+    "5N/6E",
+    "6Z/6L",
+    "6K/5E",
+    "6N/5F",
+    "6G/6A",
+    "6B/6-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.68 = book2-3-4.pdf PDF p.74 two-relay rule (relay A = relay 5, relay B = relay 6), power on with pushbutton 6 up; derived from topology, no power-up state is printed: pushbutton 6 arm 6Y is on + (5+/5H, 5H/6H, 6H/6Y) and rests on N.C. 6Z, so 6Z/6L puts + on relay 6 set-2 arm 6L; relay 6 is unoperated, 6L-6N closes, and 6N/5F drives relay 5 through 5F-coil-5E-indicator lamp 5-5C, which 5C/6C, 6C/6- return to minus: relay 5 pulls in and holds through 5H(+)-5G/5F. Relay 6 has no source: 6F's feeds are 6G (open, relay 6 out) and 5K (relay 5 set-2 N.O.; arm 5L is fed only by pushbutton 6 N.O. 6X, open), and 6E's only feed 5N is open once relay 5 is in, so relay 6, indicator lamp 6 and output lamp 6 (6G/6A, 6B/6-) are dark",
+      "quote": "When the pushbutton is pushed, relay A instructs relay B to go to the same state relay A is in at this moment. When the pushbutton is released, relay B instructs relay A to move to the opposite state.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.68 = book2-3-4.pdf PDF p.74 stage-2 press relation, read on the 15-wire circuit, first push from the power-on state (relay 5 in); derived from topology: pushbutton 6 arm 6Y(+) moves to N.O. 6X, 6X/5L puts + on relay 5 set-2 arm 5L, which sits on N.O. 5K because relay 5 is in, and 5K/6F drives relay 6 through 6F-coil-6E-indicator lamp 6-6C to minus (6E's other feed 5N is open): relay 6 pulls in and adds 6H(+)-6G/6F. Output lamp 6 sits across 6G/6F(+) to 6B/6-. Relay 5 keeps its 5H-5G/5F hold with indicator lamp 5 in series; 6L, now on 6K, is unfed (6Z is open while pushed). Relay 6 goes to relay 5's state, in",
+      "quote": "We will now add to the program so that when pushbutton 6 is pushed, relay 6 will go to the same state that relay 5 is in.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.69 = book2-3-4.pdf PDF p.75 stage-3 release relation, read on the 15-wire circuit, first release; derived from topology: 6Y(+) returns to 6Z, 6Z/6L feeds arm 6L, which sits on N.O. 6K because relay 6 is in, and 6K/5E puts + on 5E while 5F is still + through 5H-5G: relay 5's coil is shorted and it drops. 5F is then fed by neither 5G (open) nor 6N (open, relay 6 in), so relay 5 stays out; indicator lamp 5 runs straight from 5E(+) to 5C(-) and stays lit. Relay 6 holds through 6H(+)-6G/6F with indicator lamp 6 in series (5L, the only feed to 5N/6E, is dead with 6X open), and output lamp 6 stays on 6G. Relay 5 goes opposite to relay 6, out; light 6 shows the new state",
+      "quote": "Again we will add to the program so that when pushbutton 6 is released, relay 5 will go to the opposite state from relay 6:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "pb6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.68 = book2-3-4.pdf PDF p.74 stage-2 press relation, read on the 15-wire circuit, second push from the relay-5-out state, read 50 ms into the push (a script choice); derived from topology: 6Y(+)-6X/5L feeds arm 5L, which sits on N.C. 5N because relay 5 is out, and 5N/6E puts + on 6E while 6F is + through 6H-6G: relay 6's coil is shorted and it drops; afterwards 6E(+) lights indicator lamp 6 straight to 6C(-). Relay 5 has no source: 5F's feeds 5G and 6N (arm 6L is unfed with 6Z open) are dead and 5E lost 6K's feed when 6Z opened. Relay 6 goes to relay 5's state, out. Indicator lamp 5 (cooling) and output lamp 6 (now fed from 6E through relay 6's coil, 6F/6G/6A to 6B/6-) are left unasserted",
+      "quote": "We will now add to the program so that when pushbutton 6 is pushed, relay 6 will go to the same state that relay 5 is in.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.69 = book2-3-4.pdf PDF p.75 stage-3 release relation, read on the 15-wire circuit, second release; derived from topology: 6E loses + as 6X opens, then 6Y(+)-6Z/6L feeds arm 6L, which sits on N.C. 6N because relay 6 is out, and 6N/5F drives relay 5 through 5F-coil-5E-indicator lamp 5-5C to minus: relay 5 pulls in and holds through 5H(+)-5G. 6E (5N open, 5L unfed) and 6F (6G and 5K open) have no source, so relay 6, indicator lamp 6 and output lamp 6 go dark. Relay 5 goes opposite to relay 6, in; the circuit is back in its power-on state and light 6 shows it",
+      "quote": "Again we will add to the program so that when pushbutton 6 is released, relay 5 will go to the opposite state from relay 6:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "pb6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.69 = book2-3-4.pdf PDF p.75 indicator light added in the last build stage; third push and release, starting from the state the second release left rather than from power-on; derived from topology: the push drives relay 6 in through 5L-5K/6F as at the first push, and the release shorts relay 5 through 6L-6K/5E as at the first release, so the flip-flop changes once per push-and-release cycle and output lamp 6 (6G/6A, 6B/6-) is lit exactly while relay 6 is in",
+      "quote": "And finally, we will add an indicator light to show what state the flip-flop is in:",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

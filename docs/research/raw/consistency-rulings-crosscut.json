@@ -1,0 +1,256 @@
+{
+  "topic": "crosscut consistency pass - README.md, open-questions.md, history-and-artifacts.md",
+  "agent": "consistency-crosscut",
+  "date_generated": "2026-08-30",
+  "scope_note": "Rulings only, for another agent to apply. Nothing under raw/ was edited. Every render was written to a scratchpad outside the repository. Oracle-only rule observed: no emulator source was opened, fetched or read.",
+  "sources_read": [
+    "raw/critic-completeness.json - all 17 cross_file_contradictions, verdict, settled_enough_to_build_on, hygiene_warnings, recommended_next_actions, source_abbreviations",
+    "raw/verify-relays.json, verify-panel.json, verify-jackmap.json, verify-programs.json, verify-rotary.json, verify-context.json - refuted/downgraded blocks enumerated and counted",
+    "raw/gap-verify-canonical-errata-applied-program-corpus.json (UP-01/UP-02), gap-verify-* refuted/downgraded counts",
+    "raw/find-programs.json (claim_counts)",
+    "raw/pdf/maintenance-manual.pdf - text-layer folio sweep plus PDF pp.5, 8, 9, 10 rendered at 100 dpi and read",
+    "raw/pdf/book2-3-4.pdf - PDF pp.13, 21, 50, 91 rendered at 110-150 dpi and read; whole text layer grepped whitespace-insensitively",
+    "raw/pdf/errata.pdf text layer - sheet p.1 general notes, the Book V p.25 reset note, the 48-line alternate-counter block counted directly",
+    "raw/pdf/book1.txt, book5-6.txt, book7-capacitor-resistor.txt, maintenance-manual.txt - whitespace-insensitive absence tests",
+    "raw/photos/commons-minivac601-main.jpg - logo plate and MATRIX block, own full-resolution crops",
+    "raw/photos/commons-minivac601-DSCF1392.jpg - logo plate crop",
+    "docs/research/README.md, open-questions.md, history-and-artifacts.md in full; components.md, jack-map.md, panel.md, programs.md, rotary.md by targeted read"
+  ],
+  "rulings": [
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Lines 3-5: \"Everything needed to build a relay-level MINIVAC 601 simulator, extracted from the seven primary SDC documents plus three panel photographs, verified adversarially, and written down with the confidence of every claim attached to it.\"",
+      "ruling": "CORRECT two things in one sentence. (a) \"Everything needed to build\" contradicts this file's own Readiness table 80 lines later (\"Temporal: None. Analog: None. Golden fixtures: Low\") and its own sentence \"is **not** sufficient for a deterministic discrete-time core or a golden fixture suite\". Replace with: \"The research base for a relay-level MINIVAC 601 simulator\". (b) \"the seven primary SDC documents\" is wrong on every reading. Replace with \"the nine primary SDC documents held here as six PDFs\". Suggested replacement: \"The research base for a relay-level MINIVAC 601 simulator, extracted from the nine primary SDC documents (Books I-VII, the Maintenance Manual and the errata sheet, held here as six PDFs) plus three 601 panel photographs, verified adversarially, and written down with the confidence of every claim attached to it.\"",
+      "evidence": "Document census: Books I, II, III, IV, V, VI, VII + Maintenance Manual + errata sheet = 9 documents. `ls raw/pdf/*.pdf` = 6 files (book1, book2-3-4, book5-6, book7-capacitor-resistor, maintenance-manual, errata). history-and-artifacts.md line 13 already states the correct figure: \"The primary corpus is nine documents, not six.\" Neither 9 nor 6 is 7.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Line 27-29: \"- **12 V DC**, 1.5 A continuous, unfiltered full-wave supply, one circuit breaker in the negative return. Two electrical nodes for power ... `[verified]` - MM pp.2-3; ER p.1\"",
+      "ruling": "DOWNGRADE the word \"unfiltered\". Split the tag: \"**12 V DC**, 1.5 A continuous, full-wave centre-tapped supply, one circuit breaker in the negative return `[verified]` - MM p.2 (ratings), MM p.3 (schematic); **no filter capacitor is drawn** `[likely]` - MM p.3 schematic read; a schematic omission is not proof of absence (O-E6). Two electrical nodes for power: every `+` jack is one node, every `-` jack is the other. `[verified]` - ER p.1.\" Everything else in the bullet stands.",
+      "evidence": "I rendered maintenance-manual.pdf PDF p.5 (= printed p.3) at 100 dpi and read the \"Power Supply Circuit Diagram\": power cord -> power switch -> transformer -> rectifier, circuit breaker in the yellow centre-tap wire, POWER LIGHT across the DC output. No capacitor of any kind is drawn, and no fuse. MM printed p.2 (text layer, before the folio \"2\"): \"The power supply is rated at 1.5 amps continuous with a nominal 12 volts output.\" open-questions.md O-E6 already carries the correct hedge (\"None drawn; a schematic omission is not proof of absence\") and G2 tags the 120 Hz-ripple inference `[likely]`, not `[verified]`. README is the only file that promotes it.",
+      "severity": "tag-too-strong"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Lines 35-36: \"There is no reset line. SDC's published global reset is a power cycle, which pins the power-on state: all relays de-energised, all latches clear. `[verified]` - ER, Book V p.25\"",
+      "ruling": "SPLIT the tag. The ER citation is correct but supports only the first half. Replace with: \"There is no reset line. SDC's published reset for a running program is a power cycle - *“Note - to re-set the automatic sequence control, turn power OFF, then ON again.”* `[verified]` - ER sheet p.3, Book V p.25. That the resulting power-on state is *all relays de-energised, all latches clear* is inference from it, printed for exactly one circuit (*“Turn power ON. Notice that both relays 5 and 6 are OFF”*, B4 p.70) and carried package-wide under the named fallback `FALLBACK-PWRUP-COLD`. `[likely]`\" Keep components.md §8.4 in step - line 619 makes the same over-tag (\"Power-on state is every relay OFF ... `[verified]`\").",
+      "evidence": "errata.txt lines 187-190, confirmed against the sheet: \"page 25: Note - to re-set the automatic sequence control, turn power OFF, then ON again.\" plus a second \"to re-set the game\" note. Both are per-program instructions; neither states a machine-wide power-on state. programs.md line 133 states the package rule outright: \"Where a power-up state is obvious but unprinted, record it with tag [unverified] and source `FALLBACK-PWRUP-COLD`\", and programs.md N-10 records B4 p.70 as the only circuit for which SDC prints the power-up state. README asserting `[verified]` for the general case contradicts programs.md.",
+      "severity": "tag-too-strong"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Lines 70-75, tag rule 2: \"... Every argument-from-silence in this package that rests on a plain grep was re-run whitespace-insensitively or downgraded. `[verified]` - raw:verify-context.json#refuted.R6\"",
+      "ruling": "CORRECT. The boast is false and this pass found the counter-example. Replace the last sentence with: \"Most arguments-from-silence in this package were re-run whitespace-insensitively - but not all. `raw:verify-panel.json#refuted.V-R09` asserted that `2K/3com` and `4G/5com` appear nowhere in Books I-VI “in any spacing variant” using `grep -E '2 ?K ?/ ?3 ?com'`, which allows one space between glyphs where this OCR uses several (`2 K /3 c o m`). Both lines exist. Re-test every remaining grep negative with `tr -d ' \\t'`, not with an optional-single-space regex.\"",
+      "evidence": "Re-ran the negative myself: `tr -d ' \\t' < book2-3-4.txt | grep -n '2K/3com'` -> line 4156 `2K/3com4G/5com6A/6comD16/M+`. Then located the source page (`pdftotext -f N -l N ... | tr -d ' \\t\\n' | grep`) at book2-3-4.pdf PDF p.91 and rendered it at 130 dpi: printed page 85, Book IV, Experiment 11 \"Program for Decimal to Binary Converter\", which prints `2K/3com`, `4G/5com`, `6A/6com` and `D16/M+` in a 49-line block. programs.md already carries the identical wire list at line 1671 as record `IV-EXP11`.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Readiness table line 88: \"| Golden fixtures | **Low.** A 98-record corpus exists; the reconciled machine-readable `programs.json` does not. |\" and its `[verified]` - raw:critic-completeness.json#verdict attribution",
+      "ruling": "REPLACE the row and re-cite. The critic wrote before `programs.md` existed and its \"no errata-applied, expected-output-bearing fixture set exists\" no longer holds. New row: \"| Golden fixtures | **Partial and still moving.** A 98-record corpus is transcribed with all 46 errata corrections applied (`programs.md` §3.2) and per-program expected-state scripts. But the tiering is not stable - the gap-verify pass re-tiered two headline fixtures (`II-EXP2` and `I-EXP11`, both A -> C1) and the C1/C2 split is itself `[unverified]` (O-C6) - and the reconciled machine-readable `programs.json` does not exist. |\" Attribute the row to `programs.md` §2-§3 and `open-questions.md` G4/O-C6, not to the critic verdict, which is now the older source.",
+      "evidence": "raw:critic-completeness.json#verdict.fixture_readiness reads \"low - a corpus exists but no reconciled, errata-applied, expected-output-bearing fixture set exists\". programs.md §3.2 now holds all 46 errata corrections image-verified at 300 dpi, and each corpus record carries a printed-procedure block. programs.md C-15 re-tiers `II-EXP2` from A to C1 and corrects its observable from lamp to relay indicator; C-16 re-tiers `I-EXP11` from A to C1. open-questions.md O-C6 flags the C1/C2 split `[unverified]`. G4 confirms `docs/programs.json` absent.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Ordered next actions item 2: \"Render and read `pages/maintenance/p-08.png`, `p-09.png`, `p-10.png`. *Partly done* - the three check circuits are transcribed in `components.md` §10; the labelling ambiguity (C7) remains.\"",
+      "ruling": "MARK DONE and state the answer. Replace with: \"Render and read `pages/maintenance/p-08.png`, `p-09.png`, `p-10.png`. **Done.** The three check circuits are transcribed in `components.md` §10 and the labelling is now definitive: p-08 = MM printed p.6 = *Circuit Diagram - Pushbutton Check*; **p-09 = MM printed p.7 = *Circuit Diagram - Relay Check***; p-10 = MM printed p.8 = *Circuit Diagram - Slide Switch Check*. `p-11` = printed p.9 = *Rotary Switch Motor Drive*. The MM offset printed page + 2 = PDF page holds throughout. C7 closed.\"",
+      "evidence": "Rendered maintenance-manual.pdf PDF pp.8, 9, 10 at 100 dpi and read them. PDF p.9 carries the caption \"Circuit Diagram - Relay Check\" above the folio 7, with the figure showing terminals 1A/1B..4A/4B, C-(lamp)-E-(coil)-F, H/J/G, L/N/K and Y/Z/X. PDF p.10 carries \"Circuit Diagram - Slide Switch Check\" above the folio 8, with T/S/R and W/V/U. So verify-relays.json#missed_by_the_finder.MISS-05 (printed p.7 = PDF p.9) is right and verify-jackmap.json#stillNotSettled[3] ('p-10.png') is wrong.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Ordered next actions item 5: \"Image-read `book2-3-4.pdf` PDF pp.13 and 21 to close the Book II Experiment 2 and 7 connection counts.\"",
+      "ruling": "DELETE the item and renumber. Both counts are closed and were closed before this file was written. If a line is wanted in its place, use: \"5. *(closed)* Book II Experiments 2 and 7 are image-read at 23 and 16 connections; see `programs.md` N-8.\"",
+      "evidence": "I rendered book2-3-4.pdf PDF p.13 (printed p.7) and PDF p.21 (printed p.15) at 150 dpi. Experiment 2 \"Decimal Input\" prints its program in five columns of 5/5/5/5/3 = **23** connections, and its own text names the observable: \"the number being remembered corresponds with the section (1-6) which has a relay light ON\". Experiment 7 \"Decimal Output\" prints 5/5/5/1 = **16** connections; the \"unexplained isolated `6Z`\" is simply pushbutton 6's normally-open stub drawn but not wired, exactly as `1Z` is in Book I Experiment 8. programs.md N-8 already says so: \"closed at 23 and 16 by 300 dpi image reads ... it is settled.\"",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "Named-fallbacks index row: \"| `FALLBACK-PWRUP-COLD` | Any unprinted power-up state recorded as `[unverified]` under this source label | `programs.md` §2 |\"",
+      "ruling": "CORRECT the pointer to \"`programs.md` §2 (the anti-fabrication rule) and §5 (the fallback definition)\". §2 states the rule; the named fallback itself is defined much later, under §5.",
+      "evidence": "programs.md line 133 (in §2) states the anti-fabrication rule; the heading \"### Named fallback: `FALLBACK-PWRUP-COLD`\" is at line 3253, inside \"## 5. Not settled by the sources\" (line 3235). Every other pointer in this table resolves exactly (components.md §1.3/§8.2/§9.3, jack-map.md §8, rotary.md §9 all checked).",
+      "severity": "cosmetic"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "The file has no statement of the oracle-only ruling. It is mentioned only obliquely, in the file table: \"| `history-and-artifacts.md` | ... the oracle-only ruling on existing emulators ...\"",
+      "ruling": "ADD a short standing-constraints block immediately after the \"Read `open-questions.md` before you write code\" paragraph: \"**Two standing constraints on this package.** (1) **Oracle-only.** Tom's ruling: do not open, fetch, clone, read or quote the source of any existing Minivac emulator - in particular Greg Sadetsky's at `minivac.greg.technology` and any associated repository. Observable behaviour and licence may be described; code may not be read. Full statement and the compliance record: `history-and-artifacts.md` §Oracle-only ruling. (2) **MINIVAC 601 only.** Every 6010 fact carries an explicit `6010 DELTA` label, and every fact taken from Book VII carries a joint 601/6010 scope flag.\" A cold reader who starts here and never opens `history-and-artifacts.md` currently gets neither constraint.",
+      "evidence": "README currently names the ruling only as a row in the \"which file answers which question\" table. history-and-artifacts.md §\"Oracle-only ruling (Sadetsky simulator)\" carries the full ruling plus an enumerated not-done list - that part is correct and explicit; the defect is that the entry-point file does not repeat the binding constraint.",
+      "severity": "missing"
+    },
+    {
+      "file": "docs/research/README.md",
+      "currentText": "File table row: \"| `open-questions.md` | Everything unresolved: 5 blocking gaps, 17 cross-file contradictions, the full register of refuted claims, and every named fallback. |\"",
+      "ruling": "UPDATE the count to \"17 cross-file contradictions from the critic plus one this pass found (C18)\" once the C18 row is added to open-questions.md §2.",
+      "evidence": "Follows from the C18 ruling below (the `2K/3com` refutation is itself refuted, and three files carry it).",
+      "severity": "cosmetic"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "Lines 249-250, closing G5: \"**One page remains unread by anyone:** MM printed p.3's *Power Supply Circuit Diagram* is read (twice), but `pages/maintenance/p-05.png` is cited by one file as still unopened. See C6.\"",
+      "ruling": "DELETE and replace. The sentence refutes itself: MM printed p.3 **is** `pages/maintenance/p-05.png` under this package's own printed + 2 = PDF offset, so it cannot be both read twice and unread. Replace with: \"**No maintenance-manual page remains unread.** MM printed p.3 (= `pages/maintenance/p-05.png`) is the *Power Supply Circuit Diagram* and has been read three times; `raw:verify-panel.json#not_settled_after_verification` listing it as unopened is a stale research-state claim, not an open question. See C6.\"",
+      "evidence": "Rendered maintenance-manual.pdf PDF p.5 at 100 dpi: the page carries power-supply troubleshooting steps 2-6, the figure captioned \"Power Supply Circuit Diagram\", and the folio \"3\". Offset confirmed independently at PDF p.9 (folio 7) and PDF p.10 (folio 8) and PDF p.13 (folio 11, spare parts, last page of a 13-page PDF).",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "G4 \"Known-ambiguous programs still open\" table, rows 1 and 2: \"| Book II Experiment 2 (Decimal Input) | 23 connections is an OCR reconstruction in an ambiguous grid | one image read, `book2-3-4.pdf` PDF p.13 |\" and \"| Book II Experiment 7 (Decimal Output) | 16 connections, same problem, plus an unexplained isolated `6Z` | one image read, PDF p.21 |\"",
+      "ruling": "DELETE both rows from the still-open table. Add one line under the table instead: \"*Closed since the critic wrote:* Book II Experiments 2 and 7 are image-read at **23** and **16** connections. Experiment 7's “isolated `6Z`” is pushbutton 6's normally-open stub, drawn on the diagram and deliberately unwired - the same draughting convention as `1Z` in Book I Experiment 8, not an anomaly. Experiment 2's observable is the **relay indicator light**, not a binary output lamp; its program contains no `A` or `B` terminal. `[verified]` - `book2-3-4.pdf` PDF pp.13, 21.\"",
+      "evidence": "I rendered both pages at 150 dpi. PDF p.13 (printed p.7): five program columns of 5/5/5/5/3 = 23 (`1H/2H`..`5F/5-`), and the page text reads \"the number being remembered corresponds with the section (1-6) which has a relay light ON\". PDF p.21 (printed p.15): four columns of 5/5/5/1 = 16 (`1R/D1`..`6Y/6+`), with `6Z` drawn as the unconnected N.C. stub of pushbutton 6. programs.md N-8 records the same closure.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§4 Corpus and fixtures row: \"| O-C3 | Book II Experiments 2 and 7 connection counts (23 and 16, OCR reconstructions in ambiguous grids; Exp 7 carries an unexplained isolated `6Z`) | Do not ship them as fixtures until read | One image read each: `book2-3-4.pdf` PDF pp.13 and 21 |\"",
+      "ruling": "CLOSE O-C3. Replace the Fallback and Would-settle-it cells with: \"**Closed.** Both image-read: 23 and 16. The `6Z` is pushbutton 6's unwired N.C. stub. `II-EXP2` is tier C1 and its observable is the relay indicator light. | Already settled - kept only so a later pass does not reopen it |\". Same evidence as the G4 ruling above.",
+      "evidence": "Same two 150 dpi renders. Leaving O-C3 open costs a real image budget and, worse, tells an implementer not to ship two fixtures that are in fact clean.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§2 status table row: \"| C7 | low | Which page image holds MM's *Circuit Diagram - Relay Check* | **Open, trivial.** Two verifiers cite different images. Detail in raw:critic-completeness.json |\"",
+      "ruling": "CLOSE C7. Replace the status cell with: \"**Resolved.** `pages/maintenance/p-09.png` = MM printed p.7. (`p-08` = printed p.6, Pushbutton Check; `p-10` = printed p.8, Slide Switch Check; `p-11` = printed p.9, Rotary Switch Motor Drive.)\" `raw:verify-relays.json#missed.MISS-05` was right; `raw:verify-jackmap.json#stillNotSettled[3]`'s \"p-10.png\" points at the Slide Switch Check.",
+      "evidence": "Rendered and read maintenance-manual.pdf PDF pp.8, 9, 10 at 100 dpi. p.9 caption: \"Circuit Diagram - Relay Check\", folio 7. p.10 caption: \"Circuit Diagram - Slide Switch Check\", folio 8. Corroborated by the text layer's caption/folio ordering and by components.md §10, which already files MM-RELAY-CHECK under \"MAINT printed p.7\".",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§4 History row: \"| O-H8 | Which rendered page image holds MM's *Circuit Diagram - Relay Check* (C7) | Two verifiers cite `p-09.png` and `p-10.png`; the figure's text and netlist are known regardless | Render `p-08`, `p-09`, `p-10` together and label them definitively |\"",
+      "ruling": "DELETE the row. It is the same question as C7 and C7 is now closed. If the mapping is worth keeping visible, move it into the C7 status cell only - do not carry it in two places.",
+      "evidence": "Same renders as the C7 ruling. Keeping it in §4 after closing C7 in §2 recreates exactly the research-state contradiction C5 was raised to kill.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§3 header, lines 422-423: \"Every claim a verifier overturned, with its correction, so the refutation is not lost. Nothing below is carried forward anywhere else in the package.\"",
+      "ruling": "CORRECT the second sentence - it is false, and misleadingly so. Every topic file carries its own corrections block (`components.md` §11, `jack-map.md` §10, `rotary.md` §8, `programs.md` §3, `panel.md`'s overturned-claims list, `history-and-artifacts.md` §Corrections applied). Replace with: \"Every refutation that changes a fact an implementer would use, stated as a correction so it cannot be silently re-imported. Each topic file also carries its own corrections block for the refutations local to it; where the two differ, this register is not automatically right - check the cited raw file.\"",
+      "evidence": "Counted: the eleven `verify-*.json` and `gap-verify-*.json` files carry ~77 refuted and ~57 downgraded entries between them; §3.1-§3.7 hold ~81 substantive rows. So §3 is a selection, not a complete transcript, and the per-file corrections blocks are where the remainder lives. The specific danger of the current wording is shown by the `2K/3com` ruling below: three files carry the same refutation and all three are wrong, but a reader told \"nothing below is carried forward anywhere else\" will fix only one.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§3.1 row: \"| Citation `2K/3com`, `4G/5com` “in Books II-IV” for the `ncom` designator | Those lines **do not exist** in Books I-VI in any spacing variant. The claim stands on other evidence (ER's “the four at 3com”, B234 p.58's notation statement and `3T/3com`, `1com`..`6com` throughout Book VI) |",
+      "ruling": "REVERSE the row - the refutation is itself refuted, and this is the package's second grep-negative failure. Replace with: \"| Citation `2K/3com`, `4G/5com` “in Books II-IV” for the `ncom` designator, refuted by `raw:verify-panel.json#refuted.V-R09` as nonexistent | **The refutation is wrong; the finder's citation was right.** All three lines - `2K/3com`, `4G/5com`, `6A/6com` - are printed in Book IV, printed p.85 (`book2-3-4.pdf` PDF p.91), in the 49-wire *Program for Decimal to Binary Converter*, together with `D16/M+`. V-R09's `grep -E '2 ?K ?/ ?3 ?com'` allows one space between glyphs; this OCR sets `2 K /3 c o m`. `programs.md` already prints the same wire list as record `IV-EXP11`. `[verified]` - image read, PDF p.91 |\"",
+      "evidence": "Whitespace-insensitive grep: `tr -d ' \\t' < raw/pdf/book2-3-4.txt | grep -n '2K/3com'` -> line 4156, `2K/3com4G/5com6A/6comD16/M+`. Raw text at line 4156 reads `2 K /3 c o m      4 G /5 co m       6 A /6 c o m      D 1 6 /M +`. Located and rendered book2-3-4.pdf PDF p.91 at 130 dpi: printed page 85, Book IV, \"Program for Decimal to Binary Converter\", 12 rows x 4 columns + 1 = 49 wires, all three lines legible. programs.md line 1671 carries the identical list under \"IV-EXP11 - Experiment 11: Decimal to Binary Converter, Book IV printed pp.84-85\".",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§2 \"Cross-file contradictions\" table ends at C17. There is no C18.",
+      "ruling": "ADD a row and a short detail block for the contradiction this pass found: \"| C18 | medium | The `2K/3com` / `4G/5com` citation | **Resolved against the verifier.** The lines exist (B4 p.85); three files carry the wrong refutation |\". Detail block: \"**C18 - a refutation that is itself refuted.** `raw:verify-panel.json#refuted.V-R09` killed the panel finder's citation of `2K/3com` and `4G/5com` as lines that “do not exist ... in any spacing variant”. They do: Book IV printed p.85 prints `2K/3com`, `4G/5com`, `6A/6com` and `D16/M+` in the Decimal to Binary Converter, and `programs.md`'s own `IV-EXP11` record reproduces the list. The verifier's regex allowed a single optional space where the OCR uses several. Carried in three places - `open-questions.md` §3.1, `jack-map.md` §10 and `panel.md`'s overturned list - all three must be corrected. Nothing downstream changes: the `ncom` designator was never in doubt. What it costs is trust in every other grep-derived negative in the package. `[verified]` - `book2-3-4.pdf` PDF p.91, image read.\"",
+      "evidence": "Same evidence as the §3.1 ruling. Recorded as a numbered contradiction because it spans three written files plus README's tag rule 2, which is exactly what §2 is for.",
+      "severity": "missing"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "G1 line 48: \"**What was tried.** All seven primary documents searched by three independent agents...\" and G2 line 107: \"**What was tried.** Confirmed absent across all seven documents by three agents.\"",
+      "ruling": "CORRECT both to \"all nine primary documents (Books I-VII, MM, ER; six PDFs on disk)\". Same arithmetic error as README line 3.",
+      "evidence": "Books I-VII (7) + Maintenance Manual + errata sheet = 9 documents; `raw/pdf/*.pdf` = 6 files. history-and-artifacts.md line 13 states the correct figure. No reading of the corpus yields 7.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "C3 detail block: \"The “whole-corpus census” behind the negative covered **three of seven** primary PDFs.\" (also §3.1 row: \"| “Whole-corpus token census” | The census covered **three of seven** primary PDFs |\")",
+      "ruling": "CORRECT both to \"three of the six PDFs on disk - `book1.txt`, `book2-3-4.txt` and `book5-6.txt`, i.e. Books I-VI only. Book VII, the Maintenance Manual and the errata sheet were not searched, and the `ncap` designator lives in Book VII.\"  Naming the three omitted files is what makes the correction usable.",
+      "evidence": "The census files are the three Books I-VI OCR layers; the unsearched PDFs are book7-capacitor-resistor, maintenance-manual and errata. Six PDFs total, not seven. Same count error propagates into panel.md lines 523 and 533.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§4 Timing row: \"| O-T6 | What the solver does with a series path through a floating node (decides whether the canonical flip-flop toggles or chatters) | **Unmade decision.** It is solver semantics, not tuning - decide it before sizing `break_frac`/`make_frac` | Nothing external; it is a design ruling |\"",
+      "ruling": "NAME A FALLBACK. \"Unmade decision\" is not a fallback and this file's own entry-shape rule requires one. `components.md` §8.4 already rules the substance: a node with no conductive path to the source is floating and is **not** treated as grounded, and two-terminal elements are never collapsed - so under `MV601-REF-A` a series path through a floating node simply carries series current and the two coils each see roughly half the rail. Replace the fallback cell with: \"**`MV601-REF-A` series-through-float**: solve the path; do not open it and do not ground the node. Both coils then sit at ~V/2, so whether the flip-flop toggles or chatters is decided by where V/2 falls relative to `V_dropout` and `V_pullin` - a *parameter* question, not a semantics question, and one the profile already exposes. `[likely]` - it is inference from `components.md` §8.4's floating-node rule, not read anywhere.\" Keep the \"decide before sizing `break_frac`/`make_frac`\" note as the reasoning.",
+      "evidence": "components.md lines 614-621: \"elements ... span two nodes and are **never** collapsed\" and \"a node with no conductive path to the source is **floating** - do not treat floating as grounded.\" components.md §9.3's R1 discussion (lines 831-838) makes the same physical point in the opposite direction: \"node_B floating leaves the two coils in **series** between a live node and ...\". The ruling therefore already exists in the package; O-T6 just fails to name it.",
+      "severity": "missing"
+    },
+    {
+      "file": "docs/research/open-questions.md",
+      "currentText": "§4 Electrical row: \"| O-E8 | Transformer secondary voltage and VA; rectifier technology (the “selenium” reading is withdrawn) | — | Meter readings; photograph of the transformer and rectifier |\"",
+      "ruling": "NAME A FALLBACK - the cell is literally an em-dash, the only unfilled fallback in §4. Replace with: \"**Not settled by the sources.** Fold the whole AC side into `MV601-REF-A`'s Thévenin source (`V_oc` ≈ 13 V from MM p.3's “approximately 13 volts” unloaded, `R_src` `[unverified]`) and model the rectifier as an ideal full-wave centre-tapped rectifier with **zero** forward drop - the drop is already inside `V_oc`, and double-counting it is the failure mode. Transformer VA is not modelled at all; the 1.5 A continuous rating is the only published limit and it belongs to the supply as a whole. Every part `[unverified]`.\"",
+      "evidence": "MM printed p.2: \"The power supply is rated at 1.5 amps continuous with a nominal 12 volts output\"; MM printed p.3 step 3: \"The unloaded power supply outlet voltage should be approximately 13 volts.\" The MM p.3 schematic shows a centre-tapped transformer into a rectifier with the breaker in the centre-tap return; it names no voltage, VA or rectifier type. open-questions.md §3.1 already withdraws the \"selenium\" reading, so nothing else in the package supplies a rectifier model.",
+      "severity": "missing"
+    },
+    {
+      "file": "docs/research/history-and-artifacts.md",
+      "currentText": "Line 14, implementer item 2: \"**Never build a wire list from `raw/pdf/errata.txt`.** The pdftotext extraction of a two-column sheet drops 12 of the 48 connections in the alternate three-bit counter and corrupts terminal letters. Use the page images. `[verified]`\"",
+      "ruling": "CORRECT the factual claim, keep the warning. The \"drops 12 of 48\" figure is refuted. Replace with: \"**Never build a wire list from `raw/pdf/errata.txt`.** The pdftotext extraction of a two-column sheet interleaves the columns and corrupts terminal letters. It does *not* drop connections - all 48 of the alternate three-bit counter's wires are present - but four glyph classes corrupt (`1F/1H` -> `IF/TH`, `6L/6-` -> `61/6-`, every `+` -> `-f` / `-|-`) and one line is destroyed to noise. Use the 300 dpi page images. `[verified]`\"",
+      "evidence": "I counted the block directly: errata.txt lines ~103-118 lay the alternate-counter program out as 4 columns x 12 rows = **48** entries (`1A/2E` .. `6Y/6-f`), all present. Independently: `raw:gap-verify-canonical-errata-applied-program-corpus.json#upgraded.UP-02` - \"REFUTED: errata.txt does NOT drop 12 of the 48 connections ... Confirmed twice over\"; and programs.md C-19 records the same refutation, cited to a 300 dpi read of errata.pdf p.2 right column.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/history-and-artifacts.md",
+      "currentText": "Document-hygiene table row: \"| `errata.txt` interleaves the sheet's two columns line by line | 36 of 48 counter connections survive, 12 are dropped, and letters corrupt (`1F/1H` -> `IF/TH`; `1G/1+` -> `lG/l-f`). Transcribe from the rendered page image only. | `[verified]` |\"",
+      "ruling": "CORRECT. Replace the middle cell with: \"All 48 counter connections survive; the damage is glyph-level and reading-order-level, not lossy. Four corruption classes: two terminal letters (`1F/1H` -> `IF/TH`, `6L/6-` -> `61/6-`), every plus sign (`1G/1+` -> `lG/l-f`), the two-column reading order, and exactly one line destroyed to noise (the Book V p.24 correction). Transcribe from the rendered page image only.\"",
+      "evidence": "Same direct count of errata.txt lines ~103-118 (48 entries in 4 columns x 12 rows) plus gap-verify UP-02 and programs.md C-19. The warning is right and must stay; only the \"12 dropped\" number is wrong, and it is wrong three times in this file.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/history-and-artifacts.md",
+      "currentText": "§Corrections applied row R4: \"| R4 | “The complete errata sheet is transcribed verbatim in `errata.txt` … read it directly.” | **False and actively dangerous.** The extraction interleaves two columns, drops 12 of 48 connections, and corrupts terminal letters. Never build an errata-corrected test vector from it. | `[verified]` |\"",
+      "ruling": "CORRECT the same figure a third time: strike \"drops 12 of 48 connections\" and replace with \"interleaves two columns, corrupts four glyph classes and destroys one line\". The verdict \"False and actively dangerous\" stands unchanged.",
+      "evidence": "Same evidence. Recorded separately because the applying agent must fix all three occurrences in this file - lines 14, 55 and 318 - or the file will disagree with itself and with open-questions.md §3.5.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/history-and-artifacts.md",
+      "currentText": "§\"Watertown vs Cambridge - moved, not settled\": the evidence table has exactly three rows (601 panels Cambridge / 6010 panel Watertown / all paper Watertown), and the §\"Not settled by the sources\" row reads \"Moved, not settled. 601 panels Cambridge, 6010 panel Watertown, all paper Watertown.\"",
+      "ruling": "ADD the third city. Both `panel.md` (D1b) and `open-questions.md` (C14, which calls the question \"now three-way\") carry a fourth evidence stream this file omits. Add a table row: \"| PH3's plate (Centre for Computing History unit, a third machine) | A short ~7-glyph word ending `-tham`, ascenders at t/h, no descender - rules out both *Cambridge* (9 glyphs, descender at g) and *Watertown*. Most plausible reading **Waltham**. | `[unverified]` - resolution-limited |\" and amend the summary sentence to \"...all paper Watertown, and a third 601 plate that reads as neither.\" Also add PH3 to the §\"Logo plates - read at full resolution\" table with the same `[unverified]` tag, so that table stops implying only two plates have been read.",
+      "evidence": "I cropped and upscaled the PH3 plate legend from `raw/photos/commons-minivac601-DSCF1392.jpg` myself: the city word resolves as \"…tham\" preceded by what reads as W-a, i.e. consistent with *Waltham* and inconsistent with both other candidates - but genuinely at the resolution limit, so `[unverified]` is the right tag. For contrast I cropped the same legend from `raw/photos/commons-minivac601-main.jpg` (400x1700 px at offset 300,2350, upscaled): \"Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.\" reads cleanly. raw:verify-panel.json#missed.V-M05 is the origin of the `-tham` observation.",
+      "severity": "missing"
+    },
+    {
+      "file": "docs/research/history-and-artifacts.md",
+      "currentText": "§\"Shannon: documented versus marketed\", Documented row: \"The name appears in exactly one passage across Books I-VI ... Two occurrences, two consecutive sentences, one passage. ... `[verified]` - Book III, printed page 44 (confirmed by printed-page-number sweep: `book2-3-4.pdf` PDF page 50). Absence elsewhere re-tested whitespace-insensitively across all six local text layers: zero further hits.\"",
+      "ruling": "CONFIRMED CORRECT as written - do not weaken it. One STRENGTHENING addition: the scope sentence says \"across Books I-VI\" but the absence now holds across the whole nine-document corpus, Book VII included, which matters because Book VII is a 1962 document written after the advertising claim. Change \"across Books I-VI\" to \"across the entire primary corpus - Books I-VII, the Maintenance Manual and the errata sheet\" and change the closing note to \"Absence elsewhere re-tested whitespace-insensitively across all six local text layers (`tr -d ' \\t'`): zero further hits in book1, book5-6, book7-capacitor-resistor, maintenance-manual or errata.\"",
+      "evidence": "I re-ran the sweep myself: `tr -d ' \\t' < <each>.txt | grep -in shannon` over all six OCR layers returns hits only in book2-3-4.txt, at lines 2205-2206, and nowhere else. I then rendered book2-3-4.pdf PDF p.50 at 110 dpi and read the page: folio **44**, section \"3. THINKING AND DECISION-MAKING\", sub-head \"Boolean Algebra\", printing verbatim \"The application of the operations and techniques of Boolean Algebra to switching circuits was first suggested in 1938 by Dr. Claude Shannon of the Massachusetts Institute of Technology. It was Dr. Shannon's original development work which led to the MINIVAC 601.\" Printed p.44 is inside Book III (pp.35-65) and the +6 offset checks out. The file's framing - lineage from the 1938 thesis, never authorship, with \"created as a private project by Dr. Claude E. Shannon\" quarantined in a separate **Marketed** row tagged `[likely]` to an RF Cafe transcription of the Oct-1961 ad - is exactly right and needs no change.",
+      "severity": "missing"
+    },
+    {
+      "file": "docs/research/jack-map.md",
+      "currentText": "§10 Corrections applied row: \"| Citation “`2K/3com`, `4G/5com`, `6A/6com`” offered for the `ncom` designator | `2K/3com` and `4G/5com` do not appear anywhere in Books I-VI in any spacing variant. `6A/6com` appears twice, but in Books V-VI, not II-IV. ... | grep over `book1.txt`, `book2-3-4.txt`, `book5-6.txt` |\"",
+      "ruling": "REVERSE. All three lines appear in Book IV, printed p.85 (`book2-3-4.pdf` PDF p.91), in the *Program for Decimal to Binary Converter*. Replace the row with: \"| The refutation of the citation “`2K/3com`, `4G/5com`, `6A/6com`” as nonexistent (`raw:verify-panel.json#refuted.V-R09`) | **Itself refuted.** All three are printed in Book IV p.85's 49-wire Decimal to Binary Converter, alongside `D16/M+`; `programs.md`'s `IV-EXP11` record carries the identical list. The refuting grep allowed one optional space per glyph gap where the OCR uses several. | image read, `book2-3-4.pdf` PDF p.91 |\" The `ncom` conclusion is unaffected - it was always right.",
+      "evidence": "Whitespace-insensitive grep hits book2-3-4.txt line 4156; rendered PDF p.91 at 130 dpi and read the block. See the open-questions.md §3.1 ruling for the full transcription.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/panel.md",
+      "currentText": "Overturned-claims list, line 537: \"- A cited program line, `2K/3com` / `4G/5com` “in Books II-IV”, does not exist in any spacing variant anywhere in Books I-VI. The claim it supported (COMMONs are addressed `<n>com`) stands on other evidence...\"",
+      "ruling": "REVERSE - and note that this bullet currently accuses the panel finder of a fabricated citation the finder did not commit. Replace with: \"- The one “bad citation” charged against this file is withdrawn. `2K/3com`, `4G/5com` and `6A/6com` **do** appear in Books II-IV - Book IV printed p.85, `book2-3-4.pdf` PDF p.91, the 49-wire *Program for Decimal to Binary Converter*. `raw:verify-panel.json#refuted.V-R09`'s grep allowed one optional space per glyph gap where this OCR sets `2 K /3 c o m`. The finder's citation was correct. `[verified]` - image read.\"  The verifier's headline count (\"eight refutable claims, one fabricated citation\") should be restated as \"eight refutable claims\" wherever it is quoted.",
+      "evidence": "Image-read `book2-3-4.pdf` PDF p.91 at 130 dpi; the block prints all three lines. Corroborated by programs.md `IV-EXP11` (line 1671) and by whitespace-insensitive grep on book2-3-4.txt line 4156. This matters beyond the citation: raw:verify-panel.json's verdict is quoted in the pass brief as evidence of the panel file's weakness, and one third of that charge is wrong.",
+      "severity": "wrong-fact"
+    },
+    {
+      "file": "docs/research/panel.md",
+      "currentText": "Lines 523 and 533: \"...three of the seven primary PDFs\" and \"The census covered three of seven primary PDFs.\"",
+      "ruling": "CORRECT both to \"three of the six PDFs on disk - Books I-VI only; Book VII, the Maintenance Manual and the errata sheet were not searched\". Same count error as README line 3 and open-questions.md.",
+      "evidence": "`ls raw/pdf/*.pdf` returns six files. The three searched were book1.txt, book2-3-4.txt, book5-6.txt. Naming the three unsearched files is what makes the sentence useful - the `ncap` designator that broke the census lives in the first of them.",
+      "severity": "cosmetic"
+    },
+    {
+      "file": "docs/research/rotary.md",
+      "currentText": "Line 230: \"The words coast, overrun, momentum and inertia appear nowhere in any of the seven documents.\"",
+      "ruling": "CORRECT to \"nowhere in any of the nine documents (Books I-VII, the Maintenance Manual and the errata sheet)\". The absence claim itself is fine; the count is not. Also re-run it with `tr -d ' \\t'` before it ships - see the `2K/3com` failure.",
+      "evidence": "Nine documents, six PDFs; no reading of the corpus gives seven. history-and-artifacts.md line 13 carries the correct figure.",
+      "severity": "cosmetic"
+    }
+  ],
+  "confirmed_correct": [
+    "open-questions.md C14 handles Watertown vs Cambridge correctly and must not be touched: both readings quoted with primary citations, tagged [verified] on each side, the third `-tham` reading recorded [unverified], the named fallback given as a configurable legend string, and five specific settling artifacts listed. I re-read both plates myself (PH2 crop: Cambridge, clean; PH3 crop: a short word ending `-tham`) and the conclusion holds.",
+    "The Watertown/Cambridge split is not silently resolved anywhere. jack-map.md line 267, panel.md D1/D1b/§12, rotary.md line 559, programs.md N-9 and history-and-artifacts.md's own section all report and refuse to resolve it. Checked by grepping every .md for Cambridge/Watertown/Waltham.",
+    "history-and-artifacts.md's Shannon passage is precisely stated and image-verified: exactly one passage, two occurrences in two consecutive sentences, framed as intellectual lineage from the 1938 relay-switching thesis and never as authorship, with the advertising phrase 'created as a private project by Dr. Claude E. Shannon' quarantined in a separate Marketed row tagged [likely]. I re-read book2-3-4.pdf PDF p.50 (printed p.44, Book III) at 110 dpi.",
+    "history-and-artifacts.md's oracle-only ruling is present and explicit: Tom's ruling quoted in bold, an enumerated list of what was NOT done (no gregsadetsky/minivac file, no minivac.greg.technology asset, no jkoets file, no circuit-sandbox read), what was done instead (GitHub metadata, HN comments, third-party write-ups), and the standing sentence 'Everything below about this simulator is external observation. None of it is derived from its source.' O-H7 correctly parks the jkoets question as awaiting Tom's ruling.",
+    "README's matrix bullet (1-2-3 / 8-9-4 / 7-6-5, 9 at centre, six-hole M10 and M11, t and b distinct, nothing behind the panel) is right. I re-verified it from an independent full-resolution crop of raw/photos/commons-minivac601-main.jpg: the silkscreen reads 1 2 3 / 8 9 4 / 7 6 5 with 9 centred, M10 and M11 as six holes inside a printed rectangular loop, a short bar joining each t/b pair and no bar between pairs.",
+    "C2's two-resistor motor drive now has a third independent primary confirmation I found while checking something else: Book II Experiment 7's circuit diagram (book2-3-4.pdf PDF p.21, printed p.15) draws R1 in series D17-D19 with the motor and R2 both across D18-D19. README, jack-map.md and rotary.md all state it correctly.",
+    "C4's global power-net rule is quoted verbatim correctly. ER sheet p.1 reads 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.' README's two-node bullet and its 7-plus/7-minus count are right.",
+    "README's citation 'ER, Book V p.25' for the power-cycle reset is correct: the errata sheet's Book V block prints 'page 25: Note - to re-set the automatic sequence control, turn power OFF, then ON again.' Only the tag on the inferred consequence is wrong (ruled above).",
+    "C6 is correctly closed. I re-read maintenance-manual.pdf PDF p.5: the Power Supply Circuit Diagram shows the POWER LIGHT across the DC output, the circuit breaker in the transformer centre-tap (yellow) return, and no fuse anywhere. The black knurled FUSE cap is plainly visible on my PH2 crop, so both observations are real and 'factory lamp, owner-fitted fuseholder' is the right resolution.",
+    "The Maintenance Manual page offset (printed page + 2 = PDF page) is correct and holds end to end: PDF p.5 = folio 3, PDF p.9 = folio 7, PDF p.10 = folio 8, PDF p.13 = folio 11 (spare parts, last page of 13). README's source-key table and every MM citation in the package can be trusted on this.",
+    "README trap 3 is accurate: raw:find-programs.json really does carry a `verified: 32` field under a tag policy the package later struck, and programs.md really does re-tag the affected programs down to [likely].",
+    "Every section pointer in README's named-fallback index resolves except the FALLBACK-PWRUP-COLD one (ruled above): components.md §1.3, §8.2, §9.3, §10, §8.1, jack-map.md §8 and §9, rotary.md §9 all exist and contain what README says they contain.",
+    "open-questions.md §3.1 does carry the three refutations I went looking for and expected to find missing - the '8 relay connections = 2 coil + 6 contact' inference, the invented '14 V lamp' rating, and the 0.67 Ω source-resistance downgrade. No refutation from verify-relays.json is lost.",
+    "C1, C2, C3 and C6's resolutions did reach the written files. The three surviving `1Y/1C` strings in components.md, jack-map.md and programs.md are Book II Experiment 5, a different program that genuinely contains that wire - not a stale Book I Experiment 8 list.",
+    "open-questions.md's structure satisfies its own entry-shape rule almost everywhere: every §1 gap and every §4 row carries a named fallback and a 'would settle it' column. Only O-T6 and O-E8 fail it, and both are ruled above.",
+    "README's Traps list is sound as a list - the errata two-column warning, the book2-3-4 continuous pagination, the find-programs tag policy, the Book VII omega-as-Q trap, the PH1 geometry warning, the crossing-lines-are-not-junctions rule and the TIM-05/TIM-06 warning are all correct and correctly cited. Only trap-adjacent rule 2 (the grep boast) needed correcting."
+  ]
+}

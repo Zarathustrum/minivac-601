@@ -1,0 +1,160 @@
+#!mv601-trace 1
+# id=I-PROBLEMS contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > button6 target=1000
+   511.2 * pb6 nc->mid
+   513.7 * pb6 mid->no
+   517.0 * outLamp6 off->dim
+   536.1 * outLamp6 dim->on
+   536.2 ? outLamp6=on  "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed."
+   545.3 * dial c0->gap
+   566.2 * dial gap->c1
+   629.0 * dial c1->gap
+   649.9 * dial gap->c2
+   712.7 * dial c2->gap
+   733.6 * dial gap->c3
+   796.4 * dial c3->gap
+   817.3 * dial gap->c4
+   880.1 * dial c4->gap
+   901.0 * dial gap->c5
+   963.8 * dial c5->gap
+   984.7 * dial gap->c6
+  1047.4 * dial c6->gap
+  1068.4 * dial gap->c7
+  1131.1 * dial c7->gap
+  1152.0 * dial gap->c8
+  1152.1 ? dial=c8  "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed."
+  1152.1 > button6 target=0
+  1163.3 * pb6 no->mid
+  1165.8 * pb6 mid->nc
+  1183.5 * outLamp6 on->dim
+  1239.2 * outLamp6 dim->off
+  3152.1 > power off
+  3152.1 * power on->off
+  3652.1 > disconnect cord=0
+  3652.1 > disconnect cord=1
+  3652.1 > disconnect cord=2
+  3652.1 > disconnect cord=3
+  3652.1 > disconnect cord=4
+  3652.1 > connect cord=5 a=hole:5+#1 b=hole:5Y#1 r_uohm=0
+  3652.1 > connect cord=6 a=hole:5Z#1 b=hole:6X#1 r_uohm=0
+  3652.1 > connect cord=7 a=hole:6Y#1 b=hole:D17#1 r_uohm=0
+  3652.1 > connect cord=8 a=hole:M-#1 b=hole:D18#1 r_uohm=0
+  3652.1 > dialGrab targetUdeg=0
+  3676.1 * dial c8->gap
+  3707.4 * dial gap->c9
+  3801.1 * dial c9->gap
+  3832.4 * dial gap->c10
+  3926.1 * dial c10->gap
+  3957.4 * dial gap->c11
+  4051.1 * dial c11->gap
+  4082.4 * dial gap->c12
+  4176.1 * dial c12->gap
+  4207.4 * dial gap->c13
+  4301.1 * dial c13->gap
+  4332.4 * dial gap->c14
+  4426.1 * dial c14->gap
+  4457.4 * dial gap->c15
+  4551.1 * dial c15->gap
+  4582.4 * dial gap->c0
+  6152.1 > dialRelease
+  6252.1 > power on
+     0.0 * power off->on
+  1100.0 ? dial=c0  "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  1100.0 > button5 target=1000
+  1111.2 * pb5 nc->mid
+  1113.7 * pb5 mid->no
+  1700.0 ? dial=c0  "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  1700.0 > button6 target=1000
+  1711.2 * pb6 nc->mid
+  1713.7 * pb6 mid->no
+  2300.0 ? dial=c0  "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  2300.0 > button5 target=0
+  2311.2 * pb5 no->mid
+  2313.7 * pb5 mid->nc
+  2345.0 * dial c0->gap
+  2365.8 * dial gap->c1
+  2428.3 * dial c1->gap
+  2449.2 * dial gap->c2
+  2511.7 * dial c2->gap
+  2532.5 * dial gap->c3
+  2595.0 * dial c3->gap
+  2615.8 * dial gap->c4
+  2678.3 * dial c4->gap
+  2699.2 * dial gap->c5
+  2761.7 * dial c5->gap
+  2782.5 * dial gap->c6
+  2845.0 * dial c6->gap
+  2865.8 * dial gap->c7
+  2928.3 * dial c7->gap
+  2949.2 * dial gap->c8
+  2949.3 ? dial=c8  "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  2949.3 > button6 target=0
+  2960.5 * pb6 no->mid
+  2963.0 * pb6 mid->nc
+  4949.3 > power off
+  4949.3 * power on->off
+  5449.3 > disconnect cord=5
+  5449.3 > disconnect cord=6
+  5449.3 > disconnect cord=7
+  5449.3 > disconnect cord=8
+  5449.3 > connect cord=9 a=hole:6+#1 b=hole:6X#1 r_uohm=0
+  5449.3 > connect cord=10 a=hole:6Y#1 b=hole:D17#1 r_uohm=0
+  5449.3 > connect cord=11 a=hole:M-#1 b=hole:D18#1 r_uohm=0
+  5449.3 > connect cord=12 a=hole:D18#2 b=hole:5X#1 r_uohm=0
+  5449.3 > connect cord=13 a=hole:5Y#1 b=hole:D19#1 r_uohm=0
+  5449.3 > dialGrab targetUdeg=0
+  5472.9 * dial c8->gap
+  5504.2 * dial gap->c9
+  5597.9 * dial c9->gap
+  5629.2 * dial gap->c10
+  5722.9 * dial c10->gap
+  5754.2 * dial gap->c11
+  5847.9 * dial c11->gap
+  5879.2 * dial gap->c12
+  5972.9 * dial c12->gap
+  6004.2 * dial gap->c13
+  6097.9 * dial c13->gap
+  6129.2 * dial gap->c14
+  6222.9 * dial c14->gap
+  6254.2 * dial gap->c15
+  6347.9 * dial c15->gap
+  6379.2 * dial gap->c0
+  7949.3 > dialRelease
+  8049.3 > power on
+     0.0 * power off->on
+  1100.0 ? dial=c0  "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  1100.0 > button5 target=1000
+  1111.2 * pb5 nc->mid
+  1113.7 * pb5 mid->no
+  1700.0 ? dial=c0  "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  1700.0 > button6 target=1000
+  1711.2 * pb6 nc->mid
+  1713.7 * pb6 mid->no
+  2300.0 ? dial=c0  "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  2300.0 > button5 target=0
+  2311.2 * pb5 no->mid
+  2313.7 * pb5 mid->nc
+  2342.5 * dial c0->gap
+  2363.3 * dial gap->c1
+  2425.8 * dial c1->gap
+  2446.7 * dial gap->c2
+  2509.2 * dial c2->gap
+  2530.0 * dial gap->c3
+  2592.5 * dial c3->gap
+  2613.3 * dial gap->c4
+  2675.8 * dial c4->gap
+  2696.7 * dial gap->c5
+  2759.2 * dial c5->gap
+  2780.0 * dial gap->c6
+  2842.5 * dial c6->gap
+  2863.3 * dial gap->c7
+  2925.8 * dial c7->gap
+  2946.7 * dial gap->c8
+  2946.8 ? dial=c8  "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+  2946.8 > button6 target=0
+  2958.0 * pb6 no->mid
+  2960.5 * pb6 mid->nc

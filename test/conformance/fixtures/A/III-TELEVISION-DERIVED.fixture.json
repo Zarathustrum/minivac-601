@@ -1,0 +1,619 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-TELEVISION-DERIVED",
+  "source": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71; wires image-read on PDF p.71 at 300 dpi; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1U/1S",
+    "1S/2S",
+    "1T/2R",
+    "2R/2V",
+    "2U/3W",
+    "2W/3U",
+    "3R/4R",
+    "3S/3V",
+    "3T/4T",
+    "4A/4S",
+    "4B/4-",
+    "4U/5V",
+    "4U/1V",
+    "4V/4+",
+    "5W/1U"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the wiring and the p.65 rule that light 4 comes ON only at the correct solution; the page prints no setting and no light-4 state for any combination (A/III-TELEVISION is trace-only). Topology: plus enters only at 4V; light 4 sits between 4A/4S and 4B/4-. Switch 4 set 2 LEFT feeds 4U/5V/1V; 1U/1S/2S is fed by switch 1 set 2 LEFT or switch 5 set 2 RIGHT (5W); 2R/2V by switch 1 set 1 RIGHT (1T) or switch 2 set 1 LEFT; 3V/3S by switch 2 set 2 and switch 3 set 2 in opposite positions (2U/3W, 2W/3U); 4S by switches 3 and 4 set 1 in the same position (3R/4R, 3T/4T). So light 4 = S4L AND (S1L OR S5R) AND (S1R OR S2L) AND (S2 != S3) AND (S3 = S4), true only at switches 3, 4 LEFT and 1, 2, 5 RIGHT; with the conventions block (LEFT = watching) that is David and Edward, the unique solution of the p.63 conditions. Script: the printed start (all LEFT, power ON), the solution, each single-switch move away from it and back, then the mirror setting the procedure's parenthetical reading (LEFT = no one watching) would give. The 500 ms advance before each expect lets the lamp finish its thermal transient; the page states no timing. The LEFT contradiction stays [unverified].",
+  "wires": [
+    "1U/1S",
+    "1S/2S",
+    "1T/2R",
+    "2R/2V",
+    "2U/3W",
+    "2W/3U",
+    "3R/4R",
+    "3S/3V",
+    "3T/4T",
+    "4A/4S",
+    "4B/4-",
+    "4U/5V",
+    "4U/1V",
+    "4V/4+",
+    "5W/1U"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: all five switches LEFT (B, C, D, E, F watching; fails condition 3). 4V/4+ - switch 4 V-U - 4U/1V - switch 1 V-U - 1U/1S/2S - switch 2 S-R - 2R/2V - switch 2 V-U - 2U/3W; switch 3 arm 3V sits on 3U, which is fed only from 2W, so 3V/3S is dead and 4A/4S (switch 4 S-R from 4R/3R) is unfed: light 4 off. No other lamp and no relay coil is wired, so lights 1-3, 5, 6 stay off and every relay stays out",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: the solution, switches 3, 4 LEFT and 1, 2, 5 RIGHT. 4V/4+ - switch 4 V-U - 4U/5V - switch 5 V-W - 5W/1U/1S - switch 1 S-T - 1T/2R/2V - switch 2 V-W - 2W/3U - switch 3 V-U - 3V/3S - switch 3 S-R - 3R/4R - switch 4 S-R - 4S/4A - light 4 - 4B/4-: light 4 on. Nothing else is wired to a lamp or coil",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: switch 1 LEFT from the solution (Barry watching, Clara not; fails condition 1). 1U/1S/2S is still fed (4U/1V - switch 1 V-U), but switch 1 S-R goes to unwired 1R and switch 2 S-T (RIGHT) to unwired 2T, so 2R/2V and everything after it is dead: light 4 off",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: switch 2 LEFT from the solution (Clara and David both watching; fails condition 3). 2R/2V is fed, switch 2 V-U goes to 2U/3W, but switch 3 arm (LEFT) sits on 3U, fed only from 2W: 3V/3S dead, light 4 off",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: switch 3 RIGHT from the solution (Edward watching, David not; fails condition 4). 2V - switch 2 V-W - 2W/3U, but switch 3 arm now on 3W, fed only from 2U: 3V/3S dead; also switch 3 S-T/4T meets switch 4 arm on 4R. Light 4 off",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: switch 4 RIGHT from the solution (Edward not watching; fails conditions 2 and 4). The only plus feed 4V/4+ goes through switch 4 V-W to unwired 4W, so the whole network is dead and switch 4 S-T also leaves 4S off 4R: light 4 off",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: switch 5 LEFT from the solution (Francis watching, Barry not; fails condition 5). 4U/5V - switch 5 V-U goes to unwired 5U; the other feed 4U/1V - switch 1 V-W (RIGHT) goes to unwired 1W, so 1U/1S/2S and everything after it is dead: light 4 off",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: back at the solution (switches 3, 4 LEFT, 1, 2, 5 RIGHT): the same path as the first solution check, 4V - 4U/5V - 5W/1U/1S - 1T/2R/2V - 2W/3U - 3V/3S - 3R/4R - 4S/4A - light 4 - 4B/4-: light 4 on",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71, rule p.65 'Light 4 will come ON only when the correct solution has been indicated' with the p.65 convention LEFT = watching and the p.63 conditions 1-5 (unique solution: David and Edward watching = switches 3, 4 LEFT, 1, 2, 5 RIGHT); derived from topology: the mirror setting, switches 1, 2, 5 LEFT and 3, 4 RIGHT: the solution read under the p.65 procedure parenthetical (LEFT = no one watching). Switch 4 V-W sends the only plus feed 4V/4+ to unwired 4W, so the network is dead: light 4 off, so the wiring sides with the conventions block (LEFT = watching)",
+      "quote": "Light 4 will indicate the correct solution: light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates that the solution is NOT CORRECT. ... Light 4 will come ON only when the correct solution has been indicated.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

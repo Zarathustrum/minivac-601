@@ -1,0 +1,46 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP9",
+  "source": "BK1 printed p.17 = book1.pdf PDF p.19",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1F/1-", "1C/1X", "1Y/2Y", "2Y/2+", "2Z/1L", "1K/1C"],
+  "errata_applied": [],
+  "wires": ["1F/1-", "1C/1X", "1Y/2Y", "2Y/2+", "2Z/1L", "1K/1C"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay1", "v": "no" },
+        { "dev": "pb1", "v": "nc" },
+        { "dev": "indLamp1", "v": "on" }
+      ],
+      "cite": "BK1 printed p.17 = book1.pdf PDF p.19",
+      "quote": "Push pushbutton 1 and release. The relay indicator light comes ON and stays ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay1", "v": "nc" },
+        { "dev": "pb2", "v": "nc" },
+        { "dev": "indLamp1", "v": "off" }
+      ],
+      "cite": "BK1 printed p.17 = book1.pdf PDF p.19",
+      "quote": "Push pushbutton 2 and release. This momentarily interrupts current flow through the coil and turns the relay OFF."
+    }
+  ]
+}

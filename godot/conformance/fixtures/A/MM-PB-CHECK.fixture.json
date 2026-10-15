@@ -1,0 +1,83 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "MM-PB-CHECK",
+  "source": "MAINT printed pp.6-7 = maintenance-manual.pdf PDF pp.8-9",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "+/Y",
+    "Z/1A",
+    "1B/-",
+    "X/2B",
+    "2B/-"
+  ],
+  "errata_applied": [
+    {
+      "id": "MM-PB-PRINT-01",
+      "from": "1X/2B",
+      "to": "1X/2A"
+    }
+  ],
+  "note": "The figure prints 2B at both ends of light 2. The intended left terminal is 2A; the two bare minus marks are the section rails under ERG-02.",
+  "wires": [
+    "1+/1Y",
+    "1Z/1A",
+    "1B/1-",
+    "1X/2A",
+    "2B/2-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" }
+      ],
+      "cite": "MAINT printed p.7 = maintenance-manual.pdf PDF p.9",
+      "quote": "Turn power on. Light 1 should come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "MAINT printed p.7 = maintenance-manual.pdf PDF p.9",
+      "quote": "Push the pushbutton. Light 1 should go off and light 2 should come on."
+    }
+  ]
+}

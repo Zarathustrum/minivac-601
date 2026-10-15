@@ -1,0 +1,935 @@
+{
+  "schema": "minivac.printed-class/1",
+  "programs": [
+    {
+      "id": "VI-TICTACTOE",
+      "class": "partial",
+      "evidence": [
+        "The pointer knob will turn to indicate the machine's first move.",
+        "Play continues until either light 1 comes on - indicating that MINIVAC wins; or light 2 comes on - indicating a tie.",
+        "the machine's first move will always be to the center of the game matrix",
+        "the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move",
+        "MINIVAC will indicate a tie on the fifth move but will not indicate a move into the last available space."
+      ],
+      "unprinted": "Every machine reply after the first is derived from the 'N squares to the right' rule, whose direction is not printed (FALLBACK-TTT-RING-CW)."
+    },
+    {
+      "id": "I-EXP1",
+      "class": "yes",
+      "evidence": [
+        "Turn the Power Switch on: lamp 1 lights."
+      ]
+    },
+    {
+      "id": "I-EXP2",
+      "class": "yes",
+      "evidence": [
+        "Turn the power switch ON. Light 1 comes ON because current flows through the light."
+      ]
+    },
+    {
+      "id": "I-EXP3",
+      "class": "yes",
+      "evidence": [
+        "Push DOWN on pushbutton 1: light 1 comes ON. Release: light 1 goes OFF.",
+        "Light 2 comes on as soon as power is turned ON (through the normally closed contact Z of pushbutton 1).",
+        "Push down on pushbutton 1. Light 2 goes OFF and light 1 comes ON.",
+        "one light always goes OFF before the other comes ON"
+      ]
+    },
+    {
+      "id": "I-EXP4",
+      "class": "yes",
+      "evidence": [
+        "Turn the power switch ON and push down pushbutton 1. Light 2 does NOT light.",
+        "Release pushbutton 1 and push down pushbutton 2. Light 2 still does NOT light.",
+        "Push down both pushbutton 1 and pushbutton 2 at the same time and see light 2 go ON."
+      ]
+    },
+    {
+      "id": "I-EXP5",
+      "class": "yes",
+      "evidence": [
+        "Turn the power switch ON. The light does not come on.",
+        "Push down pushbutton 1. Light 1 comes ON (through 1X).",
+        "Release pushbutton 1 and push down pushbutton 2. The light again comes ON (through 2X).",
+        "Push down both at the same time. The light is ON."
+      ]
+    },
+    {
+      "id": "I-EXP6",
+      "class": "yes",
+      "evidence": [
+        "Turn power ON. Light 2 comes ON.",
+        "Gently push the relay crossbar to the left. Light 2 goes OFF and light 1 comes ON."
+      ]
+    },
+    {
+      "id": "I-EXP7",
+      "class": "yes",
+      "evidence": [
+        "Turn power ON. Light 2 comes ON.",
+        "Press down pushbutton 1 and see the relay operate. Light 2 goes OFF and light 1 comes ON."
+      ]
+    },
+    {
+      "id": "I-EXP8",
+      "class": "yes",
+      "evidence": [
+        "manually operate relay 2 by pushing the plastic crossbar to the left. See light 2 come ON.",
+        "Release relay 2 and manually operate relay 1. Relay 2 will click ON and light 2 will come ON.",
+        "Relay 1 is turned ON by pushbutton 1, relay 2 by relay 1's contacts, and light 2 by relay 2's contacts."
+      ]
+    },
+    {
+      "id": "I-EXP9",
+      "class": "yes",
+      "evidence": [
+        "Push pushbutton 1 and release. The relay indicator light comes ON and stays ON.",
+        "Push pushbutton 2 and release. This momentarily interrupts current flow through the coil and turns the relay OFF."
+      ]
+    },
+    {
+      "id": "I-EXP10",
+      "class": "yes",
+      "evidence": [
+        "Move switch 1 to the LEFT and turn the power ON. Light 1 comes ON but light 2 remains OFF.",
+        "Move switch 1 to the right. Light 1 goes OFF and light 2 comes ON."
+      ]
+    },
+    {
+      "id": "I-EXP11",
+      "class": "yes",
+      "evidence": [
+        "Turn power ON and rotate the pointer to number 1. Light 5 comes ON and remains ON as long as the pointer points at 1.",
+        "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON."
+      ]
+    },
+    {
+      "id": "I-EXP12",
+      "class": "yes",
+      "evidence": [
+        "Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate.",
+        "While holding pushbutton 5 down, push pushbutton 6. The motor stops when pushbutton 6 is pushed because a short circuit is created across the STOP terminals (D18 and D19). Current flows through pushbutton 6 instead of through the motor.",
+        "While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed.",
+        "Release pushbutton 5. The motor drive again stops, this time because power is no longer connected to the motor circuit."
+      ]
+    },
+    {
+      "id": "I-EXP13",
+      "class": "yes",
+      "evidence": [
+        "Push pushbutton 5. The motor rotates the pointer knob as in Experiment 11. As the pointer knob turns, light 5 and light 6 flash ON in sequence. The rotary switch is automatically generating electrical pulses to flash the lights. First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch.",
+        "While holding pushbutton 5 down, push pushbutton 6. The pointer knob STOPS turning and the lights STOP flashing."
+      ]
+    },
+    {
+      "id": "I-EXP14",
+      "class": "partial",
+      "evidence": [
+        "Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction."
+      ],
+      "unprinted": "Which way the dial turns for each switch-6 position is not printed ('notice the direction of rotation'); only the reversal is."
+    },
+    {
+      "id": "I-PROBLEMS",
+      "class": "partial",
+      "evidence": [
+        "light 1 and relay 1 should both be on **only** if **both** pushbutton 1 and pushbutton 2 are DOWN",
+        "pushbutton 5 is used to keep the rotary switch from stopping at `D0` when pushbutton 6 is being held down",
+        "turn the rotary switch back and forth between numbers 1 and 6",
+        "13) Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed.",
+        "14) Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down.",
+        "15) Design a circuit to meet the requirements of problem 14 using terminal 5X."
+      ],
+      "unprinted": "The 20 answers print wiring only; most answers' lamp, relay and dial behaviour must be derived from problem statements the record only summarises."
+    },
+    {
+      "id": "II-EXP1",
+      "class": "partial",
+      "evidence": [
+        "Relay light 1 comes ON to indicate that a \"one\" is being remembered (stored).",
+        "Relay light 2 remains OFF to indicate that a \"zero\" is being remembered (stored).",
+        "Relay light 3 remains OFF to indicate that a \"zero\" is being remembered.",
+        "Relay light 4 comes ON to indicate that a \"one\" is being remembered by section 4.",
+        "Relay light 5 comes ON to indicate that a \"one\" is being remembered by section 5.",
+        "All relay lights go OFF, and the previous number is forgotten (\"cleared\" from the memory)."
+      ],
+      "unprinted": "The 10011 (19) pattern held across sections 1-5 after step 5 is stated without naming any light; relay armature states are not stated."
+    },
+    {
+      "id": "II-EXP2",
+      "class": "partial",
+      "evidence": [
+        "turn the dial to 4, push pushbutton 5 — relay light 4 comes ON; push pushbutton 6 — relay light 4 goes OFF.",
+        "With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON."
+      ],
+      "unprinted": "Step 2's reader-chosen digit (1-5): relay light N ON is derived from the 'corresponds with the section (1-6) which has a relay light ON' rule; the other relay lights staying OFF is not printed."
+    },
+    {
+      "id": "II-EXP3",
+      "class": "yes",
+      "evidence": [
+        "Slide switch left = 1 (light 1 ON), right = 0 (light 1 OFF)."
+      ]
+    },
+    {
+      "id": "II-MANUALMEM",
+      "class": "yes",
+      "evidence": [
+        "Relay 1 remembers 1 only while pushbutton 1 is held down; releasing it reverts to 0."
+      ]
+    },
+    {
+      "id": "II-SELFLOCK",
+      "class": "partial",
+      "evidence": [
+        "the relay latches ON and cannot be cleared except by removing power."
+      ],
+      "unprinted": "The power-up state (relay OFF) and that pushbutton 1 sets the latch are derived (C-14), not printed."
+    },
+    {
+      "id": "II-2BUTTONMEM",
+      "class": "partial",
+      "evidence": [
+        "Pushbutton 1 = 'forget 0, remember 1'; pushbutton 2 (normally-closed contacts, via 2Z) = 'forget 1, remember 0'."
+      ],
+      "unprinted": "No lamp or relay is named for remember/forget, and the power-up state is derived."
+    },
+    {
+      "id": "II-FF1",
+      "class": "partial",
+      "evidence": [
+        "If the relays are remembering a 1, pushing pushbutton 1 will signal them to \"forget 1 and start remembering 0\".",
+        "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\".",
+        "Light 1 will be ON when the flip-flop is remembering a 1, and will be OFF when the flip-flop is remembering a 0."
+      ],
+      "unprinted": "The power-up state (lamp 1 OFF) is derived (FALLBACK-PWRUP-COLD); the page prints no power-up step."
+    },
+    {
+      "id": "II-EXP4",
+      "class": "yes",
+      "evidence": [
+        "If pushbutton 5 is DOWN, turn relay 5 ON. If relay 5 is ON, turn relay 6 ON. If relay 6 is ON, turn motor ON."
+      ]
+    },
+    {
+      "id": "II-EXP5",
+      "class": "yes",
+      "evidence": [
+        "Turn power ON. Relay 3 comes ON because both numbers are zero.",
+        "Push pushbutton 1. Relay 3 goes OFF because the numbers are no longer equal.",
+        "Push pushbutton 2 while holding down pushbutton 1. Once again the numbers are equal (both are 1) and relay 3 comes ON.",
+        "Release pushbutton 1 while holding down pushbutton 2. Relay 3 goes OFF because the numbers are not equal."
+      ]
+    },
+    {
+      "id": "II-EXP6",
+      "class": "yes",
+      "evidence": [
+        "Turn power ON. No lights come on because the input numbers are both zero: 0 + 0 = 0",
+        "Push pushbutton 1. Light 1 comes ON: 1 + 0 = 1",
+        "Push pushbutton 2 while holding pushbutton 1 down. Light 2 comes ON: 1 + 1 = 2",
+        "Release pushbutton 1 while holding pushbutton 2 down. Light 1 comes ON: 0 + 1 = 1."
+      ]
+    },
+    {
+      "id": "II-EXP7",
+      "class": "partial",
+      "evidence": [
+        "Move slide switch 4 to the LEFT position. This places the number 4 in Secondary Storage.",
+        "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+      ],
+      "unprinted": "Step 4 ('select another number') names no number and states no dial result; the position any other switch setting yields is derived."
+    },
+    {
+      "id": "III-3STMT",
+      "class": "partial",
+      "evidence": [
+        "Both down -> light 3 ON."
+      ],
+      "unprinted": "Light 3 for the other three pushbutton combinations is not printed."
+    },
+    {
+      "id": "III-ANDOR",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Wiring only: the record prints no input mapping and no lamp outcome."
+    },
+    {
+      "id": "III-NOT",
+      "class": "partial",
+      "evidence": [
+        "A x B x C(not) + D = E",
+        "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5."
+      ],
+      "unprinted": "No lamp state is stated for any button combination; light 5's truth table is derived from the printed formula (ER-09's fragment names light 3, which this program does not wire)."
+    },
+    {
+      "id": "III-XOR-PB",
+      "class": "partial",
+      "evidence": [
+        "if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON",
+        "Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed."
+      ],
+      "unprinted": "The neither-pushed case (light 3 OFF) is not printed (C-17)."
+    },
+    {
+      "id": "III-RELAYAND",
+      "class": "partial",
+      "evidence": [
+        "if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1)"
+      ],
+      "unprinted": "Light 3 with either relay OFF, and the pushbutton-to-relay drive, are not printed."
+    },
+    {
+      "id": "III-RELAYOR",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Wiring only: no outcome is printed for any input."
+    },
+    {
+      "id": "III-RELAYNOT",
+      "class": "partial",
+      "evidence": [
+        "if relay 1 is not energized (is not ON) light 2 will come ON"
+      ],
+      "unprinted": "Light 2 with relay 1 ON (pushbutton 1 down) is not printed."
+    },
+    {
+      "id": "III-RELAYXOR",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Only the symbolic form (A x notB) + (notA x B) = C is printed; C is not tied to a lamp and there is no procedure, so the whole trace is derived."
+    },
+    {
+      "id": "III-MINDREADING",
+      "class": "yes",
+      "evidence": [
+        "[BK3 p.51 flow chart leaves] Yes (Number) ( is 7 ) … No (Number) ( is 0 ); [BK3 p.51 table] A X B X C = 7 … Ā X B̄ X C̄ = 0 (overbars image-read; the text layer drops the chart and the bars)",
+        "The pointer knob of the rotary switch will turn to the number your friend was thinking of."
+      ]
+    },
+    {
+      "id": "III-QUANTITY",
+      "class": "yes",
+      "evidence": [
+        "Turn power ON. Light 6 will come ON indicating that NO switches are ON.",
+        "Set any two of the slide switches 2 through 6 to the LEFT. Light 2 will come ON indicating that two switches are ON.",
+        "Set all switches to the RIGHT again. Once again, light 6 will come ON indicating that NO switches are ON.",
+        "Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT).",
+        "Light 1 ON indicates that 1 switch is ON",
+        "Light 6 ON indicates that No switches are ON."
+      ]
+    },
+    {
+      "id": "III-3GIRLS-BOOLEAN",
+      "class": "partial",
+      "evidence": [
+        "Light 3 ON = an error.",
+        "If power is ON and light 3 is OFF, the slide switches indicate a correct solution."
+      ],
+      "unprinted": "The solving switch combination, and light 3 for each of the eight settings, are not printed."
+    },
+    {
+      "id": "III-3GIRLS-AUTO",
+      "class": "partial",
+      "evidence": [
+        "When the power is turned ON, a correct solution will immediately appear in the relay indicator lights.",
+        "Turn power ON. The solution to the problem appears in the relay indicator lights.",
+        "A relay light ON will indicate the positive condition; a relay light OFF will indicate the negative condition."
+      ],
+      "unprinted": "Which relay lights show the solution, and the effect of pushbuttons 1-3, are not printed."
+    },
+    {
+      "id": "III-FARMER",
+      "class": "partial",
+      "evidence": [
+        "If lights 5 and 6 remain OFF, no error has been made.",
+        "Continue moving the boat back and forth across the river with the different objects until all four objects are at home (output lights 1 through 4 are ON.)",
+        "An output light ON represents an object at home.",
+        "A relay indicator light ON represents an object across the river.",
+        "Light 5 ON represents the condition 'Wolf eats goose'.",
+        "Light 6 ON represents the condition 'Goose eats corn'."
+      ],
+      "unprinted": "Lamp and relay states after each crossing, and which moves light 5 or 6, are derived; ER-18 is an additive procedure note."
+    },
+    {
+      "id": "III-TELEVISION",
+      "class": "partial",
+      "evidence": [
+        "Light 4 will come ON only when the correct solution has been indicated."
+      ],
+      "unprinted": "The correct switch setting is not printed, and the page contradicts itself on what LEFT means."
+    },
+    {
+      "id": "IV-SELFHOLD",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Wiring only (the first stage of IV-FF1): no behaviour is printed in the record."
+    },
+    {
+      "id": "IV-FF1",
+      "class": "partial",
+      "evidence": [
+        "push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on,",
+        "We will now add to the program so that when pushbutton 6 is pushed, relay 6 will go to the same state that relay 5 is in.",
+        "Again we will add to the program so that when pushbutton 6 is released, relay 5 will go to the opposite state from relay 6:"
+      ],
+      "unprinted": "No power-up state is printed. Printed p.68 (PDF p.74) states the stage-2 press relation (relay 6 goes to relay 5's state) and printed p.69 (PDF p.75) the stage-3 release relation (relay 5 goes opposite to relay 6), each for an intermediate build (10 and 13 wires), not the 15-wire circuit; ER-19 prints light 6's alternation without its phase. Every absolute relay and lamp value rests on FALLBACK-PWRUP-COLD."
+    },
+    {
+      "id": "IV-FF2",
+      "class": "yes",
+      "evidence": [
+        "relays 5 and 6 both OFF",
+        "relays 5 and 6 both ON",
+        "relay 5 OFF, relay 6 ON",
+        "Light 5 is used to indicate the state of the flip-flop."
+      ]
+    },
+    {
+      "id": "IV-FF2-CARRY",
+      "class": "partial",
+      "evidence": [
+        "Light 4 will now indicate that a carry is taking place."
+      ],
+      "unprinted": "Light 4's value at each step is not printed; the steps are inherited from IV-FF2."
+    },
+    {
+      "id": "IV-EXP1",
+      "class": "partial",
+      "evidence": [
+        "Turn power ON, then push and release pushbutton 6. Lamps 4, 5 and 6 read OFF, OFF,\n   ON (`001`), displaying 1.",
+        "Push and release pushbutton 6 again. The lamps read OFF, ON, OFF (`010`), displaying 2.",
+        "The counter repeats after 7 because three flip-flops provide eight states, 0 through 7."
+      ],
+      "unprinted": "The count-5 UP row is a printed misprint (B=1); light 5 at count 5 is not asserted."
+    },
+    {
+      "id": "IV-EXP2",
+      "class": "partial",
+      "evidence": [
+        "push and release pushbutton 6 twice (counter shows 2); push three more times (counter shows 5).",
+        "Push five more times (ten total): the counter shows 010"
+      ],
+      "unprinted": "p.73 prints 'displaying binary 5' with no lamp pattern; the p.71 chart row 11 prints Flip-Flop B = 1 (a misprint), so light 5 at count 5 is not asserted."
+    },
+    {
+      "id": "IV-EXP3",
+      "class": "partial",
+      "evidence": [
+        "If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN.",
+        "The counter is now displaying the answer: 7 — 4 = 3.",
+        "the counter will count UP when BOTH slide switch 4 and slide switch 6 are LEFT"
+      ],
+      "unprinted": "Counter states after each press are not printed; only the end value of the 7 - 4 example is."
+    },
+    {
+      "id": "IV-EXP4",
+      "class": "yes",
+      "evidence": [
+        "Power ON, slide switch 6 RIGHT, pushbutton up: lights 5 and 6 OFF (sum 0, carry 0).",
+        "Push pushbutton 6 and hold: light 6 comes ON (0 + 1 = 1).",
+        "Release, move slide switch 6 LEFT: light 6 comes ON (1 + 0 = 1).",
+        "With the slide switch LEFT, push pushbutton 6: light 6 goes OFF and light 5 comes ON (1 + 1 = 0 carry 1)."
+      ]
+    },
+    {
+      "id": "IV-EXP5",
+      "class": "partial",
+      "evidence": [
+        "Power ON, slide switch 6 RIGHT (A=0), pushbutton 6 up (B=0), relay 6 OFF (carry in = 0). Lights 5 and 6 OFF.",
+        "Slide switch 6 LEFT (A=1): light 6 comes ON (1+0+0=1).",
+        "Manually move relay 6 to the left (carry in = 1): light 6 goes OFF and light 5 comes ON (1+0+1 = 0 carry 1)."
+      ],
+      "unprinted": "'Try other combinations': the remaining input combinations are left to derive."
+    },
+    {
+      "id": "IV-EXP6",
+      "class": "partial",
+      "evidence": [
+        "The answer will be displayed in binary output lights 3, 4, 5 and 6. For example, if lights 3 and 6 are ON and lights 4 and 5 are OFF, the answer is 1001 (9)."
+      ],
+      "unprinted": "Only the 4 + 5 = 9 example's lamps are printed; every other sum is derived."
+    },
+    {
+      "id": "IV-EXP7",
+      "class": "partial",
+      "evidence": [
+        "3. The answer appears in the binary output lights: light 4 is OFF, and lights 5 and 6 are ON. This is read as 011, which is binary 3 : 5 - 2 = 3.",
+        "Had we attempted to enter binary 7 (111) in the pushbuttons, relay 6—the carry in relay for the low order stage— would not have pulled in and the answer displayed in the output lights would be incorrect.",
+        "If this relay fails to pull in when the subtraction takes place, we have attempted an incorrect subtraction."
+      ],
+      "unprinted": "Only the 5 - 2 example is printed; other differences, and relay 6 for each, are derived. The 111 hypothetical prints no lamp values. The ER-24 light-6 note belongs to the alternate-counter variant only (O-C25)."
+    },
+    {
+      "id": "IV-EXP8",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "The shifts are manual slide-switch moves; no lamp or relay state is stated for any step."
+    },
+    {
+      "id": "IV-EXP9",
+      "class": "partial",
+      "evidence": [
+        "the output lights display the number—000110",
+        "The output lights will now read 001100.",
+        "The output lights now show 011000.",
+        "The output lights now show 011110.",
+        "The binary output lights now show the final result: 11100 or 60.",
+        "Note that decimal 60 is 111100 in binary. It is written incorrectly in two places."
+      ],
+      "unprinted": "The states after each record/enter-on-switches step are derived."
+    },
+    {
+      "id": "IV-EXP10",
+      "class": "partial",
+      "evidence": [
+        "The dividend is now displayed in the output lights as 011011.",
+        "p.83: first subtraction 110|110 - 101; \"The result will appear in the output lights\" 001|110.",
+        "010 | 101 -> 27/5 = 5 remainder 2"
+      ],
+      "unprinted": "Lamp patterns after the shifts, after the p.84 subtraction (010|100, entered on the slide switches) and for the final 010|101 are not stated as output-light readings; the dividend (011011) and the first subtraction (001|110) are."
+    },
+    {
+      "id": "IV-EXP11",
+      "class": "partial",
+      "evidence": [
+        "Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position.",
+        "The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)"
+      ],
+      "unprinted": "No dial position is tied to a stated lamp pattern; which lamp carries which bit is derived (O-C19)."
+    },
+    {
+      "id": "IV-EXP12",
+      "class": "partial",
+      "evidence": [
+        "Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number."
+      ],
+      "unprinted": "No switch setting is tied to a stated dial position; the bit order of switches 3-6 is derived."
+    },
+    {
+      "id": "IV-APX-SHIFTREG",
+      "class": "partial",
+      "evidence": [
+        "The number will appear in the output lights.",
+        "Shift LEFT one bit by slowly turning the rotary switch dial one complete revolution.",
+        "The shifted binary number will now appear in the output lights."
+      ],
+      "unprinted": "No lamp pattern is printed for an entered number or after a shift."
+    },
+    {
+      "id": "IV-APX-2BITADDER",
+      "class": "partial",
+      "evidence": [
+        "The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.)"
+      ],
+      "unprinted": "No worked example: the dial position and lamp pattern for any pair of inputs are derived."
+    },
+    {
+      "id": "ER-ALTCOUNTER",
+      "class": "partial",
+      "evidence": [
+        "Use the procedure on page 72 of Book IV.",
+        "'binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001'",
+        "Binary output lights 4, 5 and 6 will now read OFF, ON, OFF or 010."
+      ],
+      "unprinted": "Only p.72 Procedure steps 1-2 are incorporated by reference. The power-up state and the readings after press 3 onward are not printed for this procedure."
+    },
+    {
+      "id": "V-EXP1",
+      "class": "partial",
+      "evidence": [
+        "moving slide switch 1 to the LEFT will turn light 1 ON if slide switch 2 is RIGHT. The light will go OFF if slide switch 2 is now moved to the LEFT.",
+        "will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch."
+      ],
+      "unprinted": "Absolute phase: the printed LR-ON prose is the inverse of the wiring's LL-ON under any uniform switch polarity (manual defect, O-C24; FALLBACK-V-EXP1-TOPOLOGY); only the toggle is reliable."
+    },
+    {
+      "id": "V-EXP2",
+      "class": "partial",
+      "evidence": [
+        "Turn power ON. The alarm (light 5) comes ON.",
+        "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on.",
+        "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on."
+      ],
+      "unprinted": "That light 5 goes OFF when pushbutton 1 sets the system is implied ('now set'), not stated."
+    },
+    {
+      "id": "V-EXP3",
+      "class": "partial",
+      "evidence": [
+        "The rotary switch dial will begin to turn back and forth, generating a periodic signal."
+      ],
+      "unprinted": "The two dial points, and the period for each slide-switch 4/5 setting, are not printed."
+    },
+    {
+      "id": "V-EXP6",
+      "class": "partial",
+      "evidence": [
+        "Push pushbutton 6 as a car passes the first check point (starts the timing motor).",
+        "Push pushbutton 5 as the car passes the second check point (stops the motor).",
+        "The rotary switch runs while timing; relay indicator lights 1-5 count the revolutions."
+      ],
+      "unprinted": "Which relay lights are on after each revolution is not stated in a sentence; it is derivable from the p.8 dial-plate bands with the p.7 figures (Step 7). The pb5 rest position and the direction of travel are also derived."
+    },
+    {
+      "id": "V-EXP7",
+      "class": "partial",
+      "evidence": [
+        "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated",
+        "Push pushbutton 5. This represents a car passing over the center of the crossing. Notice that the gate does not close."
+      ],
+      "unprinted": "The dial at 7 from step 1 through step 5 is stated ('remains closed until none of the switches is activated'). Derived: the return to 0 after step 6, the gate state for pushbutton 5 alone (it rests on that return), and the right-to-left and stop-and-back-out runs named by the ER-29 sentence, for which no button sequence is printed."
+    },
+    {
+      "id": "V-EXP4",
+      "class": "partial",
+      "evidence": [
+        "The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+        "Light 4 represents \"red\", light 5 represents \"amber\", and light 6 represents \"green\"."
+      ],
+      "unprinted": "The light order is printed twice and the two disagree (p.4 'from red to green to yellow and back to red', 4-6-5; p.5 'lights 4, 5 and 6 on and off in succession'); open-questions.md O-R11, so it is not asserted. Derived from the rotary wiring: the lamp at each dial position and the dwell per lamp (6, 4, 6 pads)."
+    },
+    {
+      "id": "V-EXP5",
+      "class": "yes",
+      "evidence": [
+        "Turn power on. The 'red' light (light 4) comes ON.",
+        "push pushbutton 5 until the 'red' light (light 4) goes OFF and the 'green light' (light 6) comes ON.",
+        "After the light has turned green, it will go to amber (light 5) and return to red again.",
+        "This traffic light, facing the pedestrian, would normally be red,"
+      ]
+    },
+    {
+      "id": "V-EXP8",
+      "class": "yes",
+      "evidence": [
+        "To call the \"elevator\" to the second floor, push pushbutton 6. The \"elevator\" will immediately move to the second floor (the pointer knob will point to 7).",
+        "The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor.",
+        "Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+      ]
+    },
+    {
+      "id": "V-EXP9",
+      "class": "partial",
+      "evidence": [
+        "Turn power on. Output light 1 will come on indicating the location of the 'elevator'.",
+        "| Floor 2 | pushbutton 2 | output light 2 | D6-D7 |",
+        "| Floor 3 | pushbutton 3 | output light 3 | D12-D13 |"
+      ],
+      "unprinted": "The dial position at rest (printed only as pad pairs D12-D13 / D6-D7) and the other floor lights' states after pushing 3 then 2 are not stated."
+    },
+    {
+      "id": "V-EXP10",
+      "class": "partial",
+      "evidence": [
+        "Turn power on. Output light 2 comes on indicating 'Stop - Pay Toll 10c'.",
+        "When 10c has been deposited, output light 1 comes on ('Thank You - Go Ahead').",
+        "If you try to drive away without depositing enough money, the alarm will sound.",
+        "Relay 1 and relay indicator light 1 ON represents 'Alarm'"
+      ],
+      "unprinted": "Lamp states after the 'Drive Away' re-set, whether light 2 goes OFF when light 1 comes ON, and states between coins are not printed."
+    },
+    {
+      "id": "V-EXP11",
+      "class": "yes",
+      "evidence": [
+        "The rotary switch will return to 0 and the number 'dialed' will appear in Gray Code on output lights 4, 5, and 6.",
+        "(Note: output light 3 should be ignored.)",
+        "| 1 | 001 |",
+        "| 2 | 011 |",
+        "| 3 | 010 |",
+        "| 4 | 110 |",
+        "| 5 | 111 |",
+        "| 6 | 101 |",
+        "| 7 | 100 |",
+        "| 8 | 000 |"
+      ]
+    },
+    {
+      "id": "V-EXP12",
+      "class": "partial",
+      "evidence": [
+        "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number 'drawn' on the matrix."
+      ],
+      "unprinted": "The tenth form (diamond, 2468) is 0 only by elimination from p.21; no form is printed for 10."
+    },
+    {
+      "id": "V-EXP13",
+      "class": "partial",
+      "evidence": [
+        "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT."
+      ],
+      "unprinted": "Light 4's power-up state and the states of lights 5 and 6 are not printed."
+    },
+    {
+      "id": "V-EXP14",
+      "class": "partial",
+      "evidence": [
+        "When you have completed all twelve steps, light 1 will come on indicating \"operation complete.\"",
+        "If you attempt to carry out a step in the wrong order, nothing will happen."
+      ],
+      "unprinted": "Relay and lamp states after each of the twelve steps are not printed; only the end state is."
+    },
+    {
+      "id": "V-EXP15",
+      "class": "partial",
+      "evidence": [
+        "Lights 1 through 6 will come on in order, representing the completion of six successive steps.",
+        "The sequence can be stopped at any time by pushing pushbutton 5."
+      ],
+      "unprinted": "Timing against dial position, and whether earlier lights stay on, are not printed."
+    },
+    {
+      "id": "V-EXP16",
+      "class": "partial",
+      "evidence": [
+        "As the rotary switch turns, lights 5 and 6 will flash the CQ signal.",
+        "Light 5 on represents a DASH. Light 6 on represents a DOT."
+      ],
+      "unprinted": "The CQ dash/dot sequence against dial position is not printed; it is derived from Morse code and the wiring."
+    },
+    {
+      "id": "V-EXP17",
+      "class": "partial",
+      "evidence": [
+        "on its first revolution the rotary switch transmits 'JO', on its second 'HN'.",
+        "Light 5 on represents a dash. Light 6 on represents a dot."
+      ],
+      "unprinted": "The JOHN dash/dot sequence against dial position is not printed; it is derived from Morse code and the wiring."
+    },
+    {
+      "id": "V-EXP18",
+      "class": "partial",
+      "evidence": [
+        "The system will immediately begin transmitting \"SOS\".",
+        "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot.",
+        "The computer will continue to transmit \"SOS\" until the power is turned off."
+      ],
+      "unprinted": "The SOS on/off sequence against dial position is not printed."
+    },
+    {
+      "id": "V-EXP19",
+      "class": "yes",
+      "evidence": [
+        "Read the Morse Code representation of the letter starting with output light 3.",
+        "A light on represents a dash.",
+        "A light off represents a dot."
+      ]
+    },
+    {
+      "id": "V-EXP20",
+      "class": "partial",
+      "evidence": [
+        "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial.",
+        "Read the letter in Band 1 if output light 1 is on; Band 2 if light 2 is on; Band 3 if light 3 is on; Band 4 if light 4 is on."
+      ],
+      "unprinted": "Where the dial stops for E-, N- and O-class letters within their dial-plate sectors (the plate fixes a sector, not a pad); the plate (BK5 p.33) and the Morse table (p.32) are printed."
+    },
+    {
+      "id": "V-EXP21",
+      "class": "partial",
+      "evidence": [
+        "'Light 6 will flash on whenever . . .'",
+        "Notice that the rotary switch oscillates about the object signal.",
+        "If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it.",
+        "When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan."
+      ],
+      "unprinted": "Search-mode lamp per ER-39 is light 6 (procedure says light 3). Track-mode oscillation amplitude, reversal direction, search direction after a move, and track-mode lamp and relay states are unprinted."
+    },
+    {
+      "id": "V-XLAT-IHREM",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Only lamp meanings are printed; which lights come on for each input is not, and the selection rule is not in the record."
+    },
+    {
+      "id": "V-XLAT-FULL",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Only lamp meanings are printed; no switch setting is tied to a stated set of lights."
+    },
+    {
+      "id": "V-JOBSELECT",
+      "class": "partial",
+      "evidence": [
+        "Some lights may already be on after the requirements are set"
+      ],
+      "unprinted": "The per-section lamp rule (on when slide switch and pushbutton agree) is derived, not printed."
+    },
+    {
+      "id": "V-ASSOCMEM",
+      "class": "partial",
+      "evidence": [
+        "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on.",
+        "Push pushbuttons 1, 2 and 3 individually - each turns on the single light associated with it.",
+        "From now on, pushing either of the associated pushbuttons will turn on both of the associated lights.",
+        "Pushing all three together makes any one of them turn on all three lights."
+      ],
+      "unprinted": "Lamp states after release, light 1 when pushed alone after the 2+3 association, and any lamp state after the 'forget' button (pushbutton 6) are not printed; the page says only 'The computer is once again ready to \"learn\" associations.'"
+    },
+    {
+      "id": "V-MAZESOLVER",
+      "class": "partial",
+      "evidence": [
+        "Turn power on. The computer will go directly to the start position.",
+        "Start = the '1' setting on the rotary switch dial.",
+        "Push pushbutton 6 again. The computer selects the 'correct' path and stops.",
+        "Pushing pushbutton 6 now goes directly to the correct path without exploring.",
+        "Path A: from 1 to 3 on the rotary switch dial"
+      ],
+      "unprinted": "Dial motion while 'exploring', and relay states, are not printed."
+    },
+    {
+      "id": "V-FLASHINGLIGHTS",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "No procedure or lamp pattern is printed beyond turning it on."
+    },
+    {
+      "id": "V-SUPERCIRCUIT",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Printed as doing 'absolutely nothing constructive'; no observable is stated."
+    },
+    {
+      "id": "VI-SEQREC",
+      "class": "partial",
+      "evidence": [
+        "light 1 = solved, light 6 = error + automatic re-set",
+        "light 6 comes on when an error is made."
+      ],
+      "unprinted": "The solving order and the relay states per step are derived; only the lamp meanings are printed."
+    },
+    {
+      "id": "VI-SECRETCODE",
+      "class": "partial",
+      "evidence": [
+        "For example, with the above program and all six slide switches to the right, the code is solved by pushing the pushbuttons in sequence from 6 through 1.",
+        "When the code has been correctly solved, light 1 comes on indicating \"code Solved.\" If light 6 comes on, an error has been made and MINIVAC will automatically re-set for the next attempt."
+      ],
+      "unprinted": "The solving order for other switch settings, and relay states per press, are derived."
+    },
+    {
+      "id": "VI-COMBOLOCK",
+      "class": "partial",
+      "evidence": [
+        "Light 1 ON = combination solved. Light 6 ON = error, machine re-sets and the player must start over.",
+        "it will cause the machine to indicate an error if 8 is passed at any point."
+      ],
+      "unprinted": "Relay and lamp states along the printed combination are derived; only the end meanings are printed."
+    },
+    {
+      "id": "VI-MAZE",
+      "class": "partial",
+      "evidence": [
+        "Light 1 indicates success; light 6 indicates error and re-set.",
+        "This will not affect the maze, but conceals the fact that squares 3, 4 and 7 are not part of the path.",
+        "If you wish to program a path which has less than six steps, connect this path to the lower common terminals and manually push the remaining relays to the left before beginning play.",
+        "Before beginning the play, manually push relays 4, 5 and 6 to the left.",
+        "Whenever an error is made, relays 4, 5 and 6 must be pushed to the left before play is resumed.",
+        "Note — to re-set the game, turn power off, then on again."
+      ],
+      "unprinted": "Relay and lamp states along a path are derived; only the end meanings are printed."
+    },
+    {
+      "id": "VI-MATCHGAME",
+      "class": "partial",
+      "evidence": [
+        "MINIVAC 601 will always win.",
+        "the dial then shows the matches remaining",
+        "the dial turns to the number remaining after the machine's move",
+        "Light 3 comes on after the last move"
+      ],
+      "unprinted": "The machine's reply to each player move is not printed; it is derived from the 'always win' claim."
+    },
+    {
+      "id": "VI-TUGOFWAR",
+      "class": "partial",
+      "evidence": [
+        "The rotary switch knob turns counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down).",
+        "It turns clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+        "Dial stops at 9 -> player 1 wins. Dial stops at 7 -> player 2 wins."
+      ],
+      "unprinted": "Dial position over time is derived, and the printed rotation words contradict the panel's dial sense (unresolved)."
+    },
+    {
+      "id": "VI-MINDREADING",
+      "class": "partial",
+      "evidence": [
+        "A. Is the number greater than 3?",
+        "B. When the number is divided by 4, is the remainder greater than 1?",
+        "C. Is the number odd?",
+        "If the answer to question A is YES, move slide switch 4 to the LEFT.",
+        "If the answer to question A is NO, move slide switch 4 to the RIGHT.",
+        "If the answer to question B is YES, move slide switch 5 to the LEFT.",
+        "If the answer to question B is NO, move slide switch 5 to the RIGHT.",
+        "If the answer to question C is YES, move slide switch 6 to the LEFT.",
+        "If the answer to question C is NO, move slide switch 6 to the RIGHT.",
+        "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+      ],
+      "unprinted": "The p.58 name variation's inputs need outside knowledge ('Is the name a boy's name?') and are not asserted; the page names no lamp or relay behaviour."
+    },
+    {
+      "id": "VI-FORTUNETELLER",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Legend and a disjunctive answer sentence only (lights 1-4 are alternative answers, lights 5 and 6 are 'contemplation' lights): no single observable is printed, and which answer light comes on depends on hold time."
+    },
+    {
+      "id": "VI-RANDOM",
+      "class": "no",
+      "evidence": [],
+      "unprinted": "Legend only; which light comes on is random and is never printed."
+    },
+    {
+      "id": "VI-SPS",
+      "class": "partial",
+      "evidence": [
+        "Scissors cut paper (scissors will win over paper)",
+        "Paper covers stone (paper will win over stone)",
+        "Stone breaks scissors (stone will win over scissors)",
+        "Player 1 wins: light 1 comes on",
+        "Player 2 wins: light 6 comes on",
+        "Tie: lights 3 and 4 come on"
+      ],
+      "unprinted": "The page never states which move pairs are a tie (equal moves are not named), and relay and indicator-lamp behaviour is derived."
+    },
+    {
+      "id": "VI-REACTION",
+      "class": "partial",
+      "evidence": [
+        "Lights 3 and 4 give the signal 'START'.",
+        "As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton.",
+        "Light 1 indicates that player 1 wins.",
+        "Light 2 indicates that player 1 has fouled.",
+        "Light 5 indicates that player 2 has fouled.",
+        "Light 6 indicates that player 2 wins."
+      ],
+      "unprinted": "When lights 3 and 4 come on after re-set (dial timing) is not printed."
+    },
+    {
+      "id": "MM-PB-CHECK",
+      "class": "yes",
+      "evidence": [
+        "Turn power on. Light 1 should come on. Push the pushbutton. Light 1 should go off and light 2 should come on."
+      ]
+    },
+    {
+      "id": "MM-RLY-CHECK",
+      "class": "yes",
+      "evidence": [
+        "Turn power on. Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on."
+      ]
+    },
+    {
+      "id": "MM-SW-CHECK",
+      "class": "yes",
+      "evidence": [
+        "Set the slide switch RIGHT. Turn power on. Lights 1 and 3 should come on. Move the slide switch to the LEFT. Lights 1 and 3 should go off and lights 2 and 4 should come on."
+      ]
+    }
+  ]
+}

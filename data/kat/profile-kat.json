@@ -1,0 +1,259 @@
+{
+  "schema": "minivac.profile-kat/1",
+  "note": "Layer 0 of architecture.md §9.5: one fixed profile paired with its EXACT derived integer set, by the formulas pinned in §4.4. Integer equality is the whole comparison. The one double in the set, kThermal, is carried as the 16 hex digits of its IEEE-754 bits, big-endian, the same codec data/kat/solver-kat.json uses (test/kat-hex.ts) - no decimal formatter and no JSON number parser sits between the reference and a port. Run this before solver-kat.json: every later failure is then guaranteed not to be a derivation.",
+  "profile": {
+    "schema": "minivac.profile/1",
+    "id": "MV601-KAT-A",
+    "marginal": true,
+    "provenance": "A FROZEN COPY of MV601-REF-A as it stood at Wave 1b, carried inside data/kat/profile-kat.json so that layer 0 of the port proof (architecture.md §9.5) does not move when MV601-REF-A is retuned. The lamp table is the 9-breakpoint variant of tools/gen-lamp-pwl.ts, which also exercises the N in {9, 33} branch of the loader. Do not edit either half without editing the other: the derived block below is what a porter checks before touching the solver.",
+    "values": {
+      "tick_us": {
+        "v": 100,
+        "tag": "unverified",
+        "src": "components.md §9.3 MV601-TIMING-A; architecture.md §6 adopts it unchanged. A modelling choice, not a measurement: it is chosen to sit two orders of magnitude below the shortest device latency so the tick is the fixpoint (determinism rule 15)."
+      },
+      "gmin_ns": {
+        "v": 1,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §3.1.5 — stamped on the diagonal of solved rows for conditioning only. It is a numerical parameter, not a property of the machine, and it is in the profile so it is not a constant in code (constraint 8)."
+      },
+      "V_oc_mv": {
+        "v": 13000,
+        "tag": "verified-reading",
+        "src": "MAINT printed p.3, verbatim: 'The unloaded power supply outlet voltage should be approximately 13 volts.' components.md §8.2. The reading is verified; carrying it as exactly 13.000 V is ours."
+      },
+      "R_src_uohm": {
+        "v": 670000,
+        "tag": "unverified",
+        "src": "components.md §7.4 and §8.2: 0.67 Ω. No source states a source impedance; the constraint the corpus does give is that it must not be zero, since AT-06's dead +/- short has to trip on a finite current."
+      },
+      "I_trip_ua": {
+        "v": 1500000,
+        "tag": "unverified",
+        "src": "components.md §8.2: 1.5 A thermal. The 1.5 A figure is the supply rating; no source connects the rating to the breaker's trip point, so the identification is ours."
+      },
+      "trip_delay_us": {
+        "v": 200000,
+        "tag": "unverified",
+        "src": "OURS. No source states a breaker time-current curve — components.md §8.2 says only 'thermal, instantaneous above ~3x'. 200 ms is chosen to exceed 5 x lamp_thermal_tau_us so the ~7x cold-filament inrush of architecture.md §3.4 cannot trip the breaker at power-on, while a sustained overload still trips inside a fifth of a second."
+      },
+      "R_coil_uohm": {
+        "v": 150000000,
+        "tag": "unverified",
+        "src": "components.md §8.2: 150 Ω, chosen from the 1.5 A current budget (six coils plus lamps must stay under the supply rating — AT-05)."
+      },
+      "L_coil_uh": {
+        "v": 1200000,
+        "tag": "unverified",
+        "src": "NEW and INVENTED — open-questions.md O-E10. No primary source states a coil inductance or any inductance anywhere in the corpus. The 1.2 H shipped point is an unmeasured working value retained for the R-L carried state and release-path role, not as an explanation of counter marginality (architecture.md §14 risk 1). tools/check-profile.ts reports the release-path sweep for this value; R1, AT-01, and AT-11 do not select it."
+      },
+      "V_arc_clamp_mv": {
+        "v": 30000,
+        "tag": "unverified",
+        "src": "NEW and INVENTED — open-questions.md O-E11 (ARC-CLAMP). No primary source states an arc voltage or any contact-opening figure. It exists because backward Euler on an opened inductor is unphysical without a bound: the companion alone puts ~1 kV on a panel jack. It is scheme-dependent — a change of integration scheme replaces it rather than measures it (architecture.md §14 risk 2)."
+      },
+      "V_pullin_mv": {
+        "v": 6500,
+        "tag": "unverified",
+        "src": "components.md §8.2 and §9.3 (which names §8.2 as the single source of this value). Converted to µA at load by architecture.md §4.4; it is authored in volts so the number matches the research file a reader has open."
+      },
+      "V_dropout_mv": {
+        "v": 2500,
+        "tag": "unverified",
+        "src": "components.md §8.2: ratio 0.38 of pull-in, from BK7 printed p.6's 'great difference' between the voltage needed to pull a relay in and the voltage needed to hold it in. The ratio is qualitative in the source; the number is ours."
+      },
+      "dV_relay_mv": {
+        "v": [300, -240, 290, -110, 250, -170],
+        "tag": "unverified",
+        "src": "OURS — six literal per-relay threshold offsets, applied to pull-in and drop-out together (architecture.md §4.3). No PRNG, no seed, no consumption order. BK7 printed pp.8-9's blank six-row bias chart ('THIS PROCEDURE MUST BE CARRIED OUT FOR EACH INDIVIDUAL RELAY') is primary evidence that the relays differ; it states no magnitude. Bounded above at +420 mV by AT-01 (components.md §8.2). THIS VECTOR IS UNDER SUSPICION: it puts every odd relay above nominal and every even relay below. architecture.md §4.3 records zeroed and rotated control results; those results do not establish a cause."
+      },
+      "relay_operate_stroke_us": {
+        "v": 12000,
+        "tag": "unverified",
+        "src": "components.md §9.3's relay_operate_ms 12.0, NARROWED by architecture.md §4.4 to the mechanical stroke only: with the coil an R-L branch the electrical rise to pull-in is solved rather than asserted, so the research row bundles two quantities this profile keeps apart."
+      },
+      "relay_release_stroke_us": {
+        "v": 8000,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §4.4 deletes components.md §9.3's relay_release_open_ms 8.0 and relay_release_shorted_ms 20.0 and replaces them with one mechanical release stroke; the shorted case gets its hold-off from L_coil, so the 2-5x ratio becomes a derived quantity check-profile enforces rather than two literals. The 8.0 ms figure survives as the mechanical half."
+      },
+      "pushbutton_stroke_us": {
+        "v": 25000,
+        "tag": "unverified",
+        "src": "components.md §9.3's pushbutton_travel_ms 25.0, adopted unchanged. architecture.md §4.4 notes the golden's 'pb1 nc->mid' timestamp depends on it."
+      },
+      "slide_stroke_us": {
+        "v": 60000,
+        "tag": "unverified",
+        "src": "components.md §9.3's slide_switch_travel_ms 60.0, adopted unchanged."
+      },
+      "relay_bounce_us": {
+        "v": 0,
+        "tag": "unverified",
+        "src": "components.md §9.3 ships relay_bounce_on_make_ms 0.5 / on_break 0.0. ADOPTED AND DISABLED at 0 per architecture.md §4.4: no printed observable in the corpus depends on a bounce, it would multiply '*' lines in every golden, and it interacts with the chatter rule. The key is required so a porter reading the research file does not implement it and get a different transition count in every trace."
+      },
+      "break_milli": {
+        "v": 450,
+        "tag": "unverified",
+        "src": "OURS. components.md §9.3's relay_break_frac 0.35 / make_frac 0.60 give R1 a 1.04x margin against its own stated 3x requirement (§9.3's second failing constraint); architecture.md §4.4 replaces the pair with 450/550. N.C. is closed while travel < break_milli (§4.3)."
+      },
+      "make_milli": {
+        "v": 550,
+        "tag": "unverified",
+        "src": "OURS, the pair to break_milli — see that key. N.O. is closed while travel > make_milli, and the interval between them is the both-open window BK1 printed p.9 tells the reader to find by hand (§4.3, §9.2)."
+      },
+      "lamp_pwl_uohm": {
+        "v": [
+          [0, 18000000],
+          [1000, 32890114],
+          [2599, 46383888],
+          [6752, 65413731],
+          [17546, 92250916],
+          [45594, 130098551],
+          [118477, 183473873],
+          [307867, 258747404],
+          [800000, 320000000]
+        ],
+        "tag": "unverified",
+        "src": "The tungsten law R_hot*(I/I_hot)^0.36 clamped to [R_cold, 2*R_hot] (components.md §8.2), tabulated at 33 breakpoints by tools/gen-lamp-pwl.ts: breakpoint 0 at 0 A, then 32 geometric from 1 mA to 800 mA. THE TABLE IS THE SHIPPED ARTIFACT and is exactly what a real measurement would replace — Math.pow is barred in src/core (determinism rule 5) because it is not required to be correctly rounded and V8 and .NET disagree in the last ulps. W1b reports whether 9 breakpoints change any acceptance-test result or relay decision."
+      },
+      "R_cold_uohm": {
+        "v": 18000000,
+        "tag": "unverified",
+        "src": "components.md §8.2: R_cold = 18 Ω. The lower PWL clamp, the power-on value of the carried filament resistance (architecture.md §3.4), and the zero of the brightness map (§9.2)."
+      },
+      "R_hot_uohm": {
+        "v": 160000000,
+        "tag": "unverified",
+        "src": "components.md §8.2: R_hot = 160 Ω at I_hot, anchored to 'one lamp across the rail', a sanctioned operating point per MAINT printed p.6. The ~7x cold-to-hot ratio is what makes the inrush of FALLBACK-PWRUP-COLD real."
+      },
+      "I_hot_ua": {
+        "v": 81000,
+        "tag": "unverified",
+        "src": "components.md §8.2: 81 mA, the current of the same 'one lamp across the rail' anchor. No lamp voltage, current, bulb number or base type exists anywhere in the corpus (open-questions.md O-E3, G1)."
+      },
+      "lamp_thermal_tau_us": {
+        "v": 40000,
+        "tag": "unverified",
+        "src": "components.md §9.3's lamp_thermal_tau_ms 40, PROMOTED by open-questions.md O-E12 (LAMP-THERMAL-R) from a display filter to the filament's electrical time constant (architecture.md §3.4). No new number, a new role — and the honesty trap recorded in O-E12: a display filter wrong by 3x is invisible, an electrical time constant wrong by 3x moves coil current through exactly the window O-E1 and O-E10 turn on."
+      },
+      "lamp_on_milli": {
+        "v": 600,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §9.2's three-band classification: 'on' at >= 600 milli, 'dim' at >= 150, else 'off'. No hysteresis and no deadband — a lamp parked on a threshold is handled by the chatter rule, not by two more constants."
+      },
+      "lamp_dim_milli": {
+        "v": 150,
+        "tag": "unverified",
+        "src": "OURS, the pair to lamp_on_milli — see that key. 'dim' lines do appear in goldens while a filament warms or cools; that is the thermal model of §3.4 being visible, not a defect."
+      },
+      "contact_arc_udeg": {
+        "v": 16875000,
+        "tag": "unverified",
+        "src": "UNIFORM-CONTACTS / the QUARTER-GAP CONTACT MODEL — open-questions.md O-R1, rotary.md §2.1, components.md §9.3. 16.875° arc and a 5.625° dead gap, gap fraction 0.25: an unsourced engineering default chosen because it is a round number strictly inside the only bound the corpus gives (0 < gap < 22.5°). No primary source bounds the gap fraction."
+      },
+      "wiper_offset_udeg": {
+        "v": 0,
+        "tag": "assumption",
+        "src": "OURS. rotary.md §2 exposes the offset because SDC's own realignment procedure treats it as adjustable. Zero is the assumption of a machine straight from the factory; a unit whose pointer has been re-clamped is a profile edit."
+      },
+      "run_mrpm": {
+        "v": 45000,
+        "tag": "assumption",
+        "src": "open-questions.md O-R3. BK56 Book V printed p.7: 'assume that ... the rotary switch turns 45 full revolutions per minute' — verified as an EXAMPLE FIGURE inside a worked problem whose same procedure tells the owner to count their own machine's revolutions. Book II printed p.8's 'more than a second to go from zero to nine' implies >111 ms/position against this figure's 83.33 ms and the two disagree (components.md §9.1). A named fallback, never a finding."
+      },
+      "hand_slew_mrpm": {
+        "v": 30000,
+        "tag": "unverified",
+        "src": "NEW and OURS. The operator's knob speed, in the same unit as run_mrpm, because dialGrab takes a target and a target 180° away must still traverse every pad between it and the pointer (rotary.md §2; BK1 printed p.22, verified: 'the connections are made sequentially whether the pointer is turned by hand or driven by the motor'). It bounds the sweep assertion of architecture.md §5 jointly with run_mrpm. 30 rpm is a brisk but unhurried hand."
+      },
+      "coast_udeg_stop_shorted": {
+        "v": 5000000,
+        "tag": "unverified",
+        "src": "INVENTED — open-questions.md O-R5. The words coast, overrun, momentum and inertia appear in NO source (rotary.md §3.3, whitespace-insensitive test over all nine documents). Condition 3 dead-shorts a permanent-magnet armature, so this is the dynamically braked stop and must be the shorter of the two. 5.0° is chosen well inside the 16.875° contact arc so BK7 printed p.21's automatic counter halts ON the pad it stopped at ('when the rotary switch has returned to 0 it stops'), and it is about a quarter of coast_udeg_drive_removed, the ratio R_arm alone versus R_arm + R2 implies."
+      },
+      "coast_udeg_drive_removed": {
+        "v": 20000000,
+        "tag": "unverified",
+        "src": "INVENTED — open-questions.md O-R5, same standing as coast_udeg_stop_shorted. Condition 4 leaves the armature loaded by R2 only, so this is the weaker brake. 20.0° is chosen strictly between the 16.875° arc and the 22.5° pitch, which is the band that lets the Three-Floor Elevator come to rest in the D6-D7 gap after sensing D6 without reaching D7 — the errata's documented hang, reproduced as a parameterised behaviour rather than asserted physics (open-questions.md O-R6). Do not cite the manuals for this number."
+      },
+      "R1_uohm": {
+        "v": 22000000,
+        "tag": "unverified",
+        "src": "INVENTED and COUPLED to R2_uohm and R_arm_uohm — architecture.md §5, rotary.md §3.1: 'Neither manual states R1 or R2's resistance anywhere.' Topology is verified off two agreeing schematics (BK1 p.22, MM p.9): R1 spans D17-D19, the armature and R2 both span D18-D19. 22 Ω holds the STOP short of condition 3 at 13 V / 22.67 Ω = 0.57 A, comfortably under I_trip_ua, which is the behaviour BK1 printed p.22 states verbatim ('the resistors make it possible to connect a short circuit across the STOP terminals ... without over-loading the power supply'). Do NOT derive run speed from this divider (rotary.md §3.4) — run_mrpm is configured directly and these three set only the ratios between the documented drive conditions."
+      },
+      "R2_uohm": {
+        "v": 33000000,
+        "tag": "unverified",
+        "src": "INVENTED and COUPLED — see R1_uohm. Permanently across the armature (D18-D19), so it is also the brake in condition 4. 33 Ω keeps the same value tools/gen-solver-kat.ts froze into the whole-panel KAT cases."
+      },
+      "R_arm_uohm": {
+        "v": 15000000,
+        "tag": "unverified",
+        "src": "INVENTED and COUPLED — see R1_uohm. Fitted so that condition 5 (power across STOP, R1 bypassed) runs at exactly 3.00x condition 1 (RUN), which is rotary.md §3.4's fast_rpm ~3x guess and MM p.9's verified qualitative 'the knob should turn very rapidly'. With R1 22 Ω and R2 33 Ω: R2||R_arm = 10.3125 Ω, RUN gives 4.065 V across the armature and condition 5 gives 12.196 V. tools/gen-solver-kat.ts froze a 22 Ω placeholder for this key; that case shorts the armature so no KAT expectation depends on the value."
+      },
+      "settle_quiet_ticks": {
+        "v": 200,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §9.2: 'settle' advances until no entry of the 33-observable vector has changed and no travel scalar is moving for this many consecutive ticks — 200 ticks = 20 ms, one full relay operate-plus-release cycle."
+      },
+      "settle_cap_us": {
+        "v": 500000,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §10.1's 500000 µs default cap on a settle step. Hitting the cap emits '! no settle in <ms>ms' and continues; for a continuously running motor that is the normal outcome, not a failure."
+      },
+      "chatter_n": {
+        "v": 8,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §9.2: more than 8 transitions inside chatter_cycles x the device's own cycle length is chatter. Sanity-checked against the fastest legitimate device — the dial at run_mrpm makes exactly 8 transitions in 4 pad periods and therefore never trips it."
+      },
+      "chatter_cycles": {
+        "v": 4,
+        "tag": "unverified",
+        "src": "OURS, the window in device cycles — see chatter_n. Revision 1's fixed 100-tick window was unreachable (a relay's fastest full cycle is 20 ms and yields four band transitions), so the window is derived per device at load instead."
+      },
+      "chatter_quiet_cycles": {
+        "v": 12,
+        "tag": "unverified",
+        "src": "OURS. architecture.md §9.2: reporting resumes after this many device cycles of quiet."
+      },
+      "min_decision_ua": {
+        "v": 1000,
+        "tag": "unverified",
+        "src": "OURS and PROVISIONAL. architecture.md §9.3's bless gate: bless refuses a golden whose minimum decision margin is under this, unless the fixture declares marginal: true with a mechanism string. W4b prints the measured distribution across the whole suite and the gate is set from that, rather than from a number chosen before any fixture exists. 1000 µA is 2.3% of the 43333 µA pull-in."
+      },
+      "min_tick_gap": {
+        "v": 2,
+        "tag": "unverified",
+        "src": "OURS and PROVISIONAL, the companion to min_decision_ua — see that key. Two ticks is the minimum that keeps two emitted trace lines separable at the 0.1 ms resolution of the golden's ms column."
+      },
+      "R_contact_uohm": {
+        "v": 50000,
+        "tag": "unverified",
+        "src": "components.md §8.2: 0.05 Ω nominal. PRESENT AND UNUSED. architecture.md §3.1 collapses contacts to ideal shorts: against a 150 Ω coil this is 0.03%, below the resolution of anything SDC printed. The W2 contract permits at most 174 base nodes, 173 non-datum rows, and 278 elements; where R is the number of connected positive-resistance cords, its safe bound is N <= min(173, 43 + 2R), and the common R=0 case has N <= 43. Declared here so a porter does not implement it, and kept so the departure is visible rather than silent."
+      },
+      "R_wire_uohm": {
+        "v": 20000,
+        "tag": "unverified",
+        "src": "components.md §8.2: 0.02 Ω nominal. PRESENT AND UNUSED, for the same reason as R_contact_uohm (architecture.md §3.1). A patch cord that needs real resistance carries r_uohm on the cord instead (§7), which is Book VII's spliced resistor and the mechanism that would bring wire resistance back in one line."
+      },
+      "visual_decay_us": {
+        "v": 60000,
+        "tag": "unverified",
+        "src": "components.md §9.3's visual_decay_ms 60. PRESENT AND UNUSED: architecture.md §9.2 derives lamp brightness from the carried filament resistance, so brightness already inherits the thermal lag and a separate display filter is not needed. Declared here so a porter does not implement it."
+      }
+    }
+  },
+  "derived": {
+    "pullInUa": 43333,
+    "dropOutUa": 16667,
+    "relayPullInUa": [45333, 41733, 45267, 42600, 45000, 42200],
+    "relayDropOutUa": [18667, 15067, 18600, 15933, 18333, 15533],
+    "relayOperateTicks": 120,
+    "relayReleaseTicks": 80,
+    "pushbuttonTicks": 250,
+    "slideTicks": 600,
+    "arcStepUa": 2500,
+    "kThermal": "0x3f646dce34596066"
+  }
+}

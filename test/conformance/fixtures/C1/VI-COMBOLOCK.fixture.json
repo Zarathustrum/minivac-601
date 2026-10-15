@@ -1,0 +1,480 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-COMBOLOCK",
+  "source": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock); ERRATA sheet ER-41, errata.pdf PDF p.4 'The Combination Lock (page 52): Note — to re-set the game, turn the rotary switch through one complete revolution.' (prose only, no wire change)",
+  "tier": "C1",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "5A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "D16/M+",
+    "D13/6com",
+    "D2/5com",
+    "D11/4com",
+    "D10/3com",
+    "D6/2com",
+    "D9/1com",
+    "D8/6E"
+  ],
+  "errata_applied": [
+    {
+      "id": "VI-SEQREC-PRINT-01",
+      "from": "5A/6J",
+      "to": "6A/6J"
+    }
+  ],
+  "wires": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "D16/M+",
+    "D13/6com",
+    "D2/5com",
+    "D11/4com",
+    "D10/3com",
+    "D6/2com",
+    "D9/1com",
+    "D8/6E"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock)",
+      "quote": "[BK6 p.52:] Now, design a combination and program it as follows: Combination Connections left to 13 D13/6com right to 2 D2/5com left to 10 D11/4com D10/3com right to 6 D6/2com left to 9 D9/1com D8/6E* [BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt. [BK6 p.53:] Light 1 will come on when the combination is successfully solved; light 6 will come on to indicate an error, and the player must start over again."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "ERRATA sheet ER-41 = errata.pdf PDF p.4 (Book VI, The Combination Lock (page 52)); BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (D8/6E footnote; light 6)",
+      "quote": "[ERRATA, BOOK VI:] The Combination Lock (page 52): Note — to re-set the game, turn the rotary switch through one complete revolution. [BK6 p.52:] * This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point. [BK6 p.52:] light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt. [BK6 p.53:] light 6 will come on to indicate an error, and the player must start over again."
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (D8/6E footnote; light 6)",
+      "quote": "[BK6 p.52:] * This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point. [BK6 p.52:] light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt. [BK6 p.53:] light 6 will come on to indicate an error, and the player must start over again."
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock)",
+      "quote": "[BK6 p.52:] Now, design a combination and program it as follows: Combination Connections left to 13 D13/6com right to 2 D2/5com left to 10 D11/4com D10/3com right to 6 D6/2com left to 9 D9/1com D8/6E* [BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt. [BK6 p.53:] Light 1 will come on when the combination is successfully solved; light 6 will come on to indicate an error, and the player must start over again."
+    }
+  ],
+  "note": "Printed claims only (Step 6). Wires: the p.58 printing of the 38-line basic sequence recognition circuit (image-read at 300 dpi, PDF p.58, printed column order), then 'Now add the connection D16/M+', then the printed combination table in printed order including the optional D8/6E* (46 wires). The PDF p.58 (printed p.52) printing reads 5A/6J; the PDF p.57 (printed p.51, Secret Code) and PDF p.59 (printed p.53, Electronic Maze) printings read 6A/6J, and the 38 lines have 6B/6- and no 5B, so wires carry 6A/6J under the local source-correction id VI-SEQREC-PRINT-01 (not an SDC errata-sheet item; programs.md VI-SEQREC, [likely]: the text is image-verified, the resolution is electrical inference). ER-41 (errata.pdf p.4) is prose only and changes no wire; it is honoured by the script's reset. The motor is not wired (D16/M+ only, no D17/D18/D19): every dial move is a hand dialGrab at the profile hand slew; dialGrab takes the shorter arc, so each 'left'/'right' step is split into legs under 180 degrees. Direction: 'left' = counterclockwise = decreasing numbers, 'right' = clockwise = increasing (panel numbering 0 at 12 o'clock increasing clockwise, jack-map.md; left = counterclockwise for a knob is the reading, not printed). Two page checks fix it: the 'left to 10' row prints D11/4com, which the wiper reaches before 10 only when left runs 2 -> 1 -> 0 -> 15 -> ... -> 11 -> 10 (decreasing); and from D0 it is the only reading under which the printed combination never passes 8 (the opposite reading crosses D2/5com and D8 on the first move). Start dial D0 is the construction state, not printed; the page never says when to turn power on. Script: attempt 1 from D0 runs the printed combination (left to 13, right to 2, left to 10 passing 11, right to 6, left to 9) and expects light 1 on; then the ER-41 reset, one complete revolution clockwise 9 -> 9 (direction a script choice), with an until light 6 on, which fires as the wiper reaches 8 (D8/6E); attempts 2 and 3 begin with the dial at rest on 9, so their 'left to 13' (legs 9 -> 3 -> 13) passes 8, 6 and 2 while relay 6 is already released and light 6 already on, with no visible change (trace: c8 at 17440.2 and 29677.3 ms, no relay or lamp event); attempt 2 runs the first four steps, then turns right from 6 toward 9 (the wrong way), so 8 is passed before 9: until light 6 on (the rotary.md section 7 combination_lock_D8_trap case; by the wiring, without D8/6E this move would reach D9/1com and solve); attempt 3 runs the printed combination again and expects light 1 on (the automatic re-set for the next attempt). maxMs 3000 per until covers any leg at 25 rpm. Every 'light n' is binary output lamp n (1A/1G, 6A/6J). Not asserted (no verbatim page text states them): light 6 off while an attempt is in progress or after solving (in this run it is on from power-on until 13 latches relay 6, off from then until each error), light 1 off after a reset (it goes off at the ER-41 revolution, 15919.6 ms, and stays off through the attempt-2 error), relay and indicator-lamp states along the combination, dial rest positions, the 'dummy connections' suggestion, and the design rules ('must not include any connection which will touch off a connection further along'; 'connections to each of the six common terminals in order'), which constrain authoring, not an observable. Observation, not asserted: with all six relays latched (solved), every combination contact feeds an already-operated stage, so the ER-41 revolution resets the solved lock only through the optional D8/6E; without it a full revolution from the solved state would leave light 1 on (a scratch run without D8/6E: both untils fail; once attempt 1 solves, light 6 stays off and light 1 stays on to the end of the run)."
+}

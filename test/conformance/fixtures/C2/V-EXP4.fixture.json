@@ -1,0 +1,284 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP4",
+  "source": "BK5-6 printed pp.4-5 = book5-6.pdf PDF pp.10-11 (wires and procedure p.5 = PDF p.11)",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4A/4+",
+    "4B/D11",
+    "5A/5+",
+    "5B/D7",
+    "6A/6+",
+    "6B/D1",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D11/D12",
+    "D12/D13",
+    "D13/D14",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M-",
+    "D18/M+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4A/4+",
+    "4B/D11",
+    "5A/5+",
+    "5B/D7",
+    "6A/6+",
+    "6B/D1",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D11/D12",
+    "D12/D13",
+    "D13/D14",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M-",
+    "D18/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11",
+      "quote": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.5 = book5-6.pdf PDF p.11 (Experiment 4 procedure, and Experiment 5 introduction about Experiment 4)",
+      "quote": "[Exp 4:] Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. [Exp 5:] The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it."
+    }
+  ],
+  "note": "Printed claims only (Phase 5 Step 6). Wires are the printed 22, image-read from book5-6.pdf PDF p.11 (printed p.5) and identical to wiresPrinted; no erratum touches Book V Experiment 4, so wires = as_printed and errata_applied is empty. Script follows the printed procedure: turn power on, then watch two full cycles; the 6000 ms until caps are script choices and cover more than two revolutions at 25 rpm. Asserted from p.5 'Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.': the dial turns (pass-through untils on c8 then c0, opposite pads whichever way the dial turns, the I-EXP12 convention), then output lights 4, 5 and 6 each come on and each go off. Asserted again for a second cycle from that sentence together with p.5 (Experiment 5 introduction) 'The traffic light in Experiment 4 moves through a pre-determined sequence, and unless the device is re-programmed, it will continue to follow the sequence as long as power is fed to it.' Every assert is direction-free: each until may wait 6000 ms, more than two revolutions at 25 rpm, so it passes whichever way the dial turns. Not asserted: the order of the lights. Exp 4 disagrees with itself (O-R11): p.5 'lights 4, 5 and 6 on and off in succession' fits the simulator's run (D18 at +, dial decreasing c0, c15 ... c1: red 4, amber 5, green 6), while p.4 = PDF p.10 'follows a pre-programmed cycle from red to green to yellow and back to red' is the reverse (4, 6, 5). The page contradicts itself, so neither order is asserted. Also not asserted: that only one light is on at a time (succession does not print exclusivity; in the trace the outgoing lamp's filament is still dim when the next lamp comes on); dwell per light (6, 4 and 6 pads, derived from the rotary wiring, printedUnprinted); 'The length of time any given light remains on may be varied by changing the connections on the rotary switch' (needs a rewired program that the page does not give); the red, amber and green names (no observable). In gaps between pads the lit lamp goes to dim, not off (filament model), so each lamp-off until matches only once the wiper leaves that lamp's sector. Rotary geometry, run rate and coast are profile fallbacks O-R1, O-R3 and O-R5; lamp thermal behaviour is profile-modelled.",
+  "digest": {
+    "eventCount": 154,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      128
+    ]
+  }
+}

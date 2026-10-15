@@ -1,0 +1,40 @@
+#!mv601-trace 1
+# id=IV-EXP5 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=15
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=242 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp5 off->dim
+    11.6 * relay5 nc->mid
+    12.9 * relay5 mid->no
+    16.2 * outLamp6 off->dim
+    35.1 * outLamp6 dim->on
+    49.9 * indLamp5 dim->on
+    70.0 > switch6 target=1000
+    96.9 * sw6 nc->mid
+   101.6 * relay5 no->mid
+   102.5 * relay5 mid->nc
+   103.0 * sw6 mid->no
+   105.7 * indLamp5 on->dim
+   120.5 * outLamp6 on->dim
+   161.3 * indLamp5 dim->off
+   176.1 * outLamp6 dim->off
+   189.9 ? relay6=nc outLamp5=off outLamp6=off  "Turn power ON. Move slide switch 6 to the RIGHT; Input A is 0. Do not push pushbutton 6; input B is 0. Relay 6 is OFF; carry in is 0. Lights 5 and 6 are OFF."
+   189.9 > switch6 target=0
+   216.8 * sw6 no->mid
+   222.9 * sw6 mid->nc
+   231.4 * indLamp5 off->dim
+   234.7 * relay5 nc->mid
+   236.0 * relay5 mid->no
+   238.6 * outLamp6 off->dim
+   257.6 * outLamp6 dim->on
+   271.6 * indLamp5 dim->on
+   331.7 ? outLamp6=on  "Move slide switch 6 to the LEFT; input A is now 1. Light 6 comes ON: 1 + 0 + 0 = 1."
+   331.7 > relayGrab6 target=1000
+   337.0 * relay6 nc->mid
+   338.3 * relay6 mid->no
+   341.6 * outLamp5 off->dim
+   356.4 * outLamp6 on->dim
+   360.5 * outLamp5 dim->on
+   412.1 * outLamp6 dim->off
+   420.6 ? outLamp5=on outLamp6=off  "Manually move relay 6 to the left to indicate that carry in is 1. Light 6 goes OFF and light 5 comes ON: 1 + 0 + 1 = 0 and carry 1."

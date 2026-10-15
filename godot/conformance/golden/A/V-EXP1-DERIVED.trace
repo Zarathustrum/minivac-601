@@ -1,0 +1,39 @@
+#!mv601-trace 1
+# id=V-EXP1-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=61 marginal=false
+     0.0 > switch1 target=1000
+    26.9 * sw1 nc->mid
+    33.0 * sw1 mid->no
+    79.9 > switch2 target=1000
+   106.8 * sw2 nc->mid
+   112.9 * sw2 mid->no
+   159.8 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim
+    22.1 * outLamp1 dim->on
+   542.2 ? outLamp1=on  "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off."
+   542.2 > switch1 target=0
+   569.1 * sw1 no->mid
+   575.2 * sw1 mid->nc
+   589.6 * outLamp1 on->dim
+   645.2 * outLamp1 dim->off
+  1122.1 ? outLamp1=off  "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off."
+  1122.1 > switch2 target=0
+  1149.0 * sw2 no->mid
+  1155.1 * sw2 mid->nc
+  1158.4 * outLamp1 off->dim
+  1177.3 * outLamp1 dim->on
+  1702.0 ? outLamp1=on  "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off."
+  1702.0 > switch1 target=1000
+  1728.9 * sw1 nc->mid
+  1735.0 * sw1 mid->no
+  1749.4 * outLamp1 on->dim
+  1805.0 * outLamp1 dim->off
+  2281.9 ? outLamp1=off  "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off."
+  2281.9 > switch2 target=1000
+  2308.8 * sw2 nc->mid
+  2314.9 * sw2 mid->no
+  2318.2 * outLamp1 off->dim
+  2337.1 * outLamp1 dim->on
+  2861.8 ? outLamp1=on  "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off."

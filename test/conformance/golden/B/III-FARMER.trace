@@ -1,0 +1,201 @@
+#!mv601-trace 1
+# id=III-FARMER contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=42
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim  outLamp2 off->dim  outLamp3 off->dim  outLamp4 off->dim
+    22.4 * outLamp1 dim->on  outLamp2 dim->on  outLamp3 dim->on  outLamp4 dim->on
+    92.5 > relayGrab1 target=1000
+    92.5 > relayGrab2 target=1000
+    92.5 > relayGrab3 target=1000
+    92.5 > relayGrab4 target=1000
+    97.8 * relay1 nc->mid  relay2 nc->mid  relay3 nc->mid  relay4 nc->mid
+    99.1 * relay1 mid->no  relay2 mid->no  relay3 mid->no  relay4 mid->no
+   109.0 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim
+   117.0 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim  outLamp4 on->dim
+   149.1 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on
+   172.6 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off  outLamp4 dim->off
+   187.1 > relayRelease1
+   187.1 > relayRelease2
+   187.1 > relayRelease3
+   187.1 > relayRelease4
+   257.1 ? indLamp1=on indLamp2=on indLamp3=on indLamp4=on  "Turn power ON. Manually push relays 1 through 4 to the LEFT. The relay indicator lights will come ON to indicate that all objects are across the river."
+   257.1 > switch1 target=1000
+   257.1 > switch2 target=1000
+   257.1 > switch3 target=1000
+   257.1 > switch4 target=1000
+   284.0 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid
+   290.1 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no
+   387.0 > switch1 target=0
+   387.0 > switch2 target=0
+   413.9 * sw1 no->mid  sw2 no->mid
+   420.0 * sw1 mid->nc  sw2 mid->nc
+   516.9 > button6 target=1000
+   528.1 * pb6 nc->mid
+   530.6 * pb6 mid->no
+   542.9 * relay2 no->mid
+   543.3 * relay1 no->mid
+   543.8 * relay2 mid->nc
+   544.2 * relay1 mid->nc
+   547.1 * outLamp2 off->dim
+   547.5 * outLamp1 off->dim
+   557.5 * indLamp2 on->dim
+   558.0 * indLamp1 on->dim
+   566.1 * outLamp2 dim->on
+   566.5 * outLamp1 dim->on
+   613.2 * indLamp2 dim->off
+   613.6 * indLamp1 dim->off
+   636.6 > button6 target=0
+   647.8 * pb6 no->mid
+   650.3 * pb6 mid->nc
+   731.5 ? outLamp5=off outLamp6=off  "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+   731.5 > switch1 target=1000
+   731.5 > switch2 target=1000
+   758.4 * sw1 nc->mid  sw2 nc->mid
+   764.5 * sw1 mid->no  sw2 mid->no
+   861.4 > switch1 target=0
+   888.3 * sw1 no->mid
+   894.4 * sw1 mid->nc
+   991.3 > button1 target=1000
+  1002.5 * pb1 nc->mid
+  1005.0 * pb1 mid->no
+  1015.7 * relay1 nc->mid
+  1017.0 * relay1 mid->no
+  1036.1 * outLamp1 on->dim
+  1091.7 * outLamp1 dim->off
+  1106.2 > button1 target=0
+  1117.4 * pb1 no->mid
+  1119.9 * pb1 mid->nc
+  1123.9 * indLamp1 off->dim
+  1162.9 * indLamp1 dim->on
+  1201.1 ? outLamp5=off outLamp6=off  "If lights 5 and 6 remain OFF, no error has been made."
+  1201.1 > switch1 target=1000
+  1228.0 * sw1 nc->mid
+  1234.1 * sw1 mid->no
+  1331.0 > switch1 target=0
+  1331.0 > switch3 target=0
+  1357.9 * sw1 no->mid  sw3 no->mid
+  1364.0 * sw1 mid->nc  sw3 mid->nc
+  1460.9 > button6 target=1000
+  1472.1 * pb6 nc->mid
+  1474.6 * pb6 mid->no
+  1486.5 * relay3 no->mid
+  1487.3 * relay1 no->mid
+  1487.4 * relay3 mid->nc
+  1488.2 * relay1 mid->nc
+  1490.7 * outLamp3 off->dim
+  1491.5 * outLamp1 off->dim
+  1501.0 * indLamp3 on->dim
+  1502.0 * indLamp1 on->dim
+  1509.8 * outLamp3 dim->on
+  1510.5 * outLamp1 dim->on
+  1556.6 * indLamp3 dim->off
+  1557.6 * indLamp1 dim->off
+  1580.6 > button6 target=0
+  1591.8 * pb6 no->mid
+  1594.3 * pb6 mid->nc
+  1675.5 ? outLamp5=off outLamp6=off  "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+  1675.5 > switch1 target=1000
+  1675.5 > switch3 target=1000
+  1702.4 * sw1 nc->mid  sw3 nc->mid
+  1708.5 * sw1 mid->no  sw3 mid->no
+  1805.4 > switch1 target=0
+  1805.4 > switch2 target=0
+  1832.3 * sw1 no->mid  sw2 no->mid
+  1838.4 * sw1 mid->nc  sw2 mid->nc
+  1935.3 > button1 target=1000
+  1946.5 * pb1 nc->mid
+  1949.0 * pb1 mid->no
+  1959.7 * relay1 nc->mid
+  1959.9 * relay2 nc->mid
+  1961.0 * relay1 mid->no
+  1961.2 * relay2 mid->no
+  1980.0 * outLamp1 on->dim
+  1980.2 * outLamp2 on->dim
+  2035.7 * outLamp1 dim->off
+  2035.9 * outLamp2 dim->off
+  2050.3 > button1 target=0
+  2061.5 * pb1 no->mid
+  2064.0 * pb1 mid->nc
+  2068.1 * indLamp1 off->dim  indLamp2 off->dim
+  2107.0 * indLamp1 dim->on  indLamp2 dim->on
+  2145.2 ? outLamp5=off outLamp6=off  "If lights 5 and 6 remain OFF, no error has been made."
+  2145.2 > switch1 target=1000
+  2145.2 > switch2 target=1000
+  2172.1 * sw1 nc->mid  sw2 nc->mid
+  2178.2 * sw1 mid->no  sw2 mid->no
+  2275.1 > switch1 target=0
+  2275.1 > switch4 target=0
+  2302.0 * sw1 no->mid  sw4 no->mid
+  2308.1 * sw1 mid->nc  sw4 mid->nc
+  2405.0 > button6 target=1000
+  2416.2 * pb6 nc->mid
+  2418.7 * pb6 mid->no
+  2430.2 * relay4 no->mid
+  2431.1 * relay4 mid->nc
+  2431.4 * relay1 no->mid
+  2432.3 * relay1 mid->nc
+  2434.4 * outLamp4 off->dim
+  2435.6 * outLamp1 off->dim
+  2444.6 * indLamp4 on->dim
+  2446.1 * indLamp1 on->dim
+  2453.5 * outLamp4 dim->on
+  2454.6 * outLamp1 dim->on
+  2500.3 * indLamp4 dim->off
+  2501.7 * indLamp1 dim->off
+  2524.7 > button6 target=0
+  2535.9 * pb6 no->mid
+  2538.4 * pb6 mid->nc
+  2619.6 ? outLamp5=off outLamp6=off  "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+  2619.6 > switch1 target=1000
+  2619.6 > switch4 target=1000
+  2646.5 * sw1 nc->mid  sw4 nc->mid
+  2652.6 * sw1 mid->no  sw4 mid->no
+  2749.5 > switch1 target=0
+  2776.4 * sw1 no->mid
+  2782.5 * sw1 mid->nc
+  2879.4 > button1 target=1000
+  2890.6 * pb1 nc->mid
+  2893.1 * pb1 mid->no
+  2903.8 * relay1 nc->mid
+  2905.1 * relay1 mid->no
+  2924.2 * outLamp1 on->dim
+  2979.8 * outLamp1 dim->off
+  2994.3 > button1 target=0
+  3005.5 * pb1 no->mid
+  3008.0 * pb1 mid->nc
+  3012.1 * indLamp1 off->dim
+  3051.1 * indLamp1 dim->on
+  3089.2 ? outLamp5=off outLamp6=off  "If lights 5 and 6 remain OFF, no error has been made."
+  3089.2 > switch1 target=1000
+  3116.1 * sw1 nc->mid
+  3122.2 * sw1 mid->no
+  3219.1 > switch1 target=0
+  3219.1 > switch2 target=0
+  3246.0 * sw1 no->mid  sw2 no->mid
+  3252.1 * sw1 mid->nc  sw2 mid->nc
+  3349.0 > button6 target=1000
+  3360.2 * pb6 nc->mid
+  3362.7 * pb6 mid->no
+  3375.0 * relay2 no->mid
+  3375.3 * relay1 no->mid
+  3375.9 * relay2 mid->nc
+  3376.2 * relay1 mid->nc
+  3379.2 * outLamp2 off->dim
+  3379.5 * outLamp1 off->dim
+  3389.6 * indLamp2 on->dim
+  3389.9 * indLamp1 on->dim
+  3398.3 * outLamp2 dim->on
+  3398.6 * outLamp1 dim->on
+  3445.2 * indLamp2 dim->off
+  3445.6 * indLamp1 dim->off
+  3468.7 > button6 target=0
+  3479.9 * pb6 no->mid
+  3482.4 * pb6 mid->nc
+  3563.6 ? outLamp5=off outLamp6=off  "Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made."
+  3563.6 > switch1 target=1000
+  3563.6 > switch2 target=1000
+  3590.5 * sw1 nc->mid  sw2 nc->mid
+  3596.6 * sw1 mid->no  sw2 mid->no
+  3693.5 ? outLamp1=on outLamp2=on outLamp3=on outLamp4=on  "Continue moving the boat back and forth across the river with the different objects until all four objects are at home (output lights 1 through 4 are ON.) Do not forget to remove objects from the boat when they have reached the other side (by moving the slide switch to the RIGHT)"

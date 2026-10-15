@@ -1,0 +1,403 @@
+{
+  "topic": "completeness-critic",
+  "agent": "completeness critic (pass 3): judging whether the twelve find-/verify- raw files are sufficient to write a relay-level MINIVAC 601 simulator with a deterministic discrete-time core, a complete netlist, and golden conformance fixtures.",
+  "date_generated": "2026-08-30",
+  "scope_note": "I did no primary research. I read all twelve raw files end to end and cross-indexed them. Every tag below describes the status of the UNDERLYING MINIVAC claim as the raw files establish it, not the status of my reading of the raw file. Where a judgement is my own inference it is tagged [unverified] and says so. Citations of the form 'raw:<file>#<path>' point into the twelve raw JSONs; citations of the form 'B1 p.12' etc. are repeated from those files and were NOT independently re-read by me.",
+  "oracle_only_compliance": "I did not open, fetch, clone, read or quote any existing Minivac emulator source. I read only the twelve raw research JSON files in docs/research/raw/ and the directory README.",
+  "source_abbreviations": {
+    "B1": "Book I, Getting Acquainted with Minivac 601 (1961)",
+    "B234": "Books II, III & IV (one continuously paginated volume: II = pp.1-33, III = pp.35-65, IV = pp.66-...)",
+    "B56": "Books V & VI",
+    "B7": "Book VII, MINIVAC 601/6010 Capacitor/Resistor Manual (1962)",
+    "MM": "SDC MINIVAC 601 Maintenance Manual",
+    "ER": "SDC 'Notes and Corrections to the Minivac Manual' errata sheet (4 sheet pages)",
+    "PH": "raw/prebrief/images/image_3.jpg, 1536px top-down panel photograph",
+    "PH2": "raw/photos/commons-minivac601-main.jpg, 4208x2457",
+    "PH3": "raw/photos/commons-minivac601-DSCF1392.jpg, 4288x2848 (Centre for Computing History unit)"
+  },
+  "verdict": {
+    "summary": "The package is sufficient to write a correct STRUCTURAL model of the machine and is NOT yet sufficient to write a deterministic discrete-time core or a golden fixture suite. The netlist is essentially closed: the full 22-letter per-section terminal set, the relay coil/lamp series topology, the DPDT contact truth table, the pushbutton and slide-switch topologies, the rotary D0..D19 block including the two-resistor motor drive, the +/- single-node rule, the six 4-hole COMMONs, the ncap capacitor block with its permanently-grounded plate, the matrix junction block with its 3x3 numbering and the six-hole M10/M11 - all of that is image-verified and internally consistent once the verifiers' corrections are applied. What is missing is everything TEMPORAL and everything ANALOG: not one operate time, release time, bounce figure, coil resistance, lamp resistance, pull-in voltage, drop-out voltage, motor rpm, resistor value or contact angular width exists in any primary source, and SDC's own documents prove the machine's published behaviour DEPENDS on those quantities (the lamp-bypass counter, the Book VII bias chapter, the 'push pushbutton 6 slowly' note, the elevator stuck between D6 and D7). A boolean-connectivity simulator cannot reproduce SDC's own documented failure modes; an analog simulator has no numbers to run on. That decision is unmade and undocumented anywhere in the twelve files.",
+    "structural_readiness": "high",
+    "temporal_readiness": "none",
+    "analog_readiness": "none",
+    "fixture_readiness": "low - a corpus exists but no reconciled, errata-applied, expected-output-bearing fixture set exists",
+    "biggest_single_risk": "find-relays TIM-05/TIM-06 contain a complete, plausible, internally consistent set of invented electrical and timing constants, correctly tagged [unverified] with an explicit 'None of these numbers are from any source'. They are the only numbers in the package. The realistic failure mode for this project is that an implementer lifts that block, the [unverified] tag is lost in the lift, and the simulator ships as if 185 ohm / 7.5 V / 3.0 V / 12 ms were MINIVAC facts."
+  },
+  "blocking_gaps": [
+    {
+      "rank": 1,
+      "key": "electrical-solver-class",
+      "question": "Is the simulator's core a boolean connectivity solver or a DC resistive-network solver, and if analog, what named parameter profile does it run on (relay coil resistance, lamp resistance at its series operating point, pull-in and drop-out voltage, supply source impedance)?",
+      "why_blocking": "This decides what a 'net' means, and no file makes or records the decision. It cannot be deferred, because SDC published circuits whose documented behaviour is a VOLTAGE phenomenon, not a connectivity phenomenon: (a) ER Book IV p.72 replaces the three-bit counter with a circuit whose stated purpose is 'by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably', and warns 'the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit'; (b) the whole of B7 chapters on bias resistors requires the relay to sit BETWEEN drop-out and pull-in and stay there; (c) B1 Experiment 9's canonical latch drives the coil THROUGH the indicator lamp on both the set and the hold path, so the coil never sees rail voltage even in the most basic relay circuit in the manual. A boolean core silently makes (a) and (c) always work and makes (b) impossible to express. An analog core needs five numbers that do not exist in any source and that SDC deliberately refused to publish - B7 pp.8-9 instead prints a blank table (Omega-B1..Omega-B6) and orders the OWNER to measure a bias resistance for each individual relay, warning the values differ per relay.",
+      "what_the_sources_do_give": [
+        "Supply: nominal 12 V DC, 1.5 A continuous, ~13 V unloaded. [verified] MM printed pp.2-3.",
+        "All switches rated 3 A; relay contacts rated in excess of 3 A. [verified] MM printed p.2.",
+        "Lamps are operated at less than their rated voltage to extend life. [verified] MM printed p.2.",
+        "Drive motor is operated at less than one-third rated voltage. [verified] MM printed p.2.",
+        "Supply topology: mains -> power switch in one primary leg -> centre-tapped transformer -> two-diode rectifier -> + output; centre tap -> CIRCUIT BREAKER -> - output; power light across + and -. No filter capacitor drawn. [verified] MM printed p.3 figure, read from the page image by the relays finder (raw:find-relays.json#power_supply.PS-07/PS-08) and independently by the context verifier (raw:verify-context.json#refuted.R9).",
+        "Relay hysteresis is real, deliberate and large: 'there is region between the drop-out and pull-in voltages where the relay may be either on or off ... In this region the relay is bi-stable'. [verified] B7 printed p.7 page image. SDC's physical explanation (gap-dependent magnetic force, so holding needs less voltage than pulling in) is at B7 printed p.6. [verified]",
+        "Pull-in voltage is strictly below full supply voltage - B7 p.7's graph axis is labelled 'VOLTAGE -> (TO FULL POWER SUPPLY VOLTAGE)' with both thresholds drawn inside the span. [verified] raw:verify-relays.json#missed_by_the_finder.MISS-07.",
+        "Capacitors: 1cap..5cap = 500 uF, 6cap = 1000 uF, one plate permanently on the negative rail. Their published purpose is to inject or absorb a charge pulse that kicks a BIASED relay across its hysteresis band. [verified] B7 printed pp.10-11 page images."
+      ],
+      "what_is_missing": [
+        "Relay coil resistance, rated coil voltage, pull-in voltage, drop-out voltage. Confirmed absent from B1, B234, B56, B7, MM and ER by both the relays finder and the relays verifier. raw:verify-relays.json#still_not_settled_by_the_sources[0].",
+        "Lamp voltage, current, bulb number, base type, cold and hot resistance. Confirmed absent. raw:verify-relays.json#still_not_settled_by_the_sources[1].",
+        "Transformer secondary voltage/VA, rectifier part number and technology, circuit-breaker trip current. Confirmed absent; only spare-part prices exist (6433 Rectifier $3.00, 6435 Light Assembly $1.00, 6437 Relay $6.00).",
+        "Supply source impedance. find-relays PS-16 derived 0.67 ohm from '13 V open circuit falling to 12 V at 1.5 A'; raw:verify-relays.json#refuted.REF-07 refutes the premise - no source says 12.0 V is what you measure AT 1.5 A. The number is [unverified], not [likely].",
+        "Whether a filter capacitor exists in the chassis. None drawn; a schematic omission is not proof of absence. [unverified]"
+      ],
+      "where_to_look": [
+        "Nothing on paper will close this. It is closable only by measurement on a surviving unit, or by identifying the exact relay and lamp parts from an under-chassis photograph and reading 1961 datasheets.",
+        "Cheapest partial: an under-panel photograph of any surviving 601 showing the relay body's maker's mark and the lamp base, which would convert 'invented' into 'sourced from a period datasheet'.",
+        "Cheapest of all, and the correct next action: STOP researching and make an explicit, documented engineering decision. Name the profile (find-relays already proposes the name MINIVAC-DEFAULT-TIMING and a companion electrical block at raw:find-relays.json#timing.claims TIM-05/TIM-06), make every constant a tunable, and write a fidelity contract stating which SDC-documented behaviours the profile is REQUIRED to reproduce."
+      ],
+      "acceptance_criteria_the_profile_must_meet": [
+        "B1 Experiment 9's latch must pull in AND hold with the indicator lamp in series on both paths (drive via C).",
+        "The B234/ER three-bit counter must be MARGINAL - i.e. capable of failing - when driven via C, and reliable when driven via E through the ER lamp-bypass circuit. If the profile makes both work, it has erased the only failure SDC documented.",
+        "A bias resistor of a commonly available 1961 value must be able to land the coil voltage strictly between drop-out and pull-in, so that B7's bias procedure and its capacitor-kick programs run.",
+        "Six coils plus the panel's lamps must total under the published 1.5 A continuous rating.",
+        "Driving C-E alone must light the lamp and not operate the relay (an [unverified] consequence of the verified series topology, raw:find-relays.json#coil_and_lamp.RLY-16 - flagged because it is a natural user experiment)."
+      ],
+      "scope_decision_riding_on_this": "Whether Book VII is in scope. If the core is boolean, B7's bias resistors, capacitor kicks and the ncap block are unimplementable and the simulator is a Books I-VI machine. raw:find-relays.json#capacitor_terminals.CAP-09 explicitly offers that exit: 'Books I-VI never use them, so a Books I-VI-faithful simulator can treat 1cap..6cap as unconnected two-hole junctions and still be correct for everything in the base manual set.' Note also that B7 is a joint 601/6010 manual and raw:verify-relays.json#refuted.REF-11 rules that the 601/6010 scope caveat applies to its RELAY statements as well as its capacitor statements."
+    },
+    {
+      "rank": 2,
+      "key": "discrete-time-timing-model",
+      "question": "What is the tick, and what are the per-device latencies - relay operate, relay release, the both-open interval during transfer, contact bounce, pushbutton and slide-switch transfer gaps? And what is the settle/propagation rule for a combinational relay chain within one tick?",
+      "why_blocking": "A deterministic discrete-time core is specified by exactly these numbers, and there are none. raw:verify-relays.json#still_not_settled_by_the_sources confirms the absence of relay operate/release/bounce data across all seven documents. But the machine is demonstrably race-sensitive and SDC says so: ER general note 'some programs are not designed for high-speed operation ... try carrying out the procedure slowly'; ER Book IV p.69 'push pushbutton 6 slowly when operating the single-input flip-flop'; the ER alternate counter procedure 'hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter'. Ripple-carry through chained relays is an observable delay in this machine (raw:find-relays.json#timing.TIM-04). Without a latency model the single-input flip-flop either toggles deterministically (wrong - it is the circuit SDC warns about) or oscillates unboundedly.",
+      "what_the_sources_do_give": [
+        "Relay contacts are break-before-make: [likely] only. SDC states break-before-make EXPLICITLY for the pushbuttons (B1 printed p.9, Experiment 3 step 8: the operator can find and hold an intermediate position where BOTH lamps are off) and EXPLICITLY for the rotary switch (B1 printed p.21, Experiment 11 step 3: 'light 5 goes OFF before light 6 comes ON'), and NEVER in so many words for the relay. raw:find-relays.json#contacts.RLY-10, upheld at raw:verify-relays.json#still_not_settled_by_the_sources[4].",
+        "The pushbutton dead zone is mechanically WIDE - wide enough for a human to find and hold it. [verified] B1 printed p.9.",
+        "The relay's two contact sets are mechanically ganged by a plastic crossbar and 'Both arms move together and make or break contact at the same time.' [verified] B1 printed p.12. So the two sets have no skew.",
+        "SDC's published global reset is a power cycle: 'to re-set the automatic sequence control, turn power OFF, then ON again'. There is no reset line. [verified] ER, Book V p.25 note. This pins the power-on state: all relays de-energised, all latches cleared.",
+        "Power must be OFF while wiring or unwiring a program. [verified] ER p.1 left column. A simulator that permits live re-patching is departing from the documented operating model (defensible, but it is a departure).",
+        "Two timing numbers DO exist in the corpus, and neither is a relay figure: 'the rotary switch system requires more than a second to go from zero to nine' (B234 printed p.6 - and raw:verify-rotary.json#downgraded D08 rules this is about a HUMAN setting a dial versus pressing a button, not a motor rate) and 'The resistors should heat up in about 20 seconds' (MM printed p.10)."
+      ],
+      "what_is_missing": [
+        "Every relay and switch latency. The only numbers in the package are the invented MINIVAC-DEFAULT-TIMING block at raw:find-relays.json#timing.TIM-05 (relay_operate_ms 12.0, relay_release_ms 8.0, transfer_break_lead_ms 3.0, bounce_on_make_ms 1.0, pushbutton_transfer_gap_ms 2.0, slide_switch_transfer_gap_ms 2.0, rotary_wiper_transfer_gap_ms 2.0, lamp_visual_rise_ms 25.0, lamp_visual_decay_ms 60.0), correctly tagged [unverified] with 'None of these numbers are from any source.'",
+        "Contact bounce for any contact. Confirmed absent.",
+        "Slide switch break-before-make vs shorting. Confirmed absent.",
+        "The one argument in the package that is derived from a primary source rather than from class knowledge: the published supply is an unfiltered full-wave centre-tapped rectifier, so the rails are 120 Hz pulsating DC dipping toward zero every 8.33 ms; the relays demonstrably do not chatter at 120 Hz; therefore the armature time constant exceeds roughly 8 ms. raw:find-relays.json#timing.TIM-05.reasoning[0]. That is a genuine lower bound and it is [likely], not [verified] - it rests on PS-08's 'no filter capacitor is DRAWN', which is not proof no filter capacitor exists."
+      ],
+      "where_to_look": [
+        "Not closable from paper. Same options as gap 1: measure a unit, or identify the relay part.",
+        "A timed video of a running 601 would bound the rotary rate and, with a lamp visible, crudely bound relay operate time.",
+        "Decision required, not research: choose a tick, choose whether relay transfer is modelled as break -> both-open -> make or as an atomic swap, and state the rule for combinational settling within a tick (event queue vs iterate-to-fixpoint vs fixed N sub-steps). Then write the single-input flip-flop and the three-bit counter as the two regression circuits that prove the choice."
+      ]
+    },
+    {
+      "rank": 3,
+      "key": "rotary-contact-geometry-and-motor-law",
+      "question": "What is the angular width of a rotary contact versus the dead gap between contacts, and what angular-velocity law does the motor obey under the four documented drive conditions?",
+      "why_blocking": "contact_at(angle) is the rotary's entire interface to the netlist and its one free parameter - the gap fraction - is explicitly not settled (raw:find-rotary.json#simulator_spec_summary.state, 'Gap width is a tunable; not settled by sources (C08)'). The gap is not cosmetic: ER's Book V page 11 note documents the elevator hanging because the pointer came to rest BETWEEN D6 and D7 making proper contact with neither, which is a real, primary-sourced failure mode a faithful simulator should be able to produce. And period programs depend on every INTERMEDIATE contact firing momentarily as the wiper sweeps - raw:verify-rotary.json#simulator_spec_deltas records the Combination Lock's optional D8/6E trap ('indicate an error if 8 is passed at any point'), which only works if swept contacts are momentarily live. Any implementation that jumps the wiper to a destination is wrong. Together with the missing motor law, this means the timing of every rotary program is invented.",
+      "what_the_sources_do_give": [
+        "Netlist [verified, image-read twice independently]: D0..D15 are sixteen independent fixed contacts; D16 is the wiper; R1 is in series between D17 and the D19 rail; the MOTOR is between D18 and D19; a SECOND resistor R2 sits in PARALLEL with the motor, also between D18 and D19. Source: MM printed p.9 figure 'Circuit Diagram - Rotary Switch Motor Drive' (pages/maintenance/p-11.png), read by raw:verify-jackmap.json#refuted.R2 and corroborated by raw:verify-rotary.json (E01 upheld, image-verified from two drawings).",
+        "Drive conditions [verified]: RUN = supply across D17/D18, motor sees a divided voltage ('operated at less than one-third rated voltage', MM p.2). STOP = short across D18/D19, which shunts the motor. Direct power across D18/D19 bypasses R1 and 'the knob should turn very rapidly' (MM printed p.10). Reversing the RUN connections reverses direction (MM pp.9-10).",
+        "A fourth idiom exists and the rotary finder missed it: an arbitrary EXTERNAL resistance across D18/D19 shunts the motor and slows it continuously. B7 printed p.21 gives 15, 22 or 33 ohm as values that 'decrease the speed of the motor'. raw:verify-rotary.json#simulator_spec_deltas[0]. Those are values for a USER-ADDED patch resistor and must NOT be read as R1/R2's values.",
+        "Break-before-make at the wiper is EXPLICIT: B1 printed p.21, Experiment 11 step 3, 'light 5 goes OFF before light 6 comes ON ... the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact.' [verified]",
+        "No detents, ratchet, indexing spring or click stop: [likely], downgraded from the finder's [verified] at raw:verify-rotary.json#downgraded.X01. The strong positive support is ER's documented hang between D6 and D7 - a detented switch cannot rest between positions. The MM spare-parts list names only 6471 Motor, 6472 Drive Wheel Assembly, 6473 Complete Rotary Switch Assembly.",
+        "Friction drive: 'spring the motor shaft against the edge of the drive wheel' (MM). The knob can be turned or held by hand against a running motor without damage. [verified]",
+        "Rotation sense on the panel: 0 at 12 o'clock, numbers increasing CLOCKWISE. [verified] from PH and B1 printed p.20.",
+        "Position 0 is an ordinary contact wired and used like the other fifteen. [verified] The manual's printed range 'D = Decimal Input-Output / 8 = terminal number (1 to 19)' at B1 p.20 is a genuine SDC erratum that omits D0; MM printed p.10 gives the correct range, 'D0 through D15'.",
+        "Rotary switch materials, which bear on contact resistance: silver-plated circuits, beryllium-copper contact fingers, stainless drive shaft in an oil-impregnated bronze bearing. [verified] MM printed p.3."
+      ],
+      "what_is_missing": [
+        "Angular width of a contact versus the dead gap. Not settled. Would need an under-panel photograph or a measured original assembly (SDC part 6473).",
+        "R1 and R2 resistance values. Not settled. The MM spare-parts list gives part numbers for the motor, drive wheel and complete rotary switch assembly but NO resistor part number, which suggests the resistors live inside assembly 6473.",
+        "Motor make, model, rated voltage, no-load rpm, drive-wheel diameter, effective reduction ratio.",
+        "Dial speed. The ONLY defensible primary anchor is B56's worked example, 'assume 45 revolutions per minute' = 12 contacts/s = ~83 ms per contact - and it is framed as an assumption, not a measurement. raw:verify-rotary.json#simulator_spec_deltas[3] kills the finder's manufactured '30-45 rpm band' and warns that the 48 on the same page is the PROGRAM's registered-revolution count (45 x 16/15), not a dial speed.",
+        "Spin-up, spin-down, coast angle, reversal time. Nothing quantitative AND nothing qualitative: the words momentum, inertia, coast and overrun appear in no source (whitespace-insensitive test). raw:verify-rotary.json#downgraded.X02 downgrades the finder's 'overrun is real and programs depend on it' from [verified] to [unverified] and warns it must be justified from PMDC physics, not cited to the manual.",
+        "Whether the wiper reaches D16 via a centre hub, a slip ring, or a concentric collector ring."
+      ],
+      "where_to_look": [
+        "raw/pdf/pages/maintenance/ - MM printed pp.9-10 are the richest rotary pages and at least one further figure there has not been image-read by anyone.",
+        "An under-panel photograph of a surviving unit's rotary assembly settles the gap fraction and the wiper take-off in one shot.",
+        "A timed video of a running unit settles the rpm and, on a stop, the coast angle.",
+        "Decision required: pick a gap fraction, state it as a tunable, and add the ER 'stuck between D6 and D7' hang as an explicit regression case so the parameter is exercised rather than quietly set to zero."
+      ]
+    },
+    {
+      "rank": 4,
+      "key": "canonical-errata-applied-program-corpus",
+      "question": "Where is the single reconciled, errata-applied, image-verified program corpus with per-program expected observable output, from which golden conformance fixtures are generated?",
+      "why_blocking": "Fixtures are the project's definition of done and no such artifact exists. What exists is a 84-program finder file and a verifier file that adds 14 more programs, 44 errata corrections and 9 refutations - including one refutation that would cause an implementer to CORRUPT a correct line if acted on. Merging them is not mechanical: the two files disagree on wire lists, book attribution, errata attribution and tag policy, and several programs are known-ambiguous.",
+      "what_must_be_reconciled": [
+        "COVERAGE. raw:find-programs.json holds 84 programs and transcribed ZERO of Book II's eleven and skipped two Book III relay-logic circuits. raw:verify-programs.json recovers 14 (11 Book II at #missed_programs_book_ii, 2 Book III at #missed_programs_book_iii, plus the ER 48-connection alternate three-bit counter). The Book III set matters: the finder transcribed relay AND, OR and NOT and stopped, leaving the relay EITHER-BUT-NOT-BOTH (XOR) untranscribed, so the published relay logic set is incomplete in the corpus.",
+        "ERRATA. 44 corrections recovered by raw:verify-programs.json#errata_program_corrections, applied to none of the finder's listings. Eight of the finder's own transcribed programs are corrected by them. Sample corrections that change terminal letters: B1 p.13 'delete line connecting 1B and 2B'; B1 p.24 MOTOR REVERSING diagram 'change 6Y to 6V'; B234 II p.11 'change 1A/1C to 1A/1G'; B234 II p.14 'change 2Z/2C to 2X/2C'; B234 III p.43 'change 2+/2H to 1G/2H'; B234 III p.54 'change 5V/45 to 5V/4S'; B234 III p.59 'change 1R, 1S, 1T on the far right slide switch to 3R, 3S, 3T'; B234 III p.61 'insert E before negative power connection'; B234 IV p.43 Relay AND 'change 2+/2H to 1G/2H'; B56 V p.11 (EXPERIMENT 9) 'change 4G/4H to 4G/5H; change D16/M- to D16/M+'; B56 V p.30 'change 5X/6E to 5X/6C'.",
+        "A TRAP. raw:verify-programs.json#refuted.R1 refutes the finder's flag on Tic-Tac-Toe's line '4G/5N'. The line is CORRECT AS PRINTED - it is the middle of the chain 3G/4N, 4G/5N, 5G/6N. The finder's proposed 'fix' to 4N/5N would break the chain. An implementer who takes the finder's per_line_flags at face value will corrupt a correct fixture.",
+        "A CROSS-FILE WIRE CONFLICT. raw:find-relays.json#self_holding.RLY-27 gives B1 Experiment 8 as '1Y/1C'; raw:find-programs.json#programs.I-EXP8 gives '1X/1C'. raw:verify-relays.json#refuted.REF-01 image-confirms 1X/1C and shows 1Y/1C would leave relay 1 latched ON at power-up, destroying the experiment.",
+        "TAG POLICY. raw:verify-programs.json#refuted.R6 refutes the finder's own tag definition, which admitted OCR-only readings to [verified]. Every program marked verified WITHOUT an image read must be read as [likely]. The verifier re-read ten programs from page images and found zero transcription errors, so the corpus is trustworthy in practice - but the 'verified: 32' count is not what the project's tag legend means.",
+        "THE ERRATA TEXT LAYER IS UNSAFE. raw:verify-context.json#refuted.R4: errata.txt is a pdftotext -layout extraction of a TWO-COLUMN sheet; it interleaves the columns line by line, DROPS 12 of the 48 connections in the alternate three-bit binary counter, and CORRUPTS terminal letters in two of the 36 it keeps. Terminal letters are exactly this project's payload. Any errata transcription must come from the page image."
+      ],
+      "known_ambiguous_programs_still_open": [
+        "Book II Experiment 2 (Decimal Input) and Experiment 7 (Decimal Output): connection counts 23 and 16 are OCR reconstructions in grids whose column breaks are ambiguous, and Experiment 7's block carries an unexplained isolated '6Z'. Needs one image read each: book2-3-4.pdf PDF pp.13 and 21.",
+        "The ER alternate three-bit binary counter (48 connections): transcribed from OCR only, two lines carry OCR damage. Needs errata.pdf sheet page 2, right column, at 300+ dpi. This is the ONLY published lamp-bypass relay circuit and therefore the concrete worked example of driving coils at E instead of C - it is a required fixture for gap 1.",
+        "The ER Book III page 36 correction body: illegible in the OCR layer, cut off in the verifier's image. Needs errata.pdf sheet page 2, right column.",
+        "Whether Book II's single-input flip-flop (14 wires) is the same program as Book IV's IV-FF1 (16 wires) and IV-FF2 (14 wires). Three printings, never cross-checked. This is the circuit ER tells the user to operate SLOWLY, so it is the primary timing fixture and it must not be ambiguous.",
+        "Book I answer pages (printed 29-32): the finder's 20 problem answers remain hand-lettered and [unverified]; ER adds notes for Problems 7 and 18 but not wiring. Book I Answer 13's exact wire list is OCR-degraded; needs book1.pdf PDF p.33 rendered."
+      ],
+      "what_is_missing_structurally": "Expected observable output. A fixture is a wire list PLUS an operator script PLUS the lamp/relay/dial state expected after each step. Some finder programs carry procedure_as_printed and expected_behaviour; many do not. No file states which programs are designated conformance fixtures, or what the pass criterion is.",
+      "where_to_look": [
+        "raw/pdf/pages/errata/ (sheet pages 2 and 3 at 300+ dpi) and raw/pdf/pages/book2-3-4/p-13.png, p-21.png.",
+        "raw:verify-programs.json#errata_program_corrections and #errata_alternate_counter are the merge input.",
+        "The merge itself is a writing task, not a research task: produce one programs.json keyed by (book, printed page, program name) with as_printed and as_corrected wire lists, an errata provenance field per corrected line, and an expected-state script."
+      ]
+    },
+    {
+      "rank": 5,
+      "key": "unread-maintenance-check-circuits-and-relay-contact-isolation",
+      "question": "Are the relay's two contact sets (G/H/J and K/L/N) electrically isolated from one another, and what do the three unread Maintenance Manual check-circuit figures show?",
+      "why_blocking": "Contact-set isolation is a netlist-level fact. If H and L shared an internal node, every published relay circuit's behaviour changes. It is currently INFERRED, not read: B1 printed p.12 says the two sets make 'separate electrical connections' and the plastic crossbar joins them mechanically; MM printed p.8's 'disconnect the eight connections to the relay' is CONSISTENT with 2 coil lugs + 6 independent contact lugs but does not state it (raw:verify-relays.json#refuted.REF-10 flags the 2+6 split as the finder's inference riding inside a [verified] claim). raw:verify-jackmap.json#stillNotSettled[3] names the exact artifact that would settle it - MM's 'Circuit Diagram - Relay Check' figure - and says 'which I did not open'. Three further published check circuits are unread by anyone. They are simultaneously the best cross-check on internal component wiring and a ready-made acceptance-test suite with SDC's own expected lamp states. This is the cheapest high-value gap in the package: three page images.",
+      "the_unread_figures": [
+        "MM 'Circuit Diagram - Relay Check', printed p.7 (PDF p.9, pages/maintenance/p-09.png per raw:verify-relays.json#missed_by_the_finder.MISS-05; raw:verify-jackmap.json cites pages/maintenance/p-10.png - the two verifiers cite different page images for it, see contradiction C7). Its TEXT is known and is already an acceptance test: 'Turn power on. Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on.'",
+        "MM 'Circuit Diagram - Pushbutton Check' (pages/maintenance/p-08.png).",
+        "MM 'Circuit Diagram - Slide Switch Check' (pages/maintenance/p-10.png). Its OCR leaks terminal tokens '3A', '3B', '4A', '4B' - unresolved.",
+        "MM 'Power Supply Circuit Diagram', printed p.3 - this one HAS been read, twice (raw:find-relays.json#power_supply.PS-07, raw:verify-context.json#refuted.R9), notwithstanding raw:verify-panel.json#not_settled_after_verification treating it as unread. See contradiction C6."
+      ],
+      "what_would_close_it": "Three page-image reads, plus transcription of each figure's stated expected lamp states into the fixture set as power-on acceptance tests.",
+      "where_to_look": [
+        "docs/research/raw/pdf/pages/maintenance/p-08.png, p-09.png, p-10.png",
+        "Cross-check the resulting relay netlist against B1 printed p.12's truth table and against the eight-lug replacement instruction at MM printed p.8."
+      ]
+    }
+  ],
+  "gaps_considered_and_rejected_as_non_blocking": [
+    {
+      "item": "Watertown vs Cambridge vs a possible third city on the logo plate.",
+      "why_not_blocking": "Historical provenance. Affects a rendered legend string, not behaviour. Must be reported unresolved per the project ruling; costs the simulator nothing."
+    },
+    {
+      "item": "Panel substrate material, true paint colours, typeface family, absolute panel dimensions and jack pitch, pointer-knob colour and pointer form, whether the light ring around each jack hole is ink or exposed substrate.",
+      "why_not_blocking": "Rendering fidelity, not relay-level behaviour. Note that raw:verify-panel.json warns the finder's redraw_spec was measured off the 1536px image_3.jpg while a 4208px photograph sat unopened - any redraw pass should redo those measurements off PH2."
+    },
+    {
+      "item": "Whether the component at the top of the POWER strip is a pilot jewel or a fuseholder.",
+      "why_not_blocking": "MM's schematic puts a POWER LIGHT across the DC output and MM's spare-parts list contains no fuse; the fuseholder on PH2 reads as an owner repair. Panel dressing either way."
+    },
+    {
+      "item": "Whether the six capacitors were factory-fitted in 1961 601 production or came with a 1962 accessory kit.",
+      "why_not_blocking": "The netlist is known either way (one plate on the minus rail, one plate at ncap). Make it a config flag. B7 p.8's footnote 'the highest valued resistor in the kit' proves a resistor kit was a separate article, which weakens the symmetry argument for factory-fitted capacitors."
+    },
+    {
+      "item": "Whether the 601 and the 6010 are electrically identical.",
+      "why_not_blocking": "Project scope is 601-only. B7 being a joint manual is a tagging caveat on B7-derived claims, not a simulator requirement."
+    },
+    {
+      "item": "Whether Book VII shipped with the 601, the 6010, or the accessory kit.",
+      "why_not_blocking": "Bibliographic. The scope question that DOES matter (does the simulator implement bias resistors and capacitors) is folded into gap 1."
+    },
+    {
+      "item": "Which physical slide-switch position (LEFT or RIGHT) selects which throw in the Book V metronome.",
+      "why_not_blocking": "The general convention is settled - B1 printed p.18/p.19 Experiment 10 pins arm S to R when LEFT and to T when RIGHT, and B234 II p.9 states 'switch right = 0, switch left = 1'. One program's prose omission does not block the model."
+    },
+    {
+      "item": "What the two brass fasteners at the top-left of the DECIMAL INPUT-OUTPUT block are.",
+      "why_not_blocking": "Almost certainly rivets or screws. Not terminals; no net."
+    },
+    {
+      "item": "The greek-letter pseudo-terminal notation (Omega_B1, Omega_220) in Book VII.",
+      "why_not_blocking": "Notation, and raw:verify-jackmap.json#missed.M1 already warns that the OCR renders it as 'Q'/'Q20'/'Q22' and that a naive token census WILL invent a nonexistent 'Q' terminal class. Recorded so the parser writer does not fall into it. There is no Q terminal on the MINIVAC 601."
+    }
+  ],
+  "cross_file_contradictions": [
+    {
+      "id": "C1",
+      "severity": "high",
+      "component": "Book I Experiment 8 ('A Relay Controls Another') wire list",
+      "statement_a": "raw:find-relays.json#self_holding.RLY-27, tagged [verified]: 'Program: 1+/1Y, 1+/1H, 2+/2H, 1Y/1C, 1G/2C, 2G/2A, 1F/1-, 2F/2-, 2B/2-.' (with the finder's own ocr_caveat 'Verify against the page image before use')",
+      "statement_b": "raw:find-programs.json#programs.I-EXP8, tagged [verified], 'read from a 500 dpi crop of book1.pdf PDF page 18': '1+/1Y, 1X/1C, 1F/1-, 1+/1H, 1G/2C, 2F/2-, 2+/2H, 2G/2A, 2B/2-.'",
+      "note": "Directly incompatible on one wire: 1Y/1C versus 1X/1C. RESOLVED in favour of 1X/1C by raw:verify-relays.json#refuted.REF-01, which opened pages/book1/p-18.png and read the three-column block plus the corroborating circuit diagram ('the bottom trace runs 1Y - 1X - 1C - 1E - 1F - 1-, with 1Z drawn as the unconnected N.C. stub above 1X'). With 1Y/1C the pushbutton is bypassed and relay 1 is permanently energised at power-up, which destroys the experiment's first three steps. [verified] Use 1X/1C.",
+      "action": "Take find-programs' list. Strike RLY-27's wire list."
+    },
+    {
+      "id": "C2",
+      "severity": "high",
+      "component": "Rotary-switch motor drive (D17 / D18 / D19)",
+      "statement_a": "raw:find-jackmap.json#componentNetlist 'drive motor + current-limiting resistor', tagged 'verified (as a reading of the diagram)': ONE resistor between D17 and the D19 node, and the motor between the D19 node and D18. Its own caveat notes B1 p.22 says 'resistors' (plural) while the p.23 diagram shows a single zigzag, and defers the question.",
+      "statement_b": "raw:find-rotary.json#simulator_spec_summary.nets: 'R1 between D17 and D19; motor between D18 and D19; R2 in parallel with the motor between D18 and D19.' TWO resistors.",
+      "note": "RESOLVED in favour of two resistors, image-verified independently by two verifiers. raw:verify-jackmap.json#refuted.R2 read MM printed p.9 (pages/maintenance/p-11.png), figure 'Circuit Diagram - Rotary Switch Motor Drive', and describes a leader labelled RESISTORS pointing at BOTH zigzags; raw:verify-rotary.json upholds E01 as image-verified from TWO primary drawings. Corroborated by MM printed p.10 text: 'Check each of the two resistors by connecting power across them' and 'connect power momentarily across the STOP terminals: the knob should turn very rapidly' - only possible if the motor sits directly across D18/D19 with no series resistance. [verified]",
+      "action": "Netlist: R1 series D17-D19; motor D18-D19; R2 parallel with the motor D18-D19. Delete find-jackmap's one-resistor version."
+    },
+    {
+      "id": "C3",
+      "severity": "high",
+      "component": "CAPACITOR terminals",
+      "statement_a": "raw:find-jackmap.json#terminalInventory CAPACITOR, tagged [verified]: 'no shorthand designator is ever printed or used ... no program in any of the six books connects to them. Whole-corpus token census found zero uses', and #componentNetlist 'CAPACITOR block n: topology NOT SETTLED' [unverified], with the advice to model them as dead jacks. raw:find-panel.json#terminal_designation_table '(CAPACITOR)' states the same absolute: 'NEVER USED IN ANY PUBLISHED PROGRAM; NO DESIGNATION APPEARS IN ANY MANUAL.'",
+      "statement_b": "raw:find-relays.json#capacitor_terminals.CAP-03/CAP-04/CAP-05, all tagged [verified] from B7 page images: the designator is '<n>cap', each section has a real electrolytic under the panel with ONE plate permanently on the negative rail, values 500 uF for sections 1-5 and 1000 uF for section 6, and their published purpose is to kick a biased relay across its hysteresis band.",
+      "note": "RESOLVED against the two negatives, twice: raw:verify-jackmap.json#refuted.R1 and raw:verify-panel.json#refuted.V-R08 both read B7 page images and both found printed program lines 1cap/D16, 2cap/3L, 3cap/4L, 4cap/5L, 5cap/6L. The finders' 'whole-corpus census' covered three of seven primary PDFs. The narrower statement 'never used in a wiring program in Books I-VI' survives: a grep for /[0-9] ?cap/ over the three Books I-VI OCR files returns zero hits. [verified]",
+      "action": "Model six ncap nets, far plate hard-wired to the minus rail, 500 uF x5 and 1000 uF x1. Whether a 1961 601 shipped with them is a separate, still-open question - make it a flag, do not resolve it."
+    },
+    {
+      "id": "C4",
+      "severity": "high",
+      "component": "The + and - rails",
+      "statement_a": "raw:find-programs.json#not_settled_by_the_sources: 'Whether the six section minus terminals (1- .. 6-) and plus terminals are one common supply rail or six separately-fused nodes ... no page says so', plus its headline finding that whether M+/M- are part of the MATRIX block or a separate motor-power pair is not settled. raw:find-panel.json#claims P013 models M+/M- as 'the matrix section's power terminals under the same rule as 1+/1-', which implies a per-section structure. raw:find-jackmap.json#internalBusses attaches a caveat to its (correct) [verified] bus claim: 'No manual sentence says \"M+ is the plus rail\" in so many words.'",
+      "statement_b": "The errata sheet says it in exactly so many words: 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.'",
+      "note": "RESOLVED, and it is a first-order simulator fact. Recovered independently by three verifiers: raw:verify-programs.json#refuted.R4, raw:verify-jackmap.json#refuted.R5, raw:verify-panel.json#missed.V-M02. There are 7 '+' jacks and 7 '-' jacks but only TWO nodes. This also disposes of raw:find-rotary.json's flagged discrepancy between B1 Exp 12's '6-/D18' and Exp 13's '5-/D18' - same node, no typo. [verified]",
+      "action": "Two power nodes. Delete find-jackmap's caveat, find-panel's per-section gloss, and find-programs' open question."
+    },
+    {
+      "id": "C5",
+      "severity": "medium",
+      "component": "MM 'Circuit Diagram - Rotary Switch Motor Drive' (printed p.9 / PDF p.11) - whether it has been read",
+      "statement_a": "raw:verify-relays.json#still_not_settled_by_the_sources, final item, flagged NEW: 'whether the two motor-drive resistors sit in series with the motor, one per leg, or in some other arrangement. The Maintenance Manual prints a \"Circuit Diagram - Rotary Switch Motor Drive\" on printed p.9 (PDF p.11) that would answer it. Neither the finder nor I opened that page image. Would settle: one page image.'",
+      "statement_b": "raw:verify-jackmap.json#refuted.R2 opened exactly that page image (pages/maintenance/p-11.png) and transcribed the figure rail by rail; raw:verify-rotary.json upholds the same topology as image-verified from two primary drawings.",
+      "note": "Not a factual conflict about the machine - a conflict about the state of the research. Two sibling verifiers closed the question that a third lists as open. Anyone triaging remaining work off verify-relays' open list will re-spend an image budget on a settled question. Answer: R1 series D17-D19, motor and R2 both across D18-D19.",
+      "action": "Strike that item from the open-questions register."
+    },
+    {
+      "id": "C6",
+      "severity": "medium",
+      "component": "MM 'Power Supply Circuit Diagram' (printed p.3) - whether it has been read, and what sits at the top of the POWER strip",
+      "statement_a": "raw:verify-panel.json#not_settled_after_verification: 'What component the factory fitted at the top of the POWER strip. PH3 shows a red pilot jewel (matching B1 p.3's \"red power light\"); PH2 shows a black FUSE holder cap in the same position; MM's spare-parts list has no fuse. Would settle it: MM's power-supply circuit diagram, which exists on MM p.3 as an IMAGE that the text layer does not carry - render that page and read it.'",
+      "statement_b": "raw:find-relays.json#power_supply.PS-07 and PS-11 rendered and read that page image: 'The POWER LIGHT is connected directly across the + and - output nodes (i.e. downstream of the circuit breaker)', with MM printed p.4 step 8 'Remove the burned-out power light and replace it with a new light assembly, connecting the leads to the power supply terminals.' raw:verify-context.json#refuted.R9 independently read the same figure and adds that the circuit breaker sits in the transformer CENTRE-TAP (negative) rail, not the rectifier-output (+) rail.",
+      "note": "The figure shows a power light and no fuse; the MM spare-parts list (6431-6491) contains no fuse and does list 6435 Light Assembly. The factory part at that position is a lamp; the fuseholder on PH2 reads as an owner repair. This is not a machine-level contradiction (both photographic observations are real) but the two topic files disagree on whether the question is open, and one of them names as unread a page the other transcribed.",
+      "action": "Close it as 'factory: power lamp across the DC output; PH2 shows a non-factory fuseholder retrofit'. Model the breaker in series with the whole negative rail - it carries the total current of every load."
+    },
+    {
+      "id": "C7",
+      "severity": "low",
+      "component": "Which rendered page image holds MM's 'Circuit Diagram - Relay Check'",
+      "statement_a": "raw:verify-jackmap.json#stillNotSettled[3] names it 'pages/maintenance/p-10.png'.",
+      "statement_b": "raw:verify-relays.json#missed_by_the_finder.MISS-05 places the Relay Check at MM printed p.7 = PDF p.9, and raw:verify-jackmap.json#missed.M5 separately lists 'Circuit Diagram - Slide Switch Check' among PDF pp.5/8/9/10.",
+      "note": "The two verifiers cite different page images for the same figure, and neither opened it. Trivial to settle by rendering p-08 through p-10, but it means an implementer following either citation may open the wrong figure and conclude the relay check does not exist. Note also the MM printed-to-PDF offset used consistently elsewhere in the package is printed p = PDF p + 2.",
+      "action": "Render pages/maintenance/p-08.png, p-09.png and p-10.png together and label them definitively."
+    },
+    {
+      "id": "C8",
+      "severity": "medium",
+      "component": "Matrix ring numbering (needed for Tic-Tac-Toe's 'move 4 / move 5 squares to the right')",
+      "statement_a": "raw:verify-programs.json#still_not_settled: 'The ring order of the nine matrix squares behind Tic-Tac-Toe's \"move 4 / move 5 squares to the right\" rule. Nothing in Book VI, Book I or the errata restates the numbering. Needs the panel photograph.' raw:find-programs.json marks it '[unverified as to geometry]', and raw:verify-programs.json#refuted.R7 downgrades the finder's 'centre = matrix square 9' to [unverified] because the finder never opened the photograph.",
+      "statement_b": "raw:find-panel.json#claims[33], tagged [verified] from PH crop x=1140 y=400 w=160 h=120 scale 8: 'TOP ROW 1, 2, 3 (left to right); MIDDLE ROW 8, 9, 4 (left to right); BOTTOM ROW 7, 6, 5 (left to right). Position 9 is the centre. Positions 1..8 therefore run clockwise around the centre starting at top-left.'",
+      "note": "The panel topic settled from the photograph exactly what the programs topic lists as needing the photograph. The two files never met. This also confirms the project seed. With the ring order in hand, 'move 5 squares to the right' and 'move 4 squares to the right' are concrete moves around the 8-cell outer ring, and 'centre of the game matrix' = M9. The programs file's [unverified] flag should be lifted by citing find-panel rather than left open.",
+      "action": "Adopt find-panel's numbering; lift the programs file's geometry flag; keep 'centre = M9' cited to the panel photograph, not to Book VI prose."
+    },
+    {
+      "id": "C9",
+      "severity": "medium",
+      "component": "Errata attribution: Book V page 11, Experiment 8 vs Experiment 9",
+      "statement_a": "raw:find-rotary.json#IO02 / B56_experiment_8_two_floor_elevator.errata attaches to EXPERIMENT 8 the reliability change 'remove 5F/6C and 6C/6-, add 5F/6E, 6E/6-, 4E/6C.'",
+      "statement_b": "raw:verify-rotary.json#refuted (IO02) and raw:verify-programs.json#errata_program_corrections both place that block under EXPERIMENT 9 (the three-floor elevator), together with 'change 4G/4H to 4G/5H' and 'change D16/M- to D16/M+'. The decisive cross-check is that Experiment 8's printed program contains NEITHER 5F/6C nor 6C/6- (it has 5F/6X and 6C/6G), while Experiment 9's contains both, plus 4G/4H and D16/M-.",
+      "note": "RESOLVED against find-rotary. Applying the errata to Experiment 8 would produce a circuit that does not exist. Experiment 8's own errata is only 'First sentence under \"To use the program\" should read: Set the elevator at the first floor by pushing pushbutton 5.' [verified]",
+      "action": "Re-file the correction block under Experiment 9 before generating fixtures."
+    },
+    {
+      "id": "C10",
+      "severity": "medium",
+      "component": "Book VII scope - does the 601/6010 caveat apply to its relay claims?",
+      "statement_a": "raw:find-relays.json applies a 601/6010 scope caveat to B7's CAPACITOR statements (its OQ-07) but tags the relay statements RLY-17, RLY-18, RLY-19, RLY-20 and RLY-21 (hysteresis, pull-in/drop-out, the bias procedure, the per-relay bias table) as MINIVAC 601 facts without the caveat.",
+      "statement_b": "raw:verify-relays.json#refuted.REF-11 rules the caveat applies verbatim to the relay statements too: the manual's cover and PDF metadata read 'MINIVAC 601/6010', and its relay text says 'the MINIVAC's relays' and 'each MINIVAC relay' without distinguishing models. Separately, raw:verify-programs.json#still_not_settled asks 'whether book7-capacitor-resistor.pdf (a joint 601/6010 document) is in scope' at all, while raw:verify-jackmap.json, raw:find-relays.json and raw:verify-rotary.json all already treat B7 as a primary source and draw [verified] claims from it.",
+      "note": "Two inconsistencies in one: an internal tagging inconsistency inside find-relays, and a package-level disagreement about whether B7 counts. Partial mitigation for the relay claims: RLY-21's G/H and K/L terminal letters are 601 panel nomenclature, which is corroborating but not conclusive.",
+      "action": "Make one ruling on B7's status and apply it uniformly. Gap 1 depends on it: if B7 is out of scope, bias resistors, capacitors and the hysteresis model go with it."
+    },
+    {
+      "id": "C11",
+      "severity": "low",
+      "component": "Book II 'Single Input Flip-Flop' printed page number",
+      "statement_a": "raw:find-relays.json#self_holding.RLY-26 cites 'BK234 Book II printed p.11'.",
+      "statement_b": "raw:verify-relays.json#refuted.REF-03 places the program on Book II printed page 12 (page 11 carries the two-button memory circuit and the prose introducing the single-input one), and raw:verify-programs.json#missed_programs_book_ii.II-FF1 hedges it as 'printed_page: 11-12'.",
+      "note": "Minor, but this is the circuit ER tells the user to operate SLOWLY, so it is the package's primary timing fixture and its citation should be exact. REF-03 additionally shows find-relays attached the wrong errata note to it: ER's 'push pushbutton 6 slowly' belongs to the Book IV p.69 single-input flip-flop (pushbutton 6, light 6), not the Book II p.12 circuit (pushbutton 1, light 1).",
+      "action": "Cite Book II printed p.12. Keep the two flip-flops distinct; do not merge their errata."
+    },
+    {
+      "id": "C12",
+      "severity": "low",
+      "component": "Book III 'Computer representation of three statements' - book attribution",
+      "statement_a": "raw:find-programs.json labels program II-3STMT as 'Book II', printed page 36.",
+      "statement_b": "raw:verify-programs.json#refuted.R3: printed page 36 is in BOOK III. Books II/III/IV are continuously paginated in one volume - the CONTENTS page gives Book II = pp.1-33, Book III begins at p.35, Book IV begins at p.66 - and the errata files 'page 36' under its BOOK III heading.",
+      "note": "RESOLVED. A fixture set keyed on book name would mis-file it. The continuous pagination of book2-3-4.pdf is itself a trap worth writing down once.",
+      "action": "Key fixtures on (pdf file, PDF page, printed page) and carry the book label as derived metadata."
+    },
+    {
+      "id": "C13",
+      "severity": "medium - PRIMARY SOURCES CONFLICT, do not resolve",
+      "component": "Rotary dial rotation sense",
+      "statement_a": "The panel is unambiguous: 0 at 12 o'clock, numbers increasing CLOCKWISE (PH shows 15-0-1 across the top, 2-3-4-5-6 down the right, 7-8-9 across the bottom right-to-left, 10-11-12-13-14-15 up the left). B1 printed p.20's perspective drawing shows the identical arrangement. [verified]",
+      "statement_b": "B56, Book VI, printed p.56, verbatim: 'The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.' Under the panel's arrangement, moving from 7 towards 9 IS clockwise. Book VI's direction words are inverted with respect to the panel. [verified]",
+      "note": "Both primary. UNRESOLVED and must stay so. raw:find-rotary.json#X04 originally asserted the two AGREE and tagged the agreement [verified]; raw:verify-rotary.json#refuted REFUTES that deduction as inverted. One unproven explanation the verifier records and explicitly does not assert: Book VI may describe the direction as seen from BENEATH the panel - B1's 'VIEW UNDER PANEL' figure is mirrored, and under that view 'towards 9' does read as counterclockwise. [unverified] inference; keep it out of the spec.",
+      "action": "Take rotation sense from the panel and B1 p.20 ONLY: increasing dial number = clockwise as seen by the operator. Record the Book VI conflict in the spec as an open primary discrepancy. Never cite Book VI for direction."
+    },
+    {
+      "id": "C14",
+      "severity": "medium - PRIMARY SOURCES CONFLICT, do not resolve",
+      "component": "Manufacturer address (the project's KNOWN DISCREPANCY - still unresolved, and now three-way)",
+      "statement_a": "PANEL LEGEND. PH2 (raw/photos/commons-minivac601-main.jpg, 4208px, plate legend cropped and upscaled to 2850px) reads clearly: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.' [verified] Independently confirmed on image_3.jpg. raw:verify-jackmap.json#upgraded.U3.",
+      "statement_b": "PAPER. FIVE primary print attestations of Watertown: B1 copyright page ('Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts', book1.txt line 105); B56 copyright page (book5-6.txt line 42, repeated at line 3196); B234 (book2-3-4.txt line 4287); the MM cover, whose spare-parts mailing address adds the pre-ZIP postal zone 'Watertown 72, Massachusetts'; and the ER header and footer. B7's back cover (1962) also reads Watertown. [verified]",
+      "note": "STILL NOT RESOLVED, per the project ruling, and the picture got MORE complex, not less, across the verification pass. Two new primary observations neither finder had: (1) raw:verify-context.json#refuted.R3 - a MINIVAC panel DOES say Watertown. The MINIVAC 6010 on exhibit at the MIT Museum carries 'Scientific Development Corporation, Watertown, Massachusetts. Made in U. S. A. Patents applied for.' in the identical plate layout, with Watertown where the 601 reads Cambridge. So the split is not paper-vs-panel; it tracks 601-vs-6010. (2) raw:verify-panel.json#missed.V-M05 - PH3's plate (Centre for Computing History unit) reads as a SHORT word of roughly seven glyphs ending '-tham', with ascenders and no descender, which rules out both Cambridge (9 glyphs, descender at g) and Watertown. Most plausible reading 'Waltham', tagged [unverified] and resolution-limited. If that reading holds there are THREE distinct address strings on 601-family panels. The pattern is consistent with Cambridge-then-Watertown (which is what Wikipedia's uncited infobox says), but a silkscreen reused after a move would produce the same pattern, and 'Waltham' fits neither story. DO NOT ENCODE EITHER CITY AS FACT.",
+      "what_would_settle_it": [
+        "A MINIVAC trademark registration: owner address of record plus first-use-in-commerce date.",
+        "A Massachusetts corporate registration for Scientific Development Corporation, 1960-63.",
+        "A Cambridge or Boston city directory entry for the same years, or any dated advertisement carrying a Cambridge address.",
+        "A higher-resolution photograph of the Centre for Computing History unit's plate, to settle or kill the '-tham' reading.",
+        "Cheapest ongoing step: read the logo plate on every further 601 photograph that surfaces. A 601 whose plate reads Watertown would settle the direction immediately."
+      ],
+      "action": "Render the plate legend as a configurable string with all attested variants recorded, or omit the city. Report the discrepancy in the spec; do not pick one."
+    },
+    {
+      "id": "C15",
+      "severity": "low - INTERNAL TO A PRIMARY SOURCE, but note the package's two framings",
+      "component": "The D-terminal numbering rule",
+      "statement_a": "B1 printed p.20 prints 'D = Decimal Input-Output / 8 = terminal number (1 to 19) . . . for example D8'. Image-verified at 200 dpi by raw:verify-jackmap.json#upgraded.U1 and raw:verify-rotary.json - the OCR is NOT mangling '0 to 19'; the page genuinely says 1 to 19.",
+      "statement_b": "D0 demonstrably exists: the dial is silkscreened 0..15 with a hole pair under position 0; B1 p.20's own VIEW UNDER PANEL figure draws a contact at 0; MM printed p.10 states the range correctly as 'D0 through D15'; and D0 appears in printed programs across Books IV, V and VI (D15/D0, 5N/D0, 1J/D0, 5Y/D0) and in B7 p.26 (2L/D0).",
+      "note": "An SDC erratum in the manual that the factory errata sheet does NOT correct. The rotary verifier also refutes the finder's gloss that the '8' is a mangled '#' placeholder - B1 literally prints a digit as an exemplar and reuses it in the worked example, exactly as B1 p.25 does with '6 = terminal number (1 to 11) ... for example M6t'. raw:verify-panel.json#missed.V-M03 notes the panel finder knew D0 existed but failed to flag the rule as wrong, while flagging the exactly parallel M-terminal rule.",
+      "action": "Implement D0..D19 (20 terminals). Record the manual's '1 to 19' as a known SDC misprint."
+    },
+    {
+      "id": "C16",
+      "severity": "low - INTERNAL TO A PRIMARY SOURCE",
+      "component": "The M-terminal designation rule vs the panel",
+      "statement_a": "B1 printed p.25: 'The matrix terminals are designated by: M = matrix / 6 = terminal number (1 to 11) / t = top or \"b\" for bottom . . . for example M6t' - which implies M10t/M10b/M11t/M11b exist.",
+      "statement_b": "The panel shows positions 10 and 11 as single SIX-hole terminals with no top/bottom split (three rows of two holes enclosed by a printed rectangular loop), and every program in Books I-VI addresses them bare as M10 and M11 (tally: M10 x11, M11 x1). ER states the hole count outright: 'common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.'",
+      "note": "Recorded as a MATERIAL DISCREPANCY by raw:find-panel.json#discrepancies_and_cross_checks[3] and independently by raw:verify-jackmap.json#downgraded.D1. The manual's rule is over-general and holds only for positions 1-9. Not in conflict between our files - both got it right - listed because a program parser must accept bare M10/M11 and must reject M10t.",
+      "action": "Parser: M1t..M9t, M1b..M9b, M10, M11, M+, M-. No M10t/M10b/M11t/M11b."
+    },
+    {
+      "id": "C17",
+      "severity": "low",
+      "component": "Printed panel artwork around hole pairs",
+      "statement_a": "raw:find-jackmap.json#holesPerTerminal.allOtherTerminals, tagged [verified] to image_3.jpg: 'the two holes of one terminal sit inside a single printed oval / are joined by a short printed bar', and COMMON described as 'four holes inside one printed oval per section'. raw:find-panel.json#claims P011, tagged [verified]: on the blue stripes 'the hole pairs sit on a dark oval escutcheon/field'.",
+      "statement_b": "raw:verify-jackmap.json#refuted.R3 and raw:verify-panel.json#refuted.V-R02, both from PH2 at 4208px: there are NO printed ovals and NO joining bars anywhere in the six numbered sections, and no escutcheon on the blue stripes. Printed joining artwork exists ONLY in the MATRIX block (a short bar joining each Mnt and Mnb pair, and a rectangular loop around the six holes of M10 and of M11). The 'dark oval' is the grey metal taper pin of an INSERTED PROGRAMMING WIRE - terminals with a wire read dark, the bare ones next to them show plain ringed holes.",
+      "note": "Two independent files asserted the same fabricated visual cue from the same 1536px photograph, and two verifiers killed it from the 4208px one. Not behavioural, but it is the package's clearest example of a [verified] tag placed on something a 1536px image cannot resolve - relevant to how much of find-panel's redraw_spec should be trusted, since that spec was measured entirely off the worst available artifact.",
+      "action": "Panel renderer: bare holes with a thin light ring, letters silkscreened below (but + and - ABOVE their pairs, and the DECIMAL numerals 16/17/18/19 to the LEFT of theirs). Printed joining artwork in the MATRIX block only. Redo any measurement off PH2."
+    }
+  ],
+  "settled_enough_to_build_on": {
+    "note": "Recorded so the implementer knows where NOT to spend effort. Every item below is [verified] in at least one raw file and survived its verifier.",
+    "items": [
+      "Terminal naming: <section 1-6><letter> for sections; <n>com; <n>cap; M1t..M9t / M1b..M9b / M10 / M11 / M+ / M-; D0..D19. Wiring shorthand joins two terminals with a slash (1+/1A). B1 pp.4-5, p.20, p.25; B234 III p.58; B7 p.11.",
+      "The complete 22-letter section set, exhaustively censused and corroborated by the silkscreen: + - A B C E F G H J K L N R S T U V W X Y Z. D, I, M, O, P, Q are never used as section letters (D reserved for Decimal, M for Matrix; I/O/Q presumably avoided against 1 and 0). There is no Q terminal.",
+      "Per-section netlist: binary output lamp between nA and nB; relay indicator lamp between nC and nE; relay coil between nE and nF (so lamp and coil are in SERIES across nC..nF, with nE the shared midpoint); relay contacts nG/nH/nJ + nK/nL/nN; pushbutton nX/nY/nZ; slide switch nR/nS/nT + nU/nV/nW; ncom a 4-hole isolated junction; ncap one plate of a capacitor whose other plate is on the minus rail.",
+      "Relay contact truth table: OFF -> H-J and L-N closed, H-G and L-K open. ON -> H-G and L-K closed, H-J and L-N open. Both sets always change together (plastic crossbar). Panel legend prints N.O. over G, ARM over H, N.C. over J; K/L/N sits directly beneath sharing those headings. Circuit diagrams always draw the relay OFF. B1 printed p.12.",
+      "The relay lamp is NEITHER independent of the coil NOR contact-driven: it is permanently in series with the coil on the C side. Driving C-F puts the lamp in circuit; driving E-F bypasses it and gives the coil full voltage. B1 printed p.14 text and schematic.",
+      "Coil and lamp are non-polarised in practice - SDC published programs driving the same chain in BOTH polarities (B234 II p.12's single-input flip-flop uses 1-/1C and 2-/2C, i.e. C driven negative, against C-from-plus everywhere else). raw:verify-relays.json#missed_by_the_finder.MISS-01. A simulator that assumes current always enters at C will fail that program.",
+      "Pushbutton: SPDT break-before-make, arm nY selects nZ up / nX down, with a dead zone wide enough for a human to hold. B1 pp.8-9.",
+      "Slide switch: DPDT, arm nS selects nR (left) / nT (right), arm nV selects nU (left) / nW (right), both sets ganged. Convention: switch left = 1, switch right = 0. B1 pp.18-19; B234 II p.9.",
+      "Rotary: D0..D15 fixed contacts, D16 wiper, break-before-make, no detents [likely]; motor block D17/D18/D19 with R1 series D17-D19 and motor plus R2 across D18-D19.",
+      "Power: two nodes only (all +, all -), 12 V nominal / ~13 V unloaded / 1.5 A continuous, circuit breaker in the negative return carrying total machine current, power light across the output, no filter capacitor drawn.",
+      "Matrix: pure junction points with nothing behind the panel; 3x3 numbered 1-2-3 / 8-9-4 / 7-6-5 with 9 at centre and 1..8 running clockwise from top-left; M10 and M11 are six-hole terminals outside the grid; t and b are electrically distinct.",
+      "COMMON: six independent 4-hole junctions, one per section - NOT bussed to each other. Book I p.25's 'The four COMMON terminals are connected together' counts the four HOLES of one terminal; ER's 'the four at 3com' proves it. B56 VI p.51's Secret Code uses all six as independent nodes and warns 'be sure that there are connections to each of the six common terminals'.",
+      "The two holes of ANY ordinary terminal are a usable junction node, not just the marked COMMONs: ER shows 1X/6A routed as 1X/4R + 4R/6A, or as 1X/4com + 4com/6A. A program parser must treat every terminal as a 2-way (or 4-way, or 6-way) tie point.",
+      "Power-on state: all relays de-energised, all latches cleared. There is no reset line; SDC's published global reset is a power cycle. ER, Book V p.25.",
+      "The rotary wiper's swept contacts must fire momentarily as it passes - the Combination Lock's D8/6E trap depends on it. No jump-to-destination optimisation is permissible."
+    ]
+  },
+  "recommended_next_actions_in_order": [
+    "1. Make the gap-1 decision (boolean vs analog core) and write it down with its fidelity contract and acceptance criteria. Everything else is downstream of it.",
+    "2. Render and read pages/maintenance/p-08.png, p-09.png, p-10.png. Closes gap 5, settles C7, and yields three SDC-authored acceptance tests with stated expected lamp states.",
+    "3. Render errata.pdf sheet pages 2 and 3 at 300+ dpi. The text layer is proven lossy (drops 12 of 48 connections in the alternate counter, corrupts two terminal letters). Transcribe the alternate three-bit counter from the image - it is the required fixture for gap 1.",
+    "4. Merge find-programs + verify-programs into one canonical corpus keyed on (pdf file, PDF page, printed page), carrying as_printed and as_corrected wire lists with per-line errata provenance, plus an expected-state script. Apply C1, C9, C12 and strike the Tic-Tac-Toe 4G/5N flag (C8/R1).",
+    "5. Image-read book2-3-4.pdf PDF pp.13 and 21 to close the Book II Experiment 2 and 7 connection counts.",
+    "6. Choose the timing profile and the settling rule (gap 2), then prove the choice against exactly two circuits: the single-input flip-flop (must be operable slowly, must misbehave when hammered) and the three-bit counter (must be marginal via C, reliable via E).",
+    "7. Choose a rotary gap fraction and dial rate (gap 3), and add the ER 'stuck between D6 and D7' hang as a regression case so the parameter is actually exercised."
+  ],
+  "hygiene_warnings_for_the_implementer": [
+    "The [verified] count in raw:find-programs.json (32) does not mean what the project's tag legend means - the finder's own definition admitted OCR-only readings. raw:verify-programs.json#refuted.R6. Read any program marked verified without a stated image read as [likely]. In practice the verifier re-read ten programs from images and found zero errors, so the corpus is sound; the tag is not.",
+    "raw:verify-relays.json#refuted.REF-08 finds five claims (PS-09, PS-16, RLY-10, RLY-16, CAP-07) carrying [likely] that are the finder's own inference with no secondary corroboration - by the project's definitions they are [unverified]. Re-tag before filtering on tag.",
+    "Plain grep over the OCR text layers is unsafe. The OCR spaces letters out: 'grep -i watertown book1.txt' returns ZERO hits though the page carries it as 'W atertow n', and 'friction' returns zero though B1 p.22 has 'frictio n d riv e'. Every argument-from-silence in the package that rests on a plain grep is suspect; run whitespace-insensitive tests.",
+    "book7-capacitor-resistor.txt renders the Greek Omega resistor notation as 'Q', 'Qo', 'Q20', 'Q22', 'Q50', 'Q54', '63'. A token census over it WILL invent a nonexistent 'Q' terminal class.",
+    "errata.txt interleaves a two-column sheet line by line and is lossy. Never transcribe a wire list from it.",
+    "book2-3-4.pdf is continuously paginated across three books (II = pp.1-33, III = pp.35-65, IV = pp.66-). Key on PDF page, derive the book label.",
+    "raw:find-panel.json#redraw_spec was measured entirely off the 1536px image_3.jpg while a 4208px photograph sat unopened in the same repository. Redo any geometry measurement off raw/photos/commons-minivac601-main.jpg.",
+    "raw:find-relays.json TIM-05 and TIM-06 are the only numeric electrical and timing constants anywhere in the package and both are explicitly invented ('None of these numbers are from any source'). If they are adopted, adopt them as a NAMED, TUNABLE profile with the [unverified] provenance carried into the code, not as MINIVAC facts."
+  ]
+}

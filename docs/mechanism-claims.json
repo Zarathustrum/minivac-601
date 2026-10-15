@@ -1,0 +1,174 @@
+{
+  "schema": "minivac.mechanism-claims/1",
+  "scan": {
+    "roots": ["docs", "data/profiles", "data/kat"],
+    "extensions": [".md", ".json"],
+    "exclude": ["docs/research/raw/**", "docs/mechanism-claims.json"]
+  },
+  "rules": [
+    {
+      "id": "carry-race",
+      "pattern": "carry race",
+      "flags": "i",
+      "guidance": "Do not state that the model reproduces a carry-race mechanism; point to the dated DECISIONS ruling instead."
+    },
+    {
+      "id": "loses-race",
+      "pattern": "loses? (a )?race",
+      "flags": "i",
+      "guidance": "Do not attribute a relay outcome to a race the model does not produce."
+    },
+    {
+      "id": "two-point-one-times",
+      "pattern": "2\\.1\\s*[x×]",
+      "flags": "i",
+      "guidance": "The 2.1x timing claim was tested and not observed in the shipped model."
+    },
+    {
+      "id": "timing-not-dc",
+      "pattern": "timing effect, not a DC",
+      "flags": "i",
+      "guidance": "Do not retain the withdrawn timing-versus-DC explanation as a shipped-model claim."
+    },
+    {
+      "id": "timing-section-not-dc",
+      "pattern": "timing effect\\s*\\(§8\\.3\\),\\s*not a DC",
+      "flags": "i",
+      "guidance": "Do not retain §8.3's withdrawn timing fallback as current simulator guidance."
+    },
+    {
+      "id": "longer-lr-rise",
+      "pattern": "longer L/R rise",
+      "flags": "i",
+      "guidance": "Do not retain the withdrawn longer-L/R-rise mechanism as a shipped-model claim."
+    },
+    {
+      "id": "slower-pull-in",
+      "pattern": "slower to pull in",
+      "flags": "i",
+      "guidance": "Do not claim lamp-fed coils are slower to pull in without marking the statement as withdrawn or historical."
+    },
+    {
+      "id": "one-point-two-percent",
+      "pattern": "clears (pull-in )?by ~?1\\.2%",
+      "flags": "i",
+      "guidance": "Do not retain the 1.2% pull-in clearance as support for the refuted mechanism."
+    },
+    {
+      "id": "time-to-pull-in-doubled",
+      "pattern": "time-to-pull-in has doubled",
+      "flags": "i",
+      "guidance": "Delete the coil-slow causal note; its timing premise was refuted."
+    },
+    {
+      "id": "timing-fallback-purpose",
+      "pattern": "(?:O-E1(?:'s)?(?: own)? named timing fallback made concrete|O-E1's own named fallback made concrete|O-E1's timing fallback made concrete)",
+      "flags": "i",
+      "guidance": "Do not describe L_coil as the concrete implementation of O-E1's withdrawn timing fallback."
+    },
+    {
+      "id": "inductance-lengthens-race-window",
+      "pattern": "L_coil.{0,80}exists to lengthen",
+      "flags": "i",
+      "guidance": "Do not say L_coil exists to lengthen a counter timing window; retain only its carried-state and release-path role."
+    },
+    {
+      "id": "inductance-sets-operate-cause",
+      "pattern": "L_coil.{0,120}sets both (?:the )?operate spread",
+      "flags": "i",
+      "guidance": "Do not present L_coil as the source of an operate-time spread or counter cause."
+    },
+    {
+      "id": "inductance-race-model-purpose",
+      "pattern": "(?:L/R|serial[- ]race).{0,120}(?:inductance|L_coil).{0,120}exists to (?:provide|serve)",
+      "flags": "i",
+      "guidance": "Do not retain the withdrawn statement that the invented inductance exists to provide a counter race model."
+    },
+    {
+      "id": "electrical-fallback-label",
+      "pattern": "the electrical fallback",
+      "flags": "i",
+      "guidance": "Do not label the shipped electrical model as the withdrawn counter fallback."
+    },
+    {
+      "id": "electrical-carry-over-control",
+      "pattern": "suppressing most electrical carry-over",
+      "flags": "i",
+      "guidance": "Name the retained R-L release-path role explicitly; do not imply a generic counter timing cause."
+    },
+    {
+      "id": "legacy-dv-vector",
+      "pattern": "\\[\\s*300\\s*,\\s*[-−]240\\s*,\\s*290\\s*,\\s*[-−]110\\s*,\\s*250\\s*,\\s*[-−]170\\s*\\]",
+      "flags": "",
+      "guidance": "The old W1 vector is frozen history or a port artifact only; do not present it as the current D convention."
+    },
+    {
+      "id": "unresolved-reachability-policy",
+      "pattern": "Whether\\s+the\\s+shipped\\s+gate\\s+should\\s+apply\\s+`dV_relay_mv`\\s+by\\s+default\\s+is\\s+unresolved",
+      "flags": "",
+      "guidance": "Tom selected NO: permanent reachability remains nominal and the D vector is a required sensitivity."
+    }
+  ],
+  "allow": [
+    {
+      "path": "docs/research/programs.md",
+      "line": "| ER-21 | IV | 72 | program_replacement | Note on 'Three-Bit Binary Counter' - the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit. If the counter in Book IV does not perform correctly, use the program and circuit which follow. The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably. [verified] | IV-EXP1 -> substitute ER-ALTCOUNTER (48 connections, above) |",
+      "reason": "Primary-source ER-21 quotation; it is evidence, not a simulator causal claim."
+    },
+    {
+      "path": "docs/research/components.md",
+      "line": "**Best-supported hypothesis: it is a timing effect, not a DC threshold effect.** `[unverified]`",
+      "reason": "Preserved research-history line; the superseding block immediately below explicitly refutes it for this implementation."
+    },
+    {
+      "path": "docs/research/components.md",
+      "line": "another relay's transfer. A lamp-fed coil has a longer L/R rise to pull-in current, so it",
+      "reason": "Preserved research-history line; the superseding block immediately below explicitly refutes it for this implementation."
+    },
+    {
+      "path": "docs/research/components.md",
+      "line": "loses races it would win given time. \"Full voltage … causing them to pull in more reliably\"",
+      "reason": "Preserved research-history line; the superseding block immediately below explicitly refutes it for this implementation."
+    },
+    {
+      "path": "docs/research/components.md",
+      "line": "| *\"Best-supported hypothesis: it is a timing effect, not a DC threshold effect.\"* | **Refuted in this implementation, not as a hypothesis about physical relays.** W1 did not observe the proposed simulator mechanism across the tested `L_coil` range. The corpus still has no bench measurement that could settle timing, relay variation, contact transfer or another real-machine explanation. |",
+      "reason": "Explicit refutation anchor for the preserved research hypothesis."
+    },
+    {
+      "path": "docs/research/components.md",
+      "line": "| Why the Book IV counter's lamp-fed relays are marginal when Book I Experiment 9's is not | Model it as a timing effect (§8.3), not a DC threshold | Pull-in **time** at lamp-divided vs full-rail drive; or a scope on a real carry cascade |",
+      "reason": "Preserved later research-summary row; the insertion immediately after its table withdraws the fallback as current simulator guidance."
+    },
+    {
+      "path": "docs/research/open-questions.md",
+      "line": "| O-E1 | **Why the Book IV counter's lamp-fed relays are marginal when Book I Experiment 9's is not.** The counter's odd relays are driven exactly as Experiment 9's is — same α, same voltage — yet SDC calls one reliable and one \"somewhat strained\". A pure DC threshold model cannot produce different outcomes from identical circuits. **The single largest open question in the electrical model** | Model it as a **timing** effect, not a DC threshold effect. `[unverified]` — SDC attaches speed warnings to precisely these circuits and no others; a lamp-fed coil has a longer L/R rise to pull-in current and loses races it would win given time. **Consequence: relay actuation and release times move from \"defer with the capacitors\" to required for the Books I–VI milestone** | Pull-in **time** at lamp-divided vs full-rail drive on a surviving unit, plus a coil inductance measurement; or a scope on a real carry cascade |",
+      "reason": "Preserved O-E1 research row; the amendment below withdraws its fallback verbatim and leaves the physical question open."
+    },
+    {
+      "path": "docs/research/open-questions.md",
+      "line": "| O-E10 | **`L_coil`, the relay coil inductance. An INVENTED CONSTANT — no primary source states a coil inductance, or any inductance, anywhere in the corpus.** The architecture models the coil as a **series R-L branch with coil current as the carried state**, and makes pull-in and drop-out thresholds on quantized *current* rather than on a DC voltage (`architecture.md` §3.3, §4.1). **Why it matters.** It is O-E1's own named fallback made concrete — the mechanism, not a flourish. On `MV601-REF-A`'s own numbers a lamp-fed coil is **2.1× slower** to reach pull-in and sits at 94% of its own asymptote, so the Book IV counter loses carry races that Book I Experiment 9 — where the operator holds the button and there is no race — cannot lose. It is also the one element that makes the two release paths fall out of **a single solve with no rate-selection branch** (`architecture.md` §4.2): an open coil collapses in about one tick, while a coil turned off by short-circuiting it — which is how *every* flip-flop in the corpus turns a relay off — freewheels on `L/R_coil` and releases 2–5× slower, the slugged-relay effect `components.md` §9.3 describes. Delete `L_coil` and both behaviours revert to hand-written rules with no equation behind them. **What was tried.** The nine-document sweep behind G1 and O-E2 found no coil resistance, coil voltage, pull-in or drop-out figure; it likewise found **no inductance, no henry figure, and no relay identification** beyond SDC part 6437 (*Relay, $6.00*), which is a price, not a datasheet. Nothing on paper can produce this number, and none was inferred from one — **it was chosen** | `MV601-REF-A` extended with a new `L_coil_uh` key, tagged `[unverified]`, living in **`data/profiles/*.json` — never a constant in code** (`architecture.md` §10). Indicative 0.9–1.5 H; the shipped profile carries 1.2 H. The value is deliberately **not pinned in prose**: `tools/check-profile.ts` solves for it against ordering constraints R1 and R6, AT-11 and the 2–5× release band, and refuses to load a profile that fails. Reasoning: an R-L companion is **exact at DC**, so adding inductance does not perturb the DC operating point and leaves AT-01 untouched — the constant buys the timing mechanism without paying anything on the thresholds. **The standing risk, stated rather than buried:** the counter's failure could instead be produced by the six per-relay offsets `dV_relay_mv`, with `L_coil` doing no work at all. `architecture.md` §4.3 runs two controls — the spread zeroed, and the spread rotated by one relay index — and if the counter stops failing under either, the spread is the mechanism, this fallback has not earned its keep, and the plan stops rather than tuning around it | An LCR or bridge reading across `E`–`F` on a surviving unit — the direct measurement, and part of the same session that closes O-E2. Failing that: pull-in **time** at lamp-divided versus full-rail drive, which tests the prediction directly (~2× slower, and diverging as rail sag pushes `i_final` toward `i_pullin`); a scope on a real carry cascade; or identification of SDC part 6437 against a 1961 datasheet. **What would overturn it:** a measured inductance small enough that a lamp-fed coil never loses a race — that does not retune the profile, it **re-opens O-E1** with the timing explanation dead; or a real unit whose counter mis-counts **uniformly** rather than at the stages O-T5 predicts, which kills the serial-race model this constant exists to serve |",
+      "reason": "Preserved O-E10 research row; the amendment below records the failed pull-in prediction and release-only retained role."
+    },
+    {
+      "path": "docs/research/open-questions.md",
+      "line": "   at O-T5's stages kills the L/R race model the invented inductance exists to provide.",
+      "reason": "Preserved later research summary; the inserted amendment immediately below withdraws it as simulator guidance."
+    },
+    {
+      "path": "data/kat/profile-kat.json",
+      "line": "        \"v\": [300, -240, 290, -110, 250, -170],",
+      "reason": "Frozen W1 port artifact; Wave D does not alter profile-kat.json."
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "line": "`dV_relay_mv: [300,-240,290,-110,250,-170]` — six literals whose signs were reverse-",
+      "reason": "Historical account of the fitting defect that Wave D replaces."
+    },
+    {
+      "path": "docs/plans/architecture.md",
+      "line": "The original vector `[300,−240,290,−110,250,−170]` aligned odd and even relay thresholds with the",
+      "reason": "Historical explanation of the fitting hazard, immediately followed by the approved D convention."
+    }
+  ]
+}

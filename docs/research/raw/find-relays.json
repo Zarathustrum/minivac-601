@@ -1,0 +1,1001 @@
+{
+  "topic": "MINIVAC 601 - relay, lamp, pushbutton, slide-switch and power-supply electrical behavior",
+  "agent_note": "Pristine capture. Every claim carries an explicit tag. [verified] = read by me in a primary source (manual page image, OCR of a manual page I also sanity-checked, or the panel photograph). [likely] = strong inference from primary text, or consistent secondary sources. [unverified] = my inference or a single weak source. Nothing here is tagged [verified] on inference.",
+  "date_researched": "2026-08-30",
+  "sources": {
+    "local_primary": [
+      {
+        "id": "BK1",
+        "title": "MINIVAC Manual Book I - Getting Acquainted with MINIVAC 601",
+        "publisher": "Scientific Development Corporation",
+        "printing": "First Printing - August 1961",
+        "copyright_line": "Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts",
+        "path": "docs/research/raw/pdf/book1.pdf",
+        "page_mapping": "printed page N = PDF page N+2"
+      },
+      {
+        "id": "BK234",
+        "title": "MINIVAC Manual Books II, III & IV",
+        "path": "docs/research/raw/pdf/book2-3-4.pdf"
+      },
+      {
+        "id": "BK56",
+        "title": "MINIVAC Manual Books V & VI",
+        "path": "docs/research/raw/pdf/book5-6.pdf"
+      },
+      {
+        "id": "PHOTO",
+        "title": "High-resolution top-down photograph of a real MINIVAC 601 panel (1536x1152)",
+        "path": "docs/research/raw/prebrief/images/image_3.jpg"
+      }
+    ],
+    "primary_found_and_downloaded_this_session": [
+      {
+        "id": "MAINT",
+        "title": "Minivac 601 Maintenance Manual",
+        "publisher": "Scientific Development Corp., 372 Main Street, Watertown, Massachusetts",
+        "year": 1961,
+        "pages": 13,
+        "url": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-maintenance-manual.pdf",
+        "item_url": "https://archive.org/details/1961Minivac601Book234",
+        "saved_to": "docs/research/raw/pdf/maintenance-manual.pdf",
+        "text_extract": "docs/research/raw/pdf/maintenance-manual.txt",
+        "page_images": "docs/research/raw/pdf/pages/maintenance/p-01.png .. p-13.png (200 dpi)",
+        "page_mapping": "printed page N = PDF page N+2",
+        "significance": "THE single most valuable source for this topic. Carries the power-supply schematic and the only published electrical ratings."
+      },
+      {
+        "id": "ERRATA",
+        "title": "Notes and Corrections to the Minivac Manual",
+        "publisher": "Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts",
+        "year": "undated, post-1961",
+        "url": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-erratas.pdf",
+        "saved_to": "docs/research/raw/pdf/errata.pdf",
+        "text_extract": "docs/research/raw/pdf/errata.txt",
+        "significance": "Settles the +/- rail topology and the COMMON-terminal question, and documents that the relay indicator lamp in series with the coil measurably weakens pull-in."
+      },
+      {
+        "id": "BK7",
+        "title": "Book VII - MINIVAC 601/6010 Capacitor/Resistor Manual",
+        "publisher": "Scientific Development Corporation",
+        "copyright": "Copyright (c) 1962",
+        "pages": 55,
+        "url": "https://archive.org/download/book-vii_202512/Book%20VII_text.pdf",
+        "item_url": "https://archive.org/details/book-vii_202512",
+        "saved_to": "docs/research/raw/pdf/book7-capacitor-resistor.pdf",
+        "page_mapping": "printed page N = PDF page N+5",
+        "scope_caveat": "Explicitly a 601/6010 manual. Its capacitor statements are about 'the MINIVAC' without distinguishing 601 from 6010; see open question OQ-07. Its relay physics (pull-in / drop-out / bias) is stated about 'the MINIVAC relays' generally.",
+        "significance": "The ONLY source that discusses relay pull-in vs drop-out voltage, hysteresis, and the CAPACITOR terminals' actual capacitor values."
+      }
+    ],
+    "secondary_consulted": [
+      {
+        "title": "Minivac 601 - Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Minivac_601",
+        "used_for": "Corroboration only: 'DPDT electrical relays', 'DPDT slide switches, SPDT pushbutton switches', '110 VAC', '6 indicator lamps'. Cites Popular Science Oct 1961. No electrical ratings."
+      },
+      {
+        "title": "Minivac 601 Replica (Version 0.9) - Instructables (megardi)",
+        "url": "https://www.instructables.com/Minivac-601-Replica-Version-09/",
+        "used_for": "Existence noted only. WebFetch returned no body content this session; no part data extracted."
+      },
+      {
+        "title": "Minivac 601 Simulator (Greg Sadetsky)",
+        "url": "https://minivac.greg.technology/",
+        "used_for": "RECORDED AS EXISTING ONLY. Per the project's ORACLE-ONLY RULE its source code was NOT opened, fetched, cloned, read or quoted. No behavior of it informed anything in this file."
+      }
+    ],
+    "sources_searched_and_not_found": [
+      "No published figure anywhere for MINIVAC relay coil resistance, rated coil voltage, pull-in voltage, drop-out voltage, operate time, release time, or contact bounce.",
+      "No published figure for lamp voltage, current, or bulb type/number.",
+      "No published figure for transformer secondary voltage, rectifier type/part, circuit-breaker trip current, or motor-drive resistor values.",
+      "No teardown, restoration writeup or forum post found with measured values for an original unit."
+    ]
+  },
+  "power_supply": {
+    "claims": [
+      {
+        "id": "PS-01",
+        "tag": "verified",
+        "claim": "The power supply converts 110-volt AC mains to a nominal 12 volts DC, and that low-voltage DC is connected to all terminals + and - on the power panel.",
+        "quote": "he power supply converts the 110-volt A C power obtained from a standard electric outlet in your home to a safe working level of 12 volts D C . This low voltage DC is used to power MINIVAC and is connected to all terminals + and - on the power panel.",
+        "cite": "BK1 printed p.3 (PDF p.5)"
+      },
+      {
+        "id": "PS-02",
+        "tag": "verified",
+        "claim": "The power supply is rated at 1.5 amps continuous with a nominal 12 volts output.",
+        "quote": "The power supply is rated at 1.5 amps continuous with a nominal 12 volts output.",
+        "cite": "MAINT printed p.2 (PDF p.4)"
+      },
+      {
+        "id": "PS-03",
+        "tag": "verified",
+        "claim": "Unloaded output voltage is approximately 13 volts.",
+        "quote": "The unloaded power supply outlet voltage should be approximately 13 volts.",
+        "cite": "MAINT printed p.3 (PDF p.5), troubleshooting step 3"
+      },
+      {
+        "id": "PS-04",
+        "tag": "verified",
+        "claim": "All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps.",
+        "quote": "All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps.",
+        "cite": "MAINT printed p.2 (PDF p.4)"
+      },
+      {
+        "id": "PS-05",
+        "tag": "verified",
+        "claim": "The transformer and the rectifier are capable of accepting repeated overloads. All parts are 'conservatively designed'.",
+        "quote": "All MINIVAC parts are conservatively designed to give lasting service. The lights are operated at less than their rated voltage to extend their operating life. The transformer and the rectifier are capable of accepting repeated overloads.",
+        "cite": "MAINT printed p.2 (PDF p.4)"
+      },
+      {
+        "id": "PS-06",
+        "tag": "verified",
+        "claim": "The drive motor is operated at less than one-third rated voltage.",
+        "quote": "The drive motor is operated at less than one-third rated voltage.",
+        "cite": "MAINT printed p.2 (PDF p.4)"
+      },
+      {
+        "id": "PS-07",
+        "tag": "verified",
+        "claim": "Power-supply topology, read directly off the published schematic 'Power Supply Circuit Diagram': mains power cord (two black wires) -> POWER SWITCH inserted in one primary leg -> TRANSFORMER primary (black wires). Transformer secondary is CENTER-TAPPED: two yellow/black end leads and a yellow center-tap lead. The two yellow/black ends feed the two diodes of a RECTIFIER whose common output node goes to the + output terminal. The yellow center-tap lead passes through the CIRCUIT BREAKER and on to the - output terminal. The POWER LIGHT is connected directly across the + and - output nodes (i.e. downstream of the circuit breaker).",
+        "cite": "MAINT printed p.3 (PDF p.5), figure 'Power Supply Circuit Diagram' - read from the rendered page image",
+        "simulator_consequence": "The circuit breaker sits in the DC RETURN (negative) leg and therefore carries the total current of every load on the machine. Model it in series with the whole negative rail, not per-branch."
+      },
+      {
+        "id": "PS-08",
+        "tag": "verified",
+        "claim": "NO filter capacitor appears anywhere in the published Power Supply Circuit Diagram. The drawn supply is a full-wave centre-tapped rectifier feeding the rails directly.",
+        "cite": "MAINT printed p.3 (PDF p.5), figure",
+        "caveat": "This is verified as 'absent from the drawing'. Whether a physical filter capacitor exists in the chassis but was omitted from the teaching-level diagram is NOT settled - see OQ-04."
+      },
+      {
+        "id": "PS-09",
+        "tag": "likely",
+        "claim": "The rectifier is a single three-terminal full-wave centre-tap rectifier stack (two diodes with a common output), most likely selenium given the date and the $3.00 spare price. Evidence: the maintenance text repeatedly refers to 'the center terminal on the rectifier' and to it as one replaceable unit (spare part 6433 'Rectifier', $3.00), and the schematic draws two diode symbols inside one 'RECTIFIER' callout.",
+        "cite": "MAINT printed pp.3-5 and spare parts list printed p.11"
+      },
+      {
+        "id": "PS-10",
+        "tag": "verified",
+        "claim": "The circuit breaker is a red pushbutton above the power switch. It automatically turns off the power supply when overloaded; an overloaded or short circuit makes it 'blow' like a household fuse; it is restored by correcting the wiring and pushing the button back in. A short circuit is defined as + wired directly to - without a component in between. Do NOT hold the button in if it continues to blow.",
+        "quote": "The red button above the power switch labeled CIRCUIT BREAKER is a safety switch which automatically turns off the power supply when it is overloaded. An overloaded circuit or a short-circuit will cause the circuit breaker to 'blow' just like a household fuse. A short circuit occurs when + is wired directly to - without a component in between.",
+        "cite": "BK1 printed p.3 (PDF p.5)"
+      },
+      {
+        "id": "PS-11",
+        "tag": "verified",
+        "claim": "There is a red POWER light that shows when power is ON. It is a replaceable 'light assembly' wired to the power supply terminals, i.e. across the DC output.",
+        "quote_bk1": "The red power light shows when the power is ON.",
+        "quote_maint": "Remove the burned-out power light and replace it with a new light assembly, connecting the leads to the power supply terminals.",
+        "cite": "BK1 printed p.3 (PDF p.5); MAINT printed p.4 (PDF p.6) step 8"
+      },
+      {
+        "id": "PS-12",
+        "tag": "verified",
+        "claim": "The POWER control is an ON/OFF slide switch; the panel legend prints POWER at the top of the right-hand column with the CIRCUIT BREAKER pushbutton above an ON/OFF slide switch.",
+        "cite": "PHOTO (crop of the POWER column); BK1 printed p.3 (PDF p.5) calls it 'The POWER SWITCH'"
+      },
+      {
+        "id": "PS-13",
+        "tag": "verified",
+        "claim": "ALL + terminals on the machine are connected together, and ALL - terminals are connected together, INCLUDING the matrix power terminals M+ and M-.",
+        "quote": "All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.",
+        "cite": "ERRATA, first column",
+        "simulator_consequence": "The +/- strip is exactly two global nodes. Do not model per-section rails."
+      },
+      {
+        "id": "PS-14",
+        "tag": "verified",
+        "claim": "Every electrical component on the machine requires at least two connections to operate; the manuals teach a strict closed-circuit model (electrons flow from - through the component to +).",
+        "cite": "BK1 printed p.4 (PDF p.6), 'CLOSED CIRCUIT PRINCIPLE'"
+      },
+      {
+        "id": "PS-15",
+        "tag": "verified",
+        "claim": "The rotary-switch motor drive has TWO current-limiting resistors in its circuit. Their stated purpose is (a) to limit motor current the way the lights limit the current through a relay coil, and (b) to make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply. A maintenance test says the resistors should heat up in about 20 seconds when power is connected across them.",
+        "quote": "The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil. The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.",
+        "cite": "BK1 printed p.22 (PDF p.24); MAINT printed p.10 (PDF p.12) step 3",
+        "note": "Resistor VALUES are not given anywhere. Note the explicit analogy: the lights ARE understood by SDC as current-limiting elements for relay coils."
+      },
+      {
+        "id": "PS-16",
+        "tag": "likely",
+        "claim": "The supply is NOT stiff. Derived source impedance: 13.0 V open circuit falling to 12.0 V nominal at the 1.5 A continuous rating implies an effective source resistance of about 0.67 ohm. Simultaneous loads therefore DO interact - every additional lamp or coil pulls the rails down for everything else.",
+        "derivation": "(13.0 - 12.0) V / 1.5 A = 0.67 ohm, from PS-02 and PS-03 (both [verified]).",
+        "corroboration": "Independently supported by RLY-14 (bypassing the relay indicator lights to get 'full voltage' makes relays 'pull in more reliably') and by the Book IV note that a three-bit counter 'strains' the relays."
+      },
+      {
+        "id": "PS-17",
+        "tag": "unverified",
+        "claim": "Because the published schematic shows no filter capacitor, the DC rails are pulsating at 120 Hz (full-wave rectified 60 Hz), dipping toward zero every 8.33 ms. Relays and lamps therefore run on raw ripple.",
+        "reasoning": "Direct consequence of PS-08 if the drawing is complete. Tagged [unverified] because PS-08 only establishes absence from the drawing.",
+        "simulator_consequence": "If true, relay armature mechanical time constant must exceed ~8 ms or relays would chatter at 120 Hz. Since they demonstrably do not chatter, this is a useful lower bound on operate/release time - see TIM-05."
+      }
+    ]
+  },
+  "relays": {
+    "identity": [
+      {
+        "id": "RLY-01",
+        "tag": "verified",
+        "claim": "Six identical relays, labelled STORAGE/PROCESSING on the panel, used to store ('remember') and to process information. Each relay is identified by its section number 1-6.",
+        "quote": "six identical relays labeled 'storage-processing' are used by MINIVAC 601 to store or 'remember' and to process computer information.",
+        "cite": "BK1 printed p.12 (PDF p.14); PHOTO"
+      },
+      {
+        "id": "RLY-02",
+        "tag": "verified",
+        "claim": "Each relay has TWO sets of contacts which open and close together - i.e. two transfer (Form C) sets = DPDT. The two relay arms are connected together mechanically with a plastic crossbar; both arms move together and make or break contact at the same time.",
+        "quote": "Each relay has two sets of contacts, similar to the pushbutton contacts, which open and close together. ... The two relay arms are connected together mechanically with a plastic crossbar. Both arms move together and make or break contact at the same time.",
+        "cite": "BK1 printed p.12 (PDF p.14)"
+      },
+      {
+        "id": "RLY-03",
+        "tag": "verified",
+        "claim": "The relay is an electromagnet: a round white coil sits to the left of the arms; when energized it attracts the metal plate/bar attached to the plastic crossbar and pulls it to the LEFT. The relay can be operated by hand by gently pushing the plastic crossbar to the left.",
+        "quote": "Each relay has a round white coil, located to the left of the arms. This is an electro-magnet which becomes magnetized when electric current flows through the coil. When the coil becomes 'energized,' the electro-magnet attracts the metal bar connected to the arms (by the plastic crossbar) and pulls it to the left.",
+        "cite": "BK1 printed p.14 (PDF p.16); manual operation at BK1 printed p.13 (PDF p.15) Experiment 6"
+      },
+      {
+        "id": "RLY-04",
+        "tag": "verified",
+        "claim": "The relay is a separate mechanical unit with EIGHT electrical connections (six contact + two coil). It is mounted with screws and is replaceable as spare part 6437 'Relay', $6.00.",
+        "quote": "To replace a defective relay, disconnect the eight connections to the relay and remove the unit by unscrewing the relay mounting screws.",
+        "cite": "MAINT printed p.8 (PDF p.10); spare parts list printed p.11",
+        "simulator_consequence": "8 connections = 2 coil + 6 contact. The relay's indicator lamp is NOT part of the relay unit; it is a separate light assembly wired in series with the coil under the panel."
+      },
+      {
+        "id": "RLY-05",
+        "tag": "verified",
+        "claim": "Relays are mounted on the panel with the switch contacts VISIBLE; the relay arm is in the middle between the other two contacts. The user is invited to work them by hand.",
+        "cite": "BK1 printed p.12 (PDF p.14); PHOTO"
+      }
+    ],
+    "contacts": [
+      {
+        "id": "RLY-06",
+        "tag": "verified",
+        "claim": "Contact terminal letters and roles. Six terminals directly BELOW each relay, in two rows of three: G H J (upper row) and K L N (lower row). Panel legend prints N.O. over G, ARM over H, N.C. over J (the K/L/N row sits directly beneath, sharing the same three column headings).",
+        "mapping": {
+          "G": "N.O. (set 1)",
+          "H": "ARM / common (set 1)",
+          "J": "N.C. (set 1)",
+          "K": "N.O. (set 2)",
+          "L": "ARM / common (set 2)",
+          "N": "N.C. (set 2)"
+        },
+        "quote": "The normally-open (N.O.) contact is connected to the left terminal, the relay arm (common contact) is connected to the center terminal, and the normally-closed (N.C.) contact is connected to the right terminal.",
+        "cite": "BK1 printed p.12 (PDF p.14) text and figure; PHOTO (legend N.O. / ARM / N.C. printed above the G H J row)"
+      },
+      {
+        "id": "RLY-07",
+        "tag": "verified",
+        "claim": "Contact state truth table. Relay OFF (de-energized): H-J closed AND L-N closed; H-G open AND L-K open. Relay ON (energized): H-G closed AND L-K closed; H-J open AND L-N open. Both sets always change together.",
+        "quote": "When the relay is OFF, separate electrical connections are made between terminals H and J and terminals L and N. When the relay is ON, separate electrical connections are made between terminals H and G and terminals L and K. ... Notice that terminals H and G and terminals L and K are not connected when the relay is OFF. Also, terminals H and J and terminals L and N are not connected when the relay is ON.",
+        "cite": "BK1 printed p.12 (PDF p.14)"
+      },
+      {
+        "id": "RLY-08",
+        "tag": "verified",
+        "claim": "Physical-to-terminal correspondence: 'The set of contacts closer to the operator is connected to the set of terminals closer to the operator.' Since K L N is the row closer to the front edge of the panel, the K/L/N set is the front (operator-side) contact set and G/H/J the rear set.",
+        "cite": "BK1 printed p.12 (PDF p.14); row order confirmed in PHOTO"
+      },
+      {
+        "id": "RLY-09",
+        "tag": "verified",
+        "claim": "In circuit diagrams the relay contacts are ALWAYS drawn with the relay OFF.",
+        "cite": "BK1 printed p.12 (PDF p.14)"
+      },
+      {
+        "id": "RLY-10",
+        "tag": "likely",
+        "claim": "Relay contacts are break-before-make. The manual describes a single arm swinging between two fixed contacts ('Notice how the arm leaves the normally-closed contact and swings over to touch the normally open contact'), which is mechanically break-before-make. The manuals state break-before-make EXPLICITLY for the pushbuttons and for the rotary switch, but never in so many words for the relay.",
+        "cite": "BK1 printed p.12 (PDF p.14) for the arm description; explicit b-b-m statements at BK1 printed p.9 (pushbutton) and p.21 (rotary switch)",
+        "simulator_consequence": "Model relay transfer as break -> both-open interval -> make, never as an instantaneous swap."
+      },
+      {
+        "id": "RLY-11",
+        "tag": "verified",
+        "claim": "Contact maintenance implies real contact resistance and real wear: clean the relay contacts by drawing clean dry paper between the closed contacts, once or twice a year. If the switch arms are not meeting the contacts with proper pressure, gently bend the switch arm to increase contact pressure; the arm 'should engage the normally open and normally closed contacts and should push them slightly as they meet.'",
+        "cite": "MAINT printed p.1 (PDF p.3) and printed p.8 (PDF p.10)"
+      },
+      {
+        "id": "RLY-12",
+        "tag": "verified",
+        "claim": "Programming wires can physically foul the relay arms. 'If the program uses relays, check to see that the relays are free to operate. If necessary, replace short programming wires with longer ones so that the wires do not interfere with the movement of the relay arms.'",
+        "cite": "ERRATA, first column"
+      }
+    ],
+    "coil_and_lamp": [
+      {
+        "id": "RLY-13",
+        "tag": "verified",
+        "claim": "COIL AND LAMP TOPOLOGY - the central fact. Three terminals sit directly ABOVE each relay: C, E, F. The panel prints a bracket labelled LIGHT spanning C and E, and a bracket labelled COIL spanning E and F. The published schematic on BK1 p.14 draws exactly: C ---- [LIGHT] ---- E ---- [RELAY COIL] ---- F. So the relay indicator lamp is hard-wired in SERIES with the coil, between C and E; the coil alone is between E and F; E is the shared midpoint.",
+        "quote": "Three terminals are located directly above each relay on the computer panel. These terminals are connected under the panel to the relay coil. Two terminals are connected directly to the relay coil, and the third terminal is connected to a light wired in series with the relay coil as shown. When the relay coil is energized by connecting power to C and F, the light directly below the relay comes ON because the light is wired in series with the relay coil. If the relay coil is energized by supplying power through contacts E and F, the light beneath the relay will NOT come on because there is no current flowing through the light.",
+        "cite": "BK1 printed p.14 (PDF p.16) - text and the 'C E F / LIGHT / RELAY COIL' schematic, read from the page image; panel legend LIGHT over C-E and COIL over E-F confirmed in PHOTO",
+        "answers_task_question": "The relay lamp is NEITHER independent of the coil NOR driven by a contact. It is permanently in series with the coil, on the C side of the coil."
+      },
+      {
+        "id": "RLY-14",
+        "tag": "verified",
+        "claim": "The series indicator lamp measurably steals coil voltage and degrades pull-in. SDC published an alternate counter circuit whose stated purpose is to bypass the lamps: 'The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.' The same note says the three-bit counter design is such that 'the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit.'",
+        "cite": "ERRATA, Book IV page 72 note",
+        "simulator_consequence": "The simulator MUST distinguish driving a coil via C (lamp in series, reduced coil volts) from driving it via E (full coil volts). Circuits that work one way can fail the other. This is not a cosmetic difference."
+      },
+      {
+        "id": "RLY-15",
+        "tag": "verified",
+        "claim": "The relay indicator lamp is physically BELOW the relay on the panel (between the relay body and the G/H/J terminal row), and is the SAME replaceable part as the binary output lamps: spare part 6435 'Light Assembly', $1.00, covering binary lights, relay indicator lights and the power light.",
+        "quote": "Check the binary lights and the relay indicator lights by connecting them to the + and - power supply terminals.",
+        "cite": "MAINT printed p.6 (PDF p.8) and spare parts list printed p.11; physical position confirmed in PHOTO"
+      },
+      {
+        "id": "RLY-16",
+        "tag": "likely",
+        "claim": "Powering C and E only (without F connected) will light the relay lamp WITHOUT operating the relay, since no current can reach the coil. This is a direct consequence of the verified series topology but is not demonstrated in any manual I read.",
+        "cite": "inference from RLY-13"
+      },
+      {
+        "id": "RLY-17",
+        "tag": "verified",
+        "claim": "Book VII defines relay hysteresis explicitly. 'The voltage at which a relay turns on is called the pull-in voltage; the voltage at which a relay turns off is called the drop-out voltage.' There is a region between the drop-out and pull-in voltages where the relay may be EITHER on or off - in that region the relay is bi-stable and will remain in whichever state it is already in.",
+        "quote_from_page_image": "From this sketch we can see that there is region between the drop-out and pull-in voltages where the relay may be either on or off - the shaded area in the graph. In this region the relay is 'bi-stable' - it will remain either on or off. ... By placing an appropriate resistor between power and the relay coil, we can insure that the voltage supplied to the relay will fall within the region defined by the 'pull-in' and 'drop-out' voltages. Then, if we constantly supply power to the relay coil, the relay will be a bi-stable element and both sets of contacts will be free.",
+        "cite": "BK7 printed p.7 (PDF p.12), read from the page image"
+      },
+      {
+        "id": "RLY-18",
+        "tag": "likely",
+        "claim": "'The MINIVAC's relays are deliberately designed so that there is a great difference between the pull-in and drop-out voltages.' Tagged [likely] rather than [verified] only because this exact sentence comes from a degraded OCR layer, not from a page image I read directly; the surrounding paragraph (RLY-17) IS verified from the image and carries the same substance.",
+        "cite": "BK7 printed p.7 (PDF p.12), Internet Archive OCR text layer"
+      },
+      {
+        "id": "RLY-19",
+        "tag": "verified",
+        "claim": "SDC did NOT publish pull-in or drop-out voltages, or coil resistance. Book VII instead makes the owner determine a 'bias resistor' EMPIRICALLY for each individual relay, by trying decreasing resistor values until the lowest value is found at which the relay will remain both off and on. The owner writes the six results into a blank table (Omega-B1 .. Omega-B6). The manual explicitly warns the values differ per relay and that more than one value may qualify.",
+        "quote": "THE FOLLOWING INSTRUCTIONS ARE FOR A SINGLE RELAY. THIS PROCEDURE MUST BE CARRIED OUT FOR EACH INDIVIDUAL RELAY.",
+        "cite": "BK7 printed pp.8-9 (PDF pp.13-14), read from the page images",
+        "simulator_consequence": "Unit-to-unit relay variation was real and large enough that SDC would not publish a number. A faithful simulator may want a small per-relay randomization of pull-in/drop-out, or at least a per-relay parameter."
+      },
+      {
+        "id": "RLY-20",
+        "tag": "verified",
+        "claim": "The bias-resistor test circuit (BK7 printed p.8) wires: + -> RESISTOR -> E -> RELAY COIL -> F -> - , with the pushbutton N.O. contact X wired to E and the pushbutton arm Y wired to +, so pressing the button shorts out the bias resistor and applies full rail voltage to E to force pull-in. Program: A/G, B/-, E/X, F/-, H/+, Y/+, and (+/Omega, Omega/E). Note the bias current enters at E, bypassing the indicator lamp.",
+        "cite": "BK7 printed p.8 (PDF p.13), read from the page image"
+      },
+      {
+        "id": "RLY-21",
+        "tag": "verified",
+        "claim": "Book VII's stated motivation for biasing: using a relay as a bi-stable element normally consumes one of its two N.O. contacts for the self-hold path ('either G and H or K and L'), leaving only one contact set free. A bias resistor frees BOTH contact sets.",
+        "cite": "BK7 printed p.6 (PDF p.11)"
+      }
+    ],
+    "self_holding": [
+      {
+        "id": "RLY-22",
+        "tag": "verified",
+        "claim": "BOOK I EXPERIMENT 9 - 'A RELAY CONTROLS ITSELF'. Exact program, transcribed from the page image: 1F/1- , 1C/1X , 1Y/2Y , 2Y/2+ , 2Z/1L , 1K/1C .",
+        "circuit_trace": "SET path: 2+ -> 2Y (PB2 arm) -> 1Y (PB1 arm, tied to 2Y) -> 1X (PB1 N.O., closed only while PB1 is held) -> 1C -> relay-1 indicator LAMP -> 1E -> relay-1 COIL -> 1F -> 1-. HOLD path: 2+ -> 2Y -> 2Z (PB2 N.C., closed while PB2 is up) -> 1L (relay-1 arm, set 2) -> 1K (relay-1 N.O., closed only while relay 1 is energized) -> 1C -> LAMP -> COIL -> 1F -> 1-. RESET: pressing PB2 opens 2Z, breaking the hold path; the coil de-energizes and the relay drops out. 1N (N.C. of the L set) and 1Z (N.C. of PB1) are left unconnected.",
+        "behavior_quote": "Push pushbutton 1 and release. The relay indicator light comes ON and stays ON. The relay stays ON because an electric circuit is completed through its own contacts to energize the coil. ... Push pushbutton 2 and release. This momentarily interrupts current flow through the coil and turns the relay OFF.",
+        "cite": "BK1 printed p.17 (PDF p.19), text, program list and circuit diagram all read from the page image",
+        "simulator_consequence": "Both the set path AND the hold path run through the indicator lamp at 1C. So the coil never sees full rail voltage in this canonical latch - it sees rail minus the lamp drop. That the relay both pulls in and holds under that condition is the empirical anchor for choosing a pull-in voltage in the simulator."
+      },
+      {
+        "id": "RLY-23",
+        "tag": "verified",
+        "claim": "SDC calls this circuit 'bistable' - 'able to remain in either of two stable conditions.' Relay OFF represents binary 0, relay ON represents binary 1.",
+        "cite": "BK1 printed p.17 (PDF p.19)"
+      },
+      {
+        "id": "RLY-24",
+        "tag": "verified",
+        "claim": "BOOK II 'SELF-LOCKING RELAY MEMORY CIRCUIT' (printed p.10). Program: 1+/1Y, 1+/1H, 1X/1C, 1-/1F, 1G/1A, 1B/1-, 1C/1A. Mechanism: the pushbutton initially supplies current to the coil; once the relay closes, a second current path is supplied through the relay's own normally-open switch. Stated weakness: it can never forget a 1 unless power is turned off.",
+        "quote": "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes 'self-locking' in the 1 position.",
+        "cite": "BK234 Book II printed p.10",
+        "ocr_caveat": "The program list OCR'd as '7-f-/lV, 74-/1H, 1X/1C, 1-/IF, 1G/1A, IB/1-, 1C/1A'. I have normalized the mangled '7-f-' / '74-' to '1+'. Read the page image before relying on the exact list."
+      },
+      {
+        "id": "RLY-25",
+        "tag": "verified",
+        "claim": "BOOK II 'TWO-BUTTON RELAY MEMORY CIRCUIT' (printed p.11) = the two-input flip-flop. Pushbutton 1's NORMALLY OPEN contacts set the relay; pushbutton 2's NORMALLY CLOSED contacts are in series with the hold path and reset it. The self-locking connection from the previous circuit is retained. SDC's own errata corrects this program: change 1A/1C to 1A/1G, and delete the 1A/1C connection on the circuit diagram.",
+        "cite": "BK234 Book II printed p.11; correction from ERRATA 'BOOK II page 11'"
+      },
+      {
+        "id": "RLY-26",
+        "tag": "verified",
+        "claim": "BOOK II 'SINGLE INPUT FLIP-FLOP' (printed p.11) uses TWO relays. Program as OCR'd: 1-/1B, 1-/1C, 1A/1E, 1E/2G, 1F/2F, 1H/1F, 1G/1Y, 1Y/1+, 1X/1J, 1J/2H, 2J/2E, 2E/2A, 2B/2-, 2-/2C. One pushbutton toggles the stored bit; light 1 shows the state.",
+        "cite": "BK234 Book II printed p.11",
+        "errata_note": "ERRATA 'BOOK IV page 69' warns: 'push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop.' - i.e. the single-input flip-flop is timing-sensitive to how fast the button is worked."
+      },
+      {
+        "id": "RLY-27",
+        "tag": "verified",
+        "claim": "BOOK I EXPERIMENT 8 - 'A RELAY CONTROLS ANOTHER'. Program: 1+/1Y, 1+/1H, 2+/2H, 1Y/1C, 1G/2C, 2G/2A, 1F/1-, 2F/2-, 2B/2-. Relay 1's contacts supply power to relay 2's coil. SDC notes all six relays can be chained this way, each controlling the next.",
+        "cite": "BK1 printed p.16 (PDF p.18)",
+        "ocr_caveat": "Read from OCR ('14-/1V' etc. normalized to '1+/1Y'). Verify against the page image before use."
+      },
+      {
+        "id": "RLY-28",
+        "tag": "verified",
+        "claim": "BOOK I EXPERIMENT 7 - electrical relay operation. Contacts: 1+/1H, 1G/1A, 1J/2A, 2B/2-, 1B/1-. Coil through pushbutton N.O.: 1+/1Y, 1X/1E, 1F/1-. Step 6 then says: to make the coil indicator lamp light, REMOVE 1X/1E and ADD 1X/1C. This is the manual explicitly demonstrating the C-vs-E distinction.",
+        "quote": "To modify this program so that the coil indicator lamp will light when the coil of relay 1 is energized: remove connection 1X/1E, add connection 1X/1C.",
+        "cite": "BK1 printed p.15 (PDF p.17)"
+      },
+      {
+        "id": "RLY-29",
+        "tag": "verified",
+        "claim": "The relay makes an audible 'click' as the coil is energized.",
+        "cite": "BK1 printed p.15 (PDF p.17) Experiment 7 step 4"
+      }
+    ]
+  },
+  "capacitor_terminals": {
+    "claims": [
+      {
+        "id": "CAP-01",
+        "tag": "verified",
+        "claim": "Book I (1961) describes the CAPACITOR terminals as reserved: 'The terminals marked CAPACITOR are used when auxiliary components are added to the MINIVAC 601 in advanced programs. At present these terminals may be ignored.'",
+        "cite": "BK1 printed p.25 (PDF p.27), section 9 AUXILIARY TERMINALS, read from the page image"
+      },
+      {
+        "id": "CAP-02",
+        "tag": "verified",
+        "claim": "On the panel, each of the six sections has one CAPACITOR terminal with TWO holes, sitting on the blue COMMON/CAPACITOR strip between the relays and the slide switches. (Contrast: the COMMON terminal beside it has FOUR holes.)",
+        "cite": "PHOTO, magnified crop of the COMMON/CAPACITOR strip"
+      },
+      {
+        "id": "CAP-03",
+        "tag": "verified",
+        "claim": "Book VII names them 1cap, 2cap, 3cap ... 6cap, referring back to Book I page 25, and states that ONE END OF EACH CAPACITOR IS PERMANENTLY CONNECTED TO THE NEGATIVE POWER SOURCE, so no connection need ever be made between the capacitor and negative power. The panel terminal is therefore the single free (positive-going) plate.",
+        "quote": "Note: Since one end of the capacitor is permanently connected to the negative power source, we will always show negative power on one end of the capacitor. No connection need be made between the capacitor and negative power. As indicated in Book I (page 25) there are terminals on the MINIVAC console for the capacitors. These terminals will be indicated in a program by: 1cap, 2cap, 3cap, etc.",
+        "cite": "BK7 printed p.11 (PDF p.16), read from the page image"
+      },
+      {
+        "id": "CAP-04",
+        "tag": "verified",
+        "claim": "CAPACITOR VALUES: 'the capacitors for sections 1 through 5 of the MINIVAC are 500 micro-farad capacitors. The capacitor for section 6 is a 1000 micro-farad capacitor.'",
+        "cite": "BK7 printed p.10 (PDF p.15), read from the page image",
+        "note": "Voltage rating is not given. Book VII only warns generically that exceeding a capacitor's rated voltage will destroy it."
+      },
+      {
+        "id": "CAP-05",
+        "tag": "verified",
+        "claim": "PURPOSE of the capacitors, stated plainly: 'Because capacitors can store and release electric energy, they can be used to turn relays on and off. This is their principal application in MINIVAC circuits - providing the voltage changes required to pull in or drop out a biased relay.' A CHARGED capacitor connected across the relay coil produces a brief surge that raises coil voltage past pull-in; the relay then stays on because of the bias voltage. A DISCHARGED capacitor connected across an energized coil absorbs energy from the coil, dropping coil voltage below drop-out; the relay then stays off because the bias voltage is below pull-in.",
+        "cite": "BK7 printed p.11 (PDF p.16), read from the page image",
+        "answers_task_question": "NOT contact protection, NOT relay slow-release. They are energy-storage elements used as one-shot pulse sources to kick a biased relay across its hysteresis band. They are also used with resistors as R-C timing/current-limiting elements (Book VII gives the notation (1+/Omega220, Omega220 1/cap) meaning 'use a 220 ohm resistor to make the connection between 1cap and 1+')."
+      },
+      {
+        "id": "CAP-06",
+        "tag": "verified",
+        "claim": "Connections to the capacitors are usually made with ordinary programming wires; a resistor may be substituted where indicated, using the notation Omega-<value> in place of a wire.",
+        "cite": "BK7 printed p.11 (PDF p.16)"
+      },
+      {
+        "id": "CAP-07",
+        "tag": "likely",
+        "claim": "The capacitors are physically installed in the machine (under the panel, one plate to the negative rail) rather than being loose parts the owner plugs in. Reasoning: Book VII states their values as a fact about 'the MINIVAC', states one end is 'permanently connected' to negative, and uses 1cap..6cap as ordinary program endpoints exactly like 1com..6com. By contrast the RESISTORS in the same manual are clearly loose colour-coded plug-in parts that substitute for a wire.",
+        "cite": "BK7 printed pp.10-11",
+        "unresolved": "See OQ-07. Book I's 'at present these terminals may be ignored' is consistent either with (a) capacitors already fitted but unused by Books I-VI, or (b) capacitors added later by a kit. Book VII covers both the 601 and the 6010 and does not separate them."
+      },
+      {
+        "id": "CAP-08",
+        "tag": "unverified",
+        "claim": "The capacitors are almost certainly polarized electrolytics: 500 uF and 1000 uF at 1961 prices/sizes on a 12 V rail is an electrolytic, and the fixed-negative-end wiring is exactly what a polarized part requires.",
+        "reasoning": "my inference from CAP-03 and CAP-04"
+      },
+      {
+        "id": "CAP-09",
+        "tag": "verified",
+        "claim": "SIMULATOR CONSEQUENCE - a delay model IS required, but not for the reason one might guess. The capacitors are not there to slow relay release; they are there to inject or absorb a charge pulse. Modelling them needs real R-C dynamics against the coil and against whatever resistor is wired in, plus the relay's pull-in/drop-out hysteresis. Note however that Books I-VI never use them, so a Books I-VI-faithful simulator can treat 1cap..6cap as unconnected two-hole junctions and still be correct for everything in the base manual set.",
+        "cite": "synthesis of CAP-01, CAP-04, CAP-05"
+      }
+    ]
+  },
+  "common_terminals": {
+    "claims": [
+      {
+        "id": "COM-01",
+        "tag": "verified",
+        "claim": "Book I: 'Auxiliary terminals are provided between the slide switches and the relays for each of the six sections. The terminals with four holes labeled COMMON may be used when more than two connections must be made to a set of terminals on the computer panel. The four COMMON terminals are connected together, but are not connected to any other component.'",
+        "cite": "BK1 printed p.25 (PDF p.27), read from the page image",
+        "wording_note": "The sentence 'The four COMMON terminals are connected together' is ambiguous as written. The errata (COM-02) resolves it: it means the four HOLES of one COMMON terminal are interconnected."
+      },
+      {
+        "id": "COM-02",
+        "tag": "verified",
+        "claim": "The errata settles the ambiguity and also establishes SDC's vocabulary (each HOLE is called a 'terminal'): 'common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.' So an ordinary jack = 2 interconnected holes, a COMMON jack = 4, matrix point M10 = 6.",
+        "cite": "ERRATA, first column"
+      },
+      {
+        "id": "COM-03",
+        "tag": "verified",
+        "claim": "The commons are addressed per section as 1com, 2com, 3com, 4com, 5com, 6com. Book VI programs use all six as independent nodes (e.g. Secret Code: 1com/2L, 2com/3L, 3com/4L, 4com/5L, 5com/6L, 6F/6com) and warn 'Be sure though, that there are connections to each of the six common terminals.'",
+        "cite": "BK56 Book VI printed p.51 (Secret Code) and p.53 (Electronic Maze)"
+      },
+      {
+        "id": "COM-04",
+        "tag": "likely",
+        "claim": "The six COMMON terminals are electrically ISOLATED from one another - 1com is not connected to 2com. Reasoning: Book VI's Secret Code says 'If you want to create more new codes, you can interchange the starred connections to the common terminals. For example, by changing 2T/1com to 2T/2com and 6W/2com to 6W/1com you will be able to generate 63 different codes.' If all commons were one node, swapping which com a wire lands on would have literally zero effect. Additionally the Secret Code wiring 1com/2L, 2com/3L, ... would short every relay arm together and destroy the sequence recognizer.",
+        "cite": "BK56 Book VI printed p.51",
+        "answers_task_question": "'COMMON' does not mean a shared bus. It means 'a junction where more than two wires can meet' - a free four-hole node, one per section, connected to nothing else."
+      },
+      {
+        "id": "COM-05",
+        "tag": "verified",
+        "claim": "The errata generalizes the trick: any interconnected set of holes can be used as a junction to route around a shortage of long wires. Example given: to make 1X/6A without a long wire, use 1X/4R + 4R/6A, or (if slide switch 4 is in use) 1X/4com + 4com/6A.",
+        "cite": "ERRATA, first column",
+        "simulator_consequence": "The netlist model must treat every jack as a node with N holes, and matrix points as nodes with 6, so that these routing tricks work."
+      }
+    ]
+  },
+  "slide_switches": {
+    "claims": [
+      {
+        "id": "SW-01",
+        "tag": "verified",
+        "claim": "Six identical slide switches labelled SECONDARY STORAGE, used for manual storage of data and for other switching functions. Each switch has TWO sets of contacts which open and close together (= DPDT). Set by the operator to one of two positions; it stays there until moved, so it 'remembers' its position.",
+        "quote": "Six identical slide switches labeled 'Secondary Storage' are used by MINIVAC 601 for manual storage of data and for other computer switching functions. Each switch has two sets of contacts which open and close together. The slide switch is set to one of two positions by the computer operator, and it stays in that position until moved.",
+        "cite": "BK1 printed p.18 (PDF p.20)"
+      },
+      {
+        "id": "SW-02",
+        "tag": "verified",
+        "claim": "Six terminals per switch, located directly ABOVE it, in two rows of three: R S T (upper) and U V W (lower). S and V are the two poles (arms).",
+        "mapping": {
+          "R": "left-position contact, pole 1",
+          "S": "ARM / pole 1",
+          "T": "right-position contact, pole 1",
+          "U": "left-position contact, pole 2",
+          "V": "ARM / pole 2",
+          "W": "right-position contact, pole 2"
+        },
+        "quote": "When the switch is pushed to the left, separate electrical connections are made between terminals S and R and between terminals V and U. When the switch is pushed to the right, separate electrical connections are made between terminals S and T and between terminals V and W.",
+        "cite": "BK1 printed p.18 (PDF p.20)"
+      },
+      {
+        "id": "SW-03",
+        "tag": "verified",
+        "claim": "THE ARROWS. The panel prints a left-pointing arrow over the R column, the word ARM over the S column, and a right-pointing arrow over the T column. The U/V/W row beneath shares those three headings. So an arrow means 'this contact is the one made when the slide is pushed in the arrow's direction'.",
+        "cite": "PHOTO, magnified crop of the SECONDARY STORAGE terminal block",
+        "answers_task_question": "The arrows are position labels, not signal-flow indicators."
+      },
+      {
+        "id": "SW-04",
+        "tag": "verified",
+        "claim": "Difference from the relay contacts above them: the slide switch is a manually-set, maintained (latching) DPDT; the relay is an electrically-operated, momentary-while-energized DPDT. Their contact geometry is otherwise the same idea - two ganged transfer sets - but the slide switch terminal ordering is LEFT-contact / ARM / RIGHT-contact, whereas the relay and pushbutton ordering is N.O. / ARM / N.C.",
+        "cite": "BK1 printed pp.12, 18 (PDF pp.14, 20); PHOTO"
+      },
+      {
+        "id": "SW-05",
+        "tag": "verified",
+        "claim": "Slide switches are rated 3 amps (covered by 'All switches are rated at 3 amps'). Spare part 6432 'Slide Switch', $0.50. They are riveted in place; replacement requires drilling out the rivets.",
+        "cite": "MAINT printed p.2 (PDF p.4) and printed p.9 (PDF p.11); spare parts list printed p.11"
+      },
+      {
+        "id": "SW-06",
+        "tag": "verified",
+        "claim": "The maintenance test confirms the two sets act together: with the slide RIGHT, lights 1 and 3 on; move LEFT, lights 1 and 3 off and lights 2 and 4 on.",
+        "cite": "MAINT printed p.8 (PDF p.10), 'Circuit Diagram - Slide Switch Check'"
+      },
+      {
+        "id": "SW-07",
+        "tag": "unverified",
+        "claim": "Whether the slide switch is break-before-make is NOT stated anywhere I found. The manuals state break-before-make explicitly for the pushbuttons and the rotary switch but say nothing about the slide switch.",
+        "recommendation": "Model it as break-before-make anyway (standard for a slide switch of this construction), but flag it as an assumption."
+      },
+      {
+        "id": "SW-08",
+        "tag": "verified",
+        "claim": "Slide switches are used in Book I Experiment 14 to reverse current direction through the rotary-switch motor, wiring both poles as an H-bridge-style reversing pair: 6+/6R, 6+/6W, 6-/6T, 6T/6U, 6S/D18, 6V/D17. (Errata corrects the Book I p.24 diagram label: change 6Y to 6V.)",
+        "cite": "BK1 printed p.24 (PDF p.26); ERRATA 'BOOK I page 24'"
+      }
+    ]
+  },
+  "pushbuttons": {
+    "claims": [
+      {
+        "id": "PB-01",
+        "tag": "verified",
+        "claim": "Six identical pushbuttons labelled BINARY INPUT, used by the operator to supply information to the computer. Each is identified by its section number.",
+        "cite": "BK1 printed p.8 (PDF p.10)"
+      },
+      {
+        "id": "PB-02",
+        "tag": "verified",
+        "claim": "Three terminals per pushbutton, directly ABOVE it: X, Y, Z. Panel legend prints N.O. over X, ARM over Y, N.C. over Z. Y is the common contact and is always used when the pushbutton is connected in a circuit.",
+        "mapping": {
+          "X": "N.O. - connected to Y when button is DOWN",
+          "Y": "ARM / common",
+          "Z": "N.C. - connected to Y when button is UP"
+        },
+        "quote": "When the pushbutton is UP, an electrical connection is made between terminals Y and Z. When the pushbutton is DOWN, the electrical connection is switched to terminals Y and X. Terminal Y is connected to the 'common' contact and is always used when the pushbutton is connected in a circuit.",
+        "cite": "BK1 printed p.8 (PDF p.10); panel legend confirmed in PHOTO"
+      },
+      {
+        "id": "PB-03",
+        "tag": "verified",
+        "claim": "SPDT, single transfer set. Only three terminals exist, versus six on the relay and slide switch.",
+        "cite": "BK1 printed p.8 (PDF p.10); PHOTO"
+      },
+      {
+        "id": "PB-04",
+        "tag": "verified",
+        "claim": "MOMENTARY, not latching. 'Release the pushbutton and the light goes OFF.' Pushbutton UP represents binary 0, DOWN represents binary 1.",
+        "cite": "BK1 printed p.9 (PDF p.11) Experiment 3 steps 3 and the binary-representation box"
+      },
+      {
+        "id": "PB-05",
+        "tag": "verified",
+        "claim": "BREAK-BEFORE-MAKE, with an explicitly demonstrated dead zone. SDC devotes a whole experiment step to it: 'Push up and down slowly on pushbutton 1 ... One light always goes OFF before the other light comes ON. There is a position, with the pushbutton only partly depressed, where both lights are OFF. Try to find this position. The switch breaks one connection before it makes the other connection. The pushbuttons are thus called break-before-make switches. This is important because it shows that the normally open contact is never connected directly to the normally closed contact, even for a very short time. This feature is necessary for the proper operation of some MINIVAC circuits.'",
+        "cite": "BK1 printed p.9 (PDF p.11) Experiment 3 step 8",
+        "simulator_consequence": "MANDATORY. The simulator must never permit an instantaneous X-to-Z transfer. There must be a real both-open interval, and SDC says circuits depend on it."
+      },
+      {
+        "id": "PB-06",
+        "tag": "verified",
+        "claim": "In circuit diagrams the pushbutton contacts are ALWAYS shown with the button UP, in the normally-closed position.",
+        "cite": "BK1 printed p.8 (PDF p.10)"
+      },
+      {
+        "id": "PB-07",
+        "tag": "verified",
+        "claim": "Rated 3 amps (covered by 'All switches are rated at 3 amps'). Spare part 6436 'Pushbutton Switch', $0.75. Construction: a red plastic button pulls off to expose a mounting screw; the switch body is under the console with soldered leads.",
+        "cite": "MAINT printed p.2 (PDF p.4), printed p.7 (PDF p.9), spare parts list printed p.11"
+      },
+      {
+        "id": "PB-08",
+        "tag": "verified",
+        "claim": "Maintenance test: pushbutton in series with two lights; light 1 on with button up, light 2 on with button down.",
+        "cite": "MAINT printed p.6-7 (PDF p.8-9), 'Circuit Diagram - Pushbutton Check'"
+      }
+    ]
+  },
+  "lamps": {
+    "claims": [
+      {
+        "id": "LMP-01",
+        "tag": "verified",
+        "claim": "Six identical lights labelled BINARY OUTPUT. A light comes ON when it is in a closed circuit so current flows through it. Each light is identified by the section number directly above it. Light OFF = binary 0, light ON = binary 1.",
+        "cite": "BK1 printed p.6-7 (PDF p.8-9)"
+      },
+      {
+        "id": "LMP-02",
+        "tag": "verified",
+        "claim": "Two terminals per light, A and B, one on either side of the lamp. 'A light comes ON when terminal A is connected to one power supply terminal (+ or -) and terminal B is connected to the other power supply terminal (- or +).' The parenthetical explicitly permits either polarity, so the lamp is non-polarized - an incandescent bulb, not a neon or an LED.",
+        "cite": "BK1 printed p.6 (PDF p.8)"
+      },
+      {
+        "id": "LMP-03",
+        "tag": "verified",
+        "claim": "The binary output lights, the relay indicator lights and the power light are all the SAME replaceable part: spare part 6435 'Light Assembly', $1.00. Replacement is by cutting the leads 3/4 inch from the terminal, removing the assembly and soldering in a new one.",
+        "cite": "MAINT printed p.6 (PDF p.8) and spare parts list printed p.11"
+      },
+      {
+        "id": "LMP-04",
+        "tag": "verified",
+        "claim": "'The lights are operated at less than their rated voltage to extend their operating life.' They are 'conservatively operated and should not require replacement for at least a year.'",
+        "cite": "MAINT printed p.2 (PDF p.4) and printed p.6 (PDF p.8)",
+        "simulator_consequence": "Rated voltage is above the 12-13 V rail. A 14 V lamp on a 12 V rail is the obvious reading."
+      },
+      {
+        "id": "LMP-05",
+        "tag": "verified",
+        "claim": "SDC treats the lamps as CURRENT-LIMITING RESISTORS in their own right: 'The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil.'",
+        "cite": "BK1 printed p.22 (PDF p.24)",
+        "simulator_consequence": "This is SDC stating outright that a lamp in series with a coil is a deliberate current-limiting element. It is not incidental."
+      },
+      {
+        "id": "LMP-06",
+        "tag": "verified",
+        "claim": "Lamps respond fast enough to render Morse-code dots visibly, though briefly: 'Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.'",
+        "cite": "ERRATA, 'BOOK V page 31'",
+        "simulator_consequence": "Sets an upper bound on visible lamp lag - it is small compared with rotary-switch contact dwell, but large enough that fast successive flashes blur."
+      },
+      {
+        "id": "LMP-07",
+        "tag": "unverified",
+        "claim": "NO source gives lamp voltage, current, bulb number or base type. Not in Books I-VI, not in the Maintenance Manual (which gives a spare part number but no rating), not in the Errata, not in Book VII, not on any web source found.",
+        "recommendation": "See the proposed fallback model in 'simulator_recommendations'."
+      },
+      {
+        "id": "LMP-08",
+        "tag": "verified",
+        "claim": "Physical appearance from the panel photograph: each lamp is a round red domed lens in a white/chrome bezel, roughly the same diameter as the pushbutton caps. Binary output lamps sit in the top band with their A and B two-hole jacks on either side; the relay indicator lamps sit in the STORAGE/PROCESSING band directly below each relay.",
+        "cite": "PHOTO"
+      }
+    ]
+  },
+  "timing": {
+    "claims": [
+      {
+        "id": "TIM-01",
+        "tag": "verified",
+        "claim": "NO NUMBERS ANYWHERE. Not one operate time, release time, bounce figure, or millisecond value appears in Book I, Books II-IV, Books V-VI, the Maintenance Manual, the Errata, or Book VII. I grepped all six text extracts for 'delay', 'slow', 'bounce', 'millisecond', 'instantaneous', 'simultaneous', 'time constant' and found no timing specification at all.",
+        "cite": "exhaustive search of all local + downloaded primary text"
+      },
+      {
+        "id": "TIM-02",
+        "tag": "verified",
+        "claim": "SDC nonetheless acknowledges the machine is speed-sensitive, in general terms. Errata troubleshooting step 2: 'Check the operating instructions to be sure that you are following the correct procedure. Also, try carrying out the procedure slowly; some programs are not designed for high-speed operation.'",
+        "cite": "ERRATA, first column"
+      },
+      {
+        "id": "TIM-03",
+        "tag": "verified",
+        "claim": "Specific speed cautions in the manuals: (a) 'push pushbutton 6 slowly when operating the single-input flip-flop' [Book IV p.69]; (b) 'When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter' [Book IV alternate counter]; (c) 'Slowly turn the rotary switch dial to the number you wish to dial' [Book V]; (d) 'Shift LEFT one bit by slowly turning the rotary switch dial one complete revolution' [Book IV].",
+        "cite": "ERRATA 'BOOK IV page 69' and alternate-counter procedure; BK56 Book V p.~14; BK234 Book IV"
+      },
+      {
+        "id": "TIM-04",
+        "tag": "verified",
+        "claim": "Ripple-carry propagation through a chain of relays is a real, observable delay in this machine (see TIM-03b - the user must hold a button long enough for a carry to propagate). Relay-to-relay chaining is explicitly taught in Book I Experiment 8 step 5: 'Expand the present circuit to use all six relays with each relay controlling the coil of the next.'",
+        "cite": "BK1 printed p.16 (PDF p.18); ERRATA alternate-counter procedure"
+      },
+      {
+        "id": "TIM-05",
+        "tag": "unverified",
+        "claim": "PROPOSED FALLBACK TIMING MODEL, with reasoning. Since no figures exist, I propose this named set for the simulator. Call it the 'MINIVAC-DEFAULT-TIMING' profile and make every number a tunable constant so it can be replaced the day someone scopes a real unit.",
+        "proposal": {
+          "relay_operate_ms": 12.0,
+          "relay_release_ms": 8.0,
+          "relay_transfer_break_lead_ms": 3.0,
+          "relay_contact_bounce_on_make_ms": 1.0,
+          "relay_contact_bounce_on_break_ms": 0.0,
+          "pushbutton_transfer_gap_ms": 2.0,
+          "pushbutton_bounce_on_make_ms": 1.0,
+          "slide_switch_transfer_gap_ms": 2.0,
+          "rotary_wiper_transfer_gap_ms": 2.0,
+          "lamp_visual_rise_ms": 25.0,
+          "lamp_visual_decay_ms": 60.0
+        },
+        "reasoning": [
+          "LOWER BOUND ON RELAY OPERATE TIME, from the machine itself: the published power supply shows a full-wave centre-tapped rectifier with NO filter capacitor, so the rails are 120 Hz pulsating DC dipping toward zero every 8.33 ms. The relays demonstrably do not chatter at 120 Hz. Therefore the combined armature mechanical time constant plus coil inductance must exceed roughly 8 ms. That is a bound derived from primary sources, not from a datasheet.",
+          "CLASS-TYPICAL RANGE: open-frame 12 VDC clapper relays of 1961 construction (visible arms, plastic crossbar, contacts rated >3 A) operate in roughly 8-20 ms and release in roughly 4-10 ms. 12 ms / 8 ms sits mid-range and satisfies the bound above.",
+          "BREAK LEADS MAKE: the relay arm must leave the N.C. contact before touching the N.O. contact (RLY-10). 3 ms of the 12 ms operate stroke spent in transit is a reasonable split for an armature whose contacts are visibly separated by a few millimetres.",
+          "PUSHBUTTON GAP: Book I p.9 says a human can find and hold a partially-depressed position where BOTH lights are off. That means the dead zone is mechanically wide, not a sub-millisecond artifact. 2 ms at ordinary press speed is conservative; the simulator should also expose a 'hold in the dead zone' state if it models continuous button travel.",
+          "LAMP LAG is a rendering concern only, not an electrical one, except for cold-resistance inrush. 25 ms rise / 60 ms decay is typical for a small incandescent and is consistent with Morse dots being visible but blurring together (LMP-06)."
+        ],
+        "explicitly_not_claimed": "None of these numbers are from any source. They are engineering defaults chosen to be defensible and to reproduce documented qualitative behavior."
+      },
+      {
+        "id": "TIM-06",
+        "tag": "unverified",
+        "claim": "PROPOSED FALLBACK ELECTRICAL MODEL for the relay and lamp, since no ratings exist.",
+        "proposal": {
+          "supply_open_circuit_v": 13.0,
+          "supply_source_resistance_ohm": 0.7,
+          "supply_ripple": "optional: 120 Hz full-wave, no filter",
+          "circuit_breaker_trip_a": "> 1.5 (value not published; suggest 2.5 A with a thermal delay)",
+          "relay_coil_resistance_ohm": 185,
+          "relay_coil_current_at_12v_ma": 65,
+          "relay_pull_in_v_across_coil": 7.5,
+          "relay_drop_out_v_across_coil": 3.0,
+          "indicator_lamp_hot_resistance_ohm": 150,
+          "indicator_lamp_resistance_at_series_operating_point_ohm": 40,
+          "indicator_lamp_cold_resistance_ohm": 19,
+          "lamp_thermal_time_constant_ms": 40
+        },
+        "reasoning": [
+          "The window between pull-in and drop-out must be LARGE - Book VII says so explicitly (RLY-17/RLY-18) and builds a whole chapter on exploiting it. 7.5 V / 3.0 V on a 12 V nominal coil gives a 4.5 V band, comfortably 'great'.",
+          "Driving via C (through the lamp) must still pull in, because Book I Experiment 9's canonical latch does exactly that. With R_coil 185 and the lamp at its low series operating point (~40 ohm), V_coil = 12.6 x 185/225 = 10.4 V, safely above 7.5 V pull-in. Correct behavior reproduced.",
+          "But it must be MARGINAL, because SDC published a bypass circuit specifically to give 'full voltage' for more reliable pull-in in a strained counter (RLY-14). With six relays and a dozen lamps loaded, the rail sags toward 11 V and a weak relay's pull-in creeps toward 9 V; the lamp-dropped 9.5 V then fails. Marginality reproduced.",
+          "A bias resistor must be able to land V_coil inside the band using common resistor values. 220 ohm bias with R_coil 185 gives V_coil = 12.6 x 185/405 = 5.8 V, between 3.0 and 7.5. Book VII's worked example happens to use 220 ohm (for a capacitor charging path, not the bias itself), so 220 ohm is at least in the family of values SDC had in the kit. Book VII's bias procedure works.",
+          "Six coils at 65 mA = 0.39 A, plus a dozen lamps at ~80 mA = 0.96 A, totals ~1.35 A - just inside the published 1.5 A continuous rating. The numbers hang together as a machine SDC would actually have shipped.",
+          "The lamp's series operating resistance is LOWER than its hot resistance because in series with the coil it runs far below its rated current and therefore stays cool. This is why the series arrangement works at all, and a simulator that models the lamp as a fixed hot resistance will wrongly conclude the coil cannot pull in."
+        ],
+        "explicitly_not_claimed": "Every number here is mine. The only [verified] inputs are 13.0 V open circuit, 12 V nominal, 1.5 A continuous, lamps run below rated voltage, switches 3 A, contacts >3 A."
+      }
+    ]
+  },
+  "known_discrepancy_address": {
+    "id": "DISC-01",
+    "tag": "verified",
+    "instruction_from_task": "Do not silently resolve. Report what I found.",
+    "watertown_evidence": [
+      "BK1 copyright page: 'Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'",
+      "BK56 copyright page: same Watertown address (per the task brief; consistent with BK1)",
+      "MAINT title page: 'SCIENTIFIC DEVELOPMENT CORP., 372 Main Street, Watertown, Massachusetts'",
+      "MAINT spare-parts order address: 'Scientific Development Corporation, 372 Main Street, Watertown 72, Massachusetts'",
+      "ERRATA header: 'please do not hesitate to contact us at 372 Main Street, Watertown, Massachusetts'; footer: '372 Main Street, Watertown, Massachusetts'"
+    ],
+    "cambridge_evidence": [
+      "PHOTO, logo plate on the panel of a real unit, magnified: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U.S.A. Patents applied for'"
+    ],
+    "finding": "The discrepancy is not two sources against one - it is FIVE printed Watertown attestations (Book I copyright, Books V-VI copyright, Maintenance Manual title page, Maintenance Manual order address, and the Errata sheet twice) against ONE Cambridge attestation, on the silkscreened panel legend of a physical unit. Both remain primary. I am not resolving it. Plausible explanations not investigated: the panel artwork predates a company move; different units carry different legends; the panel legend was never updated.",
+    "what_would_settle_it": "Panel legends from several units with known serial numbers or purchase dates; SDC incorporation/address records; the Popular Science October 1961 advertisement's return address."
+  },
+  "open_questions": [
+    {
+      "id": "OQ-01",
+      "question": "Relay coil resistance, rated coil voltage, pull-in voltage and drop-out voltage.",
+      "status": "NOT SETTLED BY THE SOURCES. Book VII deliberately substitutes an empirical per-relay bias-resistor procedure for published figures, which strongly suggests SDC did not consider these values consistent enough to publish.",
+      "what_would_settle_it": "An ohmmeter across E and F on a real unit, plus a bench sweep of coil voltage to find pull-in and drop-out. Or a photograph of the relay's own manufacturer stamping - the relays are open-frame and visible on the panel, so a high-resolution photo of the coil bobbin label may carry a part number."
+    },
+    {
+      "id": "OQ-02",
+      "question": "Lamp voltage, current, bulb number and base type.",
+      "status": "NOT SETTLED. Only 'operated at less than their rated voltage' and spare part 6435 'Light Assembly'.",
+      "what_would_settle_it": "Pulling one lamp assembly from a real unit and reading the bulb; or a high-resolution photo of an unmounted assembly."
+    },
+    {
+      "id": "OQ-03",
+      "question": "Transformer secondary voltage and VA, rectifier part, circuit-breaker trip current.",
+      "status": "NOT SETTLED. The Maintenance Manual gives wire colours and topology but no ratings. Spare prices only: Transformer $10.00, Rectifier $3.00, Circuit Breaker $1.00.",
+      "what_would_settle_it": "Meter readings on a real unit, or a photo of the transformer and breaker labels."
+    },
+    {
+      "id": "OQ-04",
+      "question": "Is there a filter capacitor in the power supply that the teaching diagram omits?",
+      "status": "NOT SETTLED. None is drawn. But an unfiltered full-wave supply typically reads about 0.9 x RMS on a DC meter, and 13 V unloaded would then imply a fairly high secondary - possible but not certain. If a filter cap exists, the rails are smooth and my ripple-based lower bound on relay operate time (TIM-05) loses its force.",
+      "what_would_settle_it": "A photo of the underside of the power panel, or a scope on the rails of a working unit.",
+      "simulator_impact": "Moderate. Decides whether the simulator needs a ripple model at all. Recommend: build the model with ripple optional and default OFF; the ripple only matters for exotic edge cases."
+    },
+    {
+      "id": "OQ-05",
+      "question": "Are the relay contacts break-before-make with a measurable both-open interval, like the pushbuttons?",
+      "status": "NOT SETTLED explicitly, though mechanically near-certain (RLY-10). SDC states it for pushbuttons and the rotary switch but not for relays.",
+      "what_would_settle_it": "Two-channel scope on H-J and H-G of a real relay during operate."
+    },
+    {
+      "id": "OQ-06",
+      "question": "Is the SECONDARY STORAGE slide switch break-before-make or shorting?",
+      "status": "NOT SETTLED. Never stated.",
+      "what_would_settle_it": "Continuity test while slowly sliding, on a real unit."
+    },
+    {
+      "id": "OQ-07",
+      "question": "Are the six capacitors (500 uF x5, 1000 uF x1) factory-fitted inside a base MINIVAC 601, or added by a Capacitor/Resistor accessory kit? Book I (Aug 1961) says the terminals are for 'when auxiliary components are added ... At present these terminals may be ignored.' Book VII (Jan 1962) states values and says one end is 'permanently connected to the negative power source', and is titled for the 601/6010 jointly.",
+      "status": "NOT SETTLED. I lean toward factory-fitted (see CAP-07, tagged [likely]) but the sources do not close it.",
+      "what_would_settle_it": "A photo of the underside of a 601 panel showing (or not showing) six electrolytics; or SDC price/order literature listing a capacitor kit as a separate SKU.",
+      "simulator_impact": "Low for Books I-VI fidelity - nothing in Books I-VI uses the cap terminals. High if Book VII programs are to be supported."
+    },
+    {
+      "id": "OQ-08",
+      "question": "Values of the two rotary-switch motor-drive resistors.",
+      "status": "NOT SETTLED. Only 'they should heat up in about 20 seconds' and, from Book VII, that 15/22/33 ohm resistors can OPTIONALLY be added to slow the motor - which is not the same thing.",
+      "what_would_settle_it": "Colour-code photo of the two resistors under the panel."
+    },
+    {
+      "id": "OQ-09",
+      "question": "Contact bounce duration for any contact on the machine.",
+      "status": "NOT SETTLED. Never mentioned.",
+      "what_would_settle_it": "Scope capture on a real unit.",
+      "simulator_impact": "Potentially high. On a machine whose whole point is relay memory, bounce on a self-hold contact can double-trigger a counter stage. SDC's repeated 'go slowly' warnings and the 'somewhat strained' three-bit counter note hint that real timing pathology existed."
+    }
+  ],
+  "simulator_recommendations": [
+    {
+      "id": "REC-01",
+      "priority": "must",
+      "text": "Model the relay as: coil node E to node F, with a fixed lamp element between C and E. Never model the lamp as a shunt or as contact-driven. Driving C-F puts lamp and coil in series; driving E-F is the coil alone; driving C-E is the lamp alone. Circuits in the manuals use all three."
+    },
+    {
+      "id": "REC-02",
+      "priority": "must",
+      "text": "Model relay hysteresis: separate pull-in and drop-out thresholds on coil voltage, with a wide band between them. Book VII builds an entire chapter on that band. A simulator with a single threshold cannot run Book VII programs and will also get Book I Experiment 9 subtly wrong (the hold current there is lower than the set current in some wirings)."
+    },
+    {
+      "id": "REC-03",
+      "priority": "must",
+      "text": "Model the supply as a voltage source with real source impedance (proposed 13.0 V, 0.7 ohm), not as an ideal rail. The documented marginal pull-in behavior and SDC's own bypass workaround only emerge if loads interact."
+    },
+    {
+      "id": "REC-04",
+      "priority": "must",
+      "text": "Every transfer contact - relay, pushbutton, slide switch, rotary wiper - must be break-before-make with a real both-open interval. SDC says explicitly that 'this feature is necessary for the proper operation of some MINIVAC circuits.'"
+    },
+    {
+      "id": "REC-05",
+      "priority": "must",
+      "text": "Two global nodes for + and -, including M+ and M-. Every jack is a node with N holes (2 normally, 4 for COMMON, 6 for M10). The six COMMON terminals are six separate free nodes, not a bus."
+    },
+    {
+      "id": "REC-06",
+      "priority": "should",
+      "text": "Put the circuit breaker in series with the entire negative return, matching the published schematic, and trip it on total current rather than per-branch."
+    },
+    {
+      "id": "REC-07",
+      "priority": "should",
+      "text": "Make the lamp a temperature-dependent resistance, or at minimum use a lower 'series operating point' resistance than the 'hot at full rail' resistance. A fixed hot resistance will wrongly prevent pull-in through the C terminal."
+    },
+    {
+      "id": "REC-08",
+      "priority": "should",
+      "text": "Expose per-relay pull-in/drop-out as tunable per-instance parameters, ideally with a small random spread. Book VII's per-relay bias procedure is direct evidence that the six relays in one machine differed measurably."
+    },
+    {
+      "id": "REC-09",
+      "priority": "nice",
+      "text": "Consider an optional 120 Hz ripple mode on the rails, defaulted off, pending OQ-04."
+    },
+    {
+      "id": "REC-10",
+      "priority": "nice",
+      "text": "The rotary switch motor and its two current-limiting resistors are a separate load on the same rails; when the motor runs, everything else sees a sagged rail. Worth modelling once the motor is in."
+    }
+  ],
+  "verbatim_transcriptions": {
+    "book1_p14_relay_coil_schematic": "C ---- (LIGHT) ---- E ---- (RELAY COIL, drawn as a solenoid) ---- F.  Callouts on the exploded relay drawing to the left, top to bottom: 'Terminals to operate Relay' pointing at the C, E, F jack pairs; 'Switches'; 'Magnetic Coil'; 'Light'; 'Terminals connected to Switches' pointing at the G/H/J and K/L/N jack pairs. Bottom right: two transfer contacts drawn with arm L resting on N (upper) with K below, and arm H resting on J (upper) with G below; caption 'Relay Switches ALWAYS operate together'.",
+    "book1_p25_auxiliary_terminals": "9 AUXILIARY TERMINALS. Auxiliary terminals are provided between the slide switches and the relays for each of the six sections. / The terminals with four holes labeled COMMON may be used when more than two connections must be made to a set of terminals on the computer panel. The four COMMON terminals are connected together, but are not connected to any other component. / The terminals marked \"CAPACITOR\" are used when auxiliary components are added to the MINIVAC 601 in advanced programs. At present these terminals may be ignored.",
+    "maintenance_p2_ratings_paragraph": "All MINIVAC parts are conservatively designed to give lasting service. The lights are operated at less than their rated voltage to extend their operating life. The transformer and the rectifier are capable of accepting repeated overloads. / The power supply is rated at 1.5 amps continuous with a nominal 12 volts output. All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps. To provide low contact resistance, the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper; the drive shaft is made of stainless steel running in an oil-impregnated bronze bearing. The drive motor is operated at less than one-third rated voltage.",
+    "maintenance_p3_power_supply_diagram_labels": "POWER CORD / POWER SWITCH / BLACK WIRE (x2, primary) / TRANSFORMER / YELLOW/BLACK WIRE (x2, secondary ends) / YELLOW WIRE (secondary centre tap) / RECTIFIER (two diode symbols, common output to + terminal) / CIRCUIT BREAKER (in the yellow centre-tap line, feeding the - terminal) / POWER LIGHT (across the + and - output nodes). Caption: 'Power Supply Circuit Diagram'.",
+    "maintenance_spare_parts_list": [
+      {
+        "part_no": "6431",
+        "description": "Circuit Breaker",
+        "price": "1.00"
+      },
+      {
+        "part_no": "6432",
+        "description": "Slide Switch",
+        "price": "0.50"
+      },
+      {
+        "part_no": "6433",
+        "description": "Rectifier",
+        "price": "3.00"
+      },
+      {
+        "part_no": "6434",
+        "description": "Transformer",
+        "price": "10.00"
+      },
+      {
+        "part_no": "6435",
+        "description": "Light Assembly",
+        "price": "1.00"
+      },
+      {
+        "part_no": "6436",
+        "description": "Pushbutton Switch",
+        "price": "0.75"
+      },
+      {
+        "part_no": "6437",
+        "description": "Relay",
+        "price": "6.00"
+      },
+      {
+        "part_no": "6471",
+        "description": "Motor",
+        "price": "4.00"
+      },
+      {
+        "part_no": "6472",
+        "description": "Drive Wheel Assembly",
+        "price": "2.00"
+      },
+      {
+        "part_no": "6473",
+        "description": "Complete Rotary Switch Assembly",
+        "price": "20.00"
+      },
+      {
+        "part_no": "6490",
+        "description": "Set of 100 Programming Wires",
+        "price": "12.00"
+      },
+      {
+        "part_no": "6491",
+        "description": "Set of 2 test wires with clips",
+        "price": "1.00"
+      }
+    ],
+    "panel_terminal_letter_map_from_photo": {
+      "band_1_BINARY_OUTPUT": "per section: lamp with jack A to its left and jack B to its right; section number printed above the lamp",
+      "band_2_power_strip": "per section: a '+' jack and a '-' jack (blue strip)",
+      "band_3_STORAGE_PROCESSING": "per section, top to bottom: coil/lamp jacks C, E, F with brackets 'LIGHT' spanning C-E and 'COIL' spanning E-F; the relay body; the relay indicator lamp; then contact jacks in two rows with headings N.O. / ARM / N.C. over G, H, J (upper row) and K, L, N (lower row)",
+      "band_4_COMMON_CAPACITOR": "per section (blue strip): a four-hole COMMON jack and a two-hole CAPACITOR jack",
+      "band_5_SECONDARY_STORAGE": "per section: headings left-arrow / ARM / right-arrow over jacks R, S, T (upper row) and U, V, W (lower row); the slide switch itself below",
+      "band_6_BINARY_INPUT": "per section: headings N.O. / ARM / N.C. over jacks X, Y, Z; the pushbutton below",
+      "right_column": "logo plate 'Minivac 601' with legend 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U.S.A. Patents applied for'; a + and a - jack; MATRIX; POWER (circuit breaker pushbutton above an ON/OFF slide switch); DECIMAL INPUT-OUTPUT with the 16-position dial and jacks 16 ARM, 17/18 RUN, 18/19 STOP"
+    }
+  },
+  "counts": {
+    "verified": 78,
+    "likely": 7,
+    "unverified": 6
+  }
+}

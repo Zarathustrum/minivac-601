@@ -1,0 +1,29 @@
+#!mv601-trace 1
+# id=III-RELAYNOT-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=6
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=79 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp2 off->dim
+    22.1 * outLamp2 dim->on
+   542.2 ? relay1=nc outLamp2=on indLamp1=off  "The circuit and program below represent the NOT condition expressed in the form that if relay 1 is not energized (is not ON) light 2 will come ON. Symbolically, this may be stated: Ā = B"
+   542.2 > button1 target=1000
+   553.4 * pb1 nc->mid
+   555.9 * pb1 mid->no
+   565.8 * indLamp1 off->dim
+   566.9 * relay1 nc->mid
+   568.2 * relay1 mid->no
+   587.4 * outLamp2 on->dim
+   605.6 * indLamp1 dim->on
+   643.0 * outLamp2 dim->off
+  1125.7 ? relay1=no outLamp2=off indLamp1=on  "The circuit and program below represent the NOT condition expressed in the form that if relay 1 is not energized (is not ON) light 2 will come ON. Symbolically, this may be stated: Ā = B"
+  1125.7 > button1 target=0
+  1136.9 * pb1 no->mid
+  1139.4 * pb1 mid->nc
+  1141.6 * relay1 no->mid
+  1142.5 * relay1 mid->nc
+  1145.8 * outLamp2 off->dim
+  1148.2 * indLamp1 on->dim
+  1164.7 * outLamp2 dim->on
+  1203.8 * indLamp1 dim->off
+  1684.8 ? relay1=nc outLamp2=on indLamp1=off  "The circuit and program below represent the NOT condition expressed in the form that if relay 1 is not energized (is not ON) light 2 will come ON. Symbolically, this may be stated: Ā = B"

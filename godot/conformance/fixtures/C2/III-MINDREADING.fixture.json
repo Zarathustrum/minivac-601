@@ -1,0 +1,804 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-MINDREADING",
+  "source": "BK3 printed pp.50-54 = book2-3-4.pdf PDF pp.56-60",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5V/45",
+    "4R/4A",
+    "4B/4-",
+    "5C/5A",
+    "5B/5-",
+    "6C/6A",
+    "6B/6-",
+    "6X/6V",
+    "6V/5V",
+    "6U/6C",
+    "5U/5C",
+    "5F/6F",
+    "6F/6-",
+    "M-/D18",
+    "D18/4V",
+    "4U/6S",
+    "4W/5S",
+    "5R/6H",
+    "5T/6L",
+    "6R/5H",
+    "6T/5L",
+    "M+/6Y",
+    "6X/D17",
+    "D16/D19",
+    "D0/6N",
+    "D1/6K",
+    "D2/6J",
+    "D3/6G",
+    "D4/5N",
+    "D5/5J",
+    "D6/5K",
+    "D7/5G"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "5V/4S",
+    "4R/4A",
+    "4B/4-",
+    "5C/5A",
+    "5B/5-",
+    "6C/6A",
+    "6B/6-",
+    "6X/6V",
+    "6V/5V",
+    "6U/6C",
+    "5U/5C",
+    "5F/6F",
+    "6F/6-",
+    "M-/D18",
+    "D18/4V",
+    "4U/6S",
+    "4W/5S",
+    "5R/6H",
+    "5T/6L",
+    "6R/5H",
+    "6T/5L",
+    "M+/6Y",
+    "6X/D17",
+    "D16/D19",
+    "D0/6N",
+    "D1/6K",
+    "D2/6J",
+    "D3/6G",
+    "D4/5N",
+    "D5/5J",
+    "D6/5K",
+    "D7/5G"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / Yes (Number) ( is 7 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / Yes (Number) ( is 7 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / Yes (Number) ( is 7 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / Yes (Number) ( is 3 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / Yes (Number) ( is 3 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / Yes (Number) ( is 3 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / Yes (Number) ( is 5 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / Yes (Number) ( is 5 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / Yes (Number) ( is 5 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN); errata.pdf PDF p.2, 'page 54' entry (ER-14)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / No (Number) ( is 0 ) [errata p.2:] Note: Zero (0) is considered an even number for this problem. [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN); errata.pdf PDF p.2, 'page 54' entry (ER-14)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / No (Number) ( is 0 ) [errata p.2:] Note: Zero (0) is considered an even number for this problem. [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN); errata.pdf PDF p.2, 'page 54' entry (ER-14)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / No (Number) ( is 0 ) [errata p.2:] Note: Zero (0) is considered an even number for this problem. [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / Yes (Number) ( is 1 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / Yes (Number) ( is 1 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / No (Number is) ( 0 or 1 ) / C) Is Number Odd? / Yes (Number) ( is 1 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / No (Number) ( is 6 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / No (Number) ( is 6 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 6 or 7 ) / C) Is Number Odd? / No (Number) ( is 6 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / No (Number) ( is 2 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / No (Number) ( is 2 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / No (Number is) (0, 1, 2 or 3) / B) Is Remainder Greater Than 1? / Yes (Number is) ( 2 or 3 ) / C) Is Number Odd? / No (Number) ( is 2 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / No (Number) ( is 4 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / No (Number) ( is 4 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "Book III printed p.54 = book2-3-4.pdf PDF p.60; Book III printed p.51 = book2-3-4.pdf PDF p.57 (flow chart); Book I printed p.20 = book1.pdf PDF p.22 (knob numeral N = wiper on DN)",
+      "quote": "[p.54:] 3. Indicate the answers to the questions as follows: If the answer to question A is YES, move slide switch 4 to the LEFT. If the answer to question A is NO, move slide switch 4 to the RIGHT. If the answer to question B is YES, move slide switch 5 to the LEFT. If the answer to question B is NO, move slide switch 5 to the RIGHT. If the answer to question C is YES, move slide switch 6 to the LEFT. If the answer to question C is NO, move slide switch 6 to the RIGHT. 4. Push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend was thinking of. [p.51:] A) Is Number Greater Than 3? / Yes (Number is) (4, 5, 6 or 7) / B) Is Remainder Greater Than 1? / No (Number is) ( 4 or 5 ) / C) Is Number Odd? / No (Number) ( is 4 ) [Book I p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    }
+  ],
+  "digest": {
+    "eventCount": 305,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      16,
+      16,
+      0,
+      0,
+      0,
+      0,
+      0,
+      32,
+      0,
+      0,
+      0,
+      12,
+      6,
+      6,
+      104
+    ]
+  },
+  "note": "Printed claims only (Step 6). Wires are the 32 printed on BK3 p.54 (PDF p.60) with ER-14 (errata.pdf PDF p.2, 'page 54') applied: 5V/45 becomes 5V/4S; as_printed keeps 5V/45. ER-14 is NOT listed in errata_applied because its printed 'from' (5V/45) names no physical terminal ('45'), and the loader requires errata_applied.from to be a physical pair; the correction is applied in wires all the same. The scan of p.54 carries hand annotations by a previous owner (the S of 5V/4S overdrawn, '0 is even' beside question C); the Book VI reprint (book5-6.pdf PDF p.63) prints 5V/4S. The record's pp.50-53 is the explanation; the wire list and the 'To use the program' procedure are on p.54. Script: power on, then for each number 7,3,5,0,1,6,2,4 set slide switches 4/5/6 from the answers to questions A/B/C (YES = LEFT, target 0; NO = RIGHT, target 1000; step 3, p.54), press pushbutton 6 (step 4), until the dial reaches that number, keep pb6 held 8 s and expect the dial still there (the knob rests, not passes), release pb6, wait 3 s and expect it again. The number for each answer set is read from the p.51 flow chart leaves (and the A x B x C = N table on the same page); 0 relies also on ER-14's 'Zero (0) is considered an even number'. The order 7,3,5,0,1,6,2,4 carries the wiper across at least one wired but unselected pad (D0-D7) on every run except 0 to 1, so a dial that stopped at the next wired pad would fail; 7 runs first from the construction position c0, and 0 to 1 keeps the start-on-the-NC-pad case (D0 = 6N sits on the minus side until relay 6 pulls in). The dial's numeral N is the contact cN (Book I p.20: 'when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16'). Pushbutton 6 is the motor's only feed (6X/D17), so it is held until the dial stops; the hold length is a script choice. Output lamp, indicator lamp and relay states are not printed and are not asserted (4R/4A and 4B/4- wire only output light 4, so relay 4 never operates; relays 5 and 6 operate with their lamps while pb6 is held). Start dial position c0 is the construction state, not printed. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; windows are sized for a run rate as slow as 25 rpm. Knife-edge: minDecisionUa 3 (a relay pull-in in the 7 case, all three switches LEFT, run from c0) trips the 14 uA trigger; the six bless robustness perturbations held. Wires image-read at 400 dpi from book2-3-4.pdf PDF p.60 (review round 2): all 32 match as_printed; the first line's last glyph is hand-overdrawn and ER-14 quotes the printed form back as 5V/45; the Book VI reprint (book5-6.pdf PDF p.63) prints the same 32 connections."
+}

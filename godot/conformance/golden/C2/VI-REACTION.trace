@@ -1,0 +1,174 @@
+#!mv601-trace 1
+# id=VI-REACTION contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=51
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=23 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     1.0 > button3 target=1000
+    12.2 * pb3 nc->mid
+    14.7 * pb3 mid->no
+    31.2 * dial c0->gap
+    52.0 * dial gap->c1
+   101.0 > button3 target=0
+   112.2 * pb3 no->mid
+   114.5 * dial c1->gap
+   114.7 * pb3 mid->nc
+   135.4 * dial gap->c2
+   146.7 * relay5 nc->mid
+   146.9 * relay6 nc->mid
+   148.0 * relay5 mid->no
+   148.2 * relay6 mid->no
+   151.5 * outLamp3 off->dim  outLamp4 off->dim
+   170.8 * outLamp3 dim->on  outLamp4 dim->on
+   170.9 ? outLamp3=on outLamp4=on  "Push the re-set button (pushbutton 3). / As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton. / Lights 3 and 4 give the signal \"START\"."
+   199.1 * dial c2->gap
+   220.3 * dial gap->c3
+   283.9 * dial c3->gap
+   305.1 * dial gap->c4
+   368.7 * dial c4->gap
+   370.9 > button1 target=1000
+   382.1 * pb1 nc->mid
+   384.6 * pb1 mid->no
+   387.9 * outLamp1 off->dim
+   390.0 * dial gap->c5
+   395.9 * relay3 nc->mid
+   397.2 * relay3 mid->no
+   407.3 * outLamp1 dim->on
+   470.9 > button6 target=1000
+   482.1 * pb6 nc->mid
+   484.6 * pb6 mid->no
+   570.9 > button1 target=0
+   570.9 > button6 target=0
+   582.1 * pb1 no->mid  pb6 no->mid
+   584.6 * pb1 mid->nc  pb6 mid->nc
+  1070.9 ? outLamp1=on  "As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton. MINIVAC will indicate the winner on the lights. / Light 1 indicates that player 1 wins."
+  1070.9 > button3 target=1000
+  1082.1 * pb3 nc->mid
+  1084.6 * pb3 mid->no
+  1088.9 * relay5 no->mid  relay6 no->mid
+  1089.1 * relay3 no->mid
+  1089.8 * relay5 mid->nc  relay6 mid->nc
+  1090.0 * relay3 mid->nc
+  1108.8 * outLamp3 on->dim  outLamp4 on->dim
+  1109.0 * outLamp1 on->dim
+  1126.6 * dial c5->gap
+  1147.4 * dial gap->c6
+  1164.5 * outLamp3 dim->off  outLamp4 dim->off
+  1164.7 * outLamp1 dim->off
+  1170.9 > button3 target=0
+  1182.1 * pb3 no->mid
+  1184.6 * pb3 mid->nc
+  1209.9 * dial c6->gap
+  1230.8 * dial gap->c7
+  1293.3 * dial c7->gap
+  1314.1 * dial gap->c8
+  1376.6 * dial c8->gap
+  1397.4 * dial gap->c9
+  1459.9 * dial c9->gap
+  1480.8 * dial gap->c10
+  1543.3 * dial c10->gap
+  1564.1 * dial gap->c11
+  1626.6 * dial c11->gap
+  1647.4 * dial gap->c12
+  1709.9 * dial c12->gap
+  1730.8 * dial gap->c13
+  1793.3 * dial c13->gap
+  1814.1 * dial gap->c14
+  1876.6 * dial c14->gap
+  1897.4 * dial gap->c15
+  1959.9 * dial c15->gap
+  1980.8 * dial gap->c0
+  2043.3 * dial c0->gap
+  2064.1 * dial gap->c1
+  2126.6 * dial c1->gap
+  2147.4 * dial gap->c2
+  2158.7 * relay5 nc->mid
+  2158.9 * relay6 nc->mid
+  2160.0 * relay5 mid->no
+  2160.2 * relay6 mid->no
+  2163.5 * outLamp3 off->dim  outLamp4 off->dim
+  2182.8 * outLamp3 dim->on  outLamp4 dim->on
+  2182.9 ? outLamp3=on outLamp4=on  "To start another game push the re-set button and proceed as above. / As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton. / Lights 3 and 4 give the signal \"START\"."
+  2211.2 * dial c2->gap
+  2232.4 * dial gap->c3
+  2296.0 * dial c3->gap
+  2317.2 * dial gap->c4
+  2380.8 * dial c4->gap
+  2382.9 > button6 target=1000
+  2394.1 * pb6 nc->mid
+  2396.6 * pb6 mid->no
+  2399.9 * outLamp6 off->dim
+  2402.1 * dial gap->c5
+  2408.1 * relay4 nc->mid
+  2409.4 * relay4 mid->no
+  2419.3 * outLamp6 dim->on
+  2482.9 > button1 target=1000
+  2494.1 * pb1 nc->mid
+  2496.6 * pb1 mid->no
+  2582.9 > button6 target=0
+  2582.9 > button1 target=0
+  2594.1 * pb1 no->mid  pb6 no->mid
+  2596.6 * pb1 mid->nc  pb6 mid->nc
+  3082.9 ? outLamp6=on  "To start another game push the re-set button and proceed as above. / MINIVAC will indicate the winner on the lights. / Light 6 indicates that player 2 wins."
+  3082.9 > button3 target=1000
+  3094.1 * pb3 nc->mid
+  3096.6 * pb3 mid->no
+  3100.9 * relay5 no->mid  relay6 no->mid
+  3101.0 * relay4 no->mid
+  3101.8 * relay5 mid->nc  relay6 mid->nc
+  3101.9 * relay4 mid->nc
+  3120.8 * outLamp3 on->dim  outLamp4 on->dim
+  3121.0 * outLamp6 on->dim
+  3138.4 * dial c5->gap
+  3159.2 * dial gap->c6
+  3176.5 * outLamp3 dim->off  outLamp4 dim->off
+  3176.7 * outLamp6 dim->off
+  3182.9 > button3 target=0
+  3194.1 * pb3 no->mid
+  3196.6 * pb3 mid->nc
+  3221.7 * dial c6->gap
+  3242.6 * dial gap->c7
+  3305.1 * dial c7->gap
+  3325.9 * dial gap->c8
+  3382.9 > button1 target=1000
+  3388.4 * dial c8->gap
+  3394.1 * pb1 nc->mid
+  3396.6 * pb1 mid->no
+  3399.9 * outLamp2 off->dim
+  3407.5 * relay1 nc->mid
+  3408.8 * relay1 mid->no
+  3408.9 * dial gap->c9
+  3419.1 * outLamp2 dim->on
+  3482.9 > button1 target=0
+  3494.1 * pb1 no->mid
+  3496.6 * pb1 mid->nc
+  3982.9 ? outLamp2=on  "If either player pushes his pushbutton before lights 3 and 4 come on, MINIVAC will indicate who has fouled and the game must be begun again. / Light 2 indicates that player 1 has fouled."
+  3982.9 > button3 target=1000
+  3994.1 * pb3 nc->mid
+  3996.6 * pb3 mid->no
+  4004.5 * relay1 no->mid
+  4005.4 * relay1 mid->nc
+  4023.1 * outLamp2 on->dim
+  4049.3 * dial c9->gap
+  4070.2 * dial gap->c10
+  4078.8 * outLamp2 dim->off
+  4082.9 > button3 target=0
+  4094.1 * pb3 no->mid
+  4096.6 * pb3 mid->nc
+  4132.7 * dial c10->gap
+  4153.5 * dial gap->c11
+  4216.0 * dial c11->gap
+  4236.8 * dial gap->c12
+  4282.9 > button6 target=1000
+  4294.1 * pb6 nc->mid
+  4296.6 * pb6 mid->no
+  4299.4 * dial c12->gap
+  4299.9 * outLamp5 off->dim
+  4307.6 * relay2 nc->mid
+  4308.9 * relay2 mid->no
+  4309.0 * dial gap->c13
+  4319.1 * outLamp5 dim->on
+  4382.9 > button6 target=0
+  4394.1 * pb6 no->mid
+  4396.6 * pb6 mid->nc
+  4882.9 ? outLamp5=on  "If either player pushes his pushbutton before lights 3 and 4 come on, MINIVAC will indicate who has fouled and the game must be begun again. / Light 5 indicates that player 2 has fouled."

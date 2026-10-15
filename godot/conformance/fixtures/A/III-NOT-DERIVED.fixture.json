@@ -1,0 +1,380 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-NOT-DERIVED",
+  "source": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47; wires image-read on PDF p.46 at 400 dpi; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/3Y",
+    "3Z/5A",
+    "1Y/4Y",
+    "4X/5A",
+    "5B/5-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the wiring and the p.41 formula A X B X C(not) + D = E; the page prints no lamp state for any button combination (A/III-NOT is trace-only). Topology: 1+ feeds the arms 1Y and 4Y. Series branch 1Y-1X(N.O.)/2Y-2X(N.O.)/3Y-3Z(N.C.)/5A; parallel branch 4Y-4X(N.O.)/5A; light 5 from 5A to 5B/5-. The rest contacts 1Z, 2Z, 4Z and pushbutton 3's N.O. 3X are unwired, so no sneak path exists and light 5 = (pb1 AND pb2 AND NOT pb3) OR pb4. No relay is wired. Script: D alone, then A, A x B, add C, add D, drop D, drop C, drop B; the 500 ms advance before each expect lets the lamp finish its thermal transient; the page states no timing. ER-09 is prose for the earlier A X B(not) = C paragraph and changes no wire.",
+  "wires": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/3Y",
+    "3Z/5A",
+    "1Y/4Y",
+    "4X/5A",
+    "5B/5-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: no button down, E false. 1+ reaches only 1Y and 4Y; 1Y-1Z and 4Y-4Z go to unwired holes, so 5A is dead and light 5 is off. No other lamp or any relay coil is wired, so lights 1-4 and 6 stay off and every relay stays out",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: D alone (pushbutton 4 down): 1+/1Y/4Y-4X/5A-lamp-5B/5-",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: pushbutton 4 released: 4Y-4Z (unwired) and 1Y-1Z (unwired), 5A dead",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: A alone: 1Y-1X/2Y, but pushbutton 2 up connects 2Y only to the unwired 2Z, so 3Y and 5A stay dead",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: A x B x C(not) (pushbuttons 1, 2 down, 3 up): 1+/1Y-1X/2Y-2X/3Y-3Z/5A-lamp-5B/5-",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: pushbutton 3 down (C true): 3Y moves to the unwired 3X, breaking 3Y-3Z; pushbutton 4 up, so 5A dead",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: D with A, B and C all down: the 1Y/4Y-4X/5A branch bypasses pushbutton 3",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: pushbutton 4 released with 1, 2, 3 still down: both branches open (3Y-3X unwired, 4Y-4Z unwired)",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: pushbutton 3 released with 1 and 2 still down: 3Y-3Z recloses, path 1Y-1X/2Y-2X/3Y-3Z/5A",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47, rule A X B X C(not) + D = E (pushbuttons 1, 2, 4 on N.O. contacts, pushbutton 3 on N.C.); derived from topology: pushbutton 2 released, 1 still down: 2Y-2Z (unwired), 3Y and 5A dead",
+      "quote": "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    }
+  ]
+}

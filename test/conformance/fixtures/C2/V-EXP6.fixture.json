@@ -1,0 +1,240 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP6",
+  "source": "BK5-6 printed pp.6-8 = book5-6.pdf PDF pp.12-14",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1H/1+",
+    "1H/2H",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2H/3H",
+    "2L/D11",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3H/4H",
+    "3L/D12",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/5-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1H/1+",
+    "1H/2H",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2H/3H",
+    "2L/D11",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3H/4H",
+    "3L/D12",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/5-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 250
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK5-6 printed p.7 = book5-6.pdf PDF p.13",
+      "quote": "And if a car were to pass from the first checkpoint to the second checkpoint while the rotary switch dial moved from 0 to 15, its speed would be:"
+    },
+    {
+      "k": "advance",
+      "ms": 250
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK5-6 printed p.7 = book5-6.pdf PDF p.13",
+      "quote": "And if a car were to pass from the first checkpoint to the second checkpoint while the rotary switch dial moved from 0 to 15, its speed would be:"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5-6 printed p.6 = book5-6.pdf PDF p.12",
+      "quote": "Pushing pushbutton 6 starts the timing motor (in this case the rotary switch)"
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5-6 printed p.7 = book5-6.pdf PDF p.13",
+      "quote": "Similarly, if the dial turns through three revolutions—from 0 to 15, then from 15 to 14, then from 14 to 13—the speed of the car is:"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5-6 printed p.7 = book5-6.pdf PDF p.13",
+      "quote": "Similarly, if the dial turns through three revolutions—from 0 to 15, then from 15 to 14, then from 14 to 13—the speed of the car is:"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5-6 printed p.7 = book5-6.pdf PDF p.13",
+      "quote": "Similarly, if the dial turns through three revolutions—from 0 to 15, then from 15 to 14, then from 14 to 13—the speed of the car is:"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    }
+  ],
+  "note": "Printed claims only (Step 6). No erratum touches Book V pp.6-8 (errata sheets pp.3-4 list Book V pages 2, 10, 11, 12, 21-22, 24, 25, 30, 31, 33 and 35 only); wires are the printed 35, image-read from PDF p.12, and match programs.json (2L/D11 read as printed, not 'D 11'). The p.6 circuit diagram labels relay 5's lower arm 'D13' (a second D13, read at 300 dpi), against the program list's 5L/D14; the program list is wired, and the p.7 count order 15, 14, 13 needs D14 there. The diagram also draws D18 to a bare 'M' where the list prints D18/M-. Script: power on; pushbutton 6 pushed and released (the car passes the first check point); the dial runs three revolutions as the p.7 example describes them (0 to 15, 15 to 14, 14 to 13); pushbutton 5 pushed and released as the dial reaches 13 (the car passes the second check point); then a 6000 ms rest window. The three-revolution length, the 200 ms and 300 ms button holds and the rest window are script choices; the page prints none of them. Asserted: the dial sits on 0 just before pb6 is pushed (expects at 250 and 500 ms; p.7's 'moved from 0 to 15' puts the dial at 0 as the car passes the first checkpoint, and a motor running before pb6 would have left c0 by then, which is what makes 'pushing pushbutton 6 starts the timing motor' testable); the dial turns after pb6 (an until on dial=gap; the dial starts on c0, the construction state, so the wiper must leave its contact to turn), then reaches 15, 14 and 13 in the order p.7 names them (untils, each satisfied as the wiper arrives, which is what 'moved from 0 to 15' states). pb6 is released before the c15/c14/c13 untils, so they also cover the motor running on after the button is let go. Not asserted: 'pushing pushbutton 5 stops the motor' (no observable stops: the page prints no position the dial rests at, and the motor itself is not an observable); 'MINIVAC will count its revolutions' and which relay indicator lights are on after each revolution (the p.8 dial plate puts 83.52 in the 'RELAY LIGHT 5 IS ON' band and p.7 gives 83.52 for 0 to 15, but no sentence states a lamp state, so it is derived and left to Step 7); the dial-plate speeds (arithmetic for the owner, no observable; the plate prints 20.13 where 83.52/4 = 20.88, and p.7 prints 27.64 where 83.52/3 = 27.84). Observed, for Step 7: relay 6 and indicator light 6 latch on the pb6 push; relay 5 and light 5 come on at c15 of revolution 1, relay 4 and light 4 at c14 of revolution 2, relay 3 and light 3 at c13 of revolution 3, each held; pb5 drops relay 6 (light 6 off) and the wiper rests on c13 at the shipped coast_udeg_drive_removed of 9.54 deg (O-R5, O-R14; at the earlier invented 20 deg the coast carried it onto c14); the rest pad moves with that constant, and no assert depends on it. Rotary pad geometry, run rate and coast are profile fallbacks O-R1, O-R3 and O-R5 (coast scaling O-R13); the direction of travel rests on O-R11 (D17 at +, D18 at - turns toward increasing numbers), and nothing here asserts it: with D17 and D18 swapped, every assert still passes. p.7's 'completed 15/16 of a revolution' states the direction, but a discriminating assert is derived and left to Step 7; until windows are sized for a run rate as slow as 25 rpm.",
+  "digest": {
+    "eventCount": 129,
+    "moverTransitions": [
+      0,
+      0,
+      2,
+      2,
+      2,
+      4,
+      0,
+      0,
+      0,
+      0,
+      4,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      90
+    ]
+  }
+}

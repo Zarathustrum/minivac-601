@@ -1,0 +1,67 @@
+#!mv601-trace 1
+# id=VI-TICTACTOE contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=70
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=42 minTickGap=9 marginal=false
+     0.0 > connect cord=70 a=hole:M10#3 b=free r_uohm=0
+     0.0 > connect cord=71 a=hole:M11#3 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > disconnect cord=70
+   500.0 > connect cord=70 a=hole:M10#3 b=hole:6com#2 r_uohm=0
+  1000.0 > button6 target=1000
+  1011.2 * pb6 nc->mid
+  1013.7 * pb6 mid->no
+  1017.0 * outLamp1 off->dim
+  1023.7 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+  1025.3 * relay3 nc->mid
+  1025.4 * relay4 nc->mid
+  1025.6 * relay5 nc->mid
+  1025.8 * relay6 nc->mid
+  1026.6 * relay3 mid->no
+  1026.7 * relay4 mid->no
+  1026.9 * relay5 mid->no
+  1027.1 * relay6 mid->no
+  1036.0 * outLamp1 dim->on
+  1064.0 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+  1300.0 > button1 target=1000
+  1311.2 * pb1 nc->mid
+  1313.7 * pb1 mid->no
+  1316.1 * relay6 no->mid
+  1316.2 * relay4 no->mid  relay5 no->mid
+  1316.3 * relay3 no->mid
+  1317.0 * relay6 mid->nc
+  1317.1 * relay4 mid->nc  relay5 mid->nc
+  1317.2 * relay3 mid->nc
+  1323.6 * indLamp2 off->dim
+  1324.9 * relay2 nc->mid
+  1325.0 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  1326.2 * relay2 mid->no
+  1335.8 * outLamp1 on->dim
+  1357.6 * dial c0->gap
+  1364.0 * indLamp2 dim->on
+  1378.5 * dial gap->c15
+  1380.6 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  1391.4 * outLamp1 dim->off
+  1441.1 * dial c15->gap
+  1462.0 * dial gap->c14
+  1524.7 * dial c14->gap
+  1545.6 * dial gap->c13
+  1608.2 * dial c13->gap
+  1629.1 * dial gap->c12
+  1691.8 * dial c12->gap
+  1712.6 * dial gap->c11
+  1775.3 * dial c11->gap
+  1796.2 * dial gap->c10
+  1858.8 * dial c10->gap
+  1879.7 * dial gap->c9
+  1879.8 ? dial=c9  "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix. / Push pushbutton 6 and hold pushbutton 6 down while you push pushbutton 1. The pointer knob will turn to indicate the machine's first move."
+  1891.9 * relay2 no->mid
+  1892.8 * relay2 mid->nc
+ 11879.8 ? dial=c9  "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix. / Push pushbutton 6 and hold pushbutton 6 down while you push pushbutton 1. The pointer knob will turn to indicate the machine's first move."
+ 11879.8 > button1 target=0
+ 11879.8 > button6 target=0
+ 11891.0 * pb1 no->mid  pb6 no->mid
+ 11893.5 * pb1 mid->nc  pb6 mid->nc
+ 11911.5 * indLamp2 on->dim
+ 11967.1 * indLamp2 dim->off
+ 21879.8 ? dial=c9  "the machine's first move will always be to the center of the game matrix. / Release both pushbuttons 1 and 6. All succeeding moves are made as follows: Place the free end of the machine's \"play\" wire in the bottom contact of the matrix terminal corresponding to the machine's last move (as indicated by the pointer knob)."

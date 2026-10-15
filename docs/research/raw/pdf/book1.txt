@@ -1,0 +1,1795 @@
+Getting acquainted with
+
+           M           i   n        i      v         a       c   6   0   1
+
+
+
+
+   S C IE N T IF IC                            r.    j   |
+ D EV ELO P M EN T         .. .3   T ir S t S te p
+
+c o r p o r a t io n               tow ard th e exciting world o f electronic
+
+    w—                         d ata processing via digital com puters
+      I he M IN IV A C 601 computer and
+this book are used together to demonstrate
+the operation of digi+al computer components
+and to teach p rinciples basic to their use.
+As you become fa m ilia r w ith M IN IV A C 601
+and understand its relationship to large
+digital computers, you w ill be performing
+the operations basic to a modern ele ctro n ic
+data processing m achine.
+
+        This is the first in a series of books
+using M IN IV A C 601 to demonstrate the
+fundamentals of modern digital computers.
+This book acquaints you w ith M IN IV A C 601 .
+The second book in this series relates
+the components of M IN IV A C 601 to
+corresponding parts of a large commercial
+digital computer. O ther books enable
+you to use M IN IV A C 601 to discover
+how these parts function to make
+d ecisio ns, to do a rith m e tic, and
+                                                  CONTENTS
+to do p ractical work for men. A
+book of games w hich may be
+played w ith M IN IV A C 601
+is also provided.
+                                                                                                                                                                                 P A G ES
+                                                      I ) POW ER S U P P L Y .........................................................................................             3
+                                    7.) P R O G R A M M IN G W IR ES.......................................................................................................        4
+                                                                                  Closed C ircuit' P rin c ip le ........................................................          4
+                                                                                  Using the Programming W ire s.............................................                       4
+                                                                                  Experiment 1: Use of ProgrammingW ire s...................                                       5
+                                                                                  W iring Shorthand.........................................................................       5
+                                                       3fc) L IG H T S                   . ......................                                                                  6
+                                                                                  Experiment 2: Single Light O p e ra tio n .......................                                7
+                                       ■
+                                       4 ) PU SH B U TTO N S...................................................................................................................... 8
+                                                               Experiment 3: Pushbutton O p e ra tio n ...........................                                                 9
+                                                               Experiment 4: Series C ir c u it ........................................... | q
+                                                               Experiment 5 : Parallel C ir c u it ............................................u
+                                               5) R E L A Y S ......................................................................................................................12
+                                                               Experiment 6 : Manual Relay O p e ra tio n . . . ............ 1 3
+                                                               E le c tric a l O peration of the R e la y ..................................... 14
+                                                               Experiment 7: E le c tric a l Relay O p e ra tio n                                                                    15
+                                                               Experiment 8: One Relay Controls A nother..........
+                                                               Experiment 9: A Relay Controls Its e lf...........................17
+
+
+
+
+                                                                    __                                                       ___ESP(i5Pi
+                                                     f SLID E
+                                                          S W IT C H E S .
+                                                                       .......................... * ............ . ......................... ............................ 18
+                                                        Experiment 10: Slide Sw itch O p e ra tio n ........................19
+                           'R O T A R Y S W IT C H ...................................................................................................................... 20
+                                                        Experiment 11: Manual O peration of
+                                                                                                    Rotary Swi t c h .........................                            21
+                                                        Motor D riv e .......................................................................................22
+                                                        Resistors............................................................................................ 22
+                                                        Decimal Inp ut-O utput........................................................... 22
+                                                        Experiment 12: Basic Motor O p e ratio n .................... 23
+                                                        Experiment 13: Motor Driven Rotary S w itch . • • • 23
+                                                        Pulse G e n e ra to r......................................................................... 24
+                                                        Programmer.................................................................................... 24
+                                                        Experiment 14: Motor Reversing........................................ 24
+                                    8 ) M A T R IX ..................................................................................................................... 25
+                        9 ) A U X IL IA R Y T E R M IN A L S ...........................................................................................                  25
+1 0 ) L O O K IN G A H EA D W ITH M IN IV A C 6 0 1 ................................................................................................................ 26
+                                                        Summary: Book 1...................................................................... 26
+                                                        Book II: What is a D igital C o m p u te r? .................... 26
+                                                        Book III : How Computers
+                                                                                                 Make Logical D ecisions                                                  26
+                                                        Book IV : How Computers Do A rith m e tic ................. 27
+                                                        Book V : How Computers Work for M an .................... 27
+                                                        Book V I: M IN IV A C G am es................................................... 27
+              PROBLEM S FO R M IN IV A C 6 0 1 ...........................                                                                                                28
+                                                                                                                                                                                to 32
+                       The M ini vac Manual was prepared and edited by the staff of
+
+                                   S c ie n tific Development Corporation
+
+
+
+
+                                      First Printing— August, 1961
+
+
+
+
+EX LIBRIS ccapitalia.net
+Copyright   (c\ 1961 by S c ie n tific Development Corporation, 372 Main Street, W atertow n, Massachusetts
+    POWER SU PPLY
+                               he power supply converts the 110-volt A C power obtained
+                                from a standard e le c tric outlet in your home to a safe working
+                                  level of 12 volts D C . This low voltage DC is used to
+                                     power M IN IV A C and is connected to a ll terminals +
+                                        and - on the power p a n e l. Most toy e le c tric trains
+                                           use the same low -voltage power as M IN IV A C and
+                                             therefore working w ith the M IN IV A C is as safe as
+                                               operating an e le c tric tra in .
+
+
+
+
+The POWER SW ITCH is
+used to turn power O N and O F F .
+The power should be O F F when­
+ever you are w iring the
+computer. Following this
+p ractice w ill establish good
+working habits and w ill help
+to prevent accid ental short-
+c irc u its . The power must be
+turned O FF when the computer
+is not in use. The red power light
+shows when the power is O N .
+
+
+
+
+The red button above the power switch labeled C IR C U IT BREAKER*
+ is a safety switch w hich au to m atically turns o ff the power supply
+    when it is overloaded. An overloaded c irc u it or a sho rt-circu it
+     w ill cause the c irc u it breaker to "b lo w " just lik e a household
+     fuse. A short c irc u it occurs when + is wired d ire c tly to -
+      without a component in betw een. The power supply
+        may be restored to normal operation after a short-
+         c irc u it by changing the fa u lty w iring and then
+      pushing the red circu it-b re a ke r button back in .
+
+   C A U T /o n :
+  Do N O T hold the c irc u it-
+  breaker button in if it
+  continues to "b lo w ." Turn                                 N o w .. . .plug the POWER C O R D into
+  power o ff and determine the                                   a standard 110-volt A C (N O T DC)
+  cause for drawing excessive                                           o u tle t, and you are ready to
+  current before proceeding                                                       G E T A C Q U A IN T E D
+  w ith the experim ents.                                                    W ITH M IN IV A C 6 0 1 ...........
+
+
+
+                                                                                                                   3
+w
+
+
+
+
+        2       PROGRAMMING W IRES
+
+                     ^Programming wires of different lengths are provided to make e le ctrica l
+                        ( programming) connections between various terminals on M IN IV A C 601 .
+                    These wires establish closed e le c tric a l circ u its and route the current through
+                           one or more components to create a desired computer c ir c u it .
+
+
+                                                                               Each component in the computer
+                                                                               is connected to nearby terminals
+                                                                               by permanent connections made
+                                                                               under the computer p a n e l.
+
+                                                                   The components may be interconnected by
+                                                                   inserting programming w ires into the term inals.
+                                                                   Each terminal has two holes side-by-side w hich
+                                                                   are connected together underneath the computer
+                                                                   panel . Programming w ires may be plugged into
+                                                                   either (or both) holes of the term in a l. A ll
+                                                                   programming w ires are color-coded by length.
+
+
+
+            C LO S E D C IR C U IT PR IN C IPLE
+
+            For any e le c tric a l d evice to operate, it is
+            necessary for e le c tric a l current to flow
+            TH R O U G H the d e v ic e . A closed e le ctrica l
+                                                                                             A
+                                                                                                 Electrons   our
+            c irc u it must be established to let the
+            electrons flow from the negative power
+            supply terminal ( - ) through the
+            component to the positive power supply
+            terminal ( + ) . Thus, a ll e le c tric a l
+            components on the M IN IV A C 601 require
+            at least 2 connections to operate.
+                                                                                                 ElectronsIN
+            U S IN G THE P R O G R A M M IN G WIRES
+
+            The programming w ires are used to connect
+            various components of M IN IV A C 601 . Closed
+            circu its are wired through the term inals provided
+            on the console for each component. Each
+            terminal is id entified by a letter printed below
+            i t , and by the number printed at the
+            top of the section in w hich it is lo cated .
+            This makes possible easy id e n tificatio n of
+            terminal points when w iring components
+            together in future experim ents. We are
+            now ready to use the programming w ire s.
+
+    4
+EXPERIMENT |
+
+                                 OF PROGRAMMING WIRES
+                                             his experim ent demonstrates the use of programming
+                                               wires to make connections on M IN IV A C 601 .
+
+
+
+                                                l y Take two programming w ire s. G rasp one
+                                                        end of the first w ire firm ly between your
+                                                           thumb and forefing er.
+
+
+
+                                                                   Connect this end of the programming
+                                                                     w ire to terminal 1 + on the
+                                                                          computer panel by pushing
+                                                                            it into one of the two holes
+                                                                             just below the + in section 1
+                                                                                 of the computer.
+
+
+                                                                  3 ) Take the other end of this program­
+                                                                       ming w ire and connect 1 + to
+                                                                           terminal 1 A by pushing it
+                                                                            into one of the two holes
+                                                                              just above the letter A in
+                                                                                 section 1 of the computer.
+
+
+
+                                                        ^ / S im il a r ly , connect terminal 1 B to
+                                                             terminal 1 - w ith the second programming
+                                                         w ire . These connections cause lamp 1
+                                                      to light when the Power Sw itch is turned o n .
+                                                    This simple c irc u it is discussed
+                                                   further in Experiment 2 .
+
+
+
+                                  Disconnect the programming w ire by pulling both ends from the
+                                       computer term inals. Do N O T disconnect the program­
+                                        ming wires from the console by pulling on the w ire
+                                     because the w ire may b re ak. A ll programming wires
+                                  should be disconnected after each experiment or problem.
+
+   W IR IN G SH O RTH AN D
+                  A W IR IN G SH O RTH AN D is used to in d icate connections w hich are to be
+                  made on the computer by simply w riting the two terminal designations
+                  w ith a slash in between. In Experiment 1 , terminal 1 + was connected
+                  to terminal 1 A . This is w ritten in shorthand-------- —                    ■, /
+                  A series of such shorthand w iring instructions w ill be given to            ' / 1/^
+                  describe the w iring of a complete c ir c u it .
+
+                                                                                                             5
+                                                               < id entical lights Iabeled
+                                                          "B in ary O utput" are used in
+                                                        M IN IV A C 601 to show what is
+                                                     happening in various parts of the
+                                                 computer. A light w ill come on when
+                                                 is connected in a closed c irc u it so
+                                                     rrent flows through the lig h t.
+
+                                   This allow s the computer to tell an operator what
+                                 it is doing and to display the answer to a computer problem,
+
+
+
+                       Each light is id entified by the section
+                           number d ire c tly above i t .
+
+
+
+In order for a light to turn O N (to lig h t),
+current must flow TH R O U G H the lig h t.
+The electrons must flow IN on one w ire
+and O U T on another w ire . This is the
+closed c irc u it p rinciple for lig h ts.
+
+
+
+
+The terminals labeled A and B on either side of
+each lig ht are used to supply the e le c tric a l
+power to turn the light O N . A light comes
+O N when terminal A is connected to one
+power supply terminal ( + or - ) and terminal
+B is connected to the other power supply terminal ( - or + ) .
+
+
+                                                      l^o Co n n ectio n
+         When the circuit is
+               OPENED                                                                           U §ht
+                                                                                                    off
+       fhe light is OFF
+
+         When the circuit ig
+                CLOSED                                                                   >o )
+
+       the lig/ntcomesON
+                                                                                             *\V '
+                                                                                              * \
+                     —I
+EXPERIMENT 2
+
+
+                       SINGLE LIGHT OPERATION
+
+                                            his experiment demonstrates the operation of
+                                              a single binary output lig h t.
+
+
+
+                                                              Using two short programming w ire s,
+                                                         i;
+                                                               make the connections 1 + / 1 A and 1 - / 1 B.
+
+
+
+                                                                   Turn the power switch O N (be sure
+                                                                     the main power cord is plugged into a
+                                                                        proper o u tle t). Light 1 comes O N ’
+                                                                       because current flows through the lig h t.
+
+
+
+                                                                V   Turn the power switch O F F and
+                                                                       disconnect the programming w ire s.
+                                                                       Power should be turned O FF and
+                                                                          a ll programming w ires should be
+                                                                   disconnected after each experiment
+                                                                      is com pleted.
+
+
+
+                                                V    A ny of the lights may be operated by
+
+1+                      1A                         connecting programming wires from + to A
+                                                  and from - to B just as was done for light 1.
+
+
+                                      Make connections to two or more lights at once.
+
+
+
+                                (The c irc u it diagram looks lik e this)
+I -                     IB
+
+      The lights are used in later experiments to
+      represent numbers. The light O FF w ill represent                  Binary Number System
+      a zero ( 0 ) and the light O N w ill represent a one ( 1 ) .
+                                                                                                       '" • v
+      The numbers zero ( 0 ) and one ( 1 ) are the only numbers
+      used in the binary number system, and it is for this
+                                                                                                     S L ■
+      reason that the lights are labeled " Binary O u tp u t."
+      Binary numbers and their use in digital computers                 0 FF= 0                   0 N = |
+      Wl be taken up la te r.
+
+
+
+
+                                                                                                                7
+   PUSHBUTTONS
+
+                              he section of the computer panel labeled "B inary Input" contains
+                          six identical pushbuttons w hich are used by the operator to supply
+                        information to the computer. The pushbuttons may be used to tell the
+                      computer what to do, or to in dicate the value of input numbers.
+                        Pushbuttons may be used to control the other components of M IN IV A C 601
+                  Each pushbutton is id entified by its section number on the computer p a n e l.
+
+                    Each of the six binary input pushbuttons has three terminals located d ire c tly
+                  above it on the computer p a n e l. Each terminal is connected under
+                     the panel to a co n tact. The term inals are labeled X , Y and Z .
+
+
+
+
+                                                           The three contacts for each of the six
+                                    pushbuttons are a ll connected to terminals in the same manner:
+
+
+
+
+                                                                                                       ♦N
+When the pushbutton is U P, an e le c tric a l
+connection is made between terminals Y
+and Z . When the pushbutton is D O W N ,
+the e le c tric a l connection is switched to
+terminals Y and X . Terminal Y is connected
+to the "common" contact and is alw ays used when      up= y/z                   Dowm= x/ y
+the pushbutton is connected in a c irc u it .
+
+When a pushbutton is shown in a c irc u it
+diagram , the contacts are A LW A Y S shown
+                                                             ir :l
+w ith the pushbutton UP - in the "norm ally
+closed" ( N . C . ) position. N o tice that
+                                                            j !*2.
+term inals X and Y are not connected when
+the pushbutton is U P, and that terminals
+Y and Z are not connected when the
+pushbutton is D O W N .
+
+
+
+The follow ing experiments demonstrate basic circ u its in w hich
+                                    one or two pushbuttons are used w ith a lig h t.
+EXPERIMENT 3
+
+                                 PUSHBUTTON OPERATION
+                                 S    t    .   .
+                                 I    I his experiment uses a light to demonstrate the operation of a pushbutton
+                                            Both norm ally open and norm ally closed circu its are connected.
+
+                                                                                          jl x
+   >) The normally open pushbutton-light                 1+                              -*—
+       circuit drawing looks like this:
+       Program this circuit by making
+ * ) the following connections: 1+/1Y, 1)(/1A, 1-/1B                  I -
+     Turn the power switch O N . Push DOWN on pushbutton 1. Light comes ON because the
+  3) circuit from + to - is closed through the pushbutton contacts and through light 1 .
+     Release the pushbutton and the light goes O FF. The light goes OFF because the circuit
+     from + to - is open (broken) by the pushbutton contacts. Turn the power switch O FF.
+                                                                                       1Z
+     With a normally closed pushbutton-light added,             ^ -
+  «)
+     the circuit drawing looks like this:
+     Program this by adding connections — 1Z/2A, 2B/2-                ^
+       Turn the power switch O N . Light 2 comes on as soon as power                       IX
+  6) is turned O N .   Light 2 lights because the circuit from + to -
+       is completed through the normally closed contact (Z) of pushbutton 1 .
+
+  7)   Push down on pushbutton 1 . Light 2 goes OFF and light 1 comes O N .
+       Light 2 goes OFF because the circuit is opened by the switch and
+                                                                                           1A                       2A
+       electric current can no longer flow. Light 1 comes ON because the
+       circuit is closed through the switch.
+
+  s\ Push up and down slowly on pushbutton 1 and carefully watch the                                                2B
+       operation of the two lights. One light always goes OFF before the other              IB
+       light comes O N . There is a position, with the pushbutton only partly
+       depressed, where both lights are O FF. Try to find this position. The
+       switch breaks one connection before it makes the other connection. The
+       pushbuttons are thus called "break-before-make" switches. This is important because it
+                                                                                             I -
+                                                                                                                   z-
+       shows that the normally open contact is never connected directly to the normally closed contact,
+       even for a very short time. This feature is necessary for the proper operation of some M INIVAC circuits.
+
+This experiment demonstrates the two basic ways to use a pushbutton. The norm ally closed contact
+( Y / Z ) may be used to complete a c irc u it when the pushbutton is U P , and the norm ally open
+contact (X / Y ) may be used to complete a c irc u it when the pushbutton is D O W N .
+
+
+
+       The pushbuttons will be used in later experiments to
+       represent numbers. The pushbutton UP will represent a
+       Zero (0), and the pushbutton DOWN w ill represent a one (1).
+                                                                            Binary fdunnber Syste
+       The numbers, zero (0) and one (1) are the only numbers
+       used in the binary number system. and it is for this                                       _     l
+       reason that the pushbuttons are labeled " Binary
+       Input. " Binary numbers, and their use in digital
+       computers, w ill be taken up later.
+                                                                            U P = 0"               DOWN =*<■//
+                                                                                                          1
+EXPERIMENT 4
+
+
+                            SERIES CIRCUIT
+                                                  I his experiment demonstrates the use of
+                                                two pushbuttons connected together in series
+                                           to form a c irc u it where both pushbuttons must be
+                                         pushed at the same time before the c irc u it is closed.
+
+
+
+                   0 Program this c irc u it by making the
+                     follow ing connections:      1+ /1Y   2> y2A
+                                                  1 V 2Y   2 B /2 -
+
+
+            Turn the power switch O N and push down
+           pushbutton 1 . Watch light 2 . It does N O T
+                light because the connection from + to
+             the light is broken by pushbutton 2 .
+
+
+
+   3 / Release pushbutton 1 and push down push­
+    button 2 . Watch light 2 . It still does N O T
+        light because the connection from + to
+    the light is now broken by pushbutton 1 .
+
+
+
+    4 ) Push down both pushbutton 1 and
+       pushbutton 2 at the same time and see light
+         2 go O N . A complete c irc u it is now
+             made through both pushbuttons.
+
+ It is possible to connect more than two push­
+ buttons in series and make a c irc u it where aM the                    The c irc u it diagram looks lik e thi
+ pushbuttons connected must be pushed down before                                       1Z                 2Z
+    the c irc u it is com pleted. Construct a series
+   c irc u it using three or more pushbuttons by your­                          A      -        _________
+                                                                l+   *          iy         ix               vi
+   s e lf, to demonstrate this p rin c ip le . The c irc u it ,
+    w ith terminal numbers in d ica te d , should first be
+      drawn on paper. The c irc u it should then be
+        connected on the computer using programming w ire s.
+
+
+                        A N "A N D " C IR C U IT — The series c ir c u it , where two or more
+                    pushbuttons must A L L be closed to make £ complete c ir c u it , is ca lle d
+                 an A N D c ir c u it , because both pushbutton 1 A N D pushbutton 2 must be closed
+                     before the c irc u it is com plete. This is a basic c irc u it of computer
+                                   logic w hich w ill be used la te r.
+EXPERIMENT 5 !
+
+
+                            PARALLEL CIRCUIT
+                                        his experiment demonstrates the use of two
+                           . I       pushbuttons connected together in p arallel to
+                                  form a c irc u it where either pushbutton may be
+                                   pushed to complete the c ir c u it .
+
+
+         I ) Program this c irc u it by making
+            the follow ing connections:        1+/1Y      V Y /2 Y
+                                               1V IA      2V 1 X
+                                               1 B /1 -
+
+
+           Turn the power switch O N . The
+        light does not come on because there
+           is not a closed c ir c u it .
+
+
+   3) Push down pushbutton 1 . Light 1 comes
+         O N because a closed c irc u it from +
+     through the light to - is now made
+        through the norm ally open
+           contact ( I X ) of pushbutton 1 .
+
+
+  4) Release pushbutton 1 and push
+     down pushbutton 2 . The light again
+    comes O N because a closed c irc u it is
+     now made through the norm ally open
+      contact ( 2 X ) of pushbutton 2 .
+
+  5) Push down both pushbutton 1 and pushbutton 2 at
+     the same tim e. The c irc u it is closed and the light                The c irc u it diagram looks lik e this:
+         comes O N if either pushbutton 1 is down O R if
+                                                                                    12
+     pushbutton 2 is down OR if both pushbutton 1 and
+       pushbutton 2 are down at the same tim e.           1 ^ 0.           1Y              IX
+                                                                             «              ♦                           1A
+
+
+
+                                                                                                                      0
+  6 ) More than two pushbuttons may be connected in
+      p arallel to make a c irc u it where any one of the
+         pushbuttons may be pushed down to complete
+  the c ir c u it . To demonstrate this p rin c ip le , construct                   2Z                                 •IB
+     a p arallel c irc u it using three or more pushbuttons.
+  Draw the c irc u it diagram , and then connect the c irc u it
+      on the computer using the programming w ire s.                                        2*
+
+
+                             A N "O R " C IR C U IT — The p arallel c ir c u it , in w hich closing either
+                                                                                                                      I -
+                         of two or more contacts completes the c ir c u it , is ca lle d an OR
+                               c ir c u it . Pushing down either pushbutton 1 O R pushbutton 2
+                            completes the c ir c u it . This c irc u it is basic to much of the
+                                                  computer lo gic w hich is used la te r.
+                                                                                                                            11
+                                   ^ ix identical relays labeled
+                      "storage-processing" are used by M IN IV A C 601 to store or "remember"
+                          and to process computer inform ation. Each re lay has two sets of contacts,
+                                 sim ilar to the pushbutton co ntacts, w hich open and close
+                                        together. The relays are operated by an e le c tric current
+                                               ch flows Through the re lay c o il, whereas the
+                                                pushbuttons are m anually operated.
+                                                               The re lay is p a rticu la rly useful because it can
+                                                  be connected so it w ill "remember" whether it is O N or
+                                               .      O F F . Every computer has some d evice w hich is able
+£ £ LA / : / X .                                              "rem em ber." In M IN IV A C 601 this d evice
+                                                 ^       i s       the re la y . The relays may be used
+V sm C w beriro J1
+                                               X s-*.                  to control any of the components
+     device
+                                                                                used in M IN IV A C 601 .
+
+
+
+                                                                    Each of the six relays has six terminals
+                                                           located d ire c tly below it on the computer panel
+                                                       These terminals are connected under the computer
+                                                         panel to contacts of the re lay sw itch . The
+                                                            term inals are lab eled : G , H , J , & K , L , N .
+
+
+
+
+                              RELAY OFF                           RELAY ON
+When the relay is O FF, separate electrical con­                 The two arms (H & L) are connected together.
+nections are made between terminals H and J and                  Both contacts always close together.
+terminals L and N . When the relay is O N ,
+separate electrical connections are made between                 The relay switch contacts are connected to
+terminals H and G and terminals L and K .                        terminals in the same pattern used with the
+                                                                 pushbutton contacts. The normal Iy-open (N .O.)
+When relay contacts are shown in a circuit                       contact is connected to the left terminal, the
+diagram, the contacts are ALWAYS shown with the                  relay arm (common contact) is connected to the
+relay O FF. Notice that terminals H and Gand                     center terminal, and the normally-closed (N .C .)
+terminals L and K are not connected when the relay               contact is connected to the right terminal. The set
+is O FF . Also, terminals H and J and terminals L                of contacts closer to the operator is connected to
+and N are not connected when the relay is O N .                  the set of terminals closer to the operator.
+The M IN IVAC relays are        Plasty Crossbar^)                The two relay arms are connected together
+mounted on the computer                                          mechanically with a plastic crossbar. Both arms
+panel with the contacts of                     j Arms on         move together and make or break contact at the
+                                                 norma/ly
+the relay switch visible. The              I                     same time. Observe the relay operation by
+                                                  closed
+relay arm is in the middle,                      contacts        gently pushing on the plastic crossbar with your
+between the other two contacts.                                  hand. Notice how the arm leaves the normally-
+Terminals are connected                                          closed contact and swings over to touch the
+to the contacts like this:                                       normally open contact.
+                                 6 HJ      14 L N
+                                  ^ T e rm in a ls /
+EXPERIMENT £
+
+
+                          MANUAL RELAY OPERATION
+
+                                         m is experiment uses two lights to demonstrate
+                                              the basic operation of a re la y sw itch .
+
+
+
+               > Connect the contacts of re la y 1
+               /     to turn light 2 O N when the re lay
+              is O F F , and to turn lig ht 1 O N when
+                       the re la y is O N .
+
+
+
+                          for this c irc u it is
+                                 1G / 1A
+                                 2 B /2-
+
+
+
+            Turn power O N .
+                 Light 2 comes O N
+
+
+
+
+   A.) G e n tly push the re la y crossbar
+            to the le ft. Light 2 goes O FF and
+   light 1 comes O N . W atch the re lay
+   arm a lte rn a te ly touch one contact                           The c irc u it looks lik e this
+   and then the other as the relay
+  crossbar is moved back and fo rth.
+
+
+
+
+                                                               1G                                     IB
+                                                                                                           1 -
+                                                                                        1A
+
+
+                                                                                                                 13
+    5           Electrical Operation of the Relay
+    covfO
+
+
+
+                 gif                         U n lik e the pushbutton w hich must be operated m an u ally, the
+                                               re la y can be operated e le c t r ic a lly . Each re la y has a round
+                                             w hite c o il, located to the le ft of the arms. This is an electro ­
+                                          magnet w hich becomes magnetized when e le c tric current flows
+                                       through the c o il. When the co il becomes "e n e rg iz e d ," the e le ctro ­
+                                     magnet attracts the metal bar connected to the arms (by the plastic
+                                               crossbar) and pulls it to the le f t . Sending current through
+                                                      the coil of the electro-m agnet operates the re la y s.
+                                           —                Thus, the re la y may be operated e le c tric a lly without
+                                                                 touching it p h y sic a lly , but the pushbutton must
+                 Terminals fv opera-he
+                                                                    be operated m anually.
+                               i Relay
+                                           ^          The re la y is turned O N by connecting the re la y coil in
+                                               a closed e le c tric c ir c u it . When the c irc u it is closed current
+                                           OO flows through the coil and the coil is "e n e rg ize d ."
+
+
+            Switches ———
+
+
+                                                                                            jm m .
+j           /
+                                                                                     USHT    % !?
+~Jethr\in2ls Connected
+                                                            Three terminals are located d ire c tly above
+ ~hSwitches          “
+                                             _         each re lay on the computer p a n e l. These
+                                  OO        oO \          . .       7            i i i           i
+                                  H          J      terminals are connected under the panel to
+                                                    the re la y c o il. Two terminals are connected
+                                         A .    d ire c tly to the re lay c o il, and the third
+                                         OO J terminal is connected to a light wired in
+                             t-         N / series w ith the re la y coil as shown.
+                                       ——  When the re la y co il is energized
+                                         by connecting power to C and F ,
+                                  the light d ire c tly below the re la y comes
+                                O N because the light is wired in series
+                              with the re la y c o il. If the re la y coil is
+                         energized by supplying power through contacts
+                         E and F , the light beneath the re la y w ill N O T
+                    come on because there is no current flowing through
+                 the lig h t. The light below the re la y coil may be used to
+                  show when the re la y is O N .
+                The c irc u it drawing for a re la y switch looks lik e this: m*00
+
+                The follow ing experiments demonstrate re lay operation
+                   with pushbuttons and lights in simple computer circu its                   Rfi-tay Switches A lw a Y S
+                                                                                                operate together
+   EXPERIMENT
+                                       ELECTRICAL RELAY OPERATION
+                                                        ^ T h is experiment demonstrates the basic e le ctrica l
+                                                               operation of a r e la y . Additions to the "manual
+                                         |                       re la y operation" c irc u it of Experiment 6 permit
+                                       -I                           the re la y to be operated e le c tric a lly
+                                                                            through a pushbutton.
+
+       0 The program for connecting the switch
+            contacts of re la y 1 as shown in
+               Experiment 6 is: 1+/1H                        1 G /1 A
+                                    1 J/2 A                  2 B /2-
+                                             1 B /1 -
+
+    2) The program for connecting the coil of
+           re la y 1 through the norm ally open
+               contact of pushbutton 1 is:    1+ /1Y                     1 F/1 -
+                                              1 X /1E
+         Turn power O N . Light 2 comes O N .
+    3)
+
+    4)  Press down pushbutton 1 and see the
+           re la y operate. The re la y makes a " c lic k "
+       as the coil is energ ized , and the re la y contacts
+         switch the lig h ts. Light 2 goes O FF and
+        light 1 comes O N . O perate the re la y several times
+          w ith pushbutton 1 and watch the movement of
+                the re la y co ntacts.
+
+   5 J N o w , connect the other set of re lay contacts
+         (1 K , 1 L , I N ) to two unused lights so one lijght
+            comes O N when the re lay is O FF and the
+         other light comes O N when the re la y is
+               O N . Try this yourself.
+
+   £ ^ T o modify this program so that the coil indicator
+            lamp w ill light when the coil of re lay 1 is
+               energized: remove connection         1)^/1 E
+                            add connection          D y lC
+ The c irc u it for this modified part of the program is:
+
+
+
+
+                                        0
+             12                                                                    The dotted lin e in this c irc u it indicates that
+1+ iy                  IX         1C               I9
+                                                    E 00000 I Ff        I-         contacts 1 G , 1 H, and 1J are part of the re lay
+                                                                                   switch controlled by the coil connected
+     —• -
+                                                                                        between IE and I F .
+
+
+
+             P LA TE        The re la y is made w ith a small electro-m agnet c o il. When current flows through
+                            the c o il, a magnetic force is produced w hich pulls on the small metal plate attached
+                            to the p lastic crossbar to switch the co ntacts. In this experim ent, we have seen the
+                            operation of the electro-m agnet and have operated the re la y to control a set of lig h ts.
+                            We have also seen the re la y indicator lamp light when the re lay was turned O N .
+EXPERIMENT 8
+
+
+                                         RELAY CONTROLS ANOTHER
+
+                                           ■his experiment shows how a re la y may be used to
+                                         control another r e la y .
+
+
+
+     | ) The program for this c irc u it is:
+
+             14-/1V       1+/1H        2+/2H
+             1V1C         1 G /2 C     2 G /2 A
+             1F / l -     2 F /2 -     2 B /2 -
+
+
+     2*3 Turn power O N and m anually
+        operate re la y 2 by pushing the
+        p lastic crossbar to the le ft.
+      See light 2 come O N .
+
+ 31 Release re la y 2 and m anually
+    operate re la y 1 . As you push
+            on the plastic crossbar
+   of re la y 1, re la y 2 w ill c lic k O N
+   A N D L IG H T 2 W ILL C O M E O N .
+     The switch contacts of re la y J_
+     supply power to re la y 2 by closing
+    the c irc u it to the coil of re lay 2_.
+
+   Release re lay 1 and press pushbutton 1 .
+      Relay 1 is turned O N by pushbutton 1,
+  re la y 2 is turned O N by the switch
+   contacts of re la y 1 , and light 2 is turned
+   O N by the switch contacts of                                  The c irc u it looks lik e this:
+  relay 2 . Thus, the pushbutton                                                                2J
+      controls relay 2 through the
+    contacts of relay 1 .                                                    2+.         2H i        23   2A
+
+
+5>1 It is possible to connect several
+   relays in a series, where each relay
+      controls another. Expand the
+    present c irc u it to use a ll six relays
+       w ith each re la y controlling the
+   coil of the n e x t. The last relay
+        in the series, re la y 6 , should
+      turn lig ht 6 O N .
+                            —I
+EXPERIMENT
+
+
+                                 A RELAY CONTROLS ITSELF
+                                                 I his experiment demonstrates how a re lay
+                                                   may be used to control its own operation.
+                                                     The re la y is connected to remain O N when it
+  IJ The program for this c irc u it is:               is turned O N , and to remain O FF when it is
+   J    IF / 1 -  2 Y / 2+                               turned O F F . The re lay remains in one of the
+          1 C/1 X     2 Z /1 L                              two conditions (O N or O F F ) until signalled
+          1 Y /2 Y    1 K /1 C                                by one of the pushbuttons to change to the
+
+        Push pushbutton 1 and release. The
+      re la y indicator light comes O N and stays
+     O N . The re la y stays O N because an e le c tric
+     c irc u it is completed through its own contacts
+   to energize the c o il.
+
+       Push pushbutton 2 and release. This
+       momentarily interrupts current flow
+    through the coil and turns the re la y O F F .
+      The re la y indicator light turns O FF and
+       shows that the re la y is no longer energ ized .
+        The re la y c irc u it has now returned to its
+           original co nd ition.
+
+       O perate the c irc u it back and forth        ^ '
+      a few times by first pushing push­
+   button 1 ; then pushbutton 2 .
+
+
+
+
+The c irc u it used in this experiment is ca lle d
+"b istable" because it is able to remain in
+either of two stable conditions. Many
+different types of "b istab le" circ u its are
+used in modern digital computers.
+                                                     t+
+                                                                                   r
+                                                                                  IN
+
+                                                                 2X
+The two stable conditions of the re lay c irc u it
+(O N and O F F ) are used by the computer in later
+experiments to represent two numbers. When the                   1Z
+re lay is O F F , the number zero (0) is represented.
+When the re la y is O N , the number one (1) is
+                                                                                                          0000 0
+                                                                                                                   I-
+represented. The re la y c irc u it thus remembers                                                                 #
+                                                           iy           IX                1C         1£      IF
+(stores) these binary numbers.
+
+
+                                                                                                                   17
+r
+
+
+          SLIDE SWITCHES
+                                           $ i x id e n tica l slide switches labeled "Secondary
+                                             Storage" are used by M IN IV A C 601 for manual
+                                             storage of data and for other computer switching
+                                             functions. Each switch has two sets of contacts
+                                             w hich open and close together.
+
+
+                             The slide switch is set to one of two positions by the computer
+                                operator, and it stays in that position until moved. The
+                                 switch thus "remembers" its position and "stores" this
+                                   inform ation. The slide switch also provides a convenient
+                                      means for changing circ u its w hich are programmed
+                                            on the computer, and it may be used for
+                                               other computer switching functions as w e ll.
+
+
+                                                         Each of the six slide switches has six term inals
+                                      AO 0®
+                                                                  located d ire c tly above it on the computer
+                                                                         p anel. These term inals are connected
+                                                                            underneath the panel to the
+                                                                             slide switch co ntacts. The
+                                                                                  term inals are labeled
+                                                                                     R ,S , T , U , V , W , and
+                                                                                      are connected in the same
+                                                                                      manner for a ll six sw itches.
+                                                                                      Each switch is identified
+                                                                                         by its section number.
+
+
+                                                                                        4 »     *
+
+
+
+
+         When the switch is pushed to the le ft,                    When the switch is pushed to the rig ht,
+         separate e le c tric a l connections are made              separate e le c tric a l connections are made
+         between terminals S and R and between                      between terminals S and T and between
+         term inals V and U :                                       terminals V and W :
+
+
+           R     S                         V      w                  R      S     T                           W
+
+
+
+
+    18
+    EXPERIMENT 10
+
+/    ' J    k
+                                       SLIDE SWITCH OPERATION
+                                                 his experiment demonstrates the operation
+                                                  of a slide switch controlling two lig hts.
+
+
+
+
+           Program this c irc u it by making
+             the follow ing connections:
+
+                  1-/1B     2 -/2 B
+                  1A /1R    2A / 1 W
+                  1S/1+     1V/1S
+
+
+
+
+    2 ) Move switch 1 to the LEFT
+          and turn the power O N .
+
+
+
+
+     V        Light 1 comes O N but light 2
+             remains O F F . Trace the closed
+           c irc u it for light 1 and the open
+           c irc u it for light 2 on the
+                  c irc u it diagram .
+
+
+
+
+    4 /    Move switch 1 to the right.
+           Light I goes O FF and light 2
+        comes O N . Trace the open c irc u it         The c irc u it for the experiment looks lik e this:
+       for light 1 and the closed c irc u it
+
+
+
+
+                                                                                                            19
+     § h e rotary sw itch , labeled
+      "D ecim al Input-O utput,
+      may be m anually rotated
+      or motor d riv e n . Connected
+      d ire c tly with the pointer
+      knob there is a w iper arm
+      underneath the computer
+      p an el. As the w iper arm and
+      the pointer knob move around th
+      c irc le of co ntacts, the w iper arm
+      momentarily connects with each set of
+      contacts on the rotary switch d ial in turn
+
+
+
+                                                    The w ip er arm rotates with the pointer knob and makes
+                                                        an e le c tric a l connection w ith each set of contacts
+                                                            in turn around the rotary switch d ial (see the
+                                                                follow ing illu stra tio n ). The contacts
+                                                                     are designated by:
+
+                                                                        D = Decim al Input-Output
+                                                                        8 = terminal number (1 to 19)
+                                                                        . . . for example D8
+
+                                                                        The contact on the w iper arm is
+                                                                           referred to as "D 16. "
+
+                                                              For exam ple, when the pointer
+                                                                knob points at 1 , the w iper
+                                                             arm makes an e le c tric a l
+                                                              connection between
+                                                                   D l and D16.
+
+
+                                                            V IE W   UAIDER P A N E L
+
+
+
+
+20
+ EXPERIMENT II
+                                   I
+
+
+                                 MANUAL OPERATION OF ROTARY SWITCH
+                                   i
+                                   |                 | his experiment demonstrates basic manual
+                                 -•                     operation of the rotary sw itch .
+
+          Connect the rotary switch to
+           operate lights 5 and 6 when the
+         pointer knob points to numbers
+            1 and 2 re sp e ctive ly.
+
+ I/ The program for this c irc u it is:
+          6+/D16          D1/5A
+          D 2/6A          5B/6B
+          6 - / 6B
+
+2 / Turn power O N and rotate the
+       pointer to number l1..  Light 5
+                               Lighi
+     comes O N and remains O N
+        as long as the pointer
+              points at number 1 .
+
+
+     Rotate the pointer to number 2 .
+        Light 5 goes O FF and light 6 comes
+     O N . N o tice that light 5 goes O FF before
+      light 6 comes O N . This shows that the
+          rotary switch is designed to disconnect
+     the arm from one contact before making
+           connection w ith the next co ntact.
+       The switch operation is described as
+             "b re a k-b e fo re -m ak e ," and thus is
+     sim ilar to the pushbutton sw itches.
+
+                                                               The c irc u it looks like this:
+4) Rotate the pointer knob                                             D16      ’
+                                                                                                                   5A
+     back and forth a few
+     times between numbers 1 and 2 .
+                                                            6+                       VI
+                                                                                                   6A
+                                                                                     vz
+S)   Connect several other lights
+     to the rotary switch terminals
+                                                                                                                        ©
+     to demonstrate that an e le c tric a l                                                                       SB
+     connection is made from D16 to each                  6-
+     term in al. More than one terminal
+     may be connected to each lig h t.                               When m anually operated, the rotary          \
+     Try this yourself.                                              switch is used to send information to the
+                                                                     computer from the operator. Thus, by
+     Connect the rotary switch to operate                            positioning the pointer knob, it is
+     one or more re la y s. Control a light                          possible to communicate information to
+     w ith each re la y w hich is energ ized .                       the computer. The rotary switch w ill be       ,
+                                                                     used for this purpose in later experim ents. /
+                                                                                                                        11
+      7           m o t o r d r iv e
+     (corrf.)
+
+                The rotary switch may be positioned
+                either by hand or by the motor d riv e .
+                A DC motor turns the rotary switch
+                through a frictio n d riv e . The
+                rotary switch connections are
+                made seq uentially whether the pointer
+                is turned by hand or driven by the motor.
+
+                The rotary switch motor is an
+                e le c tric a l component w hich
+                requires two connections just like
+                a light or re la y . Current must
+                flow through the motor to make it
+                run and turn the rotary sw itch . The
+                c irc u it drawing of the motor                    Terminals 17, 18 and 19 are located on the
+                looks like the above.                              panel just to the left of the pointer knob
+                                                                   and rotary switch term inals. Power must be
+                                                                   supplied to terminals 17 and 18 (run) to operate
+                                                                   the motor d riv e . A short c irc u it may be
+                                                                   connected across term inals 18 and 19 (stop)
+                                                                   to halt the motor d riv e .
+
+
+
+                  RESISTO R S
+                The e le c tric a l resistors used with the        current w hich flows through a relay c o il.
+                motor drive lim it the current w hich              The resistors make it possible to connect a
+                flows through the c irc u it in the same           short c irc u it across the STO P term inals to stop
+                way that the lights lim it the amount of           the motor without over-loading the power supply.
+
+
+
+                 DECIMAL INPUT-OUTPUT
+                The motor driven rotary switch is ca lle d         au to m atically d e liv e r information to the
+                a Decimal Input-O utput because it has             operator. The Decimal Input-Output is thus
+                positions w hich are designated by ordinary        used by the operator to communicate w ith
+                decimal numbers. "Input-O utput" means             the computer using decimal numbers.
+                that the rotary switch may be used by the
+                                                                   The follow ing experiments demonstrate the
+                operator to m anually d e liv e r information to
+                                                                   rotary switch and motor drive operation.
+                the computer or that the computer may
+
+
+
+
+22
+experim en t
+                                 Ba s ic m o to r , o p e r a t io n
+                                                           f his experiment demonstrates the basic motor drive
+                                                              operation. The c irc u it looks like th is:
+
+
+
+                     Sz                                          / I Connect the motor to operate with pushbutton
+                5vJ/_     5X                         pi7
+                                                                     control using the follow ing program:
+6*+                       -•--                                             6+ /5Y
+                                                                           5 X /D 1 7
+                                                                                        6 -/D 1 8
+                                                                                        6 - / 6Y
+                                                                                         6 X /D 19
+
+ 6-                        D 18
+                           —•-
+                                                                    Turn the power O N . Push pushbutton 5 .
+                                                                 This supplies power to the RUN terminals
+                                                                  (D17 and D18) and causes the pointer of the
+                                                                   rotary switch to rotate.
+
+      6z                                                   3 y W hile holding pushbutton 5 down, push pushbutton 6 .
+                                                              The motor stops when pushbutton 6 is pushed because
+                                                               a short c irc u it is created across the STO P term inals
+6Y           6X             Pl9                              (D18 and D 19). Current flows through pushbutton
+                                                              6 instead of through the motor.
+                                              W hile holding pushbutton 5 down, release pushbutton 6 . The
+_ _ _ _ _                            |        motor drive operates again because the short c irc u it has been removed.
+
+e x p e r im      e n t 1 3      '       $   Release pushbutton 5 . The motor drive again stops, this time because
+                                             power is no longer connected to the motor c ir c u it .
+
+
+
+
+                                 MOTOR DRIVEN ROTARY SWITCH
+                                     This experiment demonstrates how the motor driven rotary switch
+                                     may be used to generate e le c tric a l pulses for the computer and to
+                                     autom atically perform a series of operations in sequence.
+
+     J I Connect the motor to operate with                               Push pushbutton 5 . The motor rotates the
+         pushbutton control using the c irc u it of                      pointer knob as in Experiment 11. As
+         Experiment 12.                                                  the pointer knob turns, light 5 and light 6
+
+     ^0                              6
+          Connect lights 5 and to the rotary
+                                                                         flash O N in sequence. The rotary switch
+                                                                         is autom atically generating e le c tric a l
+          switch using the c irc u it of Experiment
+                                                                         pulses to flash the lig hts. F irst, light 5
+          11. The combined program from
+                                                                         flashes and then light 6 flashes, once each
+          Experiments 11 and 12 is:
+                                                                         revolution of the rotary sw itch .
+               6+/D16       D 1/5A           5 - /D 1 8
+                                                                         W hile holding pushbutton 5 down, push
+               D 2/6A       5B/6B            6 - / 6Y
+                                                                         pushbutton 6 . The pointer knob STOPS
+               6 - / 6B     6+ /5Y           6X/D 19
+                                                                         turning and the lights STO P flash in g .
+                            5X/D17
+
+                                                                                                                           23
+ 7
+ (con+.j
+            PULSE GENERATOR.
+            The electrical pulses which are used to flash light 5 (or the pulses which flash
+            light 6) continue as long as the motor continues to run. Pulses like these
+            are used to automatical Iv operate MINIVAC 601 in future experiments.
+            Most automatic digital computers have a mechanical or electronic device,
+            similar in function to the rotary switch, to generate a continuous series of
+            electrical pulses. This is done to make the computer operate continuously
+            and automatically at speeds much faster than a human could operate a switch.
+            Continuous pulses, generated to operate a digital computer, are called "clock"
+            pulses. The use of "clock" pulses in MINIVAC 601 and other digital computers
+            is explained and demonstrated in future experiments.
+
+            PROGRAMMER.
+            As the motor turns the rotary switch light 5, and then light 6 , flashes. This occurs in the same
+            order (sequence), once each revolution of the switch. Other lights could be flashed, or
+            relays could be energized, in any desired sequence by using other rotary switch terminals.
+            Thus, it is possible to use the rotary switch to carry out a whole series of operations on the
+            computer. The particular connections which are made to accomplish a series of computer
+            operations are called a "program." A ll digital computers, including MINIVAC 601 must be
+            "programmed" to solve a specific problem. The use of the rotary switch for "programming"
+            is explained and demonstrated in future experiments.
+
+                                  “ I
+1 experim ent 1 4 !
+
+                                     MOTOR REVERSING
+                                                               This experiment shows how the direction of rotation
+                                     I                         of the motor may be changed by reversing the direction
+                                                                   of current flow through the motor.
+                      IJ Connect power to the
+                        rotary switch motor through                                                                   6 +
+                     two sets of slide switch contacts
+                    so that the direction of current
+                 flow through the motor may be
+                                                                                                                      1
+                                                                                                                      6w
+                 reversed through the sw itch . The
+                    c irc u it looks lik e this:                                                                D17
+            2. J The program for this c irc u it is:
+                     6+/ 6 R   6T / 6 U        6V /D 1 7
+                     6+/ 6W    6S/D 18
+                     6 - / 6T
+            3) Trace the direction of current flow from                           I The a b ility of the motor to reverse   \
+               6 + through the motor to 6- w ith the switch
+                                                                                    direction g reatly increases the value
+               in the right position and then again w ith the
+                                                                                    of the rotary switch as a programmer.
+                switch in the left position. The current
+                                                                                    Many future experiments make use of
+                    flow through the motor is reversed when
+                                                                                    the basic fact that the direction of
+                  the switch position is changed.
+                                                                                    rotation may be reversed by reversing
+           4-) Turn power O N and notice the direction                            \ the current flow through the motor, j
+                      of rotation.
+
+       5J Chonge the position of switch 6 .    The motor reverses
+            direction ond the pointer knob turns in the opposite d irectio n.
+24
+8      M ATRIX
+
+             1 he m atrix provides convenient
+    junction points for use when the computer
+    plays games or recognizes symbols.
+                   The m atrix consists of a number
+    of term inals, located in the upper right corne
+    of the computer p an el. The term inals are used
+    as junction points, and there are no connections
+    to the term inals below the p an el.
+
+    The m atrix term inals are designated by:
+                                                        The m atrix terminals are arranged in a
+            M = m atrix
+                                                        convenient pattern for playing games like
+            6 = terminal number (1 to 1 1 )
+                                                        tic -ta c -to e or solving ch aracter recognition
+            t = top or "b" for bottom
+                                                        problems. When the computer is programmed
+                 . . . for example M 6t                 to play t ic - ta c - to e , the various plays are
+                                                        recorded by making connections on the m atrix
+    The lines between the term inals indicate           term inals. When the computer is programmed
+    terminals w hich are connected together             to recognize ch aracters, the characters are
+    to form a single co n tact.                         formed by making connections on the m a trix.
+                                                        Games and ch aracter recognition problems
+                                                        are presented in other books in this series.
+
+
+
+
+9 AUXILIARY TERMINALS
+                A u x ilia ry term inals are provided
+              between the slide switches and the
+           relays for each of the six sections.
+
+
+     The terminals w ith four holes labeled
+     C O M M O N may be used when more
+     than two connections must be made to
+     a set of term inals on the computer
+     p a n e l. The four C O M M O N terminals
+     are connected together, but are not
+     connected to any other component.
+
+
+    The term inals marked "C A P A C IT O R "
+    are used when a u x ilia ry components are
+    added to the M IN IV A C 601 in advanced
+    programs. A t present these terminals
+    may be ignored.
+
+
+
+                                                                                                             25
+ Book I - - "G ettin g Acquainted w ith M IN IV A C 601 " — has examined the operation
+ of each M IN IV A C 601 component. The symbols and shorthand of c irc u it drawings
+ have been introduced and basic computer programs were developed in the experim ents.
+
+ Now that you are com pletely fa m ilia r w ith the components of M IN IV A C 6 0 1 , you
+ are ready to explore the e xcitin g world of digital computers.
+
+
+         THERE ARE S IX B O O K S IN THE M IN IV A C S ER IES . THE O THER F IV E A RE:
+
+
+
+
+                                    Book II answers the question W HAT IS A D IG IT A L C O M PU TER ?
+                                  and introduces large scale e le ctro n ic data processing m achines.
+                                   You w ill discover how a digital computer:
+
+                                     — A ccepts input information representing basic data
+                                      to be processed and instructions describing the
+                                     ca lcu latio n to be performed.
+
+                                --Stores (remembers) input and other information w hich it generates.
+
+                               — Processes information and controls its operation, making logical
+                             decisions and performing a rith m e tic.
+
+                         — G enerates output information representing answers to a problem.
+
+ The components g en erally used in modern d ig ital computing equipment are discussed and
+ their operation is compared w ith the operation of analogous components in M IN IV A C 601 .
+
+
+
+
+                                    Book III provides an introduction to computer logic and uses
+tS                                  M IN IV A C 601 to demonstrate basic rules of lo g ic . The four
+  HOW                             fundamental logical operations— A N D , O R , N O T , EITHER BUT
+                                N O T BO TH — are described and these operations are simulated
+                            w ith computer c irc u its .
+ d e c is io n s
+                             The p rinciples of Boolean Algebra are presented to provide a basis for the
+                           solution of complex logical problems on M IN IV A C 601 . A series of experiments
+                      and problems provides p ractical experience in converting logical problems to
+                c irc u it diagram s. C irc u it diagrams are programmed on M IN IV A C 601 and logical
+         problems and riddles are a c tu a lly solved on the computer.
+             A d ig ital computer performs ad d itio n , subtraction, m u ltip lica tio n ,
+             d iv is io n , and other more com plex ca lcu latio n s in an arithm etic u n it.
+             Some computers use D EC IM A L numbers, but most high-speed d ig ital
+             machines do arithm etic w ith B IN A R Y numbers. A rithm etic is g en erally
+             done w ith simple addition or subtraction using e ith e r the "s e ria l" or
+             " p a ra lle l" method. Com plex ca lcu latio n s are made by doing a series
+             of additions or subtractions.
+
+                                Book IV examines the Decimal Number System
+                               and from this derives rules for forming any number
+                                 system. These rules are applied to the derivation
+                                   of the Binary Number System . The Relationships
+                             and rules for converting between Binary and
+                            Decimal Numbers are discussed.
+
+                      A fte r the introduction to the number system g en erally used
+                in high-speed digital m achines, the Binary A rithm etic Operations
+           are explained and demonstrated w ith appropriate programs for M IN IV A C 601
+
+
+
+
+                                       Book V uses M IN IV A C 601 to demonstrate
+                                      how computer functions may be combined to
+                                       perform sp e cific jobs. Examples of computer
+                                    applications are examined under fiv e major headings:
+
+                                    — "Sim ple Com puter-like D evices Encountered Every Day"
+
+                                   --"Com puter A p p licatio ns in Business and Industry"
+
+                                — "Computer A p plicatio ns in Science and the M ilita ry "
+
+                             — "Computer A p p licatio ns in the Social Sciences"
+
+                           — "Computer A p p licatio ns in Science Fictio n Film s"
+
+Book V also discusses how computers "read " printed m aterial and understand "computer lang uag es."
+
+
+
+
+                   Book V I contains games w hich may be played using
+               M IN IV A C 601 as an opponent, partner or re fe re e . These games
+                 are designed for fun w ith M IN IV A C 6 0 1 , but they also
+                    demonstrate important functions of modern high-speed
+               computers and provide examples of special kinds of problem so lvin g .
+                                                 I The following problems are presented to give you an opportunity to
+     II      PROBLEMS                            I work out computer programs on your MINIVAC 601. When attacking
+                                                 I a problem, it is often helpful to follow a step-by-step procedure:
+                            3 ) Draw a schematic representation of the components you think will be used.
+                                k ) Draw connections between the components to solve the first part of the problem.
+                                   4)     Continue with each part of the problem in turn, adding or changing
+                                          connections to meet the new requirements.
+                                        3 ) From your completed drawing, program the solution on your MINIVAC 601.
+          PROBLEMS 1 THROUGH 6 USE PUSHBUTTONS, LIGHTS
+           1 } Design a circuit in which light 1 comes ON when         for this problem. (Refer back to the relay experiments
+          pushbutton 1 is pushed and light 2 comes ON when             if you have trouble with this problem.)
+          pushbutton 2 is pushed, and both come ON at the               10)      Design a circuit in which relay 1 comes ON when
+          same time if both pushbuttons are pushed.                    pushbutton 1 is pushed if slide switch 1 is left; and
+          2 ) Design a circuit in which light 1 comes ON if                                                 1
+                                                                       relay 2 comes ON when pushbutton is pushed if
+          either pushbutton 1 or pushbutton 2 is pushed, but           slide switch 1 is right.
+          light 1 is OFF if both pushbutton 1 and pushbutton            10     Design an AND (series) circuit in which light 1
+          2 are pushed together.                                       comes ON if and only if, slide switch 1 is left and
+           3 .) Design a circuit with 2 pushbuttons and a light in                                      1
+                                                                       slide switch 2 is right and relay is ON, and relay
+          which ci]_[ of the conditions indicated in the               2 is OFF. Control relay 1 with pushbutton 1 and
+          table below occur:                                           relay 2 with pushbutton 2.
+
+          Pushbutton 1                                                  1 2 ) Design an OR (parallel) circuit in which light 2
+                           Pushbutton 2        Light '1
+                                                                       comes ON if either slide switch 1 is right, or slide
+                Up              Up               On                    switch 2 is left, or relay 1 is OFF, or relay 2 is
+                Down            Up               Off                   ON. Control relay 1 with pushbutton 1 and relay
+                Up              Down             Off                   2 with pushbutton 2.
+                Down            Down             On
+                                                                       PROBLEMS 13 THROUGH 19 USE THE ROTARY SWITCH
+          4 ) Design a circuit with 2 pushbuttons and 2 lights          13)     Design a circuit in which the rotary switch turns and
+          in which al_[ of the conditions indicated in the
+                                                                       light 6 comes ON when pushbutton 6 is pushed.
+          table below occur:
+          Pushbutton 1     Pushbutton 2     Light 1    Light 2
+                                                                       14)     Design a circuit in which the rotary switch turns
+                                                                       Only when pushbutton 6 is down. The rotary switch
+                Up             Up             Off         Off          should NOT turn when pushbutton 6 is up, or when
+                Down           Up             Off         On           both pushbutton 6 and pushbutton 5 are down.
+                Up             Down           On          Off
+                Down           Down           Off         On
+                                                                        15) Design a circuit to meet the requirements of
+                                                                       problem 14 using terminal 5X.
+           5 ) Design an OR (parallel) circuit in which light 1
+          comes ON if either pushbutton 1 is down, or if
+                                                                           )
+                                                                       16 Design a circuit in which the rotary switch turns
+                                                                      when pushbutton 6 is pushed but turns in the opposite
+          slide switch 1 is in the left position, or if
+                                                                      direction when pushbutton 5 is pushed. The rotary
+          pushbutton 2 is down.
+                                                                      switch should not turn if qo pushbuttons are down,
+           &~) Design an AND (series) circuit in which light 1        or if both pushbuttons are down.
+          comes ON if and only if, pushbutton 1 is down and
+                                                                       1 7 ; Design a circuit to automatically turn the rotary
+          slide switch 1 is left and pushbutton 2 is down and
+                                                                      switch back and forth between numbers 1 and 6.
+          slide switch 2 is right.
+                                                                      Use only 11 programming wires.
+          PROBLEMS 7 THROUGH 12 USE RELAYS                             1 8 ) Design a circuit to turn the rotary switch when
+           7)  Design a circuit in which light 1 comes ON             pushbutton 6 is down, and to automatically stop the
+          when pushbutton 1 is pushed, and relay 1 comes ON           rotary switch when it reaches DO. The rotary switch
+          when pushbutton 2 is pushed. Relay 1 should come            should start again and make another revolution when
+          ON only if light 1 is ON.                                   pushbutton 5 is pushed and then released.
+           8 ) Design a circuit in which light 1 and relay 2 are       19)  Design a circuit to automatically flash lights   1
+          ON if slide switch 1 is left, and light 2 and relay 1    through 6 in sequence when pushbutton 6 is pushed.
+          are ON if slide switch 1 is right. Use separate contacts
+          to control each component.                               2 0 ) (MORE DIFFICULT) Design a circuit to alternately
+                                                                    turn relay 1 ON and OFF as pushbutton 1 is pushed
+          9 ) Design a circuit in which relay 1 comes ON and        momentarily and released. Relay 1 should come ON
+          remains ON when pushbutton 1 is pushed and released.     the first time pushbutton 1 is pushed and it should go
+          Relay 1 goes OFF and remains OFF when pushbutton 2 is OFF the second time the pushbutton is pushed. The
+          pushed and released. Terminal 2Z may not be used          rotary switch is not used for this problem.
+ 28
+kn
+                              1A     IX              12        2A       2X                 2Z
+ANSWER. 1
+                          6              (                 G)                    (
+    1+/1Y
+    1 V IA
+                  2+/2Y
+                  2V2A    781        'l       ./ y         v-
+                                                           £8. i                 <i
+    1B/l -        2B/2-
+                                        Jl l +            2 -J                   1
+ANSWER 2                            1Z                             2Z
+
+
+    1 +/1 Y   2Y / 1 A
+    1Z/2X     1B/l -
+    1V 2 Z
+
+
+
+
+ANSWER 3
+                                              —•
+    1 +/1 Y   1 V 2Z           ZX             zz          2X                 ZZ
+                                         ZY
+                                         1+
+    1 V 2X    2Y / 1 A                                          ZY
+               1B/l -                                                                 ZB        1-
+                                                                   1A                           —•
+
+
+
+ANSWER 4                                                                -• 2 Z
+
+    1+/1Y     1Z/2X
+    1X/2A     2Y/1A
+    2B/2-     1B/l -                                                                                 1-
+                                                                          18
+
+
+
+
+ANSWER 5
+    1+ /1S      1 V 'R
+    1S/1 Y      1 V IA
+    1Y/2Y       1B/l -
+    2X/1X
+
+
+
+
+ANSWER 6
+    1+/1Y     2V2T
+    1V l R    2S/1A
+    1S/2Y     1-/1B
+
+
+
+
+                                                                                                          29
+     ANSWER. 7                                  1A
+                                                          IX        /    1Z
+                                                                                 ~L
+                                                                                 2X               2Z
+
+          1-/1B       1X/2X                                     >y.
+          1A/1X
+          I+/1Y
+                      2Y/1C
+                      1F/2-
+                                           IB
+                                                               l+<                       2y            1C   0 - JULSJUUIF
+                                                                                                                   |£         a-
+                                          1+
+
+                                                                                         •   2-                        t l-
+
+     ANSW ER 8                       1-
+                                                                                    2F                            IF
+                                                                                         3
+
+                                     0
+         1-/1B                       1B                                                                           IE
+                                                                        o2B         2 e <i
+         1V1R
+         1+/1S
+         1S/IV                                                      ©2A             ©                             0
+                                     1A                                             2C                            l6<
+         1W/1C
+         1F/1-
+                                     lR                                 lT            W                                1W
+         2-/2 B                                           /
+         2A/1T
+         2-/2F                                       lS
+         2C/1U                                                                                          IV
+                                                     1*
+                                                                   1J
+
+     ANSW ER 9
+          1+/1G
+          1G/1X
+          1Y/1H
+          1H/1C
+          1F/1-
+          1F/2Y
+          1E/2X
+          2Z (not used)
+
+
+
+                                                                        1C       IE       IF
+                                                                                  , toeoc ^                   1-
+     ANSW ER 10                                                              0                                «
+
+
+          1 + /1 Y
+          l/ lS
+         1R/l C
+                                          1R         /
+                                                     "IS
+                                                               IT
+                                                                        2C
+                                                                             0
+         1T/2C
+         1F/1-                                                 /   1*2-
+                                                     IX
+         2F/2-                                                 ,iy
+                                                               1
+
+
+
+     ANSW ER U
+         1+/1H            1G/1R
+         1 H/l Y          1S/2S
+         1Y/2Y            2T/2J
+         1X/1C            2H/1A
+         IF / 1 -         1 B /2 -
+         2X/2C
+         2F/2-
+
+
+
+
+30
+ANSW ER 12             2A
+                                                      IT          2 P.    /      lT        US    /~   1J    2.G        2J
+    2-/2B
+    2A/1T
+              2+/2Y
+              2Y/1 Y   (3)                  is
+                                                                         2S                     1H                2H
+    1T/2R     1V i c   2B                                        12
+    2R/1J     1F/l —
+    1J/2G     2V2C                               iy
+    1+/1S     2F/2-                                                           QQ-*JUUUU>-
+    1S/2S              2-1                                 IX
+                                                                         1C           jE        IF
+                                                                                                       1-
+    2S/1 H                                                      .22
+    1H/2H
+                                       2+ • — 2 iV
+                                                             2X           a
+                                                                         2C
+                                                                                       JtM i
+                                                                                      2B        2F    2 -
+
+
+
+ANSWER 13
+                                                                               6Y
+    6+/6Y
+    6 )/6 A                                                                   64-
+                                                 6B
+    6B/6-
+    6V D 17
+                                                            Dll
+                                                                          p is
+    D18/M-                                                  M-
+                                                 6m
+                                                                         P19
+
+
+
+ANSWER 14                   5X         5Z              6X
+                                                            6y
+                                 5Y
+    5+/5Y                                                  P17
+    5Z/6X                                                                D18
+    6Y/D17                  5+                             M -
+    M-/D18
+
+                                                                         D19
+                                                                         •----
+
+
+
+
+a n sw er . 15
+                                      6*
+    6+/6X
+    6Y/D17
+    M-/D18
+    D18/5X
+    5Y/D19
+
+
+
+
+ANSWER 16
+    5+/5Y
+    5Z/6X
+    6Y/6J
+    62/5 X
+    6Z/6C
+    6F/6-
+    6J/ 6K
+   6-/6G
+   6G/6N
+   6L/D18
+   6H/D17
+ ANSWER 17
+      6+/6J       6C/6L
+      6J/6K       6L/D18
+      6K/D6       6H/D17
+      6E/D16      6-/6N
+      6F/6-       6N/6G
+      6G/D1
+
+
+
+
+ ANSWER 18                                6Z                                              P17
+
+      6+/6Y                6x                                          5Z                 P IS
+      6X/DU                         6Y
+      M-/D18
+      5Z/D18                        6+                                             M-
+      5Y/DO
+      D16/D19                                                                   P lfe    P l9
+                                                          5Y        po
+
+                                                                           M+                            PJ.7
+
+ ANSWER 19                                                                  T 6^ 7 7b   X /      b ;Z
+      D1/1A      6+/6Y                       1— •-------------------- -•
+      D2/2A      6>/D17
+                           •------ •->                                      *              ,bY M D ie
+      D3/3A      M-/D18                                                                             M-
+                                 26          1 %&                   OgL
+      D4/4A      M+/D16               v l/
+      D5/5A
+                                                                                              6*         0*9
+                           3“    33          \ 3. A                  P3
+      D6/6A
+      1B/l —
+      2B/2-                           ( T ) I 4A                     P4
+      3B/3-                5“   5B,
+      4B/4-                                  i 5,A                   V*
+                                   O         1
+      5B/5-
+      6B/6-                6;   6B,            6A                    Pt>
+                                   a
+
+
+
+ ANSW ER 2 0
+      1 -/1 B   1 Y /1 +
+      1- / 1C   1V 1J
+      1A/1 E    1J/2H
+      1E/2G     2J/ 2E
+      1F/2F     2E/2A
+      1 H/1 F   2B/2-
+      1G /1 Y   2-/2C
+
+
+
+
+3z
+M IN IV A C 601 A N D THE M IN IV A C M A N U A L
+
+ARE PRO D UCTS O F :
+                                           i l k
+
+                        S C IE N T IF IC   D EV ELO P M EN T   C O R P O R A T IO N
+
+
+
+
+                             372 Main Street, W atertow n, Massachusetts
+

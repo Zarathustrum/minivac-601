@@ -1,0 +1,1166 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-APX-SHIFTREG",
+  "source": "BK4 printed pp.86-87 = book2-3-4.pdf PDF pp.92-93 (Appendix: Automatic Shift Register; rule p.86, procedure p.87), image-read; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1X",
+    "1B/1-",
+    "1C/2C",
+    "1E/2N",
+    "1F/1G",
+    "1F/2K",
+    "1G/1X",
+    "1H/2H",
+    "1L/D1",
+    "1Y/2Y",
+    "2A/2X",
+    "2B/2-",
+    "2C/3C",
+    "2E/3N",
+    "2F/2G",
+    "2F/3K",
+    "2G/2X",
+    "2H/3H",
+    "2L/D2",
+    "2Y/3Y",
+    "3A/3X",
+    "3B/3-",
+    "3C/4C",
+    "3E/4N",
+    "3F/3G",
+    "3F/4K",
+    "3G/3X",
+    "3H/4H",
+    "3L/D3",
+    "3Y/4Y",
+    "4A/4X",
+    "4B/4-",
+    "4C/5C",
+    "4E/5N",
+    "4F/4G",
+    "4F/5K",
+    "4G/4X",
+    "4H/5H",
+    "4L/D4",
+    "4Y/5Y",
+    "5A/5X",
+    "5B/5-",
+    "5C/6C",
+    "5E/6N",
+    "5F/5G",
+    "5F/6K",
+    "5G/5X",
+    "5H/6H",
+    "5L/D5",
+    "5Y/6Y",
+    "6A/6X",
+    "6B/6-",
+    "6C/6-",
+    "6E/D7",
+    "6F/6G",
+    "6G/6X",
+    "6H/6+",
+    "6L/D6",
+    "6Y/D16",
+    "D16/M+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/1X",
+    "1B/1-",
+    "1C/2C",
+    "1E/2N",
+    "1F/1G",
+    "1F/2K",
+    "1G/1X",
+    "1H/2H",
+    "1L/D1",
+    "1Y/2Y",
+    "2A/2X",
+    "2B/2-",
+    "2C/3C",
+    "2E/3N",
+    "2F/2G",
+    "2F/3K",
+    "2G/2X",
+    "2H/3H",
+    "2L/D2",
+    "2Y/3Y",
+    "3A/3X",
+    "3B/3-",
+    "3C/4C",
+    "3E/4N",
+    "3F/3G",
+    "3F/4K",
+    "3G/3X",
+    "3H/4H",
+    "3L/D3",
+    "3Y/4Y",
+    "4A/4X",
+    "4B/4-",
+    "4C/5C",
+    "4E/5N",
+    "4F/4G",
+    "4F/5K",
+    "4G/4X",
+    "4H/5H",
+    "4L/D4",
+    "4Y/5Y",
+    "5A/5X",
+    "5B/5-",
+    "5C/6C",
+    "5E/6N",
+    "5F/5G",
+    "5F/6K",
+    "5G/5X",
+    "5H/6H",
+    "5L/D5",
+    "5Y/6Y",
+    "6A/6X",
+    "6B/6-",
+    "6C/6-",
+    "6E/D7",
+    "6F/6G",
+    "6G/6X",
+    "6H/6+",
+    "6L/D6",
+    "6Y/D16",
+    "D16/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed pp.86-87 = book2-3-4.pdf PDF pp.92-93; derived from the 60-wire topology and the p.86 rule SHIFT LEFT ONE BIT whenever the rotary switch dial is turned; after pushing and releasing pushbuttons 1, 3, 4 and 6 (each latches its own relay), relays 1-6 = 101101; relay n (n=1..6): nY on + (nY chain, 6Y/D16, D16/M+), pushbutton n puts + on P_n = {nA,nX,nG,nF}; + on P_n runs nF-coil-nE-indicator lamp n-nC to minus (nC chain to 6C/6-) and pulls relay n in; nH is on + (nH chain to 6H/6+), so nH-nG holds + on P_n and the relay self-latches; output lamp n is across P_n (nA) and minus (nB/n-). Shift: wiper D16 is on +; pad Dk is kL (k=1..6). Relay k in: kL-kK puts + on P_(k-1) (kK/(k-1)F), copying a 1 into relay k-1; relay k out: kL-kN puts + on (k-1)E ((k-1)E/kN), shorting relay k-1's coil against its own nH-nG hold, copying a 0. D7 = 6E copies a 0 into relay 6. 1K, 1N and D0, D8-D15 are unwired, so D1 does nothing and bit 1 is dropped. Clockwise (increasing) pads D2..D7 copy relay 2 into 1 first and relay 6 last, so each relay is read before it is overwritten. A 0-copy makes relay k-1 buzz through output lamp k-1 while the wiper dwells; the settled 0 assumes the relay is out when the wiper breaks, as the rule requires; dial resting on D0 (unwired), pushbuttons up, so every Dk floats and only latched relays carry current",
+      "quote": "Enter a binary number in the shift register by pushing and releasing the appropriate pushbuttons. The number will appear in the output lights.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 247500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 270000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed pp.86-87 = book2-3-4.pdf PDF pp.92-93; derived from the 60-wire topology and the p.86 rule SHIFT LEFT ONE BIT whenever the rotary switch dial is turned; after one clockwise revolution D0..D15 back to D0 from 101101 (relay n takes old relay n+1, relay 6 takes 0), relays 1-6 = 011010; relay n (n=1..6): nY on + (nY chain, 6Y/D16, D16/M+), pushbutton n puts + on P_n = {nA,nX,nG,nF}; + on P_n runs nF-coil-nE-indicator lamp n-nC to minus (nC chain to 6C/6-) and pulls relay n in; nH is on + (nH chain to 6H/6+), so nH-nG holds + on P_n and the relay self-latches; output lamp n is across P_n (nA) and minus (nB/n-). Shift: wiper D16 is on +; pad Dk is kL (k=1..6). Relay k in: kL-kK puts + on P_(k-1) (kK/(k-1)F), copying a 1 into relay k-1; relay k out: kL-kN puts + on (k-1)E ((k-1)E/kN), shorting relay k-1's coil against its own nH-nG hold, copying a 0. D7 = 6E copies a 0 into relay 6. 1K, 1N and D0, D8-D15 are unwired, so D1 does nothing and bit 1 is dropped. Clockwise (increasing) pads D2..D7 copy relay 2 into 1 first and relay 6 last, so each relay is read before it is overwritten. A 0-copy makes relay k-1 buzz through output lamp k-1 while the wiper dwells; the settled 0 assumes the relay is out when the wiper breaks, as the rule requires; dial resting on D0 (unwired), pushbuttons up, so every Dk floats and only latched relays carry current",
+      "quote": "Shift LEFT one bit by slowly turning the rotary switch dial one complete revolution. The shifted binary number will now appear in the output lights.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 247500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 270000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed pp.86-87 = book2-3-4.pdf PDF pp.92-93; derived from the 60-wire topology and the p.86 rule SHIFT LEFT ONE BIT whenever the rotary switch dial is turned; after a second revolution from 011010 (includes a 0 copied onto a 0: relay 6 from D7), relays 1-6 = 110100; relay n (n=1..6): nY on + (nY chain, 6Y/D16, D16/M+), pushbutton n puts + on P_n = {nA,nX,nG,nF}; + on P_n runs nF-coil-nE-indicator lamp n-nC to minus (nC chain to 6C/6-) and pulls relay n in; nH is on + (nH chain to 6H/6+), so nH-nG holds + on P_n and the relay self-latches; output lamp n is across P_n (nA) and minus (nB/n-). Shift: wiper D16 is on +; pad Dk is kL (k=1..6). Relay k in: kL-kK puts + on P_(k-1) (kK/(k-1)F), copying a 1 into relay k-1; relay k out: kL-kN puts + on (k-1)E ((k-1)E/kN), shorting relay k-1's coil against its own nH-nG hold, copying a 0. D7 = 6E copies a 0 into relay 6. 1K, 1N and D0, D8-D15 are unwired, so D1 does nothing and bit 1 is dropped. Clockwise (increasing) pads D2..D7 copy relay 2 into 1 first and relay 6 last, so each relay is read before it is overwritten. A 0-copy makes relay k-1 buzz through output lamp k-1 while the wiper dwells; the settled 0 assumes the relay is out when the wiper breaks, as the rule requires; dial resting on D0 (unwired), pushbuttons up, so every Dk floats and only latched relays carry current",
+      "quote": "To shift left more than one bit simply turn the rotary switch dial the desired number of revolutions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 247500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 270000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 400
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed pp.86-87 = book2-3-4.pdf PDF pp.92-93; derived from the 60-wire topology and the p.86 rule SHIFT LEFT ONE BIT whenever the rotary switch dial is turned; after a third revolution from 110100, relays 1-6 = 101000; relay n (n=1..6): nY on + (nY chain, 6Y/D16, D16/M+), pushbutton n puts + on P_n = {nA,nX,nG,nF}; + on P_n runs nF-coil-nE-indicator lamp n-nC to minus (nC chain to 6C/6-) and pulls relay n in; nH is on + (nH chain to 6H/6+), so nH-nG holds + on P_n and the relay self-latches; output lamp n is across P_n (nA) and minus (nB/n-). Shift: wiper D16 is on +; pad Dk is kL (k=1..6). Relay k in: kL-kK puts + on P_(k-1) (kK/(k-1)F), copying a 1 into relay k-1; relay k out: kL-kN puts + on (k-1)E ((k-1)E/kN), shorting relay k-1's coil against its own nH-nG hold, copying a 0. D7 = 6E copies a 0 into relay 6. 1K, 1N and D0, D8-D15 are unwired, so D1 does nothing and bit 1 is dropped. Clockwise (increasing) pads D2..D7 copy relay 2 into 1 first and relay 6 last, so each relay is read before it is overwritten. A 0-copy makes relay k-1 buzz through output lamp k-1 while the wiper dwells; the settled 0 assumes the relay is out when the wiper breaks, as the rule requires; dial resting on D0 (unwired), pushbuttons up, so every Dk floats and only latched relays carry current",
+      "quote": "To shift left more than one bit simply turn the rotary switch dial the desired number of revolutions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 60-wire topology and the p.86 rule (SHIFT LEFT ONE BIT whenever the rotary switch dial is turned), not printed: pp.86-87 print no lamp pattern, no pushbutton-to-light tie and no turn direction (O-C18). No erratum touches pp.86-87, so wires = as_printed. Topology: pushbutton n sets and latches relay n (nH-nG self-hold, output lamp n across nA/nB); wiper D16 on +, pad Dk on relay k's set-2 arm kL copies relay k into relay k-1 (K side puts + on (k-1)F for a 1, N side puts + on (k-1)E for a 0), D7 = 6E clears relay 6, D1 is a no-op (1K, 1N unwired), so bit 1 is dropped. Script choices, not printed: the entered number 101101 (pushbuttons 1, 3, 4, 6), clockwise turning one pad per 400 ms D1..D15 back to D0, and a dialRelease plus 1000 ms rest on D0 before each assert (Step 7 notes: never an until on a pass-through). The three revolutions cover every copy case: 1 onto 0, 0 onto 1, 1 onto 1 and 0 onto 0. Hardware-fragility note (O-C11, not asserted): each 0-copy makes the target relay buzz through its output lamp during the pad dwell; the settled 0 relies on the relay being out when the wiper breaks. Digest is a placeholder for the runner.",
+  "digest": {
+    "eventCount": 1156,
+    "moverTransitions": [
+      54,
+      52,
+      50,
+      88,
+      80,
+      72,
+      4,
+      0,
+      4,
+      4,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      96
+    ]
+  }
+}

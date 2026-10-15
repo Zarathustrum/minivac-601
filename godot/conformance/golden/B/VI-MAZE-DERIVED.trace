@@ -1,0 +1,289 @@
+#!mv601-trace 1
+# id=VI-MAZE-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=44
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=80 minTickGap=9 marginal=false
+     0.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+   242.2 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp6=on  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+   242.2 > disconnect cord=44
+   242.2 > connect cord=44 a=hole:M+#1 b=touch:M5t r_uohm=0
+   245.4 * indLamp6 off->dim
+   264.3 * indLamp6 dim->on
+   284.4 > disconnect cord=44
+   284.4 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   296.1 * indLamp6 on->dim
+   316.2 > disconnect cord=44
+   316.2 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+   329.7 * relay6 nc->mid
+   331.0 * relay6 mid->no
+   347.8 * indLamp6 dim->on
+   350.2 * outLamp6 on->dim
+   370.3 > disconnect cord=44
+   370.3 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   405.8 * outLamp6 dim->off
+   590.3 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=no outLamp1=off outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+   590.3 > disconnect cord=44
+   590.3 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   600.1 * indLamp5 off->dim
+   601.9 * relay5 nc->mid
+   603.2 * relay5 mid->no
+   628.5 > disconnect cord=44
+   628.5 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   640.0 * indLamp5 dim->on
+   660.1 > disconnect cord=44
+   660.1 > connect cord=44 a=hole:M+#1 b=touch:M2t r_uohm=0
+   669.9 * indLamp4 off->dim
+   671.6 * relay4 nc->mid
+   672.9 * relay4 mid->no
+   698.2 > disconnect cord=44
+   698.2 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   709.9 * indLamp4 dim->on
+   730.0 > disconnect cord=44
+   730.0 > connect cord=44 a=hole:M+#1 b=touch:M7t r_uohm=0
+   750.0 > disconnect cord=44
+   750.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   770.0 > disconnect cord=44
+   770.0 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   790.0 > disconnect cord=44
+   790.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1010.0 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=no relay6=no outLamp1=off outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+  1010.0 > disconnect cord=44
+  1010.0 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+  1019.8 * indLamp3 off->dim
+  1021.3 * relay3 nc->mid
+  1022.6 * relay3 mid->no
+  1047.9 > disconnect cord=44
+  1047.9 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1059.9 * indLamp3 dim->on
+  1080.0 > disconnect cord=44
+  1080.0 > connect cord=44 a=hole:M+#1 b=touch:M6t r_uohm=0
+  1089.8 * indLamp2 off->dim
+  1091.2 * relay2 nc->mid
+  1092.5 * relay2 mid->no
+  1117.8 > disconnect cord=44
+  1117.8 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1130.0 * indLamp2 dim->on
+  1350.1 ? relay1=nc relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=off outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+  1350.1 > disconnect cord=44
+  1350.1 > connect cord=44 a=hole:M+#1 b=touch:M5t r_uohm=0
+  1353.3 * outLamp1 off->dim
+  1360.0 * indLamp1 off->dim
+  1361.3 * relay1 nc->mid
+  1362.6 * relay1 mid->no
+  1372.3 * outLamp1 dim->on
+  1392.4 > disconnect cord=44
+  1392.4 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1400.5 * indLamp1 dim->on
+  1620.6 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=on outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+  1620.6 > power off
+  1620.6 * power on->off
+  1624.1 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+  1625.0 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+  1631.5 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  1640.8 * outLamp1 on->dim
+  1687.1 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  1690.9 > power on
+     0.0 * power off->on  outLamp1 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > disconnect cord=44
+    42.2 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+    52.0 * indLamp6 off->dim
+    54.0 * relay6 nc->mid
+    55.3 * relay6 mid->no
+    69.0 * outLamp6 on->dim
+    89.1 > disconnect cord=44
+    89.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+    91.8 * indLamp6 dim->on
+   111.9 > disconnect cord=44
+   111.9 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   121.7 * indLamp5 off->dim
+   123.5 * relay5 nc->mid
+   124.6 * outLamp6 dim->off
+   124.8 * relay5 mid->no
+   150.1 > disconnect cord=44
+   150.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   161.6 * indLamp5 dim->on
+   181.7 > disconnect cord=44
+   181.7 > connect cord=44 a=hole:M+#1 b=touch:M2t r_uohm=0
+   191.5 * indLamp4 off->dim
+   193.2 * relay4 nc->mid
+   194.5 * relay4 mid->no
+   219.8 > disconnect cord=44
+   219.8 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   231.5 * indLamp4 dim->on
+   251.6 > disconnect cord=44
+   251.6 > connect cord=44 a=hole:M+#1 b=touch:M6t r_uohm=0
+   262.4 * relay6 no->mid
+   263.3 * relay6 mid->nc
+   266.5 * outLamp6 off->dim
+   267.8 * relay5 no->mid
+   268.7 * relay5 mid->nc
+   271.5 * relay4 no->mid
+   272.4 * relay4 mid->nc
+   273.6 * indLamp4 on->dim
+   276.7 * indLamp5 on->dim
+   285.4 * outLamp6 dim->on
+   305.5 > disconnect cord=44
+   305.5 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   324.5 * indLamp6 on->dim
+   329.2 * indLamp4 dim->off
+   332.3 * indLamp5 dim->off
+   380.1 * indLamp6 dim->off
+   552.4 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp6=on  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+   552.4 > disconnect cord=44
+   552.4 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+   562.1 * indLamp6 off->dim
+   564.2 * relay6 nc->mid
+   565.5 * relay6 mid->no
+   584.7 * outLamp6 on->dim
+   602.0 * indLamp6 dim->on
+   622.1 > disconnect cord=44
+   622.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   640.3 * outLamp6 dim->off
+   660.4 > disconnect cord=44
+   660.4 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   670.2 * indLamp5 off->dim
+   672.0 * relay5 nc->mid
+   673.3 * relay5 mid->no
+   698.6 > disconnect cord=44
+   698.6 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   710.1 * indLamp5 dim->on
+   730.2 > disconnect cord=44
+   730.2 > connect cord=44 a=hole:M+#1 b=touch:M2t r_uohm=0
+   740.0 * indLamp4 off->dim
+   741.7 * relay4 nc->mid
+   743.0 * relay4 mid->no
+   768.3 > disconnect cord=44
+   768.3 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   780.0 * indLamp4 dim->on
+   800.1 > disconnect cord=44
+   800.1 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   809.9 * indLamp3 off->dim
+   811.4 * relay3 nc->mid
+   812.7 * relay3 mid->no
+   838.0 > disconnect cord=44
+   838.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   850.0 * indLamp3 dim->on
+   870.1 > disconnect cord=44
+   870.1 > connect cord=44 a=hole:M+#1 b=touch:M6t r_uohm=0
+   879.9 * indLamp2 off->dim
+   881.3 * relay2 nc->mid
+   882.6 * relay2 mid->no
+   907.9 > disconnect cord=44
+   907.9 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   920.1 * indLamp2 dim->on
+   940.2 > disconnect cord=44
+   940.2 > connect cord=44 a=hole:M+#1 b=touch:M5t r_uohm=0
+   943.4 * outLamp1 off->dim
+   950.1 * indLamp1 off->dim
+   951.4 * relay1 nc->mid
+   952.7 * relay1 mid->no
+   962.4 * outLamp1 dim->on
+   982.5 > disconnect cord=44
+   982.5 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   990.6 * indLamp1 dim->on
+  1210.7 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=on outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+  1210.7 > power off
+  1210.7 * power on->off
+  1214.2 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+  1215.1 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+  1221.6 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  1230.9 * outLamp1 on->dim
+  1277.2 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  1281.0 > disconnect cord=38
+  1281.0 > disconnect cord=39
+  1281.0 > disconnect cord=40
+  1281.0 > disconnect cord=41
+  1281.0 > disconnect cord=42
+  1281.0 > disconnect cord=43
+  1281.0 > connect cord=45 a=hole:M8t#1 b=hole:3com#2 r_uohm=0
+  1281.0 > connect cord=46 a=hole:M9t#1 b=hole:2com#2 r_uohm=0
+  1281.0 > connect cord=47 a=hole:M4t#1 b=hole:1com#2 r_uohm=0
+  1281.0 > power on
+     0.0 * power off->on  outLamp1 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > relayGrab4 target=1000
+    47.5 * relay4 nc->mid
+    48.8 * relay4 mid->no
+   124.1 > relayRelease4
+   127.6 * relay4 no->mid
+   128.5 * relay4 mid->nc
+   152.0 > relayGrab5 target=1000
+   157.3 * relay5 nc->mid
+   158.6 * relay5 mid->no
+   233.9 > relayRelease5
+   237.4 * relay5 no->mid
+   238.3 * relay5 mid->nc
+   261.8 > relayGrab6 target=1000
+   267.1 * relay6 nc->mid
+   268.4 * relay6 mid->no
+   278.3 * indLamp6 off->dim
+   287.6 * outLamp6 on->dim
+   318.1 * indLamp6 dim->on
+   343.2 * outLamp6 dim->off
+   357.7 > relayRelease6
+   577.7 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=no outLamp1=off outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+   577.7 > disconnect cord=44
+   577.7 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+   588.5 * relay6 no->mid
+   589.4 * relay6 mid->nc
+   592.7 * outLamp6 off->dim
+   611.6 * outLamp6 dim->on
+   631.7 > disconnect cord=44
+   631.7 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   650.7 * indLamp6 on->dim
+   706.3 * indLamp6 dim->off
+   870.8 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp6=on  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+   870.8 > relayGrab6 target=1000
+   876.1 * relay6 nc->mid
+   877.4 * relay6 mid->no
+   887.2 * indLamp6 off->dim
+   896.6 * outLamp6 on->dim
+   927.0 * indLamp6 dim->on
+   952.2 * outLamp6 dim->off
+   966.7 > relayRelease6
+   986.7 > relayGrab5 target=1000
+   992.0 * relay5 nc->mid
+   993.3 * relay5 mid->no
+  1003.2 * indLamp5 off->dim
+  1043.1 * indLamp5 dim->on
+  1073.3 > relayRelease5
+  1093.3 > relayGrab4 target=1000
+  1098.6 * relay4 nc->mid
+  1099.9 * relay4 mid->no
+  1109.8 * indLamp4 off->dim
+  1149.8 * indLamp4 dim->on
+  1179.9 > relayRelease4
+  1399.9 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=no relay6=no outLamp1=off outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."
+  1399.9 > disconnect cord=44
+  1399.9 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+  1409.7 * indLamp3 off->dim
+  1411.2 * relay3 nc->mid
+  1412.5 * relay3 mid->no
+  1437.8 > disconnect cord=44
+  1437.8 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1449.8 * indLamp3 dim->on
+  1469.9 > disconnect cord=44
+  1469.9 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+  1479.7 * indLamp2 off->dim
+  1481.1 * relay2 nc->mid
+  1482.4 * relay2 mid->no
+  1507.7 > disconnect cord=44
+  1507.7 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1519.9 * indLamp2 dim->on
+  1540.0 > disconnect cord=44
+  1540.0 > connect cord=44 a=hole:M+#1 b=touch:M4t r_uohm=0
+  1543.2 * outLamp1 off->dim
+  1549.9 * indLamp1 off->dim
+  1551.2 * relay1 nc->mid
+  1552.5 * relay1 mid->no
+  1562.2 * outLamp1 dim->on
+  1582.3 > disconnect cord=44
+  1582.3 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+  1590.4 * indLamp1 dim->on
+  1810.5 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=on outLamp6=off  "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set."

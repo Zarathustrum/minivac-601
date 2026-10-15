@@ -1,0 +1,59 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP5",
+  "source": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/6U", "5B/5-", "5C/6S", "5F/5-", "5G/6J", "5H/5+", "5J/6G", "6A/6H",
+    "6B/6-", "6J/6L", "6K/6U", "6R/6Z", "6T/6X", "6T/6V", "6Y/6+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "5A/6U", "5B/5-", "5C/6S", "5F/5-", "5G/6J", "5H/5+", "5J/6G", "6A/6H",
+    "6B/6-", "6J/6L", "6K/6U", "6R/6Z", "6T/6X", "6T/6V", "6Y/6+"
+  ],
+  "note": "Wire list image-read from printed p.76 (PDF p.82) and matches programs.json wiresPrinted; no errata entry. Relay 6's coil (6E/6F) is unwired, so the carry-in is set by hand (relayGrab, contract 1.1). Step 3 is asserted while relay 6 is held left; the page never says to let go, so the script ends with the hand still on relay 6 (no relayRelease). Step 4 'Try other combinations' prints no outcomes and is not scripted. Step 2 states only light 6, so light 5 is not asserted there.",
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "switch", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay6", "v": "nc" },
+        { "dev": "outLamp5", "v": "off" },
+        { "dev": "outLamp6", "v": "off" }
+      ],
+      "cite": "Book IV printed p.77 = book2-3-4.pdf PDF p.83, Procedure step 1",
+      "quote": "Turn power ON. Move slide switch 6 to the RIGHT; Input A is 0. Do not push pushbutton 6; input B is 0. Relay 6 is OFF; carry in is 0. Lights 5 and 6 are OFF."
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 6, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp6", "v": "on" }
+      ],
+      "cite": "Book IV printed p.77 = book2-3-4.pdf PDF p.83, Procedure step 2",
+      "quote": "Move slide switch 6 to the LEFT; input A is now 1. Light 6 comes ON: 1 + 0 + 0 = 1."
+    },
+    { "k": "do", "cmd": { "k": "relayGrab", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp6", "v": "off" },
+        { "dev": "outLamp5", "v": "on" }
+      ],
+      "cite": "Book IV printed p.77 = book2-3-4.pdf PDF p.83, Procedure step 3",
+      "quote": "Manually move relay 6 to the left to indicate that carry in is 1. Light 6 goes OFF and light 5 comes ON: 1 + 0 + 1 = 0 and carry 1."
+    }
+  ]
+}

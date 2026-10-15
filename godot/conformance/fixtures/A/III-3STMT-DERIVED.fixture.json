@@ -1,0 +1,156 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-3STMT-DERIVED",
+  "source": "BK3 printed pp.36-37 = book2-3-4.pdf PDF pp.42-43; ER-07 replaces the diagram without changing the program list; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/3A",
+    "3B/3-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the four wires and the p.36-37 rule (A X B = C, pushbutton DOWN = 1, light ON = 1). Only light 3 for both pushbuttons down is printed as an observable (A/III-3STMT); the page also prints the full 1 X 1 / 0 X 1 / 1 X 0 / 0 X 0 table, which this fixture checks on the circuit, including the 1 X 0 case reached by releasing pushbutton 2 from the lit state (the printed fixture covers pushbutton 1 alone from rest). Topology: a single series path 1+ -> 1Y-1X -> 2Y-2X -> 3A-3B -> 3-; the N.C. contacts 1Z and 2Z are unwired, no relay, switch or motor is used, and nothing loops back, so each input set has one settled state. The 500 ms advance before each expect lets the lamp finish its thermal transient; the page states no timing.",
+  "wires": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/3A",
+    "3B/3-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.36-37 = book2-3-4.pdf PDF pp.42-43, stated rule A X B = C (1 X 1 = 1, 0 X 1 = 0, 1 X 0 = 0, 0 X 0 = 0; pushbutton DOWN = 1, light ON = 1); ER-07 replaces the diagram only; derived from topology: 0 X 0 = 0. Both pushbuttons up: the only feed is 1+/1Y, and arm 1Y rests on 1Z (unwired), so 1X, 2Y, 2X and 3A are dead; light 3 (3A-3B-3-) dark",
+      "quote": "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.36-37 = book2-3-4.pdf PDF pp.42-43, stated rule A X B = C (1 X 1 = 1, 0 X 1 = 0, 1 X 0 = 0, 0 X 0 = 0; pushbutton DOWN = 1, light ON = 1); ER-07 replaces the diagram only; derived from topology: 0 X 1 = 0. Pushbutton 2 down closes 2Y-2X, but 2Y is fed only from 1X, and pushbutton 1 is up (1Y on 1Z), so 3A stays dead; light 3 dark",
+      "quote": "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.36-37 = book2-3-4.pdf PDF pp.42-43, stated rule A X B = C (1 X 1 = 1, 0 X 1 = 0, 1 X 0 = 0, 0 X 0 = 0; pushbutton DOWN = 1, light ON = 1); ER-07 replaces the diagram only; derived from topology: 1 X 1 = 1. Both down: 1+ to 1Y-1X (pushbutton 1 N.O.) to 2Y-2X (pushbutton 2 N.O.) to 3A, lamp, 3B to 3-; light 3 lit",
+      "quote": "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.36-37 = book2-3-4.pdf PDF pp.42-43, stated rule A X B = C (1 X 1 = 1, 0 X 1 = 0, 1 X 0 = 0, 0 X 0 = 0; pushbutton DOWN = 1, light ON = 1); ER-07 replaces the diagram only; derived from topology: 1 X 0 = 0. Pushbutton 2 released while pushbutton 1 is held: 1X/2Y is live, but arm 2Y returns to 2Z (unwired), so 2X and 3A are dead; light 3 goes dark",
+      "quote": "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    }
+  ]
+}

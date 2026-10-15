@@ -1,0 +1,51 @@
+#!mv601-trace 1
+# id=I-EXP11 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=189 marginal=false
+     0.0 > power on
+     0.0 > dialGrab targetUdeg=22500000
+     0.0 * power off->on
+    46.8 * dial c0->gap
+    78.1 * dial gap->c1
+    81.4 * outLamp5 off->dim
+   100.3 * outLamp5 dim->on
+   200.0 ? dial=c1 outLamp5=on  "Light 5 comes ON and remains ON as long as the pointer points at number 1."
+   200.0 > dialGrab targetUdeg=45000000
+   246.8 * dial c1->gap
+   267.2 * outLamp5 on->dim
+   278.1 * dial gap->c2
+   281.4 * outLamp6 off->dim
+   300.3 * outLamp6 dim->on
+   322.8 * outLamp5 dim->off
+   400.0 ? dial=c2 outLamp5=off outLamp6=on  "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON."
+   400.0 > dialGrab targetUdeg=146250000
+   446.8 * dial c2->gap
+   467.2 * outLamp6 on->dim
+   478.1 * dial gap->c3
+   522.8 * outLamp6 dim->off
+   571.8 * dial c3->gap
+   603.1 * dial gap->c4
+   696.8 * dial c4->gap
+   728.1 * dial gap->c5
+   821.8 * dial c5->gap
+   853.1 * dial gap->c6
+   946.8 * dial c6->gap
+  1050.0 ? dial=gap  "This happens when the pointer knob stops between adjacent terminals — for example, between D6 and D7 — and is not making proper connection with either."
+  1050.0 > dialGrab targetUdeg=326250000
+  1065.6 * dial gap->c7
+  1159.3 * dial c7->gap
+  1190.6 * dial gap->c8
+  1284.3 * dial c8->gap
+  1315.6 * dial gap->c9
+  1409.3 * dial c9->gap
+  1440.6 * dial gap->c10
+  1534.3 * dial c10->gap
+  1565.6 * dial gap->c11
+  1659.3 * dial c11->gap
+  1690.6 * dial gap->c12
+  1784.3 * dial c12->gap
+  1815.6 * dial gap->c13
+  1909.3 * dial c13->gap
+  1940.6 * dial gap->c14
+  2034.3 * dial c14->gap
+  2100.0 ? dial=gap  "This happens when the pointer knob stops between adjacent terminals — for example, between D6 and D7 — and is not making proper connection with either."

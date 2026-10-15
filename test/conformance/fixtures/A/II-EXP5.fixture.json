@@ -1,0 +1,52 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP5",
+  "source": "BK2 printed pp.13-14 = book2-3-4.pdf PDF pp.19-20",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1H", "1H/1L", "1L/1X", "1Y/1C", "1F/1-", "1X/2X", "2Y/2C",
+    "2F/2-", "1J/2H", "2J/2K", "1K/2L", "2K/3C", "3F/3-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1+/1H", "1H/1L", "1L/1X", "1Y/1C", "1F/1-", "1X/2X", "2Y/2C",
+    "2F/2-", "1J/2H", "2J/2K", "1K/2L", "2K/3C", "3F/3-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay3", "v": "no" }],
+      "cite": "BK2 printed p.14 step 2 = book2-3-4.pdf PDF p.20",
+      "quote": "Turn power ON. Relay 3 comes ON because both numbers are zero."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay3", "v": "nc" }],
+      "cite": "BK2 printed p.14 step 3 = book2-3-4.pdf PDF p.20",
+      "quote": "Push pushbutton 1. Relay 3 goes OFF because the numbers are no longer equal."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay3", "v": "no" }],
+      "cite": "BK2 printed p.14 step 4 = book2-3-4.pdf PDF p.20",
+      "quote": "Push pushbutton 2 while holding down pushbutton 1. Once again the numbers are equal (both are 1) and relay 3 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay3", "v": "nc" }],
+      "cite": "BK2 printed p.14 step 5 = book2-3-4.pdf PDF p.20",
+      "quote": "Release pushbutton 1 while holding down pushbutton 2. Relay 3 goes OFF because the numbers are not equal."
+    }
+  ]
+}

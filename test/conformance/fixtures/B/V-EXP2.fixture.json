@@ -1,0 +1,414 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP2",
+  "source": "BK5-6 printed pp.2-3 = book5-6.pdf PDF pp.8-9, image-read",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1X/6F",
+    "1Y/2Y",
+    "2Y/2-",
+    "2Z/3Y",
+    "3Z/4Y",
+    "4Z/5Y",
+    "5A/5+",
+    "5B/5J",
+    "5E/5+",
+    "5F/5H",
+    "5J/6J",
+    "5Z/6Y",
+    "6C/6+",
+    "6F/6L",
+    "6H/6-",
+    "6K/6Z"
+  ],
+  "errata_applied": [],
+  "note": "Relay 5's coil feeds through its own N.C. contact (5F/5H, 5J) and buzzes whenever relay 6 is released, so powered phases with relay 6 out use fixed advances instead of settle. Light 5 hangs on 5J/6J/6H, not on relay 5's arm, so it stays lit through the buzz. The page states no observable for the set state ('The burglar alarm is now set'), so the pushbutton 1 presses carry no expect; light 5 OFF and relay 6 latched there are derived and left to Step 7.",
+  "wires": [
+    "1X/6F",
+    "1Y/2Y",
+    "2Y/2-",
+    "2Z/3Y",
+    "3Z/4Y",
+    "4Z/5Y",
+    "5A/5+",
+    "5B/5J",
+    "5E/5+",
+    "5F/5H",
+    "5J/6J",
+    "5Z/6Y",
+    "6C/6+",
+    "6F/6L",
+    "6H/6-",
+    "6K/6Z"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.3 = book5-6.pdf PDF p.9",
+      "quote": "Turn power ON. The alarm (light 5) comes ON."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8, Experiment 2 intro; procedure on printed p.3 = PDF p.9",
+      "quote": "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. | If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8, Experiment 2 intro; procedure on printed p.3 = PDF p.9",
+      "quote": "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. | If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8, Experiment 2 intro; procedure on printed p.3 = PDF p.9",
+      "quote": "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. | If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8, Experiment 2 intro; procedure on printed p.3 = PDF p.9",
+      "quote": "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. | If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8, Experiment 2 intro; procedure on printed p.3 = PDF p.9",
+      "quote": "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. | If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-SELFLOCK",
+  "source": "BK2 printed pp.10-11 = book2-3-4.pdf PDF pp.16-17",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1+/1H", "1X/1C", "1-/1F", "1G/1A", "1B/1-", "1C/1A"],
+  "errata_applied": [],
+  "note": "The 30 ms post-power-off advance lets the modelled hot filament leave DIM; it is not source timing. The source requires power removal, and the fixture makes no restore-power assertion.",
+  "wires": ["1+/1Y", "1+/1H", "1X/1C", "1-/1F", "1G/1A", "1B/1-", "1C/1A"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay1", "v": "no" },
+        { "dev": "pb1", "v": "nc" }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16",
+      "quote": "The manual memory relay circuit above can be easily modified to achieve this by using one of the switches of the relay to continue to supply current to the coil of the relay after the pushbutton has been released."
+    },
+    { "k": "do", "cmd": { "k": "power", "on": false } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay1", "v": "nc" }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17",
+      "quote": "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off."
+    }
+  ]
+}

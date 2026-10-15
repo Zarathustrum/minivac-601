@@ -1,0 +1,866 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP13",
+  "source": "BK5 printed p.24 = book5-6.pdf PDF p.30 (Experiment 13: Multiple Point Control), wire table image-read at 400 dpi (round-1 fidelity review, 2026-10-14), all 28 entries match, 4 columns column-major; errata.pdf p.3 carries no Experiment 13 entry (the Book V pages 21-22 note ER-33 concerns M10 matrix connections in Experiment 12 and applies to no wire here; the page 24 correction is Experiment 14 only); Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1V/1Y",
+    "1W/2V",
+    "1Z/2Y",
+    "2W/3V",
+    "2Z/3Y",
+    "3W/4V",
+    "3Z/4Y",
+    "4A/6K",
+    "4B/4-",
+    "4W/5V",
+    "4Z/5Y",
+    "5A/5E",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5W/6V",
+    "5Z/6Y",
+    "6A/6E",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6H/6W",
+    "6L/6Z",
+    "6Z/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every until is derived by hand from the 28-wire topology and the p.24 rule, not printed. No erratum touches this program. Printed setup (BK5 p.24): 'Set all slide switches to the RIGHT. Turn power on.' The page prints no order or count for the operations; the script exercises all twelve 'locations' once, in the sentence's order: pushbuttons 1-6 (each pushed and released), then slide switches 1-6 (each LEFT and back RIGHT). Topology: the twelve rest contacts (pushbutton N.C., slide switch set 2 RIGHT) form one series loop from + to node Q (6W/6H/5J); relays 5 and 6 form a two-relay binary toggle whose coils share far end F (5F/6F/5H); light 4 follows relay 6 through 6L(+)-6K. Opening the loop (push, or slide LEFT) flips relay 6 and so light 4; closing it (release, or slide back RIGHT) moves relay 5 to match, which arms the next flip. Derived reading of the rule: one complete operation (push and release, or LEFT and back RIGHT) toggles light 4; the visible change lands on the push or the LEFT move. Light 4 starts off at power-up (not printed). Checkpoints use an until with maxMs 1500 after each settle because settle can return while a filament is still in transit (open-questions.md O-C28). Lamps 5 and 6 are asserted only where their node sits on + (full rail) or is dead; where a lamp sits behind a coil its class depends on profile constants and is not asserted.",
+  "wires": [
+    "1V/1Y",
+    "1W/2V",
+    "1Z/2Y",
+    "2W/3V",
+    "2Z/3Y",
+    "3W/4V",
+    "3Z/4Y",
+    "4A/6K",
+    "4B/4-",
+    "4W/5V",
+    "4Z/5Y",
+    "5A/5E",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5W/6V",
+    "5Z/6Y",
+    "6A/6E",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6H/6W",
+    "6L/6Z",
+    "6Z/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, all slide switches RIGHT and power turned on, before any operation; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed so Q is on +; relay 5 released puts F on Q through 5H-5J and relay 6 released puts E6 on Q through 6H-6J, so coil 6 has + at both ends; coil 5 runs F(+)-coil-E5 and through the two lamps on E5 to -, so relay 5 pulls in and then holds itself through 5G(+)-5H; E6 sits on + so output lamp 6 has full rail; 6L-6K is open so light 4 is dark",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 1 of 12, pushbutton 1 pushed and held; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop open so Q is cut from +; relay 6 released joins Q to E6 only (5J is open with relay 5 operated); F is on + through 5G-5H, so coil 6 runs F(+)-coil-E6 and through the two lamps on E6 to - and relay 6 pulls in; 6L(+)-6K then lights light 4; relay 5 still holds through 5G-5H (its coil runs F(+)-E5 and the lamps)",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 1 of 12, pushbutton 1 pushed then released; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; with relay 6 operated 6H-6G puts + on E5, so coil 5 has + at both ends and relay 5 drops; 5H-5J then puts F on Q(+), so coil 6 keeps F(+)-coil-E6-lamps to - and relay 6 holds; 6L(+)-6K keeps light 4 lit; E5 on + gives output lamp 5 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 2 of 12, pushbutton 2 pushed and held; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop open so Q is cut from +; relay 5 released ties F to Q (5H-5J) and relay 6 operated ties Q to E5 (6H-6G), and that node has no + source (5G-5H open, 6L-6K feeds only light 4, the loop is open), so coil 6 loses its feed and relay 6 drops; 6H-6J then joins Q to E6, still with no + source, so lamps 5 and 6 carry nothing; 6L-6K opens and light 4 goes dark",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 2 of 12, pushbutton 2 pushed then released; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; relay 5 released puts F on Q(+) through 5H-5J and relay 6 released puts E6 on Q(+) through 6H-6J; coil 6 has + at both ends, coil 5 runs F(+)-coil-E5-lamps to - and relay 5 pulls in and holds through 5G-5H; light 4 stays dark (6L-6K open); E6 on + gives output lamp 6 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 3 of 12, pushbutton 3 pushed then released; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; with relay 6 operated 6H-6G puts + on E5, so coil 5 has + at both ends and relay 5 drops; 5H-5J then puts F on Q(+), so coil 6 keeps F(+)-coil-E6-lamps to - and relay 6 holds; 6L(+)-6K keeps light 4 lit; E5 on + gives output lamp 5 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 4 of 12, pushbutton 4 pushed then released; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; relay 5 released puts F on Q(+) through 5H-5J and relay 6 released puts E6 on Q(+) through 6H-6J; coil 6 has + at both ends, coil 5 runs F(+)-coil-E5-lamps to - and relay 5 pulls in and holds through 5G-5H; light 4 stays dark (6L-6K open); E6 on + gives output lamp 6 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 5 of 12, pushbutton 5 pushed then released; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; with relay 6 operated 6H-6G puts + on E5, so coil 5 has + at both ends and relay 5 drops; 5H-5J then puts F on Q(+), so coil 6 keeps F(+)-coil-E6-lamps to - and relay 6 holds; 6L(+)-6K keeps light 4 lit; E5 on + gives output lamp 5 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 6 of 12, pushbutton 6 pushed then released; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; relay 5 released puts F on Q(+) through 5H-5J and relay 6 released puts E6 on Q(+) through 6H-6J; coil 6 has + at both ends, coil 5 runs F(+)-coil-E5-lamps to - and relay 5 pulls in and holds through 5G-5H; light 4 stays dark (6L-6K open); E6 on + gives output lamp 6 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 7 of 12, slide switch 1 moved LEFT and held; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop open so Q is cut from +; relay 6 released joins Q to E6 only (5J is open with relay 5 operated); F is on + through 5G-5H, so coil 6 runs F(+)-coil-E6 and through the two lamps on E6 to - and relay 6 pulls in; 6L(+)-6K then lights light 4; relay 5 still holds through 5G-5H (its coil runs F(+)-E5 and the lamps)",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 7 of 12, slide switch 1 moved LEFT then moved back RIGHT; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; with relay 6 operated 6H-6G puts + on E5, so coil 5 has + at both ends and relay 5 drops; 5H-5J then puts F on Q(+), so coil 6 keeps F(+)-coil-E6-lamps to - and relay 6 holds; 6L(+)-6K keeps light 4 lit; E5 on + gives output lamp 5 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 8 of 12, slide switch 2 moved LEFT and held; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop open so Q is cut from +; relay 5 released ties F to Q (5H-5J) and relay 6 operated ties Q to E5 (6H-6G), and that node has no + source (5G-5H open, 6L-6K feeds only light 4, the loop is open), so coil 6 loses its feed and relay 6 drops; 6H-6J then joins Q to E6, still with no + source, so lamps 5 and 6 carry nothing; 6L-6K opens and light 4 goes dark",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 8 of 12, slide switch 2 moved LEFT then moved back RIGHT; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; relay 5 released puts F on Q(+) through 5H-5J and relay 6 released puts E6 on Q(+) through 6H-6J; coil 6 has + at both ends, coil 5 runs F(+)-coil-E5-lamps to - and relay 5 pulls in and holds through 5G-5H; light 4 stays dark (6L-6K open); E6 on + gives output lamp 6 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 9 of 12, slide switch 3 moved LEFT then moved back RIGHT; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; with relay 6 operated 6H-6G puts + on E5, so coil 5 has + at both ends and relay 5 drops; 5H-5J then puts F on Q(+), so coil 6 keeps F(+)-coil-E6-lamps to - and relay 6 holds; 6L(+)-6K keeps light 4 lit; E5 on + gives output lamp 5 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 10 of 12, slide switch 4 moved LEFT then moved back RIGHT; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; relay 5 released puts F on Q(+) through 5H-5J and relay 6 released puts E6 on Q(+) through 6H-6J; coil 6 has + at both ends, coil 5 runs F(+)-coil-E5-lamps to - and relay 5 pulls in and holds through 5G-5H; light 4 stays dark (6L-6K open); E6 on + gives output lamp 6 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 11 of 12, slide switch 5 moved LEFT then moved back RIGHT; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; with relay 6 operated 6H-6G puts + on E5, so coil 5 has + at both ends and relay 5 drops; 5H-5J then puts F on Q(+), so coil 6 keeps F(+)-coil-E6-lamps to - and relay 6 holds; 6L(+)-6K keeps light 4 lit; E5 on + gives output lamp 5 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed p.24 = book5-6.pdf PDF p.30 multiple-point-control rule, operation 12 of 12, slide switch 6 moved LEFT then moved back RIGHT; derived from topology: the 12-contact series loop runs + (6+/6Z) through every pushbutton N.C. contact (6Z-6Y, 6Y/5Z ... 2Y/1Z, 1Z-1Y), 1Y/1V, then every slide switch set 2 RIGHT contact (1V-1W, 1W/2V ... 5W/6V, 6V-6W) to the node Q = 6W/6H/5J; F = 5F/6F/5H is the common far end of coils 5 and 6; E5 = 5E/5A/6G carries output lamp 5 (5A-5B, 5B on -) beside indicator lamp 5 (5E-5C, 5C on -); E6 = 6E/6A/6J likewise carries output lamp 6 and indicator lamp 6 (6C on -); light 4 (4A-4B, 4B on -) is fed only by 6L(+)-6K; loop closed again so Q is on +; relay 5 released puts F on Q(+) through 5H-5J and relay 6 released puts E6 on Q(+) through 6H-6J; coil 6 has + at both ends, coil 5 runs F(+)-coil-E5-lamps to - and relay 5 pulls in and holds through 5G-5H; light 4 stays dark (6L-6K open); E6 on + gives output lamp 6 full rail",
+      "quote": "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

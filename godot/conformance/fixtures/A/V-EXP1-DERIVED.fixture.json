@@ -1,0 +1,195 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP1-DERIVED",
+  "source": "BK5 printed p.2 = book5-6.pdf PDF p.8; ER-28; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1+",
+    "1B/1V",
+    "1U/2U",
+    "1W/2W",
+    "2V/2-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the five wires and the p.2 rule (either slide switch turns light 1 on or off whatever the other's position; ER-28: each move flips the light). Topology: 1+/1A feeds light 1, 1B/1V feeds slide switch 1 set-2 arm; switch 1 LEFT (travel 0) closes V-U, RIGHT (travel 1000) closes V-W; 1U/2U and 1W/2W cross to slide switch 2's set-2 contacts, whose arm 2V returns to 2- (2V/2-). Light 1 is lit exactly when both switches are on the same side: LL and RR ON, LR and RL OFF. This is the inverse of the page's worked LEFT/RIGHT example (manual defect O-C24, independent of switch polarity), which is not asserted. The script starts from the page example's switch 2 RIGHT with switch 1 RIGHT, makes the page's two moves (switch 1 LEFT, then switch 2 LEFT), then moves each switch back, so all four positions and two flips per switch are checked. The 500 ms advance before each expect lets the lamp finish its thermal transient; the page states no timing.",
+  "wires": [
+    "1A/1+",
+    "1B/1V",
+    "1U/2U",
+    "1W/2W",
+    "2V/2-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.2 = book5-6.pdf PDF p.8, stated rule: the light can be turned on or off from either slide switch regardless of the other's position (ER-28 = errata.pdf PDF p.3: moving either slide switch changes the light to the opposite state); derived from topology (absolute phase not printed reliably, O-C24): both RIGHT (RR). 1+/1A feeds light 1; 1B/1V feeds switch 1 set-2 arm, which RIGHT closes to 1W; 1W/2W; switch 2 arm 2V RIGHT closes to 2W, and 2V/2- returns: light 1 lit",
+      "quote": "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed p.2 = book5-6.pdf PDF p.8, stated rule: the light can be turned on or off from either slide switch regardless of the other's position (ER-28 = errata.pdf PDF p.3: moving either slide switch changes the light to the opposite state); derived from topology (absolute phase not printed reliably, O-C24): switch 1 moved LEFT, switch 2 RIGHT (LR). Arm 1V now on 1U; 1U/2U reaches 2U, but arm 2V sits on 2W, and 1W is open: no return path, light 1 dark",
+      "quote": "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.2 = book5-6.pdf PDF p.8, stated rule: the light can be turned on or off from either slide switch regardless of the other's position (ER-28 = errata.pdf PDF p.3: moving either slide switch changes the light to the opposite state); derived from topology (absolute phase not printed reliably, O-C24): switch 2 moved LEFT, switch 1 LEFT (LL). 1V-1U, 1U/2U, 2U-2V, 2V/2-: light 1 lit",
+      "quote": "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5 printed p.2 = book5-6.pdf PDF p.8, stated rule: the light can be turned on or off from either slide switch regardless of the other's position (ER-28 = errata.pdf PDF p.3: moving either slide switch changes the light to the opposite state); derived from topology (absolute phase not printed reliably, O-C24): switch 1 moved RIGHT, switch 2 LEFT (RL). 1V-1W, 1W/2W reaches 2W, but arm 2V sits on 2U, and 1U is open: light 1 dark",
+      "quote": "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.2 = book5-6.pdf PDF p.8, stated rule: the light can be turned on or off from either slide switch regardless of the other's position (ER-28 = errata.pdf PDF p.3: moving either slide switch changes the light to the opposite state); derived from topology (absolute phase not printed reliably, O-C24): switch 2 moved RIGHT, switch 1 RIGHT (RR, back to start). 1V-1W, 1W/2W, 2W-2V, 2V/2-: light 1 lit",
+      "quote": "Regardless of which position the switch is in, the switch at the other location can always turn the light either on or off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

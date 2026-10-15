@@ -1,0 +1,31 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-RELAYAND",
+  "source": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; ERRATA sheet p.2",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y", "1X/1C", "1F/1-", "2+/2Y", "2X/2C", "2F/2-", "1+/1H", "2+/2H", "2G/3A", "3B/3-"
+  ],
+  "errata_applied": [
+    { "id": "ER-12", "from": "2+/2H", "to": "1G/2H" }
+  ],
+  "wires": [
+    "1+/1Y", "1X/1C", "1F/1-", "2+/2Y", "2X/2C", "2F/2-", "1+/1H", "1G/2H", "2G/3A", "3B/3-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; ER-12",
+      "quote": "Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."
+    }
+  ]
+}

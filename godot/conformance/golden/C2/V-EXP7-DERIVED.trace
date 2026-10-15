@@ -1,0 +1,218 @@
+#!mv601-trace 1
+# id=V-EXP7-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=25
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=92 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 ? relay4=nc relay5=nc relay6=nc dial=c0 indLamp4=off indLamp5=off indLamp6=off  "Turn power on and set the pointer knob of the rotary switch at 0. The rotary switch at 0 represents the gate up."
+   500.0 > button4 target=1000
+   511.2 * pb4 nc->mid
+   513.7 * pb4 mid->no
+   523.7 * indLamp4 off->dim
+   525.5 * relay4 nc->mid
+   526.8 * relay4 mid->no
+   536.8 * indLamp6 off->dim
+   539.1 * relay6 nc->mid
+   540.4 * relay6 mid->no
+   550.9 * dial c0->gap
+   564.9 * indLamp4 dim->on
+   571.8 * dial gap->c1
+   577.8 * indLamp6 dim->on
+   634.6 * dial c1->gap
+   655.6 * dial gap->c2
+   718.3 * dial c2->gap
+   739.3 * dial gap->c3
+   802.1 * dial c3->gap
+   823.0 * dial gap->c4
+   885.8 * dial c4->gap
+   906.7 * dial gap->c5
+   969.5 * dial c5->gap
+   990.5 * dial gap->c6
+  1053.2 * dial c6->gap
+  1074.2 * dial gap->c7
+  1074.3 ? relay4=no relay6=no dial=c7  "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+  3074.3 ? relay4=no relay5=nc relay6=no dial=c7 indLamp4=on indLamp5=off indLamp6=on  "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+  3074.3 > button5 target=1000
+  3085.5 * pb5 nc->mid
+  3088.0 * pb5 mid->no
+  5074.3 > button4 target=0
+  5085.5 * pb4 no->mid
+  5088.0 * pb4 mid->nc
+  7074.3 ? relay4=no relay5=nc relay6=no dial=c7  "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+  7074.3 > button6 target=1000
+  7085.5 * pb6 nc->mid
+  7088.0 * pb6 mid->no
+  7098.0 * indLamp5 off->dim
+  7100.1 * relay5 nc->mid
+  7101.4 * relay5 mid->no
+  7139.1 * indLamp5 dim->on
+  9074.3 > button5 target=0
+  9085.5 * pb5 no->mid
+  9088.0 * pb5 mid->nc
+ 11074.3 ? relay4=no relay5=no relay6=no dial=c7 indLamp4=on indLamp5=on indLamp6=on  "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 11074.3 > button6 target=0
+ 11085.5 * pb6 no->mid
+ 11088.0 * pb6 mid->nc
+ 11090.1 * relay4 no->mid  relay5 no->mid
+ 11091.0 * relay4 mid->nc  relay5 mid->nc
+ 11094.6 * relay6 no->mid
+ 11095.5 * relay6 mid->nc
+ 11096.2 * indLamp4 on->dim  indLamp5 on->dim
+ 11100.9 * indLamp6 on->dim
+ 11101.7 * dial c7->gap
+ 11122.5 * dial gap->c6
+ 11151.9 * indLamp4 dim->off  indLamp5 dim->off
+ 11156.5 * indLamp6 dim->off
+ 11185.0 * dial c6->gap
+ 11205.8 * dial gap->c5
+ 11268.3 * dial c5->gap
+ 11289.1 * dial gap->c4
+ 11351.6 * dial c4->gap
+ 11372.5 * dial gap->c3
+ 11435.0 * dial c3->gap
+ 11455.8 * dial gap->c2
+ 11518.3 * dial c2->gap
+ 11539.1 * dial gap->c1
+ 11601.6 * dial c1->gap
+ 11622.5 * dial gap->c0
+ 11622.6 ? relay4=nc relay5=nc relay6=nc dial=c0  "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 13622.6 ? relay4=nc relay5=nc relay6=nc dial=c0 indLamp4=off indLamp5=off indLamp6=off  "Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+ 13622.6 > button5 target=1000
+ 13633.8 * pb5 nc->mid
+ 13636.3 * pb5 mid->no
+ 15622.6 ? relay4=nc relay5=nc relay6=nc dial=c0 indLamp4=off indLamp5=off indLamp6=off  "Push pushbutton 5. This represents a car passing over the center of the crossing. Notice that the gate does not close."
+ 15622.6 > button5 target=0
+ 15633.8 * pb5 no->mid
+ 15636.3 * pb5 mid->nc
+ 16622.6 > button6 target=1000
+ 16633.8 * pb6 nc->mid
+ 16636.3 * pb6 mid->no
+ 16646.3 * indLamp5 off->dim
+ 16648.3 * relay5 nc->mid
+ 16649.6 * relay5 mid->no
+ 16659.6 * indLamp6 off->dim
+ 16661.9 * relay6 nc->mid
+ 16663.2 * relay6 mid->no
+ 16669.5 * dial c0->gap
+ 16687.3 * indLamp5 dim->on
+ 16690.3 * dial gap->c1
+ 16700.5 * indLamp6 dim->on
+ 16753.1 * dial c1->gap
+ 16774.0 * dial gap->c2
+ 16836.8 * dial c2->gap
+ 16857.8 * dial gap->c3
+ 16920.6 * dial c3->gap
+ 16941.5 * dial gap->c4
+ 17004.3 * dial c4->gap
+ 17025.2 * dial gap->c5
+ 17088.0 * dial c5->gap
+ 17108.9 * dial gap->c6
+ 17171.7 * dial c6->gap
+ 17192.7 * dial gap->c7
+ 17192.8 ? relay5=no relay6=no dial=c7  "The same will be true for a train moving right through. . . ."
+ 19192.8 ? relay4=nc relay5=no relay6=no dial=c7 indLamp4=off indLamp5=on indLamp6=on  "The same will be true for a train moving right through. . . ."
+ 19192.8 > button5 target=1000
+ 19204.0 * pb5 nc->mid
+ 19206.5 * pb5 mid->no
+ 21192.8 > button6 target=0
+ 21204.0 * pb6 no->mid
+ 21206.5 * pb6 mid->nc
+ 23192.8 ? relay4=nc relay5=no relay6=no dial=c7  "The same will be true for a train moving right through. . . ."
+ 23192.8 > button4 target=1000
+ 23204.0 * pb4 nc->mid
+ 23206.5 * pb4 mid->no
+ 23216.5 * indLamp4 off->dim
+ 23218.4 * relay4 nc->mid
+ 23219.7 * relay4 mid->no
+ 23257.6 * indLamp4 dim->on
+ 25192.8 > button5 target=0
+ 25204.0 * pb5 no->mid
+ 25206.5 * pb5 mid->nc
+ 27192.8 ? relay4=no relay5=no relay6=no dial=c7  "The same will be true for a train moving right through. . . ."
+ 27192.8 > button4 target=0
+ 27204.0 * pb4 no->mid
+ 27206.5 * pb4 mid->nc
+ 27208.6 * relay4 no->mid  relay5 no->mid
+ 27209.5 * relay4 mid->nc  relay5 mid->nc
+ 27213.1 * relay6 no->mid
+ 27214.0 * relay6 mid->nc
+ 27214.7 * indLamp4 on->dim  indLamp5 on->dim
+ 27219.4 * indLamp6 on->dim
+ 27220.2 * dial c7->gap
+ 27241.0 * dial gap->c6
+ 27270.4 * indLamp4 dim->off  indLamp5 dim->off
+ 27275.0 * indLamp6 dim->off
+ 27303.5 * dial c6->gap
+ 27324.3 * dial gap->c5
+ 27386.8 * dial c5->gap
+ 27407.6 * dial gap->c4
+ 27470.1 * dial c4->gap
+ 27491.0 * dial gap->c3
+ 27553.5 * dial c3->gap
+ 27574.3 * dial gap->c2
+ 27636.8 * dial c2->gap
+ 27657.6 * dial gap->c1
+ 27720.1 * dial c1->gap
+ 27741.0 * dial gap->c0
+ 27741.1 ? relay4=nc relay5=nc relay6=nc dial=c0  "The same will be true for a train moving right through. . . ."
+ 29741.1 ? relay4=nc relay5=nc relay6=nc dial=c0 indLamp4=off indLamp5=off indLamp6=off  "The same will be true for a train moving right through. . . ."
+ 29741.1 > button4 target=1000
+ 29752.3 * pb4 nc->mid
+ 29754.8 * pb4 mid->no
+ 29764.8 * indLamp4 off->dim
+ 29766.6 * relay4 nc->mid
+ 29767.9 * relay4 mid->no
+ 29777.9 * indLamp6 off->dim
+ 29780.2 * relay6 nc->mid
+ 29781.5 * relay6 mid->no
+ 29787.8 * dial c0->gap
+ 29805.8 * indLamp4 dim->on
+ 29808.6 * dial gap->c1
+ 29818.8 * indLamp6 dim->on
+ 29871.4 * dial c1->gap
+ 29892.3 * dial gap->c2
+ 29955.1 * dial c2->gap
+ 29976.1 * dial gap->c3
+ 30038.9 * dial c3->gap
+ 30059.8 * dial gap->c4
+ 30122.6 * dial c4->gap
+ 30143.5 * dial gap->c5
+ 30206.3 * dial c5->gap
+ 30227.2 * dial gap->c6
+ 30290.0 * dial c6->gap
+ 30311.0 * dial gap->c7
+ 30311.1 ? relay4=no relay6=no dial=c7  "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again."
+ 30311.1 > button5 target=1000
+ 30322.3 * pb5 nc->mid
+ 30324.8 * pb5 mid->no
+ 32311.1 > button5 target=0
+ 32322.3 * pb5 no->mid
+ 32324.8 * pb5 mid->nc
+ 34311.1 ? relay4=no relay5=nc relay6=no dial=c7  "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again."
+ 34311.1 > button4 target=0
+ 34322.3 * pb4 no->mid
+ 34324.8 * pb4 mid->nc
+ 34326.9 * relay4 no->mid
+ 34327.8 * relay4 mid->nc
+ 34331.4 * relay6 no->mid
+ 34332.3 * relay6 mid->nc
+ 34333.1 * indLamp4 on->dim
+ 34337.7 * indLamp6 on->dim
+ 34338.5 * dial c7->gap
+ 34359.3 * dial gap->c6
+ 34388.7 * indLamp4 dim->off
+ 34393.3 * indLamp6 dim->off
+ 34421.8 * dial c6->gap
+ 34442.6 * dial gap->c5
+ 34505.1 * dial c5->gap
+ 34526.0 * dial gap->c4
+ 34588.5 * dial c4->gap
+ 34609.3 * dial gap->c3
+ 34671.8 * dial c3->gap
+ 34692.6 * dial gap->c2
+ 34755.1 * dial c2->gap
+ 34776.0 * dial gap->c1
+ 34838.5 * dial c1->gap
+ 34859.3 * dial gap->c0
+ 34859.4 ? relay4=nc relay5=nc relay6=nc dial=c0  "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again."
+ 36859.4 ? relay4=nc relay5=nc relay6=nc dial=c0 indLamp4=off indLamp5=off indLamp6=off  "The same will be true for a train moving from left through the crossing, or for a train which enters the crossing, stops and backs out again."

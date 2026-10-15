@@ -1,0 +1,494 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP16-DERIVED",
+  "source": "BK5 printed pp.29-30 = book5-6.pdf PDF pp.35-36 (purpose p.29 = PDF p.35; program, Morse code, light roles and procedure p.30 = PDF p.36); errata.pdf PDF p.4 (no printed page number) ER-36 'page 30: \"CQ\" transmitter program correction: change 5X/6E to 5X/6C'; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6E",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-36",
+      "from": "5X/6E",
+      "to": "5X/6C"
+    }
+  ],
+  "wires": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6C",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 \"Set the rotary switch at 0 and turn power on.\"; derived from topology: with relay 6 open (6H-6G) and pushbutton 6 up (6Y-6X), 6F/D17/D16 have no path to +, so the coil, motor and wiper are dead",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D3 feeds light 5 (D3/5A, 5B/5-), the first dash of C",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D4 feeds light 6 (D4/6A, 6B/6-), the first dot of C",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D5 feeds light 5 (D5/D3), the second dash of C",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D6 feeds light 6 (D6/D4), the second dot of C",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D8 feeds light 5 (D8/D5); D7 is unwired, the letter space, the first dash of Q",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D9 feeds light 5 (D9/D8), the second dash of Q",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D10 feeds light 6 (D10/D6), the dot of Q",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c11"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 600,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D11 feeds light 5 (D11/D9), the last dash of Q",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "maxMs": 800,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: D12-D15 are unwired, the gap after the call",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose and \"Once turned on, this system will continue to \\\"transmit\\\" the CQ call until it is turned off.\"; derived from topology: D14 is unwired so both lights are dark; relay 6 holds through 6H(+)-6G-6F-coil-6E-lamp-6C(-) after pushbutton 6 is released",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "breaker",
+          "v": "tripped"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 \"To stop transmission, push pushbutton 5.\"; errata.pdf PDF p.4 ER-36; derived from topology (open-questions.md O-C9): with 5X/6C and 6C/6- the closed pushbutton 5 joins 5Y (+ via 5Y/6Y, 6H/6Y, 6H/6+) to 6C (-), a dead short that trips the breaker; the minus rail opens, so relay 6 drops and every lamp and the motor lose power",
+      "quote": "To stop transmission, push pushbutton 5.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "breaker",
+        "reset": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "breaker",
+          "v": "ok"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 \"To stop transmission, push pushbutton 5.\"; derived from topology: after the reset the latch stays broken (6H-6G open, pushbutton 6 up), so 6F/D17/D16 stay dead and transmission does not resume, whatever contact the dial rests on",
+      "quote": "To stop transmission, push pushbutton 5.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 \"Push pushbutton 6. This provides the input command \\\"start transmission.\\\"\"; derived from topology: pushbutton 6 puts + (6Y/6H/6+) on 6X/6G/6F, relay 6 pulls in through 6F-coil-6E-lamp-6C(-) and holds through 6H-6G",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36 Morse code \"C: - . - .\" / \"Q: - - . -\" and \"Light 5 on represents a dash. Light 6 on represents a dot.\"; Books V-VI printed p.29 = book5-6.pdf PDF p.35 purpose; derived from topology: relay 6 latched puts + on 6F/D17/D16, so the wiper at D3 feeds light 5 (D3/5A, 5B/5-), the first dash of C",
+      "quote": "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A), ER-36 applied (5X/6C). Every assert is derived by hand from the 20-wire topology and the printed rule (p.30 Morse code C: dash dot dash dot, Q: dash dash dot dash; light 5 = dash, light 6 = dot), not printed against dial positions. Topology: pushbutton 6 (6Y on + via 6H/6Y, 6H/6+) puts + on 6X/6G/6F; relay 6 pulls in through 6F-coil-6E-lamp-6C(-) and holds through 6H-6G; 6F feeds D17 (RUN, D18/M-) and the wiper D16. Light 5 (5A, 5B/5-) is on D3, D5, D8, D9, D11; light 6 (6A, 6B/6-) on D4, D6, D10; D0-D2, D7 and D12-D15 are unwired, so the call reads - . - . (D3-D6), letter space (D7), - - . - (D8-D11). Each sequence until pairs the dial contact with its lamp and has a maxMs below one revolution, so a lamp on the wrong contact fails. Off asserts are taken only on the long dark run (D14), never just after a lit contact, because a lamp cools through dim (O-C28). Pushbutton 5 under ER-36 joins + (5Y) to - (6C) and trips the breaker (O-C9); that is the stop asserted here. The dial position after the trip depends on the coast fallback (O-R5) and is not asserted. The 5X/6E clean-stop variant is a separate derivation. Rotary geometry, run rate and coast remain profile fallbacks O-R1, O-R3 and O-R5.",
+  "digest": {
+    "eventCount": 86,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      4,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      38
+    ]
+  }
+}

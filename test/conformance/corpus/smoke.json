@@ -1,0 +1,8106 @@
+{
+  "schema": "minivac.corpus-smoke/1",
+  "profile": "MV601-REF-A",
+  "counts": {
+    "ok": 84,
+    "trip": 1,
+    "chatter": 3,
+    "no-settle": 2,
+    "skipped": 12
+  },
+  "programs": [
+    {
+      "id": "VI-TICTACTOE",
+      "tier": "D",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP1",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP2",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP3",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP4",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "I-EXP5",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP6",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP7",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP8",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2",
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2~",
+            "i1~",
+            "i2~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP9",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "I-EXP10",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP11",
+      "tier": "C1",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "I-EXP12",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "I-EXP13",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "I-EXP14",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -45000,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "I-PROBLEMS",
+      "tier": null,
+      "motor": true,
+      "class": "skipped",
+      "reason": "null wiresEffective (problem set: each of the twenty answers is its own alternative program (prose table, not a wire table))",
+      "phases": []
+    },
+    {
+      "id": "II-EXP1",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4~"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5~"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i2~",
+            "i3~",
+            "i4~",
+            "i5~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "II-EXP2",
+      "tier": "C1",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "II-EXP3",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-MANUALMEM",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "i1~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-SELFLOCK",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-2BUTTONMEM",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "II-FF1",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2",
+            "i1~",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "i1",
+            "i2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-EXP4",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44779,
+          "lamps": [
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 0,
+          "lamps": [
+            "i5~",
+            "i6~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-EXP5",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i2~",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i2~",
+            "i3~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-EXP6",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "i2~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "II-EXP7",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "III-3STMT",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "III-ANDOR",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "III-NOT",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-XOR-PB",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-RELAYAND",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i2~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-RELAYOR",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "i2~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-RELAYNOT",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2~",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2",
+            "i1~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-RELAYXOR",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "i2~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-MINDREADING",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44192,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5~",
+            "o6~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "III-QUANTITY",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5~",
+            "i2~",
+            "i3~",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5~",
+            "i2",
+            "i3",
+            "i4~",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5~",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5~",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5~",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-3GIRLS-BOOLEAN",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "III-3GIRLS-AUTO",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-FARMER",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2~",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o4",
+            "i1~",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "i1~",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "III-TELEVISION",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "IV-SELFHOLD",
+      "tier": "B",
+      "motor": false,
+      "class": "skipped",
+      "reason": "not standalone (sub-circuit: the title says it is the base of IV-FF1 (its stage 1))",
+      "phases": []
+    },
+    {
+      "id": "IV-FF1",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i5~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i5",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-FF2",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-FF2-CARRY",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP1",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o6",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o6",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP2",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o6",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o6",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP3",
+      "tier": "B",
+      "motor": false,
+      "class": "skipped",
+      "reason": "null wiresEffective (delta: remove/add modification of IV-EXP1 (and a second one for the alternate counter), resolved by hand in its batch)",
+      "phases": []
+    },
+    {
+      "id": "IV-EXP4",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP5",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i5"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6~",
+            "i5~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~",
+            "o6",
+            "i5"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6~",
+            "i5~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP6",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o4~",
+            "o5",
+            "o6",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "o4",
+            "o5",
+            "o6",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o4~",
+            "o6",
+            "i2",
+            "i3"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "o4",
+            "o5",
+            "o6",
+            "i2~",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o4~",
+            "i2",
+            "i3",
+            "i5"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "o4",
+            "o5",
+            "o6",
+            "i2~",
+            "i3~",
+            "i5~"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5~",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP7",
+      "tier": "A",
+      "motor": false,
+      "class": "skipped",
+      "reason": "null wiresEffective (delta: remove/add modification of IV-EXP6 (and an alternate-counter variant), resolved by hand in its batch)",
+      "phases": []
+    },
+    {
+      "id": "IV-EXP8",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i1",
+            "i2",
+            "i3",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3~",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4~",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5~",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP9",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i1",
+            "i2",
+            "i3",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3~",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4~",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5~",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP10",
+      "tier": "A",
+      "motor": false,
+      "class": "skipped",
+      "reason": "hole allocation: hole_occupied at wire 28 terminal \"3G\"",
+      "phases": []
+    },
+    {
+      "id": "IV-EXP11",
+      "tier": "C1",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "IV-EXP12",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i2~",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 44347,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2~",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-APX-SHIFTREG",
+      "tier": "C2",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "i1",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "i1",
+            "i2",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "i1",
+            "i2",
+            "i3"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "i1",
+            "i2",
+            "i3",
+            "i4~"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "i1",
+            "i2",
+            "i3",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5~"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "IV-APX-2BITADDER",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44280,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 3,
+          "motorMrpm": 44314,
+          "lamps": [
+            "o4",
+            "o6",
+            "i2",
+            "i3",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4",
+            "i2",
+            "i3",
+            "i4",
+            "i5"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 44225,
+          "lamps": [
+            "o4~",
+            "o5",
+            "o6",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i4",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44701,
+          "lamps": [
+            "o5~",
+            "o6",
+            "i1~",
+            "i4~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 3,
+          "motorMrpm": 44292,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44601,
+          "lamps": [
+            "o5",
+            "o6~",
+            "i1",
+            "i4",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 3,
+          "motorMrpm": 44303,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i4",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ER-ALTCOUNTER",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o6",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o6",
+            "i5~",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP1",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP2",
+      "tier": "B",
+      "motor": false,
+      "class": "chatter",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [
+            "relay5"
+          ],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP3",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "V-EXP6",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 44867,
+          "lamps": [
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44889,
+          "lamps": [
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP7",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44779,
+          "lamps": [
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -45000,
+          "lamps": [
+            "i4~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44779,
+          "lamps": [
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -45000,
+          "lamps": [
+            "i5~",
+            "i6~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP4",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": -44768,
+          "lamps": [
+            "o4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP5",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44768,
+          "lamps": [
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP8",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 44790,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 3,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44668,
+          "lamps": [
+            "o5~",
+            "o6",
+            "i5",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 44812,
+          "lamps": [
+            "o6",
+            "i5~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP9",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 44380,
+          "lamps": [
+            "o1",
+            "o2~",
+            "i1",
+            "i2~",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44303,
+          "lamps": [
+            "o1",
+            "o2",
+            "i1",
+            "i2",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44745,
+          "lamps": [
+            "o1~",
+            "o2",
+            "i1~",
+            "i2",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 44745,
+          "lamps": [
+            "o2",
+            "i2",
+            "i4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP10",
+      "tier": "C2",
+      "motor": true,
+      "class": "chatter",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [
+            "relay1"
+          ],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "i1",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~",
+            "o3~",
+            "o4",
+            "i1~",
+            "i2",
+            "i3~",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o3",
+            "o4",
+            "i2",
+            "i3",
+            "i4"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o3",
+            "o4",
+            "o5~",
+            "o6",
+            "i2",
+            "i3",
+            "i4",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o3",
+            "o4",
+            "o5",
+            "o6",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP11",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP12",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "V-EXP13",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "V-EXP14",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i4~",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i3~",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i2~",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1~",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP15",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 44646,
+          "lamps": [
+            "o1",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44701,
+          "lamps": [
+            "o1",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP16",
+      "tier": "C2",
+      "motor": true,
+      "class": "trip",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 1,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44889,
+          "lamps": [
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 44889,
+          "lamps": [
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP17",
+      "tier": "C2",
+      "motor": true,
+      "class": "chatter",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [
+            "relay6"
+          ],
+          "noSettle": true,
+          "dialChanges": 6,
+          "motorMrpm": 5192,
+          "lamps": [
+            "o5",
+            "i3",
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~",
+            "i3",
+            "i4",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": 44458,
+          "lamps": [
+            "o5",
+            "i3",
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44458,
+          "lamps": [
+            "o5",
+            "i3",
+            "i4",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP18",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "V-EXP19",
+      "tier": "C1",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP20",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44148,
+          "lamps": [
+            "o3",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o3~"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2",
+            "o3~"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2~",
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-EXP21",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44779,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": [
+            "o6~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-XLAT-IHREM",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-XLAT-FULL",
+      "tier": "A",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o5",
+            "o6",
+            "i1",
+            "i4"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o5",
+            "o6",
+            "i1",
+            "i4"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o5",
+            "o6",
+            "i1",
+            "i4"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "o2~",
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i4"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o5",
+            "o6",
+            "i1",
+            "i2~",
+            "i4"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2~",
+            "o5",
+            "o6~",
+            "i1",
+            "i3",
+            "i4"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "o2",
+            "o5",
+            "o6",
+            "i1",
+            "i3~",
+            "i4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-JOBSELECT",
+      "tier": "A",
+      "motor": false,
+      "class": "skipped",
+      "reason": "not standalone (fragment: one section of six identical sections)",
+      "phases": []
+    },
+    {
+      "id": "V-ASSOCMEM",
+      "tier": "B",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1",
+            "i1"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o1~",
+            "i1~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2",
+            "i2"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2~",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i3"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3~",
+            "i3~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "V-MAZESOLVER",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44768,
+          "lamps": [
+            "o1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-FLASHINGLIGHTS",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44790,
+          "lamps": [
+            "o1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "V-SUPERCIRCUIT",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 45000,
+          "lamps": [
+            "o6~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VI-SEQREC",
+      "tier": "B",
+      "motor": false,
+      "class": "skipped",
+      "reason": "not standalone (sub-circuit shared by VI-SECRETCODE, VI-COMBOLOCK and VI-MAZE)",
+      "phases": []
+    },
+    {
+      "id": "VI-SECRETCODE",
+      "tier": "D",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw1 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw1 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw2 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw2 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw3 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw3 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VI-COMBOLOCK",
+      "tier": "D",
+      "motor": false,
+      "class": "skipped",
+      "reason": "null wiresEffective (VI-SEQREC + D16/M+ + a player-chosen combination; the printed combination table has prose cells and is one example)",
+      "phases": []
+    },
+    {
+      "id": "VI-MAZE",
+      "tier": "D",
+      "motor": false,
+      "class": "skipped",
+      "reason": "null wiresEffective (VI-SEQREC + a loose-ended play wire at M+ + one of two alternative example path programs; no single composition)",
+      "phases": []
+    },
+    {
+      "id": "VI-MATCHGAME",
+      "tier": "D",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -44491,
+          "lamps": [
+            "o3",
+            "i4~"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": -44292,
+          "lamps": [
+            "o3",
+            "i4",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": -44314,
+          "lamps": [
+            "o3",
+            "i4",
+            "i5",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i4~",
+            "i5"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i5~",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "i6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VI-TUGOFWAR",
+      "tier": "D",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -44801,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -44801,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": -44801,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 1,
+          "motorMrpm": -44801,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": -44801,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "VI-MINDREADING",
+      "tier": "C2",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44192,
+          "lamps": [
+            "o4",
+            "o5",
+            "o6",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~",
+            "o5~",
+            "o6~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "sw4 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw4 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw5 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 throw",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "sw6 back",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        }
+      ]
+    },
+    {
+      "id": "VI-FORTUNETELLER",
+      "tier": "D",
+      "motor": false,
+      "class": "no-settle",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~",
+            "o6~",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VI-RANDOM",
+      "tier": "D",
+      "motor": false,
+      "class": "no-settle",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": true,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5",
+            "o6",
+            "i1",
+            "i2",
+            "i3",
+            "i4",
+            "i5",
+            "i6"
+          ]
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o5~",
+            "o6~",
+            "i1~",
+            "i2~",
+            "i3~",
+            "i4~",
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o4~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VI-SPS",
+      "tier": "D",
+      "motor": false,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb2 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": []
+        },
+        {
+          "phase": "pb4 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb4 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i1~",
+            "i2~"
+          ]
+        },
+        {
+          "phase": "pb5 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i3~",
+            "i4~"
+          ]
+        },
+        {
+          "phase": "pb5 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i3~",
+            "i4~"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i5~",
+            "i6~"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "i5~",
+            "i6~"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "VI-REACTION",
+      "tier": "D",
+      "motor": true,
+      "class": "ok",
+      "reason": null,
+      "phases": [
+        {
+          "phase": "power",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": []
+        },
+        {
+          "phase": "pb1 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        },
+        {
+          "phase": "pb1 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o2"
+          ]
+        },
+        {
+          "phase": "pb3 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 45000,
+          "lamps": [
+            "o2~"
+          ]
+        },
+        {
+          "phase": "pb3 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 44170,
+          "lamps": [
+            "o3",
+            "o4"
+          ]
+        },
+        {
+          "phase": "pb6 press",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 2,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o4",
+            "o6"
+          ]
+        },
+        {
+          "phase": "pb6 release",
+          "trips": 0,
+          "chatter": [],
+          "noSettle": false,
+          "dialChanges": 0,
+          "motorMrpm": 0,
+          "lamps": [
+            "o3",
+            "o4",
+            "o6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MM-PB-CHECK",
+      "tier": "A",
+      "motor": false,
+      "class": "skipped",
+      "reason": "bad terminals: +/Y Z/1A X/2A",
+      "phases": []
+    },
+    {
+      "id": "MM-RLY-CHECK",
+      "tier": "A",
+      "motor": false,
+      "class": "skipped",
+      "reason": "bad terminals: +/H +/L +/Y X/E F/- J/1A G/2A N/3A K/4A",
+      "phases": []
+    },
+    {
+      "id": "MM-SW-CHECK",
+      "tier": "A",
+      "motor": false,
+      "class": "skipped",
+      "reason": "bad terminals: +/S +/V T/1A R/2A W/3A U/4A",
+      "phases": []
+    }
+  ]
+}

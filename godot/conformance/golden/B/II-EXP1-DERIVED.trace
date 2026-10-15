@@ -1,0 +1,74 @@
+#!mv601-trace 1
+# id=II-EXP1-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=26
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=48 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "This experiment uses MINIVAC 601 to demonstrate how a digital computer receives binary input data and instructions. The binary number \"one\" is given to the computer by pushing a pushbutton down. The binary number \"zero\" is given to the computer by leaving a pushbutton up. The instruction to forget all previous data (to \"clear\" the memory) is given to the computer by pushing pushbutton 6."
+   220.1 > button1 target=1000
+   231.3 * pb1 nc->mid
+   233.8 * pb1 mid->no
+   243.7 * indLamp1 off->dim
+   244.8 * relay1 nc->mid
+   246.1 * relay1 mid->no
+   283.5 * indLamp1 dim->on
+   471.4 > button1 target=0
+   482.6 * pb1 no->mid
+   485.1 * pb1 mid->nc
+   716.3 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc pb1=nc indLamp1=on indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Push pushbutton 1 and release. This transmits a \"one\" to section 1 of MINIVAC. The \"one\" is remembered by relay 1."
+   716.3 > button4 target=1000
+   727.5 * pb4 nc->mid
+   730.0 * pb4 mid->no
+   739.9 * indLamp4 off->dim
+   741.5 * relay4 nc->mid
+   742.8 * relay4 mid->no
+   779.8 * indLamp4 dim->on
+   968.1 > button4 target=0
+   979.3 * pb4 no->mid
+   981.8 * pb4 mid->nc
+  1213.0 > button5 target=1000
+  1224.2 * pb5 nc->mid
+  1226.7 * pb5 mid->no
+  1236.6 * indLamp5 off->dim
+  1238.4 * relay5 nc->mid
+  1239.7 * relay5 mid->no
+  1276.6 * indLamp5 dim->on
+  1465.0 > button5 target=0
+  1476.2 * pb5 no->mid
+  1478.7 * pb5 mid->nc
+  1709.9 ? relay1=no relay2=nc relay3=nc relay4=no relay5=no relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=on indLamp2=off indLamp3=off indLamp4=on indLamp5=on indLamp6=off  "The binary number 10011 (19) has been communicated to MINIVAC 601 by using the BINARY INPUT pushbuttons. This input data is now being remembered (stored) in the first five sections of the computer."
+  1709.9 > button6 target=1000
+  1721.1 * pb6 nc->mid
+  1723.6 * pb6 mid->no
+  1725.7 * relay4 no->mid  relay5 no->mid
+  1725.8 * relay1 no->mid
+  1726.6 * relay4 mid->nc  relay5 mid->nc
+  1726.7 * relay1 mid->nc
+  1732.3 * indLamp1 on->dim  indLamp4 on->dim  indLamp5 on->dim
+  1787.9 * indLamp1 dim->off  indLamp4 dim->off  indLamp5 dim->off
+  1954.8 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc pb6=no indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Push pushbutton 6 and release. This action instructs the computer to forget all previous data."
+  1954.8 > button6 target=0
+  1966.0 * pb6 no->mid
+  1968.5 * pb6 mid->nc
+  2199.7 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc pb6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "All relay lights go OFF, and the previous number is forgotten (\"cleared\" from the memory)."
+  2199.7 > button2 target=1000
+  2210.9 * pb2 nc->mid
+  2213.4 * pb2 mid->no
+  2223.3 * indLamp2 off->dim
+  2224.6 * relay2 nc->mid
+  2225.9 * relay2 mid->no
+  2263.1 * indLamp2 dim->on
+  2451.2 > button2 target=0
+  2462.4 * pb2 no->mid
+  2464.9 * pb2 mid->nc
+  2696.1 > button3 target=1000
+  2707.3 * pb3 nc->mid
+  2709.8 * pb3 mid->no
+  2719.7 * indLamp3 off->dim
+  2721.2 * relay3 nc->mid
+  2722.5 * relay3 mid->no
+  2759.6 * indLamp3 dim->on
+  2947.8 > button3 target=0
+  2959.0 * pb3 no->mid
+  2961.5 * pb3 mid->nc
+  3192.7 ? relay1=nc relay2=no relay3=no relay4=nc relay5=nc relay6=nc indLamp1=off indLamp2=on indLamp3=on indLamp4=off indLamp5=off indLamp6=off  "This experiment uses MINIVAC 601 to demonstrate how a digital computer receives binary input data and instructions. The binary number \"one\" is given to the computer by pushing a pushbutton down. The binary number \"zero\" is given to the computer by leaving a pushbutton up. The instruction to forget all previous data (to \"clear\" the memory) is given to the computer by pushing pushbutton 6."

@@ -1,0 +1,620 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP20",
+  "source": "BK5 printed p.34 = book5-6.pdf PDF p.40; dial plate BK5 printed p.33 = PDF p.39; Morse Code table BK5 printed p.32 = PDF p.38",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1T",
+    "1B/1C",
+    "1B/2B",
+    "1C/2C",
+    "1F/2F",
+    "1G/3H",
+    "1H/5R",
+    "1J/5H",
+    "1K/3L",
+    "1L/5U",
+    "1N/5L",
+    "1R/3A",
+    "1S/2U",
+    "1U/2A",
+    "1V/2W",
+    "1W/4A",
+    "2B/3B",
+    "2C/3C",
+    "2F/4R",
+    "2G/4H",
+    "2H/5T",
+    "2J/6H",
+    "2K/4L",
+    "2L/5W",
+    "2N/6L",
+    "2V/2+",
+    "3B/4B",
+    "3C/4C",
+    "3F/3R",
+    "3F/4F",
+    "3G/D15",
+    "3J/D7",
+    "3K/D14",
+    "3N/D6",
+    "3S/4S",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D5",
+    "4K/D12",
+    "4N/D4",
+    "4S/6X",
+    "5C/6C",
+    "5F/6F",
+    "5G/D11",
+    "5J/D3",
+    "5K/D10",
+    "5N/D2",
+    "5S/6R",
+    "5V/6T",
+    "6C/6-",
+    "6G/D9",
+    "6J/D1",
+    "6K/D8",
+    "6N/D0",
+    "6S/6-",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/1T",
+    "1B/1C",
+    "1B/2B",
+    "1C/2C",
+    "1F/2F",
+    "1G/3H",
+    "1H/5R",
+    "1J/5H",
+    "1K/3L",
+    "1L/5U",
+    "1N/5L",
+    "1R/3A",
+    "1S/2U",
+    "1U/2A",
+    "1V/2W",
+    "1W/4A",
+    "2B/3B",
+    "2C/3C",
+    "2F/4R",
+    "2G/4H",
+    "2H/5T",
+    "2J/6H",
+    "2K/4L",
+    "2L/5W",
+    "2N/6L",
+    "2V/2+",
+    "3B/4B",
+    "3C/4C",
+    "3F/3R",
+    "3F/4F",
+    "3G/D15",
+    "3J/D7",
+    "3K/D14",
+    "3N/D6",
+    "3S/4S",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D5",
+    "4K/D12",
+    "4N/D4",
+    "4S/6X",
+    "5C/6C",
+    "5F/6F",
+    "5G/D11",
+    "5J/D3",
+    "5K/D10",
+    "5N/D2",
+    "5S/6R",
+    "5V/6T",
+    "6C/6-",
+    "6G/D9",
+    "6J/D1",
+    "6K/D8",
+    "6N/D0",
+    "6S/6-",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40",
+      "quote": "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where E appears only in BAND 1",
+      "quote": "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 1 if output light 1 is on. [p.32:] E · [p.33:] BAND 1"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where E appears only in BAND 1",
+      "quote": "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 1 if output light 1 is on. [p.32:] E · [p.33:] BAND 1"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40",
+      "quote": "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where N appears only in BAND 2",
+      "quote": "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 2 if output light 2 is on. [p.32:] N —· [p.33:] BAND 2"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where N appears only in BAND 2",
+      "quote": "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 2 if output light 2 is on. [p.32:] N —· [p.33:] BAND 2"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40",
+      "quote": "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where O appears only in BAND 3",
+      "quote": "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 3 if output light 3 is on. [p.32:] O ——— [p.33:] BAND 3"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where O appears only in BAND 3",
+      "quote": "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 3 if output light 3 is on. [p.32:] O ——— [p.33:] BAND 3"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40",
+      "quote": "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where L is the only letter in BAND 4 sector 4 (sector numerals 0-15 printed on the plate)",
+      "quote": "[p.34:] This experiment uses the rotary switch dial plate described in the previous experiment. Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial. Read the alphabetic letter from the dial plate as follows. [p.32:] L ·—·· [p.33:] MORSE CODE: ALPHABETIC DIAL PLATE"
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where L is the only letter in BAND 4 sector 4 (sector numerals 0-15 printed on the plate)",
+      "quote": "[p.34:] This experiment uses the rotary switch dial plate described in the previous experiment. Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial. Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 4 if output light 4 is on. [p.32:] L ·—·· [p.33:] BAND 4 / MORSE CODE: ALPHABETIC DIAL PLATE"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5 printed p.34 = book5-6.pdf PDF p.40; Morse Code table BK5 printed p.32 = PDF p.38; MORSE CODE: ALPHABETIC DIAL PLATE BK5 printed p.33 = PDF p.39, where L is the only letter in BAND 4 sector 4 (sector numerals 0-15 printed on the plate)",
+      "quote": "[p.34:] This experiment uses the rotary switch dial plate described in the previous experiment. Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial. Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 4 if output light 4 is on. [p.32:] L ·—·· [p.33:] BAND 4 / MORSE CODE: ALPHABETIC DIAL PLATE"
+    }
+  ],
+  "digest": {
+    "eventCount": 290,
+    "moverTransitions": [12, 12, 8, 8, 8, 8, 0, 0, 0, 0, 0, 16, 6, 6, 6, 4, 2, 2, 40]
+  },
+  "note": "Printed claims only (Step 6). No erratum touches Book V p.34 (errata.pdf PDF p.4 has entries for pages 30, 31, 33 and 35 only; the page 33 note is Experiment 19's); wires are the printed 60, image-read at 300 dpi. Script: power on, then four decodes, one per row of the printed character-count table: E (1 character: dot), N (2: dash dot), O (3: dash dash dash), L (4: dot dash dot dot), entered from slide switch 3 with RIGHT = dot and LEFT = dash. The letters are a script choice. Slide switches beyond the letter's length keep their earlier setting; the page is silent on them. pb6 is held 8000 ms on each decode: it is the motor's only feed (6Y/6+, 6X/D17) and the relay tree's supply, so the motor and relays stop when it is released. The page prints only 'Push'. The hold length is a script choice sized for a run rate as slow as 25 rpm. Asserted: the rotary switch turns (an until on dial=gap after each pb6 press; the wiper must leave its contact to turn). For L, where it turns to is also asserted: L is ·—·· in the international Morse Code table (printed p.32 = PDF p.38) and is the only letter in BAND 4 sector 4 of the Experiment 19 dial plate (printed p.33 = PDF p.39), so 'the correct spot on the dial' is c4. It is asserted by an until on c4, an expect after the remaining hold with pb6 still down, and an expect 2000 ms after pb6 is released: the page prints 'Push' with no hold (it says 'hold pushbutton 6 down' where it means a hold, e.g. Book VI p.55), and the letter is read after the push. For E, N and O the plate fixes only a sector (E 0-7, N 8-11, O 14-15); the single-valued dial observable cannot express a sector, so those printed claims are not asserted and the exact rest pad is left to Step 7. Asserted for every letter, with pb6 held at rest and again 2000 ms after its release: output light n is on, because each letter appears in only one band of the plate (E Band 1, N Band 2, O Band 3, L Band 4) and the page reads Band n only 'if output light n is on'. Observed, for Step 7: the dial rests while pb6 is held at c7 (E), c11 (N), c15 (O) and c4 (L), each inside its letter's dial-plate sector. Output light n is on for count n as soon as switches 1 and 2 are set. Before COAST-SCALES-WITH-SPEED the full 20 deg coast moved the dial one pad back after each pb6 release (c6, c10, c14, c3; open question O-R13), and c3 is a blank Band 4 cell, so the post-release expect for L (script[66]) read c3, not c4; with COAST-SCALES-WITH-SPEED the post-release expects pass. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3 and O-R5. Knife-edge: relay 6's drop-out on the third decode's pb6 release (all six relays energized) decides at marginUa 2. It trips the knife-edge trigger (minDecisionUa 2); blessed under BLESS-ROBUSTNESS, all six perturbations held. The margin is the same whatever the release tick."
+}

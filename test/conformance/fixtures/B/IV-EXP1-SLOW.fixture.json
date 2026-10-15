@@ -1,0 +1,129 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP1-SLOW",
+  "source": "docs/research/programs.md#IV-EXP1",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E", "1B/1-", "1C/2C", "1E/2G", "1F/2F", "1F/1H", "1G/1+", "1J/2H", "1J/4K", "2A/4E", "2B/2-",
+    "2C/3C", "2E/2J", "2F/4A", "3A/6E", "3B/3-", "3C/4C", "3E/4G", "3F/3H", "3F/4F", "3G/3+", "3J/4H",
+    "3J/6K", "3L/4L", "3N/4H", "4B/4-", "4C/5C", "4E/4J", "4F/5A", "5B/5-", "5C/6C", "5E/6G", "5F/6F",
+    "5F/5H", "5G/5+", "5J/6H", "5J/6X", "5L/6L", "5N/6H", "6A/6F", "6B/6-", "6C/6-", "6E/6J", "6Y/6+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/2E", "1B/1-", "1C/2C", "1E/2G", "1F/2F", "1F/1H", "1G/1+", "1J/2H", "1J/4K", "2A/4E", "2B/2-",
+    "2C/3C", "2E/2J", "2F/4A", "3A/6E", "3B/3-", "3C/4C", "3E/4G", "3F/3H", "3F/4F", "3G/3+", "3J/4H",
+    "3J/6K", "3L/4L", "3N/4H", "4B/4-", "4C/5C", "4E/4J", "4F/5A", "5B/5-", "5C/6C", "5E/6G", "5F/6F",
+    "5F/5H", "5G/5+", "5J/6H", "5J/6X", "5L/6L", "5N/6H", "6A/6F", "6B/6-", "6C/6-", "6E/6J", "6Y/6+"
+  ],
+  "note": "ER-20 corrects the printed chart heading from 'Pushbutton carry' to 'Pushbutton'. ER-21 documents this circuit as marginal on physical hardware and supplies ER-ALTCOUNTER. The three Flip-Flop C zeros at counts 2, 4, and 6 are confirmed from the rendered source image. Row 11 (count 5, UP) prints Flip-Flop B = 1, a chart misprint: row 10 (count 4, DOWN) leaves B at 0 with no carry and row 12 (count 5, DOWN) carries C to B; light 5 is therefore not asserted at count 5.",
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "off" }, { "dev": "outLamp6", "v": "off" },
+      { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 1; ER-20", "quote": "0 | NO | 0 | NO | 0 | UP | 0" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "off" }, { "dev": "outLamp6", "v": "on" },
+      { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 2; ER-20", "quote": "0 | NO | 0 | NO | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "off" }, { "dev": "outLamp6", "v": "on" },
+      { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 3; output-light assignment on printed p.72", "quote": "0 | NO | 0 | NO | 1 | UP | 1" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 4; ER-20", "quote": "0 | NO | 1 | YES | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "off" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 5; rendered source image confirms Flip-Flop C = 0; ER-20", "quote": "0 | NO | 1 | NO | 0 | UP | 2" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 6; ER-20", "quote": "0 | NO | 1 | NO | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 7; ER-20", "quote": "0 | NO | 1 | NO | 1 | UP | 3" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 8; ER-20", "quote": "1 | YES | 1 | YES | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "off" }, { "dev": "outLamp6", "v": "off" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 9; rendered source image confirms Flip-Flop C = 0; ER-20", "quote": "1 | NO | 0 | NO | 0 | UP | 4" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "off" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 10; ER-20", "quote": "1 | NO | 0 | NO | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 11; ER-20", "quote": "1 | NO | 1 | NO | 1 | UP | 5" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 12; ER-20", "quote": "1 | NO | 1 | YES | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "off" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 13; rendered source image confirms Flip-Flop C = 0; ER-20", "quote": "1 | NO | 1 | NO | 0 | UP | 6" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 14; ER-20", "quote": "1 | NO | 1 | NO | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 15; ER-20", "quote": "1 | NO | 1 | NO | 1 | UP | 7" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "on" }, { "dev": "pb6", "v": "no" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 16; ER-20", "quote": "1 | YES | 1 | YES | 1 | DOWN |" },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "off" }, { "dev": "outLamp6", "v": "off" }, { "dev": "pb6", "v": "nc" }
+    ], "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 17; output-light assignment on printed p.72; ER-20", "quote": "0 | NO | 0 | NO | 0 | UP | 0 or 8" }
+  ]
+}

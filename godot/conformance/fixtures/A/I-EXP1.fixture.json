@@ -1,0 +1,22 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP1",
+  "source": "BK1 printed p.5 = book1.pdf PDF p.7",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1A", "1B/1-"],
+  "errata_applied": [],
+  "wires": ["1+/1A", "1B/1-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK1 printed p.5 = book1.pdf PDF p.7",
+      "quote": "These connections cause lamp 1 to light when the Power Switch is turned on."
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+#!mv601-trace 1
+# id=V-EXP16 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=20
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=141 minTickGap=13 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 ? dial=c0  "Set the rotary switch at 0 and turn power on."
+   500.0 > button6 target=1000
+   511.2 * pb6 nc->mid
+   513.7 * pb6 mid->no
+   523.7 * indLamp6 off->dim
+   525.8 * relay6 nc->mid
+   527.1 * relay6 mid->no
+   545.1 * dial c0->gap
+   564.2 * indLamp6 dim->on
+   566.0 * dial gap->c1
+   600.0 > button6 target=0
+   611.2 * pb6 no->mid
+   613.7 * pb6 mid->nc
+   628.6 * dial c1->gap
+   649.5 * dial gap->c2
+   712.2 * dial c2->gap
+   733.1 * dial gap->c3
+   736.4 * outLamp5 off->dim
+   755.5 * outLamp5 dim->on
+   755.6 ? outLamp5=on  "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+   796.2 * dial c3->gap
+   812.5 * outLamp5 on->dim
+   817.1 * dial gap->c4
+   820.4 * outLamp6 off->dim
+   839.5 * outLamp6 dim->on
+   839.6 ? outLamp6=on  "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+   868.1 * outLamp5 dim->off
+   868.2 ? outLamp5=off  "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+   880.2 * dial c4->gap
+   896.5 * outLamp6 on->dim
+   901.0 * dial gap->c5
+   903.0 * outLamp5 off->dim
+   922.1 * outLamp5 dim->on
+   952.1 * outLamp6 dim->off
+   952.2 ? outLamp6=off  "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+   964.1 * dial c5->gap
+   980.6 * outLamp5 on->dim
+   985.0 * dial gap->c6
+   987.0 * outLamp6 off->dim
+  1006.1 * outLamp6 dim->on
+  1036.2 * outLamp5 dim->off
+  1048.1 * dial c6->gap
+  1064.6 * outLamp6 on->dim
+  1069.0 * dial gap->c7
+  1120.2 * outLamp6 dim->off
+  1131.6 * dial c7->gap
+  1152.5 * dial gap->c8
+  1155.6 * outLamp5 off->dim
+  1174.8 * outLamp5 dim->on
+  1215.6 * dial c8->gap
+  1231.9 * outLamp5 on->dim
+  1236.5 * dial gap->c9
+  1240.7 * outLamp5 dim->on
+  1299.5 * dial c9->gap
+  1317.6 * outLamp5 on->dim
+  1320.3 * dial gap->c10
+  1323.6 * outLamp6 off->dim
+  1342.7 * outLamp6 dim->on
+  1373.3 * outLamp5 dim->off
+  1383.5 * dial c10->gap
+  1399.8 * outLamp6 on->dim
+  1404.3 * dial gap->c11
+  1406.2 * outLamp5 off->dim
+  1425.4 * outLamp5 dim->on
+  1455.4 * outLamp6 dim->off
+  1467.4 * dial c11->gap
+  1483.9 * outLamp5 on->dim
+  1488.3 * dial gap->c12
+  1539.5 * outLamp5 dim->off
+  1551.0 * dial c12->gap
+  1571.8 * dial gap->c13
+  1634.5 * dial c13->gap
+  1655.4 * dial gap->c14
+  1718.0 * dial c14->gap
+  1738.9 * dial gap->c15
+  1739.0 ? dial=c15  "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+  1801.6 * dial c15->gap
+  1822.5 * dial gap->c0
+  1822.6 ? dial=c0  "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+  1885.1 * dial c0->gap
+  1906.0 * dial gap->c1
+  1906.1 ? dial=c1  "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+  1968.7 * dial c1->gap
+  1989.5 * dial gap->c2
+  2052.2 * dial c2->gap
+  2073.1 * dial gap->c3
+  2076.4 * outLamp5 off->dim
+  2095.5 * outLamp5 dim->on
+  2095.6 ? outLamp5=on  "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+  2136.2 * dial c3->gap
+  2152.5 * outLamp5 on->dim
+  2157.1 * dial gap->c4
+  2160.4 * outLamp6 off->dim
+  2179.5 * outLamp6 dim->on
+  2179.6 ? outLamp6=on  "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+  2208.1 * outLamp5 dim->off
+  2208.2 ? outLamp5=off  "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+  2220.2 * dial c4->gap
+  2236.5 * outLamp6 on->dim
+  2241.1 * dial gap->c5
+  2243.1 * outLamp5 off->dim
+  2262.2 * outLamp5 dim->on
+  2292.1 * outLamp6 dim->off
+  2292.2 ? outLamp6=off  "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."

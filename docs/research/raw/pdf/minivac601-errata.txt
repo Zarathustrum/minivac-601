@@ -1,0 +1,230 @@
+                                  *
+
+
+                    N o tes an d C o rre c tio n s
+                    to the M inivac M anual
+                    In response to questions from MINIVAC owners. Scientific Development Corporation has
+                    prepared this sheet of notes and corrections to the six-book set of instruction manuals.
+                    Should you have any questions which are hot answered here, please do not hesitate to
+                    contact us at 372 Main Street, Watertown, Massachusetts.
+
+
+         Always be certain that the power is OFF when you              Should you find that your programs are frequently
+    are either wiring a program or removing one from the          not working properly, refer to the Maintenance Manual
+    board of the MINIVAC. This will prevent any acci­             to be sure that all components are in good operating
+    dental short circuit and is a good safety habit as well.      condition.
+         All + and — terminals are connected together.                 If a program is not operating correctly, follow these
+    For example, a connection to 1—j—is the same as a con­        steps:
+    nection to 3-j-, 6—)—, or M + . Similarly, a connection            1. Check with this “Notes and Corrections” sheet.
+    to 2— is the same as a connection to 4—, 5—, or M—. .              2. Check the operating instructions to be sure that
+         If you should run out of long programming wires,                  you are following the correct procedure. Also,
+    you can use shorter wires by programming through any                   try carrying out the procedure slowly; some
+    common terminals not being used in the circuit. In ad­                 programs are not designed for high-speed
+    dition to those terminals specifically marked “common,”                operation.
+    common terminals are any set of terminals which are                3. Check all programming connections; if there is
+    interconnected: for instance, the two terminals at 6R,                 an error, correct it and then check the circuit
+    the six at M10, or the four at 3com.                                   breaker. . If a programming error has caused a
+         For example, to make the connections 1X/6A with­                  short circuit, push the circuit breaker after
+    out using the longest wires, you can make the two con­                 correcting the error.
+    nections 1X/4R and 4R/6A. If slide switch 4 is being               4. If the program uses relays, check to see that
+    used in the circuit, you can make the connections                      the relays are free to operate. If necessary,
+    lX/4com and 4com/6A. Either of the two examples                        replace short programming wires with longer
+    just given will produce the same result as making the                  ones so that the wires do not interfere with the
+    single connection 1X/6A.                                               movement of the relay arms.
+
+
+    Notes and Corrections by page
+    BOOK    I                                                           1A/1G ; delete 1A/1C connection on circuit dia­
+.   page 13: circuit diagram incorrect — delete line con­               gram.
+        necting IB and 2B.
+                                                                  page 14: program correction for          Experiment 6 —
+y page 24: "MOTOR REVERSING" circuit diagram in­                      change 2Z/2C to 2X/2C .
+      correctly labeled — change 6Y to 6V.
+                                                                  BOOK      III
+    page 28: Problem 7: Note that light 1 and relay 1
+                                                                  page 36: circuit diagram for COMPUTER REPRESEN­
+        should both be on only if both pushbutton 1 and
+                                                                      TATION OF THREE STATEMENTS:
+        pushbutton 2 are DOWN.
+        Problem 18: Note that pushbutton 5 is used to
+        keep the rotary switch from stopping at DO when
+        pushbutton 6 is being held down.
+
+    BOOK    II
+    page 10: third complete paragraph, second line —
+        change DOWN to ON.
+    page 11: program correction for "TWO-BUTTON
+        RELAY MEMORY CIRCUIT" - change 1A/1C to
+page 38: insert "THEN" between statements B and               These steps should be repeated until the farmer
+    C in first statement set (1x1= 1).                        and all his possessions are across the river.
+                                                              Notice that the farmer may make trips alone.
+page 40: paragraph directly below COMPUTER REP­
+    RESENTATION OF THREE "NOT" STATEMENTS-
+                                                          BOOK    IV
+    second sentence should read:
+      "Light 3 comes ON if pushbutton 1 is pushed         page 69: Note — push pushbutton 6 slowly when
+       and . . ."                                             operating the single-input flip-flop. Light 6 w ill
+                                                              go off and on, indicating the state of the whole
+page 41: Note —the operation EITHER BUT NOT                   flip-flop.
+    BOTH is often referred to as the EXCLUSIVE OR.
+    Notice the "exclusive" nature of statements A         page 71: chart title incorrect — change "Pushbutton
+    and B in the example: if either A or B is true,           carry" to "Pushbutton."
+    then C w ill also be true. However, if both A and
+                                                          page 72: Note on "Three-Bit Binary Counter" — the
+    B are either true or not true, then C w ill not be
+                                                              design of this counter is such that the capabilities
+    true.
+                                                              of the relays are somewhat strained. Relays
+page 43: second line on page should read:                     which perform to satisfaction in every other case
+      ". . . relay 2 is ON (= 1 ) then light 3 w ill be       may not perform adequately in this circuit. If the
+      ON (= 1). Symbolically. . ."                            counter in Book IV does not perform correctly,
+    program correction for "Relay AND Circuit" —              use the program and circuit which follow. The
+      change 2 + /2 H to 1G/2H.                               circuit below by-passes the relay indicator lights
+page 46: th e complementarity laws should be writ­            so that full voltage is supplied to the relay coils,
+    ten:      __                                              causing them to pull in more reliably.
+       1) A X A = 0
+       2) A + A = 1
+page 54: program correction for "Mind Reading"
+    program —
+       change 5V/45 to 5V/4S
+    Note: Zero (0) is considered an even number for
+    this problem.
+page 58: The condition for the statement "It is im­
+    possible that the statements 'Sara should' and
+    'Camille could not' can both be true" should be
+    stated as:
+       C x S = error or C -f- S = truth
+page 59: circuit diagram for "Boolean Solution" is
+    incorrectly labeled — change 1R, IS , IT on far              THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT
+    right slide switch to 3R, 3S, 3T respectively.                                 (Middle Stage Only)
+
+page 61: CIRCUIT REPRESENTATION incorrect - in­                Program for alternate counter:
+    sert "E" before negative power connection:
+                                                                       1A/2E         2 C /2 -      3H /5A    5F/6F
+                                                                       1B/1C         2E/2J         3J/4H     5F/5H
+                                                                       1B/2B         2G /2N        3N /4N    5 G /5 -f-
+                                                                       1C/2C         2H/3L         4B/5B     5H /6A
+                             E                •
+                                                                       1E/2G         2L/2-         4C /4 -   5J/6H
+                                                                       1F/2F         3A/6E         4E/4J     5N /6N
+                                                                       IF /T H       3B/4B         4G /4 N   6 C /6 —
+                                                                       lG / l- f     3C /4C        4H /5L    6E/6J
+page 62 Note — when attempting solutions to the
+                                                                       1H/4A         3E/4G         4L/4-     6G /6N
+    Farmer's problem, follow these steps:
+                                                                       1J/2H         3F/3H         5B/6B     6H /6X
+      place the farmer and an additional passenger
+                                                                       2A /4E        3F/4F         5C /6C    61/6-
+      in the boat (move the appropriate slide switches                 2B/3B         3 G /3 -f-    5E/6G     6 Y /6 -f
+      LEFT)
+      move the boat across the river (push pushbutton          Procedure: Use the procedure on page 72 of
+      6 to cross the river; push pushbutton 1 for the            Book IV. When pushing pushbutton 6, be sure
+       return trip)                                              to hold the pushbutton down long enough for
+       unload the boat (move the slide switches                  any carry to propagate to the highest stage of
+       RIGHT)                                                    the counter.
+page 73: Experiment 2      use the above circuit if       page 83:     Program correction for Experiment 10:
+      necessary.                                                                                 add
+      Experiment 3—If you used the alternate circuit                  2 C /3G                    2E/3G
+      for experiments 1 and 2, use it for this experi­                2Y/6S                      2Y/3G
+      ment as w ell. To modify the alternate circuit                  3 C /4G                    3E/4G
+      for a universal counter, make the following                     5C/6K                      5E/6K
+      changes:                                                        6F/M10                     6C/M10
+                                                                                                 6 F /M -f
+             remove
+             3N /4N             5N /6N                    BOOK V
+                                                          page 2: Experiment 1 — Note that moving either
+             add
+             3K /4V             5K/6V
+                                                              slide switch w ill change the light to the opposite
+             3N /4S             5N /6S                        state (ON or OFF), regardless of the position of the
+             4 J/4 W            6J/6 W                        other slide switch.
+             4N /4R             6N/6R
+                                                          page 10: second sentence on page should read:
+    Follow the procedure on page 73 with this ex­             "The same will be true for a train moving right
+    ception:                                                    through. . . ."
+      the counter w ill count UP when BOTH slide          page 11: First sentence under "To use the program"
+         switch 4 and slide switch 6 are LEFT                 (experiment 8) should read: "Set the 'elevator' at
+      the counter w ill count DOWN when BOTH slide            the first floor by pushing pushbutton 5 ."
+         switch 4 and slide switch 6 are RIGHT.
+                                                          page 11: Experiment 9 program corrections:
+page 77: Experiment 6 — Note that the connections               change 4G/4H to 4G/5H
+    to M10 indicate the "end-around carry." This is             change D16/M— to D16/M-|-
+    the "carry out" of the high order stage, and will          Note: It is possible for the "elevator" to get
+    be used when the adder is converted to a sub­                stuck at a floor. This happens when the pointer
+    tractor for experiment 7. (See page 78).                     knob stops between adjacent terminals — for
+                                                                 example, between D6 and D7 — and is not
+page 79: Note on Experiment 7 — if you used the                  making proper connection with either. In
+    alternate circuit for the counter, make the follow­          such case, move the pointer knob so that it is
+    ing changes to the program for a three-bit sub­              pointing directly at one of the terminals.
+    tractor:                                                   Note: If the performance of the circuit is un­
+       first, build the adder and modify it for a sub­           satisfactory, make the following changes to the
+          tractor                                                program:
+       then, make the following changes:                              remove                 add
+             remove             add                                   5F/6C                  5F/6E
+             2 C /2G            2E/2G                                 6C /6 —                6 E/6 -
+             3 C /3G            3 E/3G                                                        4E/6C
+             5C /6K             5E/6K                     page 12: program corrections for automatic toll col­
+             6C /6F             6C/M10                        lector:
+             6F/M10             6F/M -f-
+                                                                      remove                 add
+                                                                      3 J/4 X                3 J/4 K
+           that relay indicator light 6 w ill come ON                 3N /6Y                 3Y/4Y
+       if the subtraction has proceeded properly.                     4H/5N                  4 J/4 X
+     Relay indicator light 6 ON indicates that there                  4K/5N                  4X/6L
+       has been an "end-around carry" — that is, a                    5L/6G                  5N /6K
+       carry out from the high order stage.
+                                                          pages 21 and 22: Note — when programming a
+                                                              geometric form or a numeral for recognition, be
+ age 80: Note — An accumulator must be capable of
+                                                              sure that the connections from M10 are made to
+    shifting and so must include a shift register. A
+                                                              the TOP terminals in the matrix.
+    shift register, however, need not be capable of
+    accumulating (see automatic shift register — page     page 24:      Experiment 14 program correction:
+     86 ).                                                        rk a n n a   A     A P /A fl
+
+
+page 82: Note that decimal 60 is 111100 in binary.        page 25: Note — to re-set the automatic sequence
+    It is written incorrectly in two places.                  control, turn power OFF, then ON again.
+ page 30: "CQ " transmitter program correction:                  Note — to re-set the game, turn power off, then on
+       change 5X/6E to 5X/6C                                     again.
+       (correct circuit diagram to correspond)              The Match Game (page 55): The first two sentences
+                                                                 under "To Play the Match Game" should be
+ page 31: Note — Light 6 flashes on very briefly when
+                                                                 changed to:
+     indicating a dot. The three successive dots may                 'Turn the rotary switch to 15, indicating that
+     be so rapid and so close together that they are                 there are 15 matches in the pile."
+     almost indistinguishable. To see them more clear­
+                                                            Tic-Tac-Toe (page 55):
+     ly, slow the rotary switch down by holding the
+                                                                  Note — if the game is a tie, M INIVAC w ill indicate
+     pointer knob back during one revolution.
+                                                                 a tie on the fifth move but w ill not indicate a
+  page 33: Note to Experiment 19 — always turn the                move into the last available space.
+      pointer knob clockwise when indicating a letter       The Mind Reading Trick (page 57):
+      for coding.                                                 Note — Zero (0) is considered even for this prob­
+                                                                  lem.
+  page 35: Last paragraph on page — third sentence
+                                                            Reaction Time Tester (page 60):
+      should read:                                                Note — to prevent the players' anticipating the
+        "Light 6 w ill flash on whenever . . ."                   start signal, either make dummy connections to
+                                                                  the rotary switch or cover the dial with an in­
+  BOOK VI                                                         verted box.
+  The Secret Code (page 51):                                  Scientific Development Corporation is preparing for
+       Note — to re-set the game, turn power off, then on   a second edition of the M INIVAC Manual. Your com­
+       again.                                               ments and suggestions w ill be appreciated. We are
+  The Combination Lock (page 52):                           particularly interested in new circuits, games, etc., for
+       Note — to re-set the game, turn the rotary switch    the M INIVAC. Please address correspondence of this
+      through one complete revolution.                      nature to the Editor of the M INIVAC Manual: Linda
+  The Elecronic Maze (page 53):                             G. Sprague.
+
+
+
+
+                               372 Main Street, W atertow n, Massachusetts
+
+
+
+
+EX LIBRIS ccapitalia.net
+

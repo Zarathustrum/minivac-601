@@ -1,0 +1,763 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP2-DERIVED",
+  "source": "Book IV printed p.73 = book2-3-4.pdf PDF p.79 (Experiment 2 procedure, no new wiring), wiring printed p.72 = PDF p.78 (Experiment 1, 44 wires), table printed p.68 = PDF p.74, image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "1J/4K",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3J/6K",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 44-wire Experiment 1 counter (programs.json IV-EXP2 wiresEffective) and the p.73 rule, not printed. ER-22 is a conditional substitution (use the alternate counter if necessary), not a wire edit, so the book circuit runs. Topology: three single-input flip-flops, A = relays 1/2, B = relays 3/4, C = relays 5/6; each odd relay latches through its set-1 N.O. (1G, 3G, 5G at plus) onto the F node shared with its even relay and with output lamp 4, 5 or 6; pushbutton 6 (6Y plus, 6X) feeds C through 5J/6H/5N; C carries to B through 5N-5L-6L-6K to 3J, and B to A through 3N-3L-4L-4K to 1J, each only while the pushbutton is down and the stage is falling from 1 to 0; A has no carry-out. Each push-and-release adds 1 modulo 8, so the count after k pushes from power-on is k mod 8 on relays 1/2, 3/4, 5/6 and lights 4, 5, 6. Asserted: relay states, lights 4-6, and only the lamps that carry no current (both indicator lamps and the E-node output lamp of any flip-flop at 0); lit indicator lamps and lit outLamp1-3 sit in a coil's series path, often two lamps in parallel, so their class is analog and not derived. Checkpoints at 0 (power-on), 2, 5, 8 and 10 pushes; 0 and 8 are not printed on p.73 (8 applies the printed three-bit rule). Press and release timing copies IV-EXP2; the page prints no timing. Release steps carry the counter collapse tag.",
+  "wires": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "1J/4K",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3J/6K",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 1 (the counter adds the number of pushes to the number it holds); starting count 0 at power-on is unprinted; derived from topology: plus reaches the counter only at the relay 1, 3, 5 set-1 N.O. contacts (1G, 3G, 5G) and at the pushbutton 6 arm (6Y); each flip-flop's F node (1F/2F/4A, 3F/4F/5A, 5F/6F/6A) is plus only while its odd relay is latched through its own N.O. (nG-nH), and floats otherwise; a flip-flop at 0 has every node floating, so both its relays rest and its indicator lamps and its output lamp on the E node (outLamp1 on 2E, outLamp2 on 4E, outLamp3 on 6E) carry no current; a flip-flop at 1 has both relays operated (odd relay held through its own indicator lamp, even relay fed from the shared F node) and puts outLamp4, 5 or 6 across the rail; lit indicator lamps and lit outLamp1-3 share coil current and are not asserted; at power-on every armature starts at rest and no N.O. contact or pushbutton closes, so every relay stays released and all twelve lamps are dark (000)",
+      "quote": "It is possible to perform additions very simply on a Binary Counter. We have already seen that it is possible to add 1 to the number in the counter merely by pushing and releasing pushbutton 6.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 2 (2 pushes displays binary 2); relay and dark-lamp states derived from topology: plus reaches the counter only at the relay 1, 3, 5 set-1 N.O. contacts (1G, 3G, 5G) and at the pushbutton 6 arm (6Y); each flip-flop's F node (1F/2F/4A, 3F/4F/5A, 5F/6F/6A) is plus only while its odd relay is latched through its own N.O. (nG-nH), and floats otherwise; a flip-flop at 0 has every node floating, so both its relays rest and its indicator lamps and its output lamp on the E node (outLamp1 on 2E, outLamp2 on 4E, outLamp3 on 6E) carry no current; a flip-flop at 1 has both relays operated (odd relay held through its own indicator lamp, even relay fed from the shared F node) and puts outLamp4, 5 or 6 across the rail; lit indicator lamps and lit outLamp1-3 share coil current and are not asserted; count 2 = 010: flip-flop B (relays 3, 4) at 1, A and C at 0",
+      "quote": "For example, to add 2 and 3: push and release pushbutton 6 twice; the counter will display the binary number 2.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 2 (2 + 3 = 5, the same as 5 pushes) and para 4; bit pattern from printed p.68 = PDF p.74, THE FIRST TEN BINARY NUMBERS AND THEIR DECIMAL EQUIVALENTS row 5 = 101 (Step 7 notes IV-EXP2: light 5 at count 5); derived from topology: plus reaches the counter only at the relay 1, 3, 5 set-1 N.O. contacts (1G, 3G, 5G) and at the pushbutton 6 arm (6Y); each flip-flop's F node (1F/2F/4A, 3F/4F/5A, 5F/6F/6A) is plus only while its odd relay is latched through its own N.O. (nG-nH), and floats otherwise; a flip-flop at 0 has every node floating, so both its relays rest and its indicator lamps and its output lamp on the E node (outLamp1 on 2E, outLamp2 on 4E, outLamp3 on 6E) carry no current; a flip-flop at 1 has both relays operated (odd relay held through its own indicator lamp, even relay fed from the shared F node) and puts outLamp4, 5 or 6 across the rail; lit indicator lamps and lit outLamp1-3 share coil current and are not asserted; count 5 = 101: flip-flops A (relays 1, 2) and C (relays 5, 6) at 1, B at 0, so light 5 is off",
+      "quote": "Now push the pushbutton 3 more times and the counter will display the answer—the binary number 5. This is exactly what would have happened had you just pushed the pushbutton 5 times.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 4 (only the low-order three bits are displayed), applied at the eighth push: decimal 8 = 1000 on printed p.68 = PDF p.74 shows as 000; derived from topology: plus reaches the counter only at the relay 1, 3, 5 set-1 N.O. contacts (1G, 3G, 5G) and at the pushbutton 6 arm (6Y); each flip-flop's F node (1F/2F/4A, 3F/4F/5A, 5F/6F/6A) is plus only while its odd relay is latched through its own N.O. (nG-nH), and floats otherwise; a flip-flop at 0 has every node floating, so both its relays rest and its indicator lamps and its output lamp on the E node (outLamp1 on 2E, outLamp2 on 4E, outLamp3 on 6E) carry no current; a flip-flop at 1 has both relays operated (odd relay held through its own indicator lamp, even relay fed from the shared F node) and puts outLamp4, 5 or 6 across the rail; lit indicator lamps and lit outLamp1-3 share coil current and are not asserted; the 7-to-8 push carries C to B to A and A has no carry-out wire (relays 1, 2 set 2 unwired), so all three flip-flops return to 0",
+      "quote": "Since we have only three bits in our counter, we would expect to see only the low order three bits of the number displayed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 80
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 4 (ten pushes display 010); relay and dark-lamp states derived from topology: plus reaches the counter only at the relay 1, 3, 5 set-1 N.O. contacts (1G, 3G, 5G) and at the pushbutton 6 arm (6Y); each flip-flop's F node (1F/2F/4A, 3F/4F/5A, 5F/6F/6A) is plus only while its odd relay is latched through its own N.O. (nG-nH), and floats otherwise; a flip-flop at 0 has every node floating, so both its relays rest and its indicator lamps and its output lamp on the E node (outLamp1 on 2E, outLamp2 on 4E, outLamp3 on 6E) carry no current; a flip-flop at 1 has both relays operated (odd relay held through its own indicator lamp, even relay fed from the shared F node) and puts outLamp4, 5 or 6 across the rail; lit indicator lamps and lit outLamp1-3 share coil current and are not asserted; count 10 = 1010, low three bits 010: flip-flop B (relays 3, 4) at 1, A and C at 0",
+      "quote": "The bit pattern for the binary equivalent of decimal 10 is 1010. The counter will display 010.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of find-jackmap.json (MINIVAC 601 terminal inventory and jack-to-component mapping)",
+  "agent": "verify-jackmap",
+  "date": "2026-08-30",
+  "targetFile": "docs/research/raw/find-jackmap.json",
+  "tagLegend": {
+    "verified": "read directly in a primary source (a manual page image, a rendered page image, or a panel photograph)",
+    "likely": "consistent secondary sources agree; no primary read",
+    "unverified": "single weak source, or an inference by this agent"
+  },
+
+  "headline": "The finder's per-section and per-relay netlist is essentially SOUND and survives re-checking against the page images. Its two structural failures are (a) it never opened four primary sources that were sitting in the same directory - the SDC Maintenance Manual, the SDC 'Notes and Corrections' errata sheet, the Minivac 601/6010 Capacitor/Resistor Manual (Book 7), and two 4200-pixel panel photographs - and (b) it asserted printed panel artwork (ovals/bars around hole pairs) that the high-resolution photographs show does not exist. Those unread sources SETTLE three things the finder recorded as unsettled or wrong: the CAPACITOR terminals, the motor-drive resistor count and topology, and the +/- bus.",
+
+  "methodology": {
+    "sourcesIRead": [
+      "docs/research/raw/pdf/maintenance-manual.txt (full) - NOT read by the finder",
+      "docs/research/raw/pdf/errata.txt (full) - NOT read by the finder",
+      "docs/research/raw/pdf/book7-capacitor-resistor.txt (partial) - NOT read by the finder",
+      "docs/research/raw/pdf/book1.pdf printed pp. 3,4,5,12,14,18,20,21,22,23,25 via pdftotext -layout",
+      "docs/research/raw/pdf/book5-6.txt (Book V p.22 M10/M11; Book VI Secret Code p.51, Electronic Maze p.53)",
+      "whole-corpus token census over book1.txt + book2-3-4.txt + book5-6.txt + errata.txt"
+    ],
+    "pageImagesSpent": [
+      "prebrief/images/image_3.jpg (whole panel, 1536x1152)",
+      "photos/commons-minivac601-main.jpg (4208x2457) - whole panel downscaled, PLUS 4 high-res crops: matrix block, decimal I/O left column, section-1 relay contacts + COMMON/CAPACITOR + secondary storage, binary output + power stripe + coil terminals, and one 2850px upscale of the logo legend",
+      "pdf/pages/maintenance/p-11.png (printed p.9 - Rotary Switch Motor Drive circuit diagram)",
+      "pdf/pages/book7/p-14.png (printed p.9 - bias-resistor omega notation)",
+      "rendered book7 PDF p.15 (printed p.10 - capacitor values) and p.16 (printed p.11 - Capacitor Notation) and p.26 (printed p.21 - program listing with 1cap..5cap)",
+      "pdf/pages/book1/p-22.png (printed p.20 - rotary switch, D-designation text and VIEW UNDER PANEL)"
+    ],
+    "oracleRuleCompliance": "No emulator source code was opened, fetched, cloned, or quoted. minivac.greg.technology was not visited. No web fetches were made at all."
+  },
+
+  "sourcesTheFinderMissedEntirely": [
+    {
+      "file": "docs/research/raw/pdf/maintenance-manual.pdf / .txt (also duplicated as minivac601-maintenance-manual.*)",
+      "what": "SDC 'Minivac 601 Maintenance Manual', 372 Main Street, Watertown, Massachusetts. 11 printed pages. Contains a Power Supply circuit diagram, a Rotary Switch Motor Drive circuit diagram, pushbutton / relay / slide-switch check circuits, component ratings and a spare-parts price list.",
+      "whyItMatters": "It is the ONLY source in the corpus that draws the motor branch as a schematic with both resistors, and it independently confirms D0..D15, the relay's eight solder connections and the slide switch's six.",
+      "tag": "verified"
+    },
+    {
+      "file": "docs/research/raw/pdf/errata.pdf / .txt (also duplicated as minivac601-errata.*)",
+      "what": "SDC 'Notes and Corrections to the Minivac Manual' - an official post-publication errata sheet for the six-book set, page-by-page.",
+      "whyItMatters": "Contains the single clearest primary statement of the + / - bus AND of the per-terminal hole counts, plus a page-by-page list of wiring-diagram errors in Books I-VI that any later program-transcription agent MUST apply.",
+      "tag": "verified"
+    },
+    {
+      "file": "docs/research/raw/pdf/book7-capacitor-resistor.pdf / .txt",
+      "what": "'Minivac 601/6010 Capacitor/Resistor Manual', copyright 1962 by Scientific Development Corporation. 55 PDF pages.",
+      "whyItMatters": "Settles the CAPACITOR terminals completely - designator, capacitance values, and the fact that one end of each capacitor is permanently tied to the negative rail. The finder declared this 'NOT SETTLED BY THE SOURCES'.",
+      "scopeCaveat": "Titled for both 601 and 6010; it cross-references 'Book I (page 25)', a 601 manual, when describing the capacitor terminals. Treat as 601-applicable but flag the joint scope.",
+      "tag": "verified"
+    },
+    {
+      "file": "docs/research/raw/photos/commons-minivac601-main.jpg (4208x2457) and commons-minivac601-DSCF1392.jpg (4288x2848)",
+      "what": "Two panel photographs at roughly 8x the pixel area of prebrief/images/image_3.jpg (1536x1152).",
+      "whyItMatters": "The finder claimed to have read the logo legend from image_3.jpg 'at 5x'. At 1536px the legend cap-height is about 4 pixels. Every fine silkscreen claim in find-jackmap.json rests on an artifact that cannot support it. The 4208px photo can, and I used it. NOTE: photos/commons-minivac6010-mit-museum.jpg is a 6010 and must be quarantined.",
+      "tag": "verified"
+    }
+  ],
+
+  "refuted": [
+    {
+      "id": "R1",
+      "claim": "find-jackmap.json terminalInventory.perSection CAPACITOR: 'CAPACITOR (no shorthand designator is ever printed or used)' / connectsTo 'NOT SETTLED BY THE SOURCES' / 'No shorthand designator for these jacks appears anywhere in Books I-VI, and no program in any of the six books connects to them. Whole-corpus token census found zero uses.' Also notSettledBySources[0] and componentNetlist 'CAPACITOR block n: topology NOT SETTLED'.",
+      "correction": "The CAPACITOR terminals are fully specified by a primary SDC manual. Designator is 'ncap' (1cap, 2cap, 3cap ...). Each section has a real electrolytic capacitor permanently installed under the panel; ONE end is permanently wired to the NEGATIVE power rail and the other end is brought out to that section's two-hole CAPACITOR jack. Values: sections 1 through 5 = 500 microfarad; section 6 = 1000 microfarad.",
+      "evidence": "Book 7 (Minivac 601/6010 Capacitor/Resistor Manual, (c) 1962 SDC), printed p.11 (PDF p.16), section headed 'Capacitor Notation', read from the rendered page image: 'Note: Since one end of the capacitor is permanently connected to the negative power source, we will always show negative power on one end of the capacitor. No connection need be made between the capacitor and negative power. // As indicated in Book I (page 25) there are terminals on the MINIVAC console for the capacitors. These terminals will be indicated in a program by: 1cap, 2cap, 3cap, etc. // Connections to the capacitors are usually made with the regular programming wires, although when indicated a resistor may also be used.' AND Book 7 printed p.10 (PDF p.15), read from the rendered page image: 'For example, the capacitors for sections 1 through 5 of the MINIVAC are 500 micro-farad capacitors. The capacitor for section 6 is a 1000 micro-farad capacitor.' AND Book 7 printed p.21 (PDF p.26), program listing read from the rendered page image, containing the lines 1cap/2L, 1cap/D16, 2cap/3L, 3cap/4L, 4cap/5L, 5cap/6L.",
+      "tag": "verified",
+      "caveat": "Book 7 is a joint 601/6010 manual dated 1962; Book I (601, 1961) says only that the CAPACITOR terminals 'are used when auxiliary components are added to the MINIVAC 601 in advanced programs. At present these terminals may be ignored.' Whether the capacitors were fitted in all 1961 601 production or added for the 1962 accessory programme is NOT settled by these sources. Report both; do not resolve. The 500/1000 uF split is also stated once, for 'the MINIVAC', in a 601/6010 manual - it is not separately stated for the 601 alone.",
+      "simulatorConsequence": "6 extra nets. Model 1cap..5cap as 500 uF and 6cap as 1000 uF, each with its far plate hard-wired to the minus rail. The finder's advice to model these as dead jacks is wrong."
+    },
+    {
+      "id": "R2",
+      "claim": "componentNetlist 'drive motor + current-limiting resistor', terminals D17/D18/D19, tagged 'verified (as a reading of the diagram)': 'a resistor between D17 and the D19 node, and the motor between the D19 node and D18'. Plus notSettledBySources[1]: 'Is there one resistor or two in the motor branch, and exactly where do they sit?'",
+      "correction": "There are TWO resistors and the finder's netlist omits one of them, changing the electrical behaviour. Per the SDC Maintenance Manual schematic: resistor R1 is in series between D17 and the D19 rail; the MOTOR is between D18 and D19; and a SECOND resistor R2 sits in PARALLEL with the motor, also between D18 and D19. The label 'RESISTORS' (plural) with two leader lines points at both zigzags in the drawing.",
+      "evidence": "Maintenance Manual printed p.9 (pages/maintenance/p-11.png), figure captioned 'Circuit Diagram - Rotary Switch Motor Drive', read from the page image. Three horizontal rails labelled D17 (top), D18 (middle, tagged RUN between D17 and D18), D19 (bottom, tagged STOP between D18 and D19). From the D17 rail a single zigzag descends at the far right to the D19 rail. From the D18 rail two elements descend to the D19 rail: the MOTOR symbol (circle with an arrow) and a second zigzag. A leader labelled RESISTORS points to both zigzags. Corroborated by the same manual's printed p.10 text: 'Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds.' and 'If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly' - which is only possible if the motor sits directly across D18/D19 with no series resistance.",
+      "tag": "verified",
+      "simulatorConsequence": "RUN (supply across D17/D18): current flows D17 -> R1 -> D19 -> (motor in parallel with R2) -> D18. R2 steals current from the motor, so the motor never sees full rail. STOP (short across D18/D19): motor and R2 are both shunted; R1 alone limits the rail current. Direct power across D18/D19 gives the motor full rail and runs it very fast. Resistance values are still not settled."
+    },
+    {
+      "id": "R3",
+      "claim": "holesPerTerminal.allOtherTerminals.printedCue, tagged [verified] and cited to image_3.jpg: 'the two holes of one terminal sit inside a single printed oval / are joined by a short printed bar; separate terminals are separated by a gap'. And holesPerTerminal.exceptions[COMMON].citation: 'hole count confirmed visually in image_3.jpg (four holes inside one printed oval per section)'.",
+      "correction": "There are NO printed ovals and NO printed joining bars anywhere in the six numbered sections. Every section terminal is simply two bare holes side by side on the plain panel field, identified by the letter silkscreened below (or, for + and -, above) them. COMMON is four bare holes in a row under the word COMMON, with no oval around them. Printed joining artwork exists ONLY in the MATRIX block: a short bar joins the two holes of each Mnt and each Mnb pair, and a rectangular loop encloses the six holes of M10 and of M11.",
+      "evidence": "photos/commons-minivac601-main.jpg (4208x2457), high-resolution crop of section 1 relay contacts + COMMON/CAPACITOR strip + secondary storage. Visible: 'N.O. ARM N.C.' above the upper hole row, G / H / J below it, K / L / N below the lower hole row; a blue stripe carrying 'COMMON' over four bare holes and 'CAPACITOR' over two bare holes; then the arrow/ARM/arrow labels, R / S / T and U / V / W. No enclosing artwork of any kind. Second crop (binary output + power stripe + coil terminals) shows the same for A, B, +, -, C, E, F. Compare the matrix crop, where the printed bars and loops are unmistakable.",
+      "tag": "verified",
+      "whyItMatters": "This is a fabricated visual cue. A panel-rendering pass that trusts it will draw artwork the machine never had, and a reader trying to identify which holes belong to which net from a photo will look for a cue that is not there."
+    },
+    {
+      "id": "R4",
+      "claim": "namingScheme.sectionTerminals.letterOrdinal, tagged [verified]: 'the letter is silkscreened BELOW the hole pair'.",
+      "correction": "True for the letter designators A B C E F G H J K L N R S T U V W X Y Z. FALSE for the power terminals: the + and - glyphs are silkscreened ABOVE their hole pairs. FALSE for the DECIMAL INPUT-OUTPUT block: the numerals 16, 17, 18, 19 are silkscreened to the LEFT of their hole pairs, with 'ARM' below 16 and the RUN / STOP brackets to the right.",
+      "evidence": "Book I printed p.5, Experiment 1 step 2, read from OCR: 'Connect this end of the programming wire to terminal 1+ on the computer panel by pushing it into one of the two holes just BELOW the + in section 1' versus step 3: 'connect 1+ to terminal 1A by pushing it into one of the two holes just ABOVE the letter A in section 1'. Confirmed visually in the commons-minivac601-main.jpg power-stripe crop (+ and - printed above their holes) and in the decimal I/O crop (16 / 17 / 19 printed to the left of their holes, ARM printed under the 16 label).",
+      "tag": "verified",
+      "note": "The finder's own cited Book I p.4 sentence ('Each terminal is identified by a letter printed below it') is a general statement about the lettered terminals; the finder generalised it onto the whole panel."
+    },
+    {
+      "id": "R5",
+      "claim": "internalBusses[PLUS rail].caveat, appended to a [verified] claim: 'The manual's sentence names \"all terminals + and -\" collectively; it does not separately enumerate M+. The inclusion of M+ in the bus rests on (a) its position in the same power stripe and (b) its use as a supply tap in programs. No manual sentence says \"M+ is the plus rail\" in so many words.'",
+      "correction": "Such a sentence exists, in a primary SDC source, and it enumerates M+ and M- by name. The caveat is unnecessary and should be deleted.",
+      "evidence": "SDC 'Notes and Corrections to the Minivac Manual' (errata sheet), left column, general notes: 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.'",
+      "tag": "verified",
+      "direction": "This is an UPGRADE of the finder's conclusion, but it REFUTES the finder's stated evidentiary basis - the finder said no such sentence exists, and it does."
+    },
+    {
+      "id": "R6",
+      "claim": "sourcesRead / namingScheme.letterSetUsed evidence: 'Exhaustive token census over the OCR of all three PDFs (all six books)' and, for CAPACITOR, 'Whole-corpus token census found zero uses.'",
+      "correction": "The census was over three of the seven primary PDFs in the directory. 'Whole-corpus' is not what was done. The 1cap..6cap tokens the census failed to find are in a fourth PDF in the same folder.",
+      "evidence": "find-jackmap.json sourcesRead lists only book1.txt, book2-3-4.txt, book5-6.txt, image_3.jpg and two web searches. Directory listing of docs/research/raw/pdf/ contains seven distinct PDFs.",
+      "tag": "verified"
+    }
+  ],
+
+  "downgraded": [
+    {
+      "id": "D1",
+      "claim": "holesPerTerminal.exceptions[M10/M11]: 6 holes each, tagged [verified], evidence resting on an image_3.jpg crop plus an inference from Book I p.25 ('lines between the terminals indicate terminals which are connected together') plus a behavioural argument from Book V p.22.",
+      "verdict": "CONCLUSION CORRECT, EVIDENCE UPGRADED. A primary SDC sentence states the count outright and removes the need for the inference chain.",
+      "correctEvidence": "Errata sheet, left column: 'In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.' Independently confirmed visually in the commons-minivac601-main.jpg matrix crop: M10 sits left of the 3x3 grid at middle-row height, M11 right of it, each drawn as three rows of two holes enclosed by a printed rectangular loop.",
+      "tag": "verified",
+      "terminologyNote": "SDC itself uses the word 'terminal' for what Book I p.4 calls a 'hole'. That is the source of the finder's difficulty with the Book I p.25 sentence 'The four COMMON terminals are connected together.' The finder's re-reading ('the four HOLES of each COMMON terminal') is correct, and the errata sentence proves it rather than leaving it as an inference."
+    },
+    {
+      "id": "D2",
+      "claim": "namingScheme.matrixTerminals notes, and terminalInventory M1t..M9t / M1b..M9b: t and b are electrically separate, tagged [verified] on the strength of the photo plus one Book VI program.",
+      "verdict": "CONCLUSION CORRECT, additional primary support the finder missed.",
+      "correctEvidence": "Errata sheet, Book V section: 'pages 21 and 22: Note - when programming a geometric form or a numeral for recognition, be sure that the connections from M10 are made to the TOP terminals in the matrix.' An instruction that only makes sense if top and bottom are distinct nets. Also Book VI Electronic Maze (book5-6.txt printed p.53) wires M8t, M1t, M2t, M9t, M6t, M5t, M3t, M4t, M7t exclusively to the top terminals. Matrix crop of commons-minivac601-main.jpg shows a short printed bar joining the two holes of each pair and NO line joining top pair to bottom pair.",
+      "tag": "verified"
+    },
+    {
+      "id": "D3",
+      "claim": "terminalInventory.sharedRightColumn label 'M+' and 'M-', tagged [verified] with image_3.jpg among the citations.",
+      "verdict": "SPLIT THE TAG. The two terminals exist in the blue power stripe above the MATRIX and are silkscreened simply '+' and '-' - the panel carries no 'M' prefix on them. The designators 'M+' and 'M-' come from the manuals, not from the panel.",
+      "correctEvidence": "Panel: commons-minivac601-main.jpg and image_3.jpg both show a bare '+' and a bare '-' glyph above two two-hole jacks in the blue stripe over the matrix, with 'POWER' at the right end of the same stripe. Designator: errata sheet ('...or M+', '...or M-'); Book V printed p.22 and p.35; Book I Answers 13, 14, 15, 18 ('M-/D18', 'M+/D16'); Book 7 printed p.21 ('D15/M-', 'D17/M+').",
+      "tag": "verified",
+      "consequence": "Any panel renderer must silkscreen '+' and '-', not 'M+' and 'M-'. Any program parser must accept M+ and M-."
+    },
+    {
+      "id": "D4",
+      "claim": "terminalInventory nG: 'NORMALLY-OPEN fixed contact of relay-n contact set 1 (the set farther from the operator)' and nK: '(the set nearer the operator)', both tagged [verified] to Book I p.12.",
+      "verdict": "The N.O./ARM/N.C. assignment is solid and manual-stated. The 'set 1 / set 2' numbering and the 'farther / nearer the operator' gloss are the finder's own labelling, chained from one manual sentence plus panel row order. No simulator consequence, but the [verified] tag over-reaches on the gloss.",
+      "correctEvidence": "Book I printed p.12, read from OCR: 'The relay switch contacts are connected to terminals in the same pattern used with the pushbutton contacts. The normally-open (N.O.) contact is connected to the left terminal, the relay arm (common contact) is connected to the center terminal, and the normally-closed (N.C.) contact is connected to the right terminal. The set of contacts closer to the operator is connected to the set of terminals closer to the operator.' AND 'When the relay is OFF, separate electrical connections are made between terminals H and J and terminals L and N. When the relay is ON, separate electrical connections are made between terminals H and G and terminals L and K.' Panel crop confirms N.O. over G, ARM over H, N.C. over J on the upper hole row, with K L N on the lower row and no repeated N.O./ARM/N.C. labels.",
+      "tag": "verified for the electrical mapping; likely for the physical set-ordering gloss"
+    },
+    {
+      "id": "D5",
+      "claim": "simulatorNotes final entry, tagged [unverified]: 'The relay indicator lamp is in SERIES with the coil across nC..nF. A consequence not demonstrated in the manuals: powering nC..nE alone would light the lamp without energising the coil.'",
+      "verdict": "The specific C-to-E-alone consequence remains an inference and the [unverified] tag is correct. But the underlying claim that the indicator lamp meaningfully drops coil voltage IS manual-stated, and the finder missed the statement.",
+      "correctEvidence": "Errata sheet, Book IV p.72 note: 'the design of this counter is such that the capabilities of the relays are somewhat strained... If the counter in Book IV does not perform correctly, use the program and circuit which follow. The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.' This makes the lamp's series voltage drop load-bearing for correct simulation of marginal circuits, and confirms that nE/nF drive is stronger than nC/nF drive.",
+      "tag": "verified"
+    },
+    {
+      "id": "D6",
+      "claim": "internalBusses[COMMON terminals] reasoning cites the Electronic Maze chain as '1com/2L', '2com/3L', '3com/4L', '4com/5L', '5com/6L'.",
+      "verdict": "CORRECT but INCOMPLETE. The listing also contains 6F/6com, so all six commons are used, not five. The finder's conclusion (six independent 4-hole junctions) is right and the transcription contains no hallucinated line.",
+      "correctEvidence": "book5-6.txt, Book VI 'The Electronic Maze', printed p.53, basic sequence recognition circuit. Lines present: 1com/2L, 2com/3L, 3com/4L, 4com/5L, 5com/6L, 6F/6com.",
+      "tag": "verified"
+    }
+  ],
+
+  "upgraded": [
+    {
+      "id": "U1",
+      "claim": "D0 exists despite Book I p.20 reading '(1 to 19)'.",
+      "finderStatus": "tagged [verified], but supported by panel silkscreen + an under-panel drawing + counted program usages.",
+      "newEvidence": "The Maintenance Manual states the range outright: printed p.10, 'Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, DO through D15' (OCR 'DO' for D0). That is a direct SDC statement of D0..D15.",
+      "andISeparatelyConfirmed": "I opened pages/book1/p-22.png and read the printed line with my own eyes. It genuinely says '8 = terminal number (1 to 19)'. The OCR is NOT mangling '0 to 19'. The finder's erratum finding stands. The same page's 'VIEW UNDER PANEL' drawing shows position 0 at the top of the circle (drawn as a small open rectangle) with contact pairs at 1 through 15; the perspective drawing above it shows a hole pair in every dial sector including 0.",
+      "tag": "verified"
+    },
+    {
+      "id": "U2",
+      "claim": "Six relay terminals G H J K L N below each relay; three coil-side terminals C E F above; six slide-switch terminals R S T U V W.",
+      "newEvidence": "Maintenance Manual corroborates the physical wiring counts: 'To replace a defective relay, disconnect the eight connections to the relay' (2 coil lugs + 6 contact lugs = 8, consistent with the indicator lamp being a separate component tapped at C) and 'Cut all six connections to the slide switch'. Also 'Drill out the rivets which hold the unit in place' for the slide switch, which corroborates the finder's reading of the two cream discs flanking each slide switch as mounting rivets rather than jacks or lamps.",
+      "tag": "verified"
+    },
+    {
+      "id": "U3",
+      "claim": "Panel legend reads Cambridge while every book copyright page reads 372 Main Street, Watertown.",
+      "newEvidence": "Confirmed on a SECOND, independent, higher-resolution artifact. photos/commons-minivac601-main.jpg, logo legend cropped and upscaled to 2850px, reads clearly: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.' Watertown side confirmed at book1.txt line 105 ('Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'), book5-6.txt line 42 (identical), book2-3-4.txt line 4287, plus TWO further primary Watertown attestations the finder did not have: the Maintenance Manual cover ('SCIENTIFIC DEVELOPMENT CORP., 372 Main Street, Watertown, Massachusetts') with a spare-parts mailing address of 'Watertown 72, Massachusetts', and the errata sheet footer ('372 Main Street, Watertown, Massachusetts').",
+      "resolution": "STILL NOT RESOLVED, per the project rule. Score is now four Watertown print sources against one Cambridge panel legend, on two independent photographs of two different machines. Both remain primary. Most plausible unverified reading: the panel silkscreen predates a company move. Do not encode either as fact.",
+      "tag": "verified (both readings)"
+    },
+    {
+      "id": "U4",
+      "claim": "M10 and M11 are not internally joined; Book V p.22 has to add an explicit M10/M11 wire.",
+      "newEvidence": "The Book V p.22 instruction the finder quoted is verbatim correct: 'Now connect four short programming wires to M10, leaving one end of each free. Also, connect four short programming wires to M11, leaving one end of each free.' (book5-6.txt lines 1188-1189). This independently requires at least four free holes each, corroborating the six-hole count.",
+      "tag": "verified"
+    },
+    {
+      "id": "U5",
+      "claim": "COMMON terminals may be used as free junction nodes to shorten wiring.",
+      "newEvidence": "Errata sheet, left column, gives the intended usage explicitly and generalises it: 'If you should run out of long programming wires, you can use shorter wires by programming through any common terminals not being used in the circuit... For example, to make the connections 1X/6A without using the longest wires, you can make the two connections 1X/4R and 4R/6A. If slide switch 4 is being used in the circuit, you can make the connections 1X/4com and 4com/6A.' Note it explicitly says a spare COMPONENT terminal such as 4R is equally usable as a junction - a point the finder does not make.",
+      "tag": "verified"
+    }
+  ],
+
+  "missed": [
+    {
+      "id": "M1",
+      "item": "The greek-letter pseudo-terminal notation in Book 7.",
+      "detail": "Book 7 program listings use Omega with a subscript to denote a user-supplied resistor spliced into a connection - written as a stacked pair, e.g. (1F/Omega_B1 / Omega_B1/1J), meaning 'use the bias resistance for relay 1 to connect 1F and 1J'. Also Omega_220 for a plain 220-ohm resistor, and a bare Omega in (D18/Omega, Omega/D19) for the optional motor-speed resistor. Subscript B1..B6 = the per-relay 'bias resistor'.",
+      "citation": "Book 7 printed p.9 (pages/book7/p-14.png) and printed p.11 (rendered PDF p.16) and printed p.21 (rendered PDF p.26).",
+      "whyItMatters": "The raw OCR renders these as 'Q', 'Qo', 'Q20', 'Q22', 'Q50', 'Q54', '63'. Any later agent doing a token census over book7-capacitor-resistor.txt WILL invent a 'Q' terminal class. It does not exist. There is no Q terminal on the MINIVAC 601.",
+      "tag": "verified"
+    },
+    {
+      "id": "M2",
+      "item": "Electrical ratings from the Maintenance Manual, which a relay-level simulator wants.",
+      "detail": "'The power supply is rated at 1.5 amps continuous with a nominal 12 volts output.' 'The unloaded power supply outlet voltage should be approximately 13 volts.' 'All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps.' 'The lights are operated at less than their rated voltage to extend their operating life.' 'The drive motor is operated at less than one-third rated voltage.' 'the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of beryllium copper.'",
+      "citation": "Maintenance Manual printed pp.2-3 (PDF pp.4-5).",
+      "tag": "verified"
+    },
+    {
+      "id": "M3",
+      "item": "Relay hysteresis - pull-in versus drop-out voltage, deliberately widened.",
+      "detail": "'the voltage at which a relay turns on is called the \"pull-in\" voltage; the voltage at which a relay turns off is called the [drop-out] voltage. The MINIVAC's relays are deliberately [designed] so that there is a great [difference] between the \"pull-in\" and \"drop-out\" voltages.' Book 7's entire bias-resistor technique exists to exploit this: a biased relay holds in below pull-in, freeing BOTH contact sets for circuit use instead of one being spent on a latch.",
+      "citation": "Book 7 printed p.4 area (book7-capacitor-resistor.txt lines 60-80, OCR degraded but legible on the point).",
+      "whyItMatters": "A simulator that models the coil as a pure threshold cannot run any Book 7 program, and gets marginal Book IV circuits wrong too.",
+      "tag": "verified"
+    },
+    {
+      "id": "M4",
+      "item": "The errata sheet's page-by-page corrections to the circuit diagrams and program listings in Books I-VI.",
+      "detail": "Directly relevant to the jackmap topic because several corrections are terminal-letter corrections. Examples: Book I p.13 'circuit diagram incorrect - delete line connecting 1B and 2B'; Book I p.24 'MOTOR REVERSING circuit diagram incorrectly labeled - change 6Y to 6V'; Book II p.11 'change 1A/1C to 1A/1G; delete 1A/1C connection on circuit diagram'; Book II p.14 'change 2Z/2C to 2X/2C'; Book III p.43 'change 2+/2H to 1G/2H'; Book III p.54 'change 5V/45 to 5V/4S'; Book III p.59 'circuit diagram for Boolean Solution is incorrectly labeled - change 1R, 1S, 1T on far right slide switch to 3R, 3S, 3T respectively'; Book III p.61 'CIRCUIT REPRESENTATION incorrect - insert E before negative power connection'; Book V p.11 'change 4G/4H to 4G/5H; change D16/M- to D16/M+'; Book V p.30 'change 5X/6E to 5X/6C'; plus a full replacement program for the Book IV three-bit binary counter and a full alternate for the Book V toll collector.",
+      "citation": "SDC 'Notes and Corrections to the Minivac Manual', unpaginated errata sheet, section 'Notes and Corrections by page'.",
+      "whyItMatters": "Any agent transcribing program listings as simulator regression tests must apply these first, or the tests will encode SDC's own typos.",
+      "tag": "verified"
+    },
+    {
+      "id": "M5",
+      "item": "The Maintenance Manual's Power Supply circuit diagram and the pushbutton / relay / slide-switch check circuits.",
+      "detail": "Four further primary schematics exist in the Maintenance Manual (Power Supply Circuit Diagram, Circuit Diagram - Pushbutton Check, Circuit Diagram - Relay Check, Circuit Diagram - Slide Switch Check) that I did not spend image budget on. The slide-switch check figure's OCR leaks terminal tokens '3A', '3B', '4A', '4B'. These are the best available cross-checks on the internal component wiring.",
+      "citation": "Maintenance Manual PDF pp.5, 8, 9, 10 (pages/maintenance/p-05.png, p-08.png, p-09.png, p-10.png).",
+      "tag": "unverified (I have not opened these four page images)",
+      "whatWouldSettleIt": "Four page-image reads."
+    },
+    {
+      "id": "M6",
+      "item": "Book 7 program listings introduce D-terminal removal as a programming action.",
+      "detail": "Book 7 p.21 program manipulates the rotary switch by REMOVING connections between adjacent dial contacts (e.g. 'Remove D6/D7', 'if the divisor is 7, remove D7/D8'), which implies programs routinely chain D-contacts to one another. That usage pattern is not represented anywhere in find-jackmap.json's model of the D block.",
+      "citation": "Book 7 printed pp.20-21 (book7-capacitor-resistor.txt lines 230-260, and rendered PDF p.26).",
+      "tag": "verified"
+    }
+  ],
+
+  "confirmedUnchanged": {
+    "note": "Checked directly against the primary sources and found correct. Listed so a later agent does not re-litigate them.",
+    "items": [
+      "Book I p.4 quote 'Each terminal is identified by a letter printed below it, and by the number printed at the top of the section in which it is located.' - verbatim correct.",
+      "Book I p.4 quote 'Each terminal has two holes side-by-side which are connected together underneath the computer panel. Programming wires may be plugged into either (or both) holes of the terminal.' - verbatim correct.",
+      "Book I p.5 wiring-shorthand quote - verbatim correct.",
+      "Book I p.20 matrix... correction: Book I p.25 matrix designation quote 'M = matrix / 6 = terminal number (1 to 11) / t = top or \"b\" for bottom . . . for example M6t' - verbatim correct, read from OCR of PDF p.27.",
+      "Book I p.20 decimal designation quote including '(1 to 19)' - verbatim correct, confirmed on the PAGE IMAGE not just OCR.",
+      "Book I p.25 auxiliary-terminals quotes for COMMON and CAPACITOR - verbatim correct.",
+      "Book I p.12 relay ON/OFF contact quotes - verbatim correct.",
+      "Book I p.14 coil/lamp quotes ('by connecting power to C and F, the light ... comes ON'; 'through contacts E and F, the light ... will NOT come on') - verbatim correct. The C-lamp-E-coil-F series topology follows necessarily and is [verified].",
+      "Book I p.18 slide-switch left/right quotes - verbatim correct.",
+      "Book I p.22 motor RUN/STOP quotes - verbatim correct.",
+      "Book I p.21 rotary break-before-make: 'Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact.' - verbatim correct.",
+      "Book I p.9 pushbutton break-before-make: 'The switch breaks one connection before it makes the other connection. The pushbuttons are thus called \"break-before-make\" switches.' - verbatim correct.",
+      "Book VI Secret Code p.51: 'Be sure though, that there are connections to each of the six common terminals' plus the six starred lines 2T/1com, 6W/2com, 4T/3com, 2W/4com, 6T/5com, 4W/6com - transcription exact, no hallucinated line.",
+      "Letter set: an independent token census over book1.txt + book2-3-4.txt + book5-6.txt + errata.txt returns exactly A B C E F G H J K L N R S T U V W X Y Z (20 letters) with a single stray '2I' at one occurrence, an obvious OCR artifact against 126 occurrences of the J designator. D, I, M, O, P and Q never appear as section-terminal letters. The finder's set is correct. Note the finder listed M and D under 'deliberately not used' as section letters while both serve as block prefixes - that is stated correctly in its own notes.",
+      "Matrix numbering 1-2-3 / 8-9-4 / 7-6-5 with 9 at centre, M10 at the left of the grid on the middle row and M11 at the right - confirmed on the high-resolution matrix crop.",
+      "RUN bracket spans jacks 17-18 and STOP bracket spans 18-19; the seed's '18 RUN / 19 STOP' one-label-one-jack pairing is wrong - confirmed both on the high-resolution decimal crop AND on the Book I p.20 perspective drawing.",
+      "Band order top to bottom: BINARY OUTPUT, power stripe, STORAGE/PROCESSING, COMMON/CAPACITOR, SECONDARY STORAGE, BINARY INPUT - confirmed on both photographs and corroborated by Book I p.25 ('Auxiliary terminals are provided between the slide switches and the relays for each of the six sections').",
+      "Per-band silkscreen: section number above the lamp; LIGHT bracket over C-E and COIL bracket over E-F; N.O./ARM/N.C. over G/H/J; left-arrow/ARM/right-arrow over R/S/T; N.O./ARM/N.C. over X/Y/Z - all confirmed on the high-resolution crops.",
+      "COMMON = 4 holes, CAPACITOR = 2 holes, all other section terminals = 2 holes - confirmed visually.",
+      "The POWER block contains no jacks - confirmed visually on both photographs.",
+      "Totals arithmetic (186 terminals, 392 holes) recomputed and correct given the finder's per-item counts, and correctly tagged [unverified] since no manual states a total. NOTE: the six CAPACITOR terminals are already counted in the 24-per-section figure, so R1 does not change these totals - only their electrical identity."
+    ]
+  },
+
+  "stillNotSettled": [
+    {
+      "question": "Resistance values of the two motor-drive resistors, and the value of the parallel resistor R2 relative to the motor.",
+      "whatIsKnown": "Two resistors, R1 in series D17-D19 and R2 across the motor D18-D19 (Maintenance Manual printed p.9 diagram). Book 7 p.21 notes a user-added 15, 22 or 33 ohm resistor in the D18/D19 branch will 'decrease the speed of the motor', which brackets the order of magnitude of the motor's own impedance.",
+      "whatWouldSettleIt": "A measured 601, or an SDC parts list with values - the Maintenance Manual spare-parts list gives part numbers for the motor (6471), drive wheel (6472) and complete rotary switch assembly (6473) but no resistor part number, which suggests the resistors are inside assembly 6473."
+    },
+    {
+      "question": "Whether the CAPACITOR terminals were populated with capacitors in 1961 601 production, or only from the 1962 accessory manual onward.",
+      "whatIsKnown": "Book I (1961) says they 'may be ignored' and are for 'when auxiliary components are added'. Book 7 (1962) says the capacitors are 500 uF (sections 1-5) and 1000 uF (section 6) with one end permanently on the negative rail, and cross-references Book I page 25.",
+      "whatWouldSettleIt": "An under-panel photograph of a 601 whose serial predates the accessory manual, or an SDC accessory catalogue."
+    },
+    {
+      "question": "Whether the 500/1000 uF split is identical on the 601 and the 6010.",
+      "whatIsKnown": "Stated once, for 'the MINIVAC', in a manual titled for both machines.",
+      "whatWouldSettleIt": "A 6010-specific manual, or a measured example of each."
+    },
+    {
+      "question": "Whether the two contact sets of one relay (G/H/J and K/L/N) share any electrical connection.",
+      "whatIsKnown": "Book I p.12 says they are mechanically ganged by a plastic crossbar and make 'separate electrical connections'. The Maintenance Manual's 'disconnect the eight connections to the relay' is consistent with 2 coil lugs plus 6 independent contact lugs and therefore with full isolation, but does not state isolation.",
+      "whatWouldSettleIt": "The Maintenance Manual's 'Circuit Diagram - Relay Check' figure (pages/maintenance/p-10.png), which I did not open."
+    },
+    {
+      "question": "Absolute panel geometry - hole pitch, band heights, jack coordinates in millimetres.",
+      "whatIsKnown": "Relative order and grouping are now settled on two independent photographs. Absolute dimensions are not.",
+      "whatWouldSettleIt": "A scaled, rectified, orthographic photograph or a measured panel."
+    }
+  ],
+
+  "verdictOnTargetFile": "Trustworthy on the core netlist, untrustworthy on scope and on fine panel artwork. Every per-section component mapping I re-checked against the page images held up, and every manual quotation I spot-checked was verbatim. But the finder searched three of seven primary PDFs and one of three panel photographs, then labelled the result a whole-corpus census and used the resulting silence as positive evidence ('no shorthand designator is ever printed or used', 'not settled by the sources'). Two of its 'not settled' items and one of its 'verified' netlist entries were settled all along in files in the same directory. Its one outright fabrication is the printed ovals and joining bars around hole pairs, asserted [verified] from a 1536-pixel photograph that cannot resolve them - and which, at 4208 pixels, shows they are not there."
+}

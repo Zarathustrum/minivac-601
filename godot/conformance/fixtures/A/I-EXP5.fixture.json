@@ -1,0 +1,47 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP5",
+  "source": "BK1 printed p.11 = book1.pdf PDF p.13",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1X/1A", "1B/1-", "1Y/2Y", "2X/1X"],
+  "errata_applied": [],
+  "wires": ["1+/1Y", "1X/1A", "1B/1-", "1Y/2Y", "2X/1X"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK1 printed p.11 = book1.pdf PDF p.13",
+      "quote": "The light does not come on because there is not a closed circuit."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK1 printed p.11 = book1.pdf PDF p.13",
+      "quote": "Push down pushbutton 1. Light 1 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK1 printed p.11 = book1.pdf PDF p.13",
+      "quote": "Release pushbutton 1 and push down pushbutton 2. The light again comes ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK1 printed p.11 = book1.pdf PDF p.13",
+      "quote": "The circuit is closed and the light comes ON if either pushbutton 1 is down OR if pushbutton 2 is down OR if both pushbutton 1 and pushbutton 2 are down at the same time."
+    }
+  ]
+}

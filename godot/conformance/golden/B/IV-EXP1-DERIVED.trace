@@ -1,0 +1,188 @@
+#!mv601-trace 1
+# id=IV-EXP1-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=44
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+   220.1 > button6 target=1000
+   231.3 * pb6 nc->mid
+   233.8 * pb6 mid->no
+   237.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+   243.9 * indLamp5 off->dim
+   246.1 * relay5 nc->mid
+   247.4 * relay5 mid->no
+   256.2 * outLamp3 dim->on  indLamp6 dim->on
+   257.1 * outLamp6 dim->on
+   285.5 * indLamp5 dim->on
+   477.2 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=nc pb6=no outLamp4=off outLamp5=off outLamp6=on  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+   477.2 > button6 target=0
+   488.4 * pb6 no->mid
+   490.9 * pb6 mid->nc
+   502.1 * relay6 nc->mid
+   503.4 * relay6 mid->no
+   728.7 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no pb6=nc outLamp1=off outLamp2=off outLamp4=off outLamp5=off outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+   728.7 > button6 target=1000
+   739.9 * pb6 nc->mid
+   742.4 * pb6 mid->no
+   753.6 * relay5 no->mid
+   754.5 * relay5 mid->nc
+   757.8 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+   764.7 * indLamp3 off->dim
+   766.5 * relay3 nc->mid
+   767.8 * relay3 mid->no
+   777.1 * outLamp2 dim->on  indLamp4 dim->on
+   777.9 * outLamp5 dim->on
+   806.6 * indLamp3 dim->on
+   998.0 ? relay1=nc relay2=nc relay3=no relay4=nc relay5=nc relay6=no pb6=no outLamp4=off outLamp5=on outLamp6=on  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+   998.0 > button6 target=0
+  1009.2 * pb6 no->mid
+  1011.7 * pb6 mid->nc
+  1020.0 * relay6 no->mid
+  1020.1 * relay4 nc->mid
+  1020.9 * relay6 mid->nc
+  1021.4 * relay4 mid->no
+  1021.6 * outLamp3 on->dim  indLamp6 on->dim
+  1033.8 * indLamp5 on->dim
+  1033.9 * outLamp6 on->dim
+  1077.4 * outLamp3 dim->off  indLamp6 dim->off
+  1089.5 * outLamp6 dim->off  indLamp5 dim->off
+  1254.0 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc pb6=nc outLamp1=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp5=off indLamp6=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  1254.0 > button6 target=1000
+  1265.2 * pb6 nc->mid
+  1267.7 * pb6 mid->no
+  1271.0 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  1277.8 * indLamp5 off->dim
+  1280.1 * relay5 nc->mid
+  1281.4 * relay5 mid->no
+  1290.2 * outLamp3 dim->on  indLamp6 dim->on
+  1291.0 * outLamp6 dim->on
+  1319.7 * indLamp5 dim->on
+  1511.1 > button6 target=0
+  1522.3 * pb6 no->mid
+  1524.8 * pb6 mid->nc
+  1536.2 * relay6 nc->mid
+  1537.5 * relay6 mid->no
+  1762.8 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no pb6=nc outLamp1=off outLamp4=off outLamp5=on outLamp6=on indLamp1=off indLamp2=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  1762.8 > button6 target=1000
+  1774.0 * pb6 nc->mid
+  1776.5 * pb6 mid->no
+  1787.6 * relay5 no->mid
+  1788.5 * relay5 mid->nc
+  1800.3 * relay3 no->mid
+  1801.2 * relay3 mid->nc
+  1804.5 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+  1811.4 * indLamp1 off->dim
+  1812.9 * relay1 nc->mid
+  1814.2 * relay1 mid->no
+  1823.9 * outLamp1 dim->on  indLamp2 dim->on
+  1824.8 * outLamp4 dim->on
+  1853.8 * indLamp1 dim->on
+  2044.9 ? relay1=no relay2=nc relay3=nc relay4=no relay5=nc relay6=no pb6=no outLamp4=on outLamp5=on outLamp6=on  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  2044.9 > button6 target=0
+  2056.1 * pb6 no->mid
+  2058.6 * pb6 mid->nc
+  2065.9 * relay6 no->mid
+  2066.2 * relay2 nc->mid
+  2066.5 * relay4 no->mid
+  2066.8 * relay6 mid->nc
+  2067.4 * relay4 mid->nc
+  2067.5 * relay2 mid->no  outLamp3 on->dim  indLamp6 on->dim
+  2067.8 * outLamp2 on->dim  indLamp4 on->dim
+  2079.7 * outLamp6 on->dim  indLamp5 on->dim
+  2079.9 * indLamp3 on->dim
+  2080.0 * outLamp5 on->dim
+  2123.3 * outLamp3 dim->off  indLamp6 dim->off
+  2123.6 * outLamp2 dim->off  indLamp4 dim->off
+  2135.3 * indLamp5 dim->off
+  2135.4 * outLamp6 dim->off
+  2135.6 * outLamp5 dim->off  indLamp3 dim->off
+  2300.1 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc pb6=nc outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  2300.1 > button6 target=1000
+  2311.3 * pb6 nc->mid
+  2313.8 * pb6 mid->no
+  2317.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  2323.9 * indLamp5 off->dim
+  2326.2 * relay5 nc->mid
+  2327.5 * relay5 mid->no
+  2336.3 * outLamp3 dim->on  indLamp6 dim->on
+  2337.1 * outLamp6 dim->on
+  2365.8 * indLamp5 dim->on
+  2557.2 > button6 target=0
+  2568.4 * pb6 no->mid
+  2570.9 * pb6 mid->nc
+  2582.3 * relay6 nc->mid
+  2583.6 * relay6 mid->no
+  2808.9 ? relay1=no relay2=no relay3=nc relay4=nc relay5=no relay6=no pb6=nc outLamp2=off outLamp4=on outLamp5=off outLamp6=on indLamp3=off indLamp4=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  2808.9 > button6 target=1000
+  2820.1 * pb6 nc->mid
+  2822.6 * pb6 mid->no
+  2833.7 * relay5 no->mid
+  2834.6 * relay5 mid->nc
+  2837.9 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  2844.8 * indLamp3 off->dim
+  2846.7 * relay3 nc->mid
+  2848.0 * relay3 mid->no
+  2857.3 * outLamp2 dim->on  indLamp4 dim->on
+  2858.1 * outLamp5 dim->on
+  2887.1 * indLamp3 dim->on
+  3078.2 > button6 target=0
+  3089.4 * pb6 no->mid
+  3091.9 * pb6 mid->nc
+  3100.1 * relay6 no->mid
+  3100.4 * relay4 nc->mid
+  3101.0 * relay6 mid->nc
+  3101.6 * outLamp3 on->dim  indLamp6 on->dim
+  3101.7 * relay4 mid->no
+  3113.9 * outLamp6 on->dim  indLamp5 on->dim
+  3157.4 * outLamp3 dim->off  indLamp6 dim->off
+  3169.5 * outLamp6 dim->off  indLamp5 dim->off
+  3334.0 ? relay1=no relay2=no relay3=no relay4=no relay5=nc relay6=nc pb6=nc outLamp3=off outLamp4=on outLamp5=on outLamp6=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  3334.0 > button6 target=1000
+  3345.2 * pb6 nc->mid
+  3347.7 * pb6 mid->no
+  3351.0 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  3357.8 * indLamp5 off->dim
+  3360.2 * relay5 nc->mid
+  3361.5 * relay5 mid->no
+  3370.3 * outLamp3 dim->on  indLamp6 dim->on
+  3371.2 * outLamp6 dim->on
+  3400.1 * indLamp5 dim->on
+  3591.3 > button6 target=0
+  3602.5 * pb6 no->mid
+  3605.0 * pb6 mid->nc
+  3616.6 * relay6 nc->mid
+  3617.9 * relay6 mid->no
+  3843.2 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no pb6=nc outLamp4=on outLamp5=on outLamp6=on  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+  3843.2 > button6 target=1000
+  3854.4 * pb6 nc->mid
+  3856.9 * pb6 mid->no
+  3867.9 * relay5 no->mid
+  3868.8 * relay5 mid->nc
+  3880.6 * relay3 no->mid
+  3881.5 * relay3 mid->nc
+  3894.0 * relay1 no->mid
+  3894.9 * relay1 mid->nc
+  4118.4 ? relay1=nc relay2=no relay3=nc relay4=no relay5=nc relay6=no pb6=no outLamp4=on outLamp5=on outLamp6=on  "You will notice that the counter repeats after it has reached 7."
+  4118.4 > button6 target=0
+  4129.6 * pb6 no->mid
+  4132.1 * pb6 mid->nc
+  4138.2 * relay6 no->mid
+  4138.6 * relay4 no->mid
+  4139.0 * relay2 no->mid
+  4139.1 * relay6 mid->nc
+  4139.5 * relay4 mid->nc
+  4139.9 * relay2 mid->nc  outLamp3 on->dim  indLamp6 on->dim
+  4140.1 * outLamp2 on->dim  indLamp4 on->dim
+  4140.2 * outLamp1 on->dim  indLamp2 on->dim
+  4154.0 * indLamp5 on->dim
+  4154.1 * outLamp6 on->dim  indLamp3 on->dim
+  4154.2 * outLamp5 on->dim  indLamp1 on->dim
+  4154.3 * outLamp4 on->dim
+  4195.7 * outLamp3 dim->off  indLamp6 dim->off
+  4195.8 * outLamp2 dim->off  indLamp4 dim->off
+  4195.9 * outLamp1 dim->off  indLamp2 dim->off
+  4209.7 * outLamp6 dim->off  indLamp5 dim->off
+  4209.8 * outLamp5 dim->off  indLamp1 dim->off  indLamp3 dim->off
+  4209.9 * outLamp4 dim->off
+  4374.4 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc pb6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "You will notice that the counter repeats after it has reached 7."

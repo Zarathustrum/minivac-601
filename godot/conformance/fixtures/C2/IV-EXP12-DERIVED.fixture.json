@@ -1,0 +1,1082 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP12-DERIVED",
+  "source": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (rule and procedure), image-read; slide-switch convention BK4 printed p.80 = book2-3-4.pdf PDF p.86; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/4R",
+    "1F/2F",
+    "1G/6H",
+    "1H/5U",
+    "1J/5H",
+    "1K/6L",
+    "1L/5W",
+    "1N/5L",
+    "2C/5R",
+    "2F/3F",
+    "2G/3H",
+    "2H/4U",
+    "2J/4H",
+    "2K/3L",
+    "2L/4W",
+    "2N/4L",
+    "3C/6R",
+    "3C/4C",
+    "3F/4F",
+    "3G/D15",
+    "3J/D14",
+    "3K/D11",
+    "3N/D10",
+    "3U/4V",
+    "3V/3-",
+    "3W/5V",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D12",
+    "4K/D9",
+    "4N/D8",
+    "4S/4+",
+    "4S/5S",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5J/D2",
+    "5K/D1",
+    "5N/D0",
+    "5S/6S",
+    "6F/6-",
+    "6G/D7",
+    "6J/D6",
+    "6K/D5",
+    "6N/D4",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/4R",
+    "1F/2F",
+    "1G/6H",
+    "1H/5U",
+    "1J/5H",
+    "1K/6L",
+    "1L/5W",
+    "1N/5L",
+    "2C/5R",
+    "2F/3F",
+    "2G/3H",
+    "2H/4U",
+    "2J/4H",
+    "2K/3L",
+    "2L/4W",
+    "2N/4L",
+    "3C/6R",
+    "3C/4C",
+    "3F/4F",
+    "3G/D15",
+    "3J/D14",
+    "3K/D11",
+    "3N/D10",
+    "3U/4V",
+    "3V/3-",
+    "3W/5V",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D12",
+    "4K/D9",
+    "4N/D8",
+    "4S/4+",
+    "4S/5S",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5J/D2",
+    "5K/D1",
+    "5N/D0",
+    "5S/6S",
+    "6F/6-",
+    "6G/D7",
+    "6J/D6",
+    "6K/D5",
+    "6N/D4",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; power on with the construction state (switches 3-6 LEFT, dial on D0), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; switches 4, 5 and 6 LEFT energize all six relays and their indicator lamps; motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; pushbutton 6 up, so the dial has not moved",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 1000 entered (switch 3 LEFT, switch 4 RIGHT, switch 5 RIGHT, switch 6 RIGHT), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; dial still at rest on D0 where the previous run left it, because pushbutton 6 is the only RUN feed and is up",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 held with binary 1000 entered: motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; tree path 3V(-)-3U (sw3 L)-4V-4W (sw4 R)-2L-2N (relay 2 out)-4L-4N (relay 4 out)-D8 puts D8 alone at minus, so the wiper runs from D0 over the floating pads and stops on D8 (decimal 8)",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 still held 2000 ms after the wiper reached D8: the wiper on D8 (tree path 3V(-)-3U (sw3 L)-4V-4W (sw4 R)-2L-2N (relay 2 out)-4L-4N (relay 4 out)-D8) keeps STOP shorted, so the dial rests on D8",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 0100 entered (switch 3 RIGHT, switch 4 LEFT, switch 5 RIGHT, switch 6 RIGHT), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; dial still at rest on D8 where the previous run left it, because pushbutton 6 is the only RUN feed and is up",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 held with binary 0100 entered: motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; tree path 3V(-)-3W (sw3 R)-5V-5W (sw5 R)-1L-1K (relay 1 in)-6L-6N (relay 6 out)-D4 puts D4 alone at minus, so the wiper runs from D8 over the floating pads and stops on D4 (decimal 4)",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 still held 2000 ms after the wiper reached D4: the wiper on D4 (tree path 3V(-)-3W (sw3 R)-5V-5W (sw5 R)-1L-1K (relay 1 in)-6L-6N (relay 6 out)-D4) keeps STOP shorted, so the dial rests on D4",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 0010 entered (switch 3 RIGHT, switch 4 RIGHT, switch 5 LEFT, switch 6 RIGHT), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; dial still at rest on D4 where the previous run left it, because pushbutton 6 is the only RUN feed and is up",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 held with binary 0010 entered: motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; tree path 3V(-)-3W (sw3 R)-5V-5U (sw5 L)-1H-1J (relay 1 out)-5H-5J (relay 5 out)-D2 puts D2 alone at minus, so the wiper runs from D4 over the floating pads and stops on D2 (decimal 2)",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 still held 2000 ms after the wiper reached D2: the wiper on D2 (tree path 3V(-)-3W (sw3 R)-5V-5U (sw5 L)-1H-1J (relay 1 out)-5H-5J (relay 5 out)-D2) keeps STOP shorted, so the dial rests on D2",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 0001 entered (switch 3 RIGHT, switch 4 RIGHT, switch 5 RIGHT, switch 6 LEFT), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; dial still at rest on D2 where the previous run left it, because pushbutton 6 is the only RUN feed and is up",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 held with binary 0001 entered: motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; tree path 3V(-)-3W (sw3 R)-5V-5W (sw5 R)-1L-1N (relay 1 out)-5L-5K (relay 5 in)-D1 puts D1 alone at minus, so the wiper runs from D2 over the floating pads and stops on D1 (decimal 1)",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 still held 2000 ms after the wiper reached D1: the wiper on D1 (tree path 3V(-)-3W (sw3 R)-5V-5W (sw5 R)-1L-1N (relay 1 out)-5L-5K (relay 5 in)-D1) keeps STOP shorted, so the dial rests on D1",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 1101 entered (switch 3 LEFT, switch 4 LEFT, switch 5 RIGHT, switch 6 LEFT), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; dial still at rest on D1 where the previous run left it, because pushbutton 6 is the only RUN feed and is up",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 held with binary 1101 entered: motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; tree path 3V(-)-3U (sw3 L)-4V-4U (sw4 L)-2H-2J (relay 2 out)-4H-4G (relay 4 in)-D13 puts D13 alone at minus, so the wiper runs from D1 over the floating pads and stops on D13 (decimal 13)",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 still held 2000 ms after the wiper reached D13: the wiper on D13 (tree path 3V(-)-3U (sw3 L)-4V-4U (sw4 L)-2H-2J (relay 2 out)-4H-4G (relay 4 in)-D13) keeps STOP shorted, so the dial rests on D13",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 0110 entered (switch 3 RIGHT, switch 4 LEFT, switch 5 LEFT, switch 6 RIGHT), pushbutton 6 up: relay coils: 4S/5S/6S set-1 arms on + (4S/4+); switch 4 LEFT 4R-1C feeds relay 1, switch 5 LEFT 5R-2C feeds relay 2, switch 6 LEFT 6R-3C-4C-5C-6C feeds relays 3-6 in parallel; each nC-indicator lamp-nE-coil-nF, F ends chained to 6F/6-; switch 3 set 1 is unwired; no nA/nB wire, so output lamps stay dark; dial still at rest on D13 where the previous run left it, because pushbutton 6 is the only RUN feed and is up",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 held with binary 0110 entered: motor: pushbutton 6 (6Y/6+, 6X/D17) is the only RUN feed, D18/M-; wiper D16 is strapped to D19, so the wiper on the one dial pad the tree ties to minus shorts STOP (D18-D19) and the motor stops there; every other pad floats; tree path 3V(-)-3W (sw3 R)-5V-5U (sw5 L)-1H-1G (relay 1 in)-6H-6J (relay 6 out)-D6 puts D6 alone at minus, so the wiper runs from D13 over the floating pads and stops on D6 (decimal 6)",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; pushbutton 6 still held 2000 ms after the wiper reached D6: the wiper on D6 (tree path 3V(-)-3W (sw3 R)-5V-5U (sw5 L)-1H-1G (relay 1 in)-6H-6J (relay 6 out)-D6) keeps STOP shorted, so the dial rests on D6",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91; derived from topology and the p.85 tree-circuit rule, with the Book IV slide-switch convention (BK4 printed p.80 = PDF p.86, LEFT = 1, ruled printed for Book IV, O-C12); bit order of switches 3-6 is derived, not printed; binary 0110 unchanged and pushbutton 6 pushed again with the wiper already on D6: tree path 3V(-)-3W (sw3 R)-5V-5U (sw5 L)-1H-1G (relay 1 in)-6H-6J (relay 6 out)-D6 already shorts STOP through D16/D19, so RUN never drives the motor and the dial stays on D6",
+      "quote": "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 50-wire topology and the p.85 tree-circuit rule, not printed. No erratum touches Book IV p.85. Topology: the tree root is the minus rail on 3V; switch 3 set 2 sends it LEFT to 4V (switch 4 set 2, then relay 2, then relays 3/4) or RIGHT to 5V (switch 5 set 2, then relay 1, then relays 5/6). Relay 1 follows switch 4, relay 2 switch 5, relays 3-6 switch 6, so the stop pad is 8*sw3 + 4*sw4 + 2*sw5 + 1*sw6 with LEFT = 1 (p.80 convention, O-C12). Script choices, not printed: the four single-bit values 8, 4, 2, 1 pin the bit weight of each switch, 13 and 6 reach two further leaves (4G and 6J), each value is reached by a dial run from the previous one, and a final pushbutton 6 press with the dial already on the selected pad checks that it does not move. Construction state is switches LEFT, dial on D0. pushbutton 6 hold length, 500 ms switch settles and the 12000 ms until windows are script choices sized for a run rate as slow as 25 rpm; rotary rate, coast and geometry are profile fallbacks (O-R1, O-R3, O-R5). Digest is a placeholder for the runner.",
+  "digest": {
+    "eventCount": 381,
+    "moverTransitions": [
+      10,
+      10,
+      8,
+      8,
+      8,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      28,
+      0,
+      0,
+      6,
+      8,
+      8,
+      6,
+      140
+    ]
+  }
+}

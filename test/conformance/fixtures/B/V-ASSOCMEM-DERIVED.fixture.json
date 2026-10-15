@@ -1,0 +1,1154 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-ASSOCMEM-DERIVED",
+  "source": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1K",
+    "1B/1-",
+    "1C/2C",
+    "1F/4H",
+    "1F/1X",
+    "1G/6F",
+    "1H/3K",
+    "1K/2H",
+    "1L/2L",
+    "1L/1Y",
+    "1Y/2Y",
+    "2A/2K",
+    "2B/2-",
+    "2C/3C",
+    "2F/5H",
+    "2F/2X",
+    "2G/4F",
+    "2K/3H",
+    "2L/3L",
+    "2Y/3Y",
+    "3A/3K",
+    "3B/3-",
+    "3C/4C",
+    "3F/6H",
+    "3F/3X",
+    "3G/5F",
+    "3L/4L",
+    "4C/5C",
+    "4F/4K",
+    "4G/5H",
+    "4H/6G",
+    "4L/5L",
+    "5C/6C",
+    "5F/5K",
+    "5G/6H",
+    "5L/6L",
+    "6C/6-",
+    "6F/6K",
+    "6L/6Z",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 40-wire topology (no erratum; corrected = effective = printed) and the p.44 rule, tagged FALLBACK-DERIVED-TOPOLOGY. Topology: 6Y on + feeds, through pushbutton 6 N.C. 6Z, one bus L = 1L..6L plus pushbutton arms 1Y, 2Y, 3Y; all six C jacks are on minus (6C/6-), so each relay coil (nC-indicator lamp-nE-coil-nF) is driven from nF. Pushbutton n (1-3) N.O. nX feeds nF; relays 1-3 set 2 nK carry lamp nA (nB on minus) and feed the next set 1 arm (1K-2H, 2K-3H, 3K-1H). Relays 4, 5, 6 are the memory: each is set by an AND of two of relays 1-3 (2G-4F: 1 and 2; 3G-5F: 2 and 3; 1G-6F: 3 and 1), holds itself through nK/nF from the L bus, and its set 1 contact joins two pushbutton F nodes (4H-4G: 1F-2F; 5H-5G: 2F-3F; 6G-6H: 1F-3F). Pushbutton 6 opens the bus and drops every hold. Script = the page's procedure (individual pushes, 2 and 3 together, all three together, forget), plus derived cases: light 1 alone after 2 + 3, light 1 dark on pushbutton 3 after 2 + 3, the state after release and after the forget, and new 1 + 2 and 1 + 3 associations after a forget. Indicator lamps are asserted only where dark: a lit lamp in series with a coil has a profile-dependent class. Script choices, not printed: simultaneous pushes are back-to-back commands in one tick; each push and release is followed by settle 500 ms and a 200 ms advance.",
+  "wires": [
+    "1A/1K",
+    "1B/1-",
+    "1C/2C",
+    "1F/4H",
+    "1F/1X",
+    "1G/6F",
+    "1H/3K",
+    "1K/2H",
+    "1L/2L",
+    "1L/1Y",
+    "1Y/2Y",
+    "2A/2K",
+    "2B/2-",
+    "2C/3C",
+    "2F/5H",
+    "2F/2X",
+    "2G/4F",
+    "2K/3H",
+    "2L/3L",
+    "2Y/3Y",
+    "3A/3K",
+    "3B/3-",
+    "3C/4C",
+    "3F/6H",
+    "3F/3X",
+    "3G/5F",
+    "3L/4L",
+    "4C/5C",
+    "4F/4K",
+    "4G/5H",
+    "4H/6G",
+    "4L/5L",
+    "5C/6C",
+    "5F/5K",
+    "5G/6H",
+    "5L/6L",
+    "6C/6-",
+    "6F/6K",
+    "6L/6Z",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: after pushbuttons 1, 2 and 3 pushed one at a time and released, no association is stored: relay 4 is set only through 2H-2G (2H on 1K, + only with relay 1 in) with relay 2 in, relay 5 only through 3H-3G (3H on 2K) with relays 2 and 3 in, relay 6 only through 1H-1G (1H on 3K) with relays 1 and 3 in; one pushbutton never closes both, so 4F, 5F and 6F never see + and the 4K/5K/6K self-holds never close; relays 1-3 are fed only by pushbutton N.O. nX/nF and drop on release, so 1K, 2K, 3K (lamps 1A, 2A, 3A) are dead",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: pushbuttons 2 and 3 pushed together then released: with relays 2 and 3 both in, 2L(+)-2K-3H-3G-5F energises relay 5, which holds through 5L(+, via 6Z-6L-5L)-5K-5F after release; relays 2 and 3 drop because 2X and 3X open and the 2F-5H-5G-6H-3F link has no source; lamps 2A and 3A hang on 2K and 3K, open with relays 2 and 3 out; relays 4 and 6 never got + (relay 1 never in)",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: pushbutton 1 alone after the 2 + 3 association: 1Y(+)-1X-1F pulls relay 1 in, 1L(+)-1K lights lamp 1 (1A-1B to minus); 1F reaches 2F only through relay 4 (4H-4G) and 3F only through relay 6 (6G-6H), both out, so relays 2 and 3 stay out and lamps 2 and 3 stay dark; relay 1's 1H-1G joins 3K to 6F, neither of which has a source; relay 5 stays held",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: pushbutton 3 alone after the 2 + 3 association: 3X-3F(+) reaches 2F through held relay 5 (3F/6H, 6H/5G, relay 5 set 1 5G-5H, 5H/2F), so relays 2 and 3 pull in and 2K, 3K light lamps 2 and 3; relay 1 stays out: 1F reaches 3F only via relay 6 and 2F only via relay 4, both out; relay 2's 2H-2G joins 1K to 4F, neither sourced, so lamp 1 stays dark and relay 4 stays out",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: pushbuttons 1, 2 and 3 pushed together then released: relays 1+2 close 1K-2H-2G-4F (relay 4 in), 1+3 close 3K-1H-1G-6F (relay 6 in), relay 5 already held; 4K/4F, 5K/5F, 6K/6F hold all three from the 6Z-L bus after release; relays 1-3 drop with their pushbuttons, so lamps 1-3 on 1K/2K/3K are dark and indicator lamps 1-3 (in series with coils 1-3) carry nothing",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: pushbutton 2 alone with all three associations held: 2F(+) reaches 1F via 5H-4G/4H (relay 4) and 3F via 5H-5G-6H (relay 5), so all three of relays 1, 2 and 3 pull in; relays 4, 5 and 6 stay held",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, To use the program, forget button; derived from topology: forget button pushed and released: 6Y on + feeds the whole L bus (6L-5L-4L-3L-2L-1L, and the 1Y-2Y-3Y arms) only through pushbutton 6 N.C. 6Z; pushing 6 opens it, so the 4K, 5K and 6K self-holds lose + and relays 4, 5 and 6 drop; on release the bus is live again but 4F, 5F and 6F have no source until two relays among 1-3 are in together, so all relays stay out and every lamp is dark",
+      "quote": "To instruct the computer to forget the associations, push the \"forget\" button—pushbutton 6. The computer is once again ready to \"learn\" associations.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, rule (second paragraph) and To use the program, forget button; derived from topology: after the forget, pushbuttons 1 and 2 pushed together (relays 1 and 2 in: 1K-2H-2G-4F, relay 4 in and held by 4K/4F) and released, then pushbutton 2 alone: 2X-2F(+)-5H-4G-4H-1F pulls relay 1 in with relay 2, lamps 1 and 2 light from 1K and 2K; 3F connects to 2F only through relay 5 and to 1F only through relay 6, both out, so relay 3 and lamp 3 stay off; relay 5 needs relay 3 in, relay 6 needs relay 3 in",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it. ... To instruct the computer to forget the associations, push the \"forget\" button—pushbutton 6. The computer is once again ready to \"learn\" associations.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, Associative Memory rule (second paragraph); derived from topology: pushbutton 3 alone with only the 1 + 2 association held: 3F reaches neither 1F (relay 6 out) nor 2F (relay 5 out), so only relay 3 pulls in and only lamp 3 lights from 3K; relay 3's 3H-3G joins 2K to 5F, neither sourced, so relay 5 stays out; 3K feeds 1H, open with relay 1 out, so relay 6 stays out; relay 4 stays held",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.44 = book5-6.pdf PDF p.50, rule (second paragraph) and To use the program, forget button; derived from topology: forget again, then pushbuttons 1 and 3 together (3L-3K-1H-1G-6F, relay 6 in and held by 6K/6F; relay 2 out, so 2H-2G and 3H-3G stay unsourced and relays 4 and 5 stay out) and released, then pushbutton 3 alone: 3X-3F(+)-6H-6G-4H-1F pulls relay 1 in with relay 3, lamps 1 and 3 light; 2F is reached only via relay 4 or relay 5, both out, so relay 2 and lamp 2 stay off",
+      "quote": "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it. ... To instruct the computer to forget the associations, push the \"forget\" button—pushbutton 6. The computer is once again ready to \"learn\" associations.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    }
+  ]
+}

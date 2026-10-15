@@ -1,0 +1,24 @@
+#!mv601-trace 1
+# id=III-XOR-PB contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 > button1 target=1000
+     0.0 * power off->on
+    11.2 * pb1 nc->mid
+    13.7 * pb1 mid->no
+    17.0 * outLamp3 off->dim
+    35.9 * outLamp3 dim->on
+    56.0 ? outLamp3=on  "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON."
+    56.0 > button2 target=1000
+    67.2 * pb2 nc->mid
+    69.7 * pb2 mid->no
+    82.1 * outLamp3 on->dim
+   137.7 * outLamp3 dim->off
+   142.2 ? outLamp3=off  "Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed."
+   142.2 > button1 target=0
+   153.4 * pb1 no->mid
+   155.9 * pb1 mid->nc
+   157.3 * outLamp3 off->dim
+   176.1 * outLamp3 dim->on
+   196.2 ? outLamp3=on  "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON."

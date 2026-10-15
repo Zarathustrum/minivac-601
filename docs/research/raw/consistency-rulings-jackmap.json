@@ -1,0 +1,207 @@
+{
+  "topic": "jackmap",
+  "targetFile": "docs/research/jack-map.md",
+  "pass": "consistency re-judgement against the late-arriving Maintenance Manual, errata and Book VII",
+  "date": "2026-08-30",
+  "sourcesOpenedThisPass": [
+    "raw/pdf/maintenance-manual.pdf PDF p-05 (printed 3, Power Supply Circuit Diagram) rendered at 300 and 700 dpi",
+    "raw/pdf/maintenance-manual.pdf PDF p-08 (printed 6, Pushbutton Check) rendered at 300 dpi",
+    "raw/pdf/maintenance-manual.pdf PDF p-09 (printed 7, Relay Check) rendered at 300 and 600 dpi, figure cropped",
+    "raw/pdf/maintenance-manual.pdf PDF p-10 (printed 8, Slide Switch Check) rendered at 300 dpi",
+    "raw/pdf/maintenance-manual.pdf PDF p-11 (printed 9, Rotary Switch Motor Drive) rendered at 300 dpi",
+    "raw/pdf/maintenance-manual.pdf PDF p-12 (printed 10) cropped at 600 dpi for the 'D0 through D15' sentence",
+    "raw/pdf/errata.txt in full",
+    "raw/pdf/maintenance-manual.txt in full",
+    "raw/pdf/pages/book7/p-13.png (printed 8), p-14.png (printed 9), p-15.png (printed 10), p-16.png (printed 11), p-26.png (printed 21)",
+    "raw/pdf/book7-capacitor-resistor.pdf PDF p-25 (printed 20), p-27 (printed 22), p-31 (printed 26) rendered fresh",
+    "raw/pdf/book1.pdf PDF p-24 (printed 22, MOTOR DRIVE / RESISTORS) rendered at 200 dpi",
+    "raw/pdf/book1.txt printed p.12 and p.25 blocks",
+    "raw/pdf/book2-3-4.txt Book II Experiments 5 and 6",
+    "raw/critic-completeness.json, raw/verify-jackmap.json"
+  ],
+  "criticContradictionTriage": {
+    "closed_by_this_pass": {
+      "C7": "Which rendered page holds each Maintenance Manual figure. Settled by folio: PDF p-05 = printed 3 Power Supply; p-08 = printed 6 Pushbutton Check; p-09 = printed 7 Relay Check; p-10 = printed 8 Slide Switch Check; p-11 = printed 9 Rotary Motor Drive; p-12 = printed 10. jack-map's stated offset (printed + 2 = PDF) is correct and its printed-page citations for the three check circuits are correct."
+    },
+    "already_correctly_reflected_in_jack_map": ["C2", "C3", "C4", "C5", "C8", "C14 (three-way, recorded)", "C15", "C17"],
+    "still_open_and_jack_map_understates_them": {
+      "C6": "jack-map keeps the POWER-strip question open (correct) but never cites the strongest primary evidence, which is the Maintenance Manual power-supply schematic itself. See ruling 5.",
+      "C13": "jack-map's Dial layout paragraph explains away the Book I p.20 mirror-view figure but never records the live Book VI p.56 conflict. See ruling 10.",
+      "C16": "jack-map's grammar table gets M10/M11 right but carries no parser warning that Book I p.25's '(1 to 11) ... t or b' rule over-generalizes. See ruling 9."
+    },
+    "out_of_this_file_scope": ["C1", "C9", "C10 (jack-map applies scope flags consistently enough; see ruling 15)", "C11", "C12"]
+  },
+  "rulings": [
+    {
+      "id": "J1",
+      "file": "docs/research/jack-map.md",
+      "section": "5, 'Motor-branch behaviour that falls out of the two-resistor topology', third bullet",
+      "currentText": "- **Power directly across D18/D19** gives the motor full rail: *\"connect power momentarily across the STOP terminals: the knob should turn very rapidly.\"* [verified] — Maint. p.10",
+      "ruling": "correct the citation: change 'Maint. p.10' to 'Maint. p.9'. The sentence is the second-to-last paragraph of printed page 9 (PDF p-11), the same page that carries the Rotary Switch Motor Drive figure. Printed p.10 carries a different sentence the file cites correctly elsewhere ('Check each of the two resistors').",
+      "evidence": "maintenance-manual.pdf PDF p-11 rendered at 300 dpi, folio '9' at foot: 'If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly.'",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "J2",
+      "file": "docs/research/jack-map.md",
+      "section": "7, 'Programs strap D contacts together.'",
+      "currentText": "Book VII p.21 instructs the operator to *remove* `D6/D7` mid-program.",
+      "ruling": "correct the citation: change 'Book VII p.21' to 'Book VII p.26'. Printed p.21 (PDF p-26) is the full automatic-counter program plus the Experiment 8 heading; it contains no D6/D7 line. 'Set the rotary switch to 6. Remove D6/D7.' is in the multiply-4-by-6 worked example on printed p.26 (PDF p-31). The same page family also carries 'if the divisor is 7, remove D7/D8', 'to enter 8 remove D8/D9' and 'to enter 5, remove D5/D6' — worth naming one of these as a second instance so the claim does not rest on a single line.",
+      "evidence": "pdftotext page-by-page sweep of book7-capacitor-resistor.pdf: 'Remove D6/D7' appears only on PDF p.31; book7 offset is PDF page − 5 = printed page, confirmed by folios on p-13 (8), p-26 (21) and p-27 (22).",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "J3",
+      "file": "docs/research/jack-map.md",
+      "section": "1, 'There is no `Q` terminal.' paragraph",
+      "currentText": "`Ω_B1..Ω_B6` for the per-relay bias resistor, `Ω_220` for a plain 220 Ω part, bare `Ω` for the optional motor-speed resistor.",
+      "ruling": "correct and widen. Replace with: a numeric subscript denotes a plain resistor of that value in ohms — `Ω_220` (Book VII p.11, 220 Ω between `1cap` and `1+`) and `Ω_22` (22 Ω, used repeatedly in the automatic-counter programs on printed pp.20–21); `Ω_B1..Ω_B6` is the per-relay bias resistor; a **bare `Ω` means a resistor whose value is not yet fixed** — used for the trial resistor in the bias-selection procedure `(+/Ω)(Ω/E)` on printed p.8 as well as for the optional motor-speed resistor `(D18/Ω)(Ω/D19)` on printed p.21. A parser told only about `Ω_220` will trip on the far more common `Ω_22`.",
+      "evidence": "pages/book7/p-13.png (printed 8): program column ends '(+/Ω) (Ω/E)' with footnote 'Decreasing values of resistance will be tried here. Start with the highest valued resistor in the kit.' pages/book7/p-16.png (printed 11): '(1+/Ω_220)(Ω_220 1/cap)' ... 'means, use a 220 ohm resistor to make the connection between 1 cap and 1+.' pages/book7/p-26.png (printed 21): 'Ω_22' appears ~10 times in the full program list, plus '(D18/Ω)(Ω/D19)*' with '* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.'",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "J4",
+      "file": "docs/research/jack-map.md",
+      "section": "Implementer summary, item 6",
+      "currentText": "6. **`ncap` is not a dead jack.** Each section has an installed electrolytic with one plate hard-wired to the minus rail and the other brought out to the `CAPACITOR` jack. 500 µF for sections 1–5, 1000 µF for section 6. [verified, 601/6010 scope flag] — Book VII p.10–11.",
+      "ruling": "downgrade the over-strong word and add the missing pointer. Replace 'installed electrolytic' with 'installed capacitor'; the word 'electrolytic' is tagged [unverified] in §5 and is the subject of fallback `POLARIZED-ELECTROLYTIC` in §8 row 3, so stating it inside a [verified] bullet contradicts the file's own tagging. Book VII p.11 draws the part with the plain non-polarised two-plate symbol '—||—', labelled CAP; polarity is inferred from the fixed-negative wiring, not from the symbol. Also append 'Whether 1961 601 production shipped them is not settled — §8 row 1, fallback `FITTED-CAPS`.', since the file's own preamble promises that nothing unsettled is stated as fact outside §8 and this bullet currently carries no pointer (the §2 and §5 rows both do).",
+      "evidence": "pages/book7/p-16.png (printed 11), 'Capacitor Notation': the symbol is a plain two-plate capacitor, and the text says only 'one end of the capacitor is permanently connected to the negative power source'. No construction type is stated anywhere in Book VII. jack-map §5 already tags 'electrolytic' as [unverified].",
+      "severity": "tag-too-strong"
+    },
+    {
+      "id": "J5",
+      "file": "docs/research/jack-map.md",
+      "section": "8, row 12 ('What the factory fitted at the top of the POWER strip')",
+      "currentText": "| 12 | What the factory fitted at the top of the POWER strip | `commons-minivac601-main.jpg` shows a black knurled **fuseholder** cap (word FUSE legible three times); a second unit shows a **red pilot jewel**, matching Book I p.3's *\"The red power light shows when the power is ON\"*. The Maintenance Manual's parts list (6431–6491) has no fuse. | No netlist consequence — the POWER block has no jacks. Record as a between-unit variant; do not encode either as the stock part. |",
+      "ruling": "add the primary evidence this row is missing, and name a default without closing the question. Insert into the 'What is known' cell: 'The Maintenance Manual's Power Supply Circuit Diagram (printed p.3) draws a POWER LIGHT connected straight across the + and − output nodes and draws **no fuse anywhere** in the supply; the manual's own fault tree (printed pp.4–5) walks circuit breaker → power light → power switch → transformer → rectifier and never mentions a fuse; and the parts list carries 6435 Light Assembly but no fuse part.' Then change the fallback to: 'Factory-stock default is the **power lamp** — schematic, fault tree and parts list all agree, and only one photographed unit disagrees. The fuseholder reads as an owner retrofit but that reading is [unverified]. No netlist consequence either way — the POWER block has no jacks. Record the fuseholder as an observed between-unit variant; do not encode it as the stock part.'",
+      "evidence": "maintenance-manual.pdf PDF p-05 (printed 3) rendered at 700 dpi and cropped: the rectifier-output node marked '+' runs right to the + terminal blob; the transformer centre tap runs through a switch symbol labelled CIRCUIT BREAKER to the − terminal blob; a lamp symbol labelled POWER LIGHT bridges the + and − rails downstream of the breaker. No fuse symbol appears. Parts list (printed p.11): 6431 Circuit Breaker, 6432 Slide Switch, 6433 Rectifier, 6434 Transformer, 6435 Light Assembly, 6436 Pushbutton Switch, 6437 Relay, 6471 Motor, 6472 Drive Wheel, 6473 Rotary Switch Assembly, 6490/6491 wires.",
+      "severity": "missing"
+    },
+    {
+      "id": "J6",
+      "file": "docs/research/jack-map.md",
+      "section": "5, fixed-component netlist table, 'Power supply' row",
+      "currentText": "| Power supply | 1 | PLUS rail, MINUS rail | 110 V AC → nominal 12 V DC, ~13 V unloaded, 1.5 A continuous; resettable circuit breaker in series; ON/OFF switch; indicator lamp. None of these four controls has a jack. | [verified] | Book I p.3; Maint. pp.2–3 |",
+      "ruling": "add what the schematic actually shows, since this file is the netlist spec and the Maintenance Manual is the only source that draws the supply. Extend the topology cell to: '110 V AC → transformer with centre-tapped secondary → two-diode full-wave rectifier; the diode junction is the PLUS node, the centre tap is the MINUS node. Nominal 12 V DC, ~13 V unloaded, 1.5 A continuous. The resettable circuit breaker sits in series in the **minus** leg (the centre-tap lead), so a trip opens the minus rail and every load with it. The indicator lamp is wired permanently across + and − downstream of the breaker — the rails are never truly unloaded. **No smoothing capacitor is drawn**, so what the figure depicts is unfiltered full-wave rectified DC; treat ripple as an electrical-model question, not a netlist one, and cross-reference the electrical-model file rather than asserting a filtered rail here. None of the four controls has a jack.'",
+      "evidence": "maintenance-manual.pdf PDF p-05 (printed 3), Power Supply Circuit Diagram, read at 700 dpi. Corroborated by the manual's own step 9 (printed p.4): 'Connect a binary output light between the + power supply terminal and the circuit breaker terminal which leads to the transformer ... between the + power supply terminal and the circuit breaker terminal which leads to the power light' — both breaker terminals are referenced against +, i.e. the breaker is not in the + leg. Step 12: 'if there is not proper DC output between the transformer center top (yellow lead) and the center terminal on the rectifier, the rectifier is defective'.",
+      "severity": "missing"
+    },
+    {
+      "id": "J7",
+      "file": "docs/research/jack-map.md",
+      "section": "4, 'There are no other busses.' second bullet",
+      "currentText": "- No matrix terminal is connected to anything. [verified] — Book I p.25: *\"The terminals are used as junction points, and there are no connections to the terminals below the panel.\"*",
+      "ruling": "disambiguate. Replace the lead clause with: 'No matrix **junction** terminal — `M1t`..`M9t`, `M1b`..`M9b`, `M10`, `M11` — is connected to anything. (`M+` and `M-` sit in the blue power stripe **above** the MATRIX block and are on the two rails; Book I p.25's sentence is about the junction grid, not the power pair.)' As written the bullet sits three lines below a table that puts `M+`/`M-` on the rails, and a netlist generator reading it literally would strand them.",
+      "evidence": "Book I printed p.25, section '8 MATRIX', book1.txt lines 1285–1308: the sentence's subject is 'The matrix consists of a number of terminals, located in the upper right corner of the computer panel. The terminals are used as junction points...' — the designation rule that follows is 'M = matrix / 6 = terminal number (1 to 11) / t = top or \"b\" for bottom', which addresses only the grid. Errata names M+ and M- as rail members.",
+      "severity": "cosmetic"
+    },
+    {
+      "id": "J8",
+      "file": "docs/research/jack-map.md",
+      "section": "8, closing paragraph (manufacturer address)",
+      "currentText": "the panel legend reads **Cambridge, Massachusetts** while all six books, the errata sheet and the Maintenance Manual read **372 Main Street, Watertown, Massachusetts** ... Four print sources against one panel legend, on two independent photographs of two different machines.",
+      "ruling": "correct the count. There are **six** independent print documents attesting Watertown, not four: `book1.pdf` (Book I copyright page and back cover), `book2-3-4.pdf` (title page, copyright page and back cover), `book5-6.pdf` (title page, copyright page and back cover), `book7-capacitor-resistor.pdf` (back cover), `errata.pdf` (header text and footer) and `maintenance-manual.pdf` (cover, plus 'Watertown 72, Massachusetts' on the spare-parts page). Change 'all six books, the errata sheet and the Maintenance Manual' to 'all seven books, the errata sheet and the Maintenance Manual' — Book VII is currently omitted — and 'Four print sources against one panel legend' to 'Six independent print documents against one panel legend'.",
+      "evidence": "grep -n -i 'W *a *t *e *r *t *o *w *n' over the six .txt files: book1.txt lines 105, 1794; book2-3-4.txt lines 10, 23, 38, 4287; book5-6.txt lines 15, 28, 42, 3196; errata.txt lines 9, 224; maintenance-manual.txt lines 10, 380; book7-capacitor-resistor.txt line 438. (Book I needs the loose pattern — the OCR renders it 'W atertow n', which is why a naive grep returns zero and may be how the count of four arose.)",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "J9",
+      "file": "docs/research/jack-map.md",
+      "section": "1, designator grammar table — after the 'Matrix junction' row, or as a new paragraph beside the 'no `Q` terminal' note",
+      "currentText": "| Matrix junction | `M10`, `M11` | — | `M10` | [verified] | Book I p.25; Errata |",
+      "ruling": "add the parser warning, exactly parallel to the '(1 to 19)' trap the file already records in §10. New paragraph: '**`M10t` / `M11b` do not exist.** Book I p.25 states the matrix rule as *\"M = matrix / 6 = terminal number (1 to 11) / t = top or \\\"b\\\" for bottom . . . for example M6t\"*. The rule over-generalizes: the t/b split exists only for positions 1–9. Positions 10 and 11 are single six-hole terminals with no split, addressed bare as `M10` and `M11` in every published program and in the errata. A parser must accept `M1t`..`M9t`, `M1b`..`M9b`, `M10`, `M11`, `M+`, `M-` and reject `M10t`, `M10b`, `M11t`, `M11b`. This is the same class of manual error as the D-block's \"(1 to 19)\" (§10). [verified]'",
+      "evidence": "book1.txt lines 1296–1304 (Book I printed p.25) for the over-general rule; errata.txt line ~17 for 'the six at M10'; critic-completeness.json C16 records the same discrepancy independently via find-panel and verify-jackmap#downgraded.D1.",
+      "severity": "missing"
+    },
+    {
+      "id": "J10",
+      "file": "docs/research/jack-map.md",
+      "section": "3, 'Dial layout:' paragraph",
+      "currentText": "**Dial layout:** `0` at 12 o'clock, increasing clockwise; 4 at 3 o'clock, 8 at 6, 12 at 9. The `VIEW UNDER PANEL` figure on Book I p.20 runs 0..15 counter-clockwise because it is the mirror view — not a contradiction. [verified]",
+      "ruling": "add the live conflict the paragraph currently omits. Append: 'There **is** a real primary conflict, and it is not this one: Book VI p.56 (Match Game) says the knob turns *\"counterclockwise (towards 9) ... clockwise (towards 7)\"*, which is inverted with respect to the panel, where 7→8→9 is clockwise. Both readings are primary and it is not settled — see the rotary and open-questions files. Take rotation sense from the panel and Book I p.20 only; never cite Book VI for direction. No netlist consequence.' As it stands the paragraph explains away an apparent contradiction and reads as if the question were closed, which invites a later pass to treat Book VI as authoritative.",
+      "evidence": "book5-6.txt lines 2952–2955, Book VI printed p.56: 'The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.' Panel: 0 at 12 o'clock increasing clockwise, so 7→9 is clockwise. critic-completeness.json C13 flags this 'PRIMARY SOURCES CONFLICT, do not resolve'.",
+      "severity": "missing"
+    },
+    {
+      "id": "J11",
+      "file": "docs/research/jack-map.md",
+      "section": "7, 'Isolation.' paragraph (and the matching note in §9 under Relay Check)",
+      "currentText": "**Isolation.** The two contact sets of one relay are electrically isolated: `nH` and `nL` are distinct nodes, and `nG`/`nJ`/`nK`/`nN` are four further distinct nodes. No source says so in words; it is a deduction from two published programs whose printed results are impossible under a common arm.",
+      "ruling": "split the claim by what each source actually carries, so a later pass neither over-credits nor re-opens the Relay Check figure. Rewrite as: 'The two contact sets of one relay are electrically isolated. Two separate claims, on different evidence. (a) `nG`, `nJ`, `nK`, `nN` are four distinct nodes: the Maintenance Manual Relay Check figure (printed p.7) drives four different lamps from them and prints results that distinguish `{J,N}` from `{G,K}`; Book I p.12 additionally calls H–J and L–N *\"separate electrical connections\"*. (b) `nH` and `nL` are distinct nodes: **no source says so in words, and the Relay Check does not settle it** — that figure feeds both arms from `+`, so a common arm would be observationally identical there. It is a deduction from two published programs whose printed results are impossible under a common arm (§9). What the figure does contribute is that SDC spends two wires, `+/H` and `+/L`, where one would do.' Also strengthen §9's Relay Check note from 'One would do if the arms were common' to 'One would do if the arms were common — suggestive, not proof; the proof is Book II Experiments 5 and 6.'",
+      "evidence": "maintenance-manual.pdf PDF p-09 (printed 7), Relay Check figure traced at 600 dpi. Netlist read off the figure: `+/H`, `+/L`, `+/Y`, `X/E`, `F/-`, `J/1A`, `1B/1-`, `G/2A`, `2B/2-`, `N/3A`, `3B/3-`, `K/4A`, `4B/4-`; C is drawn as a dangling terminal, the coil sits in its own E–F loop, and a dashed vertical runs from the coil through both contact sets. Under H≡L the printed result 'Lights 1 and 3 on, then 2 and 4' is unchanged, so the figure cannot discriminate.",
+      "severity": "missing"
+    },
+    {
+      "id": "J12",
+      "file": "docs/research/jack-map.md",
+      "section": "4, 'There are no other busses.' first bullet",
+      "currentText": "Book I p.25's *\"The four COMMON terminals are connected together\"* counts the four **holes** of one COMMON terminal",
+      "ruling": "quote the rest of the sentence, which is the strongest single clincher and is currently dropped. Book I p.25 reads in full: *\"The terminals with four holes labeled COMMON may be used when more than two connections must be made to a set of terminals on the computer panel. The four COMMON terminals are connected together, but are not connected to any other component.\"* The clause 'but are not connected to any other component' rules out any bussing to anything else on the same page that supplies the misleading half-sentence — add it.",
+      "evidence": "book1.txt lines 1318–1327, Book I printed p.25, section '9 AUXILIARY TERMINALS'. The lead-in 'The terminals with four holes labeled COMMON' independently establishes the four-hole/one-terminal reading.",
+      "severity": "missing"
+    },
+    {
+      "id": "J13",
+      "file": "docs/research/jack-map.md",
+      "section": "8, row 1 ('Were the capacitors fitted in 1961 601 production...') and §2 footnote 1",
+      "currentText": "Book I (1961): the CAPACITOR terminals are for *\"when auxiliary components are added\"* and *\"may be ignored\"*.",
+      "ruling": "add the page number and the cross-reference. Both quotes are Book I printed **p.25**, and Book VII points at that exact page: *\"As indicated in Book I (page 25) there are terminals on the MINIVAC console for the capacitors.\"* Cite both. The pairing is what makes the row sharp — the 1962 manual cites, as its authority that the terminals exist, the 1961 page that says to ignore them.",
+      "evidence": "book1.txt lines 1330–1334 with the folio '25' at line 1338; pages/book7/p-16.png (printed 11), 'Capacitor Notation' block.",
+      "severity": "missing"
+    },
+    {
+      "id": "J14",
+      "file": "docs/research/jack-map.md",
+      "section": "8, row 6 (`BBM-EVERYWHERE`)",
+      "currentText": "The relay's single arm swinging between two fixed contacts is mechanically break-before-make.",
+      "ruling": "give the inference its primary sentence instead of leaving it uncited. Append: 'Book I p.12 describes exactly that motion: *\"Notice how the arm leaves the normally-closed contact and swings over to touch the normally open contact.\"* Still an inference about timing rather than a statement of it, so the row stays open — but it is a cited inference, not a bare one.'",
+      "evidence": "book1.txt Book I printed p.12, right column, final paragraph (the plastic-crossbar paragraph).",
+      "severity": "missing"
+    },
+    {
+      "id": "J15",
+      "file": "docs/research/jack-map.md",
+      "section": "8, row 5 ('Are the slide switch's two transfer sets isolated from each other?')",
+      "currentText": "| 5 | Are the slide switch's two transfer sets isolated from each other? | [likely]. Book V p.13 wires `6S` to the odd rotary chain and `6V` to the even chain; if S and V were common the Gray-code decode would be impossible. Not traced to a full truth table. | **`ISOLATED-SETS`** ... |",
+      "ruling": "add the Maintenance Manual evidence and state its limit, mirroring ruling J11. Insert: 'The Slide Switch Check figure (Maint. printed p.8) reads out `R`, `T`, `U`, `W` on four separate lamps and, like the Relay Check, spends two separate `+` wires — `+/S` and `+/V`. That establishes the four fixed contacts as four distinct nodes; it does **not** discriminate `S` from `V`, since both are driven from `+` there. The evidentiary situation is exactly the relay's.'",
+      "evidence": "maintenance-manual.pdf PDF p-10 (printed 8), Slide Switch Check figure traced at 300 dpi: `+/S`, `+/V`, `T/1A`, `1B/1-`, `R/2A`, `2B/2-`, `W/3A`, `3B/3-`, `U/4A`, `4B/4-`.",
+      "severity": "missing"
+    },
+    {
+      "id": "J16",
+      "file": "docs/research/jack-map.md",
+      "section": "11, source key, Book VII row",
+      "currentText": "*Minivac 601/6010 Capacitor/Resistor Manual*, © 1962. **Joint 601/6010 document** — every fact taken from it carries a scope flag.",
+      "ruling": "narrow the promise so the file stops contradicting itself. The Book VII facts in §1 (the Ω pseudo-terminal notation, cited to pp.9, 11, 21) carry no scope flag, and correctly so — they are facts about the document's notation, not about either machine. Change to: '**Joint 601/6010 document** — every claim about the *hardware* taken from it carries a scope flag. Claims about its own notation and program syntax (§1) do not need one.'",
+      "evidence": "jack-map §1 'There is no `Q` terminal' paragraph is tagged plain [verified] with no scope flag; §2 footnote 1, §5 footnote 1 and §8 rows 1–3 all carry flags. critic-completeness.json C10 asks for one uniform ruling on Book VII's status.",
+      "severity": "cosmetic"
+    }
+  ],
+  "confirmedCorrect": [
+    "§4 / implementer summary 3 — the errata's global power-net rule is quoted verbatim and accurately ('All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.'), and the two-node model (7 '+' jacks / 7 '-' jacks, 14 holes each) follows correctly.",
+    "Nothing elsewhere in jack-map.md contradicts the global power-net rule. Every '+'/'-' row in §2, §3 and §5 routes to PLUS rail / MINUS rail; the per-section labels in the §9 fixtures ('1B/1-', '2B/2-', ...) are figure transcriptions, not per-section-node claims.",
+    "§9 Pushbutton Check netlist is exactly right against Maint. printed p.6 (PDF p-08): +/Y, Z/1A, 1B/-, X/2A, 2B/-. The transcription note is right on both counts — the page really does print both of light 2's terminals as '2B', and both lamp returns really are bare '−' with no section number, unlike the other two figures.",
+    "§9 Relay Check netlist is exactly right against Maint. printed p.7 (PDF p-09): +/H, +/L, +/Y, X/E, F/-, J/1A, 1B/1-, G/2A, 2B/2-, N/3A, 3B/3-, K/4A, 4B/4-. Terminal C is drawn dangling, which is why the check drives E directly. The expected-result quote is verbatim.",
+    "§9 Slide Switch Check netlist is exactly right against Maint. printed p.8 (PDF p-10): +/S, +/V, T/1A, 1B/1-, R/2A, 2B/2-, W/3A, 3B/3-, U/4A, 4B/4-. The manual's RIGHT→lights 1 and 3 result confirms §2's assignment T/W = RIGHT contacts, R/U = LEFT contacts, and §7's slide-switch table.",
+    "§2 footnote 2 is correctly hedged: the electrical roles (S and V arms, T/W right, R/U left) are [verified] from the Slide Switch Check; which panel column U/V/W sit under is [likely] and of no electrical consequence.",
+    "§3 / §5 / implementer summary 7 — the rotary motor branch is right: R1 between D17 and D19; the motor and R2 both between D18 and D19. Confirmed on Maint. printed p.9 (PDF p-11) and independently on the Book I printed p.22 figure (PDF p-24), which does draw two zigzags with a 'Resistors' leader pointing at both. The one-resistor model in find-jackmap.json is dead.",
+    "§3 — RUN spans D17 and D18, STOP spans D18 and D19, with the Maint. p.9 quote accurate; Book I p.22 says the same in words ('Power must be supplied to terminals 17 and 18 (run) ... A short circuit may be connected across terminals 18 and 19 (stop)').",
+    "§5's critique of Book I p.22's loose prose is sound: R2 is shunted by the very short it is credited with surviving, so only R1 limits STOP current.",
+    "§3 / §10 — D0..D15 confirmed as the fixed-contact range on Maint. printed p.10 (digit zero, read at 600 dpi), and D16 confirmed as 'the switch arm' on the same page. The '(1 to 19)' Book I p.20 misprint is correctly recorded as a manual error the factory errata never corrected.",
+    "§5 / §7 / §10 / implementer summary 5 — the relay H/L trap is handled correctly and in four places. The file nowhere wires nH to nL, and §10's ruling is exact: Book I p.12's 'The two arms (H & L) are connected together' opens the RELAY ON column, and 'The two relay arms are connected together mechanically with a plastic crossbar' closes the same column two paragraphs later. The left column's 'separate electrical connections' quote is accurate.",
+    "§2's relay rows match Book I p.12's own column rule — 'The normally-open (N.O.) contact is connected to the left terminal, the relay arm (common contact) is connected to the center terminal, and the normally-closed (N.C.) contact is connected to the right terminal' — giving G H J and K L N left to right.",
+    "§9 Book II Experiment 5 wire list matches book2-3-4.txt printed p.13 exactly, in printed order, all thirteen wires including 1H/1L; the printed results match; and the isolation argument traces correctly (under 2H≡2L, PB1-only lights relay 3, contradicting SDC's step 3).",
+    "§9 Book II Experiment 6 wire list matches printed p.14 exactly with the errata applied (2Z/2C → 2X/2C), and the stronger isolation argument traces correctly (2H drives lamp 2, 2L drives lamp 1; a common arm makes PB1-only read 1+0=3).",
+    "§9's grep trap is right: the errata's 'page 13: circuit diagram incorrect — delete line connecting 1B and 2B' sits under BOOK I; Book II's errata block is pages 10, 11 and 14 only; Experiment 5 is not errata'd.",
+    "§9's list of errata terminal-letter corrections checks out line by line against errata.txt (Book I p.13, p.24; Book II p.11, p.14; Book III p.43, p.54, p.59; Book V p.11 both corrections, p.30).",
+    "§8 rows 1–3 keep the CAPACITOR questions honestly open, with the right three questions (1961 fitment, 601-vs-6010 value split, rating and construction) and named fallbacks. Book VII printed p.10 confirms '500 micro-farad' for sections 1–5 and '1000 micro-farad' for section 6, stated for 'the MINIVAC'; printed p.11 confirms 'one end of the capacitor is permanently connected to the negative power source' and the 1cap/2cap/3cap designator.",
+    "§10's capacitor correction row is right, including the published program lines 1cap/D16, 2cap/3L, 3cap/4L, 4cap/5L, 5cap/6L — all five verified on pages/book7/p-26.png (printed 21). (Printed p.20 adds 6Y/6cap and 6E/6cap; the file's list is illustrative, not exhaustive, so no edit is needed.)",
+    "§4's COMMON reasoning is right: six independent 4-hole junctions, with the errata's 'the four at 3com' as the clincher and the Electronic Maze chain as behavioural confirmation.",
+    "§3 / §4 matrix claims check out against Book I p.25 verbatim ('The terminals are used as junction points, and there are no connections to the terminals below the panel'; 'The lines between the terminals indicate terminals which are connected together to form a single contact').",
+    "§6's arithmetic recomputed independently: 24 designators per section (23 two-hole + ncom's four) = 50 holes; six sections 144/300; right column 2+18+2+20 = 42 terminals and 4+36+12+40 = 92 holes; panel total 186/392. Correct, and correctly tagged [unverified] as package arithmetic.",
+    "§11's Maintenance Manual offset rule (printed page + 2 = PDF page) is correct, and its '11 printed pages' is correct. This closes critic C7 — PDF p-05/p-08/p-09/p-10/p-11 are printed 3/6/7/8/9, i.e. Power Supply / Pushbutton Check / Relay Check / Slide Switch Check / Rotary Motor Drive, each confirmed by folio.",
+    "§8 row 4's `IDEAL-ISOLATED-COIL` description survives contact with the figure: the Relay Check does draw the coil in its own E–F loop with no shared node with any contact terminal, and the dashed vertical to both contact sets is mechanical.",
+    "§5's indicator-lamp section is right, and the errata Book IV p.72 quote about by-passing the relay indicator lights is verbatim.",
+    "§1's Ω_B1..Ω_B6 bias-resistor notation and its meaning ('use the bias resistance for relay 1 to connect 1F and 1J') are confirmed verbatim on Book VII printed p.9; the 'no Q terminal' warning about the OCR is well founded."
+  ]
+}

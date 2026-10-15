@@ -1,0 +1,36 @@
+#!mv601-trace 1
+# id=II-FF1 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=14
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=79 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 ? outLamp1=off  "Light 1 will be OFF when the flip-flop is remembering a 0."
+    20.1 > button1 target=1000
+    31.3 * pb1 nc->mid
+    33.8 * pb1 mid->no
+    37.1 * outLamp2 off->dim  indLamp2 off->dim
+    44.9 * relay1 nc->mid
+    46.2 * relay1 mid->no
+    47.5 * outLamp1 off->dim  indLamp1 off->dim
+    56.1 * outLamp2 dim->on  indLamp2 dim->on
+    76.2 > button1 target=0
+    87.4 * pb1 no->mid
+    89.9 * pb1 mid->nc
+    99.6 * relay2 nc->mid
+   100.9 * relay2 mid->no
+   120.0 * outLamp1 dim->on  indLamp1 dim->on
+   180.1 ? outLamp1=on  "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\"."
+   180.1 > button1 target=1000
+   191.3 * pb1 nc->mid
+   193.8 * pb1 mid->no
+   209.0 * relay1 no->mid
+   209.9 * relay1 mid->nc
+   233.4 > button1 target=0
+   244.6 * pb1 no->mid
+   247.1 * pb1 mid->nc
+   254.2 * relay2 no->mid
+   255.1 * relay2 mid->nc  outLamp2 on->dim  indLamp2 on->dim
+   268.2 * outLamp1 on->dim  indLamp1 on->dim
+   312.1 * outLamp2 dim->off  indLamp2 dim->off
+   323.9 * outLamp1 dim->off  indLamp1 dim->off
+   328.3 ? outLamp1=off  "If the relays are remembering a 1, pushing pushbutton 1 will signal them to \"forget 1 and start remembering 0\"."

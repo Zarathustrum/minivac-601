@@ -1,0 +1,24 @@
+{
+  "schema": "minivac.probe/1",
+  "id": "AT-05",
+  "source": "components.md §8.2 AT-05; W1 check-profile load convention",
+  "profile": "MV601-REF-A",
+  "cases": [
+    {
+      "k": "profileLoad", "name": "realistic-c-fed",
+      "load": { "coils": 6, "feed": "C", "outputLamps": 6, "indicatorLamps": "series-with-coils", "powerLamp": { "k": "panelLampModelSubstitute", "count": 1, "status": "unverified" } },
+      "checks": [
+        { "k": "near", "name": "settled-load", "read": { "k": "load", "field": "settledSupplyUa" }, "expected": 830000, "tolerance": 30000 },
+        { "k": "compare", "name": "below-trip", "left": { "k": "load", "field": "settledSupplyUa" }, "op": "lt", "right": { "k": "profile", "field": "ITripUa" } }
+      ]
+    },
+    {
+      "k": "profileLoad", "name": "e-fed-diagnostic", "diagnostic": true,
+      "load": { "coils": 6, "feed": "E", "outputLamps": 6, "indicatorLamps": "across-rail", "powerLamp": { "k": "panelLampModelSubstitute", "count": 1, "status": "unverified" } },
+      "checks": [
+        { "k": "near", "name": "settled-load", "read": { "k": "load", "field": "settledSupplyUa" }, "expected": 1500000, "tolerance": 100000 },
+        { "k": "compare", "name": "inrush-shorter-than-delay", "left": { "k": "load", "field": "ticksOverTrip" }, "op": "lt", "right": { "k": "profile", "field": "tripDelayTicks" } }
+      ]
+    }
+  ]
+}

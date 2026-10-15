@@ -1,0 +1,343 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-SELFLOCK-DERIVED",
+  "source": "BK2 printed pp.10-11 = book2-3-4.pdf PDF pp.16-17 (rule and program p.10 = PDF p.16, forget-only-by-power-off p.11 = PDF p.17), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1+/1H",
+    "1X/1C",
+    "1-/1F",
+    "1G/1A",
+    "1B/1-",
+    "1C/1A"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 7-wire topology and the p.10-11 rule, not printed. No erratum touches this program. Topology: pushbutton 1 arm 1Y and relay 1 set 1 arm 1H are on plus; pushbutton 1 N.O. 1X, relay 1 N.O. 1G, output lamp 1 side 1A and indicator-lamp end 1C are one node (1X/1C, 1G/1A, 1C/1A); the coil runs 1C-indicator lamp 1-1E-coil-1F to minus, and output lamp 1 runs 1A-1B to minus. The page prints no step-by-step procedure; the script is a script choice: power on, push and release pushbutton 1, push and release it again, power off, power on, push and release once more. The 200 ms advance after each settle lets filaments reach their class and is not from the source.",
+  "wires": [
+    "1+/1Y",
+    "1+/1H",
+    "1X/1C",
+    "1-/1F",
+    "1G/1A",
+    "1B/1-",
+    "1C/1A"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16 self-locking rule, power on before any push; derived from topology: at cold start relay 1 is unoperated, so 1H-1G is open; pushbutton 1 N.O. 1Y(+)-1X is open; the 1A/1C/1G node has no source, so the coil, its series indicator lamp 1 and output lamp 1 (1A-1B) carry nothing (programs.md C-14)",
+      "quote": "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes \"self-locking\" in the 1 position.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "pb1",
+          "v": "no"
+        }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16 self-locking rule, pushbutton 1 held; derived from topology: pushbutton 1 arm 1Y on + touches N.O. 1X, and 1X/1C puts + on 1C: current runs 1C-indicator lamp 1-1E-coil-1F-minus and relay 1 pulls in; the same node feeds output lamp 1 through 1C/1A to 1B on minus; once in, 1H(+)-1G adds the second path",
+      "quote": "Making use of this relay switch, the pushbutton will initially supply current to the relay.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16 self-locking rule, pushbutton 1 released; derived from topology: 1Y-1X opens, but the coil path is 1C-indicator lamp 1-1E-coil-1F, 1F on minus (1-/1F); with relay 1 operated its set 1 arm 1H (on +, 1+/1H) touches N.O. 1G, and 1G/1A with 1C/1A puts + on 1C, so the coil holds itself; output lamp 1 (1A-1B, 1B on minus) sits across the same + node and minus",
+      "quote": "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes \"self-locking\" in the 1 position.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 forget rule, pushbutton 1 pushed and released a second time; derived from topology: pushbutton 1 can only add + to the 1C node through its N.O. contact; its N.C. 1Z is unwired, so no button position removes + from 1C; the coil path is 1C-indicator lamp 1-1E-coil-1F, 1F on minus (1-/1F); with relay 1 operated its set 1 arm 1H (on +, 1+/1H) touches N.O. 1G, and 1G/1A with 1C/1A puts + on 1C, so the coil holds itself; output lamp 1 (1A-1B, 1B on minus) sits across the same + node and minus",
+      "quote": "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 forget rule, power turned off; derived from topology: with power off both rails are dead, so the coil and both lamps carry nothing and relay 1 drops",
+      "quote": "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17 forget rule, power turned on again; derived from topology: relay 1 dropped during power-off, so 1H-1G is open and 1Y-1X is open; the 1A/1C/1G node has no source and the circuit comes up remembering 0, as at the first power-on",
+      "quote": "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16 self-locking rule, pushbutton 1 pushed and released after the power cycle; derived from topology: the push puts + on 1C through 1Y-1X and pulls relay 1 in; after release the coil path is 1C-indicator lamp 1-1E-coil-1F, 1F on minus (1-/1F); with relay 1 operated its set 1 arm 1H (on +, 1+/1H) touches N.O. 1G, and 1G/1A with 1C/1A puts + on 1C, so the coil holds itself; output lamp 1 (1A-1B, 1B on minus) sits across the same + node and minus",
+      "quote": "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes \"self-locking\" in the 1 position.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

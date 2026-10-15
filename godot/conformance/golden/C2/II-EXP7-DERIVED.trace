@@ -1,0 +1,106 @@
+#!mv601-trace 1
+# id=II-EXP7-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=16
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > switch1 target=1000
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+     0.0 > power on
+     0.0 * power off->on
+    26.9 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    33.0 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+   500.0 > switch4 target=0
+   526.9 * sw4 no->mid
+   533.0 * sw4 mid->nc
+  1000.0 > button6 target=1000
+  1011.2 * pb6 nc->mid
+  1013.7 * pb6 mid->no
+  1045.0 * dial c0->gap
+  1065.8 * dial gap->c1
+  1128.3 * dial c1->gap
+  1149.2 * dial gap->c2
+  1211.7 * dial c2->gap
+  1232.5 * dial gap->c3
+  1295.0 * dial c3->gap
+  1315.8 * dial gap->c4
+  1315.9 ? dial=c4  "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+  6315.9 ? breaker=ok dial=c4  "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+  6315.9 > button6 target=0
+  6327.1 * pb6 no->mid
+  6329.6 * pb6 mid->nc
+  8315.9 > switch4 target=1000
+  8342.8 * sw4 nc->mid
+  8348.9 * sw4 mid->no
+  8815.9 > switch2 target=0
+  8842.8 * sw2 no->mid
+  8848.9 * sw2 mid->nc
+  9315.9 ? dial=c4  "Pushbutton 6 will be used to give the computer the instruction: Indicate number in Secondary Storage using Decimal Output rotary switch."
+  9315.9 > button6 target=1000
+  9327.1 * pb6 nc->mid
+  9329.6 * pb6 mid->no
+  9373.6 * dial c4->gap
+  9394.4 * dial gap->c5
+  9456.9 * dial c5->gap
+  9477.8 * dial gap->c6
+  9540.3 * dial c6->gap
+  9561.1 * dial gap->c7
+  9623.6 * dial c7->gap
+  9644.4 * dial gap->c8
+  9706.9 * dial c8->gap
+  9727.8 * dial gap->c9
+  9790.3 * dial c9->gap
+  9811.1 * dial gap->c10
+  9873.6 * dial c10->gap
+  9894.4 * dial gap->c11
+  9956.9 * dial c11->gap
+  9977.8 * dial gap->c12
+ 10040.3 * dial c12->gap
+ 10061.1 * dial gap->c13
+ 10123.6 * dial c13->gap
+ 10144.4 * dial gap->c14
+ 10206.9 * dial c14->gap
+ 10227.8 * dial gap->c15
+ 10290.3 * dial c15->gap
+ 10311.1 * dial gap->c0
+ 10373.6 * dial c0->gap
+ 10394.4 * dial gap->c1
+ 10456.9 * dial c1->gap
+ 10477.8 * dial gap->c2
+ 10477.9 ? dial=c2  "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output."
+ 15477.9 ? breaker=ok dial=c2  "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output. / The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply"
+ 15477.9 > button6 target=0
+ 15489.1 * pb6 no->mid
+ 15491.6 * pb6 mid->nc
+ 17477.9 > button6 target=1000
+ 17489.1 * pb6 nc->mid
+ 17491.6 * pb6 mid->no
+ 17727.9 ? dial=c2  "Pushbutton 6 will be used to give the computer the instruction: Indicate number in Secondary Storage using Decimal Output rotary switch."
+ 17727.9 > button6 target=0
+ 17739.1 * pb6 no->mid
+ 17741.6 * pb6 mid->nc
+ 18227.9 > switch2 target=1000
+ 18254.8 * sw2 nc->mid
+ 18260.9 * sw2 mid->no
+ 18727.9 > switch6 target=0
+ 18754.8 * sw6 no->mid
+ 18760.9 * sw6 mid->nc
+ 19227.9 > button6 target=1000
+ 19239.1 * pb6 nc->mid
+ 19241.6 * pb6 mid->no
+ 19285.6 * dial c2->gap
+ 19306.4 * dial gap->c3
+ 19368.9 * dial c3->gap
+ 19389.7 * dial gap->c4
+ 19452.2 * dial c4->gap
+ 19473.1 * dial gap->c5
+ 19535.6 * dial c5->gap
+ 19556.4 * dial gap->c6
+ 19556.5 ? dial=c6  "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output."
+ 24556.5 ? breaker=ok dial=c6  "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output. / The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply"
+ 24556.5 > button6 target=0
+ 24567.7 * pb6 no->mid
+ 24570.2 * pb6 mid->nc
+ 26556.5 ? dial=c6  "Move slide switch 4 to the RIGHT position and select another number to be placed in Secondary Storage. Again, push pushbutton 6 to instruct the computer to communicate the contents of Secondary Storage through Decimal Output."

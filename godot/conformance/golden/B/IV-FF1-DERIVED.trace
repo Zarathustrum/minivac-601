@@ -1,0 +1,60 @@
+#!mv601-trace 1
+# id=IV-FF1-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=15
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=106 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp5 off->dim
+    11.6 * relay5 nc->mid
+    12.9 * relay5 mid->no
+    49.6 * indLamp5 dim->on
+   238.2 ? relay5=no relay6=nc pb6=nc outLamp6=off indLamp5=on indLamp6=off  "When the pushbutton is pushed, relay A instructs relay B to go to the same state relay A is in at this moment. When the pushbutton is released, relay B instructs relay A to move to the opposite state."
+   238.2 > button6 target=1000
+   249.4 * pb6 nc->mid
+   251.9 * pb6 mid->no
+   255.2 * outLamp6 off->dim
+   261.9 * indLamp6 off->dim
+   264.0 * relay6 nc->mid
+   265.3 * relay6 mid->no
+   274.1 * outLamp6 dim->on
+   302.0 * indLamp6 dim->on
+   494.2 ? relay5=no relay6=no pb6=no outLamp6=on indLamp5=on indLamp6=on  "We will now add to the program so that when pushbutton 6 is pushed, relay 6 will go to the same state that relay 5 is in."
+   494.2 > button6 target=0
+   505.4 * pb6 no->mid
+   507.9 * pb6 mid->nc
+   519.1 * relay5 no->mid
+   520.0 * relay5 mid->nc
+   743.5 ? relay5=nc relay6=no pb6=nc outLamp6=on indLamp5=on indLamp6=on  "Again we will add to the program so that when pushbutton 6 is released, relay 5 will go to the opposite state from relay 6:"
+   743.5 > button6 target=1000
+   754.7 * pb6 nc->mid
+   757.2 * pb6 mid->no
+   768.1 * relay6 no->mid
+   769.0 * relay6 mid->nc
+   775.1 * indLamp5 on->dim
+   793.5 ? relay5=nc relay6=nc pb6=no indLamp6=on  "We will now add to the program so that when pushbutton 6 is pushed, relay 6 will go to the same state that relay 5 is in."
+   793.5 > button6 target=0
+   804.7 * pb6 no->mid
+   807.2 * pb6 mid->nc
+   819.9 * relay5 nc->mid
+   821.2 * relay5 mid->no
+   823.6 * outLamp6 on->dim
+   828.2 * indLamp6 on->dim
+   844.7 * indLamp5 dim->on
+   879.3 * outLamp6 dim->off
+   883.9 * indLamp6 dim->off
+  1064.8 ? relay5=no relay6=nc pb6=nc outLamp6=off indLamp5=on indLamp6=off  "Again we will add to the program so that when pushbutton 6 is released, relay 5 will go to the opposite state from relay 6:"
+  1064.8 > button6 target=1000
+  1076.0 * pb6 nc->mid
+  1078.5 * pb6 mid->no
+  1081.7 * outLamp6 off->dim
+  1088.4 * indLamp6 off->dim
+  1090.6 * relay6 nc->mid
+  1091.9 * relay6 mid->no
+  1100.7 * outLamp6 dim->on
+  1128.6 * indLamp6 dim->on
+  1320.8 > button6 target=0
+  1332.0 * pb6 no->mid
+  1334.5 * pb6 mid->nc
+  1345.7 * relay5 no->mid
+  1346.6 * relay5 mid->nc
+  1570.1 ? relay5=nc relay6=no pb6=nc outLamp6=on indLamp5=on indLamp6=on  "And finally, we will add an indicator light to show what state the flip-flop is in:"

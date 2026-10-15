@@ -1,0 +1,379 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-FORTUNETELLER",
+  "source": "BK6 printed p.58 = book5-6.pdf PDF p.64 (rule, program and procedure on one page), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/3G",
+    "1B/1-",
+    "1C/3E",
+    "1E/2E",
+    "2A/3K",
+    "2B/2-",
+    "2C/4E",
+    "2E/3C",
+    "2F/2X",
+    "2G/6L",
+    "2H/2L",
+    "2K/5L",
+    "2L/2Y",
+    "2Y/2+",
+    "3A/3J",
+    "3B/3-",
+    "3C/4C",
+    "3F/5G",
+    "3H/4K",
+    "3L/4N",
+    "3N/4A",
+    "4B/4-",
+    "4C/5C",
+    "4F/6G",
+    "4L/4X",
+    "4Y/4+",
+    "5A/5E",
+    "5B/5-",
+    "5C/6C",
+    "5E/6K",
+    "5F/6N",
+    "5F/5G",
+    "5H/5+",
+    "5K/6F",
+    "5N/6E",
+    "6A/6E",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6H/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the printed 40-wire topology and the p.58 rule, not printed. The errata sheet has no Fortune Teller entry, so wires = as_printed = programs.json wiresCorrected/wiresEffective. Topology: relays 1-4 have their indicator side on minus (1E/2E/3C/4C/5C/6C/6-). Pushbutton 2 (2Y+, 2X/2F) drives relay 2 directly; relay 2's N.O. contacts put + on the set-2 arms of relays 5 (2K/5L) and 6 (2G/6L). Relay 5 at rest feeds 6E (5N/6E), operated feeds 6F (5K/6F); relay 6 at rest feeds 5F (6N/5F), operated feeds 5E (6K/5E). Each of relays 5 and 6 self-holds through set 1 (5H+/5G/5F, 6H+/6G/6F), so while pushbutton 2 is held the pair steps (5,6) = 00, 10, 11, 01, 00 ... by pulling in from F and being shunted (+ on both coil ends) from E: a four-state ring [likely, topology; p.59 'Push pushbutton 2 to allow MINIVAC to generate a random number.']. Relay 3's coil hangs on 5F (3F/5G), relay 4's on 6F (4F/6G), so on release relays 3 and 4 copy the latched 5 and 6. Pushbutton 4 (4Y+, 4X/4L) then feeds a two-level tree: relay 4 set 2 (4K/3H operated, 4N/3L at rest) then relay 3 (3H: 3G light 1 / 3J light 3; 3L: 3K light 2 / 3N light 4), so exactly one answer light lights while pushbutton 4 is held. Which one depends on the ring's phase at the pb2 release and is not printed (programs.json printedUnprinted; Step 7 notes: relay 6 drop-out margin 0 uA, phase-dependent under the robustness perturbations), so no expect names it. Checked instead: the cold rest state, the power-on answer before any contemplation (light 4, both answer relays at rest), relay 2 operated with answer lights dark during the hold, and answer lights dark with relay 2 at rest once both buttons are up. The 3000 ms hold, the 300 ms lamp-warm advances and releasing pushbutton 4 are script choices; pushbutton 2 is held with advance, not settle, because the ring does not settle. The page gives no reset; a second question re-drives the ring from its latched state.",
+  "wires": [
+    "1A/3G",
+    "1B/1-",
+    "1C/3E",
+    "1E/2E",
+    "2A/3K",
+    "2B/2-",
+    "2C/4E",
+    "2E/3C",
+    "2F/2X",
+    "2G/6L",
+    "2H/2L",
+    "2K/5L",
+    "2L/2Y",
+    "2Y/2+",
+    "3A/3J",
+    "3B/3-",
+    "3C/4C",
+    "3F/5G",
+    "3H/4K",
+    "3L/4N",
+    "3N/4A",
+    "4B/4-",
+    "4C/5C",
+    "4F/6G",
+    "4L/4X",
+    "4Y/4+",
+    "5A/5E",
+    "5B/5-",
+    "5C/6C",
+    "5E/6K",
+    "5F/6N",
+    "5F/5G",
+    "5H/5+",
+    "5K/6F",
+    "5N/6E",
+    "6A/6E",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6H/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.58 = book5-6.pdf PDF p.64; rule: the answer appears on lights 1-4 after contemplation (legend light 1 Absolutely No .. light 4 Definitely Yes); derived from topology, power on, nothing pressed: relay 1 coil has 1F unwired; relay 2 coil (2F/2X, 2E on the 1E/2E/3C/4C/5C/6C/6- minus node) is fed only through pushbutton 2 N.O.; relays 5 and 6 are fed only from relay 2 N.O. contacts (2G/6L, 2K/5L) or their own N.O. self-holds (5H+ to 5G/5F, 6H+ to 6G/6F), all open at rest; relays 3 and 4 hang on 5F/5G (3F/5G) and 6F/6G (4F/6G); answer lights 1-4 are fed only through pushbutton 4 N.O. (4Y+/4X/4L); lights 5, 6 and every indicator lamp sit on coil nodes 5E, 6E, 3E (1C/3E), 4E (2C/4E) that carry no current",
+      "quote": "With this program, MINIVAC will answer questions—after \"thinking\" about them.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK6 printed p.58 = book5-6.pdf PDF p.64; answer button (pushbutton 4) pushed before any contemplation; derived from topology: + at 4Y, pushbutton 4 N.O. 4X/4L, relay 4 set 2 arm 4L to N.C. 4N (relay 4 at rest), 4N/3L, relay 3 set 2 arm 3L to N.C. 3N (relay 3 at rest), 3N/4A: light 4 (4B to minus) across the full supply; 4K (to 3H, 3G light 1, 3J light 3) and 3K (light 2) open; the answer tree feeds only lamp A-sides, so no coil and relays 3 and 4 stay at rest",
+      "quote": "With this program, MINIVAC will answer questions—after \"thinking\" about them.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.58 = book5-6.pdf PDF p.64; contemplate button (pushbutton 2) held: 'Hold the \"contemplate\" button down while MINIVAC considers the question.'; derived from topology: + at 2Y (2Y/2+), pushbutton 2 N.O. 2X/2F, relay 2 coil 2F-2E with 2E on minus (no series lamp): relay 2 operated whatever the relay 5/6 ring is doing; pushbutton 4 is up, so 4X is isolated and answer lights 1-4 (A-sides 3G, 3K, 3J, 3N) have no path to +",
+      "quote": "With this program, MINIVAC will answer questions—after \"thinking\" about them.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.58 = book5-6.pdf PDF p.64; after release of the contemplate button and a push and release of the answer button; derived from topology: with pushbutton 2 up, 2F reaches nothing but the open 2X, so relay 2 is at rest; with pushbutton 4 up the answer tree (4L/4X, 4K/3H, 4N/3L) is cut from +, so all four answer lights are off whatever answer the latched relays 3-6 encode",
+      "quote": "With this program, MINIVAC will answer questions—after \"thinking\" about them.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

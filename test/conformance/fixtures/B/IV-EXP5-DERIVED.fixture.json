@@ -1,0 +1,477 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP5-DERIVED",
+  "source": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83 (Experiment 5: A Full Adder), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/6U",
+    "5B/5-",
+    "5C/6S",
+    "5F/5-",
+    "5G/6J",
+    "5H/5+",
+    "5J/6G",
+    "6A/6H",
+    "6B/6-",
+    "6J/6L",
+    "6K/6U",
+    "6R/6Z",
+    "6T/6X",
+    "6T/6V",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 15 printed wires (programs.json IV-EXP5 wiresEffective, no errata) and the p.77 full-adder rule, not printed. A = slide switch 6 LEFT, B = pushbutton 6 down, carry in = relay 6 held left by hand (relayGrab, contract 1.1; its coil 6E/6F is unwired). Topology: relay 5 coil (through its indicator lamp) is fed from switch 6 set-1 arm 6S, LEFT to 6R=6Z (button N.C.), RIGHT to 6T=6X (button N.O.), so relay 5 = A XOR B; light 6 (sum) hangs on relay 6 set-1 arm 6H, rest to 6J=5G (relay 5 N.O. from 5H plus), held to 6G=5J (relay 5 N.C.), so sum = A XOR B XOR Cin; light 5 (carry) is on 6U=6K, fed by switch 6 set-2 (LEFT: 6V=6T=6X, i.e. A AND B) or by relay 6 set-2 (held: 6L=6J=5G, i.e. Cin AND (A XOR B)). The script runs the printed steps 1-2, then visits all eight input combinations, including the hand letting go of relay 6 at A=1 B=0 (Step 7 notes, IV-EXP5). Asserted: relays 5 and 6, lights 5 and 6, indLamp6 (unwired, always dark) and indLamp5 only while relay 5's coil path is open; a lit indLamp5 shares coil current in series and its class is analog, so it is not asserted. The checkpoint at A=1 B=0 Cin=1 repeats printed step 3 (light 6 OFF, light 5 ON) and adds the relay states. Timing (settle 200 ms, then 100 ms) is a script choice; the page prints none.",
+  "wires": [
+    "5A/6U",
+    "5B/5-",
+    "5C/6S",
+    "5F/5-",
+    "5G/6J",
+    "5H/5+",
+    "5J/6G",
+    "6A/6H",
+    "6B/6-",
+    "6J/6L",
+    "6K/6U",
+    "6R/6Z",
+    "6T/6X",
+    "6T/6V",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=0 B=0 Cin=0: 6S-6T=6X open with the button up, so relay 5 rests; 6J=5G and 6U are dead, so 0 carry 0",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=1 B=0 Cin=0: 6S-6R=6Z-6Y plus pulls relay 5; light 6 via 6H-6J=5G-5H; carry node 6U-6V=6T=6X is dead with the button up and 6K is open, so 1 carry 0",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=1 B=0 Cin=1 (hand holds relay 6): relay 5 stays pulled; 6H-6G=5J is open with relay 5 operated, so light 6 dark; 6K-6L=6J=5G-5H plus lights 5, so 0 carry 1",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 6
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; hand lets go of relay 6 at A=1 B=0: the 6E/6F coil is unwired, so nothing holds relay 6 and it returns to rest; the circuit is back at A=1 B=0 Cin=0, 1 carry 0",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=1 B=1 Cin=0: 6S-6R=6Z opens with the button down, so relay 5 drops; 6H-6J=5G dead, light 6 dark; 6Y-6X=6T-6V-6U plus lights 5 (half-adder A/B carry), so 0 carry 1",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=1 B=1 Cin=1: relay 5 stays released; light 6 via 6H-6G=5J-5H (relay 5 N.C.); light 5 still via 6X-6T-6V-6U (6K-6L reaches only the dead 6J=5G), so 1 carry 1",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=0 B=1 Cin=1 (button and relay 6 still held, switch 6 RIGHT): 6S-6T=6X-6Y plus pulls relay 5; 6H-6G=5J open, light 6 dark; 6U-6V opens but 6K-6L=6J=5G-5H plus lights 5 (half-adder carry-in/sum carry), so 0 carry 1",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=0 B=0 Cin=1: 6S-6T=6X open with the button up, relay 5 drops; light 6 via 6H-6G=5J-5H; 6K-6L=6J=5G dead and 6U-6V open, light 5 dark, so 1 carry 0",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 6
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Book IV printed pp.76-77 = book2-3-4.pdf PDF pp.82-83, Experiment 5 (full adder: relay 6 = carry in, relay 5 = A XOR B, light 6 = sum and light 5 = carry out per step 3 '1 + 0 + 1 = 0 and carry 1'; step 4 'Try other combinations of inputs by moving slide switch 6, pushing pushbutton 6, and/or manually moving relay 6.' prints no outcomes); derived from topology: plus reaches the circuit only at 5H (relay 5 set-1 arm) and 6Y (pushbutton 6 arm); relay 5 coil path 6S-5C-indicator lamp-5E-coil-5F-minus, fed when switch 6 set-1 arm 6S meets 6R=6Z (LEFT, button up) or 6T=6X (RIGHT, button down), so relay 5 = A XOR B; sum lamp 6A-6H: relay 6 at rest 6H-6J=5G (plus only while relay 5 is operated), relay 6 held 6H-6G=5J (plus only while relay 5 is at rest); carry lamp 5A=6U=6K: switch 6 LEFT joins 6U-6V=6T=6X (plus while button down), and relay 6 held joins 6K-6L=6J=5G (plus while relay 5 is operated); relay 6's coil and indicator (6C/6E/6F) are unwired, so relay 6 moves only by hand and indLamp6 never lights; case A=0 B=1 Cin=0 (relay 6 let go, then button down): 6S-6T=6X-6Y plus pulls relay 5; light 6 via 6H-6J=5G-5H; 6K open and 6U-6V open with switch 6 RIGHT, light 5 dark, so 1 carry 0",
+      "quote": "Relay 6 represents a carry in from a previous stage. Relay 5 represents the sum of inputs A and B; this sum will be added to the carry in to give the sum for the full adder. Notice that a carry signal may come from either of two places: either from the half-adder representing the slide switch and pushbutton (input A and input B), or from the half-adder representing the carry in (relay 6) and the sum of the input (relay 5). Either half-adder can produce a carry signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    }
+  ]
+}

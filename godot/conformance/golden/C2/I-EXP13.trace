@@ -1,0 +1,74 @@
+#!mv601-trace 1
+# id=I-EXP13 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=10
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=24 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   100.0 > button5 target=1000
+   111.2 * pb5 nc->mid
+   113.7 * pb5 mid->no
+   145.0 * dial c0->gap
+   165.8 * dial gap->c1
+   169.1 * outLamp5 off->dim
+   188.2 * outLamp5 dim->on
+   188.3 ? outLamp5=on  "Push pushbutton 5. The motor rotates the pointer knob as in Experiment 11. As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+   228.8 * dial c1->gap
+   245.1 * outLamp5 on->dim
+   249.6 * dial gap->c2
+   252.9 * outLamp6 off->dim
+   272.0 * outLamp6 dim->on
+   272.1 ? outLamp6=on  "As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+   300.7 * outLamp5 dim->off
+   312.6 * dial c2->gap
+   328.9 * outLamp6 on->dim
+   333.4 * dial gap->c3
+   384.5 * outLamp6 dim->off
+   384.6 ? outLamp5=off outLamp6=off  "As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+   395.9 * dial c3->gap
+   416.8 * dial gap->c4
+   479.3 * dial c4->gap
+   500.1 * dial gap->c5
+   562.6 * dial c5->gap
+   583.4 * dial gap->c6
+   645.9 * dial c6->gap
+   666.8 * dial gap->c7
+   729.3 * dial c7->gap
+   750.1 * dial gap->c8
+   812.6 * dial c8->gap
+   833.4 * dial gap->c9
+   895.9 * dial c9->gap
+   916.8 * dial gap->c10
+   979.3 * dial c10->gap
+  1000.1 * dial gap->c11
+  1062.6 * dial c11->gap
+  1083.4 * dial gap->c12
+  1145.9 * dial c12->gap
+  1166.8 * dial gap->c13
+  1229.3 * dial c13->gap
+  1250.1 * dial gap->c14
+  1312.6 * dial c14->gap
+  1333.4 * dial gap->c15
+  1395.9 * dial c15->gap
+  1416.8 * dial gap->c0
+  1479.3 * dial c0->gap
+  1500.1 * dial gap->c1
+  1503.4 * outLamp5 off->dim
+  1522.5 * outLamp5 dim->on
+  1522.6 ? outLamp5=on  "First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch."
+  1563.1 * dial c1->gap
+  1579.4 * outLamp5 on->dim
+  1583.9 * dial gap->c2
+  1587.2 * outLamp6 off->dim
+  1606.3 * outLamp6 dim->on
+  1606.4 ? outLamp6=on  "First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch."
+  1635.0 * outLamp5 dim->off
+  1646.8 * dial c2->gap
+  1663.1 * outLamp6 on->dim
+  1667.7 * dial gap->c3
+  1718.7 * outLamp6 dim->off
+  1718.8 ? outLamp5=off outLamp6=off  "As the pointer knob turns, light 5 and light 6 flash ON in sequence."
+  1718.8 > button6 target=1000
+  1730.0 * pb6 nc->mid
+  1730.2 * dial c3->gap
+  1732.5 * pb6 mid->no
+  1732.6 * dial gap->c4

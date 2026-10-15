@@ -1,0 +1,434 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP12",
+  "source": "BK4 printed p.85 = book2-3-4.pdf PDF p.91",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/4R",
+    "1F/2F",
+    "1G/6H",
+    "1H/5U",
+    "1J/5H",
+    "1K/6L",
+    "1L/5W",
+    "1N/5L",
+    "2C/5R",
+    "2F/3F",
+    "2G/3H",
+    "2H/4U",
+    "2J/4H",
+    "2K/3L",
+    "2L/4W",
+    "2N/4L",
+    "3C/6R",
+    "3C/4C",
+    "3F/4F",
+    "3G/D15",
+    "3J/D14",
+    "3K/D11",
+    "3N/D10",
+    "3U/4V",
+    "3V/3-",
+    "3W/5V",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D12",
+    "4K/D9",
+    "4N/D8",
+    "4S/4+",
+    "4S/5S",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5J/D2",
+    "5K/D1",
+    "5N/D0",
+    "5S/6S",
+    "6F/6-",
+    "6G/D7",
+    "6J/D6",
+    "6K/D5",
+    "6N/D4",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/4R",
+    "1F/2F",
+    "1G/6H",
+    "1H/5U",
+    "1J/5H",
+    "1K/6L",
+    "1L/5W",
+    "1N/5L",
+    "2C/5R",
+    "2F/3F",
+    "2G/3H",
+    "2H/4U",
+    "2J/4H",
+    "2K/3L",
+    "2L/4W",
+    "2N/4L",
+    "3C/6R",
+    "3C/4C",
+    "3F/4F",
+    "3G/D15",
+    "3J/D14",
+    "3K/D11",
+    "3N/D10",
+    "3U/4V",
+    "3V/3-",
+    "3W/5V",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D12",
+    "4K/D9",
+    "4N/D8",
+    "4S/4+",
+    "4S/5S",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5J/D2",
+    "5K/D1",
+    "5N/D0",
+    "5S/6S",
+    "6F/6-",
+    "6G/D7",
+    "6J/D6",
+    "6K/D5",
+    "6N/D4",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch. / Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch. / Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 12000,
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch. / Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (Experiment 8, slide-switch value convention); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    }
+  ],
+  "digest": {
+    "eventCount": 215,
+    "moverTransitions": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      12,
+      0,
+      0,
+      4,
+      4,
+      4,
+      4,
+      62
+    ]
+  },
+  "note": "Printed claims only (Step 6). 50 wires, no errata (none on the errata sheet for Book IV page 85); wire list image-read at 300 dpi from PDF p.91 and identical to the OCR list. Printed procedure: enter a binary number 0-15 on slide switches 3-6, push pushbutton 6, the rotary switch indicates its decimal equivalent. Only the two endpoints are asserted: binary 15 (all four switches LEFT) and binary 0 (all four RIGHT), whose dial value does not depend on which of switches 3-6 is the high-order bit. The LEFT = 1 / RIGHT = 0 convention is not on p.85; it is the Book IV convention stated on p.80 (PDF p.86, Experiment 8: '(A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)') and used without exception on p.75 (PDF p.81: 'Move slide switch 6 to the RIGHT: input A is now 0.'), p.77 (PDF p.83: 'Move slide switch 6 to the LEFT; input A is now 1.') and p.79 (PDF p.85: 'Enter the subtrahend (101) by moving slide switches 4 and 6 to the LEFT, leaving slide switch 5 RIGHT.'), so these asserts rest on that cross-page reading. All other values 1-14 need the bit order of switches 3-6, which p.85 does not print, and are left to Step 7; the nearest printed basis is Book IV p.77 (PDF p.83), 'For example, to enter binary 4 (100) set slide switch 4 LEFT, slide switch 5 RIGHT and slide switch 6 RIGHT.', which covers switches 4-6 only. Script: 15, then 0, then 15 again (so each value is reached by a dial run from the other). pb6 (6X/D17, 6Y/6+) is the motor's only feed, so it is held until the dial has stopped on the energized pad; the hold length is a script choice. Each value is an until (wiper reaches the pad), then a dwell with pb6 still held and a second expect (the dial rests there under the STOP short), then a release and a third expect. Start dial position D0 and the all-LEFT start of the slide switches (contract travel 0 = LEFT) are the construction state, not printed, so the first switch commands restate it. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; maxMs and dwell windows are sized for a run rate as slow as 25 rpm. Tom ruled 2026-10-14 (DECISIONS; open-questions O-C12) that Book IV p.80's convention counts as printed for Book IV's later binary programs, this one included."
+}

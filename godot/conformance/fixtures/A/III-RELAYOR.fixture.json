@@ -1,0 +1,36 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-RELAYOR",
+  "source": "BK3 printed p.43 = book2-3-4.pdf PDF p.49",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y", "1X/1C", "1F/1-", "2+/2Y", "2X/2C", "2F/2-", "1+/1H", "1G/3A", "2+/2H", "2G/3A", "3B/3-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1+/1Y", "1X/1C", "1F/1-", "2+/2Y", "2X/2C", "2F/2-", "1+/1H", "1G/3A", "2+/2H", "2G/3A", "3B/3-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49",
+      "quote": "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49",
+      "quote": "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON."
+    }
+  ]
+}

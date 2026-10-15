@@ -1,0 +1,808 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-XLAT-FULL",
+  "source": "BK5 printed pp.39-40 = book5-6.pdf PDF pp.45-46; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2V",
+    "1B/1E",
+    "1B/2B",
+    "1C/2U",
+    "1C/4C",
+    "1E/2E",
+    "1R/2U",
+    "1S/2S",
+    "1T/2V",
+    "2A/3G",
+    "2B/3B",
+    "2C/3K",
+    "2E/3E",
+    "2R/3H",
+    "2S/3S",
+    "2T/3L",
+    "2W/4A",
+    "3A/3N",
+    "3B/4B",
+    "3C/3J",
+    "3E/4E",
+    "3F/6A",
+    "3F/3R",
+    "3S/3+",
+    "4B/5B",
+    "5A/5+",
+    "5B/6B",
+    "6B/6-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the 28 printed wires (no erratum; the errata sheet's Book V entries end at page 35) and the p.40 rule that the lights give the German sentence in the proper order. Slide-switch roles per jack-map: S/V arms, R/U close LEFT, T/W close RIGHT; target 0 = LEFT, 1000 = RIGHT. Nets: PLUS = {3S, 2S, 1S, 5A}; MINUS = {1B..6B, 1E, 2E, 3E, 4E}; P1 = {1T, 2V, 1A}; P2 = {1R, 2U, 1C, 4C}; {2W, 4A}; {2R, 3H}; {2T, 3L}; {3G, 2A}; {3J, 3C}; {3K, 2C}; {3N, 3A}; {3R, 3F, 6A}. Switch 1 picks which of P1 (Piet) or P2 (Eva + ihrem) is live; switch 2 set 2 either joins P1 and P2 (LEFT: both names, ihrem) or routes P1 to output 4 (RIGHT: seinem only with Pete); switch 2 set 1 picks the singular (RIGHT, relay 3 set 2) or plural (LEFT, relay 3 set 1) verb; switch 3 LEFT pulls relay 3 (coil 3E-3F straight across the rails) and lights output 6, which moves each verb to its past-perfect auxiliary. Relays 1, 2, 4 have nF unwired: their indicator lamps light alone across nC-nE and the relays stay out. Topology versus prose: with switch 2 RIGHT ('Pete or Eve') only the name switch 1 picks lights, so the circuit never displays both names with a singular verb and the 'oder' the page tells the reader to supply has no display; the fixture asserts the circuit, not the prose. The script walks all eight switch settings in Gray order from all-RIGHT; switches are set before power-on so the first state is not the default switch position. The 500 ms advance before each expect lets lamps and relay 3 finish their transients; the page states no timing.",
+  "wires": [
+    "1A/2V",
+    "1B/1E",
+    "1B/2B",
+    "1C/2U",
+    "1C/4C",
+    "1E/2E",
+    "1R/2U",
+    "1S/2S",
+    "1T/2V",
+    "2A/3G",
+    "2B/3B",
+    "2C/3K",
+    "2E/3E",
+    "2R/3H",
+    "2S/3S",
+    "2T/3L",
+    "2W/4A",
+    "3A/3N",
+    "3B/4B",
+    "3C/3J",
+    "3E/4E",
+    "3F/6A",
+    "3F/3R",
+    "3S/3+",
+    "4B/5B",
+    "5A/5+",
+    "5B/6B",
+    "6B/6-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switches 1, 2, 3 RIGHT (Pete, or, present): 1S-1T feeds 2V (1T/2V) and output 1 (1A/2V) = Piet; 2V-2W feeds 4A (2W/4A) = seinem; 2U dead (1R open), relay lights 1 and 4 dark; 2S-2T feeds 3L (2T/3L), relay 3 out (3R open, 3F dead) so 3L-3N feeds 3A (3A/3N) = spielt mit; 2R dead so 3H, 3C, 2A dark; 3F/6A dead, output 6 off; sentence 'Piet spielt mit seinem Ball'",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switch 1 LEFT, 2 and 3 RIGHT (Eve, or, present): 1S-1R feeds 2U (1R/2U) and 1C (1C/2U) = relay light 1 Eva and 4C (1C/4C) = relay light 4 ihrem; 1T open so 2V is fed by nothing and output 1 (1A) and, through 2V-2W, output 4 (4A) sit between minus and a dead node, both off; verb as before 2T-3L-3N-3A = spielt mit; sentence 'Eva spielt mit ihrem Ball'",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switches 1 and 2 LEFT, 3 RIGHT (Pete and Eve, present): 1R feeds 2U, 1C, 4C (relay lights 1 Eva, 4 ihrem) and through 2U-2V feeds 1A (output 1 Piet); 2W open so 4A dead, output 4 off; 2S-2R feeds 3H (2R/3H), relay 3 out so 3H-3J feeds 3C (3C/3J) = relay light 3 spielen mit; 2T open so 3A and 2C dark; sentence 'Piet [und] Eva spielen mit ihrem Ball'",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switches 1, 2, 3 LEFT (Pete and Eve, past perfect): 3S-3R feeds 3F (3F/3R), coil 3 across 3F to 3E (minus) pulls relay 3, and 6A (3F/6A) lights output 6 gespielt; 3H moves to 3G so 2R-3H-3G feeds 2A (2A/3G) = output 2 haben mit and 3C (3J) goes dark; names and adjective as before (output 1, relay lights 1 and 4); sentence 'Piet [und] Eva haben mit ihrem Ball gespielt'",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switch 1 LEFT, 2 RIGHT, 3 LEFT (Eve, or, past perfect): names as in the Eve case (relay lights 1 and 4 via 1R-2U-1C/4C; outputs 1 and 4 dead); 2S-2T feeds 3L, relay 3 in so 3L-3K feeds 2C (2C/3K) = relay light 2 hat mit; 2R open so 2A dark; relay 3 and output 6 held by 3R-3F; sentence 'Eva hat mit ihrem Ball gespielt'",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switch 1 RIGHT, 2 RIGHT, 3 LEFT (Pete, or, past perfect): 1T-2V feeds output 1 Piet and 2V-2W-4A output 4 seinem; 2U dead so relay lights 1 and 4 off; 2T-3L-3K-2C relay light 2 hat mit; relay 3 in, output 6 on; sentence 'Piet hat mit seinem Ball gespielt'",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switch 1 RIGHT, 2 LEFT, 3 LEFT (Pete and Eve, past perfect, from the other switch-1 side): 1T-2V-2U feeds 1C and 4C (relay lights 1 Eva, 4 ihrem) and 1A (output 1 Piet); 2W open, output 4 off; 2R-3H-3G-2A output 2 haben mit; same state as the all-LEFT case, so switch 1 does not matter with switch 2 LEFT",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed p.40 = book5-6.pdf PDF p.46, stated rule: the lights give the German sentence in the proper order (switch 1 RIGHT Pete / LEFT Eve; switch 2 RIGHT Pete or Eve / LEFT Pete and Eve; switch 3 RIGHT present / LEFT past perfect; output light 1 Piet, relay light 1 Eva, output 2 haben mit, relay 2 hat mit, output 3 spielt mit, relay 3 spielen mit, output 4 seinem, relay 4 ihrem, output 5 Ball, output 6 gespielt); p.39 (PDF p.45) 'incorporates the word order requirements of the past perfect tense with the selection rule for the appropriate adjective'; derived from topology: rails: 3S/3+ makes arms 3S, 2S, 1S plus (2S/3S, 1S/2S); 6B/6- with the B chain and 1B/1E, 1E/2E, 2E/3E, 3E/4E puts 1B-6B and 1E-4E on minus; 5A/5+ lights output 5 (Ball) always; coils 1, 2, 4 have nF unwired so relays 1, 2, 4 never pull and their lamps light alone across nC-nE; switch 1 RIGHT, 2 LEFT, 3 RIGHT (Pete and Eve, present, from the other switch-1 side): 3R open, 3F dead, relay 3 drops and output 6 goes off; 2R-3H-3J-3C relay light 3 spielen mit, 2A dark; names via 1T-2V-2U as before; same state as the switch 1 LEFT, 2 LEFT, 3 RIGHT case",
+      "quote": "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\"",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

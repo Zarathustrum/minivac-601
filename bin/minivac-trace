@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+import { formatFallbacks, listFallbacks, runFixture } from '../test/conformance/run.ts';
+
+function usage() {
+  throw new Error('usage: minivac-trace <fixture.json> | minivac-trace --list-fallbacks');
+}
+
+try {
+  if (process.argv.length !== 3) usage();
+  const argument = process.argv[2];
+  if (argument === '--list-fallbacks') {
+    process.stdout.write(formatFallbacks(listFallbacks()));
+  } else {
+    const result = runFixture(argument);
+    process.stdout.write(result.trace);
+    if (result.failures.length > 0) {
+      for (const failure of result.failures) {
+        process.stderr.write(
+          'minivac-trace: assertion failed at script[' + failure.scriptIndex + '] ' + failure.dev +
+          ': expected ' + failure.expected + ', got ' + failure.actual + '\n',
+        );
+      }
+      process.exitCode = 1;
+    }
+  }
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  process.stderr.write('minivac-trace: ' + message + '\n');
+  process.exitCode = 1;
+}

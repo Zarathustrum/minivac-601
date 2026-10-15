@@ -1,0 +1,42 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minivac.Core", "Minivac.Core/Minivac.Core.csproj", "{85FE22BE-A48F-4206-BD14-2A04A1E28580}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minivac.Conformance", "Minivac.Conformance/Minivac.Conformance.csproj", "{A10E58C9-C742-4AC6-B528-D98865258D69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minivac.Trace", "Minivac.Trace/Minivac.Trace.csproj", "{D01D7152-082A-4822-B5D7-953EB4F32235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minivac.Core.Tests", "Minivac.Core.Tests/Minivac.Core.Tests.csproj", "{7848D57A-CF22-4675-9F04-B86D858861AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minivac.Godot.Tests", "Minivac.Godot.Tests/Minivac.Godot.Tests.csproj", "{9AF7BD48-1FA5-47D1-8E74-9146819275F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{85FE22BE-A48F-4206-BD14-2A04A1E28580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85FE22BE-A48F-4206-BD14-2A04A1E28580}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85FE22BE-A48F-4206-BD14-2A04A1E28580}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85FE22BE-A48F-4206-BD14-2A04A1E28580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A10E58C9-C742-4AC6-B528-D98865258D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A10E58C9-C742-4AC6-B528-D98865258D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A10E58C9-C742-4AC6-B528-D98865258D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A10E58C9-C742-4AC6-B528-D98865258D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D01D7152-082A-4822-B5D7-953EB4F32235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D01D7152-082A-4822-B5D7-953EB4F32235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D01D7152-082A-4822-B5D7-953EB4F32235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D01D7152-082A-4822-B5D7-953EB4F32235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7848D57A-CF22-4675-9F04-B86D858861AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7848D57A-CF22-4675-9F04-B86D858861AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7848D57A-CF22-4675-9F04-B86D858861AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7848D57A-CF22-4675-9F04-B86D858861AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AF7BD48-1FA5-47D1-8E74-9146819275F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AF7BD48-1FA5-47D1-8E74-9146819275F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AF7BD48-1FA5-47D1-8E74-9146819275F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AF7BD48-1FA5-47D1-8E74-9146819275F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

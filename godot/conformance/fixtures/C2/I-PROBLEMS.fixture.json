@@ -1,0 +1,576 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-PROBLEMS",
+  "source": "BK1 printed p.28 = book1.pdf PDF p.30 (problems 13-15); printed p.31 = book1.pdf PDF p.33 (Answers 13-15)",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/6Y",
+    "6X/6A",
+    "6B/6-",
+    "6X/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/6Y",
+    "6X/6A",
+    "6B/6-",
+    "6X/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring)",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 13 wiring)",
+      "quote": "Design a circuit in which the rotary switch turns and light 6 comes ON when pushbutton 6 is pushed."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 1
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 2
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 3
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 4
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 5,
+        "a": {
+          "k": "hole",
+          "hole": "5+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "5Y#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 6,
+        "a": {
+          "k": "hole",
+          "hole": "5Z#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6X#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 7,
+        "a": {
+          "k": "hole",
+          "hole": "6Y#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D17#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 8,
+        "a": {
+          "k": "hole",
+          "hole": "M-#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D18#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring)",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring)",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring)",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 14 wiring)",
+      "quote": "Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 5
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 6
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 7
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 8
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 9,
+        "a": {
+          "k": "hole",
+          "hole": "6+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6X#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 10,
+        "a": {
+          "k": "hole",
+          "hole": "6Y#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D17#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 11,
+        "a": {
+          "k": "hole",
+          "hole": "M-#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D18#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 12,
+        "a": {
+          "k": "hole",
+          "hole": "D18#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "5X#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 13,
+        "a": {
+          "k": "hole",
+          "hole": "5Y#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D19#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring)",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring)",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 600
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring)",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "BK1 printed p.28 = book1.pdf PDF p.30 (problem statement); printed p.31 = book1.pdf PDF p.33 (Answer 15 wiring)",
+      "quote": "Design a circuit to meet the requirements of problem 14 using terminal 5X. [problem 14:] Design a circuit in which the rotary switch turns only when pushbutton 6 is down. The rotary switch should NOT turn when pushbutton 6 is up, or when both pushbutton 6 and pushbutton 5 are down."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    }
+  ],
+  "digest": {
+    "eventCount": 107,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      12,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      80
+    ]
+  },
+  "note": "Printed claims only (Phase 5 Step 6). Covers Book I Answers 13, 14 and 15, the only image-verified answers (programs.md N-5; image-read again here from book1.pdf PDF p.33 = printed p.31: Answer 13 is 6+/6Y 6X/6A 6B/6- 6X/D17 D18/M-, Answer 14 is 5+/5Y 5Z/6X 6Y/D17 M-/D18, Answer 15 is 6+/6X 6Y/D17 M-/D18 D18/5X 5Y/D19; Answer 15 is five lines in full, and its diagram draws 5Z but wires nothing to it). The three answers share no wiring, so one fixture carries all three: wires and as_printed are Answer 13's printed list (cords 0-4); with power off the script disconnects them and connects Answer 14 (cords 5-8), then Answer 15 (cords 9-13), as hole-ended connect commands. No erratum touches Answers 13-15 (ER-03 is prose for Problems 7 and 18), so errata_applied is empty. Before Answers 14 and 15 the operator sets the pointer knob back to 0 by hand (dialGrab to 0, power off); that reset and the c0 starting position are script choices, not printed. Asserted: Answer 13, after pushbutton 6 is pushed, light 6 on and the dial turning (until c8, reached in either direction within one revolution, so direction is not asserted). Answers 14 and 15, Problem 14's statement: with pushbutton 6 up and pushbutton 5 up, with pushbutton 6 up and pushbutton 5 down, and with both down (pb5 pushed first, then pb6), the dial is still at c0 after a 600 ms window (more than one pad pitch at 25 rpm, less than one revolution at 90 rpm, so a turning dial cannot pass); then with pushbutton 5 released and pushbutton 6 still down, the dial turns (until c8). Not asserted: Problem 13's converse (dial still and light 6 off with pushbutton 6 up) is not printed; pushing pushbutton 5 while the dial is already turning under pushbutton 6 is covered by 'when both ... are down', but asserting that the dial stays still afterwards needs the rest position after the invented STOP-short coast, so it is left to Step 7; direction of rotation and stop positions are not printed. Answers 1-12 and 16-20 stay out: OCR only, not image-verified. Rotary geometry, run rate, coast and fitted motor resistances remain profile fallbacks O-R1, O-R3 and O-R5; until windows are sized for a run rate as slow as 25 rpm."
+}

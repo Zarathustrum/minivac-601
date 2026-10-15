@@ -1,0 +1,844 @@
+{
+  "topic": "MINIVAC 601 \u2014 complete terminal inventory and jack-to-component mapping",
+  "agent": "find-jackmap",
+  "date": "2026-08-30",
+  "tagLegend": {
+    "verified": "read directly in a primary source (a manual page, or the panel photograph image_3.jpg)",
+    "likely": "consistent secondary sources agree; no primary read",
+    "unverified": "single weak source, or an inference by this agent"
+  },
+  "pageNumbering": {
+    "note": "Citations use PRINTED page numbers. For book1.pdf the rendered page image index = printed page + 2 (e.g. printed p.14 = pages/book1/p-16.png). Verified by opening p-25.png and finding printed page 23.",
+    "tag": "verified"
+  },
+  "sourcesRead": [
+    "docs/research/raw/pdf/book1.txt (full OCR)",
+    "docs/research/raw/pdf/book2-3-4.txt (targeted OCR reads: printed p.58 Book III common-terminal notation; program listings)",
+    "docs/research/raw/pdf/book5-6.txt (targeted OCR reads: printed p.22 Book V numeral recognition; p.35 search-and-track; p.51-53 Book VI Secret Code / Combination Lock / Electronic Maze)",
+    "docs/research/raw/pdf/pages/book1/p-16.png (printed p.14, relay coil terminals C/E/F schematic)",
+    "docs/research/raw/pdf/pages/book1/p-22.png (printed p.20, rotary switch D-notation + under-panel view)",
+    "docs/research/raw/pdf/pages/book1/p-25.png (printed p.23, Experiment 12 motor circuit)",
+    "docs/research/raw/pdf/pages/book1/p-27.png (printed p.25, MATRIX + AUXILIARY TERMINALS)",
+    "docs/research/raw/prebrief/images/image_3.jpg (panel photograph, 1536x1152; read whole plus 6 crops: matrix, decimal I/O, sections 1-2 upper, coil-terminal row, sections 1-2 lower, M10/M11, POWER block, logo legend)",
+    "WebSearch (two queries on capacitor terminals / schematic) \u2014 returned nothing primary; no emulator source was opened (ORACLE-ONLY RULE observed)"
+  ],
+  "oracleRuleCompliance": "No emulator source code was opened, fetched, cloned or quoted. minivac.greg.technology appeared in a search result list only; it was not visited.",
+  "namingScheme": {
+    "statementFromManual": {
+      "quote": "Each terminal is identified by a letter printed below it, and by the number printed at the top of the section in which it is located.",
+      "citation": "Book I, p.4 (USING THE PROGRAMMING WIRES)",
+      "tag": "verified"
+    },
+    "sectionTerminals": {
+      "form": "<section digit 1-6><letter>",
+      "examples": [
+        "1+",
+        "1-",
+        "1A",
+        "1B",
+        "1C",
+        "6Z"
+      ],
+      "letterOrdinal": "the letter is silkscreened BELOW the hole pair; the section number 1..6 is silkscreened at the top of the section, above the BINARY OUTPUT lamp",
+      "tag": "verified",
+      "citation": "Book I p.4; panel photograph image_3.jpg (all six sections)"
+    },
+    "letterSetUsed": {
+      "letters": [
+        "+",
+        "-",
+        "A",
+        "B",
+        "C",
+        "E",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K",
+        "L",
+        "N",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z"
+      ],
+      "lettersDeliberatelyNotUsed": [
+        "D",
+        "I",
+        "M",
+        "O",
+        "P",
+        "Q"
+      ],
+      "evidence": "Exhaustive token census over the OCR of all three PDFs (all six books): every shorthand token of the form <digit><letter> that occurs is drawn from exactly the 22 designators above. D is reserved for Decimal Input-Output, M for Matrix; I/O/Q are absent (presumably to avoid confusion with 1 and 0).",
+      "tag": "verified",
+      "citation": "book1.txt + book2-3-4.txt + book5-6.txt, whole-corpus token census; corroborated by the silkscreen in image_3.jpg"
+    },
+    "commonTerminals": {
+      "form": "<section digit>com",
+      "quote": "(The notation for a connection to a common terminal is \"1com\", \"2com,\" etc.)",
+      "citation": "Book III (book2-3-4.pdf), printed p.58",
+      "tag": "verified"
+    },
+    "matrixTerminals": {
+      "form": "M<number 1-11>[t|b]",
+      "quote": "The matrix terminals are designated by: M = matrix / 6 = terminal number (1 to 11) / t = top or \"b\" for bottom  . . . for example M6t",
+      "citation": "Book I, p.25",
+      "tag": "verified",
+      "notes": "Cells 1-9 carry the t/b suffix. M10 and M11 are single terminals and are written bare (M10, M11) throughout Books V and VI \u2014 no M10t/M10b occurs. Two further terminals in the same block are written M+ and M- (see matrixPowerTerminals)."
+    },
+    "decimalTerminals": {
+      "form": "D<number>",
+      "quote": "The contacts are designated by: D = Decimal Input-Output / 8 = terminal number (1 to 19) . . . for example D8. The contact on the wiper arm is referred to as \"D16.\"",
+      "citation": "Book I, p.20",
+      "tag": "verified",
+      "discrepancy": "The manual writes '(1 to 19)' but a D0 terminal demonstrably exists: the panel dial is silkscreened 0..15 with a hole pair under position 0 (image_3.jpg), the under-panel drawing on the same page p.20 shows a contact at 0, and D0 is used 13 times in program listings across Books IV, V and VI (e.g. 'D15/D0', '5N/D0', '1J/D0', '5Y/D0'). Treat the real range as D0..D19 (20 terminals)."
+    },
+    "wiringShorthand": {
+      "quote": "A WIRING SHORTHAND is used to indicate connections which are to be made on the computer by simply writing the two terminal designations with a slash in between. In Experiment 1, terminal 1+ was connected to terminal 1A. This is written in shorthand 1+/1A",
+      "citation": "Book I, p.5",
+      "tag": "verified"
+    }
+  },
+  "holesPerTerminal": {
+    "generalRule": {
+      "quote": "Each terminal has two holes side-by-side which are connected together underneath the computer panel. Programming wires may be plugged into either (or both) holes of the terminal.",
+      "citation": "Book I, p.4",
+      "tag": "verified"
+    },
+    "exceptions": [
+      {
+        "terminal": "1com..6com (COMMON)",
+        "holes": 4,
+        "quote": "The terminals with four holes labeled COMMON may be used when more than two connections must be made to a set of terminals on the computer panel.",
+        "citation": "Book I, p.25; hole count confirmed visually in image_3.jpg (four holes inside one printed oval per section)",
+        "tag": "verified"
+      },
+      {
+        "terminal": "M10 and M11",
+        "holes": 6,
+        "evidence": "image_3.jpg crop: each is drawn as two columns of three holes joined by a printed rectangular loop (top bar, both side rails, bottom bar) \u2014 one net. Book I p.25: 'The lines between the terminals indicate terminals which are connected together to form a single contact.' Book V p.22 instructs 'connect four short programming wires to M10' and separately four to M11, and later 'all eight wires to M10 and M11', which requires >=4 holes each.",
+        "citation": "image_3.jpg (matrix crop); Book I p.25; Book V printed p.22",
+        "tag": "verified"
+      }
+    ],
+    "allOtherTerminals": {
+      "holes": 2,
+      "printedCue": "the two holes of one terminal sit inside a single printed oval / are joined by a short printed bar; separate terminals are separated by a gap",
+      "citation": "image_3.jpg (all bands); Book I p.4",
+      "tag": "verified"
+    }
+  },
+  "panelGeometry": {
+    "tag": "verified",
+    "citation": "image_3.jpg, whole-panel read plus crops",
+    "leftBlock": "six identical numbered sections, 1 at the left through 6 at the right, arranged in six horizontal bands",
+    "bands": [
+      {
+        "band": "BINARY OUTPUT",
+        "perSectionLeftToRight": [
+          "A (2 holes)",
+          "the incandescent lamp",
+          "B (2 holes)"
+        ],
+        "extra": "the section number 1..6 is printed above the lamp"
+      },
+      {
+        "band": "power strip (light-blue stripe, unlabelled except for the + and - glyphs)",
+        "perSectionLeftToRight": [
+          "+ (2 holes)",
+          "- (2 holes)"
+        ],
+        "extra": "the same blue stripe continues into the right-hand column and carries one further + and one further - (the M+ / M- pair) above the MATRIX, and ends at the word POWER"
+      },
+      {
+        "band": "STORAGE/PROCESSING",
+        "rows": [
+          "row 1 (top): C (2 holes), E (2 holes), F (2 holes); a printed bracket labelled LIGHT spans C..E and a printed bracket labelled COIL spans E..F",
+          "row 2: the relay itself \u2014 round white coil on the left, contact stack on the right, plastic crossbar",
+          "row 3: the relay indicator lamp (a red lamp, one per section)",
+          "row 4: G, H, J \u2014 with N.O. printed above G, ARM above H, N.C. above J",
+          "row 5: K, L, N \u2014 with the same N.O./ARM/N.C. sense (labels printed above the row-4 holes serve both rows)"
+        ]
+      },
+      {
+        "band": "COMMON / CAPACITOR strip (light-blue stripe)",
+        "perSectionLeftToRight": [
+          "COMMON (4 holes, one oval)",
+          "CAPACITOR (2 holes, one oval)"
+        ]
+      },
+      {
+        "band": "SECONDARY STORAGE",
+        "rows": [
+          "row 1: R (2 holes), S (2 holes), T (2 holes); a left-arrow is printed above R, ARM above S, a right-arrow above T",
+          "row 2: U (2 holes), V (2 holes), W (2 holes), aligned under R, S, T respectively",
+          "row 3: the red slide switch, flanked by two cream rivets (not jacks)"
+        ]
+      },
+      {
+        "band": "BINARY INPUT",
+        "rows": [
+          "row 1: X (2 holes), Y (2 holes), Z (2 holes); N.O. printed above X, ARM above Y, N.C. above Z",
+          "row 2: the red pushbutton"
+        ]
+      }
+    ],
+    "rightColumnTopToBottom": [
+      "logo plate: 'Minivac 601' with the legend 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U.S.A. Patents applied for.'",
+      "continuation of the blue power stripe carrying M+ and M-, and the word POWER at the far right",
+      "MATRIX block (left) beside the POWER block (right: circuit-breaker button, ON/OFF slide switch, red power lamp above the CIRCUIT BREAKER legend). The POWER block contains NO jacks.",
+      "DECIMAL INPUT-OUTPUT block, full width of the right column"
+    ]
+  },
+  "terminalInventory": {
+    "perSection": {
+      "note": "n = 1..6. Every entry below exists six times, once per section.",
+      "terminals": [
+        {
+          "label": "nA",
+          "block": "BINARY OUTPUT",
+          "holes": 2,
+          "connectsTo": "one side of binary-output lamp n",
+          "tag": "verified",
+          "citation": "Book I p.6: 'The terminals labeled A and B on either side of each light are used to supply the electrical power to turn the light ON.' Panel: A printed under the left hole pair, B under the right hole pair, lamp between them.",
+          "pinnedByExperiment": "Book I Experiment 2 (p.7): 1+/1A and 1-/1B lights lamp 1."
+        },
+        {
+          "label": "nB",
+          "block": "BINARY OUTPUT",
+          "holes": 2,
+          "connectsTo": "the other side of binary-output lamp n",
+          "tag": "verified",
+          "citation": "Book I p.6-7; image_3.jpg"
+        },
+        {
+          "label": "n+",
+          "block": "power strip",
+          "holes": 2,
+          "connectsTo": "the +12 V DC rail of the internal power supply (bussed to every other + terminal, including M+)",
+          "tag": "verified",
+          "citation": "Book I p.3: 'This low voltage DC is used to power MINIVAC and is connected to all terminals + and - on the power panel.'",
+          "behaviouralConfirmation": "Programs throughout Books I-VI freely power a section-1 circuit from 6+ (e.g. Book I Exp.11 '6+/D16', Exp.12 '6+/5Y')."
+        },
+        {
+          "label": "n-",
+          "block": "power strip",
+          "holes": 2,
+          "connectsTo": "the negative / return rail of the internal 12 V DC supply (bussed to every other - terminal, including M-)",
+          "tag": "verified",
+          "citation": "Book I p.3; same behavioural confirmation"
+        },
+        {
+          "label": "nC",
+          "block": "STORAGE/PROCESSING (coil group, above the relay)",
+          "holes": 2,
+          "connectsTo": "the far side of relay-n INDICATOR LAMP; the lamp's other side lands on nE",
+          "tag": "verified",
+          "citation": "Book I p.14 schematic, drawn literally as C --(LIGHT)-- E --(RELAY COIL)-- F; and the panel bracket 'LIGHT' spanning C..E in image_3.jpg",
+          "pinnedByExperiment": "Book I p.14: 'When the relay coil is energized by connecting power to C and F, the light directly below the relay comes ON because the light is wired in series with the relay coil.' Book I Exp.7 step 6 (p.15): removing 1X/1E and adding 1X/1C makes the coil indicator lamp light."
+        },
+        {
+          "label": "nE",
+          "block": "STORAGE/PROCESSING (coil group)",
+          "holes": 2,
+          "connectsTo": "the junction of relay-n indicator lamp and relay-n COIL (lamp on the C side, coil on the F side)",
+          "tag": "verified",
+          "citation": "Book I p.14 schematic + text"
+        },
+        {
+          "label": "nF",
+          "block": "STORAGE/PROCESSING (coil group)",
+          "holes": 2,
+          "connectsTo": "the far end of relay-n COIL",
+          "tag": "verified",
+          "citation": "Book I p.14: 'If the relay coil is energized by supplying power through contacts E and F, the light beneath the relay will NOT come on because there is no current flowing through the light.'"
+        },
+        {
+          "label": "nG",
+          "block": "STORAGE/PROCESSING (contact group, below the relay, upper row)",
+          "holes": 2,
+          "connectsTo": "NORMALLY-OPEN fixed contact of relay-n contact set 1 (the set farther from the operator)",
+          "tag": "verified",
+          "citation": "Book I p.12 + p.14; panel silkscreen 'N.O.' above G"
+        },
+        {
+          "label": "nH",
+          "block": "STORAGE/PROCESSING (contact group, upper row)",
+          "holes": 2,
+          "connectsTo": "the ARM (movable common contact) of relay-n contact set 1",
+          "tag": "verified",
+          "citation": "Book I p.12; panel silkscreen 'ARM' above H"
+        },
+        {
+          "label": "nJ",
+          "block": "STORAGE/PROCESSING (contact group, upper row)",
+          "holes": 2,
+          "connectsTo": "NORMALLY-CLOSED fixed contact of relay-n contact set 1",
+          "tag": "verified",
+          "citation": "Book I p.12; panel silkscreen 'N.C.' above J"
+        },
+        {
+          "label": "nK",
+          "block": "STORAGE/PROCESSING (contact group, lower row)",
+          "holes": 2,
+          "connectsTo": "NORMALLY-OPEN fixed contact of relay-n contact set 2 (the set nearer the operator)",
+          "tag": "verified",
+          "citation": "Book I p.12: 'The set of contacts closer to the operator is connected to the set of terminals closer to the operator.'"
+        },
+        {
+          "label": "nL",
+          "block": "STORAGE/PROCESSING (contact group, lower row)",
+          "holes": 2,
+          "connectsTo": "the ARM of relay-n contact set 2; mechanically ganged to nH's arm by the plastic crossbar",
+          "tag": "verified",
+          "citation": "Book I p.12: 'The two arms (H & L) are connected together. Both contacts always close together.'"
+        },
+        {
+          "label": "nN",
+          "block": "STORAGE/PROCESSING (contact group, lower row)",
+          "holes": 2,
+          "connectsTo": "NORMALLY-CLOSED fixed contact of relay-n contact set 2",
+          "tag": "verified",
+          "citation": "Book I p.12"
+        },
+        {
+          "label": "ncom",
+          "block": "COMMON/CAPACITOR strip",
+          "holes": 4,
+          "connectsTo": "nothing \u2014 a free 4-hole junction block; the four holes are common to each other only",
+          "tag": "verified",
+          "citation": "Book I p.25: 'The terminals with four holes labeled COMMON may be used when more than two connections must be made ... but are not connected to any other component.'",
+          "notes": "See internalBusses.commonTerminalsAreIndependent for the resolution of the manual's ambiguous sentence."
+        },
+        {
+          "label": "CAPACITOR (no shorthand designator is ever printed or used)",
+          "block": "COMMON/CAPACITOR strip",
+          "holes": 2,
+          "connectsTo": "NOT SETTLED BY THE SOURCES",
+          "tag": "verified (existence, position, hole count) / not settled (electrical identity)",
+          "citation": "Book I p.25: 'The terminals marked \"CAPACITOR\" are used when auxiliary components are added to the MINIVAC 601 in advanced programs. At present these terminals may be ignored.' Panel: one 2-hole CAPACITOR oval per section, immediately right of that section's COMMON.",
+          "notes": "No shorthand designator for these jacks appears anywhere in Books I-VI, and no program in any of the six books connects to them. Whole-corpus token census found zero uses."
+        },
+        {
+          "label": "nR",
+          "block": "SECONDARY STORAGE",
+          "holes": 2,
+          "connectsTo": "the LEFT fixed contact of slide-switch-n contact set 1 (silkscreened with a left arrow)",
+          "tag": "verified",
+          "citation": "Book I p.18: 'When the switch is pushed to the left, separate electrical connections are made between terminals S and R and between terminals V and U.'"
+        },
+        {
+          "label": "nS",
+          "block": "SECONDARY STORAGE",
+          "holes": 2,
+          "connectsTo": "the ARM of slide-switch-n contact set 1 (silkscreened ARM)",
+          "tag": "verified",
+          "citation": "Book I p.18; panel silkscreen"
+        },
+        {
+          "label": "nT",
+          "block": "SECONDARY STORAGE",
+          "holes": 2,
+          "connectsTo": "the RIGHT fixed contact of slide-switch-n contact set 1 (silkscreened with a right arrow)",
+          "tag": "verified",
+          "citation": "Book I p.18: 'When the switch is pushed to the right ... between terminals S and T and between terminals V and W.'"
+        },
+        {
+          "label": "nU",
+          "block": "SECONDARY STORAGE",
+          "holes": 2,
+          "connectsTo": "the LEFT fixed contact of slide-switch-n contact set 2",
+          "tag": "verified",
+          "citation": "Book I p.18"
+        },
+        {
+          "label": "nV",
+          "block": "SECONDARY STORAGE",
+          "holes": 2,
+          "connectsTo": "the ARM of slide-switch-n contact set 2; ganged with the nS arm",
+          "tag": "verified",
+          "citation": "Book I p.18: 'Each switch has two sets of contacts which open and close together.'"
+        },
+        {
+          "label": "nW",
+          "block": "SECONDARY STORAGE",
+          "holes": 2,
+          "connectsTo": "the RIGHT fixed contact of slide-switch-n contact set 2",
+          "tag": "verified",
+          "citation": "Book I p.18"
+        },
+        {
+          "label": "nX",
+          "block": "BINARY INPUT",
+          "holes": 2,
+          "connectsTo": "the NORMALLY-OPEN fixed contact of pushbutton n",
+          "tag": "verified",
+          "citation": "Book I p.8: 'When the pushbutton is DOWN, the electrical connection is switched to terminals Y and X.' Panel silkscreen 'N.O.' above X."
+        },
+        {
+          "label": "nY",
+          "block": "BINARY INPUT",
+          "holes": 2,
+          "connectsTo": "the ARM / common contact of pushbutton n",
+          "tag": "verified",
+          "citation": "Book I p.8: 'Terminal Y is connected to the \"common\" contact and is always used when the pushbutton is connected in a circuit.'"
+        },
+        {
+          "label": "nZ",
+          "block": "BINARY INPUT",
+          "holes": 2,
+          "connectsTo": "the NORMALLY-CLOSED fixed contact of pushbutton n",
+          "tag": "verified",
+          "citation": "Book I p.8: 'When the pushbutton is UP, an electrical connection is made between terminals Y and Z.'"
+        }
+      ],
+      "countPerSection": {
+        "terminals": 24,
+        "holes": 50,
+        "arithmetic": "23 two-hole terminals (A,B,+,-,C,E,F,G,H,J,K,L,N,CAPACITOR,R,S,T,U,V,W,X,Y,Z is 23 including CAPACITOR) = 46 holes, plus the 4-hole COMMON = 50",
+        "tag": "verified"
+      }
+    },
+    "sharedRightColumn": [
+      {
+        "label": "M+",
+        "block": "power strip, above MATRIX",
+        "holes": 2,
+        "connectsTo": "the +12 V rail \u2014 same node as 1+..6+",
+        "tag": "verified",
+        "citation": "image_3.jpg: a '+' terminal in the blue power stripe directly above the MATRIX block; Book I p.25 figure (the perspective drawing of the panel corner) shows the same '+' and '-' pair between the logo and the matrix grid; Book I p.3 states the supply 'is connected to all terminals + and - on the power panel'.",
+        "behaviouralConfirmation": "Used as a supply tap throughout: 'D16/M+' (Book IV p.? and Book V/VI, 12 occurrences), 'M+/D16' (Book I Answer 19), 'M10/M+' (Book V numeral/shape recognition), and Book V p.35 note '* Connection can be made between M+ and any point on the rotary switch dial.'"
+      },
+      {
+        "label": "M-",
+        "block": "power strip, above MATRIX",
+        "holes": 2,
+        "connectsTo": "the negative rail \u2014 same node as 1-..6-",
+        "tag": "verified",
+        "citation": "image_3.jpg; Book I p.3; used as 'M-/D18' and 'D18/M-' to feed the motor RUN terminal in Book I Answers 13, 14, 15, 18 and in Book V p.22"
+      },
+      {
+        "label": "M1t..M9t",
+        "block": "MATRIX (top terminal of each of the nine tic-tac-toe cells)",
+        "holes": 2,
+        "connectsTo": "nothing \u2014 free junction point",
+        "tag": "verified",
+        "citation": "Book I p.25: 'The terminals are used as junction points, and there are no connections to the terminals below the panel.' Panel: each cell shows an upper hole-pair joined by a printed bar and a lower hole-pair joined by a printed bar, with the cell number between them."
+      },
+      {
+        "label": "M1b..M9b",
+        "block": "MATRIX (bottom terminal of each cell)",
+        "holes": 2,
+        "connectsTo": "nothing \u2014 free junction point, electrically separate from the 't' terminal of the same cell (no printed line joins them)",
+        "tag": "verified",
+        "citation": "Book I p.25; image_3.jpg matrix crop; both are used independently in the Book VI tic-tac-toe program (e.g. 6H/M1t and 4H/M1b in the same listing)"
+      },
+      {
+        "label": "M10",
+        "block": "MATRIX, immediately LEFT of the 3x3 grid, at the middle row",
+        "holes": 6,
+        "connectsTo": "nothing \u2014 a free 6-hole junction block; all six holes are one net (a printed rectangular loop joins them)",
+        "tag": "verified",
+        "citation": "image_3.jpg crop; Book I p.25 ('lines between the terminals indicate terminals which are connected together to form a single contact'); Book V p.22 'connect four short programming wires to M10'"
+      },
+      {
+        "label": "M11",
+        "block": "MATRIX, immediately RIGHT of the 3x3 grid, at the middle row",
+        "holes": 6,
+        "connectsTo": "nothing \u2014 a free 6-hole junction block; all six holes are one net; NOT internally joined to M10 (Book V p.22 has to add an explicit 'M10/M11' wire)",
+        "tag": "verified",
+        "citation": "image_3.jpg crop; Book V printed p.22 program line 'M10/M11'"
+      },
+      {
+        "label": "D0 .. D15",
+        "block": "DECIMAL INPUT-OUTPUT, the ring of 16 fixed contacts around the dial",
+        "holes": 2,
+        "connectsTo": "the fixed contact for dial position N; the wiper (D16) bridges DN to D16 while the pointer points at N",
+        "tag": "verified",
+        "citation": "Book I p.20: 'For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.' image_3.jpg: dial silkscreened 0 at top then 1..15 clockwise, one two-hole pair per sector on the outer ring.",
+        "manualErratum": "Book I p.20 says the terminal number runs '(1 to 19)', but the D0 sector and its jack pair are plainly on the panel, the under-panel drawing on the same page shows a 0 contact, and D0 is wired in 13 program lines across Books IV-VI."
+      },
+      {
+        "label": "D16 (silkscreened '16' with 'ARM' below it)",
+        "block": "DECIMAL INPUT-OUTPUT, left-hand column of jacks",
+        "holes": 2,
+        "connectsTo": "the rotary wiper arm (turns with the pointer knob)",
+        "tag": "verified",
+        "citation": "Book I p.20: 'The contact on the wiper arm is referred to as \"D16.\"' and the under-panel drawing captioned 'Wiper Arm Connected to D16'; panel silkscreen '16 / ARM'."
+      },
+      {
+        "label": "D17 (silkscreened '17'; a printed bracket labelled RUN spans 17 and 18)",
+        "block": "DECIMAL INPUT-OUTPUT, left-hand column",
+        "holes": 2,
+        "connectsTo": "one end of the motor-drive circuit; per the Experiment 12 schematic, D17 lands on one end of a series current-limiting RESISTOR whose other end is the D19 node",
+        "tag": "verified",
+        "citation": "Book I p.22: 'Power must be supplied to terminals 17 and 18 (run) to operate the motor drive.' Book I p.23 Experiment 12 circuit diagram."
+      },
+      {
+        "label": "D18 (silkscreened '18'; RUN bracket above, STOP bracket below)",
+        "block": "DECIMAL INPUT-OUTPUT, left-hand column",
+        "holes": 2,
+        "connectsTo": "the other end of the motor-drive circuit; per the Experiment 12 schematic, D18 lands directly on one motor terminal",
+        "tag": "verified",
+        "citation": "Book I p.22, p.23"
+      },
+      {
+        "label": "D19 (silkscreened '19'; a printed bracket labelled STOP spans 18 and 19)",
+        "block": "DECIMAL INPUT-OUTPUT, left-hand column",
+        "holes": 2,
+        "connectsTo": "the junction between the motor and the series resistor",
+        "tag": "verified",
+        "citation": "Book I p.22: 'A short circuit may be connected across terminals 18 and 19 (stop) to halt the motor drive.' Book I p.23 diagram; Book I p.22 'The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.'"
+      }
+    ],
+    "totals": {
+      "terminals": 186,
+      "holes": 392,
+      "breakdown": "6 sections x 24 terminals = 144 terminals / 300 holes; right column: M+ , M- (2), M1t..M9t + M1b..M9b (18), M10, M11 (2), D0..D19 (20) = 42 terminals; right-column holes: 4 + 36 + 12 + 40 = 92",
+      "tag": "unverified",
+      "note": "Arithmetic by this agent over the verified per-item counts above; the manuals never give a total."
+    }
+  },
+  "internalBusses": [
+    {
+      "bus": "PLUS rail",
+      "members": [
+        "1+",
+        "2+",
+        "3+",
+        "4+",
+        "5+",
+        "6+",
+        "M+"
+      ],
+      "tag": "verified",
+      "citation": "Book I p.3: 'This low voltage DC is used to power MINIVAC and is connected to all terminals + and - on the power panel.' All seven '+' terminals sit on the one continuous blue power stripe in image_3.jpg. Programs mix them freely.",
+      "caveat": "The manual's sentence names 'all terminals + and -' collectively; it does not separately enumerate M+. The inclusion of M+ in the bus rests on (a) its position in the same power stripe and (b) its use as a supply tap in programs (e.g. 'D16/M+' feeding the dial, 'M-/D18' feeding the motor). No manual sentence says 'M+ is the plus rail' in so many words."
+    },
+    {
+      "bus": "MINUS rail",
+      "members": [
+        "1-",
+        "2-",
+        "3-",
+        "4-",
+        "5-",
+        "6-",
+        "M-"
+      ],
+      "tag": "verified",
+      "citation": "same as PLUS rail"
+    },
+    {
+      "bus": "relay arm gang (per relay n)",
+      "members": [
+        "nH arm",
+        "nL arm"
+      ],
+      "mechanicalNotElectrical": true,
+      "tag": "verified",
+      "citation": "Book I p.12: 'The two arms (H & L) are connected together. Both contacts always close together. ... The two relay arms are connected together mechanically with a plastic crossbar.' The manual's 'connected together' here is explicitly MECHANICAL (crossbar), not an electrical bus \u2014 the two contact sets are described as making 'separate electrical connections'."
+    },
+    {
+      "bus": "slide-switch arm gang (per switch n)",
+      "members": [
+        "nS arm",
+        "nV arm"
+      ],
+      "mechanicalNotElectrical": true,
+      "tag": "verified",
+      "citation": "Book I p.18: 'Each switch has two sets of contacts which open and close together', and the two sets make 'separate electrical connections'."
+    },
+    {
+      "bus": "COMMON terminals",
+      "commonTerminalsAreIndependent": true,
+      "tag": "verified",
+      "citation": "Book VI printed p.51-53 and Book III printed p.58",
+      "reasoning": "Book I p.25 reads 'The four COMMON terminals are connected together, but are not connected to any other component.' Taken with the preceding sentence ('The terminals with four holes labeled COMMON') and the panel \u2014 which shows SIX four-hole COMMON terminals, one per section \u2014 the sentence means the four HOLES of each COMMON terminal are common to one another. It cannot mean the six COMMONs are bussed: the Book VI Secret Code program uses 1com..6com as six independent nodes ('Be sure though, that there are connections to each of the six common terminals', printed p.51) and the Electronic Maze chains them ('1com/2L', '2com/3L', '3com/4L', '4com/5L', '5com/6L', printed p.53) \u2014 a circuit that would collapse if they were bussed. Book III p.58 likewise treats 3com as a private extra contact node for light 3."
+    },
+    {
+      "bus": "MATRIX",
+      "note": "No matrix terminal is bussed to anything. Book I p.25: 'The terminals are used as junction points, and there are no connections to the terminals below the panel.' Within one terminal, the printed lines mark which holes are one contact: 2 holes for M1t..M9t and M1b..M9b, 6 holes for M10 and M11.",
+      "tag": "verified"
+    }
+  ],
+  "componentNetlist": {
+    "note": "How the simulator should wire each component. n = 1..6.",
+    "items": [
+      {
+        "component": "binary output lamp n",
+        "terminals": [
+          "nA",
+          "nB"
+        ],
+        "topology": "lamp between nA and nB, nothing else",
+        "tag": "verified",
+        "citation": "Book I p.6, p.7"
+      },
+      {
+        "component": "relay n indicator lamp",
+        "terminals": [
+          "nC",
+          "nE"
+        ],
+        "topology": "lamp between nC and nE",
+        "tag": "verified",
+        "citation": "Book I p.14 schematic"
+      },
+      {
+        "component": "relay n coil",
+        "terminals": [
+          "nE",
+          "nF"
+        ],
+        "topology": "coil between nE and nF; the coil and the indicator lamp are in series across nC..nF",
+        "tag": "verified",
+        "citation": "Book I p.14 schematic and text"
+      },
+      {
+        "component": "relay n contacts",
+        "terminals": [
+          "nG",
+          "nH",
+          "nJ",
+          "nK",
+          "nL",
+          "nN"
+        ],
+        "topology": "DPDT: set 1 arm nH selects nJ (de-energised) or nG (energised); set 2 arm nL selects nN (de-energised) or nK (energised); both sets switch together",
+        "tag": "verified",
+        "citation": "Book I p.12: 'When the relay is OFF, separate electrical connections are made between terminals H and J and terminals L and N. When the relay is ON, separate electrical connections are made between terminals H and G and terminals L and K.'"
+      },
+      {
+        "component": "pushbutton n",
+        "terminals": [
+          "nX",
+          "nY",
+          "nZ"
+        ],
+        "topology": "SPDT, break-before-make: arm nY selects nZ (button up) or nX (button down)",
+        "tag": "verified",
+        "citation": "Book I p.8-9; the break-before-make property is pinned by Experiment 3 step 8 (p.9), which has the operator find the intermediate position where both lamps are off: 'The switch breaks one connection before it makes the other connection. The pushbuttons are thus called \"break-before-make\" switches.'"
+      },
+      {
+        "component": "slide switch n",
+        "terminals": [
+          "nR",
+          "nS",
+          "nT",
+          "nU",
+          "nV",
+          "nW"
+        ],
+        "topology": "DPDT: arm nS selects nR (left) or nT (right); arm nV selects nU (left) or nW (right); both sets switch together",
+        "tag": "verified",
+        "citation": "Book I p.18; pinned by Experiment 10 (p.19), 1A/1R + 1S/1+ + 2A/1W + 1V/1S lights lamp 1 with the switch left and lamp 2 with it right"
+      },
+      {
+        "component": "rotary switch (dial)",
+        "terminals": [
+          "D0..D15",
+          "D16"
+        ],
+        "topology": "single-pole 16-position, break-before-make: wiper D16 shorts to DN when the pointer is on N; no connection between the fixed contacts",
+        "tag": "verified",
+        "citation": "Book I p.20; break-before-make pinned by Experiment 11 step 3 (p.21): 'Notice that light 5 goes OFF before light 6 comes ON. ... the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact.'"
+      },
+      {
+        "component": "drive motor + current-limiting resistor",
+        "terminals": [
+          "D17",
+          "D18",
+          "D19"
+        ],
+        "topology": "Read off the Experiment 12 circuit diagram (Book I p.23): a resistor between D17 and the D19 node, and the motor between the D19 node and D18. So RUN = supply across D17/D18 (current flows D17 -> resistor -> D19 node -> motor -> D18); STOP = a short across D18/D19, which shunts the motor and leaves only the resistor across the supply.",
+        "tag": "verified (as a reading of the diagram)",
+        "interpretationTag": "likely",
+        "citation": "Book I p.22 text and p.23 Experiment 12 circuit diagram",
+        "caveat": "Book I p.22 says 'The electrical resistors used with the motor drive' (PLURAL) while the p.23 diagram shows a single zigzag. Whether there is a second resistor elsewhere in the motor branch is not settled here; the motor/rotary topic agent should check the Experiment 14 diagram (Book I p.24) and Book V motor circuits."
+      },
+      {
+        "component": "COMMON block n",
+        "terminals": [
+          "ncom"
+        ],
+        "topology": "isolated 4-hole junction; no internal component",
+        "tag": "verified",
+        "citation": "Book I p.25"
+      },
+      {
+        "component": "CAPACITOR block n",
+        "terminals": [
+          "(unlabelled 2-hole jack marked CAPACITOR)"
+        ],
+        "topology": "NOT SETTLED",
+        "tag": "unverified",
+        "citation": "Book I p.25 only says they are 'used when auxiliary components are added ... At present these terminals may be ignored.'"
+      },
+      {
+        "component": "matrix junctions",
+        "terminals": [
+          "M1t..M9t",
+          "M1b..M9b",
+          "M10",
+          "M11"
+        ],
+        "topology": "isolated junction blocks, nothing behind the panel",
+        "tag": "verified",
+        "citation": "Book I p.25"
+      },
+      {
+        "component": "power supply",
+        "terminals": [
+          "1+..6+",
+          "M+",
+          "1-..6-",
+          "M-"
+        ],
+        "topology": "12 V DC from a 110 V AC line transformer; a resettable circuit breaker in series; a POWER ON/OFF switch; a red power lamp. None of these four controls has a jack.",
+        "tag": "verified",
+        "citation": "Book I p.3 ('The power supply converts the 110-volt AC power ... to a safe working level of 12 volts DC'); image_3.jpg POWER block crop shows only the breaker button, the ON/OFF slide switch and the indicator lamp \u2014 no jacks."
+      }
+    ]
+  },
+  "experimentsThatPinDownWiringNotOtherwiseStated": [
+    {
+      "question": "Is the relay indicator lamp a separate lamp from the binary output lamp of the same section?",
+      "answer": "Yes. Six 'relay lights' / 'relay indicator lights' exist, one under each relay, distinct from the six BINARY OUTPUT lamps.",
+      "tag": "verified",
+      "evidence": "Panel photograph: a red lamp sits between the relay body and the G/H/J row in every one of the six STORAGE/PROCESSING sections. Book I p.14 drawing labels it 'Light'. Book I Experiment 7 (p.15) uses binary output lamps 1 and 2 on the relay-1 contacts AND separately lights the 'coil indicator lamp' by moving 1X/1E to 1X/1C. Books II-VI refer to 'relay light 1'..'relay light 6' as a distinct display (Book II printed p.6-7, the six-bit memory demonstration: 'Relay light 1 comes ON to indicate that a \"one\" is ...'; Book III printed p.58-59, relay lights 1, 2 and 3 carry the answer; Book V printed p.7-8, the speedometer reads out on the relay indicator lights)."
+    },
+    {
+      "question": "Which of nC / nE / nF is the lamp side and which is the bare coil side?",
+      "answer": "nC-nE is the lamp, nE-nF is the coil.",
+      "tag": "verified",
+      "evidence": "Book I p.14 gives an explicit schematic (C -- LIGHT -- E -- RELAY COIL -- F) AND the behavioural test: power across C and F lights the lamp and pulls the relay; power across E and F pulls the relay with the lamp dark. The panel brackets (LIGHT over C..E, COIL over E..F) agree."
+    },
+    {
+      "question": "Are the six COMMON terminals bussed to one another?",
+      "answer": "No \u2014 they are six independent 4-hole junctions.",
+      "tag": "verified",
+      "evidence": "Book VI Secret Code (printed p.51): 'Be sure though, that there are connections to each of the six common terminals', and the six starred lines 2T/1com, 6W/2com, 4T/3com, 2W/4com, 6T/5com, 4W/6com each land on a different com. Electronic Maze (printed p.53) chains 1com/2L .. 5com/6L. Neither circuit works if the coms are bussed."
+    },
+    {
+      "question": "Do M+ and M- exist, and are they on the power rails?",
+      "answer": "They exist as the seventh + / - pair, in the blue power stripe above the MATRIX. Their identity as rail taps is confirmed behaviourally.",
+      "tag": "verified",
+      "evidence": "image_3.jpg and the Book I p.25 perspective drawing show them. Book I Answer 13-15/18 use 'M-/D18' where the same circuits elsewhere use '6-/D18' for the same purpose (compare Book I Experiment 12 p.23: '6-/D18'). Book V p.35 footnote: 'Connection can be made between M+ and any point on the rotary switch dial.'"
+    },
+    {
+      "question": "Does D0 exist despite the manual saying '(1 to 19)'?",
+      "answer": "Yes.",
+      "tag": "verified",
+      "evidence": "Panel dial sector '0' has its own 2-hole jack; the Book I p.20 under-panel drawing shows a contact at 0; D0 appears in 13 program lines, e.g. Book V p.22 '1J/D0', Book VI 'D15/D0', 'D10/D0', Book I Answer 18 '5Y/D0'."
+    }
+  ],
+  "notSettledBySources": [
+    {
+      "question": "What are the per-section CAPACITOR jacks wired to internally?",
+      "whatIsKnown": "Two holes per section, in the blue COMMON/CAPACITOR stripe, immediately right of that section's COMMON. Book I p.25 says only that they are 'used when auxiliary components are added to the MINIVAC 601 in advanced programs' and 'may be ignored'. No shorthand designator for them appears anywhere in Books I-VI and no program in the six books connects to them.",
+      "whatWouldSettleIt": "An under-panel photograph or the SDC service/assembly documentation for a real 601; or an SDC accessory catalogue describing the 'auxiliary components'. A high-resolution shot of the underside of the COMMON/CAPACITOR stripe would show whether the two lugs are bare or land on an installed capacitor."
+    },
+    {
+      "question": "Is there one resistor or two in the motor branch, and exactly where do they sit?",
+      "whatIsKnown": "Book I p.22 uses the plural 'resistors'; the Book I p.23 Experiment 12 diagram shows one zigzag, between D17 and the D19 node, with the motor between D19 and D18.",
+      "whatWouldSettleIt": "The Experiment 14 diagram (Book I p.24) and the Book V motor circuits; failing that, a measured 601."
+    },
+    {
+      "question": "Do the two contact sets of a relay (G/H/J and K/L/N) share any electrical connection?",
+      "whatIsKnown": "Book I p.12 says the sets are mechanically ganged by a plastic crossbar and make 'separate electrical connections'. That phrasing implies electrical isolation, but the manual never says 'the arms are electrically isolated' outright.",
+      "whatWouldSettleIt": "Any program that would short if H and L were common. (Not searched exhaustively here \u2014 worth a pass over the Book VI program listings.)"
+    },
+    {
+      "question": "The exact millimetre geometry (hole pitch, band heights, jack coordinates).",
+      "whatIsKnown": "Relative order and grouping are settled by the photograph (recorded under panelGeometry). Absolute dimensions are not.",
+      "whatWouldSettleIt": "A scaled, rectified, orthographic photograph or a measured panel."
+    },
+    {
+      "question": "Whether the printed dial position '0' has a detent/contact identical to 1..15 or is a home position with a wider contact.",
+      "whatIsKnown": "The under-panel drawing (Book I p.20) draws position 0 as a small rectangle while 1..15 are drawn as dot pairs \u2014 this may be draughtsmanship rather than a real difference.",
+      "whatWouldSettleIt": "A photograph of the underside of the rotary switch deck."
+    }
+  ],
+  "discrepanciesReportedNotResolved": [
+    {
+      "name": "Company address: Watertown vs Cambridge",
+      "primaryA": "Book I copyright page: 'Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'; and Book I back cover (p.32 verso): 'SCIENTIFIC DEVELOPMENT CORPORATION / 372 Main Street, Watertown, Massachusetts'. Book V-VI copyright page reads the same per the task brief.",
+      "primaryB": "Panel legend under the 'Minivac 601' logo in image_3.jpg, read at 5x: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U.S.A. Patents applied for.'",
+      "resolution": "NOT RESOLVED \u2014 both are primary. Recorded as-is.",
+      "tag": "verified (both readings)"
+    },
+    {
+      "name": "Decimal terminal range: '(1 to 19)' vs D0..D19",
+      "primaryA": "Book I p.20: '8 = terminal number (1 to 19)'",
+      "primaryB": "Panel dial sector 0 with its own jack pair; the same page's under-panel drawing showing a 0 contact; 13 program uses of D0",
+      "resolution": "The '(1 to 19)' text is an erratum. The simulator should implement D0..D19.",
+      "tag": "verified"
+    },
+    {
+      "name": "Book I p.25 'The four COMMON terminals are connected together'",
+      "issue": "Read literally this says the COMMONs are bussed. The panel shows six COMMON terminals of four holes each, and the Book VI games require them to be independent.",
+      "resolution": "Reading: 'the four HOLES of each COMMON terminal are connected together'. Six independent 4-hole junctions.",
+      "tag": "verified"
+    }
+  ],
+  "seedsConfirmedOrRefuted": [
+    {
+      "seed": "Terminals written 1+, 1-, 1A, 1B; shorthand joins two with a slash (1+/1A); each terminal has two holes side by side",
+      "verdict": "CONFIRMED",
+      "citation": "Book I p.4, p.5",
+      "tag": "verified"
+    },
+    {
+      "seed": "Six horizontal bands: BINARY OUTPUT, +/- power strip, STORAGE/PROCESSING, COMMON/CAPACITOR strip, SECONDARY STORAGE, BINARY INPUT",
+      "verdict": "CONFIRMED",
+      "citation": "image_3.jpg",
+      "tag": "verified"
+    },
+    {
+      "seed": "Right-hand column: logo plate, MATRIX (3x3 numbered 1-2-3 / 8-9-4 / 7-6-5, plus 10 and 11 outside), POWER (circuit breaker + ON/OFF), DECIMAL INPUT-OUTPUT (16-position dial 0-15, jacks 16 ARM, 17, 18 RUN, 19 STOP)",
+      "verdict": "CONFIRMED, with two additions the seed omitted: the blue power stripe continues into the right column and carries an M+ and an M- terminal above the MATRIX; and the RUN bracket spans jacks 17-18 while the STOP bracket spans 18-19 (the seed's '18 RUN / 19 STOP' pairing of one label to one jack is not how the panel reads).",
+      "citation": "image_3.jpg matrix and decimal crops",
+      "tag": "verified"
+    },
+    {
+      "seed": "Panel legend says Cambridge while the Book V-VI copyright page says Watertown",
+      "verdict": "CONFIRMED on both sides; Book I says Watertown too",
+      "citation": "image_3.jpg logo crop; book1.txt copyright page and back cover",
+      "tag": "verified"
+    }
+  ],
+  "simulatorNotes": [
+    {
+      "note": "Electron-flow convention. Book I p.4 describes current as electrons flowing from the - terminal through the component to the + terminal. Polarity is irrelevant for lamps, relay coils and switch contacts, but it is load-bearing for the drive motor, whose direction reverses when the current through it reverses (Book I Experiment 14, p.24). Model the two rails as signed.",
+      "tag": "verified"
+    },
+    {
+      "note": "A wire plugged into either hole of a terminal reaches the same node; both holes of one terminal may be used (Book I p.4). The 4-hole COMMON and the 6-hole M10/M11 exist purely to raise the fan-out of a node.",
+      "tag": "verified"
+    },
+    {
+      "note": "A direct + to - wire with no component in between blows the circuit breaker (Book I p.3: 'A short circuit occurs when + is wired directly to - without a component in between'). The simulator should detect zero-impedance rail-to-rail paths and trip.",
+      "tag": "verified"
+    },
+    {
+      "note": "Relay contacts and pushbutton contacts are break-before-make; so is the rotary wiper. There is a real intermediate state in which neither contact is closed (Book I p.9 Exp.3 step 8; p.21 Exp.11 step 3). Circuits in the later books rely on it.",
+      "tag": "verified"
+    },
+    {
+      "note": "The relay indicator lamp is in SERIES with the coil across nC..nF. A consequence not demonstrated in the manuals: powering nC..nE alone would light the lamp without energising the coil. Tagged as inference, not as a manual statement.",
+      "tag": "unverified"
+    },
+    {
+      "note": "The lamps are also the machine's current-limiting elements: Book I p.22 says the motor resistors 'limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil'. Any electrically faithful model needs lamp resistance in the coil path.",
+      "tag": "verified"
+    }
+  ]
+}

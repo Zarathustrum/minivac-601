@@ -1,0 +1,1429 @@
+{
+  "schema": "minivac.demo-library/1",
+  "demos": [
+    {
+      "id": "IV-EXP1",
+      "title": "Original three-bit counter",
+      "category": "counter",
+      "source": {
+        "program": "IV-EXP1",
+        "locator": "Book IV printed pp.71-72 = book2-3-4.pdf PDF pp.77-78",
+        "confidence": "verified",
+        "errata": [
+          "ER-20",
+          "ER-21"
+        ],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/2E",
+        "1B/1-",
+        "1C/2C",
+        "1E/2G",
+        "1F/2F",
+        "1F/1H",
+        "1G/1+",
+        "1J/2H",
+        "1J/4K",
+        "2A/4E",
+        "2B/2-",
+        "2C/3C",
+        "2E/2J",
+        "2F/4A",
+        "3A/6E",
+        "3B/3-",
+        "3C/4C",
+        "3E/4G",
+        "3F/3H",
+        "3F/4F",
+        "3G/3+",
+        "3J/4H",
+        "3J/6K",
+        "3L/4L",
+        "3N/4H",
+        "4B/4-",
+        "4C/5C",
+        "4E/4J",
+        "4F/5A",
+        "5B/5-",
+        "5C/6C",
+        "5E/6G",
+        "5F/6F",
+        "5F/5H",
+        "5G/5+",
+        "5J/6H",
+        "5J/6X",
+        "5L/6L",
+        "5N/6H",
+        "6A/6F",
+        "6B/6-",
+        "6C/6-",
+        "6E/6J",
+        "6Y/6+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Push and release pushbutton 6 once for each count.",
+        "Read lights 4, 5, and 6 as the 4, 2, and 1 bits."
+      ],
+      "controlLabels": {
+        "button6": "Count"
+      },
+      "notice": "SDC supplied a second wiring for this counter.\n\nSDC's errata warns that Book IV's three-bit counter can strain the relays, and adds bypass paths so the relay coils receive full voltage and pull in more reliably. Both published wirings are included here.\n\nThe simulator's six relay thresholds use an unmeasured fallback. The available evidence does not establish why the physical counter was marginal, and this simulation does not claim to reproduce that cause."
+    },
+    {
+      "id": "ER-ALTCOUNTER",
+      "title": "SDC alternate three-bit counter",
+      "category": "counter",
+      "source": {
+        "program": "ER-ALTCOUNTER",
+        "locator": "errata.pdf p.2 right column",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/2E",
+        "1B/1C",
+        "1B/2B",
+        "1C/2C",
+        "1E/2G",
+        "1F/2F",
+        "1F/1H",
+        "1G/1+",
+        "1H/4A",
+        "1J/2H",
+        "2A/4E",
+        "2B/3B",
+        "2C/2-",
+        "2E/2J",
+        "2G/2N",
+        "2H/3L",
+        "2L/2-",
+        "3A/6E",
+        "3B/4B",
+        "3C/4C",
+        "3E/4G",
+        "3F/3H",
+        "3F/4F",
+        "3G/3+",
+        "3H/5A",
+        "3J/4H",
+        "3N/4N",
+        "4B/5B",
+        "4C/4-",
+        "4E/4J",
+        "4G/4N",
+        "4H/5L",
+        "4L/4-",
+        "5B/6B",
+        "5C/6C",
+        "5E/6G",
+        "5F/6F",
+        "5F/5H",
+        "5G/5+",
+        "5H/6A",
+        "5J/6H",
+        "5N/6N",
+        "6C/6-",
+        "6E/6J",
+        "6G/6N",
+        "6H/6X",
+        "6L/6-",
+        "6Y/6+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Push and release pushbutton 6 once for each count, holding it long enough for carry to propagate.",
+        "Observe lights 4, 5, and 6 after each count."
+      ],
+      "controlLabels": {
+        "button6": "Count"
+      },
+      "notice": "SDC supplied a second wiring for this counter.\n\nSDC's errata warns that Book IV's three-bit counter can strain the relays, and adds bypass paths so the relay coils receive full voltage and pull in more reliably. Both published wirings are included here.\n\nThe simulator's six relay thresholds use an unmeasured fallback. The available evidence does not establish why the physical counter was marginal, and this simulation does not claim to reproduce that cause."
+    },
+    {
+      "id": "VI-TICTACTOE",
+      "title": "Tic-Tac-Toe",
+      "category": "game",
+      "source": {
+        "program": "VI-TICTACTOE",
+        "locator": "Book VI printed pp.55-56 = book5-6.pdf PDF pp.61-62",
+        "confidence": "verified",
+        "errata": [
+          "ER-44"
+        ],
+        "fallbacks": [
+          "FALLBACK-TTT-RING-CW"
+        ]
+      },
+      "connections": [
+        "1A/1N",
+        "1B/1-",
+        "1C/2C",
+        "1F/M11",
+        "1G/2A",
+        "1H/5X",
+        "1J/2F",
+        "1L/1Z",
+        "1N/3F",
+        "1X/2H",
+        "1X/2X",
+        "1Y/2Y",
+        "1Y/2G",
+        "2B/2-",
+        "2C/3C",
+        "2E/D16",
+        "2F/2H",
+        "2G/2K",
+        "2L/D18",
+        "2N/D19",
+        "2X/3X",
+        "2Y/3Y",
+        "3C/4C",
+        "3F/4F",
+        "3G/D7",
+        "3G/4N",
+        "3H/M3b",
+        "3H/M7t",
+        "3J/3K",
+        "3K/D8",
+        "3L/M4b",
+        "3L/M8t",
+        "3N/6G",
+        "3X/4X",
+        "3Y/4Y",
+        "4C/5C",
+        "4F/5F",
+        "4G/D5",
+        "4H/M1b",
+        "4H/M5t",
+        "4J/4K",
+        "4K/D6",
+        "4L/M2b",
+        "4L/M6t",
+        "4G/5N",
+        "4Y/5Y",
+        "5C/6C",
+        "5F/6F",
+        "5G/D3",
+        "5H/M7b",
+        "5H/M3t",
+        "5J/5K",
+        "5K/D4",
+        "5L/M8b",
+        "5L/M4t",
+        "5G/6N",
+        "5Y/M10",
+        "6+/6Y",
+        "6-/6C",
+        "6G/D1",
+        "6H/M1t",
+        "6H/M5b",
+        "6J/6K",
+        "6K/D2",
+        "6L/M2t",
+        "6L/M6b",
+        "6X/M10",
+        "6com/D9",
+        "M9b/M11",
+        "M-/D17",
+        "M10/free",
+        "M11/free"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on, then place the machine's M10 play-wire end in 6com.",
+        "Hold pushbutton 6 while pressing pushbutton 1 for the first move; release both.",
+        "For later turns, place the M10 end in the bottom matrix hole for the machine's last move and the M11 end in the top hole for the player's move.",
+        "Hold pushbutton 6 while pressing the numbered pushbutton for the turn.",
+        "Free both play-wire ends before starting another game."
+      ],
+      "controlLabels": {
+        "button1": "First move",
+        "button2": "Second move",
+        "button3": "Third move",
+        "button4": "Fourth move",
+        "button5": "Fifth move",
+        "button6": "Compute move"
+      }
+    },
+    {
+      "id": "V-JOBSELECT",
+      "title": "Mate Selection",
+      "category": "comparison",
+      "source": {
+        "program": "V-JOBSELECT",
+        "locator": "Book V printed pp.41-43 = book5-6.pdf PDF pp.48-49",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/1S",
+        "1B/1-",
+        "1Y/1+",
+        "1R/1X",
+        "1T/1Z",
+        "2A/2S",
+        "2B/2-",
+        "2Y/2+",
+        "2R/2X",
+        "2T/2Z",
+        "3A/3S",
+        "3B/3-",
+        "3Y/3+",
+        "3R/3X",
+        "3T/3Z",
+        "4A/4S",
+        "4B/4-",
+        "4Y/4+",
+        "4R/4X",
+        "4T/4Z",
+        "5A/5S",
+        "5B/5-",
+        "5Y/5+",
+        "5R/5X",
+        "5T/5Z",
+        "6A/6S",
+        "6B/6-",
+        "6Y/6+",
+        "6R/6X",
+        "6T/6Z"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Enter one person's replies on slide switches 1 through 6: left for a and right for b.",
+        "Enter the other person's replies with pushbuttons 1 through 6: pressed for a and released for b.",
+        "Count the lights that remain on, repeat with the second questionnaire, and add the results."
+      ],
+      "controlLabels": {
+        "switch1": "Answer 1",
+        "switch2": "Answer 2",
+        "switch3": "Answer 3",
+        "switch4": "Answer 4",
+        "switch5": "Answer 5",
+        "switch6": "Answer 6",
+        "button1": "Compare 1",
+        "button2": "Compare 2",
+        "button3": "Compare 3",
+        "button4": "Compare 4",
+        "button5": "Compare 5",
+        "button6": "Compare 6"
+      }
+    },
+    {
+      "id": "VI-RANDOM",
+      "title": "Four-sided die",
+      "category": "random",
+      "source": {
+        "program": "VI-RANDOM",
+        "locator": "Book VI printed pp.58-59 = book5-6.pdf PDF pp.64-65",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/3G",
+        "1B/1-",
+        "1C/3E",
+        "1E/2E",
+        "2A/3K",
+        "2B/2-",
+        "2C/4E",
+        "2E/3C",
+        "2F/2X",
+        "2G/6L",
+        "2H/2L",
+        "2K/5L",
+        "2L/2Y",
+        "2Y/2+",
+        "3A/3J",
+        "3B/3-",
+        "3C/4C",
+        "3F/5G",
+        "3H/4K",
+        "3L/4N",
+        "3N/4A",
+        "4B/4-",
+        "4C/5C",
+        "4F/6G",
+        "4L/4X",
+        "4Y/4+",
+        "5A/5E",
+        "5B/5-",
+        "5C/6C",
+        "5E/6K",
+        "5F/6N",
+        "5F/5G",
+        "5H/5+",
+        "5K/6F",
+        "5N/6E",
+        "6A/6E",
+        "6B/6-",
+        "6C/6-",
+        "6F/6G",
+        "6H/6+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Hold pushbutton 2 while MINIVAC generates a result.",
+        "Release pushbutton 2 and press pushbutton 4 to display it on lights 1 through 4."
+      ],
+      "controlLabels": {
+        "button2": "Generate",
+        "button4": "Show result"
+      }
+    },
+    {
+      "id": "III-RELAYAND",
+      "title": "Relay AND",
+      "category": "logic",
+      "source": {
+        "program": "III-RELAYAND",
+        "locator": "Book III printed p.43 = book2-3-4.pdf PDF p.49; ER-12",
+        "confidence": "verified",
+        "errata": [
+          "ER-12"
+        ],
+        "fallbacks": []
+      },
+      "connections": [
+        "1+/1Y",
+        "1X/1C",
+        "1F/1-",
+        "2+/2Y",
+        "2X/2C",
+        "2F/2-",
+        "1+/1H",
+        "1G/2H",
+        "2G/3A",
+        "3B/3-"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Press pushbuttons 1 and 2; light 3 is on only when both are pressed."
+      ],
+      "controlLabels": {
+        "button1": "Input A",
+        "button2": "Input B"
+      }
+    },
+    {
+      "id": "III-RELAYOR",
+      "title": "Relay OR",
+      "category": "logic",
+      "source": {
+        "program": "III-RELAYOR",
+        "locator": "Book III printed p.43 = book2-3-4.pdf PDF p.49",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1+/1Y",
+        "1X/1C",
+        "1F/1-",
+        "2+/2Y",
+        "2X/2C",
+        "2F/2-",
+        "1+/1H",
+        "1G/3A",
+        "2+/2H",
+        "2G/3A",
+        "3B/3-"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Press pushbutton 1 or 2; either input turns on light 3."
+      ],
+      "controlLabels": {
+        "button1": "Input A",
+        "button2": "Input B"
+      }
+    },
+    {
+      "id": "III-RELAYNOT",
+      "title": "Relay NOT",
+      "category": "logic",
+      "source": {
+        "program": "III-RELAYNOT",
+        "locator": "Book III printed p.44 = book2-3-4.pdf PDF p.50",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1+/1Y",
+        "1X/1C",
+        "1F/1-",
+        "1+/1H",
+        "1J/2A",
+        "2B/2-"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Light 2 is on while pushbutton 1 and relay 1 are off."
+      ],
+      "controlLabels": {
+        "button1": "Input"
+      }
+    },
+    {
+      "id": "III-RELAYXOR",
+      "title": "Relay XOR",
+      "category": "logic",
+      "source": {
+        "program": "III-RELAYXOR",
+        "locator": "Book III printed p.44 = book2-3-4.pdf PDF p.50",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1+/1Y",
+        "1X/1C",
+        "1F/1-",
+        "1+/1H",
+        "1J/2G",
+        "1G/2J",
+        "2+/2Y",
+        "2X/2C",
+        "2F/2-",
+        "2H/3A",
+        "3B/3-"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Light 3 is on when exactly one of pushbuttons 1 and 2 is pressed."
+      ],
+      "controlLabels": {
+        "button1": "Input A",
+        "button2": "Input B"
+      }
+    },
+    {
+      "id": "V-EXP2",
+      "title": "Burglar Alarm",
+      "category": "alarm",
+      "source": {
+        "program": "V-EXP2",
+        "locator": "Book V printed p.3 = book5-6.pdf PDF p.9",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1X/6F",
+        "1Y/2Y",
+        "2Y/2-",
+        "2Z/3Y",
+        "3Z/4Y",
+        "4Z/5Y",
+        "5A/5+",
+        "5B/5J",
+        "5E/5+",
+        "5F/5H",
+        "5J/6J",
+        "5Z/6Y",
+        "6C/6+",
+        "6F/6L",
+        "6H/6-",
+        "6K/6Z"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on; light 5 is the alarm.",
+        "Press pushbutton 1 to set or reset the system.",
+        "Pushbuttons 2 through 6 represent protected contacts; operating any one triggers the alarm."
+      ],
+      "controlLabels": {
+        "button1": "Reset",
+        "button2": "Contact 2",
+        "button3": "Contact 3",
+        "button4": "Contact 4",
+        "button5": "Contact 5",
+        "button6": "Contact 6"
+      }
+    },
+    {
+      "id": "IV-FF2",
+      "title": "Two-relay flip-flop",
+      "category": "memory",
+      "source": {
+        "program": "IV-FF2",
+        "locator": "Book IV printed p.70 = book2-3-4.pdf PDF p.76",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "5+/5G",
+        "5H/5F",
+        "5F/6F",
+        "5C/6C",
+        "6C/6-",
+        "5J/6H",
+        "6G/5E",
+        "6J/6E",
+        "6E/6A",
+        "6B/6-",
+        "5H/5A",
+        "5B/5-",
+        "6+/6Y",
+        "6X/6H"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on; relays 5 and 6 begin off.",
+        "Push and release pushbutton 6 to turn both relays on.",
+        "Push and hold pushbutton 6 to turn relay 5 off while relay 6 remains on."
+      ],
+      "controlLabels": {
+        "button6": "Toggle"
+      }
+    },
+    {
+      "id": "V-EXP4",
+      "title": "Traffic Light",
+      "category": "control",
+      "source": {
+        "program": "V-EXP4",
+        "locator": "Book V printed pp.4-5 = book5-6.pdf PDF pp.10-11",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "4A/4+",
+        "4B/D11",
+        "5A/5+",
+        "5B/D7",
+        "6A/6+",
+        "6B/D1",
+        "D1/D2",
+        "D2/D3",
+        "D3/D4",
+        "D4/D5",
+        "D5/D6",
+        "D7/D8",
+        "D8/D9",
+        "D9/D10",
+        "D11/D12",
+        "D12/D13",
+        "D13/D14",
+        "D14/D15",
+        "D15/D0",
+        "D16/M-",
+        "D17/M-",
+        "D18/M+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Light 4 represents red, light 5 amber and light 6 green.",
+        "The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession."
+      ],
+      "controlLabels": {}
+    },
+    {
+      "id": "VI-SPS",
+      "title": "Scissors, Paper or Stone",
+      "category": "game",
+      "source": {
+        "program": "VI-SPS",
+        "locator": "Book VI printed p.59 = book5-6.pdf PDF p.65",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/1G",
+        "1B/1-",
+        "1C/2C",
+        "1F/2F",
+        "1G/3G",
+        "1H/4H",
+        "1H/5L",
+        "1K/3K",
+        "1L/1X",
+        "1L/3H",
+        "1Y/2Y",
+        "2C/4X",
+        "2F/3F",
+        "2G/4G",
+        "2H/5H",
+        "2X/3L",
+        "2Y/3Y",
+        "3A/5K",
+        "3A/4A",
+        "3B/4B",
+        "3C/4C",
+        "3F/4F",
+        "3G/5G",
+        "3H/6H",
+        "3K/5K",
+        "3L/5H",
+        "3X/5L",
+        "3Y/4Y",
+        "4B/4-",
+        "4C/5X",
+        "4F/5F",
+        "4G/6G",
+        "4Y/5Y",
+        "5C/6C",
+        "5F/6F",
+        "5Y/6Y",
+        "6A/6G",
+        "6B/6-",
+        "6C/6X",
+        "6F/6-",
+        "6Y/6+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Each player picks scissors, paper or stone and pushes the matching pushbutton: player 1 uses pushbuttons 1, 2 and 3, player 2 uses pushbuttons 4, 5 and 6.",
+        "Player 1 pushes and holds their pushbutton just before player 2 pushes; the lights show the result while both pushbuttons are held down.",
+        "Scissors win over paper, paper wins over stone, stone wins over scissors.",
+        "Light 1 means player 1 wins, light 6 means player 2 wins, lights 3 and 4 mean a tie."
+      ],
+      "controlLabels": {
+        "button1": "P1 Scissors",
+        "button2": "P1 Paper",
+        "button3": "P1 Stone",
+        "button4": "P2 Scissors",
+        "button5": "P2 Paper",
+        "button6": "P2 Stone"
+      }
+    },
+    {
+      "id": "VI-COMBOLOCK",
+      "title": "Combination Lock",
+      "category": "lock",
+      "source": {
+        "program": "VI-COMBOLOCK",
+        "locator": "Book VI printed pp.52-53 = book5-6.pdf PDF pp.58-59",
+        "confidence": "likely",
+        "errata": [
+          "ER-41"
+        ],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/1G",
+        "1B/1-",
+        "1C/2C",
+        "1F/1G",
+        "1F/2K",
+        "1H/2G",
+        "1com/2L",
+        "2C/3C",
+        "2F/2G",
+        "2F/3K",
+        "2H/3G",
+        "2N/3N",
+        "2com/3L",
+        "3C/4C",
+        "3F/3G",
+        "3F/4K",
+        "3H/4G",
+        "3N/4N",
+        "3com/4L",
+        "4C/5C",
+        "4F/4G",
+        "4F/5K",
+        "4H/5G",
+        "4N/5N",
+        "4com/5L",
+        "5C/6C",
+        "5F/5G",
+        "5F/6K",
+        "5H/6G",
+        "5N/6N",
+        "5com/6L",
+        "6A/6J",
+        "6B/6-",
+        "6C/6-",
+        "6E/6N",
+        "6F/6G",
+        "6F/6com",
+        "6H/6+",
+        "D16/M+",
+        "D13/6com",
+        "D2/5com",
+        "D11/4com",
+        "D10/3com",
+        "D6/2com",
+        "D9/1com",
+        "D8/6E"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Starting from 0, turn the rotary switch left (counterclockwise, numbers going down) to 13, right (clockwise, numbers going up) to 2, left to 10, right to 6, then left to 9; passing 8 at any point is an error.",
+        "Light 1 comes on when the combination is solved; light 6 comes on when an error is made, and you must start over."
+      ],
+      "controlLabels": {
+        "dial": "Rotary switch"
+      },
+      "notice": "To re-set the game, turn the rotary switch through one complete revolution."
+    },
+    {
+      "id": "V-EXP19",
+      "title": "Morse Code Encoder",
+      "category": "code",
+      "source": {
+        "program": "V-EXP19",
+        "locator": "Book V printed pp.32-34 = book5-6.pdf PDF pp.38-40",
+        "confidence": "verified",
+        "errata": [
+          "ER-38"
+        ],
+        "fallbacks": []
+      },
+      "connections": [
+        "2C/3B",
+        "2C/3C",
+        "2F/D15",
+        "2G/4F",
+        "2H/2L",
+        "2H/3H",
+        "2K/5F",
+        "3A/3K",
+        "3B/4B",
+        "3C/4C",
+        "3E/D0",
+        "3F/3G",
+        "3G/D8",
+        "3H/3L",
+        "3L/4L",
+        "4A/4com",
+        "4B/5B",
+        "4C/5C",
+        "4F/D14",
+        "4G/4com",
+        "4H/4L",
+        "4H/5L",
+        "4K/5com",
+        "4com/D12",
+        "4com/5G",
+        "5A/5com",
+        "5B/6B",
+        "5C/6C",
+        "5F/D13",
+        "5H/5L",
+        "5H/6L",
+        "5K/6com",
+        "5com/6K",
+        "5com/D2",
+        "6A/6com",
+        "6C/6-",
+        "6F/D3",
+        "6G/6com",
+        "6H/6L",
+        "6H/6+",
+        "6com/D1",
+        "D1/D9",
+        "D2/D10",
+        "D3/D11",
+        "D4/D12",
+        "D5/D13",
+        "D6/D14",
+        "D7/D15",
+        "D16/M+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Set the rotary switch dial to 0 and turn power on.",
+        "Turn the rotary switch clockwise until the pointer knob is pointing at the position of the letter you wish to code on the dial plate (see the notice).",
+        "Read the Morse Code representation of the letter starting with output light 3: band 1 reads light 3 only, band 2 lights 3 and 4, band 3 lights 3, 4 and 5, band 4 lights 3, 4, 5 and 6.",
+        "A light on represents a dash; a light off represents a dot.",
+        "For each new letter, turn power off and start again from the first step."
+      ],
+      "controlLabels": {
+        "dial": "Rotary switch"
+      },
+      "notice": "Dial plate (Book V printed p.33): each letter and the rotary switch numbers it covers.\nBand 1 (read light 3): E 0-7, T 8-15.\nBand 2 (read lights 3-4): I 0-3, A 4-7, N 8-11, M 12-15.\nBand 3 (read lights 3-5): S 0-1, U 2-3, R 4-5, W 6-7, D 8-9, K 10-11, G 12-13, O 14-15.\nBand 4 (read lights 3-6): H 0, V 1, F 2, L 4, P 6, J 7, B 8, X 9, C 10, Y 11, Z 12, Q 13.\nAlways turn the rotary switch (pointer knob) clockwise."
+    },
+    {
+      "id": "VI-REACTION",
+      "title": "Reaction Time Tester",
+      "category": "game",
+      "source": {
+        "program": "VI-REACTION",
+        "locator": "Book VI printed p.60 = book5-6.pdf PDF p.66",
+        "confidence": "verified",
+        "errata": [
+          "ER-46"
+        ],
+        "fallbacks": []
+      },
+      "connections": [
+        "1A/3F",
+        "1B/1-",
+        "1E/2E",
+        "1E/1-",
+        "1F/2A",
+        "1F/1G",
+        "1G/5J",
+        "1H/2H",
+        "1H/3Z",
+        "1K/2K",
+        "1L/2L",
+        "1X/5H",
+        "1Y/4J",
+        "2B/2-",
+        "2E/3E",
+        "2F/2G",
+        "2F/5A",
+        "2G/5N",
+        "2H/3H",
+        "2K/3K",
+        "2L/3L",
+        "3A/6K",
+        "3A/4A",
+        "3B/4B",
+        "3E/4E",
+        "3F/3G",
+        "3G/5G",
+        "3H/4H",
+        "3J/6Y",
+        "3K/4K",
+        "3L/4L",
+        "3Y/3+",
+        "3Z/6H",
+        "4B/4-",
+        "4F/6A",
+        "4F/4G",
+        "4G/5K",
+        "4K/D19",
+        "4L/4-",
+        "5B/5-",
+        "5E/6G",
+        "5F/5-",
+        "5L/6X",
+        "6B/6-",
+        "6E/6G",
+        "6E/D2",
+        "6F/6-",
+        "6L/6+",
+        "6L/D17",
+        "D16/D17",
+        "D18/M-"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on; player 1 uses pushbutton 1 and player 2 uses pushbutton 6.",
+        "Push the re-set button (pushbutton 3).",
+        "As soon as lights 3 and 4 come on, each player tries to be the first to push their pushbutton.",
+        "Light 1 means player 1 wins, light 6 means player 2 wins, light 2 means player 1 has fouled, and light 5 means player 2 has fouled.",
+        "If a player pushes before lights 3 and 4 come on, the game must be begun again; to start another game, push the re-set button."
+      ],
+      "controlLabels": {
+        "button1": "Player 1",
+        "button3": "Re-set",
+        "button6": "Player 2"
+      }
+    },
+    {
+      "id": "IV-EXP4",
+      "title": "Half-Adder",
+      "category": "arithmetic",
+      "source": {
+        "program": "IV-EXP4",
+        "locator": "Book IV printed p.75 = book2-3-4.pdf PDF p.81",
+        "confidence": "verified",
+        "errata": [],
+        "fallbacks": []
+      },
+      "connections": [
+        "5A/6U",
+        "5B/5-",
+        "6A/6S",
+        "6B/6-",
+        "6R/6Z",
+        "6T/6X",
+        "6T/6V",
+        "6Y/6+"
+      ],
+      "initial": {
+        "power": false,
+        "switches": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "buttons": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "relayHands": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "dialHand": null
+      },
+      "instructions": [
+        "Turn power on.",
+        "Move slide switch 6 to the right for input A = 0, or to the left for input A = 1.",
+        "Hold pushbutton 6 for input B = 1; leave it up for input B = 0.",
+        "Light 6 shows the sum; light 5 shows carry out."
+      ],
+      "controlLabels": {
+        "switch6": "Input A",
+        "button6": "Input B"
+      }
+    }
+  ]
+}

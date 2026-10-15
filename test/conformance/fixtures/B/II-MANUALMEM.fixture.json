@@ -1,0 +1,41 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-MANUALMEM",
+  "source": "BK2 printed p.10 = book2-3-4.pdf PDF p.16",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1+/1H", "1X/1C", "1-/1F", "1G/1A", "1B/1-"],
+  "errata_applied": [],
+  "note": "ER-04 changes DOWN to ON in the surrounding prose; it does not change this wire list.",
+  "wires": ["1+/1Y", "1+/1H", "1X/1C", "1-/1F", "1G/1A", "1B/1-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay1", "v": "no" },
+        { "dev": "pb1", "v": "no" }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16",
+      "quote": "This simple circuit may be thought of as a manual memory: as long as the pushbutton is being held DOWN, the relay remembers a one."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "relay1", "v": "nc" },
+        { "dev": "pb1", "v": "nc" }
+      ],
+      "cite": "BK2 printed p.10 = book2-3-4.pdf PDF p.16",
+      "quote": "When the pushbutton is released, the relay forgets the one and starts remembering a zero."
+    }
+  ]
+}
