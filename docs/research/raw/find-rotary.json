@@ -1,0 +1,576 @@
+{
+  "topic": "MINIVAC 601 — the 16-position motorized DECIMAL INPUT-OUTPUT rotary switch",
+  "agent": "find-rotary",
+  "date": "2026-08-30",
+  "scope_note": "MINIVAC 601 only. No 6010 material was found in any source read; nothing here is a 6010 delta.",
+  "oracle_rule_compliance": "No emulator source code was opened, fetched, cloned, read or quoted. Greg Sadetsky's simulator is referenced only as an externally-known artifact via the prebrief; its site and repository were NOT visited.",
+
+  "sources_read": [
+    {"id": "B1", "kind": "primary", "cite": "Book I, 'Getting acquainted with MINIVAC 601'", "file": "docs/research/raw/pdf/book1.pdf", "pages_used": "printed 2, 12-14, 18-25, 28, 29-32, back cover (PDF pages 22, 23, 24, 25, 26 read as page images or OCR)"},
+    {"id": "B234", "kind": "primary", "cite": "Books II, III & IV", "file": "docs/research/raw/pdf/book2-3-4.pdf", "pages_used": "printed 3, 5, 6, 12-15, 53-54, 84-86 (OCR)"},
+    {"id": "B56", "kind": "primary", "cite": "Books V & VI", "file": "docs/research/raw/pdf/book5-6.pdf", "pages_used": "printed 3-12, 25-26, 29-33, 52, 54-57, 60 (OCR); PDF page 10 = printed page 4 read as page image"},
+    {"id": "PHOTO", "kind": "primary artifact", "cite": "Top-down photograph of an original unit", "file": "docs/research/raw/prebrief/images/image_3.jpg", "note": "1536x1152. DECIMAL INPUT-OUTPUT quadrant cropped and upscaled; dial legends and jack pairs legible."},
+    {"id": "MAINT", "kind": "primary — NEW, not in the local corpus", "cite": "MINIVAC 601 Maintenance Manual, Scientific Development Corp., 372 Main Street, Watertown, Massachusetts", "url": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-maintenance-manual_djvu.txt", "item": "https://archive.org/details/1961Minivac601Book234", "pdf": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-maintenance-manual.pdf", "note": "HIGHEST-VALUE SOURCE FOUND. Contains the rotary-switch service section, materials, motor derating, resistor check, friction-drive adjustment and spare-parts list. Not present in the local docs/research/raw tree — should be downloaded."},
+    {"id": "ERRATA", "kind": "primary — NEW, not in the local corpus", "cite": "'Notes and Corrections to the Minivac Manual', Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts", "url": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-erratas_djvu.txt", "pdf": "https://archive.org/download/1961Minivac601Book234/1961-minivac601-erratas.pdf", "note": "Factory errata sheet. Corrects several rotary-switch programs AND states the global +/- commoning rule. Not present in the local tree — should be downloaded."},
+    {"id": "GARDI10", "kind": "secondary", "cite": "Mike Gardi, 'Minivac 601 (Version 1.0) Motorized Rotary Switch', Instructables, published 2019-07-09, CC BY-NC-SA 4.0", "url": "https://www.instructables.com/Minivac-601-Version-10-Motorized-Rotary-Switch/", "note": "Full step text retrieved via https://www.instructables.com/json-api/showInstructableModel?urlString=Minivac-601-Version-10-Motorized-Rotary-Switch"},
+    {"id": "GARDI09", "kind": "secondary", "cite": "Mike Gardi, 'Minivac 601 Replica (Version 0.9)', Instructables", "url": "https://www.instructables.com/Minivac-601-Replica-Version-09/"},
+    {"id": "HAD", "kind": "secondary", "cite": "Hackaday, 'Minivac 601 Replica Gets A Custom Motorized Rotary Switch', 2019-07-13", "url": "https://hackaday.com/2019/07/13/minivac-601-replica-gets-a-custom-motorized-rotary-switch/"},
+    {"id": "WIKI", "kind": "secondary", "cite": "Wikipedia, 'Minivac 601'", "url": "https://en.wikipedia.org/wiki/Minivac_601"},
+    {"id": "PREBRIEF", "kind": "secondary synthesis (map, not source)", "cite": "prebrief.md", "file": "docs/research/raw/prebrief/prebrief.md"}
+  ],
+
+  "source_credibility_correction": {
+    "claim": "The task brief states Gardi's Instructable 'reverse-engineers this subsystem from an original'. It does not.",
+    "tag": "[verified]",
+    "evidence": "GARDI09, intro: \"I don't have a 'vintage' unit so this replica has been constructed based on photos and from the original manuals that were available online.\"",
+    "consequence": "Gardi is a competent *re-interpretation from the same manuals we have*, not an independent teardown. Where he and the manuals agree, he adds no evidence; where he differs (solenoid clutch, reed switches, magnetic detents, powered STOP), he is describing HIS design, not the 601. Every Gardi-only claim below is tagged [unverified] as to the original.",
+    "cite": "GARDI09 intro; GARDI10 'Final Thoughts' and 'Testing' steps"
+  },
+
+  "claims": [
+
+    {"id": "G01", "group": "panel geometry", "tag": "[verified]",
+     "claim": "The dial has exactly 16 positions, numbered 0 through 15. Position 0 sits at 12 o'clock and the numbers increase CLOCKWISE (0 top, 1-2-3-4-5-6 down the right side, 7-8-9 across the bottom, 10-11-12-13-14-15 up the left side back to 0).",
+     "cite": "PHOTO (cropped DECIMAL INPUT-OUTPUT quadrant, all sixteen sector numbers legible); B1 printed p.20 panel illustration (same numbering)."},
+
+    {"id": "G02", "group": "panel geometry", "tag": "[verified]",
+     "claim": "Position 0 is NOT a home or reset position. It is an ordinary contact, wired and used exactly like the other fifteen. No source describes any automatic homing, indexing or power-on reset of the dial.",
+     "cite": "B56 printed p.4 traffic-light program treats D0 as an ordinary member of the 'red' contact group (D15/D0); B56 printed p.8 train-gate instructions say 'set the pointer knob of the rotary switch at 0' — i.e. the OPERATOR sets it by hand; B56 printed p.29 CQ transmitter: 'Set the rotary switch at 0 and turn power on.'; ERRATA Book V p.25 and Book VI p.51/53: reset is 'turn power OFF, then ON again', never 'return the dial to 0'."},
+
+    {"id": "G03", "group": "panel geometry", "tag": "[verified]",
+     "claim": "The DECIMAL INPUT-OUTPUT panel carries exactly 20 terminals: D0..D15 (one per dial sector, arranged in a ring around the knob) plus D16, D17, D18, D19 in a vertical column to the LEFT of the dial.",
+     "cite": "PHOTO; B1 printed p.20 ('Terminals 17, 18 and 19 are located on the panel just to the left of the pointer knob' — B1 printed p.22); MAINT rotary-switch section names 'D16 (the switch arm)' and 'the rotary switch contacts, D0 through D15'."},
+
+    {"id": "G04", "group": "panel geometry", "tag": "[verified]",
+     "claim": "Every terminal — dial contacts included — is a PAIR of holes side by side, internally strapped together. A wire may go in either or both holes. So the decimal panel physically shows 40 holes: 16 pairs around the dial plus 4 pairs at the left.",
+     "cite": "B1 printed p.2: 'Each terminal has two holes side-by-side which are connected together underneath the computer panel. Programming wires may be plugged into either (or both) holes of the terminal.'; PHOTO shows a two-hole pair in each dial sector and beside each of 16/17/18/19."},
+
+    {"id": "G05", "group": "panel geometry", "tag": "[verified]",
+     "claim": "Panel legends in the decimal block, exactly as silkscreened: '16' with 'ARM' printed beneath it; '17' and '18' joined by a bracket labelled 'RUN'; '18' and '19' joined by a second bracket labelled 'STOP'. Terminal 18 is shared by both brackets. The block title is 'DECIMAL INPUT-OUTPUT'.",
+     "cite": "PHOTO (cropped, legible); B1 printed p.20 panel illustration reproduces the identical legend set."},
+
+    {"id": "G06", "group": "terminal naming", "tag": "[verified]",
+     "claim": "Terminal shorthand is D + number. D0..D15 are the sixteen dial contacts; D16 is the wiper arm. Book I: 'D = Decimal Input-Output', '# = terminal number', 'The contact on the wiper arm is referred to as \"D16.\"' Wiring shorthand joins two terminals with a slash, e.g. D16/M+.",
+     "cite": "B1 printed p.20."},
+
+    {"id": "G07", "group": "terminal naming", "tag": "[verified]",
+     "claim": "MANUAL ERRATUM (uncorrected by the factory errata sheet): Book I printed p.20 states the terminal number range as '(1 to 19)'. That is wrong. D0 exists on the panel and is used in printed programs. The Maintenance Manual gives the true range explicitly.",
+     "cite": "B1 printed p.20 (literal text: '8 = terminal number (1 to 19) . . . for example D8' — the '8' is the OCR/print of the '#' placeholder); MAINT, Rotary Switch section: 'Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, D0 through D15'; B56 printed p.4 uses D0; B234 printed p.85 uses D0; ERRATA lists no correction for Book I p.20."},
+
+    {"id": "C01", "group": "contact structure", "tag": "[verified]",
+     "claim": "Structure is ONE wiper arm plus 16 fixed position contacts. The arm rotates with the pointer knob on a common shaft beneath the panel; its own contact is brought out as terminal D16. There are no per-position outputs beyond the sixteen contacts, and no second deck.",
+     "cite": "B1 printed p.20: 'Connected directly with the pointer knob there is a wiper arm underneath the computer panel. As the wiper arm and the pointer knob move around the circle of contacts, the wiper arm momentarily connects with each set of contacts on the rotary switch dial in turn.' plus the 'VIEW UNDER PANEL' figure showing a single radial arm labelled 'Wiper Arm Connected to D16'; MAINT: 'D16 (the switch arm)'."},
+
+    {"id": "C02", "group": "contact structure", "tag": "[verified]",
+     "claim": "Reading the current position from a wired program: energise D16 (the arm) from a supply rail, and take the output off whichever of D0..D15 you care about. Whatever is wired to the contact under the arm is energised; everything else is dead. Equivalently, drive a contact and read D16.",
+     "cite": "B1 printed p.20: 'when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.'; B1 Experiment 11 (printed p.21) program 6+/D16, D1/5A, D2/6A, 5B/6B, 6-/6B lights lamp 5 at position 1 and lamp 6 at position 2; MAINT service check: 'connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, D0 through D15'."},
+
+    {"id": "C03", "group": "contact structure", "tag": "[verified]",
+     "claim": "Detecting a SPECIFIC position is done by wiring only that contact. Detecting a RANGE is done by strapping adjacent contacts together into a group (e.g. D1/D2, D2/D3, ... makes a contiguous arc behave as one contact). Groups are separated simply by omitting the strap.",
+     "cite": "B56 printed p.4, traffic light: straps D1/D2 D2/D3 D3/D4 D4/D5 D5/D6 | D7/D8 D8/D9 D9/D10 | D11/D12 D12/D13 D13/D14 D14/D15 D15/D0, with 6B/D1 (green), 5B/D7 (amber), 4B/D11 (red). The two missing straps (D6-D7 and D10-D11) plus the missing D0-D1 strap partition the ring into arcs of 6 / 4 / 6 positions. Confirmed against the printed CIRCUIT DIAGRAM—TRAFFIC LIGHT on B56 PDF page 10 (printed p.4), which draws D1..D6, D7..D10, D11..D15+D0 as three commoned bundles."},
+
+    {"id": "C04", "group": "contact structure", "tag": "[verified]",
+     "claim": "The switch is BREAK-BEFORE-MAKE. The arm leaves one contact before touching the next, so no two contacts are ever bridged.",
+     "cite": "B1 Experiment 11, printed p.21: 'Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as \"break-before-make,\" and thus is similar to the pushbutton switches.'"},
+
+    {"id": "C05", "group": "contact structure", "tag": "[verified]",
+     "claim": "There is a genuine DEAD ZONE between adjacent contacts, and the dial can come to rest in it, connected to nothing. This is a documented, user-visible failure mode — not a modelling nicety.",
+     "cite": "ERRATA, Book V page 11 (Experiment 9): 'Note: It is possible for the \"elevator\" to get stuck at a floor. This happens when the pointer knob stops between adjacent terminals — for example, between D6 and D7 — and is not making proper connection with either. In such case, move the pointer knob so that it is pointing directly at one of the terminals.'",
+     "simulator_consequence": "The dial's state is continuous angle, not an integer. A faithful model needs a contact-arc width per position and an inter-contact gap; a program that stops the motor by shorting 18/19 can coast into a gap and hang forever."},
+
+    {"id": "C06", "group": "contact structure", "tag": "[verified]",
+     "claim": "Contact materials and bearing: 'To provide low contact resistance, the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper [sic]; the drive shaft is made of stainless steel running in an oil-impregnated bronze bearing.'",
+     "cite": "MAINT, 'Adjustment and Repair' preamble (verbatim, including the manual's misspelling of beryllium)."},
+
+    {"id": "C07", "group": "contact structure", "tag": "[verified]",
+     "claim": "The pointer knob is a friction/set fit on the shaft and can slip out of alignment relative to the wiper. The factory alignment procedure is electrical-by-eye: wire a light through one dial contact and rotate the knob on the shaft until the light comes on with the knob pointing at that number.",
+     "cite": "MAINT, 'Oiling': 'Replace the pointer knob and realign it by connecting a light through one of the switch contacts on the rotary switch dial. Adjust the position of the knob on the shaft so the light comes on when the knob is pointing at the connected switch position.' Also MAINT Rotary Switch: 'Check the knob alignment to be sure that the knob has not turned on the drive shaft.'"},
+
+    {"id": "C08", "group": "contact structure", "tag": "[unverified]",
+     "claim": "The exact angular width of each contact and of the gap between contacts is not given anywhere. 16 positions is 22.5 degrees of pitch; the split between conducting arc and dead gap is unknown.",
+     "cite": "Absence across B1, B234, B56, MAINT, ERRATA, PHOTO (panel top surface only).",
+     "what_would_settle_it": "An under-panel photograph or a physical measurement of an original rotary switch assembly (SDC part no. 6473), or a scan of an SDC assembly drawing."},
+
+    {"id": "D01", "group": "drive", "tag": "[verified]",
+     "claim": "A DC motor drives the rotary switch through a FRICTION drive. Confirmed by both the owner's manual and the maintenance manual.",
+     "cite": "B1 printed p.22: 'The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive.'"},
+
+    {"id": "D02", "group": "drive", "tag": "[verified]",
+     "claim": "The friction coupling is the bare MOTOR SHAFT bearing on the RIM of a drive wheel, held in contact by a sprung motor bracket. It is permanently engaged — there is no clutch, no solenoid, and nothing that disengages the motor when it is not powered.",
+     "cite": "MAINT, Rotary Switch: 'It is also possible that the motor shaft is not properly engaging the drive wheel.' and repair step 5: 'To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel.' Repair step 2: 'Check the drive wheel to be sure that it is free to rotate.' MAINT spare parts list carries '6472 Drive Wheel Assembly 2.00' as a separate item from '6471 Motor 4.00'."},
+
+    {"id": "D03", "group": "drive", "tag": "[verified]",
+     "claim": "Motion is CONTINUOUS while the motor is energised — it is a plain DC motor turning a shaft, not a stepper and not one-step-per-pulse. The dial sweeps through all sixteen contacts in sequence, once per revolution.",
+     "cite": "B1 printed p.22: 'Current must flow through the motor to make it run and turn the rotary switch.'; B1 Experiment 13, printed p.23: 'As the pointer knob turns, light 5 and light 6 flash ON in sequence... First, light 5 flashes and then light 6 flashes, once each revolution of the rotary switch.'"},
+
+    {"id": "D04", "group": "drive", "tag": "[verified]",
+     "claim": "The motor is deliberately and heavily under-driven: 'The drive motor is operated at less than one-third rated voltage.' That is the function of the series resistor and the reason the dial turns slowly enough to be watched.",
+     "cite": "MAINT, 'Adjustment and Repair' preamble."},
+
+    {"id": "D05", "group": "drive", "tag": "[verified]",
+     "claim": "Direction is set purely by the polarity of the supply across the RUN terminals. Reversing the current through the motor reverses the dial.",
+     "cite": "B1 Experiment 14 'MOTOR REVERSING', printed p.24: 'This experiment shows how the direction of rotation of the motor may be changed by reversing the direction of current flow through the motor.' ... 'Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction.' Program: 6+/6R, 6T/6U, 6V/D17, 6+/6W, 6S/D18, 6-/6T. MAINT: 'Reverse the power connections: the pointer knob should turn in the opposite direction.'",
+     "errata_note": "ERRATA, Book I page 24: 'MOTOR REVERSING circuit diagram incorrectly labeled — change 6Y to 6V.' This corrects the DIAGRAM only; the printed program list is not corrected."},
+
+    {"id": "D06", "group": "drive", "tag": "[verified]",
+     "claim": "Speed is fixed by the motor, the supply and the series dropping resistor. NO speed specification is printed anywhere. Book V instead asks the user to MEASURE it, which implies unit-to-unit variation was expected and tolerated.",
+     "cite": "B56 Experiment 6 'The Automobile Speed Timer', printed p.6, step 3: 'Count the number of complete revolutions which your rotary switch makes in one minute and note this number.'"},
+
+    {"id": "D07", "group": "drive", "tag": "[verified as an example figure, NOT as a specification]",
+     "claim": "The only numeric speed in the corpus is a worked-example figure: 'assume that the checkpoints are 50 yards apart, and that the rotary switch turns 45 full revolutions per minute.' 45 rpm = 0.75 rev/s = 12 contacts/s = ~83 ms per position.",
+     "cite": "B56 printed p.6.",
+     "caution": "The manual frames this as 'assume that', immediately after telling the reader to measure their own machine. Treat 45 rpm as a plausible centre of a range, not as the spec."},
+
+    {"id": "D08", "group": "drive", "tag": "[verified]",
+     "claim": "A second, independent and MUCH slower speed datum appears in Book II: 'the rotary switch system requires more than a second to go from zero to nine.' Nine contacts in >1 s implies <= ~9 positions/s, i.e. <= ~34 rpm — noticeably slower than the 45 rpm example. The two figures are in tension and neither is a specification.",
+     "cite": "B234 printed p.6 (Section 'The Binary Nature of Storage'): 'In addition, the rotary switch system requires more than a second to go from zero to nine.'",
+     "simulator_consequence": "Make dial speed a configurable parameter. A default in the 30-45 rpm band (roughly 65-110 ms per contact) is defensible from primary sources; do not hard-code a single 'true' value."},
+
+    {"id": "D09", "group": "drive", "tag": "[verified]",
+     "claim": "Some printed programs are explicitly too fast for the relays, and the factory advice is to slow the machine down — including by physically retarding the knob. This is direct evidence that the friction drive slips harmlessly under a hand load.",
+     "cite": "ERRATA, general: 'try carrying out the procedure slowly; some programs are not designed for high-speed operation.' ERRATA, Book V page 31: 'Light 6 flashes on very briefly when indicating a dot... To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.'"},
+
+    {"id": "D10", "group": "drive", "tag": "[unverified]",
+     "claim": "No motor part number, voltage rating, current, gear ratio or drive-wheel diameter is given in any source. The only motor identifier is SDC spare part no. 6471, 'Motor', $4.00.",
+     "cite": "MAINT spare parts list.",
+     "what_would_settle_it": "An original unit, or an SDC service bulletin / assembly drawing."},
+
+    {"id": "E01", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "INTERNAL SCHEMATIC OF THE MOTOR SUBSYSTEM (read directly off the printed drawing on Book I p.22, cross-checked against the identical drawing in Book V p.4 and against the Maintenance Manual's behavioural test): terminal 17 connects through a SERIES resistor R1 to the node that is terminal 19; the MOTOR is connected between terminal 18 and terminal 19; a second resistor R2 is connected in PARALLEL with the motor, also between 18 and 19. Terminals 18 and 19 are therefore the motor's own two terminals.",
+     "ascii": "17 ---[ R1 ]--+---------+\n              |         |\n            (Motor)   [ R2 ]\n              |         |\n18 ----------- +---------+ ... and that same node is terminal 19\n\nMore precisely:\n  17 --[R1]-- N\n  18 --(M)-- N\n  18 --[R2]-- N\n  19 == N",
+     "cite": "B1 printed p.22, figure captioned with terminals 17 / RUN / 18 / STOP / 19, motor symbol and an arrow labelled 'Resistors' pointing at two zigzags; B56 printed p.4 CIRCUIT DIAGRAM—TRAFFIC LIGHT redraws the same D17/D18/D19 + motor + resistor block."},
+
+    {"id": "E02", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "RUN: 'Power must be supplied to terminals 17 and 18 (run) to operate the motor drive.' Current path is 17 -> R1 -> node(19) -> motor (in parallel with R2) -> 18. The motor therefore sees only a fraction of the 12 V supply, which is why MAINT says it runs at 'less than one-third rated voltage'.",
+     "cite": "B1 printed p.22; MAINT, Rotary Switch: 'Check the motor drive by connecting power to the RUN terminals (D17 and D18). Turn power on. The rotary switch pointer knob should turn.'"},
+
+    {"id": "E03", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "STOP is a SHORT CIRCUIT across 18 and 19, i.e. a dead short across the motor itself. It is neither a brake solenoid nor a power cut. 'A short circuit may be connected across terminals 18 and 19 (stop) to halt the motor drive.'",
+     "cite": "B1 printed p.22; MAINT: 'Connect a short circuit across the STOP terminals (D18 and D19): the pointer knob should stop turning.'; B1 Experiment 12, printed p.22: 'The motor stops when pushbutton 6 is pushed because a short circuit is created across the STOP terminals (D18 and D19). Current flows through pushbutton 6 instead of through the motor.'"},
+
+    {"id": "E04", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "R1's job is to make that short circuit safe. 'The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil. The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.'",
+     "cite": "B1 printed p.22, section '7 RESISTORS'."},
+
+    {"id": "E05", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "DECISIVE CONFIRMATION that 18/19 are the motor's own terminals and R1 is the dropper: the maintenance manual's diagnostic says that applying power DIRECTLY across the STOP terminals bypasses R1 and spins the motor at full speed. 'If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly. If the knob does turn, the trouble may be a bad connection or an open resistor.'",
+     "cite": "MAINT, Rotary Switch section."},
+
+    {"id": "E06", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "RUN and STOP interact through their SHARED terminal 18. STOP wins over RUN: with the supply still applied across 17/18, closing 18-19 diverts the whole current through the short (limited by R1) and leaves zero volts across the motor. Removing the short restores motion immediately, with power never having been interrupted.",
+     "cite": "B1 Experiment 12, printed p.22, steps 3-5: 'While holding pushbutton 5 down, push pushbutton 6. The motor stops... While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed. Release pushbutton 5. The motor drive again stops, this time because power is no longer connected to the motor circuit.' — the manual explicitly distinguishes the two stop mechanisms."},
+
+    {"id": "E07", "group": "RUN / STOP electrical", "tag": "[likely]",
+     "claim": "Because STOP short-circuits the armature of a permanent-magnet DC motor, it is also DYNAMIC BRAKING, not merely removal of drive: back-EMF drives current through the short and opposes rotation. That predicts a shorted stop settles faster than simply removing power. The manuals never use the word 'brake' and never contrast the two stopping methods' settling behaviour.",
+     "cite": "Inference from the verified topology (E01) plus standard PMDC motor behaviour. Manual language supports only that both methods stop the motor (B1 printed p.22, Experiment 12).",
+     "simulator_consequence": "Two distinct decelerations are defensible: fast (18-19 shorted, braked) and slow (power removed at 17/18, free coast). Nothing in the sources gives a time constant for either."},
+
+    {"id": "E08", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "R1 and R2 are power resistors that run hot. Factory test: 'Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds. If a resistor does not heat up, it is defective.' Their resistance values are NOT given.",
+     "cite": "MAINT, Rotary Switch, repair step 3."},
+
+    {"id": "E09", "group": "RUN / STOP electrical", "tag": "[verified]",
+     "claim": "Supply context: the MINIVAC power supply is 'rated at 1.5 amps continuous with a nominal 12 volts output', unloaded outlet voltage 'approximately 13 volts', derived from 110 V AC through a transformer and rectifier, protected by a resettable circuit breaker. All switches are rated 3 A; relay contacts in excess of 3 A.",
+     "cite": "MAINT, 'Adjustment and Repair' preamble and Power Supply section; B1 printed p.4: '...converts the 110-volt AC power obtained... [to a] level of 12 volts DC.'"},
+
+    {"id": "E10", "group": "RUN / STOP electrical", "tag": "[verified] — CRITICAL FOR THE SIMULATOR'S NET MODEL",
+     "claim": "ALL positive terminals on the machine are one node and all negative terminals are one node. 'All + and — terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2— is the same as a connection to 4—, 5—, or M—.'",
+     "cite": "ERRATA, general notes (first page).",
+     "consequence": "The M+ / M- terminals in the right-hand power strip and the per-section n+ / n- terminals are aliases. This resolves the apparent inconsistency between Book I programs (which power the motor from 6+ / 6-) and Books II-VI programs (which use M+ / M-): they are identical circuits. It also means the OCR ambiguity in Book I Experiment 13's combined program list ('5-/D18' vs Experiment 12's '6-/D18') is electrically immaterial."},
+
+    {"id": "M01", "group": "manual operation", "tag": "[verified]",
+     "claim": "The user CAN turn the knob by hand, and it registers electrically exactly as if the motor had driven it. The wiper is on the same shaft as the knob and there is no clutch. 'The rotary switch connections are made sequentially whether the pointer is turned by hand or driven by the motor.'",
+     "cite": "B1 printed p.22; B1 printed p.20: 'may be manually rotated or motor driven'; B1 Experiment 11 'MANUAL OPERATION OF ROTARY SWITCH', printed p.21."},
+
+    {"id": "M02", "group": "manual operation", "tag": "[verified]",
+     "claim": "Hand operation is a first-class programming input. Whole experiments depend on the user turning the knob, including one that uses hand rotation as the CLOCK for a shift register: 'Shift LEFT one bit by slowly turning the rotary switch dial one complete revolution. The shifted binary number will now appear in the output lights. To shift left more than one bit simply turn the rotary switch dial the desired number of revolutions.'",
+     "cite": "B234 printed p.86, Appendix, 'Automatic Shift Register' (program includes 6Y/D16, 6E/D7, 6L/D6, D16/M+)."},
+
+    {"id": "M03", "group": "manual operation", "tag": "[verified]",
+     "claim": "Hand rotation can be done AGAINST a running motor — the friction drive slips. The factory tells you to do exactly this to slow a program down.",
+     "cite": "ERRATA, Book V page 31: 'slow the rotary switch down by holding the pointer knob back during one revolution.'"},
+
+    {"id": "M04", "group": "manual operation", "tag": "[verified]",
+     "claim": "Hand-turn DIRECTION is sometimes programmatically significant, and the manual instructs the user accordingly.",
+     "cite": "ERRATA, Book V page 33: 'Note to Experiment 19 — always turn the pointer knob clockwise when indicating a letter for coding.'; B56 printed p.33: 'Set the rotary switch dial to 0 and turn power on. Turn the rotary switch clockwise until the pointer knob is pointing at the letter you wish to code.'; ERRATA, Book VI, The Combination Lock (page 52): 'to re-set the game, turn the rotary switch through one complete revolution.'"},
+
+    {"id": "M05", "group": "manual operation", "tag": "[verified]",
+     "claim": "Hand-set position is the machine's decimal INPUT method: 'Decimal information is communicated using the decimal input dial and the pointer of the rotary switch. To give MINIVAC a decimal number as input, the pointer is turned so that it points at the desired digit. The decimal input capabilities of the MINIVAC 601 are limited to the numbers from zero through fifteen.'",
+     "cite": "B234 printed p.5."},
+
+    {"id": "M06", "group": "manual operation", "tag": "[verified]",
+     "claim": "The dial also functions as STORAGE — it holds its number until something moves it. 'The decimal input-output unit also serves as a storage device during the operation of some programs. The rotary switch remains in a particular position until it is moved and thus enables MINIVAC 601 to \"remember\" a decimal number.'",
+     "cite": "B234 printed p.3."},
+
+    {"id": "M07", "group": "manual operation", "tag": "[verified]",
+     "claim": "Dial overlays ('dial plates') were an intended user practice: paper discs traced from an illustration and laid over the dial to relabel the sixteen positions (e.g. an alphabetic Morse-code dial plate, or a mph scale for the speed timer).",
+     "cite": "B56 printed p.33: 'the rotary switch dial should be fitted with a dial plate made by tracing the illustration below on a piece of paper' — figure captioned 'MORSE CODE: ALPHABETIC DIAL PLATE'; B56 printed p.6: 'make up a dial plate to cover the regular input-output dial.'"},
+
+    {"id": "CLK01", "group": "clock / metronome", "tag": "[verified]",
+     "claim": "The rotary switch is explicitly the machine's CLOCK. 'Most automatic digital computers have a mechanical or electronic device, similar in function to the rotary switch, to generate a continuous series of electrical pulses... Continuous pulses, generated to operate a digital computer, are called \"clock\" pulses.'",
+     "cite": "B1 printed p.23, section 'PULSE GENERATOR'."},
+
+    {"id": "CLK02", "group": "clock / metronome", "tag": "[verified]",
+     "claim": "SIMPLE CLOCK (free-running): run the motor continuously and take pulses off individual dial contacts as the arm sweeps past. One pulse per contact per revolution, in fixed sequence. This is Book I Experiment 13.",
+     "cite": "B1 Experiment 13 'MOTOR DRIVEN ROTARY SWITCH', printed p.23. Combined program (Exp 11 + Exp 12): 6+/D16, D1/5A, D2/6A, 5B/6B, 6-/6B, 6+/5Y, 5X/D17, [6]-/D18, 6-/6Y, 6X/D19. Result: 'As the pointer knob turns, light 5 and light 6 flash ON in sequence... once each revolution of the rotary switch. The rotary switch is automatically generating electrical pulses to flash the lights.'",
+     "ocr_caveat": "The third entry of the combined list OCRs as '5-/D18' while Experiment 12's own list reads '6-/D18'. Per E10 these are the same node, so the discrepancy has no electrical consequence. Not re-read from the page image."},
+
+    {"id": "CLK03", "group": "clock / metronome", "tag": "[verified]",
+     "claim": "BOOK V EXPERIMENT 3 'THE METRONOME' — the canonical repeating-pulse source, and the tick source for sequential programs. Exact program as printed: 4R/D3, 4S/5R, 4T/D5, 4U/D7, 4V/5T, 4W/D9, 5S/6K, 6C/6L, 6E/D16, 6F/6—, 6G/D1, 6G/6N, 6H/D17, 6J/6K, 6J/6+, 6L/D18, 6N/6—. Usage: 'Turn power on. The rotary switch dial will begin to turn back and forth, generating a periodic signal. To change the period of the signal, move slide switches 4 and 5.'",
+     "cite": "B56 printed pp.3-4, including the printed CIRCUIT DIAGRAM—METRONOME (read from the page image, book5-6 PDF page 10). Program list confirmed character-by-character against that page image.",
+     "period_selection": "Slide switch 4 deck 1 (pole 4S) selects D3 or D5; deck 2 (pole 4V) selects D7 or D9. Slide switch 5 (pole 5S, throws 5R/5T) selects which deck of switch 4 reaches relay terminal 6K. So exactly one of D3 / D5 / D7 / D9 becomes the 'far' turning point. The manual: 'only four periods can be produced using the positions of slide switches 4 and 5. Through an appropriate circuit, the MINIVAC is capable of generating 15 different periods.'"},
+
+    {"id": "CLK04", "group": "clock / metronome", "tag": "[verified topology, derived operation]",
+     "claim": "HOW THE METRONOME ACTUALLY WORKS (mechanism derived from the printed program and the printed circuit diagram; the derivation itself is my reasoning, but every wire and every relay-contact convention it uses is verified).",
+     "derivation": [
+       "Relay 6 contact convention (B1 printed p.13): arms are H and L; relay OFF connects H-J and L-N; relay ON connects H-G and L-K. Coil terminals (B1 printed p.14): F is one end of the coil; the other end is reachable via E (direct) or via C (through the relay's own indicator lamp, in series).",
+       "Wiring: J and K are strapped and tied to 6+ ; G and N are strapped and tied to 6- ; D1 is tied to G, i.e. D1 sits at the NEGATIVE rail; the selected one of D3/D5/D7/D9 is tied to K, i.e. it sits at the POSITIVE rail.",
+       "Arm H drives D17. Arm L drives D18 and also feeds coil terminal C.",
+       "Relay OFF: H-J puts D17 at +, L-N puts D18 at - => motor runs in direction A.",
+       "Relay ON: H-G puts D17 at -, L-K puts D18 at + => motor runs in direction B. Polarity across 17/18 has flipped, so the dial reverses.",
+       "Coil: F is at 6-. E is tied to the wiper D16. When the arm reaches the selected positive contact (D3/D5/D7/D9), + arrives at E and the relay PULLS IN.",
+       "Hold: with the relay in, arm L is at + (via K), so C is also at +, and the coil is held through the indicator lamp even after the wiper leaves the contact. Light 6 therefore flashes/holds with the beat.",
+       "Release: when the wiper reaches D1 (at the NEGATIVE rail), E is pulled hard to 6- through the bare wiper, shunting the coil (whose other end is already at 6- via F) and shorting out the lamp-fed hold current. The relay DROPS OUT and the motor reverses again.",
+       "Net effect: the dial oscillates between D1 and the selected contact, forever, with light 6 as the audible/visible beat. Period is proportional to the arc length: D1<->D3 (2 steps) is the fastest, D1<->D9 (8 steps) the slowest."
+     ],
+     "cite": "Program and diagram: B56 printed pp.3-4. Relay contact and coil conventions: B1 printed pp.13-14. Motor polarity/direction: B1 Experiment 14, printed p.24.",
+     "corroboration": "B1 Problem 17 (printed p.28) sets exactly this task — 'Design a circuit to automatically turn the rotary switch back and forth between numbers 1 and 6. Use only 11 programming wires' — and ANSWER 17 (printed p.31) is the same topology with a fixed far point: 6+/6J, 6J/6K, 6K/D6, 6E/D16, 6F/6-, 6G/D1, 6C/6L, 6L/D18, 6H/D17, 6-/6N, 6N/6G.",
+     "simulator_consequence": "The metronome's tick is NOT a fixed frequency. It is dial-travel time between two contacts, so it inherits motor speed, direction reversal time, and mechanical overrun. A simulator that models the dial as an angle with acceleration will produce a metronome; a simulator that models the dial as an integer with instant reversal will produce a degenerate one."},
+
+    {"id": "CLK05", "group": "clock / metronome", "tag": "[verified]",
+     "claim": "The manual itself frames the metronome as the general self-sensing pattern: 'this can be done by a program which will automatically sense the position of the pointer knob and immediately act to change its position. An example of such a program is the metronome in experiment 3. The metronome circuit provides constant oscillation between two points on the rotary switch dial. The operator can change the period of oscillation by moving the slide switches, but the system automatically reacts to its own operation.'",
+     "cite": "B56 printed p.26."},
+
+    {"id": "CLK06", "group": "clock / metronome", "tag": "[verified]",
+     "claim": "A free-running sequencer variant exists that never reverses: the TRAFFIC LIGHT. The wiper is tied to a rail, the motor is tied across the rails permanently, and contiguous contact groups drive the three lamps. Program: 4A/4+, 4B/D11, 5A/5+, 5B/D7, 6A/6+, 6B/D1, D1/D2, D2/D3, D3/D4, D4/D5, D5/D6, D7/D8, D8/D9, D9/D10, D11/D12, D12/D13, D13/D14, D14/D15, D15/D0, D16/M—, D17/M—, D18/M+. 'Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.'",
+     "cite": "B56 printed p.4 (program list and circuit diagram read from the page image).",
+     "note": "This is the cleanest primary demonstration that (a) 17 and 18 taken to opposite rails = run forever, (b) D15 and D0 are adjacent on the ring, and (c) dwell time per lamp is set by how many contacts you strap together."},
+
+    {"id": "IO01", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "DECIMAL OUTPUT IDIOM ('seek and stop'): tie the WIPER to a STOP terminal (D16/D19) and drive the target contact to the same potential the other STOP terminal (D18) currently sits at. When the arm reaches the target contact, D18 and D19 are shorted through the arm and the motor stops there. The user reads the answer off the pointer.",
+     "cite": "B234 Experiment 7 'DECIMAL OUTPUT', printed p.15. Program: 1R/D1, 1S/2S, 2R/D2, 2S/3S, 3R/D3, 3S/4S, 4R/D4, 4S/5S, 5R/D5, 5S/6S, 6R/D6, 6S/D19, D18/D16, D16/M—, D17/6X, 6Y/6+. 'Turn power ON. Move slide switch 4 to the LEFT position. This places the number 4 in Secondary Storage. Push pushbutton 6... The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output.'",
+     "how_it_selects": "The slide-switch poles are daisy-chained 1S/2S/3S/4S/5S/6S so that the first switch thrown LEFT breaks the chain and connects its own R contact — hence its own dial contact D1..D6 — to D19 via 6S. The wiper carries M- (D16/M-), D18 also carries M- (D18/D16), so the short forms exactly when the arm arrives.",
+     "output_reading": "B234 printed p.15: 'Output information is \"read\" from the decimal output mechanism of MINIVAC 601 by noting the number at which the pointer knob is pointing.'"},
+
+    {"id": "IO02", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "SEEK-TO-ONE-OF-TWO IDIOM with direction chosen by a relay: two target contacts are held at OPPOSITE rails, the wiper is tied to D19, and a relay swaps which rail feeds D17 and which feeds D18. The relay therefore chooses both the direction of travel AND which target's polarity matches D18 — so the machine drives toward, and stops at, the selected target.",
+     "cite": "B56 Experiment 8 'The Two-Floor Elevator', printed pp.10-11. Program: 5A/6C, 5B/5-, 5B/6B, 5C/5—, 5C/5H, 5F/6X, 5G/6E, 5L/5X, 5N/6E, 5Y/6Y, 6A/6K, 6C/6G, 6F/6-, 6G/6N, 6H/6+, 6J/6K, 6J/D17, 6L/6-, 6N/D18, 6Y/D1, D1/M+, D7/M—, D16/D19. 'The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor.'",
+     "errata": "ERRATA corrects the SUCCEEDING experiment (Book V page 11, Experiment 9 three-floor elevator): 'change 4G/4H to 4G/5H' and 'change D16/M— to D16/M+'. ERRATA also corrects Experiment 8's operating instructions: 'Set the \"elevator\" at the first floor by pushing pushbutton 5.'"},
+
+    {"id": "IO03", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "DECIMAL INPUT IDIOM (reading a hand-dialled digit): energise the wiper from a rail (D16/M+) and let each contact D0..D15 drive a relay/lamp tree. Book IV's Decimal-to-Binary Converter does exactly this — 'Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights.'",
+     "cite": "B234 Experiment 11, printed p.84-85. The program's decimal-side wires are D1/6com, D2/5com, D4/4com, D8/3com, 1E/D10, 2E/D9, 3E/D7, 4E/D6, 5E/D5, 6E/D3, and D16/M+. Note the motor is NOT wired in this program — the dial is used purely as a hand-set input."},
+
+    {"id": "IO04", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "BINARY-TO-DECIMAL (tree) IDIOM, stated in the manual's own words: 'With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch.'",
+     "cite": "B234 Experiment 12, printed p.85. Program's decimal-side wires include 3G/D15, 3J/D14, 3K/D11, 3N/D10, 4G/D13, 4J/D12, 4K/D9, 4N/D8, 5G/D3, 5J/D2, 5K/D1, 5N/D0, 6G/D7, 6J/D6, 6K/D5, 6N/D4, 6X/D17, 6Y/6+, D16/D19, D18/M—. 'Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number.'"},
+
+    {"id": "IO05", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "WIPER-AS-RAIL IDIOM: the arm can be tied to a RUN terminal so it distributes the motor's own supply rail to the contacts. Used in the CQ transmitter (D16/D17, D18/M—) and the reaction-time tester (D16/D17, D18/M—, 4K/D19).",
+     "cite": "B56 Experiment 16 'Automatic Message Transmission', printed pp.29-30 (program: 5A/D3, 5B/5-, 5X/6E, 5Y/6Y, 6A/D4, 6B/6—, 6C/6—, 6F/6G, 6F/D17, 6G/6X, 6H/6+, 6H/6Y, D3/D5, D4/D6, D5/D8, D6/D10, D8/D9, D9/D11, D16/D17, D18/M—); B56 'Reaction Time Tester', printed p.60.",
+     "errata": "ERRATA, Book V page 30: \"'CQ' transmitter program correction: change 5X/6E to 5X/6C (correct circuit diagram to correspond).\""},
+
+    {"id": "IO06", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "RELAY-AS-BRAKE IDIOM: any relay contact pair wired between D18 and D19 stops the dial on command. Reaction-time tester uses 4K/D19 with relay 4's arm 4L at 4- while D18 is at M-, so relay 4 picking up shorts 18-19.",
+     "cite": "B56 'Reaction Time Tester', printed p.60 (4K/D19, 4L/4—, 6L/D17, D16/D17, D18/M—)."},
+
+    {"id": "IO07", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "ARITHMETIC-ON-THE-DIAL IDIOM: strapping contact n to contact n+k builds a constant offset, so a 'seek and stop' lands k positions away from where it started. The Match Game subtracts using D1/D4, D2/D5, D3/D6, D4/D7, D5/D8, D6/D9, D7/D10, D8/D11, D9/D12, D10/D13, D11/D14, D12/D15 (offset 3).",
+     "cite": "B56 'The Match Game', printed pp.54-55 (also 3G/D0, 4E/D14, 5E/D13, 6E/D15, 6K/D18, D16/M+, D17/M—). 'The game is started with the rotary switch dial at 15.' ERRATA, Book VI page 55: 'The first two sentences under \"To Play the Match Game\" should be changed to: \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\"'"},
+
+    {"id": "IO08", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "The dial is classified by the manual as BOTH an input unit and an output unit, and its output role depends on the motor: 'The output devices of the MINIVAC 601 are the binary output lights and the decimal input-output rotary switch. When operated with the motor, the rotary switch becomes an output device, since the motor may be controlled by the processing unit of the MINIVAC 601 and caused to stop with the pointer indicating the number which is to be communicated as output information.'",
+     "cite": "B234 printed p.3."},
+
+    {"id": "IO09", "group": "decimal I/O", "tag": "[verified]",
+     "claim": "The dial's motor is driven by the relay logic like any other load — 'Relay 6 controls the operation of the motor.' Book II Experiment 4 is the canonical 'processing unit controls the motor' demo: 5+/5Y, 5X/5C, 5F/5-, 5+/5H, 5G/6C, 6F/6-, 6+/6H, 6G/D17, D18/M-.",
+     "cite": "B234 Experiment 4 'CONTROL', printed pp.12-13."},
+
+    {"id": "X01", "group": "ratchet / detent / overrun / settling", "tag": "[verified]",
+     "claim": "There is NO ratchet, NO detent, NO indexing spring, and NO click stop anywhere in the mechanism. The words 'detent', 'ratchet', 'click', 'index' and 'brake' appear nowhere in Books I-VI, the Maintenance Manual, or the errata. The only mechanical elements named are the pointer knob, the shaft (stainless, in an oil-impregnated bronze bearing), the wiper with beryllium-copper contact fingers, the drive wheel, and the motor with a sprung bracket.",
+     "cite": "Exhaustive grep over book1.txt, book2-3-4.txt, book5-6.txt for detent|ratchet|click|index|coast|momentum|inertia|friction|brake|slip returned only the 'friction drive' hits; MAINT and ERRATA read in full."},
+
+    {"id": "X02", "group": "ratchet / detent / overrun / settling", "tag": "[verified]",
+     "claim": "OVERRUN IS REAL AND PROGRAMS DEPEND ON IT. The Philosophic Tug of War stops the dial whenever the arm is on D7, D8 or D9 (they are strapped together and reachable from D18 through the released reset button), yet the game starts with the dial in that very group. The operating instruction is: 'Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn.' The dial must therefore carry enough momentum past the strapped group during the release window to escape it.",
+     "cite": "B56 'The Philosophic Tug of War', printed pp.56-57. Program: 1X/6X, 1Y/1+, 1Z/6Z, 4Y/D18, 4Z/D9, 6E/6Y, 6F/6-, 6F/6L, 6G/6N, 6H/6+, 6J/6K, 6J/D17, 6N/D18, D7/D8, D8/D9, D16/D19."},
+
+    {"id": "X03", "group": "ratchet / detent / overrun / settling", "tag": "[verified]",
+     "claim": "SETTLING BETWEEN CONTACTS IS A DOCUMENTED HANG. See C05. The factory's stated remedy is manual: nudge the knob onto a contact. There is nothing in the machine that recovers automatically.",
+     "cite": "ERRATA, Book V page 11."},
+
+    {"id": "X04", "group": "ratchet / detent / overrun / settling", "tag": "[verified]",
+     "claim": "Direction convention on the real panel, cross-checked two ways: numbers increase clockwise. Book VI states the dial 'turns counterclockwise (towards 9)... clockwise (towards 7)' in a game whose contested region is 7-8-9 — consistent only if decreasing numbers = counterclockwise, i.e. increasing numbers = clockwise. This agrees with the photograph.",
+     "cite": "B56 printed p.56; PHOTO."},
+
+    {"id": "X05", "group": "ratchet / detent / overrun / settling", "tag": "[verified]",
+     "claim": "The 'VIEW UNDER PANEL' figure in Book I shows the contact ring MIRRORED (0 at top, 1..15 counterclockwise) because it is drawn from beneath. This is a drafting convention, not a second numbering. Do not mistake it for a contradiction.",
+     "cite": "B1 printed p.20, figure labelled 'VIEW UNDER PANEL'."},
+
+    {"id": "X06", "group": "ratchet / detent / overrun / settling", "tag": "[unverified]",
+     "claim": "Spin-up time, spin-down time, coast distance in degrees, and reversal time are not quantified anywhere.",
+     "cite": "Absence across all sources read.",
+     "what_would_settle_it": "A video or instrumented measurement of a working original. Gardi's demo video (linked from GARDI10) is of his replica with a geared motor and solenoid clutch, so it cannot stand in."},
+
+    {"id": "S01", "group": "secondary — Gardi", "tag": "[likely]",
+     "claim": "Gardi confirms 16 positions and confirms the original used a friction drive: 'As with the original Minivac 601 this is accomplished using a friction drive implementation.' He also confirms the original's STOP semantics from the outside: 'NOTE: This method for stopping is slightly different than the \"short circuit\" method used in the original Minivac 601. The STOP here must be a proper powered circuit and not just a \"wire\" running from rivets 18 to 19.'",
+     "cite": "GARDI10, steps 'Minivac 601 (Version 1.0) Motorized Rotary Switch' and 'Testing'.",
+     "note": "Both statements are restatements of what Book I already says. They add confidence, not evidence."},
+
+    {"id": "S02", "group": "secondary — Gardi", "tag": "[unverified as to the original]",
+     "claim": "Gardi's replica uses 16 reed switches in the body with disc magnets in the rotor, all sixteen reed switches commoned by one wire to the ARM lug, a 12 V speed-reduction gearmotor with a rubber-tyred friction wheel on a hinged bracket, a 12 V solenoid to pull the wheel into contact, and a relay so that powering STOP releases the drive. Magnets also give his rotor 'stops' at each of the 16 numbers.",
+     "cite": "GARDI10, steps 'Populate the Rotary Switch Body', 'Prepare the Motor and Motor Mount', 'Wire the Motor, Solenoid, and Relay'; GARDI09, 'The Rotary Switch should turn freely with \"stops\" at each of the 16 numbers.'",
+     "why_unverified": "These are HIS engineering choices, made without access to an original (see source_credibility_correction). The magnetic detents and the solenoid clutch in particular CONTRADICT the original as documented (X01, D02). Do not import them.",
+     "one_useful_structural_corroboration": "His topology — one common bus to ARM, sixteen individually-brought-out position contacts — matches the manual's single-wiper/16-contact description."},
+
+    {"id": "S03", "group": "secondary — Gardi", "tag": "[verified about the replica, and useful]",
+     "claim": "Licence and provenance of the best secondary source: Instructables, published 2019-07-09, CC BY-NC-SA 4.0, author megardi. STL files also on Thingiverse thing:3743869 (returned HTTP 403 to automated fetch).",
+     "cite": "GARDI10 metadata."},
+
+    {"id": "S04", "group": "secondary — Hackaday / Wikipedia", "tag": "[likely, with a contamination warning]",
+     "claim": "Wikipedia: 'A 16-position motorized dial rotary switch could be used to input decimal or hexadecimal numbers, to output numbers, or to act as a clock signal generator.' Positions, I/O role and clock role are all independently verified from the manuals. The 'hexadecimal' framing is Wikipedia's gloss — the manuals only ever say 'zero through fifteen' and never use the word hexadecimal.",
+     "cite": "WIKI (uncited in the article itself for this sentence); contrast B234 printed p.5.",
+     "contamination_warning": "Search-engine and Hackaday summaries routinely describe Gardi's SOLENOID-CLUTCH replica as if it were the original ('when the rotor needs to move, a solenoid pulls the motor's friction drive wheel up against the rotor'). That sentence is about the 2019 replica. It is NOT how the 601 works."},
+
+    {"id": "S05", "group": "secondary — prebrief", "tag": "[verified — the prebrief claim checks out]",
+     "claim": "The prebrief's mention of a Maintenance Manual with 'oiling the motor and rotary-switch bearings' and a spare-parts list including 'complete rotary switch assembly $20.00' is CORRECT and I located the document. Actual list entries relevant here: 6471 Motor $4.00; 6472 Drive Wheel Assembly $2.00; 6473 Complete Rotary Switch Assembly $20.00.",
+     "cite": "MAINT spare parts list; PREBRIEF line 34."},
+
+    {"id": "ADDR01", "group": "address discrepancy (reported, NOT resolved)", "tag": "[verified — three primary Watertown attestations vs one primary Cambridge attestation]",
+     "claim": "The discrepancy the brief flagged now has more data on the Watertown side, and I am NOT resolving it. Watertown appears on: (a) the Book V-VI copyright page; (b) Book I's back matter — 'MINIVAC 601 AND THE MINIVAC MANUAL ARE PRODUCTS OF: SCIENTIFIC DEVELOPMENT CORPORATION, 372 Main Street, Watertown, Massachusetts'; (c) the Maintenance Manual cover AND its order address, 'Scientific Development Corporation, 372 Main Street, Watertown 72, Massachusetts'; (d) the factory errata sheet, twice. Cambridge appears on: the machine's own logo plate — 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.'",
+     "cite": "B1 final page; B56 copyright page; MAINT cover and p.11; ERRATA first and last pages; PHOTO (logo plate legend).",
+     "note": "Both remain primary. The likeliest reading — that the panel silkscreen predates a company move, or that the panel names a different corporate address than the mail-order address — is an inference and is NOT asserted here. 'Watertown 72' is a pre-ZIP postal zone number, consistent with 1961."}
+  ],
+
+  "full_transcriptions": {
+    "note": "Programs are transcribed exactly as printed (OCR-read unless marked image-verified). Em-dashes in the originals stand for the minus sign in terminal names like '6—'.",
+
+    "B1_experiment_11_manual_rotary": {
+      "cite": "Book I, printed p.21",
+      "program": ["6+/D16", "D1/5A", "D2/6A", "5B/6B", "6-/6B"],
+      "behaviour": "Pointer at 1 lights lamp 5; pointer at 2 lights lamp 6; lamp 5 goes off before lamp 6 comes on (break-before-make)."
+    },
+
+    "B1_experiment_12_basic_motor": {
+      "cite": "Book I, printed p.22; circuit diagram partially image-verified (6+ / 5Y / 5Z / 5X / D17 chain confirmed from the page image)",
+      "program": ["6+/5Y", "5X/D17", "6-/D18", "6-/6Y", "6X/D19"],
+      "behaviour": "Pushbutton 5 supplies power to RUN (D17/D18) and the pointer rotates. Pushbutton 6 shorts STOP (D18/D19) and it halts. Releasing 6 restarts it; releasing 5 stops it by removing power."
+    },
+
+    "B1_experiment_13_motor_driven_pulse_generator": {
+      "cite": "Book I, printed p.23",
+      "program": ["6+/D16", "D1/5A", "5-/D18 (OCR; Exp 12 prints 6-/D18 — same node, see E10)", "D2/6A", "5B/6B", "6-/6Y", "6-/6B", "6+/5Y", "6X/D19", "5X/D17"],
+      "behaviour": "Lights 5 and 6 flash in sequence, once per revolution. The manual names this the machine's clock-pulse source."
+    },
+
+    "B1_experiment_14_motor_reversing": {
+      "cite": "Book I, printed p.24; ERRATA corrects the DIAGRAM label 6Y -> 6V",
+      "program": ["6+/6R", "6T/6U", "6V/D17", "6+/6W", "6S/D18", "6-/6T"],
+      "behaviour": "Slide switch 6 reverses the polarity across D17/D18 and the pointer reverses direction."
+    },
+
+    "B1_problem_17_and_answer_17_metronome_in_11_wires": {
+      "cite": "Book I, printed p.28 (problem) and p.31 (answer)",
+      "problem": "Design a circuit to automatically turn the rotary switch back and forth between numbers 1 and 6. Use only 11 programming wires.",
+      "program": ["6+/6J", "6J/6K", "6K/D6", "6E/D16", "6F/6-", "6G/D1", "6C/6L", "6L/D18", "6H/D17", "6-/6N", "6N/6G"],
+      "note": "Eleven wires. Identical topology to the Book V metronome with the far point fixed at D6."
+    },
+
+    "B1_problem_18_and_answer_18_stop_at_zero": {
+      "cite": "Book I, printed p.28 (problem) and p.32 (answer); ERRATA adds the operating note",
+      "problem": "Design a circuit to turn the rotary switch when pushbutton 6 is down, and to automatically stop the rotary switch when it reaches D0. The rotary switch should start again and make another revolution when pushbutton 5 is pushed and then released.",
+      "program": ["6+/6Y", "6X/D17 (OCR renders 'DU')", "M-/D18", "5Z/D18", "5Y/D0", "D16/D19"],
+      "mechanism": "The wiper is tied to D19. D0 reaches D18 through pushbutton 5's normally-closed pair 5Y-5Z. When the arm reaches D0 the STOP terminals are shorted through the arm and the dial halts. Pressing pushbutton 5 breaks 5Y-5Z, lifting the short so the dial can leave 0.",
+      "errata_note": "'Problem 18: Note that pushbutton 5 is used to keep the rotary switch from stopping at D0 when pushbutton 6 is being held down.'"
+    },
+
+    "B1_answer_16_reversing_by_two_pushbuttons": {
+      "cite": "Book I, printed p.31",
+      "program": ["5+/5Y", "5Z/6X", "6Y/6J", "6Z/5X", "6Z/6C", "6F/6-", "6J/6K", "6-/6G", "6G/6N", "6L/D18", "6H/D17"],
+      "note": "OCR of this answer block is noisy ('62/5X' for 6Z/5X). Treat as indicative, not authoritative."
+    },
+
+    "B1_answer_19_flash_lights_1_to_6_in_sequence": {
+      "cite": "Book I, printed p.32",
+      "program": ["D1/1A", "D2/2A", "D3/3A", "D4/4A", "D5/5A", "D6/6A", "1B/1-", "2B/2-", "3B/3-", "4B/4-", "5B/5-", "6B/6-", "6+/6Y", "6X/D17", "M-/D18", "M+/D16"],
+      "note": "The plainest possible sequencer: wiper on the + rail, six lamps on six consecutive contacts, motor free-running."
+    },
+
+    "B234_experiment_4_processing_unit_controls_motor": {
+      "cite": "Books II-IV, printed pp.12-13",
+      "program": ["5+/5Y", "5X/5C", "5F/5-", "5+/5H", "5G/6C", "6F/6-", "6+/6H", "6G/D17", "D18/M-"]
+    },
+
+    "B234_experiment_7_decimal_output": {
+      "cite": "Books II-IV, printed p.15",
+      "program": ["1R/D1", "1S/2S", "2R/D2", "2S/3S", "3R/D3", "3S/4S", "4R/D4", "4S/5S", "5R/D5", "5S/6S", "6R/D6", "6S/D19", "D18/D16", "D16/M—", "D17/6X", "6Y/6+"]
+    },
+
+    "B234_experiment_11_decimal_to_binary_converter": {
+      "cite": "Books II-IV, printed pp.84-85",
+      "program": ["1E/D10", "1F/2F", "1G/3com", "1H/1L", "1K/6K", "1L/2L", "2E/D9", "2F/3F", "2G/5G", "2H/2L", "2H/3H", "2K/3com", "3A/3com", "3B/3—", "3E/D7", "3F/4F", "3G/6E", "3H/3L", "3K/4K", "3L/4L", "4A/4com", "4B/4—", "4E/D6", "4F/5F", "4G/5com", "4H/4L", "4H/5H", "4K/4com", "5A/5com", "5B/5—", "5E/D5", "5F/6F", "5G/6G", "5H/5L", "5K/4com", "5L/6L", "6A/6com", "6B/6—", "6E/D3", "6F/6—", "6G/6com", "6H/6L", "6H/6+", "6K/5com", "D1/6com", "D2/5com", "D4/4com", "D8/3com", "D16/M+"],
+      "usage": "Turn the dial by hand to 0..10; the binary equivalent appears in the output lights. The motor is not used."
+    },
+
+    "B234_experiment_12_binary_to_decimal_converter": {
+      "cite": "Books II-IV, printed p.85",
+      "program": ["1C/4R", "1F/2F", "1G/6H", "1H/5U", "1J/5H", "1K/6L", "1L/5W", "1N/5L", "2C/5R", "2F/3F", "2G/3H", "2H/4U", "2J/4H", "2K/3L", "2L/4W", "2N/4L", "3C/6R", "3C/4C", "3F/4F", "3G/D15", "3J/D14", "3K/D11", "3N/D10", "3U/4V", "3V/3—", "3W/5V", "4C/5C", "4F/5F", "4G/D13", "4J/D12", "4K/D9", "4N/D8", "4S/4+", "4S/5S", "5C/6C", "5F/6F", "5G/D3", "5J/D2", "5K/D1", "5N/D0", "5S/6S", "6F/6—", "6G/D7", "6J/D6", "6K/D5", "6N/D4", "6X/D17", "6Y/6+", "D16/D19", "D18/M—"]
+    },
+
+    "B234_appendix_automatic_shift_register_hand_clocked": {
+      "cite": "Books II-IV, printed pp.85-86",
+      "decimal_side_wires": ["1L/D1", "2L/D2", "3L/D3", "4L/D4", "5L/D5", "6L/D6", "6E/D7", "6Y/D16", "D16/M+"],
+      "usage": "'Shift LEFT one bit by slowly turning the rotary switch dial one complete revolution.' Hand rotation is the clock; the motor is not wired."
+    },
+
+    "B234_book_III_mind_reading_program": {
+      "cite": "Books II-IV, printed p.53",
+      "decimal_side_wires": ["M+/6Y", "6X/D17", "M—/D18", "D18/4V", "D16/D19", "D0/6N", "D1/6K", "D2/6J", "D3/6G", "D4/5N", "D5/5J", "D6/5K", "D7/5G"],
+      "usage": "Answer three yes/no questions on slide switches 4,5,6; push pushbutton 6; 'The pointer knob of the rotary switch will turn to the number your friend was thinking of.' A tree circuit energises exactly one contact and the dial seeks it.",
+      "errata": "Book III page 54: 'change 5V/45 to 5V/4S'."
+    },
+
+    "B56_experiment_3_metronome": {
+      "cite": "Books V-VI, printed pp.3-4 — IMAGE-VERIFIED against the printed page",
+      "program": ["4R/D3", "4S/5R", "4T/D5", "4U/D7", "4V/5T", "4W/D9", "5S/6K", "6C/6L", "6E/D16", "6F/6—", "6G/D1", "6G/6N", "6H/D17", "6J/6K", "6J/6+", "6L/D18", "6N/6—"],
+      "usage": "'Turn power on. The rotary switch dial will begin to turn back and forth, generating a periodic signal. To change the period of the signal, move slide switches 4 and 5.'",
+      "period_table_derived": [
+        {"sw5": "selects 4S deck", "sw4": "R side", "far_contact": "D3", "arc_positions": 2},
+        {"sw5": "selects 4S deck", "sw4": "T side", "far_contact": "D5", "arc_positions": 4},
+        {"sw5": "selects 4V deck", "sw4": "U side", "far_contact": "D7", "arc_positions": 6},
+        {"sw5": "selects 4V deck", "sw4": "W side", "far_contact": "D9", "arc_positions": 8}
+      ],
+      "period_table_tag": "[verified wiring, derived mapping] — which physical slide-switch position (LEFT/RIGHT) selects R vs T and U vs W is NOT stated for this experiment and is not asserted here."
+    },
+
+    "B56_experiment_4_traffic_light": {
+      "cite": "Books V-VI, printed p.4 — IMAGE-VERIFIED",
+      "program": ["4A/4+", "4B/D11", "5A/5+", "5B/D7", "6A/6+", "6B/D1", "D1/D2", "D2/D3", "D3/D4", "D4/D5", "D5/D6", "D7/D8", "D8/D9", "D9/D10", "D11/D12", "D12/D13", "D13/D14", "D14/D15", "D15/D0", "D16/M—", "D17/M—", "D18/M+"],
+      "contact_groups": {"green (light 6)": "D1 D2 D3 D4 D5 D6", "amber (light 5)": "D7 D8 D9 D10", "red (light 4)": "D11 D12 D13 D14 D15 D0"},
+      "note": "The absent straps D6/D7, D10/D11 and D0/D1 are what create the three arcs. This is the clearest primary proof that the contact ring wraps D15 -> D0."
+    },
+
+    "B56_experiment_5_traffic_light_with_pedestrian_control": {
+      "cite": "Books V-VI, printed pp.4-5",
+      "program": ["4A/4+", "4B/D1", "5A/5+", "5B/D14", "5E/5+", "5F/5Z", "5H/5—", "5J/D18", "5Y/D6", "6A/6+", "6B/D7", "D1/D2", "D2/D3", "D3/D4", "D4/D5", "D5/D6", "D7/D8", "D8/D9", "D9/D10", "D10/D11", "D11/D12", "D12/D13", "D14/D15", "D15/D0", "D16/M—", "D17/M+"]
+    },
+
+    "B56_experiment_7_train_gate": {
+      "cite": "Books V-VI, printed pp.8-9",
+      "program": ["4C/5C", "4F/4X", "4F/4K", "4G/5G", "4H/5H", "4L/5L", "4Y/5Y", "5C/6C", "5F/6X", "5F/5K", "5G/6F", "5H/5+", "5L/5X", "5Y/6Y", "6C/6—", "6G/6N", "6H/6—", "6J/6K", "6J/D17", "6L/6+", "6L/6Y", "6N/D18", "D0/M+", "D7/M—", "D16/D19"],
+      "usage": "Dial at 0 = gate up; dial at 7 = gate closed. 'Turn power on and set the pointer knob of the rotary switch at 0.'"
+    },
+
+    "B56_experiment_8_two_floor_elevator": {
+      "cite": "Books V-VI, printed pp.10-11",
+      "program": ["5A/6C", "5B/5-", "5B/6B", "5C/5—", "5C/5H", "5F/6X", "5G/6E", "5L/5X", "5N/6E", "5Y/6Y", "6A/6K", "6C/6G", "6F/6-", "6G/6N", "6H/6+", "6J/6K", "6J/D17", "6L/6-", "6N/D18", "6Y/D1", "D1/M+", "D7/M—", "D16/D19"],
+      "errata": "ERRATA Book V page 11: operating instruction changed to 'Set the \"elevator\" at the first floor by pushing pushbutton 5.' Plus the stuck-between-terminals note (see C05). Plus an optional reliability change: remove 5F/6C and 6C/6—, add 5F/6E, 6E/6—, 4E/6C."
+    },
+
+    "B56_experiment_6_automobile_speed_timer": {
+      "cite": "Books V-VI, printed pp.6-7",
+      "program": ["1C/1G", "1C/2K", "1F/1-", "1H/1+", "1H/2H", "2C/2G", "2C/3K", "2F/2—", "2H/3H", "2L/D11", "3C/3G", "3C/4K", "3F/3—", "3H/4H", "3L/D12", "4C/4G", "4C/5K", "4F/4—", "4H/5H", "4L/D13", "5C/5G", "5C/D15", "5F/5—", "5L/D14", "5X/6E", "5Y/5—", "6C/6X", "6F/6—", "6H/6+", "6H/6L", "6K/D17", "6Y/6+", "D16/M+", "D18/M—"],
+      "calibration_procedure_quoted": "'Count the number of complete revolutions which your rotary switch makes in one minute and note this number. Since the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution, we must multiply the number of complete revolutions in a minute by 16/15 to obtain a \"revolutions per minute\" figure for the dial plate.' Worked example uses 45 rev/min."
+    },
+
+    "B56_automatic_sequence_control": {
+      "cite": "Books V-VI, printed p.25",
+      "program": ["1A/6G", "1B/1—", "1C/1G", "1C/2K", "1F/1—", "1G/6A", "1H/1+", "1H/2H", "2A/5G", "2B/2—", "2C/2G", "2C/3K", "2F/2—", "2G/5A", "2H/3H", "2L/D11", "3A/4G", "3B/3—", "3C/3G", "3C/4K", "3F/3—", "3G/4A", "3H/4H", "3L/D12", "4B/4—", "4C/4G", "4C/5K", "4F/4—", "4H/5H", "4L/D13", "5B/5—", "5C/5G", "5C/D15", "5F/5—", "5L/D14", "5X/6E", "5Y/M—", "6B/6—", "6C/6G", "6C/6X", "6F/6—", "6H/6+", "6H/6L", "6K/D17", "6Y/6+", "D16/M+", "D18/M—"],
+      "errata": "ERRATA Book V page 25: 'to re-set the automatic sequence control, turn power OFF, then ON again.'"
+    },
+
+    "B56_experiment_16_cq_transmitter": {
+      "cite": "Books V-VI, printed pp.29-30",
+      "program": ["5A/D3", "5B/5-", "5X/6E", "5Y/6Y", "6A/D4", "6B/6—", "6C/6—", "6F/6G", "6F/D17", "6G/6X", "6H/6+", "6H/6Y", "D3/D5", "D4/D6", "D5/D8", "D6/D10", "D8/D9", "D9/D11", "D16/D17", "D18/M—"],
+      "usage": "'Set the rotary switch at 0 and turn power on. Push pushbutton 6... As the rotary switch turns, lights 5 and 6 will flash the CQ signal.' Light 5 = dash, light 6 = dot.",
+      "errata": "change 5X/6E to 5X/6C, and correct the circuit diagram to match. Also: 'Light 6 flashes on very briefly when indicating a dot... slow the rotary switch down by holding the pointer knob back during one revolution.'"
+    },
+
+    "B56_experiment_19_morse_encoder_and_20_decoder": {
+      "cite": "Books V-VI, printed pp.32-34",
+      "encoder_decimal_side": ["3E/D0", "4com/D12", "5F/D13", "6com/D1", "D1/D9", "D2/D10", "D3/D11", "D4/D12", "D5/D13", "D6/D14", "D7/D15", "D16/M+"],
+      "decoder_decimal_side": ["3G/D15", "3J/D7", "3K/D14", "3N/D6", "4G/D13", "4J/D5", "4K/D12", "4N/D4", "5G/D11", "5J/D3", "5K/D10", "5N/D2", "6G/D9", "6J/D1", "6K/D8", "6N/D0", "6X/D17", "6Y/6+", "D16/D19", "D18/M—"],
+      "usage": "Encoder is hand-driven with a paper dial plate; decoder seeks and stops on the letter's position.",
+      "errata": "'always turn the pointer knob clockwise when indicating a letter for coding.'"
+    },
+
+    "B56_philosophic_tug_of_war": {
+      "cite": "Books V-VI, printed pp.56-57",
+      "program": ["1X/6X", "1Y/1+", "1Z/6Z", "4Y/D18", "4Z/D9", "6E/6Y", "6F/6-", "6F/6L", "6G/6N", "6H/6+", "6J/6K", "6J/D17", "6N/D18", "D7/D8", "D8/D9", "D16/D19"],
+      "direction_rule_quoted": "'The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.'"
+    },
+
+    "B56_match_game": {
+      "cite": "Books V-VI, printed pp.54-55",
+      "decimal_side": ["3G/D0", "4E/D14", "5E/D13", "6E/D15", "6K/D18", "D1/D4", "D2/D5", "D3/D6", "D4/D7", "D5/D8", "D6/D9", "D7/D10", "D8/D11", "D9/D12", "D10/D13", "D11/D14", "D12/D15", "D16/M+", "D17/M—"]
+    },
+
+    "B56_tic_tac_toe_decimal_side": {
+      "cite": "Books V-VI, printed pp.55-56",
+      "decimal_side": ["2E/D16", "2L/D18", "2N/D19", "3G/D7", "3K/D8", "4G/D5", "4K/D6", "5G/D3", "5K/D4", "6G/D1", "6K/D2", "6com/D9", "M—/D17"],
+      "note": "The pointer knob is the machine's move indicator: 'The pointer knob will turn to indicate the machine's first move.'"
+    },
+
+    "B56_reaction_time_tester_decimal_side": {
+      "cite": "Books V-VI, printed p.60",
+      "decimal_side": ["4K/D19", "6E/D2", "6L/D17", "D16/D17", "D18/M—"],
+      "errata": "Book VI page 60: 'to prevent the players' anticipating the start signal, either make dummy connections to the rotary switch or cover the dial with an inverted box.'"
+    }
+  },
+
+  "maintenance_manual_verbatim_rotary_section": {
+    "cite": "MAINT, 'Rotary Switch'",
+    "text": "The circuit diagram for the rotary switch motor drive is: [figure] Check the motor drive by connecting power to the RUN terminals (D17 and D18). Turn power on. The rotary switch pointer knob should turn. Reverse the power connections: the pointer knob should turn in the opposite direction. Connect a short circuit across the STOP terminals (D18 and D19): the pointer knob should stop turning. If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly. If the knob does turn, the trouble may be a bad connection or an open resistor. If the knob does not turn, the trouble may be a bad connection or a defective motor. It is also possible that the motor shaft is not properly engaging the drive wheel. Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, D0 through D15. Check the knob alignment to be sure that the knob has not turned on the drive shaft. If proper contacts are not being made, check the assembly under the panel: the rotary switch contacts may require cleaning. The rotary switch mechanism is accessible when the bottom panel of the computer is removed. If the motor does not turn the rotary switch: 1. Check all electrical connections. 2. Check the drive wheel to be sure that it is free to rotate. 3. Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds. If a resistor does not heat up, it is defective. Replace a defective resistor by cutting its leads and soldering a new unit of the same resistance in place. 4. Check the motor by unsoldering the motor leads and connecting them directly to the power terminals. If the motor does not rotate it is defective and must be replaced with a new unit. 5. To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel."
+  },
+
+  "simulator_spec_summary": {
+    "state": [
+      "angle: continuous, 0..360 degrees, 0 deg = dial position 0, increasing angle = clockwise = increasing dial number.",
+      "contact_at(angle): returns 0..15 or NONE (dead gap). Gap width is a tunable; not settled by sources (C08).",
+      "omega: signed angular velocity."
+    ],
+    "nets": [
+      "D0..D15: sixteen independent panel terminals, each a two-hole jack.",
+      "D16: the wiper. Electrically shorted to contact_at(angle) when that is not NONE; isolated otherwise.",
+      "D17, D18, D19: motor block terminals. Internal fixed elements: R1 between D17 and D19; motor between D18 and D19; R2 in parallel with the motor between D18 and D19.",
+      "All n+ terminals and M+ are ONE node. All n- terminals and M- are ONE node. (E10)"
+    ],
+    "motor_law": [
+      "V_motor = voltage across (D18, D19). Sign sets direction; positive sense arbitrary but must be consistent.",
+      "Driving 17/18 gives a divided voltage: motor sees roughly V_supply * Rp/(R1+Rp) where Rp = motor||R2. MAINT says this lands at under one third of the motor's rated voltage.",
+      "Shorting 18/19 forces V_motor = 0 AND short-circuits the armature => braked stop, faster than coasting.",
+      "Removing supply from 17/18 leaves the motor open through R1 => coast.",
+      "Driving 18/19 directly bypasses R1 => full supply on the motor => 'the knob should turn very rapidly'."
+    ],
+    "hand_input": [
+      "The user may set the angle directly at any time; the wiper follows because it is on the same shaft.",
+      "The user may hold or retard the knob against a running motor; the friction drive slips without damage.",
+      "There are no detents; the knob can be left anywhere, including in a dead gap."
+    ],
+    "speed_default": "Configurable. Primary sources bracket roughly 30-45 rev/min (about 65-110 ms per contact). 45 rpm is a worked example; 'more than a second from zero to nine' implies the slower end.",
+    "failure_modes_to_model": [
+      "Stopping in a dead gap => program hangs; only a hand nudge recovers. (C05)",
+      "Overrun past a stop group when the motor is already turning. (X02)",
+      "Knob/wiper misalignment (a service condition, probably not worth simulating, but explains why some period photos show the pointer off-centre in a sector)."
+    ]
+  },
+
+  "not_settled_by_the_sources": [
+    "Resistance values of R1 and R2. MAINT only says both should get hot in ~20 seconds under direct power. Would need an original unit or an SDC parts drawing.",
+    "Angular width of a contact vs the dead gap between contacts. Would need an under-panel photograph or a measured original rotary switch assembly (SDC 6473).",
+    "Motor make, model, rated voltage, no-load rpm, and the drive-wheel diameter / effective reduction ratio. Only 'SDC part 6471, Motor, $4.00' is on record.",
+    "Actual as-built revolutions per minute, and whether the two primary figures (45 rpm example; '>1 second from zero to nine') reflect unit variation, motor wear, or simple looseness in the prose.",
+    "Spin-up, spin-down, coast angle and reversal time. Nothing quantitative anywhere.",
+    "Whether the wiper is a single finger or multiple fingers on the same node. MAINT says 'contact fingers' (plural) but that may be describing the fixed contacts or a bifurcated wiper.",
+    "Whether the wiper rides a central slip ring or a concentric collector ring to reach D16. Never illustrated; Book I's 'VIEW UNDER PANEL' figure shows only the arm and the contact circle.",
+    "Which physical slide-switch position (LEFT or RIGHT) selects which throw on the metronome's period switches. The manual gives no LEFT/RIGHT mapping for Book V Experiment 3.",
+    "Whether the Book I Experiment 13 combined program prints '5-/D18' or '6-/D18'. Electrically irrelevant per the errata's +/- commoning rule, but not image-verified.",
+    "Why the panel plate says Cambridge while every paper source says Watertown. Deliberately left unresolved per the brief."
+  ],
+
+  "things_the_next_agent_should_do": [
+    "Download the Maintenance Manual and the errata sheet into docs/research/raw/pdf/ — https://archive.org/download/1961Minivac601Book234/1961-minivac601-maintenance-manual.pdf and .../1961-minivac601-erratas.pdf . They are primary SDC documents, they are not in the local corpus, and between them they settle more about the rotary subsystem than Books I-VI do.",
+    "The errata sheet's '+/- terminals are all connected together' rule affects EVERY subsystem, not just this one. Whoever owns the net/power model must read it.",
+    "Read the Maintenance Manual's 'Power Supply Circuit Diagram' page image (the OCR drops the figure) if the simulator needs supply behaviour under short-circuit.",
+    "The rotary switch's failure to make contact in a gap (C05) should be a first-class simulator state, not an afterthought — a period program (the three-floor elevator) is documented to hang on it."
+  ]
+}

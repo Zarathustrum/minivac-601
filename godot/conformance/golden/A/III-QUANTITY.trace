@@ -1,0 +1,434 @@
+#!mv601-trace 1
+# id=III-QUANTITY contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=50
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=38 minTickGap=9 marginal=false
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+    26.9 * sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    33.0 * sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+    79.9 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    82.2 ? outLamp6=on  "Set slide switches 2 through 6 to the RIGHT (the slide switches are now OFF). Turn power ON. Light 6 will come ON indicating that NO switches are ON."
+    82.2 > switch2 target=0
+    82.2 > switch3 target=0
+   109.1 * sw2 no->mid  sw3 no->mid
+   115.2 * sw2 mid->nc  sw3 mid->nc
+   125.1 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   126.4 * relay2 nc->mid
+   126.6 * relay3 nc->mid
+   126.8 * relay4 nc->mid
+   127.0 * relay5 nc->mid
+   127.7 * relay2 mid->no
+   127.9 * relay3 mid->no
+   128.1 * relay4 mid->no
+   128.3 * relay5 mid->no
+   131.6 * outLamp2 off->dim
+   146.6 * outLamp6 on->dim
+   150.6 * outLamp2 dim->on
+   165.5 * indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on
+   202.2 * outLamp6 dim->off
+   225.6 ? outLamp2=on  "Set any two of the slide switches 2 through 6 to the LEFT. Light 2 will come ON indicating that two switches are ON."
+   225.6 > switch2 target=1000
+   225.6 > switch3 target=1000
+   252.5 * sw2 nc->mid  sw3 nc->mid
+   257.1 * relay4 no->mid  relay5 no->mid
+   257.2 * relay2 no->mid  relay3 no->mid
+   258.0 * relay4 mid->nc  relay5 mid->nc
+   258.1 * relay2 mid->nc  relay3 mid->nc
+   258.6 * sw2 mid->no  sw3 mid->no
+   260.7 * outLamp6 off->dim
+   262.9 * indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim
+   277.1 * outLamp2 on->dim
+   279.5 * outLamp6 dim->on
+   318.5 * indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+   332.7 * outLamp2 dim->off
+   345.5 ? outLamp6=on  "Set all switches to the RIGHT again. Once again, light 6 will come ON indicating that NO switches are ON."
+   345.5 > switch2 target=0
+   372.4 * sw2 no->mid
+   378.5 * sw2 mid->nc
+   386.9 * indLamp2 off->dim  indLamp3 off->dim
+   389.8 * relay2 nc->mid
+   390.0 * relay3 nc->mid
+   391.1 * relay2 mid->no
+   391.3 * relay3 mid->no
+   394.6 * outLamp1 off->dim
+   410.1 * outLamp6 on->dim
+   413.5 * outLamp1 dim->on
+   427.3 * indLamp2 dim->on  indLamp3 dim->on
+   465.7 * outLamp6 dim->off
+   487.4 ? outLamp1=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+   487.4 > switch3 target=0
+   514.3 * sw3 no->mid
+   520.4 * sw3 mid->nc
+   530.3 * indLamp4 off->dim  indLamp5 off->dim
+   532.0 * relay4 nc->mid
+   532.2 * relay5 nc->mid
+   533.3 * relay4 mid->no
+   533.5 * relay5 mid->no
+   536.8 * outLamp2 off->dim
+   552.3 * outLamp1 on->dim
+   555.8 * outLamp2 dim->on
+   570.7 * indLamp4 dim->on  indLamp5 dim->on
+   608.0 * outLamp1 dim->off
+   630.8 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+   630.8 > switch2 target=1000
+   657.7 * sw2 nc->mid
+   662.4 * relay2 no->mid  relay3 no->mid
+   663.3 * relay2 mid->nc  relay3 mid->nc
+   663.8 * sw2 mid->no
+   665.8 * outLamp1 off->dim
+   668.8 * indLamp2 on->dim  indLamp3 on->dim
+   682.4 * outLamp2 on->dim
+   684.8 * outLamp1 dim->on
+   724.4 * indLamp2 dim->off  indLamp3 dim->off
+   738.0 * outLamp2 dim->off
+   750.7 ? outLamp1=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+   750.7 > switch4 target=0
+   777.6 * sw4 no->mid
+   783.7 * sw4 mid->nc
+   793.6 * indLamp6 off->dim
+   795.7 * relay6 nc->mid
+   797.0 * relay6 mid->no
+   799.6 * outLamp2 off->dim
+   815.8 * outLamp1 on->dim
+   818.6 * outLamp2 dim->on
+   833.9 * indLamp6 dim->on
+   871.4 * outLamp1 dim->off
+   894.0 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+   894.0 > switch2 target=0
+   920.9 * sw2 no->mid
+   927.0 * sw2 mid->nc
+   930.3 * outLamp3 off->dim
+   937.0 * indLamp2 off->dim  indLamp3 off->dim
+   938.4 * relay2 nc->mid
+   938.6 * relay3 nc->mid
+   939.7 * relay2 mid->no
+   939.9 * relay3 mid->no
+   940.8 * outLamp2 on->dim
+   949.3 * outLamp3 dim->on
+   977.4 * indLamp2 dim->on  indLamp3 dim->on
+   996.5 * outLamp2 dim->off
+  1013.9 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1013.9 > switch3 target=1000
+  1040.8 * sw3 nc->mid
+  1045.4 * relay4 no->mid  relay5 no->mid
+  1046.3 * relay4 mid->nc  relay5 mid->nc
+  1046.9 * sw3 mid->no
+  1048.7 * outLamp2 off->dim
+  1051.8 * indLamp4 on->dim  indLamp5 on->dim
+  1065.2 * outLamp3 on->dim
+  1067.7 * outLamp2 dim->on
+  1107.5 * indLamp4 dim->off  indLamp5 dim->off
+  1120.8 * outLamp3 dim->off
+  1133.8 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1133.8 > switch2 target=1000
+  1160.7 * sw2 nc->mid
+  1165.4 * relay2 no->mid  relay3 no->mid
+  1166.3 * relay2 mid->nc  relay3 mid->nc
+  1166.8 * sw2 mid->no
+  1169.6 * outLamp1 off->dim
+  1171.8 * indLamp2 on->dim  indLamp3 on->dim
+  1185.3 * outLamp2 on->dim
+  1188.5 * outLamp1 dim->on
+  1227.4 * indLamp2 dim->off  indLamp3 dim->off
+  1240.9 * outLamp2 dim->off
+  1253.7 ? outLamp1=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1253.7 > switch5 target=0
+  1280.6 * sw5 no->mid
+  1286.7 * sw5 mid->nc
+  1289.0 * outLamp2 off->dim
+  1300.4 * outLamp1 on->dim
+  1308.0 * outLamp2 dim->on
+  1356.0 * outLamp1 dim->off
+  1373.6 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1373.6 > switch2 target=0
+  1400.5 * sw2 no->mid
+  1406.6 * sw2 mid->nc
+  1409.9 * outLamp3 off->dim
+  1416.5 * indLamp2 off->dim  indLamp3 off->dim
+  1418.0 * relay2 nc->mid
+  1418.2 * relay3 nc->mid
+  1419.3 * relay2 mid->no
+  1419.5 * relay3 mid->no
+  1420.3 * outLamp2 on->dim
+  1428.8 * outLamp3 dim->on
+  1456.7 * indLamp2 dim->on  indLamp3 dim->on
+  1475.9 * outLamp2 dim->off
+  1493.5 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1493.5 > switch3 target=0
+  1520.4 * sw3 no->mid
+  1526.5 * sw3 mid->nc
+  1536.5 * indLamp4 off->dim  indLamp5 off->dim
+  1538.1 * relay4 nc->mid
+  1538.3 * relay5 nc->mid
+  1539.4 * relay4 mid->no
+  1539.6 * relay5 mid->no
+  1542.9 * outLamp4 off->dim
+  1558.3 * outLamp3 on->dim
+  1561.9 * outLamp4 dim->on
+  1576.9 * indLamp4 dim->on  indLamp5 dim->on
+  1613.9 * outLamp3 dim->off
+  1637.0 ? outLamp4=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1637.0 > switch2 target=1000
+  1663.9 * sw2 nc->mid
+  1668.6 * relay2 no->mid  relay3 no->mid
+  1669.5 * relay2 mid->nc  relay3 mid->nc
+  1670.0 * sw2 mid->no
+  1672.1 * outLamp3 off->dim
+  1674.9 * indLamp2 on->dim  indLamp3 on->dim
+  1688.6 * outLamp4 on->dim
+  1691.0 * outLamp3 dim->on
+  1730.5 * indLamp2 dim->off  indLamp3 dim->off
+  1744.2 * outLamp4 dim->off
+  1756.9 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1756.9 > switch4 target=1000
+  1783.8 * sw4 nc->mid
+  1788.4 * relay6 no->mid
+  1789.3 * relay6 mid->nc
+  1789.9 * sw4 mid->no
+  1793.2 * outLamp2 off->dim
+  1794.9 * indLamp6 on->dim
+  1803.6 * outLamp3 on->dim
+  1812.1 * outLamp2 dim->on
+  1850.5 * indLamp6 dim->off
+  1859.2 * outLamp3 dim->off
+  1876.8 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1876.8 > switch2 target=0
+  1903.7 * sw2 no->mid
+  1909.8 * sw2 mid->nc
+  1912.3 * outLamp3 off->dim
+  1919.7 * indLamp2 off->dim  indLamp3 off->dim
+  1921.2 * relay2 nc->mid
+  1921.4 * relay3 nc->mid
+  1922.5 * relay2 mid->no
+  1922.7 * relay3 mid->no
+  1923.5 * outLamp2 on->dim
+  1931.3 * outLamp3 dim->on
+  1960.0 * indLamp2 dim->on  indLamp3 dim->on
+  1979.1 * outLamp2 dim->off
+  1996.7 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  1996.7 > switch3 target=1000
+  2023.6 * sw3 nc->mid
+  2028.2 * relay4 no->mid  relay5 no->mid
+  2029.1 * relay4 mid->nc  relay5 mid->nc
+  2029.7 * sw3 mid->no
+  2031.5 * outLamp2 off->dim
+  2034.7 * indLamp4 on->dim  indLamp5 on->dim
+  2048.0 * outLamp3 on->dim
+  2050.5 * outLamp2 dim->on
+  2090.3 * indLamp4 dim->off  indLamp5 dim->off
+  2103.6 * outLamp3 dim->off
+  2116.6 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2116.6 > switch2 target=1000
+  2143.5 * sw2 nc->mid
+  2148.2 * relay2 no->mid  relay3 no->mid
+  2149.1 * relay2 mid->nc  relay3 mid->nc
+  2149.6 * sw2 mid->no
+  2152.4 * outLamp1 off->dim
+  2154.6 * indLamp2 on->dim  indLamp3 on->dim
+  2168.1 * outLamp2 on->dim
+  2171.3 * outLamp1 dim->on
+  2210.2 * indLamp2 dim->off  indLamp3 dim->off
+  2223.7 * outLamp2 dim->off
+  2236.5 ? outLamp1=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2236.5 > switch6 target=0
+  2263.4 * sw6 no->mid
+  2269.5 * sw6 mid->nc
+  2271.8 * outLamp2 off->dim
+  2283.2 * outLamp1 on->dim
+  2290.7 * outLamp2 dim->on
+  2338.9 * outLamp1 dim->off
+  2356.4 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2356.4 > switch2 target=0
+  2383.3 * sw2 no->mid
+  2389.4 * sw2 mid->nc
+  2392.7 * outLamp3 off->dim
+  2399.3 * indLamp2 off->dim  indLamp3 off->dim
+  2400.8 * relay2 nc->mid
+  2400.9 * relay3 nc->mid
+  2402.1 * relay2 mid->no
+  2402.2 * relay3 mid->no
+  2403.1 * outLamp2 on->dim
+  2411.6 * outLamp3 dim->on
+  2439.4 * indLamp2 dim->on  indLamp3 dim->on
+  2458.8 * outLamp2 dim->off
+  2476.3 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2476.3 > switch3 target=0
+  2503.2 * sw3 no->mid
+  2509.3 * sw3 mid->nc
+  2519.2 * indLamp4 off->dim  indLamp5 off->dim
+  2520.9 * relay4 nc->mid
+  2521.1 * relay5 nc->mid
+  2522.2 * relay4 mid->no
+  2522.4 * relay5 mid->no
+  2525.7 * outLamp4 off->dim
+  2541.1 * outLamp3 on->dim
+  2544.7 * outLamp4 dim->on
+  2559.6 * indLamp4 dim->on  indLamp5 dim->on
+  2596.8 * outLamp3 dim->off
+  2619.7 ? outLamp4=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2619.7 > switch2 target=1000
+  2646.6 * sw2 nc->mid
+  2651.3 * relay2 no->mid  relay3 no->mid
+  2652.2 * relay2 mid->nc  relay3 mid->nc
+  2652.7 * sw2 mid->no
+  2654.7 * outLamp3 off->dim
+  2657.7 * indLamp2 on->dim  indLamp3 on->dim
+  2671.3 * outLamp4 on->dim
+  2673.7 * outLamp3 dim->on
+  2713.3 * indLamp2 dim->off  indLamp3 dim->off
+  2726.9 * outLamp4 dim->off
+  2739.6 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2739.6 > switch4 target=0
+  2766.5 * sw4 no->mid
+  2772.6 * sw4 mid->nc
+  2782.5 * indLamp6 off->dim
+  2784.6 * relay6 nc->mid
+  2785.9 * relay6 mid->no
+  2788.5 * outLamp4 off->dim
+  2804.7 * outLamp3 on->dim
+  2807.5 * outLamp4 dim->on
+  2822.8 * indLamp6 dim->on
+  2860.3 * outLamp3 dim->off
+  2882.9 ? outLamp4=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  2882.9 > switch2 target=0
+  2909.8 * sw2 no->mid
+  2915.9 * sw2 mid->nc
+  2925.8 * indLamp2 off->dim  indLamp3 off->dim
+  2927.2 * relay2 nc->mid
+  2927.4 * relay3 nc->mid
+  2928.5 * relay2 mid->no
+  2928.7 * relay3 mid->no
+  2931.8 * outLamp5 off->dim
+  2947.3 * outLamp4 on->dim
+  2950.8 * outLamp5 dim->on
+  2966.3 * indLamp2 dim->on  indLamp3 dim->on
+  3003.0 * outLamp4 dim->off
+  3026.4 ? outLamp5=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 5 ON indicates that 5 switches are ON ... A = the condition that slide switch 2 is ON ... E = the condition that slide switch 6 is ON ... and the single expression A X B X C X D X E = light 5 ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3026.4 > switch3 target=1000
+  3053.3 * sw3 nc->mid
+  3057.9 * relay4 no->mid  relay5 no->mid
+  3058.8 * relay4 mid->nc  relay5 mid->nc
+  3059.4 * sw3 mid->no
+  3061.4 * outLamp4 off->dim
+  3064.3 * indLamp4 on->dim  indLamp5 on->dim
+  3077.9 * outLamp5 on->dim
+  3080.3 * outLamp4 dim->on
+  3120.0 * indLamp4 dim->off  indLamp5 dim->off
+  3133.5 * outLamp5 dim->off
+  3146.3 ? outLamp4=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3146.3 > switch2 target=1000
+  3173.2 * sw2 nc->mid
+  3177.9 * relay2 no->mid  relay3 no->mid
+  3178.8 * relay2 mid->nc  relay3 mid->nc
+  3179.3 * sw2 mid->no
+  3182.1 * outLamp3 off->dim
+  3184.3 * indLamp2 on->dim  indLamp3 on->dim
+  3197.8 * outLamp4 on->dim
+  3201.0 * outLamp3 dim->on
+  3239.9 * indLamp2 dim->off  indLamp3 dim->off
+  3253.4 * outLamp4 dim->off
+  3266.2 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3266.2 > switch5 target=1000
+  3293.1 * sw5 nc->mid
+  3299.2 * sw5 mid->no
+  3302.5 * outLamp2 off->dim
+  3312.9 * outLamp3 on->dim
+  3321.4 * outLamp2 dim->on
+  3368.5 * outLamp3 dim->off
+  3386.1 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3386.1 > switch2 target=0
+  3413.0 * sw2 no->mid
+  3419.1 * sw2 mid->nc
+  3421.6 * outLamp3 off->dim
+  3429.0 * indLamp2 off->dim  indLamp3 off->dim
+  3430.5 * relay2 nc->mid
+  3430.6 * relay3 nc->mid
+  3431.8 * relay2 mid->no
+  3431.9 * relay3 mid->no
+  3432.8 * outLamp2 on->dim
+  3440.5 * outLamp3 dim->on
+  3469.2 * indLamp2 dim->on  indLamp3 dim->on
+  3488.4 * outLamp2 dim->off
+  3506.0 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3506.0 > switch3 target=0
+  3532.9 * sw3 no->mid
+  3539.0 * sw3 mid->nc
+  3549.0 * indLamp4 off->dim  indLamp5 off->dim
+  3550.6 * relay4 nc->mid
+  3550.8 * relay5 nc->mid
+  3551.9 * relay4 mid->no
+  3552.1 * relay5 mid->no
+  3555.4 * outLamp4 off->dim
+  3570.8 * outLamp3 on->dim
+  3574.4 * outLamp4 dim->on
+  3589.4 * indLamp4 dim->on  indLamp5 dim->on
+  3626.5 * outLamp3 dim->off
+  3649.5 ? outLamp4=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3649.5 > switch2 target=1000
+  3676.4 * sw2 nc->mid
+  3681.1 * relay2 no->mid  relay3 no->mid
+  3682.0 * relay2 mid->nc  relay3 mid->nc
+  3682.5 * sw2 mid->no
+  3684.6 * outLamp3 off->dim
+  3687.4 * indLamp2 on->dim  indLamp3 on->dim
+  3701.1 * outLamp4 on->dim
+  3703.5 * outLamp3 dim->on
+  3743.0 * indLamp2 dim->off  indLamp3 dim->off
+  3756.7 * outLamp4 dim->off
+  3769.4 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3769.4 > switch4 target=1000
+  3796.3 * sw4 nc->mid
+  3800.9 * relay6 no->mid
+  3801.8 * relay6 mid->nc
+  3802.4 * sw4 mid->no
+  3805.7 * outLamp2 off->dim
+  3807.4 * indLamp6 on->dim
+  3816.1 * outLamp3 on->dim
+  3824.6 * outLamp2 dim->on
+  3863.0 * indLamp6 dim->off
+  3871.7 * outLamp3 dim->off
+  3889.3 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  3889.3 > switch2 target=0
+  3916.2 * sw2 no->mid
+  3922.3 * sw2 mid->nc
+  3924.8 * outLamp3 off->dim
+  3932.2 * indLamp2 off->dim  indLamp3 off->dim
+  3933.7 * relay2 nc->mid
+  3933.9 * relay3 nc->mid
+  3935.0 * relay2 mid->no
+  3935.2 * relay3 mid->no
+  3936.0 * outLamp2 on->dim
+  3943.8 * outLamp3 dim->on
+  3972.5 * indLamp2 dim->on  indLamp3 dim->on
+  3991.6 * outLamp2 dim->off
+  4009.2 ? outLamp3=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  4009.2 > switch3 target=1000
+  4036.1 * sw3 nc->mid
+  4040.7 * relay4 no->mid  relay5 no->mid
+  4041.6 * relay4 mid->nc  relay5 mid->nc
+  4042.2 * sw3 mid->no
+  4044.0 * outLamp2 off->dim
+  4047.2 * indLamp4 on->dim  indLamp5 on->dim
+  4060.5 * outLamp3 on->dim
+  4063.0 * outLamp2 dim->on
+  4102.8 * indLamp4 dim->off  indLamp5 dim->off
+  4116.1 * outLamp3 dim->off
+  4129.1 ? outLamp2=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+  4129.1 > switch2 target=1000
+  4156.0 * sw2 nc->mid
+  4160.7 * relay2 no->mid  relay3 no->mid
+  4161.6 * relay2 mid->nc  relay3 mid->nc
+  4162.1 * sw2 mid->no
+  4164.9 * outLamp1 off->dim
+  4167.1 * indLamp2 on->dim  indLamp3 on->dim
+  4180.6 * outLamp2 on->dim
+  4183.8 * outLamp1 dim->on
+  4222.7 * indLamp2 dim->off  indLamp3 dim->off
+  4236.2 * outLamp2 dim->off
+  4249.0 ? outLamp1=on  "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."

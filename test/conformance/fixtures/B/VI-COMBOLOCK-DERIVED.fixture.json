@@ -1,0 +1,788 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-COMBOLOCK-DERIVED",
+  "source": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock); ERRATA sheet ER-41, errata.pdf PDF p.4 'The Combination Lock (page 52): Note — to re-set the game, turn the rotary switch through one complete revolution.' (prose only, no wire change); Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "5A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "D16/M+",
+    "D13/6com",
+    "D2/5com",
+    "D11/4com",
+    "D10/3com",
+    "D6/2com",
+    "D9/1com",
+    "D8/6E"
+  ],
+  "errata_applied": [
+    {
+      "id": "VI-SEQREC-PRINT-01",
+      "from": "5A/6J",
+      "to": "6A/6J"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A), tier D game: smoke plus the stated invariants only. Every expect is derived by hand from the 46-wire topology (VI-SEQREC with 6A/6J for the 5A/6J misprint, plus D16/M+ and the printed combination with the optional D8/6E) and the p.52-53 rules, not printed. Script choices, not from the source: left = decreasing numbers (counterclockwise), right = increasing (rotary.md section 1; BK6 p.56); dialGrab takes the shorter way round, so legs of 180 degrees or more are split at unwired stops (14, 15, 0, 3); each leg gets 1500 ms as in C1/VI-COMBOLOCK; the dial starts on 0, its power-off state. The ER-41 revolution is one turn left from 9. The dial is hand-driven with no motor wire, so the printed fixture sits in C1 (Step 7 notes); this file is tier B as the Step 7 task names it.",
+  "wires": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "D16/M+",
+    "D13/6com",
+    "D2/5com",
+    "D11/4com",
+    "D10/3com",
+    "D6/2com",
+    "D9/1com",
+    "D8/6E"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), light 6 rule, power on before any dial move; derived from topology: wiper on D0, which carries no wire. No F terminal has a source (6F reaches only 6G open, 6com and the idle D13), so no coil or indicator lamp carries current and all six relays rest N.C. Relay 6 set 1 arm 6H is on plus (6H/6+) and rests on N.C. 6J; 6A/6J runs output lamp 6 6A-6B-minus: on. Output lamp 1 hangs on 1G (1A/1G), whose arm 1H meets only the open 2G: off",
+      "quote": "[BK6 p.52:] Using the basic sequence recognition circuit of the Secret Code, in combination with the rotary switch dial, you can design an electronic combination lock which works just like those used on vaults, padlocks, etc. [BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), combination step \"left to 13\" (D13/6com); derived from topology: turning left from 0 passes 15 and 14 (no wires) and stops on 13. D16(+)-D13-6com-6F: coil 6-6E-indicator lamp 6-6C-minus, so relay 6 pulls in and indicator lamp 6 lights; 6H(+)-6G-6F latches it. 6H has left 6J, so output lamp 6 goes off. Relay 5 coil (5F) is fed only by 5G (arm 5H on 6G, now +, but 5H-5G open) and 6K (arm 6L on 5com/D2, idle): relays 1-5 stay N.C., indicator lamp 5 off, output lamp 1 off",
+      "quote": "[BK6 p.52:] Using the basic sequence recognition circuit of the Secret Code, in combination with the rotary switch dial, you can design an electronic combination lock which works just like those used on vaults, padlocks, etc. [BK6 p.52:] Now, design a combination and program it as follows: Combination Connections left to 13 D13/6com right to 2 D2/5com left to 10 D11/4com D10/3com right to 6 D6/2com left to 9 D9/1com D8/6E*",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), light 1 rule, the printed combination completed; derived from topology: wiper D16 is on plus (D16/M+). Relay 6 latched at 13 (D13-6com-6F, coil 6-6E-indicator 6-6C-minus; 6H(+)-6G-6F holds). Right to 2: D2-5com-6L-6K-5F pulls relay 5, held by 5H(=6G,+)-5G-5F. Left to 10 passes 13 (6F already +) and 11: D11-4com-5L-5K-4F pulls relay 4, held by 4H(=5G)-4G-4F; then 10: D10-3com-4L-4K-3F pulls relay 3, held by 3H(=4G)-3G-3F. Right to 6 passes 11, 13 and 2 (each already on a latched F) and stops on 6: D6-2com-3L-3K-2F pulls relay 2, held by 2H(=3G)-2G-2F. Left to 9 passes 2, 13, 11, 10 (all on latched F nets) and never 8; 9: D9-1com-2L-2K-1F pulls relay 1, held by 1H(=2G)-1G-1F. 1G=1A, so plus runs output lamp 1 1A-1B-minus: on. Relay 6 set 1 arm 6H has left N.C. 6J, so 6J-6A-lamp 6-6B-minus is dead: off. Every coil carries current through its own series indicator lamp nE-nC to the 1C..6C-minus chain: indicator lamps 1-6 on. Assumes each relay pulls in within one pad dwell plus gap at hand slew (about 125 ms a position) so 4L is on 4K before the wiper reaches 10",
+      "quote": "[BK6 p.52:] Using the basic sequence recognition circuit of the Secret Code, in combination with the rotary switch dial, you can design an electronic combination lock which works just like those used on vaults, padlocks, etc. [BK6 p.52:] Now, design a combination and program it as follows: Combination Connections left to 13 D13/6com right to 2 D2/5com left to 10 D11/4com D10/3com right to 6 D6/2com left to 9 D9/1com D8/6E* [BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), ER-41 full-revolution reset and the D8/6E trap; derived from topology: the first contact left of 9 is 8: D16(+)-D8-6E puts plus on both ends of coil 6 (6F is + through the latch), so coil 6 carries nothing and relay 6 drops; 6H leaves 6G, which un-powers 5H, and the latch chain 5H-4H-3H-2H-1H collapses, so relays 5 to 1 drop. Nothing then feeds any F: each nF is reached only through nG (dead arm chain) or relay n+1 N.O. nK. Later contacts: 6 (D6-2com-3L-3N) and 2 (D2-5com-6L-6N) reach only the 2N..6N-6E net; 13 may pull relay 6 again for a moment, but 11 (D11-4com-5L-5N-6E) shorts coil 6 again and 10 and 9 keep plus on 6E. At rest on 9: D9-1com-2L-2N-3N-4N-5N-6N-6E holds plus on 6E, so indicator lamp 6 runs 6E-6C-minus at full rail: on; 6F floats (6G open, D13 idle) so coil 6 carries nothing. Relay 6 N.C. 6H(+)-6J-6A lights output lamp 6; 1H-1G is open, so output lamp 1 is off; indicator lamps 1-5 have no source",
+      "quote": "[ERRATA, BOOK VI:] The Combination Lock (page 52): Note — to re-set the game, turn the rotary switch through one complete revolution. [BK6 p.52:] * This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point. [BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 292500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), machine re-set for the next attempt; combination step \"left to 13\" from rest on 9; derived from topology: the leg 9-8-7-6-5-4-3-2-1-0-15-14-13 touches 8 (D8-6E), 6 (D6-2com-3L-3N-6E) and 2 (D2-5com-6L-6N-6E) while relay 6 is released: plus on 6E only lights indicator lamp 6 through 6E-6C, and coil 6 carries nothing because 6F floats, so no relay moves (Step 7 notes, VI-COMBOLOCK). On 13: D13-6com-6F pulls relay 6 and 6H(+)-6G-6F latches it; output lamp 6 goes off (6H off 6J); indicator lamp 6 lit by coil 6 current; relays 1-5 N.C. as at the first \"left to 13\"",
+      "quote": "[BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt. [BK6 p.52:] Now, design a combination and program it as follows: Combination Connections left to 13 D13/6com right to 2 D2/5com left to 10 D11/4com D10/3com right to 6 D6/2com left to 9 D9/1com D8/6E*",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 315000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), light 1 rule, second attempt after the re-set; derived from topology: wiper D16 is on plus (D16/M+). Relay 6 latched at 13 (D13-6com-6F, coil 6-6E-indicator 6-6C-minus; 6H(+)-6G-6F holds). Right to 2: D2-5com-6L-6K-5F pulls relay 5, held by 5H(=6G,+)-5G-5F. Left to 10 passes 13 (6F already +) and 11: D11-4com-5L-5K-4F pulls relay 4, held by 4H(=5G)-4G-4F; then 10: D10-3com-4L-4K-3F pulls relay 3, held by 3H(=4G)-3G-3F. Right to 6 passes 11, 13 and 2 (each already on a latched F) and stops on 6: D6-2com-3L-3K-2F pulls relay 2, held by 2H(=3G)-2G-2F. Left to 9 passes 2, 13, 11, 10 (all on latched F nets) and never 8; 9: D9-1com-2L-2K-1F pulls relay 1, held by 1H(=2G)-1G-1F. 1G=1A, so plus runs output lamp 1 1A-1B-minus: on. Relay 6 set 1 arm 6H has left N.C. 6J, so 6J-6A-lamp 6-6B-minus is dead: off. Every coil carries current through its own series indicator lamp nE-nC to the 1C..6C-minus chain: indicator lamps 1-6 on. Assumes each relay pulls in within one pad dwell plus gap at hand slew (about 125 ms a position) so 4L is on 4K before the wiper reaches 10. Same legs as the first attempt, from relay 6 latched on 13",
+      "quote": "[BK6 p.52:] Now, design a combination and program it as follows: Combination Connections left to 13 D13/6com right to 2 D2/5com left to 10 D11/4com D10/3com right to 6 D6/2com left to 9 D9/1com D8/6E* [BK6 p.53:] Light 1 will come on when the combination is successfully solved; light 6 will come on to indicate an error, and the player must start over again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "BK6 printed pp.52-53 = book5-6.pdf PDF pp.58-59 (The Combination Lock), D8/6E trap \"error if 8 is passed at any point\" and light 6 rule; derived from topology: leaving 9 to the left the wiper touches 8: D16(+)-D8-6E puts plus on both ends of coil 6 (6F + through 6H-6G), relay 6 drops, 6G goes dead and the 5H-4H-3H-2H-1H latch chain collapses, so all six relays rest N.C. 6H(+)-6J-6A-lamp 6-6B-minus: output lamp 6 on. 1H-1G open: output lamp 1 off. At rest on 7 (no wire on D7) nothing drives 6E or any F, so all six indicator lamps are off",
+      "quote": "[BK6 p.52:] * This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point. [BK6 p.52:] Light 1 comes on to indicate that the code has been solved; light 6 comes on when an error is made, and the machine then automatically re-sets for the next attempt. [BK6 p.53:] Light 1 will come on when the combination is successfully solved; light 6 will come on to indicate an error, and the player must start over again.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

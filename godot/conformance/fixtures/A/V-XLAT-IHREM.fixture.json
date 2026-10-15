@@ -1,0 +1,563 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-XLAT-IHREM",
+  "source": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45; rule printed p.38 (PDF p.44), program, circuit diagram and procedure p.39 (PDF p.45); wires image-read on PDF p.45; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/3G",
+    "1B/1-",
+    "1X/3H",
+    "1Y/3X",
+    "1Y/4A",
+    "2A/3J",
+    "2B/2-",
+    "2X/3C",
+    "2Y/3Y",
+    "2Y/2+",
+    "3A/3C",
+    "3B/3-",
+    "3B/3F",
+    "4B/4-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the wiring and the p.38 rule P X E = their, E X P(not) = her; the page prints only the lamp meanings, not which lights come on for any input (programs.json printedUnprinted). Topology: + feeds the arms 2Y and 3Y. Pushbutton 2's N.O. 2X drives 3C: light 3 ('Pete', 3A-3B/3-) and relay 3 (3C-indicator-3E-coil-3F/3B/3-). Pushbutton 3's N.O. 3X drives 1Y and 4A: light 4 ('Eve', 4B/4-) and pushbutton 1's arm. Pushbutton 1's N.O. 1X feeds relay 3's set-1 arm 3H: N.O. 3G to light 1 ('their'), N.C. 3J to light 2 ('her'). So light 1 = pb1 AND pb3 AND pb2, light 2 = pb1 AND pb3 AND NOT pb2; 'ihrem' with Piet alone lights neither. No contact feeds a coil, so there is no latch. Script follows the page's procedure (select the subject with pushbuttons 2 and/or 3, then push pushbutton 1), covering Piet, Eva, Piet and Eva, the Piet release with ihrem held, and ihrem alone. The 500 ms advance before each expect lets lamps finish their thermal transient; the page states no timing. No errata apply.",
+  "wires": [
+    "1A/3G",
+    "1B/1-",
+    "1X/3H",
+    "1Y/3X",
+    "1Y/4A",
+    "2A/3J",
+    "2B/2-",
+    "2X/3C",
+    "2Y/3Y",
+    "2Y/2+",
+    "3A/3C",
+    "3B/3-",
+    "3B/3F",
+    "4B/4-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: no pushbutton down. + reaches only the arms 2Y and 3Y (2Y/2+, 2Y/3Y); 2Y-2Z and 3Y-3Z go to unwired holes, so 3C, 1Y, 3H and every lamp and coil are dead; relay 3 is the only wired coil and stays out; lights 5-6 and relays 1, 2, 4-6 are unwired",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: Piet then ihrem (pushbuttons 2 and 1 down, 3 up): 2+/2Y-2X/3C/3A-light 3-3B/3- lights 'Pete', and 3C-indicator 3-3E-coil 3-3F/3B/3- pulls relay 3 in. Pushbutton 1's arm 1Y is fed only from pushbutton 3's N.O. 3X, which is open, so 1X/3H is dead and neither 'their' (1A via 3G) nor 'her' (2A via 3J) lights: a singular masculine subject satisfies neither P X E nor E X P(not)",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: Eva then ihrem (pushbuttons 3 and 1 down, 2 up): 2+/2Y/3Y-3X/1Y/4A-light 4-4B/4- lights 'Eve'; 1Y-1X/3H, relay 3 out (2X open, 3C dead), so 3H-3J/2A-light 2-2B/2- lights 'her' (E X P(not)) and 3G/1A stays dead",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: Piet and Eva, ihrem not yet entered (pushbuttons 2 and 3 down, 1 up): light 3 and relay 3 by 2X/3C, light 4 by 3X/1Y/4A; 1Y-1X open, so 3H is dead and lights 1 and 2 stay off",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: Piet and Eva plus ihrem (pushbuttons 1, 2, 3 down): 3X/1Y-1X/3H, relay 3 in, so 3H-3G/1A-light 1-1B/1- lights 'their' (P X E); 3H-3J is broken, light 2 off",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: Piet released, Eva and ihrem held (pushbuttons 1, 3 down): 2X opens, 3C dead, light 3 off and relay 3 drops (nothing holds its coil: no contact feeds 3C or 3E), so 3H returns to 3J and light 2 'her' replaces light 1 'their'",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "Book V printed pp.38-39 = book5-6.pdf PDF pp.44-45, selection rule P X E = their, E X P(not) = her (pushbutton 1 'ihrem', 2 'Piet', 3 'Eva'; light 1 'their', 2 'her', 3 'Pete', 4 'Eve'); derived from topology: ihrem alone (pushbutton 1 down, 2 and 3 up): 1Y is fed only from 3X, open; 1Y/4A ties the arm to - through light 4 but there is no source, so 1X/3H is dead and no light comes on",
+      "quote": "The basic rule which we must teach the computer is: a plural subject requires the use of \"their\" as an adjective; a singular feminine subject requires the use of \"her\" as an adjective. This can be stated logically as: P X E = their and E X P̄ = her",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    }
+  ]
+}

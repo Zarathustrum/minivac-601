@@ -1,0 +1,67 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP11",
+  "source": "BK1 printed p.21 = book1.pdf PDF p.23; ERRATA sheet p.3 dead-gap note",
+  "tier": "C1",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/D16",
+    "D2/6A",
+    "6-/6B",
+    "D1/5A",
+    "5B/6B"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/D16",
+    "D2/6A",
+    "6-/6B",
+    "D1/5A",
+    "5B/6B"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "dialGrab", "targetUdeg": 22500000 } },
+    { "k": "advance", "ms": 200 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "dial", "v": "c1" },
+        { "dev": "outLamp5", "v": "on" }
+      ],
+      "cite": "BK1 printed p.21 = book1.pdf PDF p.23",
+      "quote": "Light 5 comes ON and remains ON as long as the pointer points at number 1."
+    },
+    { "k": "do", "cmd": { "k": "dialGrab", "targetUdeg": 45000000 } },
+    { "k": "advance", "ms": 200 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "dial", "v": "c2" },
+        { "dev": "outLamp5", "v": "off" },
+        { "dev": "outLamp6", "v": "on" }
+      ],
+      "cite": "BK1 printed p.21 = book1.pdf PDF p.23",
+      "quote": "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "dialGrab", "targetUdeg": 146250000 } },
+    { "k": "advance", "ms": 650 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "dial", "v": "gap" }],
+      "cite": "ERRATA sheet p.3, Three-Floor Elevator note",
+      "quote": "This happens when the pointer knob stops between adjacent terminals — for example, between D6 and D7 — and is not making proper connection with either."
+    },
+    { "k": "do", "cmd": { "k": "dialGrab", "targetUdeg": 326250000 } },
+    { "k": "advance", "ms": 1050 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "dial", "v": "gap" }],
+      "cite": "ERRATA sheet p.3, Three-Floor Elevator note",
+      "quote": "This happens when the pointer knob stops between adjacent terminals — for example, between D6 and D7 — and is not making proper connection with either."
+    }
+  ],
+  "note": "The last hand move is exactly 180 degrees and exercises every intervening make and break. The dead-gap assertions use the errata's explicit between-D6-and-D7 observation; no detent is modeled."
+}

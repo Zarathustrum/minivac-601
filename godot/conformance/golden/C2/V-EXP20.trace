@@ -1,0 +1,225 @@
+#!mv601-trace 1
+# id=V-EXP20 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=60
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=2 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp3 off->dim
+    22.1 * outLamp3 dim->on
+   500.0 > switch1 target=1000
+   526.9 * sw1 nc->mid
+   533.0 * sw1 mid->no
+   536.3 * outLamp1 off->dim
+   547.4 * outLamp3 on->dim
+   555.2 * outLamp1 dim->on
+   603.0 * outLamp3 dim->off
+   800.0 > switch2 target=0
+  1100.0 > switch3 target=1000
+  1126.9 * sw3 nc->mid
+  1133.0 * sw3 mid->no
+  1400.0 > button6 target=1000
+  1411.2 * pb6 nc->mid
+  1413.7 * pb6 mid->no
+  1423.7 * indLamp1 off->dim  indLamp2 off->dim
+  1424.9 * relay1 nc->mid
+  1425.1 * relay2 nc->mid
+  1426.2 * relay1 mid->no
+  1426.4 * relay2 mid->no
+  1445.3 * dial c0->gap
+  1445.4 ? dial=gap  "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+  1464.5 * indLamp1 dim->on  indLamp2 dim->on
+  1466.3 * dial gap->c1
+  1529.4 * dial c1->gap
+  1550.4 * dial gap->c2
+  1613.5 * dial c2->gap
+  1634.5 * dial gap->c3
+  1697.6 * dial c3->gap
+  1718.6 * dial gap->c4
+  1781.6 * dial c4->gap
+  1802.7 * dial gap->c5
+  1865.7 * dial c5->gap
+  1886.7 * dial gap->c6
+  1949.8 * dial c6->gap
+  1970.8 * dial gap->c7
+  9445.4 ? outLamp1=on  "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 1 if output light 1 is on. [p.32:] E · [p.33:] BAND 1"
+  9445.4 > button6 target=0
+  9456.6 * pb6 no->mid
+  9459.1 * pb6 mid->nc
+  9464.1 * relay2 no->mid
+  9464.3 * relay1 no->mid
+  9465.0 * relay2 mid->nc
+  9465.2 * relay1 mid->nc
+  9474.7 * indLamp1 on->dim  indLamp2 on->dim
+  9530.6 * indLamp1 dim->off  indLamp2 dim->off
+ 11445.4 ? outLamp1=on  "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 1 if output light 1 is on. [p.32:] E · [p.33:] BAND 1"
+ 11445.4 > switch1 target=0
+ 11472.3 * sw1 no->mid
+ 11478.4 * sw1 mid->nc
+ 11481.7 * outLamp3 off->dim
+ 11492.8 * outLamp1 on->dim
+ 11500.6 * outLamp3 dim->on
+ 11548.4 * outLamp1 dim->off
+ 11745.4 > switch2 target=1000
+ 11772.3 * sw2 nc->mid
+ 11778.4 * sw2 mid->no
+ 11781.7 * outLamp2 off->dim
+ 11792.8 * outLamp3 on->dim
+ 11800.6 * outLamp2 dim->on
+ 11848.4 * outLamp3 dim->off
+ 12045.4 > switch3 target=0
+ 12072.3 * sw3 no->mid
+ 12078.4 * sw3 mid->nc
+ 12345.4 > switch4 target=1000
+ 12372.3 * sw4 nc->mid
+ 12378.4 * sw4 mid->no
+ 12645.4 > button6 target=1000
+ 12656.6 * pb6 nc->mid
+ 12659.1 * pb6 mid->no
+ 12669.1 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 12670.7 * relay3 nc->mid
+ 12670.9 * relay4 nc->mid
+ 12671.1 * relay5 nc->mid
+ 12671.3 * relay6 nc->mid
+ 12672.0 * relay3 mid->no
+ 12672.2 * relay4 mid->no
+ 12672.4 * relay5 mid->no
+ 12672.6 * relay6 mid->no
+ 12704.0 * dial c7->gap
+ 12704.1 ? dial=gap  "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+ 12710.1 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 12725.2 * dial gap->c8
+ 12788.6 * dial c8->gap
+ 12809.7 * dial gap->c9
+ 12873.0 * dial c9->gap
+ 12894.1 * dial gap->c10
+ 12957.5 * dial c10->gap
+ 12978.6 * dial gap->c11
+ 20704.1 ? outLamp2=on  "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 2 if output light 2 is on. [p.32:] N —· [p.33:] BAND 2"
+ 20704.1 > button6 target=0
+ 20715.3 * pb6 no->mid
+ 20717.8 * pb6 mid->nc
+ 20721.8 * relay6 no->mid
+ 20721.9 * relay5 no->mid
+ 20722.1 * relay4 no->mid
+ 20722.2 * relay3 no->mid
+ 20722.7 * relay6 mid->nc
+ 20722.8 * relay5 mid->nc
+ 20723.0 * relay4 mid->nc
+ 20723.1 * relay3 mid->nc
+ 20732.4 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 20788.1 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 22704.1 ? outLamp2=on  "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 2 if output light 2 is on. [p.32:] N —· [p.33:] BAND 2"
+ 22704.1 > switch1 target=0
+ 23004.1 > switch2 target=0
+ 23031.0 * sw2 no->mid
+ 23037.1 * sw2 mid->nc
+ 23040.4 * outLamp3 off->dim
+ 23051.5 * outLamp2 on->dim
+ 23059.3 * outLamp3 dim->on
+ 23107.1 * outLamp2 dim->off
+ 23304.1 > switch3 target=0
+ 23604.1 > switch4 target=0
+ 23631.0 * sw4 no->mid
+ 23637.1 * sw4 mid->nc
+ 23904.1 > switch5 target=0
+ 24204.1 > button6 target=1000
+ 24215.3 * pb6 nc->mid
+ 24217.8 * pb6 mid->no
+ 24227.8 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 24229.1 * relay1 nc->mid
+ 24229.3 * relay2 nc->mid
+ 24229.5 * relay3 nc->mid
+ 24229.7 * relay4 nc->mid
+ 24229.9 * relay5 nc->mid
+ 24230.1 * relay6 nc->mid
+ 24230.4 * relay1 mid->no
+ 24230.6 * relay2 mid->no
+ 24230.8 * relay3 mid->no
+ 24231.0 * relay4 mid->no
+ 24231.2 * relay5 mid->no
+ 24231.4 * relay6 mid->no
+ 24263.2 * dial c11->gap
+ 24263.3 ? dial=gap  "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+ 24269.0 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 24284.4 * dial gap->c12
+ 24348.1 * dial c12->gap
+ 24369.3 * dial gap->c13
+ 24432.9 * dial c13->gap
+ 24454.2 * dial gap->c14
+ 24517.8 * dial c14->gap
+ 24539.0 * dial gap->c15
+ 32263.3 ? outLamp3=on  "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 3 if output light 3 is on. [p.32:] O ——— [p.33:] BAND 3"
+ 32263.3 > button6 target=0
+ 32274.5 * pb6 no->mid
+ 32277.0 * pb6 mid->nc
+ 32280.6 * relay6 no->mid
+ 32280.8 * relay5 no->mid
+ 32280.9 * relay4 no->mid
+ 32281.0 * relay3 no->mid
+ 32281.2 * relay2 no->mid
+ 32281.3 * relay1 no->mid
+ 32281.5 * relay6 mid->nc
+ 32281.7 * relay5 mid->nc
+ 32281.8 * relay4 mid->nc
+ 32281.9 * relay3 mid->nc
+ 32282.1 * relay2 mid->nc
+ 32282.2 * relay1 mid->nc
+ 32290.8 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 32346.5 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 34263.3 ? outLamp3=on  "[p.34:] Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 3 if output light 3 is on. [p.32:] O ——— [p.33:] BAND 3"
+ 34263.3 > switch1 target=1000
+ 34290.2 * sw1 nc->mid
+ 34296.3 * sw1 mid->no
+ 34299.6 * outLamp1 off->dim
+ 34310.7 * outLamp3 on->dim
+ 34318.5 * outLamp1 dim->on
+ 34366.3 * outLamp3 dim->off
+ 34563.3 > switch2 target=1000
+ 34590.2 * sw2 nc->mid
+ 34596.3 * sw2 mid->no
+ 34599.6 * outLamp4 off->dim
+ 34610.7 * outLamp1 on->dim
+ 34618.5 * outLamp4 dim->on
+ 34666.3 * outLamp1 dim->off
+ 34863.3 > switch3 target=1000
+ 34890.2 * sw3 nc->mid
+ 34896.3 * sw3 mid->no
+ 35163.3 > switch4 target=0
+ 35463.3 > switch5 target=1000
+ 35490.2 * sw5 nc->mid
+ 35496.3 * sw5 mid->no
+ 35763.3 > switch6 target=1000
+ 35790.2 * sw6 nc->mid
+ 35796.3 * sw6 mid->no
+ 36063.3 > button6 target=1000
+ 36074.5 * pb6 nc->mid
+ 36077.0 * pb6 mid->no
+ 36087.0 * indLamp1 off->dim  indLamp2 off->dim
+ 36088.2 * relay1 nc->mid
+ 36088.4 * relay2 nc->mid
+ 36089.5 * relay1 mid->no
+ 36089.7 * relay2 mid->no
+ 36122.0 * dial c15->gap
+ 36122.1 ? dial=gap  "Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial."
+ 36127.8 * indLamp1 dim->on  indLamp2 dim->on
+ 36143.0 * dial gap->c0
+ 36206.1 * dial c0->gap
+ 36227.1 * dial gap->c1
+ 36290.1 * dial c1->gap
+ 36311.2 * dial gap->c2
+ 36374.2 * dial c2->gap
+ 36395.2 * dial gap->c3
+ 36458.3 * dial c3->gap
+ 36479.3 * dial gap->c4
+ 36479.4 ? dial=c4  "[p.34:] This experiment uses the rotary switch dial plate described in the previous experiment. Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial. Read the alphabetic letter from the dial plate as follows. [p.32:] L ·—·· [p.33:] MORSE CODE: ALPHABETIC DIAL PLATE"
+ 44479.4 ? dial=c4 outLamp4=on  "[p.34:] This experiment uses the rotary switch dial plate described in the previous experiment. Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial. Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 4 if output light 4 is on. [p.32:] L ·—·· [p.33:] BAND 4 / MORSE CODE: ALPHABETIC DIAL PLATE"
+ 44479.4 > button6 target=0
+ 44490.6 * pb6 no->mid
+ 44493.1 * pb6 mid->nc
+ 44498.1 * relay2 no->mid
+ 44498.3 * relay1 no->mid
+ 44499.0 * relay2 mid->nc
+ 44499.2 * relay1 mid->nc
+ 44508.7 * indLamp1 on->dim  indLamp2 on->dim
+ 44564.6 * indLamp1 dim->off  indLamp2 dim->off
+ 46479.4 ? dial=c4 outLamp4=on  "[p.34:] This experiment uses the rotary switch dial plate described in the previous experiment. Letters entered in Morse Code on the slide switches will be indicated on the rotary switch. / Push pushbutton 6: this gives the computer the instruction \"read out.\" The rotary switch will turn to the correct spot on the dial. Read the alphabetic letter from the dial plate as follows. / Read the letter in Band 4 if output light 4 is on. [p.32:] L ·—·· [p.33:] BAND 4 / MORSE CODE: ALPHABETIC DIAL PLATE"

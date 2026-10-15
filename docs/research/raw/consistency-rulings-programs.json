@@ -1,0 +1,227 @@
+{
+  "topic": "Consistency pass — RULINGS for docs/research/programs.md (the fixture corpus)",
+  "agent": "consistency-programs",
+  "date": "2026-08-30",
+  "targetFile": "docs/research/programs.md",
+  "scope": "programs.md only. Re-judged against the three mid-run primaries (maintenance-manual.pdf, errata.pdf, book7-capacitor-resistor.pdf), the three Wikimedia Commons photographs, gap-canonical-errata-applied-program-corpus.json + its gap-verify, verify-programs.json, find-programs.json, find-relays.json, verify-relays.json, gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json, and critic-completeness.json.",
+  "oracleOnlyCompliance": "I did not open, fetch, clone, read or quote the source of any existing Minivac emulator, including minivac.greg.technology or any associated repository.",
+  "rawFilesUntouched": true,
+  "imageReadsSpentThisPass": [
+    "book5-6.pdf PDF p.62 (printed p.56) @300 dpi — the whole Tic-Tac-Toe program table, both footnotes, and the play procedure. Third independent image read of this page.",
+    "errata.pdf PDF p.2 right column @300 dpi — the alternate three-bit counter: 4 columns x 12 rows = 48 connections, plus the middle-stage circuit diagram and its TO 5L (CARRY IN) / TO 2H (CARRY OUT) labels.",
+    "errata.pdf PDF p.3 right column @400 dpi, two crops — the Book V block: ER-30, ER-31 (both Notes under Experiment 9), ER-32, ER-33, ER-34, ER-35.",
+    "maintenance-manual.pdf PDF p.9 (printed p.7) @400 dpi — Circuit Diagram – Relay Check and its printed expected states.",
+    "maintenance-manual.pdf PDF p.10 (printed p.8) @300 dpi — Circuit Diagram – Slide Switch Check and its printed expected states.",
+    "raw/photos/commons-minivac601-main.jpg (4208 px) — MATRIX block at native resolution, two crops: the 3x3 cell numbering and the M10 / M11 six-hole terminals."
+  ],
+  "headline": "The transcription work in programs.md holds up under re-reading; three independent image reads this pass produced zero disagreements with its wire lists. What does not hold up is (a) a contact-polarity cell and an open question that the Maintenance Manual settled and nobody carried back into this file, (b) an errata note assigned to three flip-flops when it belongs to exactly one, (c) two Tic-Tac-Toe items left open that the panel photograph closed, and (d) the absence of the three Maintenance Manual check circuits, which are the best combinational fixtures in the whole package and are not in the corpus at all.",
+  "rulings": [
+    {
+      "id": "PR-01",
+      "file": "docs/research/programs.md",
+      "section": "§0 How to read this file — 'Contact polarity' table",
+      "currentText": "| Relay `n`, second contact set | `nL` (by analogy) | `nK` / `nN` — **which is which is not settled** | — | not settled |",
+      "ruling": "CORRECT the cell. Replace with: | Relay `n`, second contact set | `nL` | `nK` (closes when relay is ON) | `nN` (opens when relay is ON) | not settled |, and tag the three terminal roles [verified] with the source below. Keep 'not settled' in the Transfer column only — the figure settles which contact is which, not the break/make order. While editing this table, note that the first-contact-set row (`nH` common, `nG` N.O., `nJ` N.C.) and the slide-switch row (`nS`/`nV` arms; LEFT `S-R`, `V-U`; RIGHT `S-T`, `V-W`) are now confirmed from primary figures rather than by analogy, and the 'by analogy' hedge on `nL` should go.",
+      "evidence": "maintenance-manual.pdf printed p.7 = PDF p.9, 'Circuit Diagram — Relay Check', rendered by me at 400 dpi. The figure wires + to H, + to L and + to Y; J to 1A, G to 2A, N to 3A, K to 4A; 1B/2B/3B/4B to the minus terminals; the coil is driven from the pushbutton's X terminal, and the arms are drawn at rest touching J, N and Z. The printed expected states directly under the caption read: 'Turn power on. Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on.' Relay de-energised therefore conducts through J and N; relay energised conducts through G and K. Corroborated by the Slide Switch Check on printed p.8 = PDF p.10 (rendered by me at 300 dpi), which settles S/V as arms, T/W as RIGHT and R/U as LEFT by the same figure-plus-stated-behaviour method. Both figures independently transcribed in raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json (FIG-RLY, FIG-SW). MAINT page offset: PDF page = printed page + 2.",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "PR-02",
+      "file": "docs/research/programs.md",
+      "section": "§5 Not settled by the sources — row N-3",
+      "currentText": "| N-3 | **Which of `K` and `N` is the normally-open contact** of the relay's second set. Book IV p.69 confirms only that the set exists and that `IV-FF1` consumes it. | One 300 dpi crop of `book2-3-4.pdf` PDF p.75 (the `IV-FF1` circuit diagram) would likely settle it. |",
+      "ruling": "DELETE the row as an open question and re-file it as SETTLED. `nK` is the normally-open contact, `nN` the normally-closed, `nL` the arm, [verified] from the Maintenance Manual Relay Check figure. If a settled-item row is wanted (the file already carries one, N-8), write it that way and cross-reference §0. The residual open question is relay contact TRANSFER ORDER, which is already N-2 — do not let N-3's deletion drag the transfer-order question with it.",
+      "evidence": "Same as PR-01: maintenance-manual.pdf printed p.7 = PDF p.9, image-read at 400 dpi by me this pass, and independently at 700–1000 dpi in raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json#figures FIG-RLY.derivedFacts. Note this also discharges the file's own suggested next step: the PDF p.75 crop is no longer needed for the K/N question (it is still worth spending on IV-FF1's wire list, §6 item 3).",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "PR-03",
+      "file": "docs/research/programs.md",
+      "section": "§2.2 Conformance seed set — tier A, and a new subsection under §4",
+      "currentText": "The tier-A seed table runs `I-EXP1` … `V-EXP1`, 17 rows, all from Books I–V. The Maintenance Manual appears nowhere in the corpus; §5 N-11 says it 'was not read by the programs pass'.",
+      "ruling": "ADD the three Maintenance Manual check circuits as corpus records and put them at the head of the tier-A seed set. Each is a complete printed netlist with SDC's own printed expected lamp states, no relay chain, no motor, no rotary — a better conformance floor than anything currently in tier A. (1) `MM-PB-CHECK`, MAINT printed p.6-7 = PDF p.8-9, 5 wires: `+/Y`, `Z/1A`, `1B/1-`, `X/2A`, `2B/2-`; printed expected 'Turn power on. Light 1 should come on. Push the pushbutton. Light 1 should go off and light 2 should come on.' (2) `MM-RLY-CHECK`, MAINT printed p.7 = PDF p.9, 13 wires: `+/H`, `+/L`, `+/Y`, `X/E`, `F/-`, `J/1A`, `1B/1-`, `G/2A`, `2B/2-`, `N/3A`, `3B/3-`, `K/4A`, `4B/4-`, with `C` and `Z` deliberately unconnected; printed expected 'Turn power on. Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on.' Record the coil-driven-at-E consequence: the relay's own indicator lamp is out of circuit and stays DARK in this fixture. (3) `MM-SW-CHECK`, MAINT printed p.8 = PDF p.10, 10 wires: `+/S`, `+/V`, `T/1A`, `1B/1-`, `R/2A`, `2B/2-`, `W/3A`, `3B/3-`, `U/4A`, `4B/4-`; printed expected 'Set the slide switch RIGHT. Turn power on. Lights 1 and 3 should come on. Move the slide switch to the LEFT. Lights 1 and 3 should go off and lights 2 and 4 should come on.' In every case the release step ('release the pushbutton, lights return') is IMPLIED, not printed — tag it [unverified]. Also record the FIG-PB printing error as printed, not fixed: the page prints '2B' on BOTH terminals of light 2; the intended left-hand label is `2A` (printed-[verified]; correction [likely], from the correctly-labelled `1A (lamp) 1B` on the same figure and all four lamps on the Relay Check figure). Finally, these three are NOT from the six books, so update the count sentences rather than breaking C-21: keep '98 program records' as the Books I–VI + errata corpus and count the Maintenance Manual circuits as a separate labelled group.",
+      "evidence": "raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json#figures (FIG-PB, FIG-RLY, FIG-SW) and #acceptanceSuite, all tagged verified and read at 300–1000 dpi. Independently confirmed by me this pass: PDF p.9 @400 dpi (Relay Check figure, netlist and expected-state sentence) and PDF p.10 @300 dpi (Slide Switch Check figure, netlist and expected-state sentence). Page offset PDF = printed + 2, verified in that same gap file's figurePageMapDefinitive.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-04",
+      "file": "docs/research/programs.md",
+      "section": "§4.2 Book II — `II-EXP5` (Decision Making)",
+      "currentText": "**Best-specified combinational fixture in the corpus** — five printed numbered steps, each with a stated relay-3 outcome. The numbered steps are on printed p.14 (PDF p.20), not p.13 where the heading sits.",
+      "ruling": "ADD the structural fact this record is silent about. Its first three wires `1+/1H`, `1H/1L`, `1L/1X` contain an explicit `1H`-to-`1L` PROGRAMMING WIRE: SDC has to bridge the relay's two contact sets with a patch cord, which is direct printed evidence that the G/H/J set and the K/L/N set are electrically ISOLATED inside the relay. Name `II-EXP5` the isolation regression test in this record and in §2.2: a simulator that internally ties H to L passes all three Maintenance Manual check circuits (PR-03) and fails this one. The same bridge appears in `II-EXP6` (`1H/1L`), which is a second instance and should be cross-referenced.",
+      "evidence": "book2-3-4.pdf PDF p.19 (printed p.13), pdftotext -layout: the 13-line program, first three lines `1+/1H`, `1H/1L`, `1L/1X`; PDF p.20 (printed p.14) for `II-EXP6`'s `1+/1H`, `1H/1L`, `1L/1Y`. Reasoning and the 'passes the MM checks, fails this one' framing are from raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json#acceptanceSuite.tests[3] (BK2-EXP5-DECISION-MAKING) and #theIsolationQuestion. The MM Relay Check cannot prove isolation on its own because it ties both H and L to '+'; this program can, and is the only thing in the package that does.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-05",
+      "file": "docs/research/programs.md",
+      "section": "§4.2 Book II — `II-EXP5` and `II-EXP6`",
+      "currentText": "`II-EXP5`: 'Behaviour (as printed): Pushbuttons 1 and 2 carry the two binary numbers to compare. Relay 3 comes ON if they are equal, goes OFF if not.' `II-EXP6`: 'Behaviour (as printed): Pushbuttons 1 and 2 are the addends (up = 0, down = 1). Light 1 ON = answer 1; light 2 ON = answer 2; no lights = 0.'",
+      "ruling": "ADD the printed step traces. §2.2 calls `II-EXP5` 'the best-specified combinational fixture in the corpus — five printed numbered steps each with a stated relay-3 outcome' and then the record never writes the steps down; same for `II-EXP6`. Transcribe both, verbatim. II-EXP5: (1) wire it — note a pushbutton UP represents zero, DOWN represents 1; (2) 'Turn power ON. Relay 3 comes ON because both numbers are zero.'; (3) 'Push pushbutton 1. Relay 3 goes OFF because the numbers are no longer equal.'; (4) 'Push pushbutton 2 while holding down pushbutton 1. Once again the numbers are equal (both are 1) and relay 3 comes ON.'; (5) 'Release pushbutton 1 while holding down pushbutton 2. Relay 3 goes OFF because the numbers are not equal.' II-EXP6 (apply ER-06 first): (2) 'Turn power ON. No lights come on because the input numbers are both zero: 0 + 0 = 0'; (3) 'Push pushbutton 1. Light 1 comes ON: 1 + 0 = 1'; (4) 'Push pushbutton 2 while holding pushbutton 1 down. Light 2 comes ON: 1 + 1 = 2'; (5) 'Release pushbutton 1 while holding pushbutton 2 down. Light 1 comes ON: 0 + 1 = 1.' Tag both traces [likely] (text layer, clean typeset, not image-read) to match the records' existing tags.",
+      "evidence": "book2-3-4.pdf PDF p.20 (printed p.14), pdftotext -layout, read in full this pass. Step numbering and the p.14-not-p.13 locator corroborate gap-verify DG-03.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-06",
+      "file": "docs/research/programs.md",
+      "section": "§3.2 The errata sheet — master table, row ER-19, 'Affects' column",
+      "currentText": "| ER-19 | IV | 69 | prose_only | Note - push pushbutton 6 SLOWLY when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop. [verified] | IV-FF1, IV-FF2, II-FF1 |",
+      "ruling": "CORRECT the Affects cell to `IV-FF1` alone. Three independent discriminators: (a) the erratum is filed at Book IV printed p.69, and printed p.69 = PDF p.75 is the page carrying `IV-FF1`'s build stages 3 and 4 and its circuit diagram — `IV-FF2`'s program, diagram and numbered steps are all on printed p.70 = PDF p.76; (b) `IV-FF1`'s stage-4 wires are `6G/6A`, `6B/6-`, i.e. light 6 IS its indicator, exactly matching 'Light 6 will go off and on, indicating the state of the whole flip-flop'; (c) the second version's own printed text on that same page REFUTES the note for `IV-FF2`: 'For this program, light 5 is used to indicate the state of the flip-flop. Light 6 is used only to provide a path for current when relay 6 is \"shorted-out\" (OFF); light 6 is not used as an indicator in this program.' `II-FF1` uses pushbutton 1 and light 1 and cannot be the target either.",
+      "evidence": "book2-3-4.pdf PDF pp.74-76 (printed pp.68-70), pdftotext -layout, read in full this pass — the four IV-FF1 stage blocks (6+4+3+2 = 15 wires, ending `6G/6A`, `6B/6-`), the second-version prose, and the IV-FF2 program/steps under the folio 70. errata.pdf p.2 left column for the ER-19 text. Corroborated by critic-completeness.json cross_file_contradictions C11 ('ER's push pushbutton 6 slowly belongs to the Book IV p.69 single-input flip-flop (pushbutton 6, light 6), not the Book II p.12 circuit') and gap-verify DG-03 (the IV-FF2 steps are on printed p.70, not p.69).",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "PR-07",
+      "file": "docs/research/programs.md",
+      "section": "§4.2 Book II — `II-FF1` (The Single Input Flip-Flop)",
+      "currentText": "Errata **ER-19** [verified] (filed against the Book IV printing, same physical caution): push the pushbutton **slowly**; the indicator light will go off and on, showing the state of the whole flip-flop. That is a real-hardware race warning …",
+      "ruling": "DOWNGRADE. ER-19's target is `IV-FF1`, not this program (PR-06). Rewrite as a cross-reference, not an erratum on this record: 'No erratum applies to this program. ER-19's slow-operation caution is filed against `IV-FF1` (Book IV printed p.69) and names pushbutton 6 and light 6; this circuit uses pushbutton 1 and light 1. That the caution generalises to every single-input flip-flop is a physical inference, [unverified].' Keep the timing paragraph that follows it — the press/release-edge point stands on this record's own printed behaviour text and is unaffected.",
+      "evidence": "As PR-06. The paraphrase currently in the file silently replaces the erratum's 'pushbutton 6' / 'Light 6' with 'the pushbutton' / 'the indicator light' — a generalisation presented inside a [verified] tag.",
+      "severity": "tag-too-strong"
+    },
+    {
+      "id": "PR-08",
+      "file": "docs/research/programs.md",
+      "section": "§4.4 Book IV — `IV-FF1` (Single-input flip-flop, FIRST version)",
+      "currentText": "The record carries 'Notes', the stated-limitation quote, the 'genuinely different circuit' paragraph, and the 300-dpi-crop suggestion. It cites no erratum at all.",
+      "ruling": "ADD ER-19 to this record — it is this program's erratum. 'Errata **ER-19** [verified], Book IV printed p.69: \"Note — push pushbutton 6 SLOWLY when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop.\" The note is filed at printed p.69, which is where this circuit's last two build stages and its circuit diagram sit, and light 6 is this version's indicator (`6G/6A`, `6B/6-`). It is a real-hardware race warning: relay pull-in time is load-bearing on real iron and the fixpoint model abstracts it away — record that as a known divergence, not a bug.' Note also that this makes `IV-FF1` — not `IV-FF2` and not `II-FF1` — the package's named primary timing circuit, which changes which fixture the timing model is proved against.",
+      "evidence": "As PR-06. Also raw/critic-completeness.json#recommended_next_actions_in_order item 6, which names 'the single-input flip-flop (must be operable slowly, must misbehave when hammered)' as one of the two circuits the timing profile has to be proved against — it matters which one it is.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-09",
+      "file": "docs/research/programs.md",
+      "section": "§3.1 Corrections to the research record — table",
+      "currentText": "The table runs C-01 … C-22. There is no row for the ER-19 mis-assignment.",
+      "ruling": "ADD a row. 'C-23 | The errata's \"push pushbutton 6 slowly\" note (ER-19) belongs to Book II's flip-flop (find-relays), or to \"IV-FF1 / IV-FF2\" (verify-relays). | **Both wrong. It is `IV-FF1` alone.** ER-19 is filed at Book IV printed p.69, which carries `IV-FF1`'s last two build stages and its circuit diagram; light 6 is `IV-FF1`'s indicator (`6G/6A`, `6B/6-`); and `IV-FF2`'s own printed text says \"light 6 is not used as an indicator in this program\". `II-FF1` uses pushbutton 1 and light 1. | this pass, `book2-3-4.pdf` pp.74-76 text layer + `errata.pdf` p.2; corroborated by critic C11 [verified]'. Recorded because two research files carry the wrong assignment and a later agent will otherwise re-derive it.",
+      "evidence": "find-relays.json line ~409 attaches the note to the BOOK II SINGLE INPUT FLIP-FLOP record. verify-relays.json line ~206 writes 'affects_finder_program: IV-FF1 / IV-FF2'. critic-completeness.json C11 catches the find-relays half but leaves the IV-FF1-vs-IV-FF2 half open. Resolved this pass from print (PR-06).",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-10",
+      "file": "docs/research/programs.md",
+      "section": "§1 Tic-Tac-Toe — 'Expected behaviour' bullet list",
+      "currentText": "- **The centre is matrix square 9: [unverified].** The page prints only 'the center of the game matrix'; the square numbering comes from the panel, not from this page. verify-programs R7 downgraded the finder's [verified] tag on this claim.",
+      "ruling": "UPGRADE to [verified] and re-source. The panel photograph settles the numbering: 'The centre of the game matrix is matrix square 9. [verified] — the panel silkscreens the 3x3 grid as top row 1 2 3, middle row 8 9 4, bottom row 7 6 5, with 9 in the centre cell; `raw/photos/commons-minivac601-main.jpg` at native 4208 px, and `panel.md` §matrix. verify-programs R7 was right to downgrade the finder's tag — the finder never opened a photograph — but the question is now closed from one that was.' Keep R7's history in §3.1 if a row is wanted; do not leave the bullet open.",
+      "evidence": "raw/photos/commons-minivac601-main.jpg, MATRIX block cropped at native resolution and read by me this pass: two crops covering the full block. Top row cells legibly numbered 1, 2, 3; middle row 8, 9, 4; bottom row 7, 6, 5; the six-hole M10 and M11 terminals flanking left and right, each enclosed by a printed rectangular loop. Independently in panel.md line 348 ('top row 1 2 3; middle row 8 9 4; bottom row 7 6 5. Position 9 is the centre; 1..8 run clockwise around it from top-left. [verified] — PH2') and raw/find-panel.json claims[33]. critic-completeness.json C8 explicitly instructs: 'The programs file's [unverified] flag should be lifted by citing find-panel rather than left open.'",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "PR-11",
+      "file": "docs/research/programs.md",
+      "section": "§1 Tic-Tac-Toe — closing paragraph, and §5 row N-1",
+      "currentText": "§1: 'The ring geometry is not settled by the sources. … Not settled by Book I, Book VI or the errata sheet — it has to come from the panel photograph. Fallback: none named here; do not ship a tic-tac-toe fixture that asserts a specific machine move until the panel file settles it.' §5 N-1: '**The ring order of the nine matrix squares** … | None. It must come from the panel photograph. Do not ship a Tic-Tac-Toe fixture that asserts a specific machine move until the panel file settles it. |'",
+      "ruling": "SPLIT the question — half of it is settled, half of it needs a named default, and the file currently has no default at all, which breaches its own rule that every unsettled item names one. (a) The RING ORDER is settled [verified]: the eight outer squares run 1-2-3-4-5-6-7-8 clockwise from top-left around centre 9, read off the panel photograph; the panel file has done what N-1 said someone had to do. (b) What remains unsettled is the SEMANTICS of 'squares to the right' on that ring — the sign, and how the rule applies from the centre square, which is not on the ring at all. Rewrite N-1 as: 'Not settled: what \"move 5 squares to the right\" / \"move 4 squares to the right\" means as an operation on the ring, and how the rule is anchored when the machine's last move was the centre. Book VI states the rule and never defines \"right\"; the errata sheet adds only ER-44. **Named default `FALLBACK-TTT-RING-CW`:** \"N squares to the right\" = advance N positions in the printed numbering modulo 8 around the outer ring (1→2→…→8→1), because the panel's own numbering runs clockwise from top-left and is the only cyclic order the machine physically expresses. Every step generated under it carries tag [unverified] and source `FALLBACK-TTT-RING-CW`. Keep the standing caution: do not ship a Tic-Tac-Toe fixture that asserts a specific machine move on the strength of the default alone.' Make the §1 paragraph agree with the rewritten N-1.",
+      "evidence": "Ring order: as PR-10 (my own read of raw/photos/commons-minivac601-main.jpg; panel.md line 348; find-panel claims[33]; critic C8). Semantics: book5-6.pdf PDF p.61-62 (printed pp.55-56), read at 300 dpi this pass — the rule paragraph and the play procedure define no direction and never restate the numbering; errata.pdf p.4 right col ER-44 adds only the fifth-move tie note. The default is labelled an inference, per the file's own anti-fabrication rule and the standing 'a named fallback is not a finding' rule.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-12",
+      "file": "docs/research/programs.md",
+      "section": "§2.4 Shipped demos — `VI-TICTACTOE` row",
+      "currentText": "| `VI-TICTACTOE` | Tic-Tac-Toe | D | The centrepiece. Smoke test only: the wire list must load, and the 'move 5 to the right' invariant must hold. Blocked on the matrix ring order |",
+      "ruling": "CORRECT the last clause. The matrix ring order is no longer the blocker — it is settled from the panel photograph (PR-10, PR-11). Replace 'Blocked on the matrix ring order' with 'Ring numbering settled from the panel (1-2-3 / 8-9-4 / 7-6-5, centre 9); what is still open is the direction convention for \"squares to the right\" — see `FALLBACK-TTT-RING-CW`, N-1.' Leaving it as written sends an implementer to re-open a closed question and re-spend an image read.",
+      "evidence": "As PR-10 and PR-11. This is precisely the failure mode critic-completeness.json C8 describes: 'The panel topic settled from the photograph exactly what the programs topic lists as needing the photograph. The two files never met.'",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "PR-13",
+      "file": "docs/research/programs.md",
+      "section": "§4.6 Book VI — `VI-TUGOFWAR`, 'Expected behaviour (as printed)'",
+      "currentText": "- The rotary switch knob turns counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down).\n- It turns clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "ruling": "ADD a conflict flag directly under these two bullets; do not alter the verbatim quotation. 'These direction words are INVERTED with respect to the panel. The dial is numbered 0 at 12 o'clock increasing CLOCKWISE through 15 ([verified] from the panel photograph and Book I printed p.20), so moving from 7 towards 9 is clockwise, not counterclockwise. Two primary sources conflict and neither wins: take rotation sense from the panel and Book I p.20 only, and never cite Book VI for direction. One unproven explanation on the record — Book VI may be describing the view from BENEATH the panel, where Book I's own \"VIEW UNDER PANEL\" figure is mirrored — is [unverified] and must stay out of the spec.' Without this the section reads as printed fact and a demo author implements the motor backwards.",
+      "evidence": "critic-completeness.json cross_file_contradictions C13, tagged 'medium — PRIMARY SOURCES CONFLICT, do not resolve', which cites the panel arrangement, Book I printed p.20, and Book VI printed p.56 verbatim, and records that find-rotary X04 asserted the two AGREE and verify-rotary refuted that deduction as inverted. panel.md line 392 and line 494 carry the same numbering and the under-panel mirror note. The Book VI sentence is on the same printed page as the Tic-Tac-Toe table I image-read at 300 dpi this pass and is legible there.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-14",
+      "file": "docs/research/programs.md",
+      "section": "§0 How to read this file (or a new §6 item) — no consolidated entry exists",
+      "currentText": "The free-ended wire is flagged four separate times and never in one place: §1's per-line table ('The simulator needs a first-class \"touch a terminal with a loose wire end\" input'), §2.4's `VI-MAZE` row ('needs the loose-wire-touch input'), `V-EXP12`'s closing line ('eight loose-ended wires'), and `V-MAZESOLVER`'s closing line ('Uses a **loose-ended wire** at `6E`').",
+      "ruling": "ADD one consolidated entry naming all four programs, so the simulator requirement is stated once as a requirement rather than four times as an aside. 'FREE-ENDED WIRES — a first-class input, not a patch cord. Four programs wire one end of a programming wire to a terminal and leave the other end loose for the operator to relocate at run time: `VI-TICTACTOE` (`M10/free`, the machine's play wire; `M11/free`, the player's), `V-EXP12` Arabic Numeral Recognition (four free wires on `M10` and four on `M11`), `V-MAZESOLVER` (`6E`, moved between `D3`, `D5` and `D7` to nominate the goal), `VI-MAZE` (a wire at `M+`, the play wire). None of these is a jack-to-jack connection and none can be represented as one. Book VI prints the proof for the maze, verbatim: \"(The wire need not be plugged into the terminal; touching the terminal will make the contact.)\" That sentence is printed only for `VI-MAZE`; Tic-Tac-Toe's own procedure says \"place the free end … in 6 com\", i.e. insertion. So the general requirement is a wire with one free end the operator moves at run time; momentary touch without insertion is the `VI-MAZE` special case, and whether it is also how the other three are meant to be operated is [unverified].' Keep the four per-program flags where they are.",
+      "evidence": "book5-6.pdf PDF p.62 (printed p.56) @300 dpi this pass — `M10/free*` and `M11/free**` with footnotes 'this is the machine's \"play\" wire' / 'this is the player's \"play\" wire', and the procedure 'Place the free end of the machine's \"play\" wire in 6 com'. programs.md's own `VI-MAZE` record quotes the Book VI touch sentence. `V-EXP12` extra setup, verbatim in the file: 'Now connect four short programming wires to M10, leaving one end of each free. Also, connect four short programming wires to M11, leaving one end of each free.' `V-MAZESOLVER` footnote, verbatim in the file: 'This programming wire may be connected to D3, D5 or D7 to indicate the goal.' The four-program tally is also stated once in raw/find-programs.json (the 'Four Book V/VI programs use a free-ended play wire' note) and nowhere in programs.md.",
+      "severity": "missing"
+    },
+    {
+      "id": "PR-15",
+      "file": "docs/research/programs.md",
+      "section": "§4.5 Book V — `V-EXP14`, 'Per-line flags' table",
+      "currentText": "| `4F/5G` | [unverified] | Every other stage of this circuit uses the pattern <n>F/<n>G (1F/1G, 3F/3G, 5F/5G). This one prints '4F/5G' while '4H/5G' also appears. Could be a print/OCR error for 4F/4G. Not image-verified. |",
+      "ruling": "CORRECT the stale flag. It contradicts the paragraph two lines below it, which correctly says ER-34 settles this. Replace the row with: '| `4F/5G` | [verified] as the PRINTED reading | Corroborated by ER-34, which quotes the printed line back in order to change it. Corrected line is `4F/4G`, [verified], ER-34. Do not carry the printed line into a fixture; do not delete it from the record either — it is what Book V prints. |'. The upgrade is real: the errata sheet quoting `4F/5G` is independent primary attestation of the printed reading, which the OCR-only tag could not give.",
+      "evidence": "errata.pdf PDF p.3, right column, rendered by me this pass at 400 dpi: 'page 24: Experiment 14 program correction: change 4F/5G to 4F/4G'. Same crop also confirms ER-30, ER-31 (both Notes sitting under the Experiment 9 entry, corroborating C-09/RUL-04), ER-32's five removals and five additions, ER-33 and ER-35. Corroborates C-07 and gap-canonical's original 300-dpi read.",
+      "severity": "tag-too-strong"
+    },
+    {
+      "id": "PR-16",
+      "file": "docs/research/programs.md",
+      "section": "§1 Tic-Tac-Toe — header line",
+      "currentText": "**[verified]** (read twice from page images: finder at 600 dpi, verifier at 110 dpi, all four columns, zero disagreements).",
+      "ruling": "UPDATE to record the third read and close gap-verify's caveat: '**[verified]** (read three times from page images, zero disagreements: finder at 600 dpi, verify-programs at 110 dpi, and this consistency pass at 300 dpi — all four columns, both footnotes and the full play procedure). gap-verify DG-04 held RUL-01 at [likely] pending a 300-dpi render of PDF p.62; that render has now been made and the ruling stands unchanged.' Small, but DG-04 names an outstanding image read that has been spent, and the next agent should not spend it again.",
+      "evidence": "My own pdftoppm -r 300 render of book5-6.pdf PDF p.62 this pass. Every one of the 72 lines matches the file's table entry for entry in the printed 4-columns-by-18-rows column-major order, including `4G/5N` at column 3 row 9, `6+/6Y` with the spaced plus, `6—/6C`, `1B/1—`, `2B/2—`, `M—/D17`, `M10/free*` and `M11/free**`; the two footnote lines carry no parenthetical gloss, confirming verify-programs R2. gap-verify DG-04 is the caveat being discharged.",
+      "severity": "cosmetic"
+    },
+    {
+      "id": "PR-17",
+      "file": "docs/research/programs.md",
+      "section": "§5 row N-11 and §6 item 6",
+      "currentText": "N-11: '**Scope of `book7-capacitor-resistor.pdf`** (a joint 601/6010 document containing rotary-switch program fragments) and the Maintenance Manual. Neither was read by the programs pass, and neither was declared out of scope.' §6 item 6: 'Are the Maintenance Manual and `book7-capacitor-resistor.pdf` in scope?'",
+      "ruling": "SPLIT and narrow. The Maintenance Manual half is stale: it is a MINIVAC 601 document with no 6010 content, it has now been read end to end by the gap round, its page offset is fixed (PDF = printed + 2), and three of its figures are program records this file should carry (PR-03). Strike it from N-11 and from §6 item 6. Keep `book7-capacitor-resistor.pdf` open, but sharpen it with the ruling the critic asked for: 'Book VII's cover and metadata read \"MINIVAC 601/6010\" and its text says \"the MINIVAC's relays\" without distinguishing models, so the 601/6010 caveat applies to ALL of it, not only its capacitor material. Any Book VII program fragment entering this corpus must be labelled 601/6010, never 601. Decide in or out once and apply it uniformly — the hysteresis model, the bias resistors and the `ncap` terminals all ride on that one ruling.'",
+      "evidence": "raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json — the whole file, which reads MAINT printed pp.3-10 and fixes figurePageMapDefinitive. critic-completeness.json cross_file_contradictions C10, which records verify-relays REF-11's ruling that the 601/6010 caveat applies verbatim to Book VII's relay statements too, and the package-level disagreement about whether B7 counts at all. Book VII's own text layer, first pages: 'Minivac 601/6010' and 'MINIVAC 601/6010 AND THE MINIVAC MANUAL'.",
+      "severity": "wrong-fact"
+    },
+    {
+      "id": "PR-18",
+      "file": "docs/research/programs.md",
+      "section": "§2.2 Conformance seed set — tier A, row `I-EXP9`",
+      "currentText": "| `I-EXP9` | A Relay Controls Itself | Book I p.17 / book1.pdf p.19 | 6 | [verified] | Bistable; tier B in truth, listed here because it is Book I short |",
+      "ruling": "MOVE the row to §2.3 (tier B, build second) and keep the 'Book I short, build it early' note there. As it stands §2.2 is headed 'Conformance seed set — tier A' and the row's own Why cell says the program is tier B, while §4.1's table tiers it B. Anything generating tiers from §2.2 mis-tiers it, and the whole point of the tier-B pass criterion is that press and release are separate events — collapsing them on a bistable is exactly the failure tier B exists to catch.",
+      "evidence": "programs.md §2.1 tier definitions (A = 'no self-holding'; B = 'self-holding relays, flip-flops, counters'), §2.2 row as quoted, §4.1 Book I table row `I-EXP9` tier B. Self-inconsistency internal to the file; no external source needed.",
+      "severity": "cosmetic"
+    },
+    {
+      "id": "PR-19",
+      "file": "docs/research/programs.md",
+      "section": "§4.4 Book IV — `IV-FF2` header locator, and the §4.4 summary table row",
+      "currentText": "Header: 'Book IV printed pp.69-70 · `book2-3-4.pdf` PDF p.76 · 14 wires'. Table row: '| `IV-FF2` | Single-input flip-flop, SECOND version | 69-70 | 76 | 14 | B | [verified] |'.",
+      "ruling": "CORRECT the locator pair. The file's own offset is printed = PDF − 6, so printed pp.69-70 is PDF pp.75-76, not PDF p.76 alone. Everything a fixture needs — the program table, the circuit diagram, the caption and all three numbered steps — is on printed p.70 = PDF p.76; printed p.69 = PDF p.75 carries only the prose introducing the second version. Cite 'printed p.70 · PDF p.76' (preferred, since that is where the program is) or 'printed pp.69-70 · PDF pp.75-76'. The file's own key is (pdf_file, pdf_page, printed_page) — a locator whose two halves disagree defeats it.",
+      "evidence": "book2-3-4.pdf PDF pp.75-76, pdftotext -layout, read in full this pass: the second-version prose ends on the page whose printed folio is 69; the Program block, the SINGLE-INPUT FLIP-FLOP—SECOND VERSION caption and steps 1-3 all sit on the page whose printed folio is 70. gap-verify DG-03 makes the same correction and calls it 'cosmetic for a human, load-bearing for a corpus keyed on (pdf_file, pdf_page, printed_page)'.",
+      "severity": "cosmetic"
+    },
+    {
+      "id": "PR-20",
+      "file": "docs/research/programs.md",
+      "section": "§4.2 — `II-EXP2` 'Initial settings' (line ~729) and `II-EXP7` 'Initial settings' (line ~899)",
+      "currentText": "- {'control': 'power', 'position': 'ON'}\n\nand\n\n- {'control': 'slide switches 1-6', 'position': 'RIGHT', 'source_line': \"printed step 1: 'Set all slide switches in the RIGHT position.'\", 'tag': 'verified'}",
+      "ruling": "CORRECT both. Raw Python dict literals have leaked from the source JSON into the prose. Replace with '- Power ON.' and '- Set all slide switches to the RIGHT. [verified] printed step 1: \"Set all slide switches in the RIGHT position.\"' respectively. The `II-EXP7` case also duplicates the verbatim quote that appears on the very next line of the file, so the dict line can simply be dropped there.",
+      "evidence": "Direct read of programs.md lines 729 and 899. `grep \"{'\" programs.md` returns exactly these two hits, so the fix is complete at two edits.",
+      "severity": "cosmetic"
+    }
+  ],
+  "confirmedCorrect": [
+    "§1 Tic-Tac-Toe table — all 72 lines, in 4 columns x 18 rows read column-major, match `book5-6.pdf` PDF p.62 (printed p.56) exactly at 300 dpi. Third independent image read, zero disagreements. Locator, wire count, layout and read order are right.",
+    "§1 `4G/5N` at column 3 row 9 is recorded as printed-[verified] and the finder's `4N/5N` 'correction' is struck rather than silently applied. Correct, and the internal-consistency argument holds on the page: the table prints the chain `3G/4N` (col 2) / `4G/5N` (col 3) / `5G/6N` (col 4), and prints 3G, 4G and 5G twice each. Both out-of-alphabetical placements sit in the same relative slot — immediately after that section's `nL/M..` pair.",
+    "§1 `M10/free*` and `M11/free**` — M10 is the machine's play wire and M11 the player's, both free-ended, footnotes verbatim with no gloss. Confirmed at 300 dpi; verify-programs R2's strike of the finder's '(attached to M10)' parenthetical is correctly reflected.",
+    "§1 Tic-Tac-Toe procedure, initial settings, the verbatim playing rule, the cannot-lose claim and the first-move claim all match the printed page word for word.",
+    "§0 'Two netlist rules the comparator must apply' — the all-plus-one-node / all-minus-one-node rule (ERG-02) and the interconnected-holes rule (ERG-03) are correctly stated as first-order netlist facts, with the errata's own `1X/6A` worked example.",
+    "§3.1 C-19 — the errata OCR does NOT drop 12 of the 48 alternate-counter connections. Confirmed by my own 300-dpi read of errata.pdf p.2 right column: 4 columns x 12 rows, all 48 present, matching the file's table entry for entry in column-major order.",
+    "§4.4 `ER-ALTCOUNTER` — all 48 wires correct, including the six OCR repairs (`1F/1H` from 'IF/TH', `6L/6-` from '61/6-', and the four plus signs `1G/1+`, `3G/3+`, `5G/5+`, `6Y/6+`). Procedure verbatim, and the 'TO 5L (CARRY IN)' / 'TO 2H (CARRY OUT)' diagram labels are as described.",
+    "§4.4 `ER-ALTCOUNTER`'s 'do not lift IV-EXP1's expected trace onto this wire list mechanically' warning, with the differing lamp taps spelled out — correct, and correctly tagged not-settled (gap-verify DG-02).",
+    "§3.2 ER-07 / §4.3 `III-3STMT` — the Book III p.36 erratum is a REPLACEMENT DIAGRAM, not text, and the program list `1+/1Y`, `1X/2Y`, `2X/3A`, `3B/3-` is unchanged by it. Correctly recorded in both places.",
+    "§3.2 ER-34 / §4.5 `V-EXP14` — the corrected wire list is right: exactly one line changes, `4F/5G` to `4F/4G`, and the corrected 60-line table differs from the printed one only at that line. Image-confirmed at 400 dpi this pass.",
+    "§3.1 C-12 and §4.4 `IV-FF2` — the flip-flop ruling is right. Book II's 14-wire flip-flop and `IV-FF2` are the same topology after the relabelling and the all-plus/all-minus rule, four of six nets identical, differing only in where lamp 5's anode taps (Book II on the `{5E,6G}` node, Book IV on the `{5F,5H,6F}` node, i.e. the printed wire `5H/5A`). The headline 'five of six' was correctly cut to four.",
+    "§3.1 C-13 — the lamp-tap difference is correctly DOWNGRADED from cosmetic to [unverified], on the ground that an indicator lamp here is a series element in the coil path (ER-21). The operational conclusion — keep both as separate fixtures, do not unify the wire lists — is right.",
+    "§4.4 `IV-FF1` is correctly recorded as a genuinely different 15-wire circuit (not 16, C-11), the only program using the K/L/N second contact set on both relays, with the printed stated limitation quoted verbatim. The 6+4+3+2 stage arithmetic checks out against the text layer.",
+    "§4.4 `IV-FF2-CARRY` is correctly carried as a distinct 18-wire program (`IV-FF2` plus `5G/5N`, `5L/6L`, `6K/4A`, `4B/4-`), with the printed 'Light 4 will now indicate that a carry is taking place' observable and the correct note that any step asserting light 4's VALUE is [unverified].",
+    "Tiering — the two tier-A assignments gap-verify refuted are both fixed. `II-EXP2` is tier C1 with the observable corrected to the RELAY indicator light (its 23 wires contain no A or B terminal, so a lamp assertion would assert an unwired lamp), and `I-EXP11` is tier C1. Both appear correctly in §3.1 (C-15, C-16), in the per-book tables and in the seed sets. No further tier change is warranted there.",
+    "The C1/C2 tier split is correctly labelled '[verified] as a contradiction; [unverified] as a repair' and flagged again in §6 as this file's judgement rather than a source fact. That is the honest handling.",
+    "§3.1 C-09 / §3.2 ER-30, ER-31 — the elevator reliability block belongs to Book V Experiment 9, not Experiment 8. Confirmed by my own 400-dpi read of errata.pdf p.3 right column: both Notes sit inside the Experiment 9 entry and precede the 'page 12:' entry, and Experiment 8's only erratum is the pushbutton-5 procedure sentence.",
+    "§3.2 ER-32 — the toll collector's five removals and five additions are transcribed exactly as printed (remove `3J/4X`, `3N/6Y`, `4H/5N`, `4K/5N`, `5L/6G`; add `3J/4K`, `3Y/4Y`, `4J/4X`, `4X/6L`, `5N/6K`). Image-confirmed at 400 dpi.",
+    "§3.1 C-14 and the `FALLBACK-PWRUP-COLD` block — `II-SELFLOCK` comes up OFF, not ON, because its holding path runs through its own normally-open contact. The fallback's reasoning, its three printed supports, its recording rule and its 'what would overturn it' clause are all sound, and the corrected worked example is right.",
+    "§3.1's closing note that `docs/programs.json` does not exist and that `find-relays.json` RLY-27's `1Y/1C` should be `1X/1C` — both still true, both correctly scoped as not this file's to fix."
+  ],
+  "notRuledOn": [
+    "Tier A on `IV-EXP6` through `IV-EXP10`: checked and left alone. None of those wire lists touches a D terminal, the motor or the RUN/STOP jacks — the shifting in EXP8/9/10 is done by the operator moving slide switches — so tier A is defensible under the file's own criterion. No edit manufactured.",
+    "The `ER-15` transcription disagreement (verify-programs vs gap-canonical) is correctly flagged and left unresolved in §3.2; it is prose_only and changes no wire. Left as flagged.",
+    "Whether Book VII's programs (automatic counter with rotary switch control, shift register, music composer) should enter this corpus. That is the scope ruling PR-17 asks someone to make; making it here would exceed this pass."
+  ]
+}

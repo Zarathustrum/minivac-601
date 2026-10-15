@@ -1,0 +1,220 @@
+#!mv601-trace 1
+# id=V-EXP13 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=28
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=13 minTickGap=9 marginal=false
+     0.0 > switch1 target=1000
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+    26.9 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    33.0 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+    79.9 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim  indLamp6 off->dim
+    11.6 * relay5 nc->mid
+    12.9 * relay5 mid->no
+    13.5 * outLamp5 off->dim  indLamp5 off->dim
+    22.2 * outLamp6 dim->on  indLamp6 dim->on
+    42.3 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+    42.3 > button1 target=1000
+    53.5 * pb1 nc->mid
+    56.0 * pb1 mid->no
+    66.8 * relay6 nc->mid
+    68.1 * relay6 mid->no
+    71.4 * outLamp4 off->dim
+    86.6 * outLamp5 dim->on  indLamp5 dim->on
+    90.3 * outLamp4 dim->on
+   110.4 ? relay5=no relay6=no outLamp4=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT."
+   110.4 > button1 target=0
+   121.6 * pb1 no->mid
+   124.1 * pb1 mid->nc
+   137.8 * relay5 no->mid
+   138.7 * relay5 mid->nc
+   162.2 ? relay5=nc relay6=no outLamp4=on outLamp5=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   162.2 > button2 target=1000
+   173.4 * pb2 nc->mid
+   175.9 * pb2 mid->no
+   182.2 * relay6 no->mid
+   183.1 * relay6 mid->nc
+   183.9 * outLamp6 on->dim  indLamp6 on->dim
+   196.7 * outLamp5 on->dim  indLamp5 on->dim
+   201.9 * outLamp4 on->dim
+   240.9 * outLamp6 dim->off  indLamp6 dim->off
+   252.4 * outLamp5 dim->off  indLamp5 dim->off
+   257.5 * outLamp4 dim->off
+   257.6 ? relay5=nc relay6=nc outLamp4=off outLamp5=off outLamp6=off  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   257.6 > button2 target=0
+   268.8 * pb2 no->mid
+   271.3 * pb2 mid->nc
+   273.2 * outLamp6 off->dim  indLamp6 off->dim
+   278.3 * outLamp5 off->dim  indLamp5 off->dim
+   283.1 * relay5 nc->mid
+   284.4 * relay5 mid->no
+   292.2 * outLamp6 dim->on  indLamp6 dim->on
+   312.3 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   312.3 > button3 target=1000
+   323.5 * pb3 nc->mid
+   326.0 * pb3 mid->no
+   336.8 * relay6 nc->mid
+   338.1 * relay6 mid->no
+   341.0 * outLamp4 off->dim
+   353.3 * outLamp5 dim->on  indLamp5 dim->on
+   360.0 * outLamp4 dim->on
+   380.1 > button3 target=0
+   391.3 * pb3 no->mid
+   393.8 * pb3 mid->nc
+   407.5 * relay5 no->mid
+   408.4 * relay5 mid->nc
+   431.9 ? relay5=nc relay6=no outLamp4=on outLamp5=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   431.9 > button4 target=1000
+   443.1 * pb4 nc->mid
+   445.6 * pb4 mid->no
+   451.9 * relay6 no->mid
+   452.8 * relay6 mid->nc
+   453.6 * outLamp6 on->dim  indLamp6 on->dim
+   466.4 * outLamp5 on->dim  indLamp5 on->dim
+   471.6 * outLamp4 on->dim
+   491.7 > button4 target=0
+   502.9 * pb4 no->mid
+   505.4 * pb4 mid->nc
+   517.3 * relay5 nc->mid
+   518.6 * relay5 mid->no
+   523.9 * outLamp6 dim->on  indLamp6 dim->on
+   527.2 * outLamp4 dim->off
+   547.3 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   547.3 > button5 target=1000
+   558.5 * pb5 nc->mid
+   561.0 * pb5 mid->no
+   571.8 * relay6 nc->mid
+   573.1 * relay6 mid->no
+   575.5 * outLamp4 off->dim
+   579.5 * outLamp5 dim->on  indLamp5 dim->on
+   594.4 * outLamp4 dim->on
+   614.5 > button5 target=0
+   625.7 * pb5 no->mid
+   628.2 * pb5 mid->nc
+   641.9 * relay5 no->mid
+   642.8 * relay5 mid->nc
+   666.3 ? relay5=nc relay6=no outLamp4=on outLamp5=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   666.3 > button6 target=1000
+   677.5 * pb6 nc->mid
+   680.0 * pb6 mid->no
+   686.3 * relay6 no->mid
+   687.2 * relay6 mid->nc
+   688.0 * outLamp6 on->dim  indLamp6 on->dim
+   700.8 * outLamp5 on->dim  indLamp5 on->dim
+   706.0 * outLamp4 on->dim
+   726.1 > button6 target=0
+   737.3 * pb6 no->mid
+   739.8 * pb6 mid->nc
+   751.7 * relay5 nc->mid
+   753.0 * relay5 mid->no
+   758.3 * outLamp6 dim->on  indLamp6 dim->on
+   761.6 * outLamp4 dim->off
+   781.7 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   781.7 > switch1 target=0
+   808.6 * sw1 no->mid
+   814.0 * outLamp5 dim->on  indLamp5 dim->on
+   814.7 * sw1 mid->nc
+   822.0 * relay6 nc->mid
+   823.3 * relay6 mid->no
+   826.0 * outLamp4 off->dim
+   844.9 * outLamp4 dim->on
+   865.0 ? relay5=no relay6=no outLamp4=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT."
+   865.0 > switch1 target=1000
+   891.9 * sw1 nc->mid
+   898.0 * sw1 mid->no
+   911.7 * relay5 no->mid
+   912.6 * relay5 mid->nc
+   944.9 ? relay5=nc relay6=no outLamp4=on outLamp5=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+   944.9 > switch2 target=0
+   971.8 * sw2 no->mid
+   977.9 * sw2 mid->nc
+   980.5 * relay6 no->mid
+   981.4 * relay6 mid->nc
+   982.4 * outLamp6 on->dim  indLamp6 on->dim
+   996.4 * outLamp5 on->dim  indLamp5 on->dim
+  1000.7 * outLamp4 on->dim
+  1039.3 * outLamp6 dim->off  indLamp6 dim->off
+  1052.1 * outLamp5 dim->off  indLamp5 dim->off
+  1056.4 * outLamp4 dim->off
+  1056.5 ? relay5=nc relay6=nc outLamp4=off outLamp5=off outLamp6=off  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+  1056.5 > switch2 target=1000
+  1083.4 * sw2 nc->mid
+  1089.5 * sw2 mid->no
+  1092.0 * outLamp6 off->dim  indLamp6 off->dim
+  1098.9 * outLamp5 off->dim  indLamp5 off->dim
+  1101.3 * relay5 nc->mid
+  1102.6 * relay5 mid->no
+  1111.0 * outLamp6 dim->on  indLamp6 dim->on
+  1136.4 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+  1136.4 > switch3 target=0
+  1163.3 * sw3 no->mid
+  1169.4 * sw3 mid->nc
+  1173.2 * outLamp5 dim->on  indLamp5 dim->on
+  1176.7 * relay6 nc->mid
+  1178.0 * relay6 mid->no
+  1181.1 * outLamp4 off->dim
+  1200.1 * outLamp4 dim->on
+  1220.2 > switch3 target=1000
+  1247.1 * sw3 nc->mid
+  1253.2 * sw3 mid->no
+  1266.9 * relay5 no->mid
+  1267.8 * relay5 mid->nc
+  1300.1 ? relay5=nc relay6=no outLamp4=on outLamp5=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+  1300.1 > switch4 target=0
+  1327.0 * sw4 no->mid
+  1333.1 * sw4 mid->nc
+  1335.7 * relay6 no->mid
+  1336.6 * relay6 mid->nc
+  1337.6 * outLamp6 on->dim  indLamp6 on->dim
+  1351.6 * outLamp5 on->dim  indLamp5 on->dim
+  1355.9 * outLamp4 on->dim
+  1380.0 > switch4 target=1000
+  1394.5 * outLamp6 dim->off  indLamp6 dim->off
+  1406.9 * sw4 nc->mid
+  1407.3 * outLamp5 dim->off  indLamp5 dim->off
+  1411.6 * outLamp4 dim->off
+  1413.0 * sw4 mid->no
+  1414.4 * outLamp6 off->dim  indLamp6 off->dim
+  1416.8 * outLamp5 off->dim  indLamp5 off->dim
+  1424.8 * relay5 nc->mid
+  1426.1 * relay5 mid->no
+  1433.4 * outLamp6 dim->on  indLamp6 dim->on
+  1459.9 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+  1459.9 > switch5 target=0
+  1486.8 * sw5 no->mid
+  1492.9 * sw5 mid->nc
+  1493.0 * outLamp5 dim->on  indLamp5 dim->on
+  1500.2 * relay6 nc->mid
+  1501.5 * relay6 mid->no
+  1504.5 * outLamp4 off->dim
+  1523.4 * outLamp4 dim->on
+  1543.5 > switch5 target=1000
+  1570.4 * sw5 nc->mid
+  1576.5 * sw5 mid->no
+  1590.2 * relay5 no->mid
+  1591.1 * relay5 mid->nc
+  1623.4 ? relay5=nc relay6=no outLamp4=on outLamp5=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"
+  1623.4 > switch6 target=0
+  1650.3 * sw6 no->mid
+  1656.4 * sw6 mid->nc
+  1659.0 * relay6 no->mid
+  1659.9 * relay6 mid->nc
+  1660.9 * outLamp6 on->dim  indLamp6 on->dim
+  1674.9 * outLamp5 on->dim  indLamp5 on->dim
+  1679.2 * outLamp4 on->dim
+  1703.3 > switch6 target=1000
+  1717.8 * outLamp6 dim->off  indLamp6 dim->off
+  1730.2 * sw6 nc->mid
+  1730.6 * outLamp5 dim->off  indLamp5 dim->off
+  1734.9 * outLamp4 dim->off
+  1736.3 * sw6 mid->no
+  1737.7 * outLamp6 off->dim  indLamp6 off->dim
+  1740.1 * outLamp5 off->dim  indLamp5 off->dim
+  1748.1 * relay5 nc->mid
+  1749.4 * relay5 mid->no
+  1756.7 * outLamp6 dim->on  indLamp6 dim->on
+  1783.2 ? relay5=no relay6=nc outLamp4=off outLamp6=on  "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT. (Note: lights 5 and 6 are wired into the control circuit.)"

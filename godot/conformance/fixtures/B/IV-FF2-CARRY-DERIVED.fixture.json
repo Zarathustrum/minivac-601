@@ -1,0 +1,295 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-FF2-CARRY-DERIVED",
+  "source": "BK4 printed p.70 = book2-3-4.pdf PDF p.76 (program, steps 1-3, carry wires and carry sentence), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5+/5G",
+    "5H/5F",
+    "5F/6F",
+    "5C/6C",
+    "6C/6-",
+    "5J/6H",
+    "6G/5E",
+    "6J/6E",
+    "6E/6A",
+    "6B/6-",
+    "5H/5A",
+    "5B/5-",
+    "6+/6Y",
+    "6X/6H",
+    "5G/5N",
+    "5L/6L",
+    "6K/4A",
+    "4B/4-"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 18-wire topology and the p.70 carry rule, not printed, and is tagged FALLBACK-DERIVED-TOPOLOGY. The page states what light 4 means but prints no light-4 value at any step, and its relay readings (steps 1-3) are stated for the 14-wire circuit before the carry wires are added (programs.md IV-FF2-CARRY; phase-5-step7-notes.md IV-FF2-CARRY). The carry wires 5G/5N, 5L/6L, 6K/4A, 4B/4- use only relay set 2 and light 4 and touch no coil net, so the derived relay sequence is the base flip-flop's. Light 6 and the indicator lamps are asserted only where they sit across a full-rail node or an unfed node, because a lamp in series with a coil has a profile-dependent class. Script choices, not printed: the page's steps 1-3, then release of the step-3 push to close the cycle; each push and release is followed by settle 500 ms and a 200 ms advance; releases collapse the button travel as in IV-FF2-CARRY and IV-EXP1-DERIVED. No marginal flag: the 2026-09-01 marginal-counter ruling in docs/DECISIONS.md governs, and this fixture asserts only settled held and rest states.",
+  "wires": [
+    "5+/5G",
+    "5H/5F",
+    "5F/6F",
+    "5C/6C",
+    "6C/6-",
+    "5J/6H",
+    "6G/5E",
+    "6J/6E",
+    "6E/6A",
+    "6B/6-",
+    "5H/5A",
+    "5B/5-",
+    "6+/6Y",
+    "6X/6H",
+    "5G/5N",
+    "5L/6L",
+    "6K/4A",
+    "4B/4-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.70 = book2-3-4.pdf PDF p.76, carry rule ('Light 4 will now indicate that a carry is taking place', with step 3 'We want a carry signal to occur NOW'), power on, before any push (step 1); derived from topology: nets: X = 5H=5F=6F=5A (coil 5 far end, coil 6 far end, light 5); E5 = 5E=6G; E6 = 6E=6J=6A; P = 5J=6H=6X; 5C, 6C, 5B, 6B, 4B on minus, so coil 5 runs X-coil-5E-indicator lamp 5-minus and coil 6 runs X-coil-6E-indicator lamp 6 (with light 6 in parallel)-minus; 5G on + (5+/5G, 5G/5N); pushbutton 6 puts + on P (6+/6Y, 6X/6H); carry path + -> 5G -> 5N-5L (relay 5 N.C.) -> 6L-6K (relay 6 N.O.) -> 4A-light 4-4B-minus, so light 4 is lit only with relay 5 out and relay 6 in; both relays start out; 5G-5H and 6Y-6X are open, so X, P and E6 form one node (5H-5J, 6H-6J) with no source; 4A is open at 6K (relay 6 out); nothing is fed",
+      "quote": "Light 4 will now indicate that a carry is taking place.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.70 = book2-3-4.pdf PDF p.76, carry rule ('Light 4 will now indicate that a carry is taking place', with step 3 'We want a carry signal to occur NOW'), first push of pushbutton 6, held (flip-flop 0 to 1, no carry); derived from topology: nets: X = 5H=5F=6F=5A (coil 5 far end, coil 6 far end, light 5); E5 = 5E=6G; E6 = 6E=6J=6A; P = 5J=6H=6X; 5C, 6C, 5B, 6B, 4B on minus, so coil 5 runs X-coil-5E-indicator lamp 5-minus and coil 6 runs X-coil-6E-indicator lamp 6 (with light 6 in parallel)-minus; 5G on + (5+/5G, 5G/5N); pushbutton 6 puts + on P (6+/6Y, 6X/6H); carry path + -> 5G -> 5N-5L (relay 5 N.C.) -> 6L-6K (relay 6 N.O.) -> 4A-light 4-4B-minus, so light 4 is lit only with relay 5 out and relay 6 in; + on P reaches X through 5J-5H (relay 5 N.C.) and E6 through 6H-6J (relay 6 N.C.); coil 5 is fed X-coil-E5-indicator lamp 5-minus and relay 5 pulls in, then holds through 5G-5H; coil 6 has + at both ends (X and E6) and stays out; light 5 (X) and light 6 with indicator lamp 6 (E6) sit at full rail; relay 5 in opens 5N-5L and relay 6 out leaves 6K open, so light 4 is unfed",
+      "quote": "Light 4 will now indicate that a carry is taking place.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.70 = book2-3-4.pdf PDF p.76, carry rule ('Light 4 will now indicate that a carry is taking place', with step 3 'We want a carry signal to occur NOW'), first push released (step 2, flip-flop at 1); derived from topology: nets: X = 5H=5F=6F=5A (coil 5 far end, coil 6 far end, light 5); E5 = 5E=6G; E6 = 6E=6J=6A; P = 5J=6H=6X; 5C, 6C, 5B, 6B, 4B on minus, so coil 5 runs X-coil-5E-indicator lamp 5-minus and coil 6 runs X-coil-6E-indicator lamp 6 (with light 6 in parallel)-minus; 5G on + (5+/5G, 5G/5N); pushbutton 6 puts + on P (6+/6Y, 6X/6H); carry path + -> 5G -> 5N-5L (relay 5 N.C.) -> 6L-6K (relay 6 N.O.) -> 4A-light 4-4B-minus, so light 4 is lit only with relay 5 out and relay 6 in; P loses +; X stays on + through 5G-5H; coil 6 is now fed X-coil-E6-lamps 6-minus and relay 6 pulls in; its arm 6H moves to 6G, tying the unfed P to E5, so coil 5 keeps X-coil-E5-indicator lamp 5-minus and relay 5 holds; light 5 on X at full rail; relay 5 in keeps 5N-5L open, so light 4 is unfed",
+      "quote": "Light 4 will now indicate that a carry is taking place.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.70 = book2-3-4.pdf PDF p.76, carry rule ('Light 4 will now indicate that a carry is taking place', with step 3 'We want a carry signal to occur NOW'), second push of pushbutton 6, held (step 3, flip-flop 1 to 0, the carry); derived from topology: nets: X = 5H=5F=6F=5A (coil 5 far end, coil 6 far end, light 5); E5 = 5E=6G; E6 = 6E=6J=6A; P = 5J=6H=6X; 5C, 6C, 5B, 6B, 4B on minus, so coil 5 runs X-coil-5E-indicator lamp 5-minus and coil 6 runs X-coil-6E-indicator lamp 6 (with light 6 in parallel)-minus; 5G on + (5+/5G, 5G/5N); pushbutton 6 puts + on P (6+/6Y, 6X/6H); carry path + -> 5G -> 5N-5L (relay 5 N.C.) -> 6L-6K (relay 6 N.O.) -> 4A-light 4-4B-minus, so light 4 is lit only with relay 5 out and relay 6 in; + on P reaches E5 through 6H-6G (relay 6 in); coil 5 has + at both ends (X via 5G-5H, E5) and relay 5 drops; then 5H-5J keeps X on + from P; coil 6 stays fed X-coil-E6-lamps 6-minus and relay 6 holds; indicator lamp 5 sits across E5 (+) and minus; light 5 on X at full rail; with relay 5 out and relay 6 in the carry path + -> 5G-5N-5L-6L-6K-4A is closed and light 4 is lit",
+      "quote": "Light 4 will now indicate that a carry is taking place.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.70 = book2-3-4.pdf PDF p.76, carry rule ('Light 4 will now indicate that a carry is taking place', with step 3 'We want a carry signal to occur NOW'), second push released (flip-flop back at 0, carry ended); derived from topology: nets: X = 5H=5F=6F=5A (coil 5 far end, coil 6 far end, light 5); E5 = 5E=6G; E6 = 6E=6J=6A; P = 5J=6H=6X; 5C, 6C, 5B, 6B, 4B on minus, so coil 5 runs X-coil-5E-indicator lamp 5-minus and coil 6 runs X-coil-6E-indicator lamp 6 (with light 6 in parallel)-minus; 5G on + (5+/5G, 5G/5N); pushbutton 6 puts + on P (6+/6Y, 6X/6H); carry path + -> 5G -> 5N-5L (relay 5 N.C.) -> 6L-6K (relay 6 N.O.) -> 4A-light 4-4B-minus, so light 4 is lit only with relay 5 out and relay 6 in; P loses +; with relay 5 out 5G-5H is open, and X, P and E5 are one node (5H-5J, 6H-6G) with no source, so coil 6 loses its feed and relay 6 drops; 6K opens and light 4 goes dark; the circuit is back at the power-on state with every lamp unfed",
+      "quote": "Light 4 will now indicate that a carry is taking place.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

@@ -1,0 +1,864 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP2-DERIVED",
+  "source": "BK2 printed p.7 = book2-3-4.pdf PDF p.13 (purpose, procedure steps 1-2 and the decimal-data rule), image-read; no errata entry for this page; Step 7 speculative derivation from topology",
+  "tier": "C1",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1H/2H",
+    "2H/3H",
+    "3H/4H",
+    "4H/5H",
+    "5H/6Y",
+    "6Z/6+",
+    "6Y/5X",
+    "5Y/D16",
+    "D1/1G",
+    "1G/1C",
+    "1F/1-",
+    "D2/2G",
+    "2G/2C",
+    "2F/2-",
+    "D3/3G",
+    "3G/3C",
+    "3F/3-",
+    "D4/4G",
+    "4G/4C",
+    "4F/4-",
+    "D5/5G",
+    "5G/5C",
+    "5F/5-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1H/2H",
+    "2H/3H",
+    "3H/4H",
+    "4H/5H",
+    "5H/6Y",
+    "6Z/6+",
+    "6Y/5X",
+    "5Y/D16",
+    "D1/1G",
+    "1G/1C",
+    "1F/1-",
+    "D2/2G",
+    "2G/2C",
+    "2F/2-",
+    "D3/3G",
+    "3G/3C",
+    "3F/3-",
+    "D4/4G",
+    "4G/4C",
+    "4F/4-",
+    "D5/5G",
+    "5G/5C",
+    "5F/5-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 5 down put + on the wiper (6+/6Z-6Y(pb6 up)/5X-5Y/D16) and the hand at D4 fed D4/4G/4C-lamp-4E-coil-4F/4-, so relay 4 pulled in; its set-1 arm 4H (strapped to + through the 1H..5H/6Y chain and pushbutton 6's N.C. contact) now makes 4G and holds the coil and light after pushbutton 5 is released; every other pad is dead (wiper off it, pushbutton 5 up, G contacts open), relay 6's coil and lamp (6C/6E/6F) are unwired, so the other relays stay out and their lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 6 down opened 6Y-6Z, the only + feed to the arms 1H..5H, so the holding relay (relay 4) dropped; after release 6Y is back on +, but every G contact is open again and pushbutton 5 is up, so no coil is fed: all relays out, all relay lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 5 down put + on the wiper (6+/6Z-6Y(pb6 up)/5X-5Y/D16) and the hand at D1 fed D1/1G/1C-lamp-1E-coil-1F/1-, so relay 1 pulled in; its set-1 arm 1H (strapped to + through the 1H..5H/6Y chain and pushbutton 6's N.C. contact) now makes 1G and holds the coil and light after pushbutton 5 is released; every other pad is dead (wiper off it, pushbutton 5 up, G contacts open), relay 6's coil and lamp (6C/6E/6F) are unwired, so the other relays stay out and their lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 5 down put + on the wiper (6+/6Z-6Y(pb6 up)/5X-5Y/D16) and the hand at D2 fed D2/2G/2C-lamp-2E-coil-2F/2-, so relay 2 pulled in; its set-1 arm 2H (strapped to + through the 1H..5H/6Y chain and pushbutton 6's N.C. contact) now makes 2G and holds the coil and light after pushbutton 5 is released; every other pad is dead (wiper off it, pushbutton 5 up, G contacts open), relay 6's coil and lamp (6C/6E/6F) are unwired, so the other relays stay out and their lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 5 down put + on the wiper (6+/6Z-6Y(pb6 up)/5X-5Y/D16) and the hand at D3 fed D3/3G/3C-lamp-3E-coil-3F/3-, so relay 3 pulled in; its set-1 arm 3H (strapped to + through the 1H..5H/6Y chain and pushbutton 6's N.C. contact) now makes 3G and holds the coil and light after pushbutton 5 is released; every other pad is dead (wiper off it, pushbutton 5 up, G contacts open), relay 6's coil and lamp (6C/6E/6F) are unwired, so the other relays stay out and their lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 5 down put + on the wiper (6+/6Z-6Y(pb6 up)/5X-5Y/D16) and the hand at D5 fed D5/5G/5C-lamp-5E-coil-5F/5-, so relay 5 pulled in; its set-1 arm 5H (strapped to + through the 1H..5H/6Y chain and pushbutton 6's N.C. contact) now makes 5G and holds the coil and light after pushbutton 5 is released; every other pad is dead (wiper off it, pushbutton 5 up, G contacts open), relay 6's coil and lamp (6C/6E/6F) are unwired, so the other relays stay out and their lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.7 = book2-3-4.pdf PDF p.13, rule 'the number being remembered corresponds with the section (1-6) which has a relay light ON'; derived from topology, not printed: pushbutton 6 down opened 6Y-6Z, the only + feed to the arms 1H..5H, so the holding relay (relay 5) dropped; after release 6Y is back on +, but every G contact is open again and pushbutton 5 is up, so no coil is fed: all relays out, all relay lights off",
+      "quote": "This experiment demonstrates how MINIVAC 601 may receive decimal input data and instructions. A decimal number is communicated to the computer by turning the DECIMAL INPUT-OUTPUT knob to the desired number and pushing pushbutton 5 to instruct the computer to remember the selected number. Another instruction—to forget all previous data—is given to the computer by pushing pushbutton 6. [...] With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 23-wire topology and the p.7 rule, not printed. Topology: pushbutton 6's N.C. contact (6Z/6+) puts + on 6Y, which feeds both the set-1 arms 1H..5H (chained 1H/2H..4H/5H, 5H/6Y) and pushbutton 5's N.O. contact (6Y/5X); pushbutton 5's arm drives the wiper (5Y/D16). Pad DN joins relay N's N.O. contact NG and the far side of its indicator lamp NC; the coil returns NF to minus. Pushbutton 5 down with the hand at N pulls relay N in through its light; NH-NG then latches it from + until pushbutton 6 opens 6Y-6Z. Script: printed step 1 (knob to 4, pushbutton 5) and step 2 (pushbutton 6 and release), then the step-2 reader-chosen digit run for each of 1, 2, 3 and 5, clearing with pushbutton 6 before each turn of the knob so every pad is dead while the wiper sweeps (no reliance on how the wiper crosses pads). Asserted: relay N in and light N on with every other relay out and light off after each store (Step 7 notes, II-EXP2), and all relays out and lights off after pushbutton 6. Not asserted: digit 0 or 6 and above (the page offers 1-5 only), a second digit stored on top of the first, and anything while a button is held. Pushbuttons are pressed and released as separate steps; the knob is turned by dialGrab at 22.5 degrees per pad, as in C1/II-EXP2."
+}

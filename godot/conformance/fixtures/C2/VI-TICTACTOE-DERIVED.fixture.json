@@ -1,0 +1,1882 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-TICTACTOE-DERIVED",
+  "source": "BK6 printed pp.55-56 = book5-6.pdf PDF pp.61-62 (rule p.55, program and procedure p.56), image-read; ER-44; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1N",
+    "1B/1-",
+    "1C/2C",
+    "1F/M11",
+    "1G/2A",
+    "1H/5X",
+    "1J/2F",
+    "1L/1Z",
+    "1N/3F",
+    "1X/2H",
+    "1X/2X",
+    "1Y/2Y",
+    "1Y/2G",
+    "2B/2-",
+    "2C/3C",
+    "2E/D16",
+    "2F/2H",
+    "2G/2K",
+    "2L/D18",
+    "2N/D19",
+    "2X/3X",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/4F",
+    "3G/D7",
+    "3G/4N",
+    "3H/M3b",
+    "3H/M7t",
+    "3J/3K",
+    "3K/D8",
+    "3L/M4b",
+    "3L/M8t",
+    "3N/6G",
+    "3X/4X",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5F",
+    "4G/D5",
+    "4H/M1b",
+    "4H/M5t",
+    "4J/4K",
+    "4K/D6",
+    "4L/M2b",
+    "4L/M6t",
+    "4G/5N",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5H/M7b",
+    "5H/M3t",
+    "5J/5K",
+    "5K/D4",
+    "5L/M8b",
+    "5L/M4t",
+    "5G/6N",
+    "5Y/M10",
+    "6+/6Y",
+    "6-/6C",
+    "6G/D1",
+    "6H/M1t",
+    "6H/M5b",
+    "6J/6K",
+    "6K/D2",
+    "6L/M2t",
+    "6L/M6b",
+    "6X/M10",
+    "6com/D9",
+    "M9b/M11",
+    "M-/D17",
+    "M10/free",
+    "M11/free"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/1N",
+    "1B/1-",
+    "1C/2C",
+    "1F/M11",
+    "1G/2A",
+    "1H/5X",
+    "1J/2F",
+    "1L/1Z",
+    "1N/3F",
+    "1X/2H",
+    "1X/2X",
+    "1Y/2Y",
+    "1Y/2G",
+    "2B/2-",
+    "2C/3C",
+    "2E/D16",
+    "2F/2H",
+    "2G/2K",
+    "2L/D18",
+    "2N/D19",
+    "2X/3X",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/4F",
+    "3G/D7",
+    "3G/4N",
+    "3H/M3b",
+    "3H/M7t",
+    "3J/3K",
+    "3K/D8",
+    "3L/M4b",
+    "3L/M8t",
+    "3N/6G",
+    "3X/4X",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5F",
+    "4G/D5",
+    "4H/M1b",
+    "4H/M5t",
+    "4J/4K",
+    "4K/D6",
+    "4L/M2b",
+    "4L/M6t",
+    "4G/5N",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5H/M7b",
+    "5H/M3t",
+    "5J/5K",
+    "5K/D4",
+    "5L/M8b",
+    "5L/M4t",
+    "5G/6N",
+    "5Y/M10",
+    "6+/6Y",
+    "6-/6C",
+    "6G/D1",
+    "6H/M1t",
+    "6H/M5b",
+    "6J/6K",
+    "6K/D2",
+    "6L/M2t",
+    "6L/M6b",
+    "6X/M10",
+    "6com/D9",
+    "M9b/M11",
+    "M-/D17"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6com#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 1: machine play wire in 6com puts + on D9 (6com/D9), the only + contact; pb1 N.O. feeds 2F via 1X; pb1 N.C. open keeps relays 3-6 out",
+      "quote": "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M1t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 2: machine wire in M9b joins M10 to M11 (M9b/M11), relay 1 in, relays 3-6 out; player wire in M1t puts + on arm 6H, N.C. 6J=6K=D2: one square to the right of the player when the machine last moved to the centre",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 2 settled with pushbuttons 6 and 2 held: wiper on D2 shorts relay 2 coil (2E and 2F both +), STOP shorted; the centre-anchor reply is not stated by the page (N-1)",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 3: player at 6 = 2+4 blocks; M10-M2b-arm-M6t-M11 pulls relay 1 in, relay 1 set 2 N.C. opens the relay 3-6 feed, N.C. contact puts + on D7 = 2+5",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 3: player at 6 = 2+4 blocks; M10-M2b-arm-M6t-M11 pulls relay 1 in, relay 1 set 2 N.C. opens the relay 3-6 feed, N.C. contact puts + on D7 = 2+5; settled with pushbuttons 6 and 3 held",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 4: player at 3 = 7+4 blocks; M10-M7b-arm-M3t-M11 pulls relay 1 in, relay 1 set 2 N.C. opens the relay 3-6 feed, N.C. contact puts + on D4 = 7+5",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 4: player at 3 = 7+4 blocks; M10-M7b-arm-M3t-M11 pulls relay 1 in, relay 1 set 2 N.C. opens the relay 3-6 feed, N.C. contact puts + on D4 = 7+5; settled with pushbuttons 6 and 4 held",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M8t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); ER-44 (errata sheet, Book VI p.55); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 1 move 5: player at 8 = 4+4 blocks, relay 1 in; pb5 N.O. (5Y on M10) reaches 1H, relay 1 set 1 N.O. 1G lights light 2 (2B on -); 1J open so 2F is not fed, relay 2 stays out and the knob stays on 4 (no move into the last space, 5)",
+      "quote": "If the human player consistently follows the \"move 4 to the right\" rule, every game will end in a tie. / The play continues as above until either light 1 comes on—indicating that MINIVAC wins; or light 2 comes on—indicating a tie. / ER-44: Note: if the game is a tie, MINIVAC will indicate a tie on the fifth move but will not indicate a move into the last available space.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6com#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 2 move 1: machine play wire in 6com puts + on D9 (6com/D9), the only + contact; pb1 N.O. feeds 2F via 1X; pb1 N.C. open keeps relays 3-6 out",
+      "quote": "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M1t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 2 move 2: machine wire in M9b joins M10 to M11 (M9b/M11), relay 1 in, relays 3-6 out; player wire in M1t puts + on arm 6H, N.C. 6J=6K=D2: one square to the right of the player when the machine last moved to the centre",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 2 move 3: player at 5 is not 2+4, M11 has no path to M10, relay 1 out, relays 3-6 in through pb1 N.C. and 1L-1N, light 1 on 1A, N.O. contact puts + on D6 = 2+4",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 2 move 3: player at 5 is not 2+4, M11 has no path to M10, relay 1 out, relays 3-6 in through pb1 N.C. and 1L-1N, light 1 on 1A, N.O. contact puts + on D6 = 2+4; settled with pushbuttons 6 and 3 held; machine holds 2-9-6",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win. / The play continues as above until either light 1 comes on—indicating that MINIVAC wins; or light 2 comes on—indicating a tie.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "6com#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 3 move 1: machine play wire in 6com puts + on D9 (6com/D9), the only + contact; pb1 N.O. feeds 2F via 1X; pb1 N.C. open keeps relays 3-6 out",
+      "quote": "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M1t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 3 move 2: machine wire in M9b joins M10 to M11 (M9b/M11), relay 1 in, relays 3-6 out; player wire in M1t puts + on arm 6H, N.C. 6J=6K=D2: one square to the right of the player when the machine last moved to the centre",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 3 move 3: player at 6 = 2+4 blocks; M10-M2b-arm-M6t-M11 pulls relay 1 in, relay 1 set 2 N.C. opens the relay 3-6 feed, N.C. contact puts + on D7 = 2+5",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M7b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 3 move 4: player at 3 = 7+4 blocks; M10-M7b-arm-M3t-M11 pulls relay 1 in, relay 1 set 2 N.C. opens the relay 3-6 feed, N.C. contact puts + on D4 = 7+5",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 70
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 70,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4b#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 71
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 71,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 3 move 5: player at 5 is not 4+4, M11 has no path to M10, relay 1 out, relays 3-6 in through pb1 N.C. and 1L-1N, light 1 on 1A, N.O. contact puts + on D8 = 4+4",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.55 = book5-6.pdf PDF p.61 (rule), printed p.56 = PDF p.62 (program, procedure, lights 1 and 2); derived from topology (ring 1-2-3/8-9-4/7-6-5, dial sector N = matrix square N): relays 3-6 arms join Mnb to M(n+4)t (4H M1b/M5t, 4L M2b/M6t, 3H M3b/M7t, 3L M4b/M8t, 6H M5b/M1t, 6L M6b/M2t, 5H M7b/M3t, 5L M8b/M4t); N.C. contacts reach D(n+5), N.O. contacts reach D(n+4); pushbutton 6 puts + on M10; relay 1 (coil 1F on M11) pulls in only when M10 reaches M11; relays 3-6 (F bus = 1N = 1A, light 1) are fed through pb1 N.C. and relay 1 set 2 N.C.; relay 2 (2E on the wiper D16) runs the motor (2L-2K puts D18 on +, D17 on -) and drops when the wiper meets the + contact, shorting STOP through 2L-2N; game 3 move 5: player at 5 is not 4+4, M11 has no path to M10, relay 1 out, relays 3-6 in through pb1 N.C. and 1L-1N, light 1 on 1A, N.O. contact puts + on D8 = 4+4; pb5 N.O. reaches 2F only through 1H-1J, relay 1 N.C.; settled with pushbuttons 6 and 5 held; machine holds 8-9-4",
+      "quote": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win. / The play continues as above until either light 1 comes on—indicating that MINIVAC wins; or light 2 comes on—indicating a tie.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 70 jack-to-jack wires plus the two free play wires and the p.55 rule, not printed. Corpus tier D: smoke plus the stated invariant (plan Step 7). No erratum changes a wire; ER-44 is prose and is honoured at the fifth move. Play wires are cords 70 (machine, M10#3) and 71 (player, M11#3) as in C2/VI-TICTACTOE; the free end goes in 6com#2, M9b#2 or Mnb#2 / Mnt#2 (hole #1 holds the program wire). Topology settles the 'squares to the right' direction: the relay 3-6 contact tree reaches D(n+5) and D(n+4) in panel numbering, which is FALLBACK-TTT-RING-CW (4 to the right is direction-free; 5 to the right is +5 mod 8). After the centre the machine replies one square to the right of the player (N-1), derived, not printed. Script choices, not printed: player squares (game 1: 1, 6, 3, 8 tie; game 2: 1, 5 loses at move 3; game 3: 1, 6, 3, 5 loses at move 5), pushbutton 6 pressed 300 ms before the move button, 2 s settle after each stop, pb1 released before pb6. Start dial D0 is the construction state. Relay 1 and relays 3-6 race at each pushbutton 6 press (relay 3-6 feed runs through relay 1 N.C.); only settled states are asserted. Rotary run rate and coast are profile fallbacks.",
+  "digest": {
+    "eventCount": 1205,
+    "moverTransitions": [
+      32,
+      48,
+      52,
+      52,
+      52,
+      52,
+      12,
+      12,
+      12,
+      8,
+      8,
+      52,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      208
+    ]
+  }
+}

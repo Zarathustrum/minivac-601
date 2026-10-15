@@ -1,0 +1,39 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP6",
+  "source": "BK1 printed p.13 = book1.pdf PDF p.15",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1H", "1J/2A", "1B/1-", "1G/1A", "2B/2-"],
+  "errata_applied": [],
+  "wires": ["1+/1H", "1J/2A", "1B/1-", "1G/1A", "2B/2-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp2", "v": "on" }
+      ],
+      "cite": "BK1 printed p.13 = book1.pdf PDF p.15",
+      "quote": "Turn power ON. Light 2 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "relayGrab", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" },
+        { "dev": "outLamp2", "v": "off" }
+      ],
+      "cite": "BK1 printed p.13 = book1.pdf PDF p.15",
+      "quote": "Gently push the relay crossbar to the left. Light 2 goes OFF and light 1 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "relayGrab", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 }
+  ]
+}

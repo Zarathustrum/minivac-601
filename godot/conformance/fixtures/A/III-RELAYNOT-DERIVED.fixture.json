@@ -1,0 +1,139 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-RELAYNOT-DERIVED",
+  "source": "BK3 printed pp.43-44 = book2-3-4.pdf PDF pp.49-50; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "1+/1H",
+    "1J/2A",
+    "2B/2-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the printed wiring (no errata) and the p.43 rule (light 2 ON when relay 1 is not energized). Only light 2 ON with relay 1 out is printed (A/III-RELAYNOT); light 2 with relay 1 ON and the pushbutton-to-relay drive are unprinted (programs.json printedUnprinted). Topology: pushbutton 1 (1Y on 1+, 1X on 1C) drives relay 1 C-F through its indicator lamp; light 2 is fed from 1+ through the set-1 arm 1H and normally closed contact 1J (jack-map: J = normally closed, proved by this page). No contact feeds the coil, so there is no latch. The 500 ms advance before each expect lets lamps finish their thermal transients; the page states no timing.",
+  "wires": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "1+/1H",
+    "1J/2A",
+    "2B/2-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.43-44 = book2-3-4.pdf PDF pp.49-50, stated NOT rule (light 2 ON when relay 1 is not energized); derived from topology: NOT 0 = 1. Pushbutton 1 up: 1+/1Y-1X open, so the coil path 1X/1C-indicator 1-1E-coil 1-1F/1- carries no current; relay 1 out, indicator 1 dark; light 2 lit by 1+/1H-1J (normally closed, relay out)-1J/2A-lamp 2-2B/2-",
+      "quote": "The circuit and program below represent the NOT condition expressed in the form that if relay 1 is not energized (is not ON) light 2 will come ON. Symbolically, this may be stated: Ā = B",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed pp.43-44 = book2-3-4.pdf PDF pp.49-50, stated NOT rule (light 2 ON when relay 1 is not energized); derived from topology: NOT 1 = 0. Pushbutton 1 held: 1+/1Y-1X/1C-indicator 1-1E-coil 1-1F/1- (C-F drive, indicator lit, BK1 p.14), relay 1 in; arm 1H leaves 1J for 1G, so 2A is dead and light 2 is dark (1G is unwired)",
+      "quote": "The circuit and program below represent the NOT condition expressed in the form that if relay 1 is not energized (is not ON) light 2 will come ON. Symbolically, this may be stated: Ā = B",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed pp.43-44 = book2-3-4.pdf PDF pp.49-50, stated NOT rule (light 2 ON when relay 1 is not energized); derived from topology: NOT 0 = 1 again after release: no contact feeds coil 1 (1H/1J feed only lamp 2), so relay 1 drops, 1H-1J recloses and light 2 relights through 1+/1H-1J/2A-2B/2-",
+      "quote": "The circuit and program below represent the NOT condition expressed in the form that if relay 1 is not energized (is not ON) light 2 will come ON. Symbolically, this may be stated: Ā = B",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

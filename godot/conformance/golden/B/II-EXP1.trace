@@ -1,0 +1,58 @@
+#!mv601-trace 1
+# id=II-EXP1 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=26
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=45 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 > button1 target=1000
+    31.3 * pb1 nc->mid
+    33.8 * pb1 mid->no
+    43.7 * indLamp1 off->dim
+    44.8 * relay1 nc->mid
+    46.1 * relay1 mid->no
+    71.4 > button1 target=0
+    82.6 * pb1 no->mid
+    83.5 * indLamp1 dim->on
+    85.1 * pb1 mid->nc
+   116.3 ? indLamp1=on  "Relay light 1 comes ON to indicate that a \"one\" is being remembered (stored)."
+   116.3 ? indLamp2=off  "Relay light 2 remains OFF to indicate that a \"zero\" is being remembered (stored)."
+   116.3 ? indLamp3=off  "Relay light 3 remains OFF to indicate that a \"zero\" is being remembered."
+   116.3 > button4 target=1000
+   127.5 * pb4 nc->mid
+   130.0 * pb4 mid->no
+   139.9 * indLamp4 off->dim
+   141.5 * relay4 nc->mid
+   142.8 * relay4 mid->no
+   168.1 > button4 target=0
+   179.3 * pb4 no->mid
+   179.8 * indLamp4 dim->on
+   181.8 * pb4 mid->nc
+   213.0 ? indLamp4=on  "Relay light 4 comes ON to indicate that a \"one\" is being remembered by section 4."
+   213.0 > button5 target=1000
+   224.2 * pb5 nc->mid
+   226.7 * pb5 mid->no
+   236.6 * indLamp5 off->dim
+   238.4 * relay5 nc->mid
+   239.7 * relay5 mid->no
+   265.0 > button5 target=0
+   276.2 * pb5 no->mid
+   276.6 * indLamp5 dim->on
+   278.7 * pb5 mid->nc
+   309.9 ? indLamp5=on  "Relay light 5 comes ON to indicate that a \"one\" is being remembered by section 5."
+   309.9 > button6 target=1000
+   321.1 * pb6 nc->mid
+   323.6 * pb6 mid->no
+   325.7 * relay4 no->mid
+   325.8 * relay1 no->mid  relay5 no->mid
+   326.6 * relay4 mid->nc
+   326.7 * relay1 mid->nc  relay5 mid->nc
+   329.9 * indLamp5 on->dim
+   332.2 * indLamp4 on->dim
+   332.4 * indLamp1 on->dim
+   354.8 > button6 target=0
+   366.0 * pb6 no->mid
+   368.5 * pb6 mid->nc
+   385.5 * indLamp5 dim->off
+   387.9 * indLamp4 dim->off
+   388.0 * indLamp1 dim->off
+   408.1 ? indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "All relay lights go OFF, and the previous number is forgotten (\"cleared\" from the memory)."

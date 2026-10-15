@@ -1,0 +1,74 @@
+#!mv601-trace 1
+# id=II-EXP7 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=16
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > switch1 target=1000
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+     0.0 > power on
+     0.0 * power off->on
+    26.9 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    33.0 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+   500.0 > switch4 target=0
+   526.9 * sw4 no->mid
+   533.0 * sw4 mid->nc
+  1000.0 > button6 target=1000
+  1011.2 * pb6 nc->mid
+  1013.7 * pb6 mid->no
+  1045.0 * dial c0->gap
+  1065.8 * dial gap->c1
+  1128.3 * dial c1->gap
+  1149.2 * dial gap->c2
+  1211.7 * dial c2->gap
+  1232.5 * dial gap->c3
+  1295.0 * dial c3->gap
+  1315.8 * dial gap->c4
+  1315.9 ? dial=c4  "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+ 11315.9 ? dial=c4  "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+ 11315.9 > button6 target=0
+ 11327.1 * pb6 no->mid
+ 11329.6 * pb6 mid->nc
+ 21315.9 ? dial=c4  "The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+ 21315.9 > switch4 target=1000
+ 21342.8 * sw4 nc->mid
+ 21348.9 * sw4 mid->no
+ 21815.9 > switch2 target=0
+ 21842.8 * sw2 no->mid
+ 21848.9 * sw2 mid->nc
+ 22315.9 > button6 target=1000
+ 22327.1 * pb6 nc->mid
+ 22329.6 * pb6 mid->no
+ 22373.6 * dial c4->gap
+ 22394.4 * dial gap->c5
+ 22456.9 * dial c5->gap
+ 22477.8 * dial gap->c6
+ 22540.3 * dial c6->gap
+ 22561.1 * dial gap->c7
+ 22623.6 * dial c7->gap
+ 22644.4 * dial gap->c8
+ 22706.9 * dial c8->gap
+ 22727.8 * dial gap->c9
+ 22790.3 * dial c9->gap
+ 22811.1 * dial gap->c10
+ 22873.6 * dial c10->gap
+ 22894.4 * dial gap->c11
+ 22956.9 * dial c11->gap
+ 22977.8 * dial gap->c12
+ 23040.3 * dial c12->gap
+ 23061.1 * dial gap->c13
+ 23123.6 * dial c13->gap
+ 23144.4 * dial gap->c14
+ 23206.9 * dial c14->gap
+ 23227.8 * dial gap->c15
+ 23290.3 * dial c15->gap
+ 23311.1 * dial gap->c0
+ 23373.6 * dial c0->gap
+ 23394.4 * dial gap->c1
+ 23456.9 * dial c1->gap
+ 23477.8 * dial gap->c2
+ 42315.9 > button6 target=0
+ 42327.1 * pb6 no->mid
+ 42329.6 * pb6 mid->nc

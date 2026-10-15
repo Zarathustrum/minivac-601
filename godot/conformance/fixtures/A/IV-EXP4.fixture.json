@@ -1,0 +1,172 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP4",
+  "source": "BK4 printed p.75 = book2-3-4.pdf PDF p.81; no errata",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/6U",
+    "5B/5-",
+    "6A/6S",
+    "6B/6-",
+    "6R/6Z",
+    "6T/6X",
+    "6T/6V",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Wires image-read at 300 dpi from the p.75 program list and diagram (PDF p.81); all 8 match programs.json; the errata sheet has no Book IV page 74-76 entry, so wires = as_printed. The slide-switch convention (RIGHT: 'input A is now 0'; LEFT: 'Input A is now 1') and the pushbutton convention are printed in the procedure itself. Switch target 1000 = RIGHT (arm S on T, V on W), target 0 = LEFT (S on R, V on U), per src/core/netlist.ts slide rows and jack-map R/U = LEFT, T/W = RIGHT. Four procedure steps, four expects, each asserting only the lamps the step names. Steps 2 and 3 name only light 6; light 5 is not asserted there (its OFF state would come from the p.74 A/B/Carry Out/Sum table plus p.75 'light 5 represents carry out', a derivation left for Step 7). The 500 ms advance lets lamps finish thermal transients; the page states no timing. The p.75 three-input table is not asserted (it needs carry in, which this circuit lacks).",
+  "wires": [
+    "5A/6U",
+    "5B/5-",
+    "6A/6S",
+    "6B/6-",
+    "6R/6Z",
+    "6T/6X",
+    "6T/6V",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.75 procedure = book2-3-4.pdf PDF p.81",
+      "quote": "Turn power ON. Move slide switch 6 to the RIGHT: input A is now 0. Do not push pushbutton 6: input B is 0. Light 5 and 6 are OFF: sum is 0 and carry out is 0."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.75 procedure = book2-3-4.pdf PDF p.81",
+      "quote": "Push pushbutton 6 and hold it down. Input B is now 1. Light 6 comes ON, indicating that the sum is 1."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.75 procedure = book2-3-4.pdf PDF p.81",
+      "quote": "Release pushbutton 6 and move slide switch 6 to the LEFT. Input A is now 1; input B is 0. Light 6 comes ON, indicating that the sum is 1: 1 + 0 = 1."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.75 procedure = book2-3-4.pdf PDF p.81",
+      "quote": "With the slide switch LEFT, push pushbutton 6. Light 6 goes OFF and light 5 comes ON."
+    }
+  ]
+}

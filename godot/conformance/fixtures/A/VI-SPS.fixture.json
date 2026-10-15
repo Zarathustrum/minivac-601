@@ -1,0 +1,720 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-SPS",
+  "source": "BK6 printed p.59 = book5-6.pdf PDF p.65",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/2F",
+    "1G/3G",
+    "1H/4H",
+    "1H/5L",
+    "1K/3K",
+    "1L/1X",
+    "1L/3H",
+    "1Y/2Y",
+    "2C/4X",
+    "2F/3F",
+    "2G/4G",
+    "2H/5H",
+    "2X/3L",
+    "2Y/3Y",
+    "3A/5K",
+    "3A/4A",
+    "3B/4B",
+    "3C/4C",
+    "3F/4F",
+    "3G/5G",
+    "3H/6H",
+    "3K/5K",
+    "3L/5H",
+    "3X/5L",
+    "3Y/4Y",
+    "4B/4-",
+    "4C/5X",
+    "4F/5F",
+    "4G/6G",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5Y/6Y",
+    "6A/6G",
+    "6B/6-",
+    "6C/6X",
+    "6F/6-",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Printed claims only (Step 6). Wire list image-read at 400 dpi from BK6 printed p.59 (PDF p.65): 41 wires, matching programs.json wiresPrinted line for line; the [unverified] 3C/4C line flag (OCR 3C/AC) is settled, the image reads 3C/4C. No erratum names p.59 (errata.pdf PDF p.4 Book VI entries cover pp.51, 52, 53, 55, 57, 60 only), so errata_applied is empty and wires = as_printed. Fixture tier A: the circuit is combinational (lamp state is a function of the held buttons only; no hold path) and the motor and dial are unwired; release steps are untagged because no release is load-bearing (with every release deleted the six expects still pass). The circuit has no hold path (every coil is driven from a player-2 pushbutton N.O. contact, every lamp from a player-1 pushbutton through a relay contact), so a result shows only while both buttons are down; the script reads the printed To Play paragraph (Player 1 should move just before player 2 moves since the relays will move after player 2 indicates his move) as player 1 pressing and holding, player 2 pressing 100 ms later, the assertion taken with both held, then player 2 releasing, then player 1. Hold time, the 100 ms gap and the release order are not source timing. All nine move pairs are played. Asserted (six): each distinct-move pair against its printed rule and printed outcome line, light 1 on when player 1 wins and light 6 on when player 2 wins; the move-to-button mapping is the printed control table. Not asserted: the three same-move games (pb1/pb4, pb2/pb5, pb3/pb6). The page prints Tie: lights 3 and 4 come on but never states that equal moves are a tie; reading them as ties is an inference, so they are left to Step 7 (the simulator lights lamps 3 and 4 in all three). Also not asserted (derived, Step 7): which lamps stay off in each outcome, relay and indicator-lamp states, that nothing moves before player 2 pushes, and the state after release. The programs.json printedUnprinted text (Which move pairs win is not printed) is contradicted by the page, which prints all three rules.",
+  "wires": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/2F",
+    "1G/3G",
+    "1H/4H",
+    "1H/5L",
+    "1K/3K",
+    "1L/1X",
+    "1L/3H",
+    "1Y/2Y",
+    "2C/4X",
+    "2F/3F",
+    "2G/4G",
+    "2H/5H",
+    "2X/3L",
+    "2Y/3Y",
+    "3A/5K",
+    "3A/4A",
+    "3B/4B",
+    "3C/4C",
+    "3F/4F",
+    "3G/5G",
+    "3H/6H",
+    "3K/5K",
+    "3L/5H",
+    "3X/5L",
+    "3Y/4Y",
+    "4B/4-",
+    "4C/5X",
+    "4F/5F",
+    "4G/6G",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5Y/6Y",
+    "6A/6G",
+    "6B/6-",
+    "6C/6X",
+    "6F/6-",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, control table, rules of the game and outcome list",
+      "quote": "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Paper pushbutton 2 pushbutton 5 ... Scissors cut paper (scissors will win over paper) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 1 wins: light 1 comes on"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, control table, rules of the game and outcome list",
+      "quote": "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Stone pushbutton 3 pushbutton 6 ... Stone breaks scissors (stone will win over scissors) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 2 wins: light 6 comes on"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, control table, rules of the game and outcome list",
+      "quote": "Player 1 Player 2 ... Paper pushbutton 2 pushbutton 5 ... Stone pushbutton 3 pushbutton 6 ... Paper covers stone (paper will win over stone) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 1 wins: light 1 comes on"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, control table, rules of the game and outcome list",
+      "quote": "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Paper pushbutton 2 pushbutton 5 ... Scissors cut paper (scissors will win over paper) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 2 wins: light 6 comes on"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, control table, rules of the game and outcome list",
+      "quote": "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Stone pushbutton 3 pushbutton 6 ... Stone breaks scissors (stone will win over scissors) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 1 wins: light 1 comes on"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, control table, rules of the game and outcome list",
+      "quote": "Player 1 Player 2 ... Paper pushbutton 2 pushbutton 5 ... Stone pushbutton 3 pushbutton 6 ... Paper covers stone (paper will win over stone) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 2 wins: light 6 comes on"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    }
+  ]
+}

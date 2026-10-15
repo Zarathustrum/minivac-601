@@ -1,0 +1,571 @@
+{
+ "topic": "Discrete-time timing model: tick, per-device latencies, contact-transfer semantics, and the intra-tick settling rule",
+ "agent_note": "Gap-closing pass. Task: settle the tick, the per-device latencies, whether relay transfer is break/both-open/make or an atomic swap, and the settling rule for a combinational relay chain within one tick; then prove the choice against the single-input flip-flop and the three-bit counter. OUTCOME: the numeric latencies are NOT settled by the sources and cannot be - confirmed independently here. But the two questions that actually determine the architecture of the simulator core ARE settled, from primary sources plus full circuit traces of the three canonical circuits: (1) the MINIVAC contains no contact-to-contact combinational loop that does not pass through a relay coil, so within a tick there is nothing to iterate and no fixpoint ambiguity; (2) determinism in every published circuit comes from the two-phase pushbutton (push phase / release phase), which SDC states explicitly, not from relay-versus-relay speed ordering. The single-input flip-flop therefore neither toggles unconditionally nor oscillates unboundedly under any latency model that satisfies four ordering constraints derived below. A named fallback with concrete numbers, the constraints they must satisfy, and falsifiable predictions is given.",
+ "date_researched": "2026-08-30",
+ "oracle_rule_compliance": "No Minivac emulator source was opened, fetched, cloned, read or quoted. minivac.greg.technology appeared in web-search result lists and was not visited. Michael Gardi's replica (Instructables/Thingiverse) is hardware, not emulator code; the WebFetch of the Instructables page returned no content and no fact from it is used here.",
+ "sources_read": [
+  "docs/research/raw/pdf/book1.pdf + book1.txt - Book I printed pp.9, 12, 16, 19-22 (pushbutton, relay, slide switch, rotary)",
+  "docs/research/raw/pdf/book2-3-4.pdf + .txt - Book II printed pp.11-13; Book IV printed pp.68-73",
+  "docs/research/raw/pdf/book5-6.txt - Book V printed pp.6, 29-31 (speed timer, CQ transmitter)",
+  "docs/research/raw/pdf/errata.txt (= minivac601-errata.txt) - full read of both columns",
+  "docs/research/raw/pdf/maintenance-manual.txt - printed pp.1-3, 8-10",
+  "PAGE IMAGES OPENED (4): pages/book2-3-4/p-18.png (Book II printed p.12, single-input flip-flop program + circuit); pages/book2-3-4/p-75.png (Book IV printed p.69, first-version flip-flop circuit + last three program groups); pages/book2-3-4/p-76.png (Book IV printed p.70, SECOND VERSION program + circuit + carry additions + observed-behaviour steps 1-3); pages/maintenance/p-05.png (Maintenance Manual printed p.3, Power Supply Circuit Diagram)",
+  "Prior findings read: raw/find-relays.json (timing + relays sections), raw/verify-relays.json (full), raw/find-rotary.json (drive/speed claims)",
+  "Web: WebSearch x3 for a measured relay timing, a relay part number, or a timed video. https://en.wikipedia.org/wiki/Minivac_601 fetched. NOTHING found. No secondary source anywhere states an operate time, release time, bounce figure, coil resistance or relay part number."
+ ],
+ "what_the_sources_say_about_time": [
+  {
+   "id": "T-01",
+   "tag": "verified",
+   "claim": "No relay operate time, release time, contact-bounce figure or coil time constant appears anywhere in Book I, Books II-III-IV, Books V-VI, Book VII, the Maintenance Manual or the Errata. I re-ran the search independently and confirm it. NOTE the correction from verify-relays REF-02: the corpus is not free of ALL timing figures (rotary-speed figures and a '20 seconds' resistor-heating figure exist); it is free of RELAY timing figures specifically.",
+   "cite": "independent grep of all six local text extracts; concurs with find-relays TIM-01 as corrected by verify-relays REF-02"
+  },
+  {
+   "id": "T-02",
+   "tag": "verified",
+   "claim": "SDC acknowledges the machine is speed-sensitive in general terms.",
+   "quote": "Check the operating instructions to be sure that you are following the correct procedure. Also, try carrying out the procedure slowly; some programs are not designed for high-speed operation.",
+   "cite": "ERRATA, first column, troubleshooting step 2"
+  },
+  {
+   "id": "T-03",
+   "tag": "verified",
+   "claim": "The 'push slowly' warning attaches to a specific, identifiable circuit: the FIRST-version single-input flip-flop built up over Book IV printed pp.68-69, whose indicator is light 6 (added by 6G/6A, 6B/6-). It does NOT attach to the SECOND VERSION on printed p.70, whose indicator is light 5 (5H/5A, 5B/5-) and of which the book says 'light 6 is not used as an indicator in this program'. The errata's phrase 'Light 6 will go off and on, indicating the state of the whole flip-flop' matches p.69's circuit exactly and cannot describe p.70's.",
+   "quote": "page 69: Note - push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop.",
+   "cite": "ERRATA, BOOK IV, page 69 note; Book IV printed p.69 (PDF p.75) read from the page image; Book IV printed p.70 (PDF p.76) read from the page image",
+   "supersedes": "find-relays RLY-26 errata_note and verify-relays REF-03(b), which both mis-assigned this note. REF-03 was right that it is not the Book II p.12 circuit; it is the Book IV p.69 FIRST-version circuit, and light 6 IS that circuit's indicator."
+  },
+  {
+   "id": "T-04",
+   "tag": "verified",
+   "claim": "The counter has an explicit propagation-delay instruction, and it is a HOLD instruction, i.e. the ripple happens while the button is DOWN.",
+   "quote": "Procedure: Use the procedure on page 72 of Book IV. When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter.",
+   "cite": "ERRATA, BOOK IV page 72, procedure for the alternate counter"
+  },
+  {
+   "id": "T-05",
+   "tag": "verified",
+   "claim": "SDC says the three-bit counter runs the relays close to their limit, and that unit-to-unit relay variation decides whether it works.",
+   "quote": "the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit. ... The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.",
+   "cite": "ERRATA, BOOK IV page 72 note"
+  },
+  {
+   "id": "T-06",
+   "tag": "verified",
+   "claim": "A lamp/persistence datum tied to a known timebase: driven directly from the rotary wiper, a one-dial-position flash reads as 'very brief' and consecutive flashes nearly merge; the published fix is to slow the dial by hand.",
+   "quote": "page 31: Note - Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+   "cite": "ERRATA, BOOK V page 31"
+  },
+  {
+   "id": "T-07",
+   "tag": "verified",
+   "claim": "PUSHBUTTON contacts are break-before-make, with a dead zone wide enough for a human to hold the button inside it, and SDC says the property is load-bearing for some circuits.",
+   "quote": "Push up and down slowly on pushbutton 1 and carefully watch the operation of the two lights. One light always goes OFF before the other light comes ON. There is a position, with the pushbutton only partly depressed, where both lights are OFF. Try to find this position. The switch breaks one connection before it makes the other connection. The pushbuttons are thus called 'break-before-make' switches. This is important because it shows that the normally open contact is never connected directly to the normally closed contact, even for a very short time. This feature is necessary for the proper operation of some MINIVAC circuits.",
+   "cite": "Book I printed p.9 (PDF p.11), Experiment 3 step 8, read from the text layer of that single page"
+  },
+  {
+   "id": "T-08",
+   "tag": "verified",
+   "claim": "ROTARY switch is break-before-make, stated in the same language and explicitly compared to the pushbuttons.",
+   "quote": "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON. Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as 'break-before-make,' and thus is similar to the pushbutton switches.",
+   "cite": "Book I printed p.21 (PDF p.23), Experiment 11 step 3"
+  },
+  {
+   "id": "T-09",
+   "tag": "verified",
+   "claim": "The RELAY is described mechanically as a single arm swinging between two fixed contacts, with the two sets ganged by a plastic crossbar and moving together; but the words 'break-before-make' are never applied to the relay.",
+   "quote": "Each relay has two sets of contacts, similar to the pushbutton contacts, which open and close together. ... The two relay arms are connected together mechanically with a plastic crossbar. Both arms move together and make or break contact at the same time.",
+   "cite": "Book I printed p.12 (PDF p.14); the phrase 'similar to the pushbutton contacts' is SDC's own, and the pushbutton contacts are the ones it calls break-before-make at p.9"
+  },
+  {
+   "id": "T-10",
+   "tag": "verified",
+   "claim": "SLIDE switch: the manuals describe it as 'two sets of contacts which open and close together' and never state break-before-make or make-before-break for it. Book I's slide-switch experiment (printed p.19) has the user observe light 1 going off and light 2 coming on, but prints no 'both lights off' observation of the kind used for the pushbutton and the rotary.",
+   "cite": "Book I printed pp.18-19 (PDF pp.20-21); absence confirmed by grepping all six text extracts for 'break-before-make' - only two hits, both already cited (T-07, T-08)"
+  },
+  {
+   "id": "T-11",
+   "tag": "verified",
+   "claim": "POWER SUPPLY TOPOLOGY, read from the schematic image: power cord -> power switch -> transformer primary; transformer secondary is CENTRE-TAPPED (the centre tap is the 'YELLOW WIRE', the two ends are the 'YELLOW/BLACK WIRE' pair); the two secondary ends go to a rectifier block drawn as TWO diode symbols meeting at a '+' output terminal; the centre tap returns through the CIRCUIT BREAKER to the '-' output terminal; the POWER LIGHT is drawn across the + and - outputs. That is a full-wave centre-tapped rectifier. NO capacitor symbol appears anywhere in the diagram.",
+   "cite": "Maintenance Manual printed p.3 (PDF p.5), 'Power Supply Circuit Diagram', read from /docs/research/raw/pdf/pages/maintenance/p-05.png",
+   "note": "This upgrades find-relays PS-17's 'no filter capacitor is DRAWN' from an OCR-derived statement to a direct image read."
+  },
+  {
+   "id": "T-12",
+   "tag": "likely",
+   "claim": "Therefore there is no filter capacitor in the machine, and the DC rails are unsmoothed 120 Hz pulsating DC that collapses toward zero every 8.33 ms.",
+   "cite": "inference from T-11 plus the absence of any capacitor in the Maintenance Manual spare-parts list and any mention of one in the text",
+   "why_not_verified": "An undrawn part is not a proven absent part. A schematic in a consumer service manual can omit a component. Only an original chassis settles it."
+  },
+  {
+   "id": "T-13",
+   "tag": "verified",
+   "claim": "Supply figures that do exist: 'The unloaded power supply outlet voltage should be approximately 13 volts.' and 'The power supply is rated at 1.5 amps continuous with a nominal 12 volts output. All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps.' and 'The lights are operated at less than their rated voltage to extend their operating life.'",
+   "cite": "Maintenance Manual printed p.3 step 3 (read from page image) and printed p.1 (text layer)"
+  },
+  {
+   "id": "T-14",
+   "tag": "verified",
+   "claim": "Two rotary-speed figures exist, and they disagree. (a) Book V's Automobile Speed Timer worked example: 'assume that ... the rotary switch turns 45 full revolutions per minute', which at 16 contacts per revolution is 12 contacts/s = ~83 ms per dial position. (b) Book II: 'the rotary switch system requires more than a second to go from zero to nine', i.e. nine steps in >1 s = >~111 ms per position, ~34 rpm or slower. Book V explicitly tells the owner to MEASURE their own machine's speed rather than assume a number.",
+   "cite": "Book V printed p.6 (Experiment 6, step 3 and the worked example); Book II printed p.6/p.8 section 'The Binary Nature of Storage'; both as recorded in find-rotary D06/D07/D08 and re-checked here against book5-6.txt and the verify-relays REF-02 quotation"
+  },
+  {
+   "id": "T-15",
+   "tag": "verified",
+   "claim": "SDC states the two-phase operating principle of the single-input flip-flop in words, and it is a master-slave description with the pushbutton as the clock.",
+   "quote": "The single-input flip-flop, however, does the changing automatically by using a second relay to remember the state the flip-flop is currently in just long enough to allow the first relay (which is actually remembering the 1 or the 0) to change. ... When the pushbutton is pushed, relay A instructs relay B to go to the same state relay A is in at this moment. When the pushbutton is released, relay B instructs relay A to move to the opposite state. Relay A does the actual remembering; relay B assists relay A when it is necessary for relay A to change.",
+   "cite": "Book IV printed p.68 (PDF p.74)"
+  },
+  {
+   "id": "T-16",
+   "tag": "verified",
+   "claim": "SDC publishes the observed step-by-step behaviour of the second-version flip-flop, which is a behavioural spec any simulator must reproduce exactly.",
+   "quote": "1. Turn power ON. Notice that both relays 5 and 6 are OFF. 2. Push and release pushbutton 6. Notice that both relays 5 and 6 are now ON. 3. Push pushbutton 6, but do not release. Notice that relay 5 is OFF; relay 6 is ON. We want a carry signal to occur NOW.",
+   "cite": "Book IV printed p.70 (PDF p.76), read from the page image"
+  },
+  {
+   "id": "T-17",
+   "tag": "verified",
+   "claim": "The stable states of the second-version flip-flop with the button UP are both relays ON or both relays OFF - so the (5 OFF, 6 ON) state in step 3 above exists only while the button is held down. The carry signal is defined to be exactly that transient state.",
+   "quote": "The stable states of the flip-flop when the pushbutton is up are either both relays ON or both relays OFF. For this program, light 5 is used to indicate the state of the flip-flop. Light 6 is used only to provide a path for current when relay 6 is 'shorted-out' (OFF); light 6 is not used as an indicator in this program.",
+   "cite": "Book IV printed p.69 (PDF p.75), read from the page image"
+  },
+  {
+   "id": "T-18",
+   "tag": "verified",
+   "claim": "NO ASTABLE CIRCUIT IS PUBLISHED. I searched every program list in Books I-VI, Book VII and the Errata for the self-interrupting pattern (a relay's own N.C. contact in the feed path of its own coil with the arm tied to power), which would make a buzzer whose frequency is the armature's natural period. The pattern nJ/nC, nN/nC, nJ/nE, nN/nE occurs seven times, and in every case it is the flip-flop 'slave relay shorted out when OFF' idiom (e.g. 2E/2J in Book II p.12, 6E/6J in Book IV p.70, 4E/4J and 1C/1J in Book V p.12's toll collector), never a self-interrupter: the shorted node is not tied to power through the same relay's own coil. The only oscillator in the machine is the rotary motor.",
+   "cite": "regex search of book1.txt, book2-3-4.txt, book5-6.txt, book7-capacitor-resistor.txt, errata.txt for ([1-6])[JN]/\\1[CE] and its reverse, followed by reading the surrounding program for each hit",
+   "simulator_consequence": "The simulator does not have to model armature natural frequency, chatter or buzzer behaviour to run any published program. It should still detect and report a non-settling relay as a diagnostic, because a user's own wiring can make one."
+  }
+ ],
+ "circuit_traces": {
+  "note": "These traces are MY derivations from verified program lists and verified terminal semantics. The program lists and the terminal semantics are [verified]; the traces and state tables are [unverified] inference, though each is independently corroborated by SDC's own printed step-by-step observations where those exist. They are the evidence on which the timing model is proved.",
+  "terminal_semantics_used": {
+   "relay n": "coil/lamp: nC -[LAMP]- nE -[COIL]- nF (find-relays RLY-13, verified). contacts set1: nG = N.O., nH = ARM, nJ = N.C.; set2: nK = N.O., nL = ARM, nN = N.C.; OFF => H-J and L-N closed; ON => H-G and L-K closed (find-relays RLY-06/RLY-07, verified, Book I printed p.12).",
+   "pushbutton n": "nX = N.O., nY = ARM, nZ = N.C. (Book I printed p.9, verified).",
+   "binary output light n": "nA and nB are its two terminals (Book I printed p.9 program 1X/1A, 1-/1B, verified).",
+   "power": "all + terminals common, all - terminals common."
+  },
+  "trace_1_book_II_single_input_flip_flop": {
+   "cite_program": "Book II printed p.12 (PDF p.18), read from the page image /pages/book2-3-4/p-18.png. Program tag: [verified].",
+   "program": [
+    "1-/1B",
+    "1-/1C",
+    "1A/1E",
+    "1E/2G",
+    "1F/2F",
+    "1H/1F",
+    "1G/1Y",
+    "1Y/1+",
+    "1X/1J",
+    "1J/2H",
+    "2J/2E",
+    "2E/2A",
+    "2B/2-",
+    "2-/2C"
+   ],
+   "node_map": {
+    "POS": "1+ = 1Y (PB1 arm) = 1G (relay1 N.O.)",
+    "NEG": "1- = 2- = 1B = 2B = 1C = 2C",
+    "node_A": "1E = relay1 coil top = relay1 lamp top = binary light 1 hot (1A) = relay2 N.O. contact (2G)",
+    "node_B": "1F = 2F = 1H  -- the bottom of BOTH coils and relay1's own ARM",
+    "node_C": "2E = relay2 coil top = relay2 lamp top = binary light 2 hot (2A) = relay2 N.C. contact (2J)",
+    "node_D": "1J (relay1 N.C.) = 1X (PB1 N.O.) = 2H (relay2 ARM)"
+   },
+   "switching_summary": [
+    "relay1 OFF: node_B tied to node_D.  relay1 ON: node_B tied to POS.",
+    "relay2 OFF: node_D tied to node_C.  relay2 ON: node_D tied to node_A.",
+    "PB1 down: node_D tied to POS.",
+    "coil1 spans node_A..node_B with two lamps from node_A to NEG. coil2 spans node_C..node_B with two lamps from node_C to NEG."
+   ],
+   "state_table": [
+    {
+     "state": "S0 (remembering 0), button up",
+     "relays": "1 OFF, 2 OFF",
+     "network": "B=D=C, one node, connected to NEG only through the lamps at C. coil2 is SHORT-CIRCUITED by relay2's own N.C. contact. coil1 has no source.",
+     "lights": "all off",
+     "stable": "yes"
+    },
+    {
+     "state": "S0 + button DOWN",
+     "relays": "1 OFF -> 1 turns ON",
+     "network": "D=POS via PB, so B=POS. coil1: POS -> coil1 -> node_A -> lamps -> NEG: ENERGISED. coil2 still shorted (C=D=B=POS), so relay 2 is NOT driven. Relay 1 alone pulls in.",
+     "lights": "lamps at C glow (current path POS->C->lamps->NEG with the coil shorted - this is exactly what SDC means by 'light 6 is used only to provide a path for current when relay 6 is shorted-out')",
+     "stable": "transient; settles to relay1 ON while held"
+    },
+    {
+     "state": "button DOWN, relay1 now ON",
+     "relays": "1 ON, 2 OFF",
+     "network": "B=POS via relay1's own N.O. contact 1G - SELF-HOLD established, independent of the button. D still POS via PB, so C still POS and coil2 still shorted.",
+     "lights": "lamps at A now lit by coil1 current; lamps at C lit by the short path",
+     "stable": "yes"
+    },
+    {
+     "state": "button RELEASED from the above",
+     "relays": "1 ON, then 2 turns ON",
+     "network": "D loses POS. relay2 OFF so D=C; C is now fed only through coil2 from B=POS. coil2: POS(B) -> coil2 -> C -> lamps -> NEG: ENERGISED. Relay 2 pulls in.",
+     "lights": "light 1 ON",
+     "stable": "settles to S1"
+    },
+    {
+     "state": "S1 (remembering 1), button up",
+     "relays": "1 ON, 2 ON",
+     "network": "B=POS (self-hold). coil1 energised via A's lamps; coil2 energised via C's lamps. relay2 ON puts D=A, which is harmless with the button up.",
+     "lights": "light 1 ON (and light 2 ON)",
+     "stable": "yes"
+    },
+    {
+     "state": "S1 + button DOWN",
+     "relays": "1 turns OFF",
+     "network": "D=POS via PB; relay2 ON so node_A=D=POS. coil1 now has POS on BOTH ends: 0 V. Relay 1 RELEASES. Note the coil is not open-circuited, it is SHORT-CIRCUITED - see the slow-release finding M-07.",
+     "lights": "lamps at A stay lit (fed from POS through relay2), lamps at C stay lit by coil2 current",
+     "stable": "transient"
+    },
+    {
+     "state": "button DOWN, relay1 now OFF",
+     "relays": "1 OFF, 2 ON",
+     "network": "B=D=POS again, this time through relay1's N.C. contact and the button. coil1 still 0 V (A=POS too). coil2 still energised from B=POS. Relay 2 holds.",
+     "lights": "",
+     "stable": "yes"
+    },
+    {
+     "state": "button RELEASED from the above",
+     "relays": "2 turns OFF",
+     "network": "D loses POS. relay2 ON so D=A; relay1 OFF so B=D=A. Nothing touches POS. coil2 de-energises, relay 2 releases; its N.C. contact then re-shorts coil2 (D=C).",
+     "lights": "all off",
+     "stable": "settles to S0"
+    }
+   ],
+   "corroboration": "SDC's printed observations for the structurally identical Book IV second-version circuit (T-16, T-17) match this table exactly: power-on = both OFF; push and release = both ON; push and hold from both-ON = memory relay OFF, slave relay ON. The Book II text's 'Light 1 will be ON when the flip-flop is remembering a 1' also matches (light 1 sits at node_A and is lit exactly in S1).",
+   "verdict": "The circuit is a master-slave toggle clocked by the two edges of the pushbutton. It is NOT an unconditional toggle and it is NOT an oscillator. It has no relay-versus-relay race: at every instant exactly one relay is being driven to change, and which one is fixed by topology, not by speed."
+  },
+  "trace_2_book_IV_first_version_the_circuit_SDC_warns_about": {
+   "cite_program": "Book IV printed pp.68-69 (PDF pp.74-75). The first two groups (5+/5H, 5H/6H, 5G/5F, 6G/6F, 5C/6C, 6C/6- and 6H/6Y, 6X/5L, 5K/6F, 5N/6E) come from the OCR text layer of printed p.68 => [likely]. The last three groups (6Z/6L, 6K/5E, 6N/5F and 6G/6A, 6B/6-) were read from the page image of printed p.69 => [verified].",
+   "program": [
+    "5+/5H",
+    "5H/6H",
+    "5G/5F",
+    "6G/6F",
+    "5C/6C",
+    "6C/6-",
+    "6H/6Y",
+    "6X/5L",
+    "5K/6F",
+    "5N/6E",
+    "6Z/6L",
+    "6K/5E",
+    "6N/5F",
+    "6G/6A",
+    "6B/6-"
+   ],
+   "node_map": {
+    "POS": "5+ = 5H (relay5 ARM set1) = 6H (relay6 ARM set1) = 6Y (PB6 ARM)",
+    "NEG": "5C = 6C = 6B",
+    "n5F": "5G = 5F = 5K  -- relay5 coil bottom, its own N.O. set1, and its N.O. set2",
+    "n5E": "5E = 6K  -- relay5 coil top; driven by relay6's N.O. set2",
+    "n6F": "6G = 6F = 6A  -- relay6 coil bottom, its own N.O. set1, and binary light 6",
+    "n6E": "6E = 5N  -- relay6 coil top; driven by relay5's N.C. set2",
+    "n5L": "5L = 6X  -- relay5 ARM set2, fed by the pushbutton's N.O.",
+    "n6L": "6L = 6Z  -- relay6 ARM set2, fed by the pushbutton's N.C."
+   },
+   "mechanism": [
+    "SELF-HOLD: relay5 ON closes 5H-5G, putting POS on n5F; current then runs n5F -> coil5 -> n5E -> lamp5 -> NEG. Same for relay6 via 6H-6G onto n6F. Both relays are latching. SDC states this: 'we will begin with two relays wired to be self holding.'",
+    "PUSH PHASE (button DOWN, 6X live, 6Z dead): POS reaches n5L. If relay5 is ON, 5L-5K closes and POS lands on n6F, driving coil6 -> relay6 turns ON. If relay5 is OFF, 5L-5N closes and POS lands on n6E, which short-circuits coil6 (n6F is already POS from relay6's self-hold) -> relay6 RELEASES. Net: relay6 copies relay5. SDC states this: 'when pushbutton 6 is pushed, relay 6 will go to the same state that relay 5 is in.'",
+    "RELEASE PHASE (button UP, 6Z live, 6X dead): POS reaches n6L. If relay6 is ON, 6L-6K closes and POS lands on n5E, short-circuiting coil5 -> relay5 RELEASES. If relay6 is OFF, 6L-6N closes and POS lands on n5F, driving coil5 -> relay5 turns ON. Net: relay5 goes to the opposite of relay6. SDC states this: 'when the pushbutton is released, relay 5 will go to the opposite state from relay 6.'",
+    "Button-up stable states are therefore (5 ON, 6 OFF) and (5 OFF, 6 ON) - the two relays always opposite at rest, which is why light 6 (wired to n6F by 6G/6A) tracks the flip-flop state and why the errata calls it the state indicator."
+   ],
+   "critical_observation": "EVERY state change in this circuit is effected by SHORT-CIRCUITING a coil, never by open-circuiting one. Both the push phase's 'relay6 goes OFF' and the release phase's 'relay5 goes OFF' put POS on the far side of an already-POS coil. See M-07: a shorted coil is a freewheeling loop and releases far more slowly than an open-circuited one. This is, I believe, the physical reason SDC had to print 'push pushbutton 6 slowly' for this circuit and not for the two-button memory circuit.",
+   "failure_mode_under_a_fast_press": "From (5 ON, 6 OFF): press and release before relay6 has completed its operate stroke. On release the release phase evaluates relay6 as still OFF, so 6L-6N feeds n5F and relay5 is merely re-held ON; relay6, having lost its 5L-5K feed, falls back. Net: no state change. That is exactly the observable SDC is warning about."
+  },
+  "trace_3_book_IV_second_version_and_the_three_bit_counter": {
+   "cite_program": "Book IV printed p.70 (PDF p.76), program list and both circuit diagrams read from the page image => [verified]. The counter program on printed p.72 is from the OCR text layer only => [likely].",
+   "second_version_program": [
+    "5+/5G",
+    "5H/5F",
+    "5F/6F",
+    "5C/6C",
+    "6C/6-",
+    "5J/6H",
+    "6G/5E",
+    "6J/6E",
+    "6E/6A",
+    "6B/6-",
+    "5H/5A",
+    "5B/5-",
+    "6+/6Y",
+    "6X/6H"
+   ],
+   "carry_additions": [
+    "5G/5N",
+    "5L/6L",
+    "6K/4A",
+    "4B/4-"
+   ],
+   "identity_with_book_II": "Node for node this is the Book II p.12 circuit with the relay pair renumbered 1,2 -> 5,6 and the indicator lamp moved. POS at relay5's N.O. set1 (5+/5G <-> 1G/1Y+1Y/1+); node_B = 5H=5F=6F (<-> 1H=1F=2F); node_A = 5E=6G (<-> 1E=2G); node_C = 6E=6J (<-> 2E=2J); node_D = 5J=6H=6X (<-> 1J=2H=1X). The only difference is which node each binary output lamp hangs on. Therefore trace_1's state table IS the second version's state table, and SDC's printed steps 1-3 (T-16) corroborate it directly.",
+   "carry_semantics": {
+    "standalone_form": "5G/5N ties POS to relay5's N.C. set2; 5L/6L chains relay5's ARM set2 to relay6's ARM set2; 6K/4A takes relay6's N.O. set2 to light 4. So CARRY is asserted exactly when (relay5 OFF AND relay6 ON) - which by T-17 is a state that exists ONLY while the button is held down, and only on the 1->0 half of the cycle. SDC: 'Push pushbutton 6, but do not release. Notice that relay 5 is OFF; relay 6 is ON. We want a carry signal to occur NOW.'",
+    "counter_form": "In the full counter the carry is not taken from POS but from the stage's own input node: 5N/6H routes the stage's input node (5J=6H=6X) through relay5's N.C. set2 and relay6's N.O. set2 (5L/6L, 3J/6K) into the NEXT stage's input node. The carry line is therefore a plain conductive path with a contact-gated condition, contributing no delay of its own; the delay is the upstream relay's release."
+   },
+   "counter_program_likely": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "1J/4K",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3J/6K",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+"
+   ],
+   "counter_structure": "Three copies of the second-version flip-flop: stage C (low order) = relays 5&6, indicator light 6 (6A/6F); stage B = relays 3&4, indicator light 5 (4F/5A); stage A (high order) = relays 1&2, indicator light 4 (2F/4A). Pushbutton 6 drives stage C's input node (6Y/6+, 5J/6X). Stage C's carry (3J/6K) drives stage B's input node; stage B's carry (1J/4K) drives stage A's input node. Each stage's carry-gate is (its memory relay OFF AND its slave relay ON).",
+   "ripple_direction": "THE RIPPLE IS ON THE DOWN EDGE AND IT IS SERIAL; THE UP EDGE IS PARALLEL. On the press, stage C's memory relay must release before its carry-gate closes, which only then presents a 'button down' to stage B, and so on - three releases in series in the worst case (3->4 and 7->0). On the release, all stages lose their input simultaneously and their slave relays change in parallel. This is precisely why SDC's instruction is 'hold the pushbutton DOWN long enough for any carry to propagate to the highest stage' and not 'release slowly'.",
+   "falsifiable_prediction": "Under this model a brisk tap on pushbutton 6 mis-counts SELECTIVELY: counts 0->1, 1->2, 2->3, 4->5, 5->6, 6->7 need one stage-time of hold, 3->4 needs two, 7->0 needs three. A video of a real unit being tapped fast should therefore show the counter tracking correctly for most steps and sticking or half-stepping specifically at 3->4 and 7->0. If a real unit instead fails uniformly at all counts, the serial-ripple-on-the-down-edge model is wrong and should be revisited."
+  }
+ },
+ "model_findings": [
+  {
+   "id": "M-01",
+   "tag": "unverified",
+   "claim": "THE SETTLING RULE IS A NON-QUESTION, AND THIS IS THE MOST IMPORTANT RESULT HERE. In the MINIVAC there is no combinational feedback path that does not pass through a relay coil and its armature. A contact's position is a function of exactly one thing: its armature's position. An armature's position is a function of scheduled mechanical motion, never of the instantaneous network solution. Therefore if contact positions are held FROZEN for the duration of a tick, the conductive network within that tick is a static graph with no feedback, and it is solved ONCE, in one pass. There is nothing to iterate, no fixpoint to be ambiguous about, no oscillation to detect, and no iteration limit to tune.",
+   "consequence": "Do NOT build an iterate-to-fixpoint solver, and do not build an event queue for combinational settling. Build: (1) a per-tick static network solve, (2) a per-tick armature update that schedules future contact motion. The 'event queue versus iterate-to-fixpoint' decision the task asks for dissolves; the real decision is only fixed tick versus event queue for the ARMATURE clock, and fixed tick wins on reproducibility.",
+   "why_unverified": "This is my structural argument, not a printed statement. It is however checkable by inspection of the machine's parts list: the only elements are wires, lamps, resistors, capacitors, a motor, and contacts carried by armatures or by human-moved actuators. None of those closes a loop from a node voltage back to a contact position within zero time."
+  },
+  {
+   "id": "M-02",
+   "tag": "unverified",
+   "claim": "DETERMINISM IN EVERY PUBLISHED CIRCUIT COMES FROM THE TWO-PHASE PUSHBUTTON, NOT FROM RELAY SPEED ORDERING. In all three canonical circuits traced above, at every instant exactly one relay is being driven to change state, and which one is fixed by contact topology. There is no published circuit in which two relays are driven simultaneously and the outcome depends on which wins. The machine's designers achieved this deliberately: SDC's own description (T-15) is a master-slave account with the button's down edge and up edge as the two clock phases.",
+   "consequence": "A simulator does NOT need per-relay speed differences, randomised operate times, or tie-breaking to reproduce the manuals. Per-relay variation (which the sources DO establish exists - Book VII makes the owner measure a bias resistor per relay) is a fidelity flourish, not a correctness requirement."
+  },
+  {
+   "id": "M-03",
+   "tag": "likely",
+   "claim": "RELAY CONTACT TRANSFER IS BREAK -> BOTH-OPEN -> MAKE, NOT AN ATOMIC SWAP. SDC states break-before-make explicitly and emphatically for two of the machine's three contact families (pushbutton, T-07; rotary, T-08), calls the relay's contacts 'similar to the pushbutton contacts' (T-09), and describes the relay physically as a single arm swinging between two fixed contacts. The Maintenance Manual's adjustment instruction ('the arm should engage the normally open and normally closed contacts and should push them slightly as they meet') describes the same single-arm-two-stops geometry, which cannot make before it breaks.",
+   "cannot_be_verified": "SDC never writes the words for the relay. Settling it needs a scope on an original relay, or a close photograph of the contact geometry.",
+   "consequence": "Model it as break -> both-open -> make. But see M-04: on every published circuit the choice is behaviourally invisible provided the both-open window is short."
+  },
+  {
+   "id": "M-04",
+   "tag": "unverified",
+   "claim": "THE BREAK/ATOMIC-SWAP CHOICE IS BEHAVIOURALLY INVISIBLE ON EVERY PUBLISHED CIRCUIT, PROVIDED t_bothopen < t_release. Proof sketch on the Book II / Book IV-second-version topology, which is the strictest case: node_B (relay1's own ARM) is the common bottom of BOTH coils, so every transfer of relay1's arm momentarily unpowers relay2's coil. Under an atomic swap, node_B goes from POS (via 1G) straight to node_D (which is POS via the held button) with no interruption at all. Under break-before-make, node_B floats for t_bothopen and relay2's coil is dead for that long. Relay2 survives if and only if t_bothopen is shorter than its release time. With t_bothopen a small fraction of t_release the two models produce identical state tables.",
+   "consequence": "CONSTRAINT R1 (hard): t_bothopen < t_release, with margin. If a future implementer sets these anywhere near each other the flip-flop family destroys itself and the counter loses bits at random."
+  },
+  {
+   "id": "M-05",
+   "tag": "unverified",
+   "claim": "THE TICK SHOULD BE 100 MICROSECONDS (0.1 ms), an integer clock at 10 000 ticks/s. Reasoning: the finest phenomena worth representing are contact bounce (sub-millisecond) and the both-open transfer window (order 1 ms), and 100 us resolves both with at least ten samples; the 8.33 ms supply half-cycle is 83 ticks if ripple is ever modelled; a 45 rpm dial dwell is ~830 ticks, so dial position quantisation is invisible; and 100 us is far below every behavioural threshold in the machine, so the tick can never itself change an outcome. The cost is 10 000 solves per second of a graph with at most ~60 electrical nodes and ~40 contacts, which is nothing.",
+   "alternatives_rejected": [
+    "1 ms: too coarse to represent bounce or the both-open window at all, and it puts the tick within a factor of ~8 of the shortest real interval - close enough for quantisation to matter.",
+    "Pure event queue: correct, but harder to make bit-reproducible across platforms and awkward to interleave with a 60 Hz render loop and with continuous inputs (a partially depressed pushbutton, a hand-retarded dial). A fixed integer tick makes replay and regression testing exact.",
+    "Variable / adaptive tick: no. Reproducibility is worth more than the cycles saved."
+   ],
+   "hybrid_note": "If profiling ever demands it, a fixed tick with a 'next interesting tick' skip is safe: when no armature is in motion, no bounce is in progress, the dial is stationary and no human input is pending, the network solution cannot change, so the simulator may jump straight to the next scheduled event. That is an optimisation of the fixed-tick model, not a different model."
+  },
+  {
+   "id": "M-06",
+   "tag": "unverified",
+   "claim": "MODEL THE ARMATURE AS A CONTINUOUS TRAVEL SCALAR, NOT AS FIXED DELAYS. Give each relay travel t in [0,1]: 0 = fully released, 1 = fully operated. Per tick, t moves toward 1 at rate 1/t_operate when the coil is above pull-in, and toward 0 at rate 1/t_release when below drop-out; between drop-out and pull-in (the bi-stable band Book VII documents, RLY-17 [verified]) t does not move. Contacts: N.C. closed while t < break_frac; N.O. closed while t > make_frac; break_frac < make_frac, and the interval between them IS the both-open window. One parameter set then yields operate time, release time, both-open interval, correct behaviour when travel is interrupted mid-stroke, and correct behaviour for a marginally-biased relay - all without special cases.",
+   "consequence": "This also gives the pushbutton and the slide switch for free: the same travel scalar driven by the input device instead of by a coil, which is what makes Book I p.9's 'find the position where both lights are OFF' (T-07) directly reproducible."
+  },
+  {
+   "id": "M-07",
+   "tag": "unverified",
+   "claim": "A SHORTED COIL RELEASES MUCH MORE SLOWLY THAN AN OPEN COIL, AND EVERY FLIP-FLOP IN THE CORPUS TURNS ITS RELAYS OFF BY SHORTING THEM. In all three traced circuits the OFF transition is caused by putting the same potential on both ends of an energised coil (trace_1 S1+button-down; trace_2 both phases). Electrically that is a freewheeling loop: the coil's stored flux decays with L/R_coil rather than collapsing into an open circuit. Standard relay practice (the 'slugged' or copper-slugged slow-release relay) exploits exactly this, and the slow-release factor is typically 2x to 5x. I believe this is the specific physical reason SDC had to print 'push pushbutton 6 slowly' (T-03) for the single-input flip-flop and not for the two-button memory circuit, whose OFF transition opens the coil circuit instead.",
+   "consequence": "The simulator should carry TWO release times: t_release_open and t_release_shorted, selected per tick by whether the coil branch is short-circuited (both terminals in the same connected component) or open. Ignoring this makes the flip-flop far more forgiving of a fast tap than the real machine, which is the single most visible fidelity error available in this whole area.",
+   "how_to_falsify": "A slow-motion video of a real unit: the memory relay's drop on the button press should be visibly slower than a relay dropping because its feed was opened."
+  },
+  {
+   "id": "M-08",
+   "tag": "likely",
+   "claim": "LOWER BOUND ON THE ARMATURE TIME CONSTANT, ~8 ms. The supply is an unfiltered full-wave centre-tapped rectifier (T-11 verified from the schematic image, T-12 likely for the absence of a filter), so the rails collapse toward zero 120 times a second. The relays demonstrably do not chatter at 120 Hz - no manual mentions buzzing, and the machine's whole point is stable relay states. The combined coil-inductance and armature-mass time constant must therefore comfortably exceed the 8.33 ms half-period.",
+   "why_not_verified": "It rests on T-12, which rests on 'no capacitor is drawn'."
+  },
+  {
+   "id": "M-09",
+   "tag": "unverified",
+   "claim": "UPPER BOUND ON OPERATE TIME, well under ~80 ms. Published programs drive relays directly from the rotary wiper (traffic light, toll collector, electronic maze, Morse encoder/decoder) and expect them to respond within a single dial dwell. At SDC's own worked-example speed of 45 rpm a dwell is ~83 ms (T-14). If a relay took the whole dwell to operate, none of those programs would work. Combined with M-08 this brackets relay operate time to roughly 8-40 ms.",
+   "note": "This is a soft bound; the sources give no direct measurement."
+  },
+  {
+   "id": "M-10",
+   "tag": "unverified",
+   "claim": "HUMAN-SCALE CROSS-CHECK. For SDC to have needed a printed warning at all, the relay timescale must be an appreciable fraction of a fast human tap. A deliberate press is ~100-200 ms; a fast tap is ~30-50 ms. If the single-input flip-flop's minimum hold were 2 ms, nobody would ever have failed it and no errata note would exist; if it were 200 ms, the circuit would be unusable and SDC would have redesigned it rather than adding a note. A minimum hold of roughly 20-60 ms is the range in which 'push slowly' is exactly the right advice. With the counter needing up to three serial stage-times, ~20 ms per stage lands the worst-case hold at ~60 ms - a fast tap fails, a normal press succeeds. That is the behaviour the errata describes."
+  },
+  {
+   "id": "M-11",
+   "tag": "verified",
+   "claim": "SLIDE SWITCH TRANSFER IS NOT SETTLED BY THE SOURCES - the manuals never state break-before-make or make-before-break for it (T-10).",
+   "fallback_and_its_argument": "Model it break-before-make, same structure as the pushbutton. Two supporting arguments, both [unverified]: (a) two of the machine's three contact families are explicitly break-before-make and the slide switch is described in the same 'two sets of contacts which open and close together' language; (b) Book I's MOTOR REVERSING circuit uses both sets of slide-switch contacts to reverse current through the motor - a shorting (make-before-break) switch in that role would momentarily short the supply through the motor leads on every throw, which a machine with a 1.5 A supply and a resettable breaker would not have been designed to do."
+  },
+  {
+   "id": "M-12",
+   "tag": "unverified",
+   "claim": "LAMPS ARE VISUAL-ONLY FOR TIMING, BUT ELECTRICALLY LOAD-BEARING. Lamp thermal response must never feed back into logic timing. But lamp RESISTANCE is load-bearing, because the indicator lamp is hard-wired in series with the coil (RLY-13, verified) and SDC published a whole alternate counter to bypass the lamps and get 'full voltage ... to the relay coils' (T-05). Model the lamp as a temperature-dependent resistance with a thermal time constant of ~40 ms and a separate visual-persistence curve; the errata's Morse-dot note (T-06) is consistent with a visual decay long enough that adjacent dial dwells nearly merge, i.e. tens of milliseconds."
+  },
+  {
+   "id": "M-13",
+   "tag": "unverified",
+   "claim": "THE ROTARY DEAD GAP IS THE ONE PLACE WHERE A GEOMETRIC TIMING PARAMETER IS UNAVOIDABLE. T-08 verifies the gap exists; nothing gives its angular width. A concrete reading of the Morse-dot errata (T-06): three consecutive lit dial positions produce three flashes separated only by the wiper's transit of the dead gaps, and at 45 rpm those dark intervals are short enough that the lamp's own thermal decay nearly bridges them - hence 'almost indistinguishable'. Holding the knob back stretches the dark intervals past the lamp's decay and the flashes separate. That reading is self-consistent and gives dead-gap transit and lamp decay as the same order of magnitude, both in the low tens of milliseconds at 45 rpm.",
+   "fallback": "16 positions x 22.5 deg; contact arc 18 deg, dead gap 4.5 deg (80/20). At 45 rpm: 67 ms on contact, 17 ms in the gap."
+  }
+ ],
+ "named_fallback": {
+  "name": "MV601-TIMING-A",
+  "one_line": "A 100 microsecond integer tick; contacts frozen within a tick so the network solves in one pass with no iteration; relay armatures modelled as a continuous travel scalar with break-before-make contact fractions; two release rates depending on whether the coil is shorted or open.",
+  "core_loop": [
+   "1. Advance the integer tick by 1 (100 us).",
+   "2. Apply exogenous motion for this tick: human input travel on pushbuttons and slide switches, motor-driven or hand-driven dial angle.",
+   "3. Freeze all contact states from the current armature/actuator travel scalars.",
+   "4. Solve the static conductive network ONCE. Union-find the nodes joined by program wires and closed contacts, then solve the resistive branches (lamps, coils, resistors, motor) to get each coil's voltage. No iteration; convergence is structural (M-01).",
+   "5. For each relay, compare coil voltage to pull-in / drop-out with hysteresis and move its travel scalar by one tick's worth at the appropriate rate; select t_release_shorted when the coil's two terminals are in the same connected component, t_release_open otherwise (M-07).",
+   "6. Advance lamp filament temperatures and the visual persistence model. These never feed back into step 4's logic decisions, only into step 4's resistances and into rendering."
+  ],
+  "parameters": {
+   "tick_us": 100,
+   "relay_operate_ms": 12.0,
+   "relay_release_open_ms": 8.0,
+   "relay_release_shorted_ms": 20.0,
+   "relay_break_frac": 0.35,
+   "relay_make_frac": 0.6,
+   "relay_bothopen_ms_derived": "0.25 * 12.0 = 3.0 ms on operate, 0.25 * 8.0 = 2.0 ms on open release, 0.25 * 20.0 = 5.0 ms on shorted release",
+   "relay_bounce_on_make_ms": 0.5,
+   "relay_bounce_on_break_ms": 0.0,
+   "relay_pull_in_v": 7.5,
+   "relay_drop_out_v": 3.0,
+   "pushbutton_travel_ms_default_press": 25.0,
+   "pushbutton_break_frac": 0.35,
+   "pushbutton_make_frac": 0.6,
+   "pushbutton_bounce_on_make_ms": 0.5,
+   "slide_switch_travel_ms_default": 60.0,
+   "slide_switch_break_frac": 0.35,
+   "slide_switch_make_frac": 0.6,
+   "rotary_contact_arc_deg": 18.0,
+   "rotary_dead_gap_deg": 4.5,
+   "rotary_default_rpm": 45.0,
+   "lamp_thermal_tau_ms": 40.0,
+   "lamp_visual_decay_ms": 60.0,
+   "supply_open_circuit_v": 13.0,
+   "supply_ripple": "optional, 120 Hz full-wave unfiltered; OFF by default because with a >8 ms armature time constant it changes no outcome and costs fidelity nowhere visible"
+  },
+  "hard_constraints_the_numbers_must_satisfy": [
+   {
+    "id": "R1",
+    "constraint": "t_bothopen < t_release, with at least 3x margin",
+    "why": "In the Book II / Book IV-second-version topology the memory relay's own ARM is the common bottom of BOTH coils, so its every transfer momentarily unpowers the slave relay. If the both-open window approaches the slave's release time, the flip-flop family self-destructs. (M-04, trace_1.)",
+    "satisfied_by_defaults": "3.0 ms both-open on operate vs 8.0 ms open release: 2.7x. Tighten break_frac/make_frac to 0.40/0.55 if a stricter margin is wanted."
+   },
+   {
+    "id": "R2",
+    "constraint": "minimum button hold > max(t_operate, t_release_shorted)",
+    "why": "The push phase must complete before the release phase evaluates. With the defaults this is 20 ms - a normal press succeeds, a fast tap fails, which is exactly what the errata's 'push pushbutton 6 slowly' describes. (T-03, trace_2.)"
+   },
+   {
+    "id": "R3",
+    "constraint": "minimum button-up interval > t_operate of the slave relay",
+    "why": "The release phase must complete before the next press. Defaults: 12 ms."
+   },
+   {
+    "id": "R4",
+    "constraint": "minimum hold for an N-stage counter > N * (t_release_shorted + contact transfer)",
+    "why": "The carry ripple is serial on the DOWN edge (trace_3). Defaults give ~60 ms for three stages, which is the errata's 'hold the pushbutton down long enough for any carry to propagate to the highest stage'. (T-04.)"
+   },
+   {
+    "id": "R5",
+    "constraint": "t_operate and t_release both > 8.33 ms if supply ripple is ever enabled",
+    "why": "Otherwise the relays chatter at 120 Hz, which the real machine demonstrably does not do. (M-08.) Defaults satisfy this for operate (12) and shorted release (20); open release at 8.0 is marginally under, so either raise it to 10 or leave ripple off, which is the default."
+   }
+  ],
+  "proof_against_the_single_input_flip_flop": "With MV601-TIMING-A the Book II p.12 circuit produces, tick by tick: power-on both relays OFF; a press longer than 12 ms sets relay 1 (self-held via 1G) with relay 2 still shorted out by its own N.C. contact; the release then energises relay 2 through its coil in series with the lamps at node_C, giving both-ON with light 1 lit; the next press longer than 20 ms shorts coil 1 (node_A pulled to POS through relay 2's N.O. contact) and drops relay 1, with relay 2 surviving relay 1's 3 ms both-open window because 3 < 8; the release then starves relay 2 and returns the circuit to both-OFF. That reproduces SDC's own printed observations for the structurally identical second version (T-16) exactly. It toggles, it does not free-run, and it fails on a sub-20 ms tap - all three of the behaviours the sources demand.",
+  "proof_against_the_three_bit_counter": "Stage C toggles as above. On the down edge, stage C's carry-gate (memory relay OFF AND slave relay ON) closes only after stage C's memory relay has completed its ~20 ms shorted release; only then does stage B see its input node go live and begin its own ~20 ms release; only then stage A. Worst case (count 3->4 and 7->0) is three serial releases, ~60 ms, plus contact transfers. On the up edge every stage loses its input at once and the three slave relays change in parallel, so the release edge costs one operate/release time regardless of the count. This reproduces 'hold the pushbutton down long enough for any carry to propagate to the highest stage' (T-04) and it predicts the specific, testable signature in trace_3.falsifiable_prediction.",
+  "what_would_overturn_it": [
+   "A timed or slow-motion video of a running original: measure the visible armature travel, the flash-to-flash interval on a rippling counter, and the minimum successful tap on a single-input flip-flop. Any of the three overturns or fixes the numbers directly.",
+   "Identification of the original relay by part number, with a 1961 datasheet giving operate and release times. SDC part 6437 'Relay, $6.00' is the only handle in the corpus.",
+   "An original chassis showing a filter capacitor - that kills M-08's lower bound and would let the armature be much faster than 8 ms.",
+   "A scope on an original relay showing make-before-break or a both-open window comparable to the release time - that kills M-03/M-04 and forces a redesign of the transfer model.",
+   "Any evidence that a real unit's counter fails uniformly across all counts rather than selectively at 3->4 and 7->0 - that kills the serial-ripple-on-the-down-edge reading in trace_3."
+  ],
+  "instruction_to_the_implementer": "Every number in 'parameters' is a tunable constant in one place, named, with the constraint IDs (R1-R5) asserted at load time. None of them is a source-derived fact. The STRUCTURE - one static network solve per tick, no iteration, armature travel scalars, break-before-make, two release rates, two-phase button determinism - is where the confidence is, and it is where the sources actually speak."
+ },
+ "known_discrepancies_found_or_carried": [
+  {
+   "id": "D-01",
+   "status": "carried, not resolved",
+   "text": "Book V-VI copyright page and the ERRATA both print 'Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts' (I confirmed the Watertown line at the foot of the errata's last column myself). The panel legend in the top-down photograph reads 'Cambridge, Massachusetts'. Both are primary. Not resolved here."
+  },
+  {
+   "id": "D-02",
+   "status": "new, minor, resolvable by page attribution",
+   "text": "Book IV printed p.69 says of the SECOND VERSION 'light 6 is not used as an indicator in this program', while the ERRATA note for page 69 says 'Light 6 will go off and on, indicating the state of the whole flip-flop.' These do not conflict once the page attribution is right: the errata note is about the FIRST-version circuit printed on p.69 (indicator added by 6G/6A, 6B/6-), and the book's sentence is about the SECOND-version circuit printed on p.70 (indicator light 5, via 5H/5A). Recorded because find-relays and verify-relays both got tangled here."
+  },
+  {
+   "id": "D-03",
+   "status": "carried",
+   "text": "The two rotary-speed figures disagree: 45 rev/min (Book V worked example, ~83 ms/position) versus 'more than a second to go from zero to nine' (Book II, >~111 ms/position). Neither is a specification and Book V tells the owner to measure their own. Keep dial speed configurable; 45 rpm is used as the default only because it is the one number SDC actually prints."
+  }
+ ],
+ "corrections_to_prior_findings": [
+  {
+   "target": "find-relays TIM-05 (MINIVAC-DEFAULT-TIMING)",
+   "verdict": "Sound as far as it goes; superseded by MV601-TIMING-A. The 12 ms / 8 ms / 3 ms / 1 ms numbers are retained or nearly retained. Three substantive additions: (a) a SECOND release time for a short-circuited coil, which is what every published flip-flop actually does and is probably the reason for the 'push slowly' warning (M-07); (b) the four hard ordering constraints R1-R4, which are what actually make the model correct rather than merely plausible; (c) the finding that no intra-tick settling algorithm is needed at all (M-01)."
+  },
+  {
+   "target": "find-relays RLY-26 errata_note / verify-relays REF-03(b)",
+   "verdict": "Both partly wrong. The 'push pushbutton 6 slowly' note belongs to the FIRST-version single-input flip-flop assembled over Book IV printed pp.68-69, whose indicator is light 6 (6G/6A, 6B/6-) - which is why the note talks about light 6. verify-relays was right that it is not the Book II p.12 circuit and right that it involves pushbutton 6 and light 6, but it did not identify which p.69 circuit, and there are two flip-flops in that neighbourhood. (T-03.)"
+  },
+  {
+   "target": "find-relays PS-17 / verify-relays OQ-04",
+   "verdict": "Strengthened on the drawing, unchanged on the conclusion. I read the Power Supply Circuit Diagram from the page image (T-11): centre-tapped secondary, two diodes, breaker in the return, power light across the output, no capacitor symbol anywhere. The inference that no capacitor exists in the chassis stays [likely]."
+  }
+ ],
+ "not_settled_by_the_sources": [
+  "Relay operate time. No figure in any primary or secondary source; no relay part number; no datasheet. Would be settled by: a timed/slow-motion video of a running unit, or identification of SDC part 6437.",
+  "Relay release time, and whether it differs measurably between an open coil and a short-circuited coil. The distinction is inferred from circuit topology plus standard relay physics, not from any source. Would be settled by a scope on an original relay driven both ways.",
+  "The relay's both-open transfer interval, and whether the relay is break-before-make at all. SDC says it for the pushbutton and the rotary and never for the relay. Would be settled by a close photograph of the contact geometry or a scope trace.",
+  "Contact bounce, for any contact in the machine. Not mentioned anywhere.",
+  "Slide-switch transfer semantics: break-before-make, make-before-break, or shorting. Not stated. Would be settled by an original switch or a clear under-panel photograph.",
+  "Pushbutton and slide-switch dead-zone width as a fraction of travel. Book I p.9 establishes only that the pushbutton's dead zone is wide enough for a human to hold, which is a qualitative bound.",
+  "Rotary contact arc versus dead-gap width. Would be settled by an under-panel photograph or a measured original rotary assembly (SDC part 6473).",
+  "Actual as-built dial rpm, and whether the 45 rpm and >111 ms/position figures reflect unit variation or looseness in the prose.",
+  "Whether a filter capacitor exists in the chassis. The schematic draws none; nothing in the text mentions one either way.",
+  "Lamp thermal and visual time constants. Inferred only, from the Morse-dot errata note against a dial speed that is itself uncertain."
+ ],
+ "counts": {
+  "verified": 18,
+  "likely": 3,
+  "unverified": 10
+ }
+}

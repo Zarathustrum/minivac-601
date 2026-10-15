@@ -1,0 +1,268 @@
+#!mv601-trace 1
+# id=V-ASSOCMEM contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=40
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=14 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   300.0 > button1 target=1000
+   311.2 * pb1 nc->mid
+   313.7 * pb1 mid->no
+   323.6 * indLamp1 off->dim
+   324.7 * relay1 nc->mid
+   326.0 * relay1 mid->no
+   329.3 * outLamp1 off->dim
+   348.2 * outLamp1 dim->on
+   363.7 * indLamp1 dim->on
+   600.0 ? outLamp1=on outLamp2=off outLamp3=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push pushbutton 1, 2 and 3 individually. Notice that each pushbutton turns on the single light associated with it."
+   600.0 > button1 target=0
+   611.2 * pb1 no->mid
+   613.7 * pb1 mid->nc
+   615.9 * relay1 no->mid
+   616.8 * relay1 mid->nc
+   622.4 * indLamp1 on->dim
+   636.4 * outLamp1 on->dim
+   678.0 * indLamp1 dim->off
+   692.0 * outLamp1 dim->off
+   900.0 > button2 target=1000
+   911.2 * pb2 nc->mid
+   913.7 * pb2 mid->no
+   923.6 * indLamp2 off->dim
+   924.9 * relay2 nc->mid
+   926.2 * relay2 mid->no
+   929.5 * outLamp2 off->dim
+   948.4 * outLamp2 dim->on
+   963.7 * indLamp2 dim->on
+  1200.0 ? outLamp1=off outLamp2=on outLamp3=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push pushbutton 1, 2 and 3 individually. Notice that each pushbutton turns on the single light associated with it."
+  1200.0 > button2 target=0
+  1211.2 * pb2 no->mid
+  1213.7 * pb2 mid->nc
+  1215.9 * relay2 no->mid
+  1216.8 * relay2 mid->nc
+  1222.4 * indLamp2 on->dim
+  1236.4 * outLamp2 on->dim
+  1278.0 * indLamp2 dim->off
+  1292.0 * outLamp2 dim->off
+  1500.0 > button3 target=1000
+  1511.2 * pb3 nc->mid
+  1513.7 * pb3 mid->no
+  1523.6 * indLamp3 off->dim
+  1525.0 * relay3 nc->mid
+  1526.3 * relay3 mid->no
+  1529.6 * outLamp3 off->dim
+  1548.5 * outLamp3 dim->on
+  1563.7 * indLamp3 dim->on
+  1800.0 ? outLamp1=off outLamp2=off outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push pushbutton 1, 2 and 3 individually. Notice that each pushbutton turns on the single light associated with it."
+  1800.0 > button3 target=0
+  1811.2 * pb3 no->mid
+  1813.7 * pb3 mid->nc
+  1815.9 * relay3 no->mid
+  1816.8 * relay3 mid->nc
+  1822.4 * indLamp3 on->dim
+  1836.4 * outLamp3 on->dim
+  1878.0 * indLamp3 dim->off
+  1892.0 * outLamp3 dim->off
+  2100.0 > button2 target=1000
+  2100.0 > button3 target=1000
+  2111.2 * pb2 nc->mid  pb3 nc->mid
+  2113.7 * pb2 mid->no  pb3 mid->no
+  2123.6 * indLamp2 off->dim  indLamp3 off->dim
+  2124.9 * relay2 nc->mid
+  2125.0 * relay3 nc->mid
+  2126.2 * relay2 mid->no
+  2126.3 * relay3 mid->no
+  2129.5 * outLamp2 off->dim
+  2129.6 * outLamp3 off->dim
+  2136.4 * indLamp5 off->dim
+  2138.4 * relay5 nc->mid
+  2139.7 * relay5 mid->no
+  2148.6 * outLamp2 dim->on
+  2148.7 * outLamp3 dim->on
+  2164.1 * indLamp2 dim->on  indLamp3 dim->on
+  2176.8 * indLamp5 dim->on
+  2400.0 > button2 target=0
+  2400.0 > button3 target=0
+  2411.2 * pb2 no->mid  pb3 no->mid
+  2413.7 * pb2 mid->nc  pb3 mid->nc
+  2415.9 * relay2 no->mid  relay3 no->mid
+  2416.8 * relay2 mid->nc  relay3 mid->nc
+  2422.3 * indLamp2 on->dim  indLamp3 on->dim
+  2436.3 * outLamp2 on->dim  outLamp3 on->dim
+  2477.9 * indLamp2 dim->off  indLamp3 dim->off
+  2491.9 * outLamp2 dim->off  outLamp3 dim->off
+  2700.0 > button2 target=1000
+  2711.2 * pb2 nc->mid
+  2713.7 * pb2 mid->no
+  2723.6 * indLamp2 off->dim  indLamp3 off->dim
+  2724.9 * relay2 nc->mid
+  2725.1 * relay3 nc->mid
+  2726.2 * relay2 mid->no
+  2726.4 * relay3 mid->no
+  2729.5 * outLamp2 off->dim
+  2729.7 * outLamp3 off->dim
+  2748.6 * outLamp2 dim->on
+  2748.8 * outLamp3 dim->on
+  2764.1 * indLamp2 dim->on  indLamp3 dim->on
+  3000.0 ? outLamp2=on outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Now push two pushbuttons simultaneously— for example, pushbuttons 2 and 3. From now on, pushing either of the associated pushbuttons will turn on both of the associated lights."
+  3000.0 > button2 target=0
+  3011.2 * pb2 no->mid
+  3013.7 * pb2 mid->nc
+  3015.9 * relay2 no->mid  relay3 no->mid
+  3016.8 * relay2 mid->nc  relay3 mid->nc
+  3022.3 * indLamp2 on->dim  indLamp3 on->dim
+  3036.3 * outLamp2 on->dim  outLamp3 on->dim
+  3077.9 * indLamp2 dim->off  indLamp3 dim->off
+  3091.9 * outLamp2 dim->off  outLamp3 dim->off
+  3300.0 > button3 target=1000
+  3311.2 * pb3 nc->mid
+  3313.7 * pb3 mid->no
+  3323.6 * indLamp2 off->dim  indLamp3 off->dim
+  3324.9 * relay2 nc->mid
+  3325.1 * relay3 nc->mid
+  3326.2 * relay2 mid->no
+  3326.4 * relay3 mid->no
+  3329.5 * outLamp2 off->dim
+  3329.7 * outLamp3 off->dim
+  3348.6 * outLamp2 dim->on
+  3348.8 * outLamp3 dim->on
+  3364.1 * indLamp2 dim->on  indLamp3 dim->on
+  3600.0 ? outLamp2=on outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Now push two pushbuttons simultaneously— for example, pushbuttons 2 and 3. From now on, pushing either of the associated pushbuttons will turn on both of the associated lights."
+  3600.0 > button3 target=0
+  3611.2 * pb3 no->mid
+  3613.7 * pb3 mid->nc
+  3615.9 * relay2 no->mid  relay3 no->mid
+  3616.8 * relay2 mid->nc  relay3 mid->nc
+  3622.3 * indLamp2 on->dim  indLamp3 on->dim
+  3636.3 * outLamp2 on->dim  outLamp3 on->dim
+  3677.9 * indLamp2 dim->off  indLamp3 dim->off
+  3691.9 * outLamp2 dim->off  outLamp3 dim->off
+  3900.0 > button1 target=1000
+  3900.0 > button2 target=1000
+  3900.0 > button3 target=1000
+  3911.2 * pb1 nc->mid  pb2 nc->mid  pb3 nc->mid
+  3913.7 * pb1 mid->no  pb2 mid->no  pb3 mid->no
+  3923.6 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim
+  3924.7 * relay1 nc->mid
+  3924.9 * relay2 nc->mid
+  3925.1 * relay3 nc->mid
+  3926.0 * relay1 mid->no
+  3926.2 * relay2 mid->no
+  3926.4 * relay3 mid->no
+  3929.3 * outLamp1 off->dim
+  3929.5 * outLamp2 off->dim
+  3929.7 * outLamp3 off->dim
+  3936.4 * indLamp4 off->dim
+  3936.6 * indLamp6 off->dim
+  3938.4 * relay4 nc->mid
+  3939.0 * relay6 nc->mid
+  3939.7 * relay4 mid->no
+  3940.3 * relay6 mid->no
+  3948.6 * outLamp1 dim->on
+  3948.8 * outLamp2 dim->on
+  3949.0 * outLamp3 dim->on
+  3964.7 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on
+  3977.3 * indLamp4 dim->on
+  3977.5 * indLamp6 dim->on
+  4200.0 > button1 target=0
+  4200.0 > button2 target=0
+  4200.0 > button3 target=0
+  4211.2 * pb1 no->mid  pb2 no->mid  pb3 no->mid
+  4213.7 * pb1 mid->nc  pb2 mid->nc  pb3 mid->nc
+  4215.8 * relay3 no->mid
+  4215.9 * relay1 no->mid  relay2 no->mid
+  4216.7 * relay3 mid->nc
+  4216.8 * relay1 mid->nc  relay2 mid->nc
+  4222.1 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+  4236.1 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim
+  4277.7 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+  4291.8 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off
+  4500.0 > button1 target=1000
+  4511.2 * pb1 nc->mid
+  4513.7 * pb1 mid->no
+  4523.6 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim
+  4524.8 * relay1 nc->mid
+  4525.0 * relay2 nc->mid
+  4525.1 * relay3 nc->mid
+  4526.1 * relay1 mid->no
+  4526.3 * relay2 mid->no
+  4526.4 * relay3 mid->no
+  4529.4 * outLamp1 off->dim  outLamp3 off->dim
+  4529.6 * outLamp2 off->dim
+  4548.7 * outLamp1 dim->on  outLamp3 dim->on
+  4548.9 * outLamp2 dim->on
+  4564.7 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on
+  4800.0 ? outLamp1=on outLamp2=on outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push all three pushbuttons simultaneously. Now pushing any one of the pushbuttons will turn on all three lights."
+  4800.0 > button1 target=0
+  4811.2 * pb1 no->mid
+  4813.7 * pb1 mid->nc
+  4815.8 * relay3 no->mid
+  4815.9 * relay1 no->mid  relay2 no->mid
+  4816.7 * relay3 mid->nc
+  4816.8 * relay1 mid->nc  relay2 mid->nc
+  4822.1 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+  4836.1 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim
+  4877.7 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+  4891.8 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off
+  5100.0 > button2 target=1000
+  5111.2 * pb2 nc->mid
+  5113.7 * pb2 mid->no
+  5123.6 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim
+  5124.8 * relay1 nc->mid
+  5125.0 * relay2 nc->mid
+  5125.1 * relay3 nc->mid
+  5126.1 * relay1 mid->no
+  5126.3 * relay2 mid->no
+  5126.4 * relay3 mid->no
+  5129.4 * outLamp1 off->dim  outLamp3 off->dim
+  5129.6 * outLamp2 off->dim
+  5148.7 * outLamp1 dim->on  outLamp3 dim->on
+  5148.9 * outLamp2 dim->on
+  5164.7 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on
+  5400.0 ? outLamp1=on outLamp2=on outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push all three pushbuttons simultaneously. Now pushing any one of the pushbuttons will turn on all three lights."
+  5400.0 > button2 target=0
+  5411.2 * pb2 no->mid
+  5413.7 * pb2 mid->nc
+  5415.8 * relay3 no->mid
+  5415.9 * relay1 no->mid  relay2 no->mid
+  5416.7 * relay3 mid->nc
+  5416.8 * relay1 mid->nc  relay2 mid->nc
+  5422.1 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+  5436.1 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim
+  5477.7 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+  5491.8 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off
+  5700.0 > button3 target=1000
+  5711.2 * pb3 nc->mid
+  5713.7 * pb3 mid->no
+  5723.6 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim
+  5724.8 * relay1 nc->mid
+  5725.0 * relay2 nc->mid
+  5725.1 * relay3 nc->mid
+  5726.1 * relay1 mid->no
+  5726.3 * relay2 mid->no
+  5726.4 * relay3 mid->no
+  5729.4 * outLamp1 off->dim  outLamp3 off->dim
+  5729.6 * outLamp2 off->dim
+  5748.7 * outLamp1 dim->on  outLamp3 dim->on
+  5748.9 * outLamp2 dim->on
+  5764.7 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on
+  6000.0 ? outLamp1=on outLamp2=on outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. ... Push all three pushbuttons simultaneously. Now pushing any one of the pushbuttons will turn on all three lights."
+  6000.0 > button3 target=0
+  6011.2 * pb3 no->mid
+  6013.7 * pb3 mid->nc
+  6015.8 * relay3 no->mid
+  6015.9 * relay1 no->mid  relay2 no->mid
+  6016.7 * relay3 mid->nc
+  6016.8 * relay1 mid->nc  relay2 mid->nc
+  6022.1 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+  6036.1 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim
+  6077.7 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+  6091.8 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off
+  6300.0 > button6 target=1000
+  6311.2 * pb6 nc->mid
+  6313.7 * pb6 mid->no
+  6315.8 * relay4 no->mid  relay5 no->mid  relay6 no->mid
+  6316.7 * relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+  6322.4 * indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  6378.0 * indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  6600.0 > button6 target=0
+  6611.2 * pb6 no->mid
+  6613.7 * pb6 mid->nc

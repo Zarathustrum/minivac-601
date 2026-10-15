@@ -1,0 +1,60 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-RELAYXOR",
+  "source": "BK3 printed p.44 = book2-3-4.pdf PDF p.50; derived truth-table expectations",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y", "1X/1C", "1F/1-", "1+/1H", "1J/2G", "1G/2J", "2+/2Y", "2X/2C", "2F/2-", "2H/3A", "3B/3-"
+  ],
+  "errata_applied": [],
+  "note": "The page prints no numbered procedure. Every expected output is the explicitly allowed unverified derivation from the printed symbolic form.",
+  "wires": [
+    "1+/1Y", "1X/1C", "1F/1-", "1+/1H", "1J/2G", "1G/2J", "2+/2Y", "2X/2C", "2F/2-", "2H/3A", "3B/3-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "off" }],
+      "cite": "BK3 printed p.44 = book2-3-4.pdf PDF p.50",
+      "quote": "The circuit and program below represent the EITHER BUT NOT BOTH condition using relays 1 and 2 controlled by pushbuttons 1 and 2 respectively.",
+      "tag": "unverified",
+      "source": "FALLBACK-RELAYXOR-TRUTH-TABLE"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.44 = book2-3-4.pdf PDF p.50",
+      "quote": "The circuit and program below represent the EITHER BUT NOT BOTH condition using relays 1 and 2 controlled by pushbuttons 1 and 2 respectively.",
+      "tag": "unverified",
+      "source": "FALLBACK-RELAYXOR-TRUTH-TABLE"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "off" }],
+      "cite": "BK3 printed p.44 = book2-3-4.pdf PDF p.50",
+      "quote": "The circuit and program below represent the EITHER BUT NOT BOTH condition using relays 1 and 2 controlled by pushbuttons 1 and 2 respectively.",
+      "tag": "unverified",
+      "source": "FALLBACK-RELAYXOR-TRUTH-TABLE"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.44 = book2-3-4.pdf PDF p.50",
+      "quote": "The circuit and program below represent the EITHER BUT NOT BOTH condition using relays 1 and 2 controlled by pushbuttons 1 and 2 respectively.",
+      "tag": "unverified",
+      "source": "FALLBACK-RELAYXOR-TRUTH-TABLE"
+    }
+  ]
+}

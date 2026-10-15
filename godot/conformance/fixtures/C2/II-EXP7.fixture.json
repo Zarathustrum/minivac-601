@@ -1,0 +1,250 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP7",
+  "source": "BK2-4 printed pp.15-16 = book2-3-4.pdf PDF pp.21-22",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1R/D1",
+    "1S/2S",
+    "2R/D2",
+    "2S/3S",
+    "3R/D3",
+    "3S/4S",
+    "4R/D4",
+    "4S/5S",
+    "5R/D5",
+    "5S/6S",
+    "6R/D6",
+    "6S/D19",
+    "D18/D16",
+    "D16/M-",
+    "D17/6X",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1R/D1",
+    "1S/2S",
+    "2R/D2",
+    "2S/3S",
+    "3R/D3",
+    "3S/4S",
+    "4R/D4",
+    "4S/5S",
+    "5R/D5",
+    "5S/6S",
+    "6R/D6",
+    "6S/D19",
+    "D18/D16",
+    "D16/M-",
+    "D17/6X",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "maxMs": 20000,
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22; dial sector numerals 0-15 name the rotary contacts D0-D15 per panel.md (outer annulus, one per sector)",
+      "quote": "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22; dial sector numerals 0-15 name the rotary contacts D0-D15 per panel.md (outer annulus, one per sector)",
+      "quote": "Push pushbutton 6. This instructs the computer to communicate the contents of Secondary Storage to the operator. The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        }
+      ],
+      "cite": "BK2-4 printed p.16 = book2-3-4.pdf PDF p.22; dial sector numerals 0-15 name the rotary contacts D0-D15 per panel.md (outer annulus, one per sector)",
+      "quote": "The rotary switch turns to 4 on the Decimal Input-Output dial. The number 4 is the Decimal Output."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 20000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    }
+  ],
+  "digest": {
+    "eventCount": 81,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      2,
+      4,
+      2,
+      6,
+      2,
+      2,
+      36
+    ]
+  },
+  "note": "Printed claims only (Phase 5 Step 6). Wire list image-read from book2-3-4.pdf PDF p.21 (printed p.15): 16 lines match wiresPrinted; the 6Z above the table is a diagram label, not a line. The errata sheet's BOOK II block lists pages 10, 11 and 14 only, so wires = as_printed and errata_applied is empty. Procedure runs from printed p.15 onto p.16 (PDF p.22). Script: all slide switches RIGHT (printed step 1), power ON, switch 4 LEFT (step 2), push pushbutton 6 (step 3); holding it until the dial rests and then releasing it are script choices (the page prints no release). Asserted: the dial reaches contact 4 while pushbutton 6 is down (until, which also matches a pass-through), still rests on 4 after a 10 s window with the button held, and still on 4 10 s after release ('The number 4 is the Decimal Output'). Step 4 is scripted with switch 4 RIGHT and switch 2 LEFT as the 'another number' choice, then pushbutton 6 again; the page states no result for it, so the resting position is not asserted (derived, Step 7). Not asserted: the dial's start position (construction state, not printed), direction of travel, motor speed, anything about release. Rotary geometry, run rate and coast remain profile fallbacks O-R1, O-R3, O-R5."
+}

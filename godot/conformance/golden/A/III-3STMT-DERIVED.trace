@@ -1,0 +1,26 @@
+#!mv601-trace 1
+# id=III-3STMT-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=4
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   520.1 ? outLamp3=off  "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON."
+   520.1 > button2 target=1000
+   531.3 * pb2 nc->mid
+   533.8 * pb2 mid->no
+  1065.0 ? outLamp3=off  "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON."
+  1065.0 > button1 target=1000
+  1076.2 * pb1 nc->mid
+  1078.7 * pb1 mid->no
+  1082.0 * outLamp3 off->dim
+  1100.9 * outLamp3 dim->on
+  1621.0 ? outLamp3=on  "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON."
+  1621.0 > button2 target=0
+  1632.2 * pb2 no->mid
+  1634.7 * pb2 mid->nc
+  1652.7 * outLamp3 on->dim
+  1708.3 * outLamp3 dim->off
+  2172.8 ? outLamp3=off  "The program tells the computer that both statements A and B must be true for statement C to be true. Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON."
+  2172.8 > button1 target=0
+  2184.0 * pb1 no->mid
+  2186.5 * pb1 mid->nc

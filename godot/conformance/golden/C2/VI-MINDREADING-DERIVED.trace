@@ -1,0 +1,166 @@
+#!mv601-trace 1
+# id=VI-MINDREADING-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=32
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=3 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > switch4 target=0
+   500.0 > switch5 target=1000
+   500.0 > switch6 target=0
+   526.9 * sw5 nc->mid
+   533.0 * sw5 mid->no
+  1000.0 ? breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+  1000.0 > button6 target=1000
+  1011.2 * pb6 nc->mid
+  1013.7 * pb6 mid->no
+  1017.0 * outLamp4 off->dim  outLamp6 off->dim
+  1023.8 * indLamp6 off->dim
+  1026.2 * relay6 nc->mid
+  1027.5 * relay6 mid->no
+  1036.3 * outLamp4 dim->on  outLamp6 dim->on
+  1045.7 * dial c0->gap
+  1064.8 * indLamp6 dim->on
+  1066.8 * dial gap->c1
+  1130.0 * dial c1->gap
+  1151.1 * dial gap->c2
+  1214.2 * dial c2->gap
+  1235.3 * dial gap->c3
+  1298.4 * dial c3->gap
+  1319.5 * dial gap->c4
+  1382.7 * dial c4->gap
+  1403.7 * dial gap->c5
+  1403.8 ? dial=c5  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+  7403.8 ? breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=no dial=c5 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=on  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+  7403.8 > button6 target=0
+  7415.0 * pb6 no->mid
+  7417.5 * pb6 mid->nc
+  7422.2 * relay6 no->mid
+  7423.1 * relay6 mid->nc
+  7433.8 * indLamp6 on->dim
+  7437.0 * outLamp4 on->dim  outLamp6 on->dim
+  7489.9 * indLamp6 dim->off
+  7492.7 * outLamp4 dim->off  outLamp6 dim->off
+ 10403.8 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c5 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 10403.8 > switch4 target=1000
+ 10403.8 > switch5 target=0
+ 10403.8 > switch6 target=1000
+ 10430.7 * sw4 nc->mid  sw5 no->mid  sw6 nc->mid
+ 10436.8 * sw4 mid->no  sw5 mid->nc  sw6 mid->no
+ 13403.8 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c5 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 13403.8 > button6 target=1000
+ 13415.0 * pb6 nc->mid
+ 13417.5 * pb6 mid->no
+ 13420.8 * outLamp5 off->dim
+ 13427.6 * indLamp5 off->dim
+ 13429.6 * relay5 nc->mid
+ 13430.9 * relay5 mid->no
+ 13439.9 * outLamp5 dim->on
+ 13462.2 * dial c5->gap
+ 13468.3 * indLamp5 dim->on
+ 13483.2 * dial gap->c6
+ 13546.1 * dial c6->gap
+ 13567.1 * dial gap->c7
+ 13630.0 * dial c7->gap
+ 13651.0 * dial gap->c8
+ 13713.9 * dial c8->gap
+ 13734.9 * dial gap->c9
+ 13797.8 * dial c9->gap
+ 13818.8 * dial gap->c10
+ 13881.7 * dial c10->gap
+ 13902.6 * dial gap->c11
+ 13965.6 * dial c11->gap
+ 13986.5 * dial gap->c12
+ 14049.5 * dial c12->gap
+ 14070.4 * dial gap->c13
+ 14133.3 * dial c13->gap
+ 14154.3 * dial gap->c14
+ 14217.2 * dial c14->gap
+ 14238.2 * dial gap->c15
+ 14301.1 * dial c15->gap
+ 14322.1 * dial gap->c0
+ 14385.0 * dial c0->gap
+ 14406.0 * dial gap->c1
+ 14468.9 * dial c1->gap
+ 14489.9 * dial gap->c2
+ 14490.0 ? dial=c2  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 20490.0 ? breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=nc dial=c2 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=on indLamp6=off  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 20490.0 > button6 target=0
+ 20501.2 * pb6 no->mid
+ 20503.7 * pb6 mid->nc
+ 20508.5 * relay5 no->mid
+ 20509.4 * relay5 mid->nc
+ 20520.0 * indLamp5 on->dim
+ 20523.4 * outLamp5 on->dim
+ 20576.1 * indLamp5 dim->off
+ 20579.1 * outLamp5 dim->off
+ 23490.0 > switch4 target=0
+ 23490.0 > switch5 target=0
+ 23490.0 > switch6 target=0
+ 23516.9 * sw4 no->mid  sw6 no->mid
+ 23523.0 * sw4 mid->nc  sw6 mid->nc
+ 23990.0 > button6 target=1000
+ 24001.2 * pb6 nc->mid
+ 24003.7 * pb6 mid->no
+ 24007.0 * outLamp4 off->dim  outLamp5 off->dim  outLamp6 off->dim
+ 24013.9 * indLamp5 off->dim  indLamp6 off->dim
+ 24016.2 * relay5 nc->mid
+ 24016.4 * relay6 nc->mid
+ 24017.5 * relay5 mid->no
+ 24017.7 * relay6 mid->no
+ 24026.4 * outLamp4 dim->on  outLamp5 dim->on  outLamp6 dim->on
+ 24049.1 * dial c2->gap
+ 24055.2 * indLamp5 dim->on  indLamp6 dim->on
+ 24070.4 * dial gap->c3
+ 24134.0 * dial c3->gap
+ 24155.2 * dial gap->c4
+ 24218.7 * dial c4->gap
+ 24239.9 * dial gap->c5
+ 24303.5 * dial c5->gap
+ 24324.7 * dial gap->c6
+ 24388.3 * dial c6->gap
+ 24409.5 * dial gap->c7
+ 24409.6 ? dial=c7  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 30409.6 ? breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no dial=c7 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=on outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=on indLamp6=on  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 30409.6 > button6 target=0
+ 30420.8 * pb6 no->mid
+ 30423.3 * pb6 mid->nc
+ 30427.8 * relay6 no->mid
+ 30428.0 * relay5 no->mid
+ 30428.7 * relay6 mid->nc
+ 30428.9 * relay5 mid->nc
+ 30439.1 * indLamp5 on->dim  indLamp6 on->dim
+ 30443.7 * outLamp4 on->dim  outLamp5 on->dim  outLamp6 on->dim
+ 30495.1 * indLamp5 dim->off  indLamp6 dim->off
+ 30499.4 * outLamp4 dim->off  outLamp5 dim->off  outLamp6 dim->off
+ 33409.6 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c7 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 33409.6 > switch4 target=1000
+ 33409.6 > switch5 target=1000
+ 33409.6 > switch6 target=1000
+ 33436.5 * sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+ 33442.6 * sw4 mid->no  sw5 mid->no  sw6 mid->no
+ 33909.6 > button6 target=1000
+ 33920.8 * pb6 nc->mid
+ 33923.3 * pb6 mid->no
+ 33967.7 * dial c7->gap
+ 33988.5 * dial gap->c8
+ 34051.0 * dial c8->gap
+ 34071.8 * dial gap->c9
+ 34134.3 * dial c9->gap
+ 34155.2 * dial gap->c10
+ 34217.7 * dial c10->gap
+ 34238.5 * dial gap->c11
+ 34301.0 * dial c11->gap
+ 34321.8 * dial gap->c12
+ 34384.3 * dial c12->gap
+ 34405.2 * dial gap->c13
+ 34467.7 * dial c13->gap
+ 34488.5 * dial gap->c14
+ 34551.0 * dial c14->gap
+ 34571.8 * dial gap->c15
+ 34634.3 * dial c15->gap
+ 34655.2 * dial gap->c0
+ 34655.3 ? dial=c0  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 40655.3 ? breaker=ok relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "After the replies to the questions have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+ 40655.3 > button6 target=0
+ 40666.5 * pb6 no->mid
+ 40669.0 * pb6 mid->nc

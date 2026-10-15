@@ -1,0 +1,61 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP1",
+  "source": "BK5 printed p.2 = book5-6.pdf PDF p.8, image-read; ER-28",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1A/1+", "1B/1V", "1U/2U", "1W/2W", "2V/2-"],
+  "errata_applied": [],
+  "note": "The image-read wires and diagram implement equality (lamp ON when both switches are on the same side) under any uniform switch polarity. The printed LEFT/RIGHT example is the inverse, a manual defect, and is not asserted. ER-28 proves toggling but not absolute phase. All four absolute expectations therefore carry FALLBACK-V-EXP1-TOPOLOGY.",
+  "wires": ["1A/1+", "1B/1V", "1U/2U", "1W/2W", "2V/2-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "switch", "n": 2, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK5 printed p.2 diagram = book5-6.pdf PDF p.8; ER-28 = errata.pdf PDF p.3, Book V 'page 2' entry",
+      "quote": "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-V-EXP1-TOPOLOGY"
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK5 printed p.2 diagram = book5-6.pdf PDF p.8; ER-28 = errata.pdf PDF p.3, Book V 'page 2' entry",
+      "quote": "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-V-EXP1-TOPOLOGY"
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK5 printed p.2 diagram = book5-6.pdf PDF p.8; ER-28 = errata.pdf PDF p.3, Book V 'page 2' entry",
+      "quote": "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-V-EXP1-TOPOLOGY"
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 2, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK5 printed p.2 diagram = book5-6.pdf PDF p.8; ER-28 = errata.pdf PDF p.3, Book V 'page 2' entry",
+      "quote": "Note that moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-V-EXP1-TOPOLOGY"
+    }
+  ]
+}

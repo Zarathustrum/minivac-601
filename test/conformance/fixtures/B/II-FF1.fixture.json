@@ -1,0 +1,53 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-FF1",
+  "source": "BK2 printed pp.11-12 = book2-3-4.pdf PDF pp.17-18",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1-/1B", "1-/1C", "1A/1E", "1E/2G", "1F/2F", "1H/1F", "1G/1Y",
+    "1Y/1+", "1X/1J", "1J/2H", "2J/2E", "2E/2A", "2B/2-", "2-/2C"
+  ],
+  "errata_applied": [],
+  "note": "ER-19 belongs to IV-FF1, not this Book II circuit. The initial light-1 phase uses the named cold-start fallback.",
+  "wires": [
+    "1-/1B", "1-/1C", "1A/1E", "1E/2G", "1F/2F", "1H/1F", "1G/1Y",
+    "1Y/1+", "1X/1J", "1J/2H", "2J/2E", "2E/2A", "2B/2-", "2-/2C"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17; cold-start phase not printed",
+      "quote": "Light 1 will be OFF when the flip-flop is remembering a 0.",
+      "tag": "unverified",
+      "source": "FALLBACK-PWRUP-COLD"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17",
+      "quote": "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\"."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17",
+      "quote": "If the relays are remembering a 1, pushing pushbutton 1 will signal them to \"forget 1 and start remembering 0\"."
+    }
+  ]
+}

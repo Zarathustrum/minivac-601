@@ -1,0 +1,223 @@
+#!mv601-trace 1
+# id=V-EXP10-5L6G contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=56
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=6 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp2 off->dim
+    22.1 * outLamp2 dim->on
+   500.0 ? outLamp1=off outLamp2=on  "[p.12:] Turn power on. Output light 2 comes on indicating “Stop—Pay Toll 10¢.”"
+   500.0 > button5 target=1000
+   511.2 * pb5 nc->mid
+   513.7 * pb5 mid->no
+   517.0 * outLamp6 off->dim  indLamp6 off->dim
+   525.5 * relay5 nc->mid
+   526.8 * relay5 mid->no
+   527.3 * outLamp5 off->dim  indLamp5 off->dim
+   536.1 * outLamp6 dim->on  indLamp6 dim->on
+   600.8 * outLamp5 dim->on  indLamp5 dim->on
+   800.0 > button5 target=0
+   811.2 * pb5 no->mid
+   813.7 * pb5 mid->nc
+   824.9 * relay6 nc->mid
+   826.2 * relay6 mid->no
+  1100.0 ? relay3=nc relay4=nc relay5=no relay6=no outLamp1=off outLamp2=on  "[p.12:] We will assume that a 10¢ toll is to be collected. This toll can be paid by depositing: one dime two nickels one nickel and five pennies ten pennies"
+  1100.0 > button5 target=1000
+  1111.2 * pb5 nc->mid
+  1113.7 * pb5 mid->no
+  1127.3 * relay5 no->mid
+  1128.2 * relay5 mid->nc
+  1131.5 * outLamp4 off->dim  indLamp4 off->dim
+  1139.7 * relay3 nc->mid
+  1141.0 * relay3 mid->no
+  1141.9 * outLamp3 off->dim  indLamp3 off->dim
+  1144.3 * outLamp1 off->dim  indLamp2 off->dim
+  1150.9 * outLamp4 dim->on  indLamp4 dim->on
+  1160.0 * outLamp2 on->dim
+  1163.6 * outLamp1 dim->on  indLamp2 dim->on
+  1215.6 * outLamp2 dim->off
+  1217.5 * outLamp3 dim->on  indLamp3 dim->on
+  1400.0 > button5 target=0
+  1411.2 * pb5 no->mid
+  1413.7 * pb5 mid->nc
+  1422.0 * relay6 no->mid
+  1422.1 * relay4 nc->mid
+  1422.9 * relay6 mid->nc
+  1423.4 * relay4 mid->no
+  1423.5 * outLamp6 on->dim  indLamp6 on->dim
+  1437.0 * outLamp5 on->dim  indLamp5 on->dim
+  1481.2 * outLamp6 dim->off  indLamp6 dim->off
+  1492.7 * outLamp5 dim->off  indLamp5 dim->off
+  1700.0 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=on outLamp2=off  "[p.13:] When 10¢ has been deposited, output light 1 will come on indicating “Thank You—Go Ahead.”"
+  1700.0 > button3 target=1000
+  1711.2 * pb3 nc->mid
+  1713.7 * pb3 mid->no
+  1728.0 * relay3 no->mid
+  1728.9 * relay3 mid->nc
+  1732.2 * outLamp2 off->dim
+  1748.3 * outLamp1 on->dim  indLamp2 on->dim
+  1751.2 * outLamp2 dim->on
+  1804.0 * outLamp1 dim->off  indLamp2 dim->off
+  2000.0 > button3 target=0
+  2011.2 * pb3 no->mid
+  2013.7 * pb3 mid->nc
+  2020.3 * relay4 no->mid
+  2021.2 * relay4 mid->nc
+  2022.0 * outLamp4 on->dim  indLamp4 on->dim
+  2036.7 * outLamp3 on->dim  indLamp3 on->dim
+  2078.9 * outLamp4 dim->off  indLamp4 dim->off
+  2092.4 * outLamp3 dim->off  indLamp3 dim->off
+  2300.0 ? relay1=nc relay2=nc relay3=nc relay4=nc outLamp1=off outLamp2=on  "[p.13:] Push pushbutton 3 to “Drive Away.” The toll collector will re-set."
+  2300.0 > dialGrab targetUdeg=225000000
+  2346.8 * dial c0->gap
+  2378.1 * dial gap->c15
+  2471.8 * dial c15->gap
+  2503.1 * dial gap->c14
+  2596.8 * dial c14->gap
+  2628.1 * dial gap->c13
+  2721.8 * dial c13->gap
+  2753.1 * dial gap->c12
+  2846.8 * dial c12->gap
+  2878.1 * dial gap->c11
+  2971.8 * dial c11->gap
+  3003.1 * dial gap->c10
+  5300.0 > dialRelease
+  5400.0 > button6 target=1000
+  5411.2 * pb6 nc->mid
+  5413.7 * pb6 mid->no
+  5417.0 * outLamp6 off->dim  indLamp6 off->dim
+  5425.7 * relay5 nc->mid
+  5427.0 * relay5 mid->no
+  5427.4 * outLamp5 off->dim  indLamp5 off->dim
+  5436.3 * outLamp6 dim->on  indLamp6 dim->on
+  5445.8 * dial c10->gap
+  5459.3 * relay6 nc->mid
+  5460.6 * relay6 mid->no
+  5466.9 * dial gap->c9
+  5502.6 * outLamp5 dim->on  indLamp5 dim->on
+  5530.0 * dial c9->gap
+  5551.1 * dial gap->c8
+  5614.3 * dial c8->gap
+  5635.3 * dial gap->c7
+  5698.5 * dial c7->gap
+  5719.5 * dial gap->c6
+  5782.7 * dial c6->gap
+  5803.8 * dial gap->c5
+  5817.3 * relay5 no->mid
+  5818.2 * relay5 mid->nc
+  5821.5 * outLamp4 off->dim  indLamp4 off->dim
+  5829.9 * relay3 nc->mid
+  5831.2 * relay3 mid->no
+  5832.0 * outLamp3 off->dim  indLamp3 off->dim
+  5834.5 * outLamp1 off->dim  indLamp2 off->dim
+  5841.1 * outLamp4 dim->on  indLamp4 dim->on
+  5849.9 * outLamp2 on->dim
+  5854.1 * outLamp1 dim->on  indLamp2 dim->on
+  5868.7 * dial c5->gap
+  5879.3 * relay6 no->mid
+  5879.8 * outLamp6 on->dim  indLamp6 on->dim
+  5879.9 * relay4 nc->mid
+  5880.2 * relay6 mid->nc
+  5881.2 * relay4 mid->no
+  5889.9 * dial gap->c4
+  5892.7 * outLamp5 on->dim  indLamp5 on->dim
+  5905.5 * outLamp2 dim->off
+  5908.6 * outLamp3 dim->on  indLamp3 dim->on
+  5937.9 * outLamp6 dim->off  indLamp6 dim->off
+  5948.5 * outLamp5 dim->off  indLamp5 dim->off
+  5953.3 * dial c4->gap
+  5974.5 * dial gap->c3
+  6037.9 * dial c3->gap
+  6059.0 * dial gap->c2
+  6122.4 * dial c2->gap
+  6143.6 * dial gap->c1
+  6207.0 * dial c1->gap
+  6228.1 * dial gap->c0
+ 13400.0 > button6 target=0
+ 13411.2 * pb6 no->mid
+ 13413.7 * pb6 mid->nc
+ 14700.0 ? relay3=no relay4=no relay5=nc relay6=nc outLamp1=on outLamp2=off  "[p.13:] When 10¢ has been deposited, output light 1 will come on indicating “Thank You—Go Ahead.”"
+ 14700.0 > button4 target=1000
+ 14711.2 * pb4 nc->mid
+ 14713.7 * pb4 mid->no
+ 14727.6 * relay4 no->mid
+ 14728.5 * relay4 mid->nc
+ 15000.0 > button4 target=0
+ 15011.2 * pb4 no->mid
+ 15013.7 * pb4 mid->nc
+ 15024.4 * relay4 nc->mid
+ 15025.7 * relay4 mid->no
+ 15300.0 ? relay3=no relay4=no outLamp1=on outLamp2=off  "[p.13:] If you deposit more than 10¢, the automatic toll collector will accept the extra money and do nothing about it."
+ 15300.0 > button3 target=1000
+ 15311.2 * pb3 nc->mid
+ 15313.7 * pb3 mid->no
+ 15328.0 * relay3 no->mid
+ 15328.9 * relay3 mid->nc
+ 15332.2 * outLamp2 off->dim
+ 15348.3 * outLamp1 on->dim  indLamp2 on->dim
+ 15351.2 * outLamp2 dim->on
+ 15404.0 * outLamp1 dim->off  indLamp2 dim->off
+ 15600.0 > button3 target=0
+ 15611.2 * pb3 no->mid
+ 15613.7 * pb3 mid->nc
+ 15620.3 * relay4 no->mid
+ 15621.2 * relay4 mid->nc
+ 15622.0 * outLamp4 on->dim  indLamp4 on->dim
+ 15636.7 * outLamp3 on->dim  indLamp3 on->dim
+ 15678.9 * outLamp4 dim->off  indLamp4 dim->off
+ 15692.4 * outLamp3 dim->off  indLamp3 dim->off
+ 15900.0 ? relay2=nc relay3=nc relay4=nc outLamp1=off outLamp2=on  "[p.13:] Push pushbutton 3 to “Drive Away.” The toll collector will re-set."
+ 15900.0 > button5 target=1000
+ 15911.2 * pb5 nc->mid
+ 15913.7 * pb5 mid->no
+ 15917.0 * outLamp6 off->dim  indLamp6 off->dim
+ 15925.5 * relay5 nc->mid
+ 15926.8 * relay5 mid->no
+ 15927.3 * outLamp5 off->dim  indLamp5 off->dim
+ 15936.1 * outLamp6 dim->on  indLamp6 dim->on
+ 16000.8 * outLamp5 dim->on  indLamp5 dim->on
+ 16200.0 > button5 target=0
+ 16211.2 * pb5 no->mid
+ 16213.7 * pb5 mid->nc
+ 16224.9 * relay6 nc->mid
+ 16226.2 * relay6 mid->no
+ 16500.0 > dialGrab targetUdeg=112500000
+ 16527.3 * dial c0->gap
+ 16558.6 * dial gap->c1
+ 16652.3 * dial c1->gap
+ 16683.6 * dial gap->c2
+ 16777.3 * dial c2->gap
+ 16808.6 * dial gap->c3
+ 16902.3 * dial c3->gap
+ 16933.6 * dial gap->c4
+ 17027.3 * dial c4->gap
+ 17058.6 * dial gap->c5
+ 17075.4 * outLamp5 on->dim  indLamp5 on->dim
+ 19500.0 > dialRelease
+ 19600.0 > button6 target=1000
+ 19611.2 * pb6 nc->mid
+ 19613.7 * pb6 mid->no
+ 19619.8 * outLamp5 dim->on  indLamp5 dim->on
+ 19629.0 * relay5 no->mid
+ 19629.9 * relay5 mid->nc
+ 19632.8 * dial c5->gap
+ 19634.1 * outLamp4 off->dim  indLamp4 off->dim
+ 19641.2 * relay6 no->mid
+ 19642.1 * relay6 mid->nc
+ 19642.2 * outLamp6 on->dim  indLamp6 on->dim
+ 19646.0 * outLamp5 on->dim  indLamp5 on->dim
+ 19653.7 * dial gap->c4
+ 19660.1 * outLamp4 dim->off  indLamp4 dim->off
+ 19700.2 * outLamp6 dim->off  indLamp6 dim->off
+ 19702.8 * outLamp5 dim->off  indLamp5 dim->off
+ 19716.4 * dial c4->gap
+ 19737.4 * dial gap->c3
+ 19800.1 * dial c3->gap
+ 19821.0 * dial gap->c2
+ 19883.8 * dial c2->gap
+ 19904.7 * dial gap->c1
+ 19967.5 * dial c1->gap
+ 19988.4 * dial gap->c0
+ 27600.0 > button6 target=0
+ 27611.2 * pb6 no->mid
+ 27613.7 * pb6 mid->nc

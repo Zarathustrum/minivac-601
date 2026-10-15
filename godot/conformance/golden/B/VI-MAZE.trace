@@ -1,0 +1,326 @@
+#!mv601-trace 1
+# id=VI-MAZE contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=44
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=17 minTickGap=9 marginal=false
+     0.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > disconnect cord=44
+    42.2 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+    52.0 * indLamp6 off->dim
+    54.0 * relay6 nc->mid
+    55.3 * relay6 mid->no
+    69.0 * outLamp6 on->dim
+    89.1 > disconnect cord=44
+    89.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+    91.8 * indLamp6 dim->on
+   111.9 > disconnect cord=44
+   111.9 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   121.7 * indLamp5 off->dim
+   123.5 * relay5 nc->mid
+   124.6 * outLamp6 dim->off
+   124.8 * relay5 mid->no
+   150.1 > disconnect cord=44
+   150.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   161.6 * indLamp5 dim->on
+   181.7 > disconnect cord=44
+   181.7 > connect cord=44 a=hole:M+#1 b=touch:M2t r_uohm=0
+   191.5 * indLamp4 off->dim
+   193.2 * relay4 nc->mid
+   194.5 * relay4 mid->no
+   219.8 > disconnect cord=44
+   219.8 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   231.5 * indLamp4 dim->on
+   251.6 > disconnect cord=44
+   251.6 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   261.4 * indLamp3 off->dim
+   262.9 * relay3 nc->mid
+   264.2 * relay3 mid->no
+   289.5 > disconnect cord=44
+   289.5 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   301.5 * indLamp3 dim->on
+   321.6 > disconnect cord=44
+   321.6 > connect cord=44 a=hole:M+#1 b=touch:M6t r_uohm=0
+   331.4 * indLamp2 off->dim
+   332.8 * relay2 nc->mid
+   334.1 * relay2 mid->no
+   359.4 > disconnect cord=44
+   359.4 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   371.6 * indLamp2 dim->on
+   391.7 > disconnect cord=44
+   391.7 > connect cord=44 a=hole:M+#1 b=touch:M5t r_uohm=0
+   394.9 * outLamp1 off->dim
+   401.6 * indLamp1 off->dim
+   402.9 * relay1 nc->mid
+   404.2 * relay1 mid->no
+   413.9 * outLamp1 dim->on
+   434.0 > disconnect cord=44
+   434.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   442.1 * indLamp1 dim->on
+   462.2 ? outLamp1=on  "Light 1 indicates success; light 6 indicates error and re-set."
+   462.2 > power off
+   462.2 * power on->off
+   465.7 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+   466.6 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+   467.5 * indLamp1 on->dim
+   472.5 * indLamp2 on->dim
+   473.0 * indLamp3 on->dim
+   473.1 * indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+   479.4 * outLamp1 on->dim
+   523.1 * indLamp1 dim->off
+   528.1 * indLamp2 dim->off
+   528.7 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+   529.5 > power on
+     0.0 * power off->on  outLamp1 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > disconnect cord=44
+    42.2 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+    52.0 * indLamp6 off->dim
+    54.0 * relay6 nc->mid
+    55.3 * relay6 mid->no
+    69.0 * outLamp6 on->dim
+    89.1 > disconnect cord=44
+    89.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+    91.8 * indLamp6 dim->on
+   111.9 > disconnect cord=44
+   111.9 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   121.7 * indLamp5 off->dim
+   123.5 * relay5 nc->mid
+   124.6 * outLamp6 dim->off
+   124.8 * relay5 mid->no
+   150.1 > disconnect cord=44
+   150.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   161.6 * indLamp5 dim->on
+   181.7 > disconnect cord=44
+   181.7 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   192.5 * relay6 no->mid
+   193.4 * relay6 mid->nc
+   196.2 * outLamp6 off->dim
+   215.1 * outLamp6 dim->on
+   235.2 > disconnect cord=44
+   235.2 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   241.0 * relay5 no->mid
+   241.9 * relay5 mid->nc
+   244.4 * indLamp5 on->dim
+   257.2 * indLamp6 on->dim
+   277.3 ? outLamp6=on  "Light 1 indicates success; light 6 indicates error and re-set."
+   277.3 > power off
+   277.3 * power on->off
+   295.8 * outLamp6 on->dim
+   300.0 * indLamp5 dim->off
+   312.9 * indLamp6 dim->off
+   351.4 * outLamp6 dim->off
+   363.0 > connect cord=45 a=hole:M3t#1 b=hole:6R#1 r_uohm=0
+   363.0 > connect cord=46 a=hole:M4t#1 b=hole:6S#1 r_uohm=0
+   363.0 > connect cord=47 a=hole:M7t#1 b=hole:6T#1 r_uohm=0
+   363.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > disconnect cord=44
+    42.2 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+    52.0 * indLamp6 off->dim
+    54.0 * relay6 nc->mid
+    55.3 * relay6 mid->no
+    69.0 * outLamp6 on->dim
+    89.1 > disconnect cord=44
+    89.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+    91.8 * indLamp6 dim->on
+   111.9 > disconnect cord=44
+   111.9 > connect cord=44 a=hole:M+#1 b=touch:M1t r_uohm=0
+   121.7 * indLamp5 off->dim
+   123.5 * relay5 nc->mid
+   124.6 * outLamp6 dim->off
+   124.8 * relay5 mid->no
+   150.1 > disconnect cord=44
+   150.1 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   161.6 * indLamp5 dim->on
+   181.7 > disconnect cord=44
+   181.7 > connect cord=44 a=hole:M+#1 b=touch:M2t r_uohm=0
+   191.5 * indLamp4 off->dim
+   193.2 * relay4 nc->mid
+   194.5 * relay4 mid->no
+   219.8 > disconnect cord=44
+   219.8 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   231.5 * indLamp4 dim->on
+   251.6 > disconnect cord=44
+   251.6 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   261.4 * indLamp3 off->dim
+   262.9 * relay3 nc->mid
+   264.2 * relay3 mid->no
+   289.5 > disconnect cord=44
+   289.5 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   301.5 * indLamp3 dim->on
+   321.6 > disconnect cord=44
+   321.6 > connect cord=44 a=hole:M+#1 b=touch:M6t r_uohm=0
+   331.4 * indLamp2 off->dim
+   332.8 * relay2 nc->mid
+   334.1 * relay2 mid->no
+   359.4 > disconnect cord=44
+   359.4 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   371.6 * indLamp2 dim->on
+   391.7 > disconnect cord=44
+   391.7 > connect cord=44 a=hole:M+#1 b=touch:M5t r_uohm=0
+   394.9 * outLamp1 off->dim
+   401.6 * indLamp1 off->dim
+   402.9 * relay1 nc->mid
+   404.2 * relay1 mid->no
+   413.9 * outLamp1 dim->on
+   434.0 > disconnect cord=44
+   434.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   442.1 * indLamp1 dim->on
+   462.2 ? outLamp1=on  "[p.53:] Light 1 indicates success; light 6 indicates error and re-set. [p.54:] This will not affect the maze, but conceals the fact that squares 3, 4 and 7 are not part of the path. [ER-42:] Note — to re-set the game, turn power off, then on again."
+   462.2 > power off
+   462.2 * power on->off
+   465.7 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+   466.6 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+   467.5 * indLamp1 on->dim
+   472.5 * indLamp2 on->dim
+   473.0 * indLamp3 on->dim
+   473.1 * indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+   479.4 * outLamp1 on->dim
+   523.1 * indLamp1 dim->off
+   528.1 * indLamp2 dim->off
+   528.7 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+   529.5 > disconnect cord=38
+   529.5 > disconnect cord=39
+   529.5 > disconnect cord=40
+   529.5 > disconnect cord=41
+   529.5 > disconnect cord=42
+   529.5 > disconnect cord=43
+   529.5 > disconnect cord=45
+   529.5 > disconnect cord=46
+   529.5 > disconnect cord=47
+   529.5 > connect cord=48 a=hole:M8t#1 b=hole:3com#2 r_uohm=0
+   529.5 > connect cord=49 a=hole:M9t#1 b=hole:2com#2 r_uohm=0
+   529.5 > connect cord=50 a=hole:M4t#1 b=hole:1com#2 r_uohm=0
+   529.5 > power on
+     0.0 * power off->on  outLamp1 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > relayGrab4 target=1000
+    42.2 > relayGrab5 target=1000
+    42.2 > relayGrab6 target=1000
+    47.5 * relay4 nc->mid  relay5 nc->mid  relay6 nc->mid
+    48.8 * relay4 mid->no  relay5 mid->no  relay6 mid->no
+    58.7 * indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+    61.0 * outLamp6 on->dim
+    98.7 * indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+   116.6 * outLamp6 dim->off
+   131.1 > relayRelease4
+   131.1 > relayRelease5
+   131.1 > relayRelease6
+   151.1 > disconnect cord=44
+   151.1 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+   160.9 * indLamp3 off->dim
+   162.4 * relay3 nc->mid
+   163.7 * relay3 mid->no
+   189.0 > disconnect cord=44
+   189.0 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   201.0 * indLamp3 dim->on
+   221.1 > disconnect cord=44
+   221.1 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   230.9 * indLamp2 off->dim
+   232.3 * relay2 nc->mid
+   233.6 * relay2 mid->no
+   258.9 > disconnect cord=44
+   258.9 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   271.1 * indLamp2 dim->on
+   291.2 > disconnect cord=44
+   291.2 > connect cord=44 a=hole:M+#1 b=touch:M4t r_uohm=0
+   294.4 * outLamp1 off->dim
+   301.1 * indLamp1 off->dim
+   302.4 * relay1 nc->mid
+   303.7 * relay1 mid->no
+   313.4 * outLamp1 dim->on
+   333.5 > disconnect cord=44
+   333.5 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   341.6 * indLamp1 dim->on
+   361.7 ? outLamp1=on  "[p.53:] Light 1 indicates success; light 6 indicates error and re-set. [p.54:] If you wish to program a path which has less than six steps, connect this path to the lower common terminals and manually push the remaining relays to the left before beginning play. / Before beginning the play, manually push relays 4, 5 and 6 to the left."
+   361.7 > power off
+   361.7 * power on->off
+   365.2 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+   366.1 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+   367.0 * indLamp1 on->dim
+   372.0 * indLamp2 on->dim
+   372.5 * indLamp3 on->dim
+   372.6 * indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+   378.9 * outLamp1 on->dim
+   422.6 * indLamp1 dim->off
+   427.6 * indLamp2 dim->off
+   428.2 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+   429.0 > power on
+     0.0 * power off->on  outLamp1 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > relayGrab4 target=1000
+    42.2 > relayGrab5 target=1000
+    42.2 > relayGrab6 target=1000
+    47.5 * relay4 nc->mid  relay5 nc->mid  relay6 nc->mid
+    48.8 * relay4 mid->no  relay5 mid->no  relay6 mid->no
+    58.7 * indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+    61.0 * outLamp6 on->dim
+    98.7 * indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+   116.6 * outLamp6 dim->off
+   131.1 > relayRelease4
+   131.1 > relayRelease5
+   131.1 > relayRelease6
+   151.1 > disconnect cord=44
+   151.1 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   162.1 * relay6 no->mid
+   163.0 * relay6 mid->nc
+   165.4 * outLamp6 off->dim
+   167.7 * relay5 no->mid
+   168.6 * relay5 mid->nc
+   171.4 * relay4 no->mid
+   172.3 * relay4 mid->nc
+   175.5 * indLamp4 on->dim  indLamp5 on->dim
+   184.3 * outLamp6 dim->on
+   204.4 > disconnect cord=44
+   204.4 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   223.1 * indLamp6 on->dim
+   231.1 * indLamp4 dim->off  indLamp5 dim->off
+   251.2 ? outLamp6=on  "Light 1 indicates success; light 6 indicates error and re-set."
+   251.2 > relayGrab4 target=1000
+   251.2 > relayGrab5 target=1000
+   251.2 > relayGrab6 target=1000
+   256.5 * relay4 nc->mid  relay5 nc->mid  relay6 nc->mid
+   257.8 * relay4 mid->no  relay5 mid->no  relay6 mid->no
+   264.0 * indLamp4 off->dim  indLamp5 off->dim
+   275.7 * outLamp6 on->dim
+   296.4 * indLamp6 dim->on
+   304.7 * indLamp4 dim->on  indLamp5 dim->on
+   331.3 * outLamp6 dim->off
+   345.8 > relayRelease4
+   345.8 > relayRelease5
+   345.8 > relayRelease6
+   365.8 > disconnect cord=44
+   365.8 > connect cord=44 a=hole:M+#1 b=touch:M8t r_uohm=0
+   375.6 * indLamp3 off->dim
+   377.1 * relay3 nc->mid
+   378.4 * relay3 mid->no
+   403.7 > disconnect cord=44
+   403.7 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   415.7 * indLamp3 dim->on
+   435.8 > disconnect cord=44
+   435.8 > connect cord=44 a=hole:M+#1 b=touch:M9t r_uohm=0
+   445.6 * indLamp2 off->dim
+   447.0 * relay2 nc->mid
+   448.3 * relay2 mid->no
+   473.6 > disconnect cord=44
+   473.6 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   485.8 * indLamp2 dim->on
+   505.9 > disconnect cord=44
+   505.9 > connect cord=44 a=hole:M+#1 b=touch:M4t r_uohm=0
+   509.1 * outLamp1 off->dim
+   515.8 * indLamp1 off->dim
+   517.1 * relay1 nc->mid
+   518.4 * relay1 mid->no
+   528.1 * outLamp1 dim->on
+   548.2 > disconnect cord=44
+   548.2 > connect cord=44 a=hole:M+#1 b=free r_uohm=0
+   556.3 * indLamp1 dim->on
+   576.4 ? outLamp1=on  "[p.53:] Light 1 indicates success; light 6 indicates error and re-set. [p.54:] Whenever an error is made, relays 4, 5 and 6 must be pushed to the left before play is resumed."

@@ -1,0 +1,230 @@
+#!mv601-trace 1
+# id=IV-EXP2-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=44
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=24 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "It is possible to perform additions very simply on a Binary Counter. We have already seen that it is possible to add 1 to the number in the counter merely by pushing and releasing pushbutton 6."
+    20.1 > button6 target=1000
+    31.3 * pb6 nc->mid
+    33.8 * pb6 mid->no
+    37.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+    43.9 * indLamp5 off->dim
+    46.1 * relay5 nc->mid
+    47.4 * relay5 mid->no
+    56.2 * outLamp3 dim->on  indLamp6 dim->on
+    57.1 * outLamp6 dim->on
+    85.5 * indLamp5 dim->on
+   100.1 > button6 target=0
+   111.3 * pb6 no->mid
+   113.8 * pb6 mid->nc
+   124.8 * relay6 nc->mid
+   126.1 * relay6 mid->no
+   251.4 > button6 target=1000
+   262.6 * pb6 nc->mid
+   265.1 * pb6 mid->no
+   276.3 * relay5 no->mid
+   277.2 * relay5 mid->nc
+   280.5 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+   287.4 * indLamp3 off->dim
+   289.2 * relay3 nc->mid
+   290.5 * relay3 mid->no
+   299.8 * outLamp2 dim->on  indLamp4 dim->on
+   300.6 * outLamp5 dim->on
+   329.3 * indLamp3 dim->on
+   331.4 > button6 target=0
+   342.6 * pb6 no->mid
+   345.1 * pb6 mid->nc
+   353.4 * relay6 no->mid
+   353.5 * relay4 nc->mid
+   354.3 * relay6 mid->nc
+   354.8 * relay4 mid->no
+   354.9 * outLamp3 on->dim  indLamp6 on->dim
+   366.6 * indLamp5 on->dim
+   367.1 * outLamp6 on->dim
+   410.7 * outLamp3 dim->off  indLamp6 dim->off
+   422.3 * indLamp5 dim->off
+   422.8 * outLamp6 dim->off
+   487.2 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp5=off indLamp6=off  "For example, to add 2 and 3: push and release pushbutton 6 twice; the counter will display the binary number 2."
+   487.2 > button6 target=1000
+   498.4 * pb6 nc->mid
+   500.9 * pb6 mid->no
+   503.8 * outLamp6 off->dim
+   503.9 * outLamp3 off->dim  indLamp6 off->dim
+   510.1 * indLamp5 off->dim
+   513.3 * relay5 nc->mid
+   514.6 * relay5 mid->no
+   523.1 * outLamp3 dim->on  indLamp6 dim->on
+   523.9 * outLamp6 dim->on
+   552.2 * indLamp5 dim->on
+   567.2 > button6 target=0
+   578.4 * pb6 no->mid
+   580.9 * pb6 mid->nc
+   592.1 * relay6 nc->mid
+   593.4 * relay6 mid->no
+   718.7 > button6 target=1000
+   729.9 * pb6 nc->mid
+   732.4 * pb6 mid->no
+   743.5 * relay5 no->mid
+   744.4 * relay5 mid->nc
+   756.2 * relay3 no->mid
+   757.1 * relay3 mid->nc
+   760.4 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+   767.3 * indLamp1 off->dim
+   768.8 * relay1 nc->mid
+   770.1 * relay1 mid->no
+   779.8 * outLamp1 dim->on  indLamp2 dim->on
+   780.7 * outLamp4 dim->on
+   798.7 > button6 target=0
+   809.7 * indLamp1 dim->on
+   809.9 * pb6 no->mid
+   812.4 * pb6 mid->nc
+   819.8 * relay6 no->mid
+   820.1 * relay2 nc->mid
+   820.3 * relay4 no->mid
+   820.7 * relay6 mid->nc
+   821.2 * relay4 mid->nc  outLamp3 on->dim  indLamp6 on->dim
+   821.4 * relay2 mid->no  outLamp2 on->dim  indLamp4 on->dim
+   832.8 * indLamp3 on->dim
+   832.9 * indLamp5 on->dim
+   833.5 * outLamp6 on->dim
+   833.7 * outLamp5 on->dim
+   877.0 * outLamp3 dim->off  indLamp6 dim->off
+   877.2 * outLamp2 dim->off  indLamp4 dim->off
+   888.5 * indLamp3 dim->off  indLamp5 dim->off
+   889.1 * outLamp6 dim->off
+   889.3 * outLamp5 dim->off
+   953.8 > button6 target=1000
+   965.0 * pb6 nc->mid
+   967.5 * pb6 mid->no
+   970.4 * outLamp6 off->dim
+   970.5 * outLamp3 off->dim  indLamp6 off->dim
+   976.7 * indLamp5 off->dim
+   979.9 * relay5 nc->mid
+   981.2 * relay5 mid->no
+   989.7 * outLamp3 dim->on  indLamp6 dim->on
+   990.5 * outLamp6 dim->on
+  1018.8 * indLamp5 dim->on
+  1033.8 > button6 target=0
+  1045.0 * pb6 no->mid
+  1047.5 * pb6 mid->nc
+  1058.7 * relay6 nc->mid
+  1060.0 * relay6 mid->no
+  1185.3 ? relay1=no relay2=no relay3=nc relay4=nc relay5=no relay6=no outLamp2=off outLamp4=on outLamp5=off outLamp6=on indLamp3=off indLamp4=off  "Now push the pushbutton 3 more times and the counter will display the answer—the binary number 5. This is exactly what would have happened had you just pushed the pushbutton 5 times."
+  1185.3 > button6 target=1000
+  1196.5 * pb6 nc->mid
+  1199.0 * pb6 mid->no
+  1210.1 * relay5 no->mid
+  1211.0 * relay5 mid->nc
+  1214.3 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  1221.2 * indLamp3 off->dim
+  1223.1 * relay3 nc->mid
+  1224.4 * relay3 mid->no
+  1233.7 * outLamp2 dim->on  indLamp4 dim->on
+  1234.5 * outLamp5 dim->on
+  1263.5 * indLamp3 dim->on
+  1265.3 > button6 target=0
+  1276.5 * pb6 no->mid
+  1279.0 * pb6 mid->nc
+  1287.2 * relay6 no->mid
+  1287.5 * relay4 nc->mid
+  1288.1 * relay6 mid->nc
+  1288.5 * outLamp3 on->dim  indLamp6 on->dim
+  1288.8 * relay4 mid->no
+  1300.4 * indLamp5 on->dim
+  1300.9 * outLamp6 on->dim
+  1344.4 * outLamp3 dim->off  indLamp6 dim->off
+  1356.0 * indLamp5 dim->off
+  1356.5 * outLamp6 dim->off
+  1421.0 > button6 target=1000
+  1432.2 * pb6 nc->mid
+  1434.7 * pb6 mid->no
+  1437.6 * outLamp6 off->dim
+  1437.7 * outLamp3 off->dim  indLamp6 off->dim
+  1443.9 * indLamp5 off->dim
+  1447.3 * relay5 nc->mid
+  1448.6 * relay5 mid->no
+  1457.1 * outLamp3 dim->on  indLamp6 dim->on
+  1457.8 * outLamp6 dim->on
+  1486.3 * indLamp5 dim->on
+  1501.0 > button6 target=0
+  1512.2 * pb6 no->mid
+  1514.7 * pb6 mid->nc
+  1526.1 * relay6 nc->mid
+  1527.4 * relay6 mid->no
+  1652.7 > button6 target=1000
+  1663.9 * pb6 nc->mid
+  1666.4 * pb6 mid->no
+  1677.5 * relay5 no->mid
+  1678.4 * relay5 mid->nc
+  1690.2 * relay3 no->mid
+  1691.1 * relay3 mid->nc
+  1703.6 * relay1 no->mid
+  1704.5 * relay1 mid->nc
+  1732.7 > button6 target=0
+  1743.9 * pb6 no->mid
+  1746.4 * pb6 mid->nc
+  1752.6 * relay6 no->mid
+  1752.9 * relay4 no->mid
+  1753.3 * relay2 no->mid
+  1753.5 * relay6 mid->nc
+  1753.8 * relay4 mid->nc
+  1754.2 * relay2 mid->nc  outLamp2 on->dim  outLamp3 on->dim  indLamp4 on->dim  indLamp6 on->dim
+  1754.3 * outLamp1 on->dim  indLamp2 on->dim
+  1767.3 * indLamp1 on->dim
+  1767.7 * indLamp3 on->dim
+  1767.8 * indLamp5 on->dim
+  1768.4 * outLamp6 on->dim
+  1768.5 * outLamp5 on->dim
+  1768.6 * outLamp4 on->dim
+  1809.9 * outLamp3 dim->off  indLamp6 dim->off
+  1810.0 * outLamp1 dim->off  outLamp2 dim->off  indLamp2 dim->off  indLamp4 dim->off
+  1823.0 * indLamp1 dim->off
+  1823.3 * indLamp3 dim->off
+  1823.5 * indLamp5 dim->off
+  1824.0 * outLamp6 dim->off
+  1824.1 * outLamp5 dim->off
+  1824.2 * outLamp4 dim->off
+  1888.7 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Since we have only three bits in our counter, we would expect to see only the low order three bits of the number displayed."
+  1888.7 > button6 target=1000
+  1899.9 * pb6 nc->mid
+  1902.4 * pb6 mid->no
+  1905.3 * outLamp6 off->dim
+  1905.4 * outLamp3 off->dim  indLamp6 off->dim
+  1911.6 * indLamp5 off->dim
+  1914.7 * relay5 nc->mid
+  1916.0 * relay5 mid->no
+  1924.5 * outLamp3 dim->on  indLamp6 dim->on
+  1925.3 * outLamp6 dim->on
+  1953.3 * indLamp5 dim->on
+  1968.7 > button6 target=0
+  1979.9 * pb6 no->mid
+  1982.4 * pb6 mid->nc
+  1993.4 * relay6 nc->mid
+  1994.7 * relay6 mid->no
+  2120.0 > button6 target=1000
+  2131.2 * pb6 nc->mid
+  2133.7 * pb6 mid->no
+  2144.9 * relay5 no->mid
+  2145.8 * relay5 mid->nc
+  2149.1 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  2156.0 * indLamp3 off->dim
+  2157.8 * relay3 nc->mid
+  2159.1 * relay3 mid->no
+  2168.4 * outLamp2 dim->on  indLamp4 dim->on
+  2169.2 * outLamp5 dim->on
+  2197.9 * indLamp3 dim->on
+  2200.0 > button6 target=0
+  2211.2 * pb6 no->mid
+  2213.7 * pb6 mid->nc
+  2222.0 * relay6 no->mid
+  2222.1 * relay4 nc->mid
+  2222.9 * relay6 mid->nc
+  2223.4 * relay4 mid->no
+  2223.5 * outLamp3 on->dim  indLamp6 on->dim
+  2235.2 * indLamp5 on->dim
+  2235.7 * outLamp6 on->dim
+  2279.3 * outLamp3 dim->off  indLamp6 dim->off
+  2290.9 * indLamp5 dim->off
+  2291.4 * outLamp6 dim->off
+  2355.8 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp5=off indLamp6=off  "The bit pattern for the binary equivalent of decimal 10 is 1010. The counter will display 010."

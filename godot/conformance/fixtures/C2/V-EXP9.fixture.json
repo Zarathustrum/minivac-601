@@ -1,0 +1,261 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP9",
+  "source": "BK5-6 printed pp.11-12 = book5-6.pdf PDF pp.17-18; ERRATA sheet p.3 (ER-31, Book V page 11, Experiment 9 program corrections)",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1E",
+    "1B/1-",
+    "1C/2C",
+    "1E/D1",
+    "1F/1G",
+    "1G/1X",
+    "1H/1+",
+    "1H/1L",
+    "1J/2H",
+    "1K/5E",
+    "1Y/2Y",
+    "2A/2E",
+    "2B/2-",
+    "2C/3C",
+    "2E/D7",
+    "2F/2G",
+    "2G/2X",
+    "2J/3H",
+    "2X/6H",
+    "2Y/3Y",
+    "3A/3E",
+    "3B/3-",
+    "3C/4C",
+    "3E/D13",
+    "3F/3G",
+    "3G/3X",
+    "3J/4E",
+    "3Y/4J",
+    "4C/5F",
+    "4F/4+",
+    "4G/4H",
+    "4H/4+",
+    "4L/D19",
+    "4N/D18",
+    "5C/5G",
+    "5E/6G",
+    "5F/6C",
+    "5G/5N",
+    "5J/5K",
+    "5J/D17",
+    "5L/5-",
+    "5N/D18",
+    "6C/6-",
+    "6F/D12",
+    "D0/D1",
+    "D6/D7",
+    "D12/D13",
+    "D16/M-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-31",
+      "from": "4G/4H",
+      "to": "4G/5H"
+    },
+    {
+      "id": "ER-31",
+      "from": "D16/M-",
+      "to": "D16/M+"
+    }
+  ],
+  "wires": [
+    "1A/1E",
+    "1B/1-",
+    "1C/2C",
+    "1E/D1",
+    "1F/1G",
+    "1G/1X",
+    "1H/1+",
+    "1H/1L",
+    "1J/2H",
+    "1K/5E",
+    "1Y/2Y",
+    "2A/2E",
+    "2B/2-",
+    "2C/3C",
+    "2E/D7",
+    "2F/2G",
+    "2G/2X",
+    "2J/3H",
+    "2X/6H",
+    "2Y/3Y",
+    "3A/3E",
+    "3B/3-",
+    "3C/4C",
+    "3E/D13",
+    "3F/3G",
+    "3G/3X",
+    "3J/4E",
+    "3Y/4J",
+    "4C/5F",
+    "4F/4+",
+    "4G/5H",
+    "4H/4+",
+    "4L/D19",
+    "4N/D18",
+    "5C/5G",
+    "5E/6G",
+    "5F/6C",
+    "5G/5N",
+    "5J/5K",
+    "5J/D17",
+    "5L/5-",
+    "5N/D18",
+    "6C/6-",
+    "6F/D12",
+    "D0/D1",
+    "D6/D7",
+    "D12/D13",
+    "D16/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.12 = book5-6.pdf PDF p.18",
+      "quote": "Set the \"elevator\" at the first floor by setting the pointer knob at D0. Turn power on. Output light 1 will come on indicating the location of the \"elevator\"."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.12 = book5-6.pdf PDF p.18; BK5-6 printed p.11 = book5-6.pdf PDF p.17 step 8 and floor table",
+      "quote": "Output light 1 will come on indicating the location of the \"elevator\". To call the \"elevator\" to the third floor, push pushbutton 3. / Whenever a pushbutton is pushed, the system will go through the following steps: / 8. When it reaches the stored destination, the \"elevator\" will stop and clear the destination from its memory. / call button | indicator light | elevator location points / Floor 3 | pushbutton 3 | output light 3 | D12-D13"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.12 = book5-6.pdf PDF p.18; BK5-6 printed p.11 = book5-6.pdf PDF p.17 step 8 and floor table",
+      "quote": "Output light 1 will come on indicating the location of the \"elevator\". / To direct the \"elevator\" to the second floor, push pushbutton 2. / Whenever a pushbutton is pushed, the system will go through the following steps: / 8. When it reaches the stored destination, the \"elevator\" will stop and clear the destination from its memory. / call button | indicator light | elevator location points / Floor 2 | pushbutton 2 | output light 2 | D6-D7"
+    }
+  ],
+  "digest": {
+    "eventCount": 122,
+    "moverTransitions": [
+      0,
+      4,
+      4,
+      8,
+      4,
+      4,
+      0,
+      4,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      34
+    ]
+  },
+  "note": "Base ER-31 corrections only; the errata's optional reliability variant (remove 5F/6C, 6C/6-; add 5F/6E, 6E/6-, 4E/6C) is not applied. Each trip asserts only the indicator light the floor table binds to the called floor, checked after a 6 s rest window (generous at 25 rpm). No until on the floor light: output light N is in series with relay N's coil (NA/NE, NB/N-), so output light 3 (and 2) comes on when the call is stored, before the car moves. An until would match before arrival, and the at-rest expect shows the called floor's light, not arrival by itself; arrival (rest on c12, then c7, at MV601-REF-A) is pinned by the digest and golden. Not asserted (not printed as observables): the dial position at rest (the page prints each pad as a pair, D12-D13 / D6-D7, and an expect cannot say 'either'), the other floor lights going off, and the step 6 pushbutton interlock (the printed procedure never presses during travel). The ER-31 between-contacts hang is a separate regression case (rotary.md section 7) needing a non-default coast; not exercised here. Trips the knife-edge trigger (minDecisionUa 4, a ramp-tick sampling artifact per the 2026-10-13 triage); blessed under BLESS-ROBUSTNESS, all six perturbations held."
+}

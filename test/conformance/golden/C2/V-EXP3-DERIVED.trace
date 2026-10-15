@@ -1,0 +1,196 @@
+#!mv601-trace 1
+# id=V-EXP3-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=17
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    31.2 * dial c0->gap
+    52.0 * dial gap->c1
+   114.5 * dial c1->gap
+   135.4 * dial gap->c2
+   135.5 ? relay6=nc dial=c2  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   197.9 * dial c2->gap
+   218.7 * dial gap->c3
+   218.8 ? relay6=nc dial=c3  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   222.0 * indLamp6 off->dim
+   230.3 * relay6 nc->mid
+   231.6 * relay6 mid->no
+   243.1 * dial c3->gap
+   264.1 * dial gap->c2
+   264.2 ? relay6=no dial=c2  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   273.8 * indLamp6 dim->on
+   326.7 * dial c2->gap
+   347.6 * dial gap->c1
+   358.5 * relay6 no->mid
+   359.4 * relay6 mid->nc
+   370.3 * dial c1->gap
+   372.7 * indLamp6 on->dim
+   391.2 * dial gap->c2
+   391.3 ? relay6=nc dial=c2  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   391.3 > switch4 target=1000
+   418.2 * sw4 nc->mid
+   424.3 * sw4 mid->no
+   429.9 * indLamp6 dim->off
+   453.7 * dial c2->gap
+   474.5 * dial gap->c3
+   537.0 * dial c3->gap
+   537.0 ! dial chatter 9 transitions in 333.2ms — suppressed 999.6ms
+   557.8 * dial gap->c4
+   557.9 ? relay6=nc dial=c4  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   620.3 * dial c4->gap
+   641.2 * dial gap->c5
+   641.3 ? relay6=nc dial=c5  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   644.5 * indLamp6 off->dim
+   652.8 * relay6 nc->mid
+   654.1 * relay6 mid->no
+   665.7 * dial c5->gap
+   686.6 * dial gap->c4
+   686.7 ? relay6=no dial=c4  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+   686.7 > switch5 target=1000
+   696.4 * indLamp6 dim->on
+   713.6 * sw5 nc->mid
+   719.7 * sw5 mid->no
+   749.2 * dial c4->gap
+   770.1 * dial gap->c3
+   832.8 * dial c3->gap
+   853.7 * dial gap->c2
+   916.3 * dial c2->gap
+   937.2 * dial gap->c1
+   948.0 * relay6 no->mid
+   948.9 * relay6 mid->nc
+   959.7 * dial c1->gap
+   963.0 * indLamp6 on->dim
+   980.6 * dial gap->c2
+  1020.0 * indLamp6 dim->off
+  1043.1 * dial c2->gap
+  1063.9 * dial gap->c3
+  1126.4 * dial c3->gap
+  1147.2 * dial gap->c4
+  1209.7 * dial c4->gap
+  1230.6 * dial gap->c5
+  1293.1 * dial c5->gap
+  1313.9 * dial gap->c6
+  1376.4 * dial c6->gap
+  1397.2 * dial gap->c7
+  1459.7 * dial c7->gap
+  1480.6 * dial gap->c8
+  1480.7 ? relay6=nc dial=c8  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  1543.1 * dial c8->gap
+  1563.9 * dial gap->c9
+  1564.0 ? relay6=nc dial=c9  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  1567.2 * indLamp6 off->dim
+  1575.5 * relay6 nc->mid
+  1576.8 * relay6 mid->no
+  1588.3 * dial c9->gap
+  1609.2 * dial gap->c8
+  1609.3 ? relay6=no dial=c8  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  1619.0 * indLamp6 dim->on
+  1671.9 * dial c8->gap
+  1692.8 * dial gap->c7
+  1755.4 * dial c7->gap
+  1776.3 * dial gap->c6
+  1776.4 ? relay6=no dial=c6 indLamp6=on  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  1839.0 * dial c6->gap
+  1859.9 * dial gap->c5
+  1922.5 * dial c5->gap
+  1943.4 * dial gap->c4
+  2006.1 * dial c4->gap
+  2026.9 * dial gap->c3
+  2089.6 * dial c3->gap
+  2110.5 * dial gap->c2
+  2173.1 * dial c2->gap
+  2194.0 * dial gap->c1
+  2204.8 * relay6 no->mid
+  2205.7 * relay6 mid->nc
+  2216.5 * dial c1->gap
+  2219.8 * indLamp6 on->dim
+  2237.4 * dial gap->c2
+  2276.8 * indLamp6 dim->off
+  2299.9 * dial c2->gap
+  2320.7 * dial gap->c3
+  2383.2 * dial c3->gap
+  2404.0 * dial gap->c4
+  2466.5 * dial c4->gap
+  2487.4 * dial gap->c5
+  2549.9 * dial c5->gap
+  2570.7 * dial gap->c6
+  2633.2 * dial c6->gap
+  2654.0 * dial gap->c7
+  2716.5 * dial c7->gap
+  2737.4 * dial gap->c8
+  2737.5 ? relay6=nc dial=c8 indLamp6=off  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  2737.5 > switch4 target=0
+  2764.4 * sw4 no->mid
+  2770.5 * sw4 mid->nc
+  2799.9 * dial c8->gap
+  2820.7 * dial gap->c9
+  2883.2 * dial c9->gap
+  2904.0 * dial gap->c10
+  2966.5 * dial c10->gap
+  2987.4 * dial gap->c11
+  3049.9 * dial c11->gap
+  3070.7 * dial gap->c12
+  3070.8 ? relay6=nc dial=c12  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  3133.2 * dial c12->gap
+  3154.0 * dial gap->c13
+  3216.5 * dial c13->gap
+  3237.4 * dial gap->c14
+  3299.9 * dial c14->gap
+  3320.7 * dial gap->c15
+  3383.2 * dial c15->gap
+  3404.0 * dial gap->c0
+  3466.5 * dial c0->gap
+  3487.4 * dial gap->c1
+  3549.9 * dial c1->gap
+  3570.7 * dial gap->c2
+  3633.2 * dial c2->gap
+  3654.0 * dial gap->c3
+  3716.5 * dial c3->gap
+  3737.4 * dial gap->c4
+  3799.9 * dial c4->gap
+  3820.7 * dial gap->c5
+  3883.2 * dial c5->gap
+  3904.0 * dial gap->c6
+  3904.1 ? relay6=nc dial=c6  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  3966.5 * dial c6->gap
+  3987.4 * dial gap->c7
+  3987.5 ? relay6=nc dial=c7  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  3990.7 * indLamp6 off->dim
+  3999.0 * relay6 nc->mid
+  4000.3 * relay6 mid->no
+  4011.9 * dial c7->gap
+  4032.8 * dial gap->c6
+  4032.9 ? relay6=no dial=c6  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  4032.9 > switch5 target=0
+  4042.6 * indLamp6 dim->on
+  4059.8 * sw5 no->mid
+  4065.9 * sw5 mid->nc
+  4095.5 * dial c6->gap
+  4116.3 * dial gap->c5
+  4179.0 * dial c5->gap
+  4199.9 * dial gap->c4
+  4262.5 * dial c4->gap
+  4283.4 * dial gap->c3
+  4294.3 * indLamp6 on->dim
+  4346.2 * dial c3->gap
+  4367.1 * dial gap->c2
+  4384.4 * indLamp6 dim->on
+  4429.8 * dial c2->gap
+  4450.6 * dial gap->c1
+  4461.5 * relay6 no->mid
+  4462.4 * relay6 mid->nc
+  4473.3 * dial c1->gap
+  4475.5 * indLamp6 on->dim
+  4494.1 * dial gap->c2
+  4494.2 ? relay6=nc dial=c2  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  4532.7 * indLamp6 dim->off
+  4556.6 * dial c2->gap
+  4577.5 * dial gap->c3
+  4577.6 ? relay6=nc dial=c3  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  4579.8 * indLamp6 off->dim
+  4589.1 * relay6 nc->mid
+  4590.4 * relay6 mid->no
+  4602.0 * dial c3->gap
+  4622.9 * dial gap->c2
+  4623.0 ? relay6=no dial=c2  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."
+  4623.0 ? power=on breaker=ok sw4=nc sw5=nc  "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal."

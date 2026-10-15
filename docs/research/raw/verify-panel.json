@@ -1,0 +1,343 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of find-panel.json (MINIVAC 601 front panel: layout, legends, geometry, materials)",
+  "agent_task": "verify-panel",
+  "verifies": "docs/research/raw/find-panel.json",
+  "generated_utc": "2026-08-30",
+  "scope_note": "MINIVAC 601 only. The SDC Capacitor/Resistor Manual is a joint 601/6010 document and is flagged as such wherever cited. ORACLE-ONLY RULE observed: no emulator source was opened, fetched, read or quoted.",
+
+  "method": [
+    "Re-derived every load-bearing claim from primary sources independently of find-panel.json.",
+    "Deliberately did NOT reuse the finder's photograph (image_3.jpg, 1536x1152) as the sole artifact. The project's own photos/ directory contains two MUCH higher-resolution MINIVAC 601 photographs (4208x2457 and 4288x2848) that the finder never opened. All panel-geometry and lettering checks below were re-done on those.",
+    "Read three primary documents the finder never opened, all of which were already on disk before find-panel.json was written (file mtimes 07:19-07:27 vs find-panel.json 07:36): the SDC Maintenance Manual, the SDC errata sheet, and the SDC Capacitor/Resistor Manual.",
+    "Spot-checked the finder's transcribed program lines with exact and fuzzy grep across all OCR text to catch hallucinated citations.",
+    "Image budget: 12 image reads (9 photograph crops, 3 manual page images / page renders)."
+  ],
+
+  "sources_read_by_verifier": [
+    { "id": "B1", "kind": "primary", "what": "Book I, 'Getting acquainted with Minivac 601', SDC, first printing Aug 1961", "path": "docs/research/raw/pdf/book1.pdf", "note": "PDF page = printed page + 2. Read printed pp.3,4,5,6,8,9,12,13,14,15,18,20,25 as text; page images p-20.png (printed 18), p-22.png (printed 20), p-27.png (printed 25)." },
+    { "id": "B234", "kind": "primary", "what": "Books II, III & IV", "path": "docs/research/raw/pdf/book2-3-4.pdf", "note": "OCR grepped for terminal designations." },
+    { "id": "B56", "kind": "primary", "what": "Books V & VI", "path": "docs/research/raw/pdf/book5-6.pdf", "note": "Tic-Tac-Toe program + 'To play' read in full from OCR (lines 2904-2945)." },
+    { "id": "MM", "kind": "primary, NOT USED BY THE FINDER", "what": "SDC 'Minivac 601 maintenance manual' (11 pp., masthead 'SCIENTIFIC DEVELOPMENT CORP., 372 Main Street, Watertown, Massachusetts')", "path": "docs/research/raw/pdf/maintenance-manual.pdf", "note": "Identical copy also at minivac601-maintenance-manual.pdf. Read in full." },
+    { "id": "ER", "kind": "primary, NOT USED BY THE FINDER", "what": "SDC 'Notes and Corrections to the Minivac Manual' errata sheet, addressed from 372 Main Street, Watertown", "path": "docs/research/raw/pdf/errata.pdf", "note": "Identical copy also at minivac601-errata.pdf. Read in full. Contains three panel facts that settle open questions in find-panel.json." },
+    { "id": "B7", "kind": "primary (JOINT 601/6010), NOT USED BY THE FINDER", "what": "SDC 'Minivac 601/6010 Capacitor/Resistor Manual', Copyright 1962", "path": "docs/research/raw/pdf/book7-capacitor-resistor.pdf", "note": "55 PDF pages. PDF p.26 program table read from a 200dpi render." },
+    { "id": "PH2", "kind": "primary artifact, NOT USED BY THE FINDER", "what": "Wikimedia Commons top-down photograph of a MINIVAC 601, 4208x2457 (~2.7x the linear resolution of image_3.jpg)", "path": "docs/research/raw/photos/commons-minivac601-main.jpg", "note": "Primary artifact for this verification. Panel legible to individual jack rings and to the FUSE cap engraving." },
+    { "id": "PH3", "kind": "primary artifact, NOT USED BY THE FINDER", "what": "Wikimedia Commons photograph of a MINIVAC 601 in a display case at the Centre for Computing History, 4288x2848", "path": "docs/research/raw/photos/commons-minivac601-DSCF1392.jpg", "note": "A DIFFERENT physical unit from PH2 and from image_3.jpg. Oblique, behind acrylic, so geometry is unreliable, but the POWER strip and the logo plate are readable." },
+    { "id": "PH", "kind": "primary artifact", "what": "image_3.jpg, 1536x1152, the finder's sole artifact", "path": "docs/research/raw/prebrief/images/image_3.jpg" },
+    { "id": "WP", "kind": "secondary", "what": "Wikipedia, 'Minivac 601'", "url": "https://en.wikipedia.org/wiki/Minivac_601", "note": "Re-fetched to audit the finder's P130/P140 quotations." }
+  ],
+
+  "headline": "The finder's panel model is substantially correct and no fabricated terminal letter, jack count or matrix number was found. But it was built from ONE low-resolution photograph while three unread primary documents and two much higher-resolution photographs sat in the same repository; that produced 8 refutable claims, 1 bad citation, and 11 material omissions - several of them load-bearing for the simulator (notably: all + terminals are one electrical node, and the CAPACITOR terminals are named and used).",
+
+  "refuted": [
+    {
+      "id": "V-R01",
+      "target": "P082 [likely] - 'The dark round component at the top of the POWER strip ... is the power indicator lamp.'",
+      "verdict": "REFUTED for the unit in the finder's own photograph; the identification also turns out not to be uniform across units.",
+      "correction": "On PH2 the component in that position is a black knurled bayonet FUSEHOLDER CAP, engraved with the word FUSE three times radially around a curved rotation arrow. It is unambiguously a fuseholder, not a lamp. On PH3 (a different unit) the same position holds a small RED TRANSLUCENT JEWEL standing proud on a knurled threaded barrel - i.e. an actual red pilot lamp, which is what B1 p.3 ('The red power light shows when the power is ON') describes. The finder's PH shows a DARK object there, matching PH2's fuseholder, so their [likely] inference is most probably wrong for the very unit they photographed.",
+      "evidence": "PH2 crop of the POWER strip at 4208px native, word FUSE legible three times with the arrow; PH3 crop x=3080 y=1440 w=420 h=470 showing a red domed jewel on a threaded barrel above the two-line CIRCUIT BREAKER legend; B1 p.3.",
+      "consequence": "Panel component identity at that position is NOT settled and appears to vary between units. Record it as a variant, not as 'the power lamp'. Neither B1, B2-IV, B5-VI, MM nor ER mentions a fuse anywhere, and the MM spare-parts list (parts 6431-6491) contains no fuse - which argues the fuseholder is a later owner repair, not factory. Not proven either way.",
+      "tag": "verified (both observations); the identity of the stock part is [unverified]"
+    },
+    {
+      "id": "V-R02",
+      "target": "P011 [verified] - 'On the blue stripes the hole pairs sit on a dark oval escutcheon/field so they read against the blue.'",
+      "verdict": "REFUTED.",
+      "correction": "There is no escutcheon. On PH2 the + / - hole pairs and the COMMON / CAPACITOR hole rows sit directly on the flat blue stripe, each hole carrying only the same thin light ring that every jack hole on the panel carries. The 'dark oval' the finder saw is the grey metal taper pin of an INSERTED PROGRAMMING WIRE: in image_3.jpg and in PH2 the terminals that show a dark blob are exactly the ones with a wire plugged in, and the unoccupied ones next to them (e.g. section 2's + and -) show plain holes.",
+      "evidence": "PH2 crop x=200 y=180 w=900 h=640 (sections 1 and 2, BINARY OUTPUT down to the LIGHT/COIL row): section 1's + and - carry taper pins and read as dark blobs; section 2's + and - are bare and show plain ringed holes on flat blue. Same on the COMMON/CAPACITOR stripe, PH2 crop x=200 y=1080 w=900 h=700.",
+      "consequence": "A redraw must not paint dark ovals under the blue-stripe jacks.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R03",
+      "target": "P041 [verified] and the legend_inventory entries for the SECONDARY STORAGE arrows - 'a LONG left-pointing arrow ... the two arrows emanate from over the ARM and point outward' / 'tail extending back over the ARM'.",
+      "verdict": "REFUTED.",
+      "correction": "The arrows are SHORT and self-contained. The left arrow sits wholly above the R column and the right arrow wholly above the T column, each roughly the width of one hole pair, with a clear unprinted gap between each arrow and the word ARM. Neither arrow's tail extends toward or over the ARM.",
+      "evidence": "PH2 crop x=200 y=1400 w=900 h=850 at 1.44x. Section 1: left arrow spans approx. x=165..235 in the crop, ARM spans 330..405, right arrow spans 495..565. Section 2 identical. The same is visible in the whole-panel view of PH2.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R04",
+      "target": "P043 [verified] - the slide switch is 'a red rectangular actuator running in a light (ivory/cream) housing'.",
+      "verdict": "REFUTED / UNSUPPORTED.",
+      "correction": "On PH2 the red actuator protrudes through a plain dark rectangular slot cut in the dark panel field. There is no ivory or cream housing on the panel face; the switch body is under the panel. The pale impression in image_3.jpg is a lighting artefact.",
+      "evidence": "PH2 crop x=200 y=1400 w=900 h=850. MM p.9 corroborates that the switch body is a sub-panel unit ('Drill out the rivets which hold the unit in place').",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R05",
+      "target": "P051 [verified], last sentence - 'A slotted screw head is visible on the panel beside/above each button.'",
+      "verdict": "REFUTED.",
+      "correction": "No slotted screw head appears beside or above any BINARY INPUT pushbutton on PH2. What the button does have is a chrome/cream bezel ring around its base, part of which peeks out on the far side of the red cap and can read as a slot at low resolution. MM p.7 places the pushbutton's mounting screw UNDER the cap, concentric with it: 'Pull the red plastic button off the pushbutton; unscrew the exposed mounting screw.' So a panel-face screw beside the button would contradict the maintenance procedure.",
+      "evidence": "PH2 crop x=200 y=1400 w=900 h=850, sections 1 and 2 BINARY INPUT; MM p.7.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R06",
+      "target": "P022 [verified] - 'a cylindrical coil bobbin on the LEFT ... and a white plastic crossbar block on the RIGHT with a vertical slot; contact springs BEHIND the crossbar.'",
+      "verdict": "REFUTED as to the contacts.",
+      "correction": "Left-to-right across each relay, the visible order is: (1) white cylindrical coil bobbin, (2) white plastic crossbar block with a vertical slot, (3) the CONTACT STACKS, plainly visible to the RIGHT of the crossbar as two vertically separated assemblies of brown/copper springs - the upper stack and the lower stack. They are not behind or hidden by the crossbar. The two stacks are the two contact sets, and their upper/lower arrangement is what makes B1 p.12's rule ('The set of contacts closer to the operator is connected to the set of terminals closer to the operator') resolvable.",
+      "evidence": "PH2 crop x=200 y=660 w=1000 h=520 at 1.3x, sections 1 and 2. Coil approx. x=20..180, crossbar 180..370, contact stacks 370..510 in the crop.",
+      "consequence": "Positive side effect: this CONFIRMS P026's mapping (upper contact set -> G,H,J; lower/nearer set -> K,L,N) as a physical observation rather than an inference from a generic sentence.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R07",
+      "target": "D7 [verified] - 'Book I p.14 describes a round WHITE coil ... In the photographed unit the coil bobbins read tan/buff. Ambiguous: aged white paper wrap, or the manual simplifying.'",
+      "verdict": "REFUTED - the ambiguity is an artefact of image_3.jpg.",
+      "correction": "On PH2 the relay coil bobbins are white/cream, exactly as B1 p.14 says ('Each relay has a round white coil, located to the left of the arms'). The tan cast in image_3.jpg is that photograph's warm tungsten lighting plus soiling. There is no manual-vs-object discrepancy here and D7 should be struck.",
+      "evidence": "PH2 crop x=200 y=660 w=1000 h=520; B1 p.14.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R08",
+      "target": "terminal_designation_table, entry '(CAPACITOR)' - 'reserved for auxiliary components; NEVER USED IN ANY PUBLISHED PROGRAM; NO DESIGNATION APPEARS IN ANY MANUAL.'",
+      "verdict": "REFUTED.",
+      "correction": "The CAPACITOR terminals are designated '<section>cap' and ARE used in published SDC programs. Confirmed from a page image, not OCR: the automatic-counter program on PDF p.26 of the SDC 'Minivac 601/6010 Capacitor/Resistor Manual' (1962) contains the printed lines '1cap/D16' and '2cap/3L', with '3ca...' and '4ca...' continuing off the crop edge in the next column. Grep over that manual's OCR finds 1cap, 2cap, 3cap, 4cap and (OCR'd as 'Scap') 5cap.",
+      "evidence": "B7, PDF p.26, 200dpi render, program table for the automatic counter with rotary switch control. Same page also prints '2L/DO' (i.e. 2L/D0) and the resistor patch-cord notation Omega_B1, Omega_22.",
+      "consequence": "The finder's narrower statement in P033 ('never used in any wiring program in Books I-VI') survives - a grep for /[0-9] ?cap/ over book1.txt, book2-3-4.txt and book5-6.txt returns zero hits. Only the absolute form in the table is wrong. SCOPING CAVEAT: B7 is a joint 601/6010 manual; but B1 p.25 says the CAPACITOR terminals exist on the 601 precisely for 'when auxiliary components are added to the MINIVAC 601 in advanced programs', which is what B7 is, and the surrounding program lines address ordinary 601 panel terminals (D16, relay G/H/J/K/L/N, 1A/1C). Designation '<n>cap' for the 601: [verified].",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R09",
+      "target": "P033 CITATION - \"B234 line 'D16/M+' block ('2K/3com', '4G/5com', '6A/6com')\".",
+      "verdict": "REFUTED - bad citation. The claim it supports is true on other evidence; the cited lines are not.",
+      "correction": "'2K/3com' and '4G/5com' do not appear anywhere in Books I-VI, in any spacing variant (grep -E '2 ?K ?/ ?3 ?com' and '4 ?G ?/ ?5 ?com' over all three OCR files: zero hits). '6A/6com' appears twice, but in book5-6.txt (lines 1625 and 1741), NOT in Books II-IV. In fact NO pattern of the form <digit><letter>/<digit>com or <digit>com/<digit><letter> occurs anywhere in book2-3-4.txt; that book's single com-terminal usage is '3T/3com' at line 2861.",
+      "evidence": "Exact and fuzzy grep over book1.txt, book2-3-4.txt, book5-6.txt.",
+      "consequence": "The underlying claim ('COMMON terminals are addressed as <section>com') is well supported without it: ER's 'the four at 3com'; B234 '3T/3com'; B56 1com..6com throughout. The finder's OTHER cited lines DO check out: 1com/2L (1 hit), 2com/3L (3), 3com/4L (4), 4com/5L (4), 5com/6L (4), 6com/D4 (1), 6com/D9 (1), 4R/3com (1). Likewise their P013 citations check out: M-/D18 and D18/M- and M+/D16 all appear in book1.txt lines 1683-1755, and 'M-/D17' appears in the Tic-Tac-Toe table as 'M—/D17' (em dash). So this is one bad citation, not a pattern.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-R10",
+      "target": "P092 [verified] - 'a large RED cylindrical knob carrying a cream/white pointer blade THAT REACHES OUT TO THE NUMBER RING.'",
+      "verdict": "REFUTED as a general panel fact.",
+      "correction": "On PH2 the pointer knob is dark brown / maroon (reads as bakelite), and its white indicator is a pie-wedge on the knob's top face that terminates at the knob's own rim - roughly radius 150px against the dial's inner circle at radius ~195px. It does not reach the number ring. B1 p.20's panel figure draws the knob as a teardrop/leaf. So three sources give three different knob forms: teardrop (manual figure), red cylinder with a blade (image_3.jpg), brown cylinder with a white wedge (PH2).",
+      "evidence": "PH2 crop x=2955 y=1240 w=1160 h=1030; B1 p.22 (printed p.20) panel figure.",
+      "consequence": "Knob colour and pointer geometry are NOT settled. Record the variance; do not commit the simulator to 'red knob, blade reaching the ring'.",
+      "tag": "verified"
+    }
+  ],
+
+  "downgraded": [
+    {
+      "id": "V-D01",
+      "target": "P008 [verified], the parenthetical 'measurably ~3 source-pixels left of the pair's centre in the photograph'.",
+      "action": "Strike the number. On PH2 at 2.7x the finder's linear resolution the identifying letters are centred under their hole pairs to within a pixel (e.g. section 1: G at x=175 against holes at 143 and 205, centre 174; K at 178 against the same centre; R at 180 against holes at 145/207, centre 176). A 3-pixel offset measured on a 1536px image is below that image's own noise floor.",
+      "keeps": "The substantive part of P008 - letter below the pair, group legend above - is CONFIRMED, including by B1 p.5's Experiment 1 wording: '...one of the two holes just BELOW the + ...' and '...one of the two holes just ABOVE the letter A...'.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-D02",
+      "target": "P001 [verified] - 'The panel is divided by a full-height VERTICAL STRIPE into a LEFT FIELD ... and a RIGHT-HAND COLUMN'.",
+      "action": "Downgrade the physical model to [likely] and restate. The console's top face is blue. Set into it are THREE separate dark rectangular sub-panels, each with the blue showing all round it as a border: (a) the big left panel carrying sections 1-6; (b) an upper-right panel carrying the logo plate, the M+/M- power stripe, the MATRIX and the POWER controls; (c) a lower-right panel carrying DECIMAL INPUT-OUTPUT. What the finder read as a printed 'vertical stripe' is the blue console frame between panels (a) and (b)/(c). MM p.4 corroborates that (b) is a removable assembly and names it: 'Push the power panel out of the computer console through the holes in the dividing section', and MM p.2 'store the power cord in the compartment under the power panel'.",
+      "evidence": "PH2 whole panel and PH3; MM pp.2 and 4.",
+      "consequence": "This also re-frames P004: the reason the COMMON/CAPACITOR stripe stops at the divider and the right column's stripe sits higher is that they are on DIFFERENT PLATES with independent internal layouts, not that one printed stripe stops.",
+      "tag": "likely"
+    },
+    {
+      "id": "V-D03",
+      "target": "P080 [verified] - inventory of the POWER sub-block.",
+      "action": "Downgrade to [likely]. The sequence of OBJECTS the finder lists is right, but the first item is misidentified (see V-R01) and the panel differs between units at that position. Verified elements: the vertical cream rule separating MATRIX from POWER, which runs from inside the blue stripe down to the bottom of the plate; the two-line legend CIRCUIT BREAKER; the large red push button with a chrome/cream bezel ring; a small cream disc; ON; the red vertical slide actuator; OFF; a second small cream disc.",
+      "evidence": "PH2 crop x=2950 y=560 w=1150 h=700; PH3 crop x=3080 y=1440 w=420 h=470.",
+      "tag": "likely"
+    },
+    {
+      "id": "V-D04",
+      "target": "P122 [unverified] - colour values sampled from image_3.jpg.",
+      "action": "Keep [unverified] but note the sampling should be redone. Any colour work now has two photographs at 4208px and 4288px available; image_3.jpg is the worst of the three for colour (warm, dim, low-res). PH2 in particular shows the blue as a distinctly greener teal than image_3's grey-blue.",
+      "tag": "unverified"
+    },
+    {
+      "id": "V-D05",
+      "target": "P096 [unverified] - the two pale discs at the upper-left of the DECIMAL block are 'fasteners'.",
+      "action": "Keep [unverified], and revise the description. At 4208px these read less like rivet heads and more like two chips in the dark finish exposing a LIGHT-COLOURED substrate underneath. That is weak evidence bearing on the unresolved panel-material question, and should be recorded as such rather than as a fastener claim.",
+      "evidence": "PH2 crop x=2955 y=1240 w=1160 h=1030, two irregular pale marks at approximately (255,205) and (290,155) in the crop.",
+      "tag": "unverified"
+    },
+    {
+      "id": "V-D06",
+      "target": "counts block.",
+      "action": "Internally inconsistent: the numbers say 'unverified: 5' and the note in the same block says '4 unverified'. Actual tally over the 61 claims in the claims array: 53 [verified], 4 [likely] (P032, P082, P130, P140), 4 [unverified] (P044, P096, P122, P132), plus the redraw_spec block as a single [unverified] measurement set.",
+      "tag": "verified"
+    }
+  ],
+
+  "upgraded": [
+    {
+      "id": "V-U01",
+      "target": "P032 [likely] and discrepancy D5 - 'The four COMMON terminals are connected together' means the four HOLES of one COMMON terminal, not the six channels' COMMONs bonded to each other.",
+      "action": "UPGRADE to [verified]. SDC's own errata sheet says it in as many words.",
+      "evidence": "ER, 'Notes and Corrections to the Minivac Manual': 'In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.' 'The four at 3com' is decisive: one COMMON terminal, four holes, commoned.",
+      "consequence": "D5 can be closed. The panel has SIX independent four-hole COMMON junction blocks, one per section, each isolated from everything else."
+    },
+    {
+      "id": "V-U02",
+      "target": "P073 [verified from photo + line-rule inference] - M10 and M11 are single six-hole terminals.",
+      "action": "UPGRADE from photograph-plus-inference to text-confirmed, and confirm the printed line geometry exactly.",
+      "evidence": "(a) ER: '...the six at M10...' - primary text, all six holes are one terminal. (b) PH2 crop x=3070 y=810 w=190 h=210 at 4.7x resolves M10 completely: six holes in a 2-wide x 3-tall array, with printed cream lines forming a CLOSED RECTANGULAR LOOP - a horizontal bar joining the top pair, a horizontal bar joining the bottom pair, and vertical bars running down BOTH the left and the right column through the middle holes. The numeral '10' is printed below the cluster. M11 is the mirror-image arrangement. The finder's description of the loop was exactly right."
+    },
+    {
+      "id": "V-U03",
+      "target": "P044 [unverified] - the two round cream discs flanking each slide switch are 'most likely the switch's panel-mounting rivets'.",
+      "action": "UPGRADE to [likely] with a primary citation the finder did not have.",
+      "evidence": "MM p.9: 'To replace a defective slide switch: Cut all six connections to the slide switch. DRILL OUT THE RIVETS which hold the unit in place. Install a new switch with machine screws and nuts.' Rivets holding the slide switch are primary-confirmed; two pale disc heads flanking each switch on the panel face are the obvious candidates. Not [verified] because no source says the visible discs ARE those rivet heads.",
+      "note": "MM p.9 independently confirms 'all SIX connections to the slide switch', matching R,S,T,U,V,W."
+    },
+    {
+      "id": "V-U04",
+      "target": "P061 [verified] - logo plate second line.",
+      "action": "CONFIRMED verbatim on an independent, much higher-resolution photograph. Character for character: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.' - the finder's transcription is exact, including the full stop after Massachusetts and the spaced 'U. S. A.'",
+      "evidence": "PH2 crop x=2950 y=150 w=1150 h=800, native resolution."
+    },
+    {
+      "id": "V-U05",
+      "target": "P042 [verified] - slide switch semantics, and the parenthetical the finder quoted from the page image.",
+      "action": "CONFIRMED, including the parenthetical, which is NOT in the OCR and could easily have been an invention. B1 printed p.18 (PDF p-20.png) carries it verbatim under the two schematics: '(The two sets of terminals R, S, T, and U, V, W, always work together.)' with 'always work together' underlined. Body text confirmed too: 'Each of the six slide switches has six terminals located directly ABOVE it on the computer panel ... The terminals are labeled R,S,T, U,V,W'; left -> S-R and V-U; right -> S-T and V-W."
+    },
+    {
+      "id": "V-U06",
+      "target": "P020, P021, P025, P026 - relay band.",
+      "action": "CONFIRMED against B1 printed pp.12 and 14, with the manual's own above/below language nailed down: p.14 'THREE terminals are located directly ABOVE each relay on the computer panel ... Two terminals are connected directly to the relay coil, and the third terminal is connected to a light wired in series with the relay coil'; p.12 'Each of the six relays has SIX terminals located directly BELOW it ... The terminals are labeled: G, H, J, & K, L, N.' The chain C-(lamp)-E-(coil)-F is further pinned by B1 p.16's caption 'the coil connected between 1E and 1F' and by Experiment 7's 'remove connection 1X/1E, add connection 1X/1C'. MM p.8 adds that the relay has EIGHT under-panel connections ('disconnect the eight connections to the relay'), i.e. 2 coil + 6 contact, consistent."
+    },
+    {
+      "id": "V-U07",
+      "target": "P070, P071, P072, P075, P076 - MATRIX.",
+      "action": "CONFIRMED at high resolution and against the manual figure. PH2 crop x=2950 y=560 w=1150 h=700 reads the numerals unambiguously: top row 1, 2, 3; middle row 8, 9, 4; bottom row 7, 6, 5; 10 outside left, 11 outside right, both on the middle row's height with the numeral printed BELOW the cluster. Each of cells 1-9 is a 2x2 hole cluster with a short printed bar joining the top pair and another joining the bottom pair, no bar between them, and the numeral printed in the gap. Two long vertical and two long horizontal cream rules draw the tic-tac-toe grid between cells without touching any hole. B1 printed p.25 (PDF p-27.png) draws the identical arrangement in perspective. The MATRIX legend is bottom-left of the plate. All confirmed."
+    },
+    {
+      "id": "V-U08",
+      "target": "P077 - Tic-Tac-Toe matrix convention.",
+      "action": "CONFIRMED verbatim from B56 printed p.55-56: 'Place the free end of the machine's \"play\" wire in the BOTTOM contact of the matrix terminal corresponding to the machine's last move'; 'the player ... placing the free end of the player's \"play\" wire in the TOP contact of the matrix terminal corresponding to his move'; program table ends 'M10/free*' and 'M11/free**' with '* this is the machine's \"play\" wire' / '** this is the player's \"play\" wire'; 'Place the free end of the machine's \"play\" wire in 6com.' Exactly as the finder reported."
+    },
+    {
+      "id": "V-U09",
+      "target": "P074 - M10/M11 are never written with a t/b suffix; tally.",
+      "action": "CONFIRMED and re-counted independently. Over book1.txt + book2-3-4.txt + book5-6.txt: 'M 10' x1 (B234) + 'M 10' x5 and 'M10' x5 (B56) = 11 occurrences of M10, and 'M11' x1. Zero occurrences of M10t/M10b/M11t/M11b anywhere, including in the errata (7 more bare M10 hits) and in B7. The finder's tally was accurate."
+    },
+    {
+      "id": "V-U10",
+      "target": "P093, P094 - DECIMAL INPUT-OUTPUT left stack, RUN and STOP.",
+      "action": "CONFIRMED on the photograph AND independently corroborated by a source the finder did not use. PH2 shows 16 (with ARM below it), then 17, 18, 19 down the left, numerals printed to the left of each hole pair, a vertical printed bracket linking 17 and 18 labelled RUN and a second linking 18 and 19 labelled STOP. B1 printed p.20 (PDF p-22.png) draws the same. MM p.9 states the electrical function outright: 'Check the motor drive by connecting power to the RUN terminals (D17 and D18) ... Connect a short circuit across the STOP terminals (D18 and D19): the pointer knob should stop turning.'"
+    },
+    {
+      "id": "V-U11",
+      "target": "P091, D6 - dial numbering and the under-panel figure.",
+      "action": "CONFIRMED. PH2 reads 15, 0, 1 across the top and 2,3,4,5,6,7 down the right, 8 at the bottom, 9,10,11,12,13 up the left: 0 at 12 o'clock, increasing clockwise, 4 at 3 o'clock, 8 at 6, 12 at 9. B1 printed p.20's panel figure draws the same. The second figure on that page is labelled 'VIEW UNDER PANEL' and runs 0,1,2,...,15 counter-clockwise, i.e. the mirror, exactly as D6 says. The finder was right not to treat this as a contradiction."
+    }
+  ],
+
+  "missed": [
+    {
+      "id": "V-M01",
+      "severity": "high",
+      "what": "Three unread primary documents and two unread high-resolution primary photographs, all already on disk when find-panel.json was written.",
+      "detail": "pdf/maintenance-manual.pdf (SDC Minivac 601 Maintenance Manual, mtime 07:23), pdf/errata.pdf (SDC Notes and Corrections, 07:23), pdf/book7-capacitor-resistor.pdf (SDC 601/6010 Capacitor/Resistor Manual 1962, 07:24), photos/commons-minivac601-main.jpg 4208x2457 (07:27), photos/commons-minivac601-DSCF1392.jpg 4288x2848 (07:27). find-panel.json was written at 07:36. The finder's not_settled list asserts 'The SDC Maintenance Manual (NOT IN THE LOCAL SET)' - it is in the local set, twice (also as minivac601-maintenance-manual.pdf), and it answers three of the finder's nine open questions.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M02",
+      "severity": "high - load-bearing for the simulator",
+      "what": "ALL + terminals are one electrical node and ALL - terminals are one electrical node, across the whole panel including M+ and M-.",
+      "detail": "ER states it explicitly: 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.' B1 p.3 says the same less directly: 'This low voltage DC is used to power MINIVAC and is connected to all terminals + and - on the power panel.' The finder quoted that B1 sentence in P011 and did not draw the claim; P013 instead models M+/M- as 'the matrix section's power terminals', which implies a per-section structure that does not exist. There are 7 + jacks and 7 - jacks, but only 2 nodes.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M03",
+      "severity": "high",
+      "what": "A manual error in the D-terminal numbering rule, exactly parallel to the finder's own D4 and not recorded.",
+      "detail": "B1 printed p.20: 'D = Decimal Input-Output / 8 = terminal number (1 TO 19) / ... for example D8'. That excludes D0. But D0 exists: both figures on that same page draw a 0 sector; MM p.10 says 'connecting output lights through the rotary switch contacts, D0 through D15'; and programs use it ('2L/D0' in B7 p.26). The correct range is 0 to 19. The finder's own terminal table lists D0..D15, so they knew, but they did not flag the manual's rule as wrong the way they flagged the matching M-terminal rule in D4.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M04",
+      "severity": "medium - needed for a faithful redraw",
+      "what": "Every jack hole on the panel is encircled by a thin light ring.",
+      "detail": "Clearly resolved at 4.7x on the M10 crop and visible on every other crop, on the dark field and on the blue stripes alike. Whether the ring is printed ink or the drilled hole's edge exposing a light substrate under a dark finish is not settled by any source read. Recorded because a redraw that omits it will look wrong.",
+      "tag": "verified (appearance); [unverified] as to cause"
+    },
+    {
+      "id": "V-M05",
+      "severity": "high - partially settles a KNOWN DISCREPANCY",
+      "what": "The logo-plate city text VARIES BETWEEN UNITS. It is not a two-way Cambridge/Watertown split.",
+      "detail": "PH2's plate reads 'Cambridge' cleanly at native resolution. PH3's plate, at the maximum magnification its resolution supports, shows a SHORT word of roughly seven glyphs ending in '-tham', with ascenders at the 't'/'h' and NO descender - which rules out 'Cambridge' (9 glyphs, descender at g) and rules out 'Watertown' (does not end -tham). The most plausible reading is 'Waltham'. All six books, the errata sheet and the maintenance manual say Watertown ('372 Main Street, Watertown, Massachusetts'; MM's spare-parts address adds the zone: 'Watertown 72, Massachusetts'). PER THE PROJECT'S STANDING INSTRUCTION I do not resolve which address is correct or earlier; I record that there are now at least THREE distinct address strings in evidence and that the finder's open question 'whether the plate text varies by production run' is answered YES by a photograph in the project's own photos/ directory.",
+      "confidence": "The variance itself: [verified]. The specific reading 'Waltham': [unverified] - resolution-limited.",
+      "would_settle_it": "A higher-resolution photograph of the Centre for Computing History unit's plate, or of any third unit's plate with provenance."
+    },
+    {
+      "id": "V-M06",
+      "severity": "medium",
+      "what": "The errata's short-wire note is a panel-semantics rule the simulator needs.",
+      "detail": "ER: 'If you should run out of long programming wires, you can use shorter wires by programming through any common terminals not being used in the circuit. In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com. For example, to make the connections 1X/6A without using the longest wires, you can make the two connections 1X/4R and 4R/6A.' I.e. the two holes of ANY ordinary terminal are a usable junction, not just the marked COMMONs.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M07",
+      "severity": "medium",
+      "what": "Power-supply and component ratings, all primary, none of which appear in find-panel.json.",
+      "detail": "MM p.3: 'The power supply is rated at 1.5 amps continuous with a nominal 12 volts output. All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps. To provide low contact resistance, the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper [sic]; the drive shaft is made of stainless steel running in an oil-impregnated bronze bearing. The drive motor is operated at less than one-third rated voltage.' MM p.3 also: 'The lights are operated at less than their rated voltage to extend their operating life.' MM p.2 step 3: 'The unloaded power supply outlet voltage should be approximately 13 volts.' Power supply = transformer + rectifier + circuit breaker + power light + power switch (MM pp.2-5). Note this makes the finder's terminal-table gloss '+12 V DC rail' a nominal figure, ~13 V unloaded.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M08",
+      "severity": "medium",
+      "what": "Rotary-switch drive mechanism, primary.",
+      "detail": "MM pp.9-10: the motor drives a DRIVE WHEEL by friction ('To assure proper friction drive, adjust the motor bracket and spring the motor shaft against the edge of the drive wheel'); the motor circuit contains TWO RESISTORS ('Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds'); shorting the STOP terminals stops the knob, and applying POWER momentarily across the STOP terminals makes the knob 'turn very rapidly'; reversing the power connections across RUN reverses the direction of rotation. Spare parts list carries 6471 Motor, 6472 Drive Wheel Assembly, 6473 Complete Rotary Switch Assembly.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M09",
+      "severity": "medium",
+      "what": "Case and console construction, primary - the finder left panel/case construction almost entirely to Wikipedia.",
+      "detail": "MM p.2: 'When the computer is not in use, store the power cord in the compartment under the power panel. Access to the storage compartment is through the THREE-INCH HOLE IN THE BOTTOM of the computer. Program wires should be kept in the transparent bag supplied ... When the computer is put away, it should be kept in its cardboard shipping box.' MM p.3: 'Remove the bottom panel from the computer by unscrewing the screws from the RUBBER FEET.' MM p.4: 'Push the POWER PANEL out of the computer console through the holes in the DIVIDING SECTION.' So: a console with an internal dividing section, removable sub-panels, a screwed-on bottom panel retained through rubber feet, and a cord compartment.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M10",
+      "severity": "low",
+      "what": "A further manual-figure vs panel discrepancy in the same family as the finder's D6/D8.",
+      "detail": "B1 printed p.20's panel figure draws each dial sector's TWO HOLES JOINED BY A SHORT LINE, i.e. using the same 'lines between terminals indicate terminals connected together' convention as the matrix. On PH2 the two holes of a dial terminal are plain and unjoined. Drawing convention rather than a real panel feature; recorded so a redraw does not copy the figure.",
+      "tag": "verified"
+    },
+    {
+      "id": "V-M11",
+      "severity": "low",
+      "what": "Context for P077 that a later pass could otherwise misread as a contradiction.",
+      "detail": "ER's note on Book V pp.21-22 says 'when programming a geometric form or a numeral for recognition, be sure that the connections from M10 are made to the TOP terminals in the matrix.' That is the CHARACTER-RECOGNITION programs, a different application from Tic-Tac-Toe, where M10 is the machine's play wire and goes to BOTTOM contacts. Both are correct in their own context.",
+      "tag": "verified"
+    }
+  ],
+
+  "confirmed_unchanged": [
+    "P002, P003, P004 (band order and stripe crossing) - confirmed on PH2's whole-panel view, with the sub-panel re-framing in V-D02.",
+    "P005 (three terminal columns per channel; component on the middle column) - confirmed by direct measurement on PH2. Section 2: left column holes at x~790/850, middle at ~975/1035, right at ~1155/1215, and the same x positions repeat in every band. Output lamp, relay indicator lamp and slide-switch actuator all sit on the middle column; the pushbutton sits approximately on it.",
+    "P006 (section numeral once per channel, top of BINARY OUTPUT band, above and slightly left of the lamp; none in lower bands) - confirmed on PH2 and by B1 p.4 'Each terminal is identified by a letter printed below it, and by the number printed at the top of the section in which it is located.'",
+    "P007 (two holes per terminal, joined under the panel; slash shorthand) - confirmed verbatim, B1 pp.4-5.",
+    "P010, P012 (six output lamps, A left / B right; seven + and seven - jacks) - confirmed on PH2.",
+    "P013 (M+ / M- are the right-column power jacks' designations) - citations check out in book1.txt; but see V-M02, they are not 'the matrix section's' terminals in any electrical sense.",
+    "P023, P024 (relay indicator lamp below the relay, approximately on the E column; STORAGE/PROCESSING legend centred between the lamp row and the contact rows) - confirmed on PH2. The lamp centre reads ~15-25px left of the E column centre in both sections 1 and 2, consistent with parallax on a proud component, not a real offset.",
+    "P030, P031 (COMMON four holes left-to-middle, CAPACITOR two holes on the right column, legends above; B1 p.25 section 9 text) - confirmed verbatim from the page image. Note the COMMON's four holes are evenly pitched at about the hole-pair spacing, spanning from the left column's left hole to the middle column's left hole; they are not two column-aligned pairs.",
+    "P040, P050 (SECONDARY STORAGE and BINARY INPUT legends at the TOP of their bands) - confirmed.",
+    "P051, P052 (X/Y/Z with N.O./ARM/N.C.; UP = Y-Z, DOWN = X-Y, Y common, break-before-make) - confirmed verbatim, B1 pp.8-9.",
+    "P060 ('Minivac 601' logotype, mixed case, heavy grotesque, left-aligned, near full plate width) - confirmed at native resolution on PH2.",
+    "P078, P095 (MATRIX legend bottom-left; DECIMAL INPUT-OUTPUT legend across the bottom, letterspaced caps with a hyphen) - confirmed.",
+    "P081 (red button = circuit breaker; slide switch = power switch) - confirmed, B1 p.3, and MM pp.4-5 describes resetting and replacing the circuit breaker.",
+    "P110 (typographic character description; typeface not named) - reasonable and correctly hedged.",
+    "P120, P121 (dark field, single light blue for stripes/border/case edge, single cream for all printing; red controls and red lamp lenses in cream bezels) - confirmed on PH2 and PH3.",
+    "P130, P140 (Wikipedia figures) - re-fetched. Wikipedia does say '5 1/8 x 24 x 13 1/4 in.', '9 kilograms (20 lb)', 'housed in a blue-painted wooden case' for the 601 and 'housed in a gray metal case' for the 6010, and gives Cambridge as initial with Watertown later. Caution: Wikipedia's own price figures are internally inconsistent (infobox US$85, body $79.95). Correctly tagged [likely] by the finder. Wikipedia states no panel material.",
+    "P132 (panel substrate not established) - still not established. Nothing in MM, ER or B7 names it. MM's repair language (rivets drilled out, machine screws and nuts, soldering under the console) is compatible with hardboard or with sheet metal and does not discriminate.",
+    "D1 - correctly reported and correctly NOT resolved. Extended by V-M05.",
+    "D2, D3, D4, D6, D8, D9, D10 - all check out. D5 is now closed by V-U01; D7 should be struck per V-R07."
+  ],
+
+  "not_settled_after_verification": [
+    { "question": "Panel substrate material.", "would_settle_it": "A photograph of a cut edge or the underside, or SDC production artwork. MM does not name it. The two pale chips at the upper-left of the DECIMAL block (V-D05) hint at a light substrate under a dark finish but prove nothing." },
+    { "question": "What component the factory fitted at the top of the POWER strip. PH3 shows a red pilot jewel (matching B1 p.3's 'red power light'); PH2 shows a black FUSE holder cap in the same position; MM's spare-parts list has no fuse.", "would_settle_it": "MM's power-supply circuit diagram, which exists on MM p.3 as an IMAGE that the text layer does not carry - render that page and read it. Or more units photographed." },
+    { "question": "Pointer-knob colour and pointer form (teardrop in the manual figure, red-with-blade in image_3.jpg, brown-with-wedge in PH2).", "would_settle_it": "More dated units, or SDC parts documentation." },
+    { "question": "Whether the light ring around each jack hole is printed ink or exposed substrate.", "would_settle_it": "A macro photograph of a single jack, or an unpainted panel." },
+    { "question": "The exact plate city on the Centre for Computing History unit (reads as a ~7-glyph word ending '-tham', not Cambridge, not Watertown).", "would_settle_it": "A higher-resolution photograph of that unit's plate." },
+    { "question": "True paint colours; typeface family; absolute panel dimensions and jack pitch.", "would_settle_it": "As the finder said. Note that any redraw_spec measurement should now be redone off the 4208px PH2 rather than the 1536px image_3.jpg - the finder's redraw_spec is a measurement of the WORST available artifact." }
+  ],
+
+  "verdict": "Trustworthy on the facts that matter most - terminal letters, jack counts, matrix numbering, band order and the manual quotations all survived independent re-derivation, and I found no invented panel geometry or hallucinated terminal designation. But it is a one-artifact, three-book file: it was built from a 1536px photograph and Books I-VI while a maintenance manual, an SDC errata sheet, a capacitor/resistor manual and two 4200px photographs sat unopened in the same repository, which produced eight refutable claims, one fabricated citation, and eleven omissions including two that the simulator cannot be written correctly without.",
+
+  "counts": { "refuted": 10, "downgraded": 6, "upgraded": 11, "missed": 11 }
+}

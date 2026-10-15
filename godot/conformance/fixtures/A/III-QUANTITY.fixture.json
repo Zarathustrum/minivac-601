@@ -1,0 +1,1094 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-QUANTITY",
+  "source": "BK3 printed pp.54-57 = book2-3-4.pdf PDF pp.60-63",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1B/1-",
+    "2B/2-",
+    "3B/3-",
+    "4B/4-",
+    "5B/5-",
+    "6B/6-",
+    "2F/3F",
+    "3F/4F",
+    "4F/5F",
+    "5F/6F",
+    "6F/6-",
+    "6+/6S",
+    "6S/4V",
+    "4V/3V",
+    "3V/2V",
+    "2U/2C",
+    "2C/3C",
+    "3U/4C",
+    "4C/5C",
+    "4U/6C",
+    "5A/2G",
+    "4A/2K",
+    "3A/2N",
+    "2A/2T",
+    "1A/3J",
+    "6A/3N",
+    "6T/5V",
+    "6R/5S",
+    "5U/5T",
+    "5U/4S",
+    "5R/6H",
+    "5W/6L",
+    "4T/6K",
+    "4R/6J",
+    "6N/5L",
+    "6J/5H",
+    "6G/4H",
+    "6K/4L",
+    "5J/4K",
+    "5N/3L",
+    "5K/4N",
+    "5G/4J",
+    "4N/3H",
+    "4J/2L",
+    "4G/2H",
+    "4K/2S",
+    "3J/3K",
+    "3G/2T",
+    "2J/2K",
+    "2N/2R"
+  ],
+  "errata_applied": [],
+  "note": "No erratum touches this program; wires = as_printed (50, the printed count). The wire list and the numbered procedure are on printed p.57 (PDF p.63); the light convention is on printed p.54 (PDF p.60). Steps 1-4 follow the printed procedure, with slide switches 2 and 3 as the \"any two\" of step 3. Step 5 (\"Select various combinations\") is walked over all 32 states of switches 2-6 in Gray-code order, one switch thrown per state, each checked against the printed p.54 convention. Each expect asserts only the lamp the page says comes ON; the page never says the other lamps stay off, so no expect asserts that. The 40 ms advance after each settle is runner hygiene for lamp transients; the page states no timing. The printed claim \"There are 120 possible combinations of switches\" is not asserted (five two-position switches give 32 states; it is no observable).",
+  "wires": [
+    "1B/1-",
+    "2B/2-",
+    "3B/3-",
+    "4B/4-",
+    "5B/5-",
+    "6B/6-",
+    "2F/3F",
+    "3F/4F",
+    "4F/5F",
+    "5F/6F",
+    "6F/6-",
+    "6+/6S",
+    "6S/4V",
+    "4V/3V",
+    "3V/2V",
+    "2U/2C",
+    "2C/3C",
+    "3U/4C",
+    "4C/5C",
+    "4U/6C",
+    "5A/2G",
+    "4A/2K",
+    "3A/2N",
+    "2A/2T",
+    "1A/3J",
+    "6A/3N",
+    "6T/5V",
+    "6R/5S",
+    "5U/5T",
+    "5U/4S",
+    "5R/6H",
+    "5W/6L",
+    "4T/6K",
+    "4R/6J",
+    "6N/5L",
+    "6J/5H",
+    "6G/4H",
+    "6K/4L",
+    "5J/4K",
+    "5N/3L",
+    "5K/4N",
+    "5G/4J",
+    "4N/3H",
+    "4J/2L",
+    "4G/2H",
+    "4K/2S",
+    "3J/3K",
+    "3G/2T",
+    "2J/2K",
+    "2N/2R"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Set slide switches 2 through 6 to the RIGHT (the slide switches are now OFF). Turn power ON. Light 6 will come ON indicating that NO switches are ON."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Set any two of the slide switches 2 through 6 to the LEFT. Light 2 will come ON indicating that two switches are ON."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Set all switches to the RIGHT again. Once again, light 6 will come ON indicating that NO switches are ON."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.55 = book2-3-4.pdf PDF p.61; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 5 ON indicates that 5 switches are ON ... A = the condition that slide switch 2 is ON ... E = the condition that slide switch 6 is ON ... and the single expression A X B X C X D X E = light 5 ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 4 ON indicates that 4 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 3 ON indicates that 3 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 2 ON indicates that 2 switches are ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 40
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.54 = book2-3-4.pdf PDF p.60; BK3 printed p.57 = book2-3-4.pdf PDF p.63",
+      "quote": "Slide switches 2 through 6 will be used to provide input: a slide switch LEFT is ON, a slide switch RIGHT is OFF. ... Light 1 ON indicates that 1 switch is ON ... Select various combinations of switches and note that in each case the output lights indicate how many switches are ON (to the LEFT). ... in each case MINIVAC 601 will recognize how many switches are ON, regardless of which switches are used."
+    }
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "topic": "Adversarial verification of gap-electrical-solver-class: is the MINIVAC 601 simulator core a boolean connectivity solver or a DC resistive-network solver, and does the proposed MV601-REF-A parameter profile hold up",
+  "gap_id": "gap-verify-electrical-solver-class",
+  "verifies": "docs/research/raw/gap-electrical-solver-class.json",
+  "date_verified": "2026-08-30",
+  "verifier_note": "I went to the primary sources independently and did NOT take the finder's citations on trust. Headline: the RULING (DC resistive-network solver, not boolean) SURVIVES and is in fact better supported than the finder argued - I found two additional primary passages that force it, one of which the finder cited only second-hand. The FALLBACK PROFILE MV601-REF-A is honestly labelled as a fallback but contains one internal inconsistency that is fatal to its headline acceptance test (AT-02), and its account of WHY the Book IV counter fails is refuted by the primary circuit diagrams. I read the original Book IV p.72 counter diagram and program, which the finder never opened, and it changes the picture materially.",
+  "oracle_rule_compliance": "No existing MINIVAC emulator source was opened, fetched, cloned, or read. No web fetch of any kind was performed in this verification pass; everything below is from the local PDFs and page renders.",
+
+  "method": {
+    "ocr_read_in_full": [
+      "docs/research/raw/pdf/maintenance-manual.txt (all 11 printed pages)",
+      "docs/research/raw/pdf/errata.txt (all 4 pages)",
+      "docs/research/raw/pdf/book7-capacitor-resistor.txt (sparse OCR, all of it)",
+      "book1.txt relay section (Experiments 6-9, printed pp.13-18) and the RESISTORS / motor-drive section (printed p.22)",
+      "book2-3-4.txt Book IV Experiment 1 'A Three-Bit Binary Counter' (printed pp.71-73)"
+    ],
+    "grep_replications": [
+      "grep -inE 'ohm|volt|amp|milliamp|watt|resistance|impedance|current' over book1.txt, book2-3-4.txt, book5-6.txt: reproduced the finder's EL-14 result exactly. Only hits are BK1:107-109,112,149 (110 V AC / 12 V DC) and BK234:1633-1638 (the analogue-computer 'amps of current as analogues of pounds of salt' passage). No electrical parameter anywhere in Books I-VI. CONFIRMED.",
+      "grep -inE 'kit|ohm|omega|micro|mfd|farad|volt' over book7-capacitor-resistor.txt: the word 'kit' does NOT appear in the OCR text layer. I therefore did NOT accept BH-09's 'highest valued resistor in the kit' quote from OCR and went to the page image instead - see VER-09."
+    ],
+    "page_images_read": [
+      "book7 PDF p.13 (printed p.8) rendered fresh at 200 dpi - bias resistor selection page",
+      "book7 PDF p.12 (printed p.7) from pages/book7/p-12.png - the two hysteresis graphs",
+      "maintenance PDF p.05 (printed p.3) from pages/maintenance/p-05.png - Power Supply Circuit Diagram",
+      "book2-3-4 PDF p.78 (printed p.72) rendered fresh at 200 dpi - CIRCUIT DIAGRAM FOR MIDDLE STAGE OF BINARY COUNTER plus the full 44-connection program. THE FINDER NEVER OPENED THIS PAGE.",
+      "errata PDF p.2, two crops rendered fresh at 260 and 300 dpi - THREE-BIT BINARY COUNTER, ALTERNATE CIRCUIT (Middle Stage Only)"
+    ],
+    "arithmetic": "Every computed number in part_4, part_5 and part_6 of the finding was recomputed by hand. Results in VER-ARITH."
+  },
+
+  "verdict_summary": {
+    "ruling_status": "UPHELD AND STRENGTHENED. The core must be a DC resistive-network solver. I found two primary passages the finder did not use that make the case independently, and the errata circuit diagram gives a cleaner decisive example than the one the finder constructed.",
+    "profile_status": "FALLBACK HONESTLY LABELLED, BUT INTERNALLY INCONSISTENT. Part_4's status field is explicit and prominent ('NAMED FALLBACK. This is a documented engineering decision, not a research result.') and every number carries an individual [unverified] tag. That is correct practice. However AT-01 and AT-02 cannot both pass on the numbers given, and AT-02's stated failure statistic is arithmetically wrong on its own assumptions. See REF-01.",
+    "worst_error": "REF-02: the finder's stated evidence for BH-03 - 'the program ties each relay's C terminal to the negative rail' as the distinguishing feature of the errata's alternate counter - is present verbatim in the ORIGINAL Book IV counter too. It cannot be the difference. The finder inferred the original circuit from the errata rather than reading Book IV p.72.",
+    "tag_hygiene": "TWO RULE-2 VIOLATIONS. RULING-01 is tagged 'verified_reasoning_from_verified_facts' and CORRECTION-01 is tagged 'verified_reasoning'. Neither is one of the three permitted tags, and both read as [verified] to a downstream reader. Both are inference from verified facts and must be tagged [likely] at best."
+  },
+
+  "part_A_claims_i_independently_verified": {
+    "note": "I re-read the primary page for each of these. Where the finder's quote is exact I say so.",
+    "checks": [
+      {"id": "VER-01", "target": "EL-01", "result": "CONFIRMED", "tag": "verified", "citation": "book1.txt lines 107-109, 149 (Book I printed p.2 area); maintenance-manual.txt 'Check the 110 volt outlet' (MM printed p.3 step 4)", "note": "OCR reads 'the power supply converts the 110-volt AC power obtained ... level of 12 volts DC. This low voltage DC is used to ...'. Exact as quoted."},
+      {"id": "VER-02", "target": "EL-02", "result": "CONFIRMED, quote is verbatim", "tag": "verified", "citation": "MM printed p.2, 'Adjustment and Repair'", "quote": "The power supply is rated at 1.5 amps continuous with a nominal 12 volts output."},
+      {"id": "VER-03", "target": "EL-03", "result": "CONFIRMED, quote is verbatim, read off the page image", "tag": "verified", "citation": "MM printed p.3 step 3, image pages/maintenance/p-05.png", "quote": "The unloaded power supply outlet voltage should be approximately 13 volts."},
+      {"id": "VER-04", "target": "EL-04, EL-05, EL-06", "result": "ALL CONFIRMED verbatim", "tag": "verified", "citation": "MM printed p.2", "quotes": ["All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps.", "The lights are operated at less than their rated voltage to extend their operating life.", "The drive motor is operated at less than one-third rated voltage."], "verifier_addition": "MM printed p.6 'Lights' adds 'The lights are conservatively operated and should not require replacement for at least a year' and instructs the owner to check both binary lights AND relay indicator lights by connecting them directly across + and -. That last instruction is load-bearing and the finder did not extract it: a single indicator lamp across the full 13 V rail is a NORMAL, SDC-sanctioned operating condition, so the lamp's rated voltage exceeds 13 V and its full-rail operating point is a legitimate model anchor rather than an abuse case."},
+      {"id": "VER-05", "target": "EL-10", "result": "CONFIRMED by direct read of the diagram", "tag": "verified", "citation": "MM printed p.3, 'Power Supply Circuit Diagram', pages/maintenance/p-05.png", "what_the_diagram_actually_shows": "POWER CORD -> (POWER SWITCH in one black primary lead) -> TRANSFORMER primary. Centre-tapped secondary: two YELLOW/BLACK end leads -> two diodes drawn as a RECTIFIER block, common cathode -> the + terminal. The YELLOW centre-tap lead -> CIRCUIT BREAKER -> the - terminal. POWER LIGHT drawn between the + terminal and the - side. Nothing else is drawn. NO FILTER CAPACITOR. NO BLEEDER. NO SERIES DROPPER.", "caveat_i_add": "This is a TROUBLESHOOTING diagram, not a manufacturing schematic. Its purpose is to let an owner probe named parts. Absence of a filter capacitor from it is strong but not conclusive evidence of absence from the chassis. The finder already listed this in part_10 as a possible overturn, which is correct handling."},
+      {"id": "VER-06", "target": "EL-12", "result": "CONFIRMED, and I can sharpen it", "tag": "verified", "citation": "MM printed p.3 diagram; MM printed p.4 step 9; errata p.1 step 3", "sharpening": "MM step 9 distinguishes 'the circuit breaker terminal which leads to the transformer' from 'the circuit breaker terminal which leads to the power light'. Combined with the diagram, this places the POWER LIGHT on the DOWNSTREAM (- terminal) side of the breaker. CONSEQUENCE THE FINDER MISSED: when the breaker trips, the power light goes OUT. That is a directly observable simulator behaviour and a free acceptance test. Add it as AT-09.", "tag_of_consequence": "verified"},
+      {"id": "VER-07", "target": "EL-13", "result": "CONFIRMED verbatim", "tag": "verified", "citation": "errata p.1", "quote": "All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-."},
+      {"id": "VER-08", "target": "EL-14 (the exhaustiveness claim)", "result": "CONFIRMED by independent grep", "tag": "verified", "note": "I reproduced the finder's grep independently over book1.txt, book2-3-4.txt, book5-6.txt. The finding that SDC published exactly five electrical numbers about the machine, and zero relay or lamp parameters, holds. This is the single most important negative result in the file and it is correct."},
+      {"id": "VER-09", "target": "BH-09 and its 'kit' quote", "result": "CONFIRMED VERBATIM off the page image, after the OCR text layer failed to contain the word 'kit' at all", "tag": "verified", "citation": "Book VII printed p.8 = book7-capacitor-resistor.pdf PDF p.13, rendered at 200 dpi", "exact_footnote": "* Decreasing values of resistance will be tried here. Start with the highest valued resistor in the kit.", "also_confirmed_on_that_page": ["Heading: SELECTING A BIAS RESISTOR FOR EACH MINIVAC RELAY", "All-caps block: THE FOLLOWING INSTRUCTIONS ARE FOR A SINGLE RELAY. THIS PROCEDURE MUST BE CARRIED OUT FOR EACH INDIVIDUAL RELAY.", "Circuit: + --- RESISTOR --- E --- RELAY COIL --- F --- -, with a binary output light drawn between A and B, B to -, and H to +, and pushbutton arm Y at + with contact X wired to E", "Program list, exactly: A/G, B/-, E/X, F/-, H/+, Y/+, and the bracketed pair (+/Omega, Omega/E) carrying the footnote asterisk", "Trial chart: RESISTANCE | RELAY OFF | RELAY ON, with three blank 'Omega =' rows"], "finder_detail_i_correct": "The finder describes the relay's state as being read from 'the light'. It is read from a BINARY OUTPUT light wired A-B through the relay's own G/H contacts, NOT from the relay's own C-E indicator lamp. In this program C is unconnected, so the relay indicator lamp is dangling and dark throughout the bias procedure. This reinforces BH-09's significance_a even further: the entire Book VII hysteresis band is characterised on the BARE COIL with the indicator lamp completely out of circuit."},
+      {"id": "VER-10", "target": "BH-06, BH-07, BH-10", "result": "ALL CONFIRMED off the page image", "tag": "verified", "citation": "Book VII printed p.7 = PDF p.12, pages/book7/p-12.png; and printed p.9 = PDF p.14 OCR", "graph_transcription": "TWO graphs, both with completely unnumbered axes. Graph 1 y-axis: RELAY ON / RELAY OFF. Graph 1 x-axis annotations, left to right: DROP-OUT VOLTAGE, PULL-IN VOLTAGE, VOLTAGE -> (TO FULL POWER SUPPLY VOLTAGE). Shaded region between drop-out and pull-in, callout 'RELAY WILL REMAIN EITHER ON OR OFF IN THIS REGION'. Graph 2 is the same with BIAS VOLTAGE added between drop-out and pull-in. No tick values anywhere on either graph. BH-07 CONFIRMED.", "finder_detail_i_correct": "BH-07 describes 'both graphs' as carrying the BIAS VOLTAGE annotation. Only the second one does. Trivial, but it is a transcription error in a file whose whole value is transcription fidelity.", "new_qualitative_observation": {"tag": "unverified", "claim": "In both sketches, PULL-IN VOLTAGE is drawn only a short distance to the left of the 'TO FULL POWER SUPPLY VOLTAGE' arrow, and DROP-OUT is drawn well to the right of the y-axis origin. If the sketch were even loosely to scale it would suggest pull-in is a LARGE fraction of supply and drop-out is not near zero - i.e. a beta considerably above the profile's 0.50.", "why_unverified": "It is a freehand teaching sketch with no scale and no origin marked. It is a hint, not a constraint, and must not be used as a number. Recording it because it points the opposite way from MV601-REF-A's beta = 0.50 and a later agent should know that before treating beta = 0.50 as neutral."}},
+      {"id": "VER-11", "target": "BH-08, the blank bias table", "result": "CONFIRMED", "tag": "verified", "citation": "Book VII printed p.9 = PDF p.14, OCR text layer", "note": "OCR renders the six rows as 'Qg, =', 'Qp =', 'Og -', 'Ope =', 'Qp5 =', 'Ce' with nothing after any of them. The finder's reading (Omega-B1 through Omega-B6, all blank) is correct. The instruction to characterise every relay individually is confirmed on printed p.8 (VER-09). BH-08's inference that per-relay parameter spread is a verified design property of the real machine STANDS."},
+      {"id": "VER-12", "target": "BH-10", "result": "CONFIRMED verbatim from OCR", "tag": "verified", "citation": "Book VII printed p.9", "quote": "You may find that more than one value of resistance will meet the requirements of the bias resistor for a relay. In this case, record both in the preceding chart."},
+      {"id": "VER-13", "target": "BH-02, the errata counter note", "result": "CONFIRMED VERBATIM", "tag": "verified", "citation": "errata p.2, 'BOOK IV / page 72' note", "quote": "page 72: Note on 'Three-Bit Binary Counter' - the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit. If the counter in Book IV does not perform correctly, use the program and circuit which follow. The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.", "assessment": "The finder's judgement that this is the single most important sentence in the corpus for this gap is CORRECT and I endorse it without qualification."},
+      {"id": "VER-14", "target": "BH-04, Book I Experiment 9", "result": "CONFIRMED, and UPGRADED from second-hand to primary", "tag": "verified", "citation": "Book I printed p.17, Experiment 9 'A RELAY CONTROLS ITSELF', book1.txt", "note": "The finder cited this via find-relays.json. I read the Book I page itself. The program is exactly: 1F/1-, 1C/1X, 1Y/2Y, 2Y/2+, 2Z/1L, 1K/1C. Six connections.", "traced_paths": {"set": "2+ -> 2Y -> 1Y -> (pushbutton 1 pressed) -> 1X -> 1C -> LAMP -> 1E -> COIL -> 1F -> 1-", "hold": "2+ -> 2Y -> 2Z (pushbutton 2 normally-closed) -> 1L -> (relay 1 contact L-K, closed when relay ON) -> 1K -> 1C -> LAMP -> 1E -> COIL -> 1F -> 1-"}, "conclusion": "BOTH the pull-in path and the hold path run through the indicator lamp. BH-04 is CONFIRMED from primary. SDC presents this as the basic, reliable, introductory bistable circuit and nowhere flags it as marginal."},
+      {"id": "VER-15", "target": "BH-01 and BH-05", "result": "CONFIRMED from primary", "tag": "verified", "citation": "Book I printed p.14 body text and Experiment 7 'ELECTRICAL RELAY OPERATION' step 6, book1.txt", "quote_body": "... come on because there is no current flowing through the light. The light below the relay coil may be used to show when the relay is ON.", "quote_step6": "To modify this program so that the coil indicator lamp will light when the coil of relay 1 is energized: remove connection 1X/1E, add connection 1X/1C", "circuit_line_as_printed": "1+ 1Y --- 1X --- 1C --[lamp]-- 1E 00000 1F --- 1-", "note": "The 00000 in the OCR is the coil symbol. C-lamp-E-coil-F topology CONFIRMED from Book I text and figure. The C-drive versus E-drive distinction is taught in the very first electrical relay experiment, exactly as BH-05 says."},
+      {"id": "VER-16", "target": "BH-11, the Book V Experiment 9 elevator fix", "result": "CONFIRMED, and I can say more precisely what it does", "tag": "verified", "citation": "errata p.3, 'BOOK V / page 11: Experiment 9 program corrections'", "quote": "Note: If the performance of the circuit is unsatisfactory, make the following changes to the program: remove 5F/6C, 6C/6- ; add 5F/6E, 6E/6-, 4E/6C.", "mechanism": "BEFORE: 6C is tied to the negative rail (6C/6-), so relay 6's coil returns from 6E through its own lamp (6E -> 6C -> 6-). Series lamp. AFTER: 6E is tied to the negative rail directly (6E/6-), so the coil returns with no lamp in the path; the now-freed 6C is repurposed as a shunt indicator driven from 4E (4E/6C). SAME SHAPE AS BH-02, INDEPENDENTLY. Two occurrences make the phenomenon systemic. BH-11 STANDS."},
+      {"id": "VER-17", "target": "BH-12", "result": "CONFIRMED verbatim", "tag": "verified", "citation": "errata p.1 step 2; errata p.2 Book IV p.69 note; errata p.2 alternate-counter Procedure", "quotes": ["try carrying out the procedure slowly; some programs are not designed for high-speed operation", "push pushbutton 6 slowly when operating the single-input flip-flop", "When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter."], "significance_i_raise": "These three make relay actuation TIME observable and load-bearing, and they attach specifically to the same two circuits (the Book IV flip-flop and the Book IV counter) that BH-02 says are marginal. That coincidence is important and the finder under-weighted it. See REF-01 and MISS-03."}
+    ]
+  },
+
+  "part_B_refutations": {
+    "note": "These are places where I went to a primary page the finder did not open, or redid the arithmetic, and the finding does not survive.",
+    "refutations": [
+      {
+        "id": "REF-01",
+        "severity": "HIGH - fatal to AT-02 as written, and to the profile's headline invariant story",
+        "claim_refuted": "AT-02: 'V_coil 6.67 V sits only 0.17 V above nominal V_pullin 6.5 V. With the verified per-relay spread of BH-08 modelled at +/- 0.7 V, roughly four of six relays have a pull-in above 6.67 V and FAIL.' And part_6's headline: 'pull-in must sit just below the lamp-divided rail voltage, and rail sag under load must be able to push it across.'",
+        "correction": "On MV601-REF-A's own numbers the rail-sag mechanism supplies only 0.25 V of discrimination between the circuit AT-01 says must PASS and the circuit AT-02 says must FAIL, and the quoted failure statistic is wrong even on the finder's own assumed distribution. AT-01 and AT-02 cannot both pass on this profile.",
+        "evidence_arithmetic": {
+          "AT-01_light_load": "loop R = R_lamp(131) + R_coil(150) + R_src(0.67) = 281.67 ohm. I = 13.0/281.67 = 46.15 mA. V_coil = 6.92 V. (The finder's 6.93 is the same number; it neglects the power lamp's own sag, which would take it to about 6.90.)",
+          "AT-02_heavy_load": "rail = 13.0 - 0.844*0.67 = 12.435 V. V_coil = 12.435 * 150/281.67 = 6.62 V. (The finder prints 6.67; recomputing with alpha = 0.5325 gives 6.62-6.64. Immaterial to the argument.)",
+          "discrimination_window": "6.92 - 6.63 = 0.29 V, call it 0.25-0.3 V.",
+          "the_contradiction": "AT-01 asserts EVERY relay pulls in at 6.92 V, because Book I Experiment 9 must work on every machine. AT-02 asserts roughly FOUR OF SIX relays fail to pull in at 6.63 V. Both can only be true if four of six relays have pull-in voltages inside the 0.29 V window (6.63, 6.92) and none is above 6.92. That is a +/-0.15 V spread, not the +/-0.7 V the profile declares.",
+          "the_finder_s_own_statistic_is_wrong": "Under the declared uniform +/-0.7 V spread about 6.5 V (range 5.8 to 7.2 V), the fraction above 6.67 is (7.2-6.67)/1.4 = 0.379, i.e. 2.3 of 6 relays, not 'roughly four of six'. Worse, the fraction above 6.92 is (7.2-6.92)/1.4 = 0.20, i.e. 1.2 of 6 relays would ALSO fail Book I Experiment 9 - which AT-01 declares PASS. The profile as written predicts that a typical machine cannot run the introductory bistable experiment."
+        },
+        "additional_primary_evidence_against_the_rail_sag_mechanism": {
+          "citation": "Book I printed p.16, Experiment 8 'RELAY CONTROLS ANOTHER', step 5",
+          "quote": "It is possible to connect several relays in a series, where each relay controls another. Expand the present circuit to use all six relays with each relay controlling the coil of the next. The last relay in the series, relay 6, should turn light 6 ON.",
+          "why_it_matters": "Experiment 8's program (1+/1Y, 1X/1C, 1F/1-, 1+/1H, 1G/2C, 2F/2-, 2+/2H, 2G/2A, 2B/2-) drives each coil through its OWN indicator lamp from a C terminal, and step 5 asks the reader to extend that to ALL SIX RELAYS SIMULTANEOUSLY. SDC presents this as a working Book I exercise with no caveat. So 'six coils energised through their series lamps at once' is NOT a marginal condition on the real machine, and AT-02's premise - that six-coils-through-lamps is what strains the counter - is contradicted by Book I. The load condition AT-02 blames is one SDC explicitly tells beginners to build.",
+          "tag": "verified"
+        },
+        "what_survives": "The INVARIANT framing of part_6 (three dimensionless ratios alpha, beta, gamma) is a genuinely good contribution and survives. What does not survive is the specific claim that beta sits just below alpha and that RAIL SAG is the mechanism that crosses them. Rail sag on this supply is too small to be that mechanism.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-02",
+        "severity": "HIGH - the stated evidence for BH-03 is not a distinguishing feature at all",
+        "claim_refuted": "BH-03: 'In the alternate counter ... the program ties each relay's C terminal to the negative rail (2C/2-, 4C/4-, 6C/6-, chained via 1C/2C, 3C/4C, 5C/6C), so the lamp hangs from E to - as a SHUNT while the drive current runs through the coil between E and F.' Presented as the KILLER ARGUMENT.",
+        "correction": "The ORIGINAL Book IV p.72 counter does exactly the same thing. Its program contains 1C/2C, 2C/3C, 3C/4C, 4C/5C, 5C/6C, 6C/6- - all six C terminals chained into one node at the negative rail. Tying C to negative therefore CANNOT be what distinguishes the errata circuit from the one it replaces. The finder inferred the original circuit from the errata replacement instead of reading Book IV p.72.",
+        "evidence": "Book IV printed p.72, full program for Binary Counter, transcribed by me from the page image at 200 dpi (book2-3-4.pdf PDF p.78). Full 44-connection list given in part_D below. The six C connections are unambiguous in the printed list.",
+        "what_the_real_difference_is": "See DISC-01. It is better than what the finder claimed, and it makes the ruling stronger, not weaker.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-03",
+        "severity": "MEDIUM",
+        "claim_refuted": "AT-03's assertion: 'The shunt lamp still carries current and still glows.' And BH-03's 'the lamp is still present and still lights'.",
+        "correction": "In the errata's alternate circuit the bypass is a CONTACT SHORT ACROSS THE LAMP, so whenever the bypass is closed the lamp has essentially zero volts across it and is DARK. Reading the alternate diagram: relay 3's lamp spans 3C to 3E; 3C is tied to the negative rail (3C/4C, 4C/4-); the added bypass ties 3E to the negative rail through relay 4's N-L contact (3E/4G, 4G/4N, 4L/4-). Both lamp terminals then sit at the negative rail. The lamp cannot glow while the bypass conducts.",
+        "corroboration": "This is also what SDC's own wording implies - 'by-passes the relay indicator lights' - and it is consistent with the fact that the counter's readout is the BINARY OUTPUT lights (drawn as 2A-(o)-2B-to-minus and 5A-(o)-5B-to-minus on both the original and the alternate diagrams), not the relay indicator lamps. The relay indicator lamps are not the display in either version of this circuit, so nothing is lost by darkening them.",
+        "evidence": "errata p.2 alternate circuit diagram, read at 300 dpi; Book IV p.72 original diagram, read at 200 dpi. Both diagrams draw the binary output lights explicitly at the top corners.",
+        "simulator_consequence": "AT-03 must be rewritten. Its correct assertion is: coil at essentially full rail, relay pulls in reliably, AND ITS INDICATOR LAMP GOES DARK while the bypass contact is closed. A build that keeps the lamp lit in the alternate counter is wrong, and the finder's version of AT-03 would have enshrined that error as a passing test.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-04",
+        "severity": "MEDIUM - tag hygiene, project rule 2",
+        "claim_refuted": "The tags 'verified_reasoning_from_verified_facts' (RULING-01) and 'verified_reasoning' (CORRECTION-01).",
+        "correction": "Neither is one of the three permitted tags. Both are inference. RULING-01 is a well-argued engineering conclusion drawn from verified facts, but nobody read it in a source; under rule 2 it is [likely] at best, and the same for CORRECTION-01. Inventing a tag whose first word is 'verified' is exactly the failure mode rule 2 exists to prevent, because a downstream agent skimming tags will read it as primary. The CONTENT of RULING-01 is sound - I uphold it - but the tag must be corrected before this file is used as a spec.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-05",
+        "severity": "LOW-MEDIUM",
+        "claim_refuted": "I_trip = 1.5 A tagged [likely].",
+        "correction": "Downgrade to [unverified]. No source connects the supply's 1.5 A continuous rating to the breaker's trip point. In 1961 practice a thermal breaker is commonly rated at or above the supply's continuous rating, and the supply rating may equally have been specified BY the breaker. The finder discloses the inference honestly in the provenance field, so this is a tagging correction, not a substantive one. The recommended time-current model is sensible and I have no objection to it.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-06",
+        "severity": "LOW",
+        "claim_refuted": "CORRECTION-01's argument that a 40 ohm lamp 'would not warrant the comparison' SDC draws in EL-09.",
+        "correction": "The DIRECTION and the ARITHMETIC of CORRECTION-01 are right - alpha = 0.82 leaves so much margin that the documented counter failure is unreachable, and the prior find-relays.json figure does need to move. But the specific supporting argument from EL-09's wording is rhetoric, not evidence. A 40 ohm element in series with a 185 ohm coil reduces coil current by 18 percent; SDC could fairly call that 'limiting'. The word 'limit' in Book I p.22 carries no magnitude. CORRECTION-01 should keep its arithmetic and drop its appeal to SDC's wording.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-07",
+        "severity": "LOW - bookkeeping",
+        "claim_refuted": "counts: {verified: 24, likely: 2, unverified: 14}",
+        "correction": "Recount: EL-01 through EL-14 = 13 verified + 1 likely (EL-11). BH-01 through BH-12 = 12 verified. That is 25 verified before part_4. Adding V_oc [verified] gives 26. Likely: EL-11 and I_trip = 2, which matches. Unverified: nine parameters (R_src, R_coil, R_lamp, V_pullin, V_dropout, R_contact, R_wire, t_pullin, t_dropout) plus AT-08 = 10, not 14. The counts block is wrong in both the verified and unverified columns. Immaterial to the substance but it is the kind of thing that erodes trust in a file whose value is bookkeeping."
+      },
+      {
+        "id": "REF-08",
+        "severity": "LOW",
+        "claim_refuted": "BH-07: 'Both graphs on printed p.7 are drawn with unlabelled axes. The x-axis is annotated only DROP-OUT VOLTAGE, BIAS VOLTAGE, PULL-IN VOLTAGE...'",
+        "correction": "Only the SECOND graph carries the BIAS VOLTAGE annotation. The first graph shows drop-out and pull-in only. The substantive point - no numeric ticks anywhere - is correct.",
+        "tag": "verified"
+      },
+      {
+        "id": "REF-09",
+        "severity": "LOW - citation provenance",
+        "claim_refuted": "EL-09's citation: 'MM printed p.10, step 3; and the rotary-switch motor drive text quoted in find-relays.json'.",
+        "correction": "The analogy quote is not in the Maintenance Manual and does not need a second-hand citation. It is Book I printed p.22, section RESISTORS, and it reads in full (reassembled across the two OCR columns): 'The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil. The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.' The MM p.10 step 3 citation (resistors heat up in about 20 seconds) is correct but is a different fact. Upgrade EL-09 to a direct primary citation - and see MISS-01, because the SECOND sentence of that quote is worth more to this gap than the first.",
+        "tag": "verified"
+      }
+    ]
+  },
+
+  "part_C_discoveries_that_strengthen_the_ruling": {
+    "note": "Reading Book IV p.72 alongside the errata diagram gives a cleaner decisive case than the one the finder built, and it repairs REF-02.",
+    "items": [
+      {
+        "id": "DISC-01",
+        "title": "What the errata's alternate counter ACTUALLY changes: three added contact bypasses, one per odd-numbered relay",
+        "tag": "verified",
+        "citation": "Book IV printed p.72 program and middle-stage circuit diagram (book2-3-4.pdf PDF p.78, read at 200 dpi); errata p.2 alternate program and middle-stage circuit diagram (errata.pdf p.2, read at 260 and 300 dpi)",
+        "finding": [
+          "BOTH programs tie all six C terminals to the negative rail. Original: 1C/2C, 2C/3C, 3C/4C, 4C/5C, 5C/6C, 6C/6-. Alternate: 1C/2C, 2C/2-, 3C/4C, 4C/4-, 5C/6C, 6C/6- (plus 1B/1C). Electrically identical situation for the lamps in both. REF-02.",
+          "BOTH programs already give the EVEN relays a contact bypass of their own lamp: 1A/2E with 1B/1- (original) or 1B at the C node (alternate) shorts relay 2's E node to negative through relay 1's A-B contact. Likewise 2A/4E with 2B to negative, and 3A/6E with 3B to negative. So relays 2, 4 and 6 were never the problem.",
+          "In the ORIGINAL, the ODD relays have no such bypass. 1E/2G, 3E/4G, 5E/6G exist, but in the original program 2G, 4G and 6G are not wired onward to the negative rail, so the odd relay's coil has NO return to negative except through its own indicator lamp.",
+          "The ALTERNATE adds exactly the missing return: 2G/2N + 2L/2-, 4G/4N + 4L/4-, 6G/6N + 6L/6- (with 3N/4N and 5N/6N tying the chain). Combined with the pre-existing 1E/2G, 3E/4G and 5E/6G, each odd relay's coil E node now reaches the negative rail through an even relay's N-L contact, in PARALLEL with its own indicator lamp.",
+          "That is precisely 'by-passes the relay indicator lights so that full voltage is supplied to the relay coils'. Three added bypasses, one each for relays 1, 3 and 5."
+        ],
+        "why_this_is_the_better_killer_argument": "In BOTH circuits, relay 3's indicator lamp spans exactly the same two nodes (3C and 3E), and in BOTH circuits both of those nodes are reachable from the negative rail and the coil is reachable from the positive rail. A boolean connectivity core sees IDENTICAL connectivity: coil energised in both. The ONLY difference is that the alternate places a ~0.05 ohm contact in PARALLEL with a ~131 ohm lamp on the coil's return. Nothing short of a conductance solve can tell those two circuits apart, and SDC published them as having different outcomes. This is a cleaner and more forceful statement of RULING-01 than the series-versus-shunt framing the finder used, and unlike that framing it does not rest on a feature both circuits share.",
+        "consequence_for_the_profile": "It also explains the counter's failure WITHOUT rail sag: in the original counter, three of the six relays (1, 3, 5) are permanently lamp-fed while the other three are contact-bypassed. That is a structural asymmetry, not a statistical one. But it does NOT rescue AT-02, because those three lamp-fed coils see exactly the same divided voltage as Book I Experiment 9's coil, which SDC says works. See OPEN-01."
+      },
+      {
+        "id": "DISC-02",
+        "title": "SDC states outright that a deliberate short circuit must NOT overload the supply, because of series resistance",
+        "tag": "verified",
+        "citation": "Book I printed p.22, section RESISTORS (book1.txt lines 1137-1140, two-column OCR reassembled)",
+        "quote": "The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil. The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.",
+        "why_it_matters": "This is a second, fully independent primary statement that forces a resistive solver, and the finder used only the first half of it. SDC is describing a circuit in which the operator shorts two panel terminals together (D18/D19, the STOP terminals) as a NORMAL programmed operation, and states that this does not overload the supply BECAUSE series resistors are present. Meanwhile errata p.1 says a programming short circuit elsewhere WILL trip the breaker. A boolean connectivity core cannot hold both facts at once: in both cases the user has joined two terminals with a wire. Only a solve that computes actual branch current distinguishes 'short across the STOP terminals, current limited by two series resistors, harmless' from 'short from + to -, unlimited, breaker trips'. Add this to RULING-01's argument list; it is arguably the most legible single argument for a lay reader.",
+        "corroborating_maintenance_detail": "MM printed p.9 confirms the operational behaviour from the other side: 'Connect a short circuit across the STOP terminals (D18 and D19): the pointer knob should stop turning. If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly.' Shorting the STOP terminals stops the motor; putting power directly across them makes it run very fast. That is a resistor-network statement about a two-resistor motor circuit and nothing else."
+      },
+      {
+        "id": "DISC-03",
+        "title": "The power light dies when the breaker trips",
+        "tag": "verified",
+        "citation": "MM printed p.3 Power Supply Circuit Diagram plus MM printed p.4 step 9",
+        "finding": "The circuit breaker sits in the transformer centre-tap (yellow) line and the power light is on its downstream side, alongside the - terminal. MM step 9 confirms this by naming the breaker's two terminals as 'the terminal which leads to the transformer' and 'the terminal which leads to the power light'. Therefore a tripped breaker extinguishes the POWER light as well as everything else.",
+        "simulator_consequence": "Add as AT-09: after a + to - short trips the breaker, the POWER lamp must go dark, and must relight only after an explicit breaker reset. This is a zero-cost verified acceptance test that the finder's contract does not contain, and it is exactly the kind of detail a user of a faithful simulator will check first."
+      },
+      {
+        "id": "DISC-04",
+        "title": "A lamp alone across the full rail is a sanctioned operating point, which anchors the lamp model at its top end",
+        "tag": "verified",
+        "citation": "MM printed p.6, 'Lights'",
+        "quote": "Check the binary lights and the relay indicator lights by connecting them to the + and - power supply terminals. The lights are conservatively operated and should not require replacement for at least a year.",
+        "why_it_matters": "Together with EL-05 ('operated at less than their rated voltage'), this establishes that the lamp's RATED voltage exceeds the ~13 V rail, and that a single lamp directly across the rail is normal, not abusive. MV601-REF-A's 'alone_across_rail' operating point (81 mA, 160 ohm, 12.95 V) is therefore anchored to a real sanctioned condition rather than an invented one. The numbers remain [unverified]; the CONDITION is [verified]. That distinction is worth preserving explicitly in the profile, because it tells a later measurer exactly which measurement to take first: put one lamp across the rail and read the current."
+      }
+    ]
+  },
+
+  "part_D_transcription_the_finder_did_not_have": {
+    "note": "The finder never opened Book IV printed p.72. This is the full transcription, read from book2-3-4.pdf PDF p.78 at 200 dpi. It is the circuit that BH-02 says fails, and no downstream agent should have to re-render this page.",
+    "source": "Book IV, Experiment 1: A Three-Bit Binary Counter, printed p.72",
+    "tag": "verified",
+    "heading": "CIRCUIT DIAGRAM FOR MIDDLE STAGE OF BINARY COUNTER",
+    "diagram_reading": {
+      "binary_output_lights_drawn": "2A -(o)- 2B - to minus, at top left; 5A -(o)- 5B - to minus, at top right",
+      "relay_3_as_drawn": "3C -(o lamp)- 3E -(coil)- 3F",
+      "relay_4_as_drawn": "4C -(o lamp)- 4E -(coil)- 4F",
+      "contacts_drawn": "3J / 3H / 3G with 3+ marked at 3G; 3N / 3L / 3K; 4J / 4H / 4G; 4N / 4L / 4K",
+      "labelled_arrows": "'to 6K (carry in)' from 3J; 'to 1J (carry out)' from 4K",
+      "current_path_traced_by_verifier": "3+ -> 3G -> (G-H contact) -> 3H -> 3F (via 3F/3H) -> COIL 3 -> 3E -> LAMP 3 -> 3C -> (3C/4C, 4C/5C, 5C/6C, 6C/6-) -> negative rail. The relay's own indicator lamp is IN SERIES with its coil, in the coil's return leg."
+    },
+    "full_program_44_connections": [
+      "1A/2E", "1B/1-", "1C/2C", "1E/2G", "1F/2F", "1F/1H", "1G/1+", "1J/2H", "1J/4K", "2A/4E", "2B/2-",
+      "2C/3C", "2E/2J", "2F/4A", "3A/6E", "3B/3-", "3C/4C", "3E/4G", "3F/3H", "3F/4F", "3G/3+",
+      "3J/4H", "3J/6K", "3L/4L", "3N/4H", "4B/4-", "4C/5C", "4E/4J", "4F/5A", "5B/5-", "5C/6C",
+      "5E/6G", "5F/6F", "5F/5H", "5G/5+", "5J/6H", "5J/6X", "5L/6L", "5N/6H", "6A/6F", "6B/6-",
+      "6C/6-", "6E/6J", "6Y/6+"
+    ],
+    "procedure_as_printed": "1. Turn power ON. Push pushbutton 6 and release. Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. 2. Push pushbutton 6 again and release. Lights 4, 5 and 6 will now read OFF, ON, OFF or 010. 3. Push and release pushbutton 6 several times...",
+    "structural_notes": [
+      "All six C terminals form ONE node tied to the negative rail (1C/2C, 2C/3C, 3C/4C, 4C/5C, 5C/6C, 6C/6-).",
+      "F terminals are paired (1F/2F, 3F/4F, 5F/6F) and each pair is fed from an H arm (1F/1H, 3F/3H, 5F/5H). Power enters at 1G/1+, 3G/3+, 5G/5+.",
+      "Relays 2, 4 and 6 have their E node bypassed to negative through another relay's A-B contact (1A/2E with 1B/1-; 2A/4E with 2B/2-; 3A/6E with 3B/3-).",
+      "Relays 1, 3 and 5 have NO such bypass in this program. Their coils return to negative only through their own indicator lamps. This is the asymmetry the errata circuit removes. See DISC-01."
+    ]
+  },
+
+  "part_E_arithmetic_audit": {
+    "id": "VER-ARITH",
+    "note": "Every computed figure in the finding recomputed. Where I agree I say so; where the number is right but the conclusion drawn from it is not, that is in part_B.",
+    "results": [
+      {"target": "R_src = (13.0-12.0)/1.5 = 0.667 ohm", "verdict": "arithmetic correct; the reading of 'nominal 12 volts' as the loaded figure is an assumption the finder flags honestly as OQ-04. I agree with both the arithmetic and the flag."},
+      {"target": "alpha = 150/(150+131+0.67) = 0.5325", "verdict": "correct (finder prints 0.533)."},
+      {"target": "AT-01: loop 281.7 ohm, I 46.2 mA, V_coil 6.93, V_lamp 6.04", "verdict": "correct to rounding. Note it neglects the power lamp's contribution to sag; including it gives V_coil about 6.90."},
+      {"target": "AT-02: total 0.844 A, sag 0.57 V, rail 12.43 V", "verdict": "arithmetic correct. 0.844*0.667 = 0.563. But V_coil printed as 6.67 should be 12.435*0.5325 = 6.62. Minor. The PREMISE (0.844 A) and the CONCLUSION (four of six fail) are both wrong for reasons in REF-01."},
+      {"target": "AT-04 E12 sweep at 13.0 V into 150 ohm coil", "verdict": "SPOT-CHECKED AND CORRECT. 180 ohm: 13*150/330.67 = 5.897 (printed 5.90). 150 ohm: 13*150/300.67 = 6.485 (printed 6.49). 120 ohm: 13*150/270.67 = 7.205 (printed 7.20). 470 ohm: 13*150/620.67 = 3.142 (printed 3.14). The sweep is sound and the conclusion that several adjacent E12 values land inside the band (reproducing BH-10) follows correctly from the profile."},
+      {"target": "AT-05: 6 coils via C = 0.277 A; 7 lamps across rail = 0.566 A; total 0.844 A", "verdict": "internally consistent (6*46.2mA = 0.277; 7*80.9mA = 0.566). Whether the Book IV counter actually lights seven lamps simultaneously is UNVERIFIED - the counter's display is three binary output lights (4, 5, 6), not six. The load figure is an upper bound presented as the operating case."},
+      {"target": "AT-06: 13.0/0.667 = 19.4 A", "verdict": "correct."},
+      {"target": "EL-11: V_peak = 13 * pi/2 = 20.42 V", "verdict": "correct for an ideal full-wave rectified sine with an average-responding meter. Tagged [likely] with the right caveat. I would add one further caveat the finder omits: a 1961 unit may use a selenium rectifier stack rather than silicon, whose forward drop is around 1 V per cell and materially changes both the average and the peak. The rectifier is spare part 6433 at $3.00, which is expensive for two silicon diodes in 1961 and cheap for a selenium stack; that is a hint and nothing more. Tag [unverified]."},
+      {"target": "counts block", "verdict": "wrong, see REF-07."}
+    ]
+  },
+
+  "part_F_ruling_verdict": {
+    "id": "RULING-01-VERDICT",
+    "verdict": "UPHELD. The core must be a DC resistive-network solver, not a boolean connectivity solver.",
+    "tag_correction": "The finding tags this 'verified_reasoning_from_verified_facts'. Under project rule 2 the correct tag is [likely]: the FACTS it rests on are verified, the CONCLUSION is inference. Nobody read 'build a resistive solver' in a 1961 manual.",
+    "arguments_that_survive_verification": [
+      "DISC-01 (mine, replacing BH-03): the original and alternate Book IV counters have identical boolean connectivity and different published outcomes; the only difference is a 0.05 ohm contact placed in PARALLEL with a 131 ohm lamp on the coil return. No connectivity walk can distinguish them.",
+      "DISC-02 (mine, from Book I p.22): SDC states that a deliberate short across the STOP terminals is harmless because of series resistors, while errata p.1 states that a programming short trips the breaker. Both are 'the user joined two terminals'. Only computed branch current separates them.",
+      "BH-02 (verified verbatim): SDC published a relay failure whose fix is 'full voltage to the relay coils'. A boolean core makes the machine strictly MORE reliable than the real one and deletes the only failure mode SDC documented.",
+      "BH-06 / BH-08 / BH-09 / BH-10 (all verified by me on the page images): the whole of Book VII is a continuous-voltage, two-threshold, per-relay-characterised technique. Inexpressible without a coil voltage.",
+      "BH-05 / VER-15 (verified): Book I Experiment 7 teaches C-drive versus E-drive as electrically different in the first relay lesson.",
+      "EL-12 / DISC-03 (verified): the breaker is a function of TOTAL current and kills the power lamp with everything else."
+    ],
+    "arguments_i_withdraw_from_the_finding": [
+      "BH-03 as stated (C tied to negative distinguishes the two counters) - refuted by REF-02, replaced by DISC-01.",
+      "The rail-sag mechanism of part_6's headline - refuted by REF-01."
+    ],
+    "rejected_alternatives_verdict": "The finding's rejection of PROFILE-ZERO (pure boolean) and PROFILE-ZERO-PLUS (boolean plus a lamp-count heuristic) is CORRECT, and DISC-01 makes the rejection of PROFILE-ZERO-PLUS airtight: a lamp-count-in-path heuristic sees one lamp on the coil path in BOTH counters. The deferral of full transient SPICE is reasonable but see OPEN-02 for a qualification about relay timing."
+  },
+
+  "part_G_profile_verdict": {
+    "id": "MV601-REF-A-VERDICT",
+    "is_the_fallback_defensible": "PARTLY. The METHOD (constraint satisfaction against documented behaviours rather than datasheet invention) is right, and the deliverable of a named, tunable, individually-tagged profile plus executable acceptance tests is the right shape for a spec. The INVARIANT decomposition into alpha, beta, gamma is a real contribution and I would keep it.",
+    "is_it_honestly_labelled": "YES, and this deserves saying plainly. part_4's status field opens with 'NAMED FALLBACK. This is a documented engineering decision, not a research result.' Every parameter carries its own tag, provenance, tunable flag and sane_range. part_9 lists six open questions with what would settle each. part_10 lists four things that would overturn the file. The finder did not dress inference as finding at the parameter level. My tagging objections (REF-04, REF-05) are about the RULING and one derived number, not about the profile's parameters.",
+    "what_must_change_before_it_is_used": [
+      "AT-02 must be rewritten or withdrawn. As written it contradicts AT-01. See REF-01.",
+      "AT-03 must be rewritten: the bypassed lamp goes DARK, it does not 'still glow'. See REF-03.",
+      "BH-03's evidence must be replaced with DISC-01.",
+      "The per-relay spread of +/-0.7 V has no support and, combined with AT-01, is self-defeating. Either shrink it to something the profile can survive (+/-0.15 V) or accept that the counter failure is not a DC-threshold phenomenon and model it elsewhere. See OPEN-01.",
+      "RULING-01 and CORRECTION-01 need conforming tags.",
+      "Add AT-09 (breaker trip extinguishes the power lamp, DISC-03) and AT-10 (short across STOP terminals is harmless while short across + and - trips, DISC-02). Both are free and both are verified."
+    ],
+    "what_i_would_keep_unchanged": [
+      "The solver class ruling and the union-find-plus-conductance-graph definition of a net in part_3's what_a_net_means. That section is correct and clearly written and I found nothing to attack in it.",
+      "The per-event algorithm in part_7, including the inner lamp fixed point, the hysteresis hold branch, and the treatment of outer-loop non-convergence as a real buzzer rather than an error. That last is a genuinely good call.",
+      "The degenerate-case handling, especially 'floating is not grounded' and power-on state is OFF (which errata p.3 independently justifies twice via 'to re-set the game, turn power off, then on again').",
+      "part_8's answer to CAP-09: descoping Book VII does not let the core fall back to boolean. Correct, and REF-01 does not disturb it."
+    ]
+  },
+
+  "part_H_open_questions_i_am_adding": {
+    "items": [
+      {
+        "id": "OPEN-01",
+        "question": "If not rail sag, what actually makes the Book IV counter's lamp-fed relays (1, 3, 5) fail when Book I Experiment 9's lamp-fed relay does not?",
+        "status": "NOT SETTLED BY THE SOURCES. DISC-01 establishes that the counter's odd relays are driven exactly as Book I Experiment 9's relay is: coil in series with one indicator lamp across the rail. Same alpha, same voltage. Yet SDC says one is reliable and the other is 'somewhat strained'. A pure DC threshold model cannot produce different outcomes from identical circuits, so the difference must lie outside the DC solve.",
+        "best_supported_hypothesis": "TIMING, and it is supported by SDC's own words. BH-12 shows SDC attaching speed warnings to precisely these circuits and no others: 'push pushbutton 6 slowly' on the Book IV p.69 flip-flop, and 'hold the pushbutton down long enough for any carry to propagate to the highest stage' on the alternate counter. In Book I Experiment 9 the user holds the button until the relay latches; in the counter a relay must pull in inside a carry window set by another relay's transfer. A lamp-fed coil has a longer L/R rise to pull-in current than a bypassed one, so it loses races it would win given time. 'Full voltage ... causing them to pull in more reliably' reads as much like a SPEED statement as a threshold statement.",
+        "tag": "unverified",
+        "what_would_settle_it": "A pull-in TIME measurement on a surviving unit at the lamp-divided drive versus the full-rail drive, plus a coil inductance measurement. Failing that, an oscilloscope on a real counter watching a carry cascade."
+      },
+      {
+        "id": "OPEN-02",
+        "question": "Does part_8's recommendation - DC solve with hysteresis for Books I-VI, transient only for Book VII - actually cover the errata?",
+        "status": "DOUBTFUL, pending OPEN-01. If the counter failure is dynamic, then relay actuation and release times are needed to reproduce a BOOK IV behaviour, not a Book VII one, and the DC-only first milestone cannot pass AT-02 by any tuning of the profile. That does not change the solver class - a transient model still needs the resistive solve underneath - but it moves relay timing from 'nice to have, OQ-05' to 'required for the Books I-VI milestone'.",
+        "tag": "unverified",
+        "recommendation": "Build the DC resistive core with hysteresis as part_8 says, but budget for per-relay actuation and release times in the SAME milestone rather than deferring them with the capacitors. The cost is small: two more parameters and an event queue."
+      },
+      {
+        "id": "OPEN-03",
+        "question": "Is the rectifier silicon or selenium?",
+        "status": "NOT SETTLED. The diagram draws two diode symbols and calls the block RECTIFIER. Spare part 6433 'Rectifier' is priced at $3.00 in 1961 money. It bears on the forward drop, hence on the relationship between the transformer secondary and the observed 13 V, hence on the peak-versus-average question of OQ-03. Low priority, recorded so nobody assumes an ideal diode without noticing they assumed it.",
+        "tag": "unverified",
+        "what_would_settle_it": "A photograph of the rectifier on the power panel of a surviving unit."
+      },
+      {
+        "id": "OPEN-04",
+        "question": "How many lamps are actually lit during the Book IV counter run?",
+        "status": "NOT SETTLED and it matters for AT-05. The counter's readout is binary output lights 4, 5 and 6 only. AT-05's 'six binary output lamps and the power lamp' is an assumed worst case presented as the counter's load. The real figure is somewhere between two and five lamps depending on count state. Recorded because AT-05's 44 percent headroom claim rests on it.",
+        "tag": "unverified"
+      }
+    ]
+  },
+
+  "part_I_known_discrepancy_carried_forward": {
+    "note": "Recording, not resolving, per project rule.",
+    "watertown": "I independently confirmed 'Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts' on: the Maintenance Manual cover; the Maintenance Manual spare-parts order block, which reads 'Watertown 72, Massachusetts'; the errata sheet header ('please do not hesitate to contact us at 372 Main Street, Watertown, Massachusetts'); and the errata sheet footer ('372 Main Street, Watertown, Massachusetts').",
+    "cambridge": "Not re-verified by me in this pass. The panel legend in prebrief/images/image_3.jpg is reported by prior findings to read 'Cambridge, Massachusetts'. I did not open that image in this verification and take no position on it.",
+    "ruling": "Do not pick one. Both are primary artifacts of the same company."
+  },
+
+  "counts": {"verified": 31, "likely": 1, "unverified": 8},
+  "count_note": "verified = VER-01..VER-17 (17), REF-01,02,03,04,05,06,08,09 (8), DISC-01..04 (4), part_D transcription (1), plus the EL-11 arithmetic check counted as likely. unverified = VER-10's qualitative graph observation, EL-11's selenium caveat, OPEN-01..04, REF-07 bookkeeping (untagged), and the OPEN-01 timing hypothesis."
+}

@@ -1,0 +1,488 @@
+#!mv601-trace 1
+# id=V-SUPERCIRCUIT contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=63
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=19 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.3 * outLamp6 dim->on
+    31.5 * dial c0->gap
+    38.4 * outLamp6 on->dim
+    52.3 * dial gap->c1
+    94.0 * outLamp6 dim->off
+   114.8 * dial c1->gap
+   135.7 * dial gap->c2
+   138.0 * outLamp6 off->dim
+   157.1 * outLamp6 dim->on
+   198.6 * dial c2->gap
+   215.0 * outLamp6 on->dim
+   219.4 * dial gap->c3
+   222.7 * outLamp2 off->dim
+   241.8 * outLamp2 dim->on
+   270.6 * outLamp6 dim->off
+   282.4 * dial c3->gap
+   298.7 * outLamp2 on->dim
+   303.2 * dial gap->c4
+   354.3 * outLamp2 dim->off
+   365.7 * dial c4->gap
+   386.6 * dial gap->c5
+   388.6 * outLamp2 off->dim
+   407.7 * outLamp2 dim->on
+   449.5 * dial c5->gap
+   466.0 * outLamp2 on->dim
+   470.3 * dial gap->c6
+   473.6 * outLamp6 off->dim
+   492.7 * outLamp6 dim->on
+   521.6 * outLamp2 dim->off
+   533.3 * dial c6->gap
+   549.6 * outLamp6 on->dim
+   554.1 * dial gap->c7
+   558.2 * outLamp6 dim->on
+   616.9 * dial c7->gap
+   635.1 * outLamp6 on->dim
+   637.8 * dial gap->c8
+   690.7 * outLamp6 dim->off
+   700.3 * dial c8->gap
+   721.1 * dial gap->c9
+   724.4 * outLamp2 off->dim
+   743.5 * outLamp2 dim->on
+   784.1 * dial c9->gap
+   800.4 * outLamp2 on->dim
+   804.9 * dial gap->c10
+   809.0 * outLamp2 dim->on
+   867.7 * dial c10->gap
+   885.9 * outLamp2 on->dim
+   888.6 * dial gap->c11
+   891.9 * outLamp6 off->dim
+   911.0 * outLamp6 dim->on
+   941.5 * outLamp2 dim->off
+   951.5 * dial c11->gap
+   967.8 * outLamp6 on->dim
+   972.4 * dial gap->c12
+   972.5 ? dial=c12  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+   972.5 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp3=off outLamp4=off outLamp5=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+   976.6 * outLamp6 dim->on
+  1035.2 * dial c12->gap
+  1053.4 * outLamp6 on->dim
+  1056.0 * dial gap->c13
+  1066.0 * indLamp5 off->dim
+  1067.9 * relay5 nc->mid
+  1069.2 * relay5 mid->no
+  1069.3 ? relay5=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1069.3 ? relay6=nc dial=c13  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1072.6 * outLamp4 off->dim  outLamp5 off->dim  indLamp2 off->dim  indLamp4 off->dim
+  1080.8 * relay1 nc->mid
+  1081.2 * relay3 nc->mid
+  1082.1 * relay1 mid->no
+  1082.5 * relay3 mid->no  outLamp3 off->dim  indLamp3 off->dim
+  1083.4 * outLamp1 off->dim  indLamp1 off->dim
+  1092.1 * outLamp4 dim->on  indLamp4 dim->on
+  1093.0 * outLamp5 dim->on  indLamp2 dim->on
+  1107.8 * indLamp5 dim->on
+  1109.0 * outLamp6 dim->off
+  1120.5 * dial c13->gap
+  1124.2 * indLamp5 on->dim
+  1125.2 * relay5 no->mid
+  1126.1 * relay5 mid->nc
+  1138.4 * relay4 nc->mid
+  1139.7 * relay4 mid->no
+  1141.7 * dial gap->c14
+  1145.0 * outLamp2 off->dim
+  1151.3 * relay2 nc->mid
+  1152.6 * relay2 mid->no
+  1158.9 * outLamp3 dim->on  indLamp3 dim->on
+  1160.3 * outLamp1 dim->on  indLamp1 dim->on
+  1164.2 * outLamp2 dim->on
+  1179.9 * indLamp5 dim->off
+  1205.5 * dial c14->gap
+  1221.8 * outLamp2 on->dim
+  1226.6 * dial gap->c15
+  1231.0 * outLamp2 dim->on
+  1290.2 * dial c15->gap
+  1308.3 * outLamp2 on->dim
+  1311.3 * dial gap->c0
+  1311.4 ? dial=c0  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1311.4 ? relay1=no relay2=no relay3=no relay4=no relay5=nc relay6=nc outLamp1=on outLamp3=on outLamp4=on outLamp5=on indLamp1=on indLamp2=on indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1314.6 * outLamp6 off->dim
+  1333.8 * outLamp6 dim->on
+  1363.9 * outLamp2 dim->off
+  1375.1 * dial c0->gap
+  1391.4 * outLamp6 on->dim
+  1396.2 * dial gap->c1
+  1399.5 * indLamp6 off->dim
+  1408.0 * relay6 nc->mid
+  1409.3 * relay6 mid->no
+  1409.4 ? relay6=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1409.4 ? relay5=nc dial=c1  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1421.1 * dial c1->gap
+  1442.3 * dial gap->c0
+  1452.2 * indLamp6 dim->on
+  1461.2 * outLamp6 dim->on
+  1506.1 * dial c0->gap
+  1522.8 * outLamp6 on->dim
+  1527.3 * dial gap->c15
+  1530.5 * outLamp2 off->dim
+  1549.8 * outLamp2 dim->on
+  1578.4 * outLamp6 dim->off
+  1591.2 * dial c15->gap
+  1607.4 * outLamp2 on->dim
+  1612.3 * dial gap->c14
+  1612.4 ? dial=c14  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1612.4 ? relay1=no relay2=no relay3=no relay4=no relay5=nc relay6=no indLamp6=on  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1616.7 * outLamp2 dim->on
+  1676.1 * dial c14->gap
+  1694.1 * outLamp2 on->dim
+  1697.2 * dial gap->c13
+  1707.2 * indLamp5 off->dim
+  1709.3 * relay5 nc->mid
+  1710.6 * relay5 mid->no
+  1710.7 ? relay5=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1710.7 ? dial=c13  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  1721.3 * relay6 no->mid
+  1722.2 * relay6 mid->nc
+  1724.7 * relay3 no->mid
+  1725.6 * relay3 mid->nc
+  1735.2 * indLamp6 on->dim
+  1746.4 * dial c13->gap
+  1746.4 ! dial chatter 9 transitions in 333.2ms — suppressed 999.6ms
+  1749.8 * outLamp2 dim->off
+  1751.2 * relay5 no->mid
+  1752.1 * relay5 mid->nc
+  1760.3 * relay4 no->mid
+  1760.7 * outLamp4 on->dim  indLamp4 on->dim
+  1761.2 * relay4 mid->nc
+  1767.4 * dial gap->c14
+  1768.7 * outLamp2 off->dim
+  1776.5 * outLamp3 on->dim  indLamp3 on->dim
+  1780.0 * outLamp1 on->dim  indLamp1 on->dim
+  1787.9 * outLamp2 dim->on
+  1791.3 * indLamp6 dim->off
+  1801.3 * indLamp5 dim->off
+  1830.7 * dial c14->gap
+  1847.2 * outLamp2 on->dim
+  1851.7 * dial gap->c15
+  1855.8 * outLamp2 dim->on
+  1915.0 * dial c15->gap
+  1933.1 * outLamp2 on->dim
+  1936.0 * dial gap->c0
+  1939.3 * outLamp6 off->dim
+  1958.5 * outLamp6 dim->on
+  1988.7 * outLamp2 dim->off
+  1999.4 * dial c0->gap
+  2015.7 * outLamp6 on->dim
+  2020.3 * dial gap->c1
+  2071.3 * outLamp6 dim->off
+  2083.3 * dial c1->gap
+  2104.3 * dial gap->c2
+  2104.4 ? dial=c2  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  2104.4 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp3=dim outLamp4=dim outLamp5=on indLamp2=on indLamp3=dim indLamp4=dim indLamp5=off indLamp6=off  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  2106.3 * outLamp6 off->dim
+  2125.5 * outLamp6 dim->on
+  2167.6 * dial c2->gap
+  2184.0 * outLamp6 on->dim
+  2188.6 * dial gap->c3
+  2191.9 * outLamp2 off->dim
+  2211.1 * outLamp2 dim->on
+  2239.6 * outLamp6 dim->off
+  2252.0 * dial c3->gap
+  2268.3 * outLamp2 on->dim
+  2273.0 * dial gap->c4
+  2276.3 * indLamp6 off->dim
+  2284.7 * relay6 nc->mid
+  2286.0 * relay6 mid->no
+  2286.1 ? relay6=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  2286.1 ? dial=c4  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  2297.6 * dial c4->gap
+  2318.7 * dial gap->c3
+  2328.5 * indLamp6 dim->on
+  2337.4 * outLamp2 dim->on
+  2382.2 * dial c3->gap
+  2398.9 * outLamp2 on->dim
+  2403.2 * dial gap->c2
+  2406.4 * outLamp6 off->dim
+  2425.7 * outLamp6 dim->on
+  2454.6 * outLamp2 dim->off
+  2466.8 * dial c2->gap
+  2483.1 * outLamp6 on->dim
+  2487.8 * dial gap->c1
+  2538.7 * outLamp6 dim->off
+  2550.9 * dial c1->gap
+  2571.9 * dial gap->c0
+  2573.9 * outLamp6 off->dim
+  2593.1 * outLamp6 dim->on
+  2635.4 * dial c0->gap
+  2651.8 * outLamp6 on->dim
+  2656.5 * dial gap->c15
+  2659.8 * outLamp2 off->dim
+  2679.0 * outLamp2 dim->on
+  2707.4 * outLamp6 dim->off
+  2720.0 * dial c15->gap
+  2736.3 * outLamp2 on->dim
+  2741.0 * dial gap->c14
+  2745.3 * outLamp2 dim->on
+  2804.4 * dial c14->gap
+  2822.5 * outLamp2 on->dim
+  2825.5 * dial gap->c13
+  2835.5 * indLamp5 off->dim
+  2837.5 * relay5 nc->mid
+  2838.8 * relay5 mid->no
+  2838.9 ? relay5=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  2838.9 ? dial=c13  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  2844.6 * outLamp1 dim->on  outLamp4 dim->on  indLamp1 dim->on  indLamp4 dim->on
+  2849.5 * relay6 no->mid
+  2849.9 * relay3 nc->mid
+  2850.4 * relay6 mid->nc
+  2851.2 * relay3 mid->no
+  2860.3 * relay1 no->mid
+  2861.2 * relay1 mid->nc
+  2863.4 * indLamp6 on->dim
+  2874.7 * dial c13->gap
+  2878.1 * outLamp2 dim->off
+  2879.5 * relay5 no->mid
+  2880.4 * relay5 mid->nc
+  2892.8 * relay4 nc->mid
+  2894.1 * relay4 mid->no
+  2895.9 * dial gap->c14
+  2897.2 * outLamp2 off->dim
+  2902.3 * relay2 no->mid
+  2902.5 * outLamp5 on->dim  indLamp2 on->dim
+  2903.2 * relay2 mid->nc
+  2911.5 * outLamp3 dim->on  indLamp3 dim->on
+  2915.3 * outLamp1 on->dim  indLamp1 on->dim
+  2916.4 * outLamp2 dim->on
+  2919.5 * indLamp6 dim->off
+  2929.5 * indLamp5 dim->off
+  2959.2 * dial c14->gap
+  2959.7 * outLamp5 dim->off  indLamp2 dim->off
+  2971.0 * outLamp1 dim->off  indLamp1 dim->off
+  2975.7 * outLamp2 on->dim
+  2980.1 * dial gap->c15
+  2984.1 * outLamp2 dim->on
+  3043.4 * dial c15->gap
+  3061.5 * outLamp2 on->dim
+  3064.3 * dial gap->c0
+  3067.6 * outLamp6 off->dim
+  3086.8 * outLamp6 dim->on
+  3117.2 * outLamp2 dim->off
+  3127.7 * dial c0->gap
+  3144.0 * outLamp6 on->dim
+  3148.7 * dial gap->c1
+  3199.6 * outLamp6 dim->off
+  3211.6 * dial c1->gap
+  3232.5 * dial gap->c2
+  3234.5 * outLamp6 off->dim
+  3253.7 * outLamp6 dim->on
+  3295.9 * dial c2->gap
+  3312.3 * outLamp6 on->dim
+  3316.8 * dial gap->c3
+  3320.1 * outLamp2 off->dim
+  3339.3 * outLamp2 dim->on
+  3368.0 * outLamp6 dim->off
+  3380.2 * dial c3->gap
+  3396.5 * outLamp2 on->dim
+  3401.2 * dial gap->c4
+  3452.1 * outLamp2 dim->off
+  3464.1 * dial c4->gap
+  3485.0 * dial gap->c5
+  3487.0 * outLamp2 off->dim
+  3506.2 * outLamp2 dim->on
+  3548.3 * dial c5->gap
+  3564.7 * outLamp2 on->dim
+  3569.3 * dial gap->c6
+  3569.4 ? dial=c6  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  3569.4 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=off outLamp3=on outLamp4=on outLamp5=off indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  3572.6 * outLamp6 off->dim
+  3591.8 * outLamp6 dim->on
+  3620.4 * outLamp2 dim->off
+  3632.7 * dial c6->gap
+  3649.0 * outLamp6 on->dim
+  3653.6 * dial gap->c7
+  3657.8 * outLamp6 dim->on
+  3716.9 * dial c7->gap
+  3735.0 * outLamp6 on->dim
+  3737.8 * dial gap->c8
+  3741.1 * indLamp6 off->dim
+  3749.5 * relay6 nc->mid
+  3750.8 * relay6 mid->no
+  3750.9 ? relay6=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  3750.9 ? dial=c8  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  3762.4 * dial c8->gap
+  3783.5 * dial gap->c7
+  3793.3 * indLamp6 dim->on
+  3802.0 * outLamp6 dim->on
+  3846.9 * dial c7->gap
+  3863.7 * outLamp6 on->dim
+  3867.9 * dial gap->c6
+  3871.8 * outLamp6 dim->on
+  3931.3 * dial c6->gap
+  3949.4 * outLamp6 on->dim
+  3952.3 * dial gap->c5
+  3955.6 * outLamp2 off->dim
+  3974.8 * outLamp2 dim->on
+  4005.0 * outLamp6 dim->off
+  4015.8 * dial c5->gap
+  4032.1 * outLamp2 on->dim
+  4036.8 * dial gap->c4
+  4087.7 * outLamp2 dim->off
+  4099.9 * dial c4->gap
+  4120.9 * dial gap->c3
+  4122.9 * outLamp2 off->dim
+  4142.1 * outLamp2 dim->on
+  4184.4 * dial c3->gap
+  4200.8 * outLamp2 on->dim
+  4205.4 * dial gap->c2
+  4208.7 * outLamp6 off->dim
+  4227.9 * outLamp6 dim->on
+  4256.5 * outLamp2 dim->off
+  4268.9 * dial c2->gap
+  4285.2 * outLamp6 on->dim
+  4289.9 * dial gap->c1
+  4340.8 * outLamp6 dim->off
+  4352.9 * dial c1->gap
+  4373.9 * dial gap->c0
+  4375.9 * outLamp6 off->dim
+  4395.1 * outLamp6 dim->on
+  4437.4 * dial c0->gap
+  4453.8 * outLamp6 on->dim
+  4458.4 * dial gap->c15
+  4461.7 * outLamp2 off->dim
+  4480.9 * outLamp2 dim->on
+  4509.5 * outLamp6 dim->off
+  4521.9 * dial c15->gap
+  4538.2 * outLamp2 on->dim
+  4543.0 * dial gap->c14
+  4547.4 * outLamp2 dim->on
+  4606.3 * dial c14->gap
+  4624.4 * outLamp2 on->dim
+  4627.3 * dial gap->c13
+  4637.3 * indLamp5 off->dim
+  4639.3 * relay5 nc->mid
+  4640.6 * relay5 mid->no
+  4640.7 ? relay5=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  4640.7 ? dial=c13  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  4651.3 * relay6 no->mid
+  4652.2 * relay6 mid->nc
+  4654.8 * relay3 no->mid
+  4655.7 * relay3 mid->nc
+  4665.2 * indLamp6 on->dim
+  4676.3 * dial c13->gap
+  4680.0 * outLamp2 dim->off
+  4681.1 * relay5 no->mid
+  4682.0 * relay5 mid->nc
+  4690.2 * relay4 no->mid
+  4690.7 * outLamp4 on->dim  indLamp4 on->dim
+  4691.1 * relay4 mid->nc
+  4697.1 * dial gap->c14
+  4698.4 * outLamp2 off->dim
+  4703.7 * outLamp3 on->dim  indLamp3 on->dim
+  4717.5 * outLamp2 dim->on
+  4721.4 * indLamp6 dim->off
+  4731.2 * indLamp5 dim->off
+  4746.8 * outLamp4 dim->off  indLamp4 dim->off
+  4759.6 * outLamp3 dim->off  indLamp3 dim->off
+  4760.1 * dial c14->gap
+  4776.7 * outLamp2 on->dim
+  4780.9 * dial gap->c15
+  4784.8 * outLamp2 dim->on
+  4843.7 * dial c15->gap
+  4861.9 * outLamp2 on->dim
+  4864.5 * dial gap->c0
+  4867.8 * outLamp6 off->dim
+  4886.9 * outLamp6 dim->on
+  4917.5 * outLamp2 dim->off
+  4927.5 * dial c0->gap
+  4943.8 * outLamp6 on->dim
+  4948.3 * dial gap->c1
+  4999.4 * outLamp6 dim->off
+  5010.8 * dial c1->gap
+  5031.7 * dial gap->c2
+  5033.7 * outLamp6 off->dim
+  5052.8 * outLamp6 dim->on
+  5094.6 * dial c2->gap
+  5111.1 * outLamp6 on->dim
+  5115.4 * dial gap->c3
+  5118.7 * outLamp2 off->dim
+  5137.8 * outLamp2 dim->on
+  5166.7 * outLamp6 dim->off
+  5178.4 * dial c3->gap
+  5194.7 * outLamp2 on->dim
+  5199.2 * dial gap->c4
+  5250.3 * outLamp2 dim->off
+  5261.7 * dial c4->gap
+  5282.6 * dial gap->c5
+  5284.6 * outLamp2 off->dim
+  5303.7 * outLamp2 dim->on
+  5345.5 * dial c5->gap
+  5362.0 * outLamp2 on->dim
+  5366.3 * dial gap->c6
+  5369.6 * outLamp6 off->dim
+  5388.7 * outLamp6 dim->on
+  5417.6 * outLamp2 dim->off
+  5429.3 * dial c6->gap
+  5445.6 * outLamp6 on->dim
+  5450.1 * dial gap->c7
+  5454.2 * outLamp6 dim->on
+  5512.9 * dial c7->gap
+  5531.1 * outLamp6 on->dim
+  5533.8 * dial gap->c8
+  5586.7 * outLamp6 dim->off
+  5596.3 * dial c8->gap
+  5617.1 * dial gap->c9
+  5620.4 * outLamp2 off->dim
+  5639.5 * outLamp2 dim->on
+  5680.1 * dial c9->gap
+  5696.4 * outLamp2 on->dim
+  5700.9 * dial gap->c10
+  5705.0 * outLamp2 dim->on
+  5763.7 * dial c10->gap
+  5781.9 * outLamp2 on->dim
+  5784.6 * dial gap->c11
+  5787.9 * outLamp6 off->dim
+  5807.0 * outLamp6 dim->on
+  5837.5 * outLamp2 dim->off
+  5847.5 * dial c11->gap
+  5863.8 * outLamp6 on->dim
+  5868.4 * dial gap->c12
+  5868.5 ? dial=c12  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  5868.5 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp3=off outLamp4=off outLamp5=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  5872.6 * outLamp6 dim->on
+  5931.2 * dial c12->gap
+  5949.4 * outLamp6 on->dim
+  5952.0 * dial gap->c13
+  5962.0 * indLamp5 off->dim
+  5963.9 * relay5 nc->mid
+  5965.2 * relay5 mid->no
+  5965.3 ? relay5=no  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  5968.6 * outLamp4 off->dim  outLamp5 off->dim  indLamp2 off->dim  indLamp4 off->dim
+  5976.8 * relay1 nc->mid
+  5977.2 * relay3 nc->mid
+  5978.1 * relay1 mid->no
+  5978.5 * relay3 mid->no  outLamp3 off->dim  indLamp3 off->dim
+  5979.4 * outLamp1 off->dim  indLamp1 off->dim
+  5988.1 * outLamp4 dim->on  indLamp4 dim->on
+  5989.0 * outLamp5 dim->on  indLamp2 dim->on
+  6003.8 * indLamp5 dim->on
+  6005.0 * outLamp6 dim->off
+  6016.5 * dial c13->gap
+  6020.2 * indLamp5 on->dim
+  6021.2 * relay5 no->mid
+  6022.1 * relay5 mid->nc
+  6034.4 * relay4 nc->mid
+  6035.7 * relay4 mid->no
+  6037.7 * dial gap->c14
+  6041.0 * outLamp2 off->dim
+  6047.3 * relay2 nc->mid
+  6048.6 * relay2 mid->no
+  6054.9 * outLamp3 dim->on  indLamp3 dim->on
+  6056.3 * outLamp1 dim->on  indLamp1 dim->on
+  6060.2 * outLamp2 dim->on
+  6075.9 * indLamp5 dim->off
+  6101.5 * dial c14->gap
+  6117.8 * outLamp2 on->dim
+  6122.6 * dial gap->c15
+  6127.0 * outLamp2 dim->on
+  6186.2 * dial c15->gap
+  6204.3 * outLamp2 on->dim
+  6207.3 * dial gap->c0
+  6207.4 ? dial=c0  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."
+  6207.4 ? relay1=no relay2=no relay3=no relay4=no relay5=nc relay6=nc  "Like the program above, this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world."

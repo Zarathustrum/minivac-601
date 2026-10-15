@@ -1,0 +1,602 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-TELEVISION",
+  "source": "BK3 printed pp.63-65 = book2-3-4.pdf PDF pp.69-71; no errata",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1U/1S",
+    "1S/2S",
+    "1T/2R",
+    "2R/2V",
+    "2U/3W",
+    "2W/3U",
+    "3R/4R",
+    "3S/3V",
+    "3T/4T",
+    "4A/4S",
+    "4B/4-",
+    "4U/5V",
+    "4U/1V",
+    "4V/4+",
+    "5W/1U"
+  ],
+  "errata_applied": [],
+  "note": "Printed procedure (p.65): set slide switches 1-5 LEFT, power ON, move switches 1-5 trying solutions; light 4 comes ON only when the correct solution is indicated. The page prints no setting and no light-4 state for any combination (the correct solution is derived, Step 7), so there are no expect steps. The script powers on with all switches LEFT, then sweeps all 32 settings in Gray order (bit n = switch n, RIGHT = 1) so the trace records light 4. The page contradicts itself on LEFT (conventions: LEFT = watching; procedure parenthetical: LEFT = no one watching); not asserted either way.",
+  "wires": [
+    "1U/1S",
+    "1S/2S",
+    "1T/2R",
+    "2R/2V",
+    "2U/3W",
+    "2W/3U",
+    "3R/4R",
+    "3S/3V",
+    "3T/4T",
+    "4A/4S",
+    "4B/4-",
+    "4U/5V",
+    "4U/1V",
+    "4V/4+",
+    "5W/1U"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP7",
+  "source": "BK5 printed pp.8-10 = book5-6.pdf PDF pp.14-16 (wires and procedure p.9 = PDF p.15; input table and observations p.10 = PDF p.16); errata.pdf PDF p.3 'page 10' second sentence should read 'The same will be true for a train moving right through. . . .' (ER-29) prose only",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4C/5C",
+    "4F/4X",
+    "4F/4K",
+    "4G/5G",
+    "4H/5H",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6X",
+    "5F/5K",
+    "5G/6F",
+    "5H/5+",
+    "5L/5X",
+    "5Y/6Y",
+    "6C/6-",
+    "6G/6N",
+    "6H/6-",
+    "6J/6K",
+    "6J/D17",
+    "6L/6+",
+    "6L/6Y",
+    "6N/D18",
+    "D0/M+",
+    "D7/M-",
+    "D16/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4C/5C",
+    "4F/4X",
+    "4F/4K",
+    "4G/5G",
+    "4H/5H",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6X",
+    "5F/5K",
+    "5G/6F",
+    "5H/5+",
+    "5L/5X",
+    "5Y/6Y",
+    "6C/6-",
+    "6G/6N",
+    "6H/6-",
+    "6J/6K",
+    "6J/D17",
+    "6L/6+",
+    "6L/6Y",
+    "6N/D18",
+    "D0/M+",
+    "D7/M-",
+    "D16/D19"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (procedure); printed p.10 = PDF p.16 (observation)",
+      "quote": "1. Push pushbutton 4. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (procedure); printed p.10 = PDF p.16 (observation)",
+      "quote": "1. Push pushbutton 4. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (procedure); printed p.10 = PDF p.16 (observation)",
+      "quote": "2. While holding pushbutton 4 down, push pushbutton 5. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (procedure); printed p.10 = PDF p.16 (observation)",
+      "quote": "3. Hold pushbutton 5 down and release pushbutton 4. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (procedure); printed p.10 = PDF p.16 (observation)",
+      "quote": "4. While holding pushbutton 5 down, push pushbutton 6. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.9 = book5-6.pdf PDF p.15 (procedure); printed p.10 = PDF p.16 (observation)",
+      "quote": "5. Hold pushbutton 6 down and release pushbutton 5. / Notice that the gate closes (the pointer knob moves to the \"gate closed\" position—7) as soon as the first switch is activated and remains closed until none of the switches is activated"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    }
+  ],
+  "note": "One run from the printed procedure: power on with the pointer knob at 0 (the dial's construction state is D0, so no dialGrab is needed), steps 1-6 for a train moving left to right, then pushbutton 5 alone. Wires are the printed 25 unchanged, image-read by the author against the repo render of PDF p.15 and matching programs.json; ER-29 is prose only (the p.10 second sentence should read 'The same will be true for a train moving right through. . . .'), so errata_applied is empty. Not asserted: the knob at 0 after power-on; 'set the pointer knob of the rotary switch at 0' is the printed setup instruction, met here by the dial's construction state, not a printed observation. Asserted: the until on dial 7 after step 1 (window 10 s, sized for a run rate as slow as 25 rpm), and dial 7 again 5 s after each of steps 1-5, so the asserts check where the knob rests, not a pass-through. Hold lengths (5 s per step, 10 s after step 6, 5 s for pushbutton 5 alone) are script choices. Not asserted, left to Step 7 as derived: the dial's return to 0 after step 6 (the page says only that the gate remains closed until none of the switches is activated; programs.json printedUnprinted); 'Notice that the gate does not close' for pushbutton 5 alone, since expect asserts equality only and dial 0 there would rest on the derived return; the ER-29 corrected sentence ('The same will be true for a train moving right through. . . .') and the train that 'enters the crossing, stops and backs out again', for which no button sequence is printed. No lamp state is printed. In the trace the dial runs 0 to 7 on step 1, holds 7 through step 5, runs back to 0 on step 6, and does not move while pushbutton 5 is held alone. Motor sweep (motor-sensitivity.md): V-EXP7/first-switch-closes-gate is FRAGILE on coast_udeg_stop_shorted (passes 0-16.875 deg); the profile value 5 deg passes and is not tuned. No knife-edge trip (minDecisionUa 92, minTickGap 9). Rotary run rate, coast and geometry remain profile fallbacks O-R1, O-R3, O-R5.",
+  "digest": {
+    "eventCount": 81,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      4,
+      4,
+      4,
+      0,
+      0,
+      0,
+      4,
+      8,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      28
+    ]
+  }
+}

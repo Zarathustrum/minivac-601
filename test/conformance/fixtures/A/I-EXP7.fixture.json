@@ -1,0 +1,70 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP7",
+  "source": "BK1 printed pp.14-15 = book1.pdf PDF pp.16-17",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1H", "1J/2A", "1B/1-", "1G/1A", "2B/2-", "1+/1Y", "1X/1E", "1F/1-"
+  ],
+  "errata_applied": [],
+  "note": "The script also performs the page's printed modification: with power off, remove 1X/1E and add 1X/1C.",
+  "wires": [
+    "1+/1H", "1J/2A", "1B/1-", "1G/1A", "2B/2-", "1+/1Y", "1X/1E", "1F/1-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp2", "v": "on" }
+      ],
+      "cite": "BK1 printed p.15 = book1.pdf PDF p.17",
+      "quote": "Turn power ON. Light 2 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" },
+        { "dev": "outLamp2", "v": "off" },
+        { "dev": "indLamp1", "v": "off" },
+        { "dev": "relay1", "v": "no" }
+      ],
+      "cite": "BK1 printed pp.14-15 = book1.pdf PDF pp.16-17",
+      "quote": "If the relay coil is energized by supplying power through contacts E and F, the light beneath the relay will NOT come on ... Press down pushbutton 1 and see the relay operate. ... Light 2 goes OFF and light 1 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "power", "on": false } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "disconnect", "cord": 6 } },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 6,
+        "a": { "k": "hole", "hole": "1X#1" },
+        "b": { "k": "hole", "hole": "1C#1" }
+      }
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "indLamp1", "v": "on" },
+        { "dev": "relay1", "v": "no" }
+      ],
+      "cite": "BK1 printed p.15 = book1.pdf PDF p.17",
+      "quote": "To modify this program so that the coil indicator lamp will light when the coil of relay 1 is energized: remove connection 1X/1E; add connection 1X/1C."
+    }
+  ]
+}

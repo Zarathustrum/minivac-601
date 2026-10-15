@@ -1,0 +1,614 @@
+{
+ "topic": "GAP CLOSURE: relay contact-set electrical isolation (G/H/J vs K/L/N) and the three unread Maintenance Manual check-circuit figures (Pushbutton / Relay / Slide Switch)",
+ "agent": "gap-unread-maintenance-check-circuits-and-relay-contact-isolation",
+ "date": "2026-08-30",
+ "outputFile": "docs/research/raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json",
+ "verdict": "SETTLED. The two relay contact sets are electrically isolated from one another. The proof is not the Relay Check figure alone (which is consistent with, but does not by itself force, isolation) - it is Book II Experiment 5 'DECISION MAKING', a published SDC program that both (a) contains an explicit program wire 1H/1L and (b) produces SDC's own stated behaviour ONLY if H and L are distinct nodes. All three check-circuit figures are now read, transcribed and labelled definitively.",
+ "sourcesRead": [
+  "docs/research/raw/pdf/maintenance-manual.txt (full OCR, all 11 printed pages)",
+  "docs/research/raw/pdf/maintenance-manual.pdf p.5/p.8/p.9/p.10/p.11 (pdftotext page-by-page, to fix the printed-page mapping)",
+  "PAGE IMAGE: maintenance-manual.pdf PDF p.8 = printed p.6, full page @300dpi + figure crop @600dpi (Pushbutton Check)",
+  "PAGE IMAGE: maintenance-manual.pdf PDF p.9 = printed p.7, full page @300dpi + figure crop @700dpi + detail crop @1000dpi (Relay Check)",
+  "PAGE IMAGE: maintenance-manual.pdf PDF p.10 = printed p.8, full page @300dpi (Slide Switch Check)",
+  "PAGE IMAGE: book1.pdf PDF p.14 = printed p.12, right-column crop @400dpi (relay contact description)",
+  "PAGE IMAGE: book2-3-4.pdf PDF p.19 = Book II printed p.13, full page @300dpi (Experiments 4 and 5)",
+  "book1.txt / pdftotext -layout -f 14 -l 14 book1.pdf (Book I printed p.12)",
+  "book2-3-4.txt (grep of all nH / nL terminal usage across Books II-IV)",
+  "errata.txt (Book II corrections)",
+  "PRIOR WORK read, not re-derived: find-relays.json, verify-relays.json, verify-jackmap.json"
+ ],
+ "oracleRuleCompliance": "No emulator source was opened, fetched, cloned or quoted. minivac.greg.technology and any associated repository were not visited. No web fetches were made at all in this task; every finding below is from the local primary scans.",
+ "figurePageMapDefinitive": {
+  "note": "The Maintenance Manual PDF carries a constant offset: PDF page = printed page + 2. Confirmed by running pdftotext on each PDF page and reading the printed folio at the foot. This resolves the disagreement between verify-relays.json and verify-jackmap.json.",
+  "tag": "verified",
+  "map": [
+   {
+    "pdfPage": 5,
+    "pageImage": "docs/research/raw/pdf/pages/maintenance/p-05.png",
+    "printedPage": 3,
+    "figure": "Power Supply Circuit Diagram"
+   },
+   {
+    "pdfPage": 8,
+    "pageImage": "docs/research/raw/pdf/pages/maintenance/p-08.png",
+    "printedPage": 6,
+    "figure": "Circuit Diagram - Pushbutton Check"
+   },
+   {
+    "pdfPage": 9,
+    "pageImage": "docs/research/raw/pdf/pages/maintenance/p-09.png",
+    "printedPage": 7,
+    "figure": "Circuit Diagram - Relay Check"
+   },
+   {
+    "pdfPage": 10,
+    "pageImage": "docs/research/raw/pdf/pages/maintenance/p-10.png",
+    "printedPage": 8,
+    "figure": "Circuit Diagram - Slide Switch Check"
+   },
+   {
+    "pdfPage": 11,
+    "pageImage": "docs/research/raw/pdf/pages/maintenance/p-11.png",
+    "printedPage": 9,
+    "figure": "Circuit Diagram - Rotary Switch Motor Drive"
+   }
+  ],
+  "correctionToPriorWork": [
+   {
+    "target": "verify-jackmap.json, notSettled entry 'Whether the two contact sets of one relay (G/H/J and K/L/N) share any electrical connection'",
+    "priorText": "The Maintenance Manual's 'Circuit Diagram - Relay Check' figure (pages/maintenance/p-10.png), which I did not open.",
+    "correction": "p-10.png is the SLIDE SWITCH Check. The Relay Check is p-09.png (printed p.7). verify-jackmap's other citation, item M5, lists the correct set {5,8,9,10} but does not say which is which.",
+    "tag": "verified"
+   },
+   {
+    "target": "find-relays.json RLY-04 cite 'MAINT printed p.8 (PDF p.10)' for the eight-connection sentence",
+    "correction": "Correct as written. The 'disconnect the eight connections to the relay' sentence sits at the TOP of printed p.8 (PDF p.10) as run-over text from the Relays section that begins on printed p.7. The Relay Check FIGURE is on printed p.7 (PDF p.9). Both citations are right; they are simply different pages of the same section.",
+    "tag": "verified"
+   }
+  ]
+ },
+ "theIsolationQuestion": {
+  "question": "Are the relay's two contact sets (G/H/J and K/L/N) electrically isolated from one another?",
+  "answer": "YES - they are two electrically independent transfer (SPDT) contact sets, joined only by a mechanical link (the plastic crossbar). H and L are distinct nodes. G, J, K, N are four further distinct nodes.",
+  "tag": "verified",
+  "confidence": "As high as the corpus permits. The decisive evidence is a published SDC program whose stated behaviour is inconsistent with a shared H/L node.",
+  "evidenceChain": [
+   {
+    "id": "ISO-1",
+    "tag": "verified",
+    "weight": "DECISIVE",
+    "claim": "Book II Experiment 5 (DECISION MAKING) contains the explicit program wire 1H/1L. SDC would not print a jumper between two terminals that are already one node in a thirteen-wire minimal program.",
+    "quote": "Program wiring list as printed, in order: 1+/1H  1H/1L  1L/1X  1Y/1C  1F/1-  1X/2X  2Y/2C  2F/2-  1J/2H  2J/2K  1K/2L  2K/3C  3F/3-",
+    "cite": "BK2 (book2-3-4.pdf) Book II printed p.13 = PDF p.19; read as a page image at 300 dpi, and independently in book2-3-4.txt lines 765-780",
+    "note": "The accompanying schematic on the same page draws the 1H/1L wire as a SOLID conductor down the left side of the relay-1 symbol, and draws the coil-to-contacts link as a DASHED vertical. Two different line styles, one figure."
+   },
+   {
+    "id": "ISO-2",
+    "tag": "verified",
+    "weight": "DECISIVE - proof by contradiction against SDC's own stated behaviour",
+    "claim": "Experiment 5's stated results are impossible if H and L are internally common. Therefore they are not.",
+    "argument": [
+     "Circuit as wired: + -> 1H, 1H -> 1L (program wire), 1L -> 1X; pushbutton 1 (1Y) -> 1C -> lamp -> 1E -> coil -> 1F -> minus. Same shape for relay 2 via 1X/2X, 2Y/2C, 2F/2-. Then 1J -> 2H, 2J -> 2K, 1K -> 2L, and 2K -> 3C (relay 3 coil), 3F -> minus.",
+     "SDC's stated results: both pushbuttons up -> relay 3 ON (equal). PB1 down only -> relay 3 OFF (not equal). Both down -> relay 3 ON. PB2 down only -> relay 3 OFF.",
+     "With ISOLATED contact sets: relay1 OFF, relay2 OFF -> +(1H)-1J-2H-2J-2K -> relay 3 ON. Correct. Relay1 ON, relay2 ON -> +(1L)-1K-2L-2K -> relay 3 ON. Correct. Relay1 ON, relay2 OFF -> 1J dead (relay 1 transferred), 1K live -> 2L, but relay 2 OFF holds 2L on 2N (floating); 2K reachable only through 2J, which is fed from 2H, which is fed from the dead 1J. So 2K dead -> relay 3 OFF. Correct. Symmetric for relay1 OFF, relay2 ON.",
+     "With H and L INTERNALLY COMMON: relay1 ON, relay2 OFF -> 1K is live and feeds 2L; if 2L == 2H then 2H is live; relay 2 being OFF closes 2H-2J; the printed wire 2J/2K then makes 2K live; relay 3 comes ON. That contradicts SDC's step 3, 'Push pushbutton 1. Relay 3 goes OFF because the numbers are no longer equal.'",
+     "Hence H and L cannot be internally common."
+    ],
+    "quote": "2. Turn power ON. Relay 3 comes ON because both numbers are zero. 3. Push pushbutton 1. Relay 3 goes OFF because the numbers are no longer equal. (The first number is now 1; the second number is 0.) 4. Push pushbutton 2 while holding down pushbutton 1. Once again the numbers are equal (both are 1) and relay 3 comes ON. 5. Release pushbutton 1 while holding down pushbutton 2. Relay 3 goes OFF because the numbers are not equal.",
+    "cite": "BK2 Book II printed p.13 = PDF p.19",
+    "errataCheck": "The SDC errata sheet corrects Book II page 14 (Experiment 6: change 2Z/2C to 2X/2C) but issues NO correction to page 13 / Experiment 5. The Experiment 5 listing stands as printed. Cite: errata.txt, 'BOOK II ... page 14: program correction for Experiment 6 - change 2Z/2C to 2X/2C.'"
+   },
+   {
+    "id": "ISO-3",
+    "tag": "verified",
+    "weight": "strong corroboration",
+    "claim": "The Maintenance Manual's Relay Check figure draws the two contact sets as two independent SPDT switches with NO solid conductor between them; the only thing joining them is a dashed vertical line running from the coil down past both arms - SDC's mechanical-linkage symbol.",
+    "cite": "MAINT printed p.7 = PDF p.9 = pages/maintenance/p-09.png; read at 700 dpi and 1000 dpi",
+    "note": "Every electrical connection in that figure is a solid line. The coil-to-contacts and set-to-set link is dashed throughout. Book II's Experiment 5 schematic uses the identical convention, so it is house style, not a one-off."
+   },
+   {
+    "id": "ISO-4",
+    "tag": "verified",
+    "weight": "corroboration",
+    "claim": "Book I printed p.12 states the connections are separate, in both relay states.",
+    "quote": "When the relay is OFF, separate electrical connections are made between terminals H and J and terminals L and N. When the relay is ON, separate electrical connections are made between terminals H and G and terminals L and K.",
+    "cite": "BK1 printed p.12 = PDF p.14"
+   },
+   {
+    "id": "ISO-5",
+    "tag": "verified",
+    "weight": "corroboration",
+    "claim": "The relay unit has eight solder connections, and the Relay Check figure accounts for exactly eight distinct relay nodes: six contact terminals (G H J K L N) plus a two-ended coil (E and F). This closes verify-relays REF-10, which flagged the 2-coil + 6-contact split as unread inference. The split is now read off a figure rather than assumed.",
+    "quote": "To replace a defective relay, disconnect the eight connections to the relay and remove the unit by unscrewing the relay mounting screws.",
+    "cite": "MAINT printed p.8 = PDF p.10 (text); MAINT printed p.7 = PDF p.9 (figure showing six contact terminals and a coil with exactly two ends, E and F)",
+    "residual": "The lug COUNT proves eight physical solder points. It does not by itself prove that no two of those eight are the same electrical node. ISO-1 and ISO-2 supply that."
+   }
+  ],
+  "theTrapSentence": {
+   "id": "ISO-TRAP",
+   "tag": "verified",
+   "severity": "HIGH - this sentence will mislead any agent that reads it out of context",
+   "verbatim": "The two arms (H & L) are connected together.  Both contacts always close together.",
+   "location": "Book I printed p.12 = PDF p.14, right-hand column, immediately under the hand-lettered heading RELAY ON. Read as a 400 dpi page-image crop; the wording is exactly as transcribed, no OCR damage.",
+   "why_it_is_a_trap": "Read alone it asserts an electrical common between H and L, which would rewrite every published relay circuit.",
+   "resolution": "It means MECHANICALLY connected. Two paragraphs further down the same column SDC disambiguates itself: 'The two relay arms are connected together mechanically with a plastic crossbar. Both arms move together and make or break contact at the same time.' The left-hand column of the same page says the connections H-J and L-N are 'separate electrical connections'. ISO-1 and ISO-2 settle it independently.",
+   "cite": "BK1 printed p.12 = PDF p.14",
+   "simulator_consequence": "Do not model any node identity between H and L. If a future agent re-reads Book I p.12 and proposes tying them, point it at this entry."
+  },
+  "residualUnknowns": [
+   {
+    "question": "Is the relay COIL node (E/F) galvanically distinct from all six contact nodes?",
+    "tag": "likely",
+    "whatIsKnown": "The Relay Check figure draws the coil in its own loop (+ -> Y -> X -> E -> coil -> F -> minus) sharing nothing with the contact loops but the power rails; Book I p.14's exploded drawing shows the coil as a separate part from the switches; and self-latching programs such as Book III's 1G/1C would latch permanently on power-up if the coil node were common with an arm. No source states coil-to-contact isolation in words.",
+    "whatWouldSettleIt": "An ohmmeter on a surviving unit, or an under-panel photograph showing the relay's eight lugs.",
+    "practicalEffect": "None for the simulator: model E/F as an independent two-terminal load. No published circuit distinguishes the alternatives."
+   },
+   {
+    "question": "Is there a shared relay FRAME / return path (e.g. both arms bonded to the mounting bracket)?",
+    "tag": "unverified",
+    "whatIsKnown": "Nothing in the corpus addresses it. ISO-2 rules out a low-impedance H-L bond regardless of mechanism, which is what matters.",
+    "whatWouldSettleIt": "Physical inspection."
+   }
+  ]
+ },
+ "figures": [
+  {
+   "id": "FIG-PB",
+   "title": "Circuit Diagram - Pushbutton Check",
+   "cite": "MAINT printed p.6 = PDF p.8 = pages/maintenance/p-08.png",
+   "tag": "verified",
+   "readAt": "full page 300 dpi, figure crop 600 dpi, label crop 1000 dpi",
+   "introText": "Check a pushbutton by connecting it in series with two lights as indicated:",
+   "netlist": [
+    "+  ->  Y   (pushbutton arm; drawn as a large filled dot = power terminal)",
+    "Z  ->  1A",
+    "1B ->  -   (binary output light 1 between 1A and 1B)",
+    "X  ->  2A  [SEE printingError BELOW]",
+    "2B ->  -   (binary output light 2 between 2A and 2B)"
+   ],
+   "drawnState": "Pushbutton NOT pressed: the arm from Y is drawn slanting up-right and touching the descender from Z. X sits below-right of the arm tip with a visible gap.",
+   "expectedStates": {
+    "quote": "Turn power on. Light 1 should come on. Push the pushbutton. Light 1 should go off and light 2 should come on.",
+    "cite": "MAINT printed p.7 = PDF p.9, first two lines of the page (run-over from the Pushbuttons section)",
+    "asFixture": [
+     {
+      "stimulus": "power ON, pushbutton released",
+      "expect": {
+       "light1": "ON",
+       "light2": "OFF"
+      }
+     },
+     {
+      "stimulus": "power ON, pushbutton pressed",
+      "expect": {
+       "light1": "OFF",
+       "light2": "ON"
+      }
+     }
+    ]
+   },
+   "derivedFacts": [
+    {
+     "tag": "verified",
+     "claim": "The pushbutton is a single SPDT transfer contact with three terminals X, Y, Z. Y is the arm. Z is closed at rest (normally closed). X closes when the button is pressed (normally open).",
+     "how": "Read directly off the figure combined with its expected-state text: light 1 is fed through Z and is ON before the button is pushed."
+    },
+    {
+     "tag": "verified",
+     "claim": "This independently confirms the panel legend order N.O. / ARM / N.C. over X / Y / Z reported in find-panel and verify-panel, from a second and unrelated primary artefact."
+    }
+   ],
+   "printingError": {
+    "tag": "verified",
+    "what": "The left-hand terminal of light 2 is printed '2B'. Both terminals of light 2 therefore read '2B' in the figure.",
+    "verifiedHow": "Read at 1000 dpi on a tight crop of the label row. This is what is on the page; it is not an OCR artefact and not a rendering artefact.",
+    "intendedReading": "2A. The left lamp is correctly labelled '1A (lamp) 1B', and the Relay Check figure on the next printed page correctly labels all four lamps 'nA (lamp) nB'.",
+    "instruction": "Record the typo; do NOT silently correct it in transcriptions. Use 2A when building the fixture, and carry this note with it."
+   }
+  },
+  {
+   "id": "FIG-RLY",
+   "title": "Circuit Diagram - Relay Check",
+   "cite": "MAINT printed p.7 = PDF p.9 = pages/maintenance/p-09.png",
+   "tag": "verified",
+   "readAt": "full page 300 dpi, figure crop 700 dpi, left/bottom detail crop 1000 dpi",
+   "introText": "Check a relay by connecting the coil with power through a pushbutton as indicated:",
+   "netlist": [
+    "+  ->  H    (relay arm, contact set 1; its own power terminal)",
+    "+  ->  L    (relay arm, contact set 2; a second, separate power terminal)",
+    "+  ->  Y    (pushbutton arm; a third, separate power terminal)",
+    "X  ->  E    (pushbutton N.O. drives the coil node E directly)",
+    "F  ->  -    (coil return)",
+    "C  ->  (NOT CONNECTED - see note on the indicator lamp)",
+    "Z  ->  (NOT CONNECTED)",
+    "J  ->  1A ;  1B -> 1-    (binary output light 1)",
+    "G  ->  2A ;  2B -> 2-    (binary output light 2)",
+    "N  ->  3A ;  3B -> 3-    (binary output light 3)",
+    "K  ->  4A ;  4B -> 4-    (binary output light 4)"
+   ],
+   "drawnState": "Relay OFF - the H arm is drawn touching J, the L arm touching N, and the pushbutton arm from Y touching Z. Consistent with Book I p.12's rule that relay contacts are always drawn with the relay OFF.",
+   "mechanicalLink": "A dashed vertical line runs from the coil, down between J/G and between N/K. Dashed = mechanical. No solid conductor anywhere joins the G/H/J set to the K/L/N set.",
+   "coilDriveNote": {
+    "tag": "verified",
+    "claim": "The coil is driven at E, NOT at C. The relay's own indicator lamp (wired C -> lamp -> E under the panel) is therefore OUT of circuit for this test, and the coil sees the full rail rather than the rail minus the lamp drop. C is drawn with a terminal dot and no wire.",
+    "simulator_consequence": "In this fixture the relay's indicator lamp stays DARK. An implementation that lights the indicator lamp whenever the coil is energised will fail this test. It matters because the errata explicitly warn that driving through C (lamp in series) can leave a relay under-driven: 'the relay may not perform adequately in this circuit.'"
+   },
+   "expectedStates": {
+    "quote": "Turn power on. Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on.",
+    "cite": "MAINT printed p.7 = PDF p.9, immediately below the figure caption",
+    "asFixture": [
+     {
+      "stimulus": "power ON, pushbutton released (relay OFF)",
+      "expect": {
+       "light1": "ON",
+       "light2": "OFF",
+       "light3": "ON",
+       "light4": "OFF",
+       "relayIndicatorLamp": "OFF"
+      }
+     },
+     {
+      "stimulus": "power ON, pushbutton pressed (relay ON)",
+      "expect": {
+       "light1": "OFF",
+       "light2": "ON",
+       "light3": "OFF",
+       "light4": "ON",
+       "relayIndicatorLamp": "OFF"
+      }
+     }
+    ]
+   },
+   "derivedFacts": [
+    {
+     "tag": "verified",
+     "claim": "J and N are the normally-closed contacts (energised path with the relay OFF); G and K are the normally-open contacts (energised path with the relay ON). This is a second primary confirmation of the G=N.O. / H=ARM / J=N.C. and K=N.O. / L=ARM / N=N.C. mapping already in find-relays RLY-06."
+    },
+    {
+     "tag": "verified",
+     "claim": "Both contact sets transfer simultaneously and in the same direction - lights 1 and 3 track each other, lights 2 and 4 track each other. Confirms the ganging is same-sense, not opposed."
+    },
+    {
+     "tag": "verified",
+     "claim": "The relay coil is a two-terminal element between E and F. Together with the six contact terminals this accounts for the manual's 'eight connections'."
+    },
+    {
+     "tag": "unverified",
+     "claim": "The four lamp return labels 1-, 2-, 3-, 4- imply the four binary output lights used are those of sections 1 through 4, each returned to its own section's minus terminal. The relay and pushbutton under test are drawn generically with no section number, so the figure is a template for any section.",
+     "note": "Reading of intent, not a stated fact. Harmless for the fixture: any minus terminal works if all minus terminals are one rail, which is the standing assumption elsewhere in the corpus and is itself outside this task's scope."
+    }
+   ],
+   "whatTheFigureDoesNotProve": "Taken alone it does NOT prove H/L isolation. H and L are both tied to '+' in this circuit, so an internal H-L short would leave every stated result unchanged. Anyone citing this figure as the isolation proof is over-reading it. The proof is Book II Experiment 5 (ISO-1, ISO-2). What the figure does contribute is the dashed-vs-solid drawing convention (ISO-3) and the eight-node accounting (ISO-5)."
+  },
+  {
+   "id": "FIG-SW",
+   "title": "Circuit Diagram - Slide Switch Check",
+   "cite": "MAINT printed p.8 = PDF p.10 = pages/maintenance/p-10.png",
+   "tag": "verified",
+   "readAt": "full page 300 dpi",
+   "introText": "Check a slide switch by connecting binary output lights to the terminals as indicated:",
+   "netlist": [
+    "+  ->  S    (upper arm; its own power terminal)",
+    "+  ->  V    (lower arm; a second, separate power terminal)",
+    "T  ->  1A ;  1B -> 1-    (binary output light 1)",
+    "R  ->  2A ;  2B -> 2-    (binary output light 2)",
+    "W  ->  3A ;  3B -> 3-    (binary output light 3)",
+    "U  ->  4A ;  4B -> 4-    (binary output light 4)"
+   ],
+   "drawnState": "Slide RIGHT - the S arm is drawn touching T and the V arm touching W (both slanting up-right), matching the first line of the expected-state text.",
+   "expectedStates": {
+    "quote": "Set the slide switch RIGHT. Turn power on. Lights 1 and 3 should come on. Move the slide switch to the LEFT. Lights 1 and 3 should go off and lights 2 and 4 should come on.",
+    "cite": "MAINT printed p.8 = PDF p.10, immediately below the figure caption",
+    "asFixture": [
+     {
+      "stimulus": "slide RIGHT, power ON",
+      "expect": {
+       "light1": "ON",
+       "light2": "OFF",
+       "light3": "ON",
+       "light4": "OFF"
+      }
+     },
+     {
+      "stimulus": "slide LEFT, power ON",
+      "expect": {
+       "light1": "OFF",
+       "light2": "ON",
+       "light3": "OFF",
+       "light4": "ON"
+      }
+     }
+    ]
+   },
+   "derivedFacts": [
+    {
+     "tag": "verified",
+     "claim": "Slide switch terminal roles, settled by figure + expected states together: S and V are the two arms; T and W are the contacts made when the slide is RIGHT; R and U are the contacts made when the slide is LEFT."
+    },
+    {
+     "tag": "verified",
+     "claim": "This confirms the panel legend '<- / ARM / ->' over R / S / T (R under the left arrow, T under the right arrow) reported in verify-panel, AND - new - fixes the previously-inferred lower row by the same column rule: U sits in the R column (LEFT), V in the S column (ARM), W in the T column (RIGHT). Previously this was analogy from the relay row order; it is now read off a circuit whose behaviour SDC states."
+    },
+    {
+     "tag": "verified",
+     "claim": "The slide switch is two independent SPDT transfer sets ganged by the actuator, structurally identical to the relay contacts. The manual's 'Cut all six connections to the slide switch' matches the six terminals R S T U V W one-for-one.",
+     "cite": "MAINT printed p.9 = PDF p.11 for the six-connections sentence"
+    }
+   ],
+   "isolationNote": "Same limitation as the Relay Check: both arms are tied to '+' here, so this figure is consistent with but does not force S/V isolation. No equivalent Experiment-5-style proof was hunted for the slide switch in this task - see notSettled."
+  }
+ ],
+ "acceptanceSuite": {
+  "purpose": "Three power-on acceptance tests carrying SDC's own expected lamp states. Every one of these is a complete, self-contained program the simulator must reproduce exactly.",
+  "tag": "verified",
+  "tests": [
+   {
+    "name": "MM-PUSHBUTTON-CHECK",
+    "source": "Maintenance Manual printed p.6-7",
+    "wiring": [
+     "+/Y",
+     "Z/1A",
+     "1B/1-",
+     "X/2A",
+     "2B/2-"
+    ],
+    "wiringNote": "X/2A is written with the intended terminal; the page prints '2B' on the left side of light 2 (see FIG-PB.printingError).",
+    "steps": [
+     {
+      "action": "power ON",
+      "expect": "light 1 ON, light 2 OFF"
+     },
+     {
+      "action": "press pushbutton",
+      "expect": "light 1 OFF, light 2 ON"
+     },
+     {
+      "action": "release pushbutton",
+      "expect": "light 1 ON, light 2 OFF",
+      "note": "release behaviour is implied by the momentary pushbutton, not stated on the page"
+     }
+    ]
+   },
+   {
+    "name": "MM-RELAY-CHECK",
+    "source": "Maintenance Manual printed p.7",
+    "wiring": [
+     "+/H",
+     "+/L",
+     "+/Y",
+     "X/E",
+     "F/-",
+     "J/1A",
+     "1B/1-",
+     "G/2A",
+     "2B/2-",
+     "N/3A",
+     "3B/3-",
+     "K/4A",
+     "4B/4-"
+    ],
+    "wiringNote": "C and Z are deliberately left unconnected.",
+    "steps": [
+     {
+      "action": "power ON",
+      "expect": "lights 1 and 3 ON; lights 2 and 4 OFF; relay indicator lamp OFF"
+     },
+     {
+      "action": "press pushbutton",
+      "expect": "lights 1 and 3 OFF; lights 2 and 4 ON; relay indicator lamp still OFF"
+     },
+     {
+      "action": "release pushbutton",
+      "expect": "lights 1 and 3 ON; lights 2 and 4 OFF",
+      "note": "implied, not stated"
+     }
+    ]
+   },
+   {
+    "name": "MM-SLIDE-SWITCH-CHECK",
+    "source": "Maintenance Manual printed p.8",
+    "wiring": [
+     "+/S",
+     "+/V",
+     "T/1A",
+     "1B/1-",
+     "R/2A",
+     "2B/2-",
+     "W/3A",
+     "3B/3-",
+     "U/4A",
+     "4B/4-"
+    ],
+    "steps": [
+     {
+      "action": "set slide RIGHT, power ON",
+      "expect": "lights 1 and 3 ON; lights 2 and 4 OFF"
+     },
+     {
+      "action": "move slide LEFT",
+      "expect": "lights 1 and 3 OFF; lights 2 and 4 ON"
+     }
+    ]
+   },
+   {
+    "name": "BK2-EXP5-DECISION-MAKING",
+    "source": "Book II printed p.13 = PDF p.19",
+    "purpose": "The isolation regression test. A simulator that ties H to L passes the three Maintenance Manual checks and FAILS this one.",
+    "wiring": [
+     "1+/1H",
+     "1H/1L",
+     "1L/1X",
+     "1Y/1C",
+     "1F/1-",
+     "1X/2X",
+     "2Y/2C",
+     "2F/2-",
+     "1J/2H",
+     "2J/2K",
+     "1K/2L",
+     "2K/3C",
+     "3F/3-"
+    ],
+    "steps": [
+     {
+      "action": "power ON, both pushbuttons up",
+      "expect": "relay 3 ON"
+     },
+     {
+      "action": "press pushbutton 1 only",
+      "expect": "relay 3 OFF"
+     },
+     {
+      "action": "press pushbutton 2 while holding pushbutton 1",
+      "expect": "relay 3 ON"
+     },
+     {
+      "action": "release pushbutton 1 while holding pushbutton 2",
+      "expect": "relay 3 OFF"
+     }
+    ],
+    "errataStatus": "No SDC erratum applies to Book II page 13. (Book II page 14 / Experiment 6 does get one: change 2Z/2C to 2X/2C.)"
+   }
+  ]
+ },
+ "collateralFindings": [
+  {
+   "id": "COL-1",
+   "tag": "verified",
+   "claim": "Book II printed p.13 states the design rationale for the relay's two contact sets: 'Since the relays have twice as many contacts as the pushbuttons and can be electrically operated, they are considerably more versatile than the pushbutton contacts. For this reason, relays are used to perform the processing function in all but the simplest programs.'",
+   "cite": "BK2 Book II printed p.13 = PDF p.19",
+   "simulator_consequence": "Explicit primary statement that a relay = 2 x (a pushbutton contact set). Reinforces both the SPDT-per-set model and the independence of the sets."
+  },
+  {
+   "id": "COL-2",
+   "tag": "verified",
+   "claim": "SDC's schematic line-style convention across BOTH the Maintenance Manual and Book II: solid line = electrical conductor, dashed line = mechanical linkage between a coil/actuator and the contact arms it moves.",
+   "cite": "MAINT printed p.7 = PDF p.9; BK2 Book II printed p.13 = PDF p.19",
+   "simulator_consequence": "Any future figure transcription must not read a dashed line as a wire. This convention is now established on two independent documents."
+  },
+  {
+   "id": "COL-3",
+   "tag": "verified",
+   "claim": "Book II Experiment 5 uses the wire 2J/2K - an explicit program jumper between the N.C. contact of one contact set and the N.O. contact of the OTHER contact set of the same relay. Like 1H/1L, this is only meaningful if the sets are separate.",
+   "cite": "BK2 Book II printed p.13 = PDF p.19"
+  },
+  {
+   "id": "COL-4",
+   "tag": "verified",
+   "claim": "The wiring shorthand in these listings uses the section-numbered power terminals: 1+, 1-, 2-, 3- etc. Experiment 5 alone uses 1+, 1-, 2-, 3-; Experiment 4 uses 5+, 6+, 5-, 6-. The Maintenance Manual check figures use unnumbered '+' and section-numbered '1-' .. '4-'.",
+   "cite": "BK2 Book II printed p.13 = PDF p.19; MAINT printed pp.6-8",
+   "note": "Consistent with the existing panel finding of a per-section +/- strip. Not re-derived here."
+  },
+  {
+   "id": "COL-5",
+   "tag": "verified",
+   "claim": "Book II printed p.13 also carries the Experiment 4 (CONTROL) schematic, which draws the rotary-switch motor branch: 6G -> D17, D18 -> M-, with the motor symbol and a resistor drawn between D18 and D19. Wiring list: 5+/5Y, 5X/5C, 5F/5-, 5+/5H, 5G/6C, 6F/6-, 6+/6H, 6G/D17, D18/M-.",
+   "cite": "BK2 Book II printed p.13 = PDF p.19",
+   "note": "Noted in passing while reading the page for Experiment 5. Not the subject of this task; the rotary/motor agent should confirm against the Maintenance Manual figure on printed p.9 = PDF p.11."
+  }
+ ],
+ "correctionsToPriorFindings": [
+  {
+   "target": "verify-relays.json REF-10 (severity low): 'RLY-04: 8 connections = 2 coil + 6 contact ... is the finder's inference riding inside a [verified] claim.'",
+   "status": "RESOLVED - the split is now READ, not inferred.",
+   "basis": "The Relay Check figure (MAINT printed p.7 = PDF p.9) draws exactly six contact terminals (G H J K L N) and a coil with exactly two ends (E, F). Six plus two is the manual's eight. RLY-04's payload may be restored to [verified], with the residual caveat in theIsolationQuestion.residualUnknowns that the count alone does not prove the coil node is distinct from every contact node.",
+   "tag": "verified"
+  },
+  {
+   "target": "verify-relays.json MISS-05: 'The Maintenance Manual's Circuit Diagram - Relay Check (printed p.7) is the only published relay TEST circuit ... a ready-made simulator acceptance test.'",
+   "status": "CONFIRMED and now transcribed in full. The page reference (printed p.7) was correct.",
+   "tag": "verified"
+  },
+  {
+   "target": "verify-jackmap.json M5, tagged 'unverified (I have not opened these four page images)'",
+   "status": "Three of the four are now opened and transcribed (Pushbutton, Relay, Slide Switch). The Power Supply Circuit Diagram on printed p.3 = PDF p.5 = p-05.png remains unopened - out of scope for this task.",
+   "tag": "verified"
+  },
+  {
+   "target": "verify-jackmap.json notSettled: 'Whether the two contact sets of one relay (G/H/J and K/L/N) share any electrical connection.'",
+   "status": "SETTLED - they do not. See theIsolationQuestion. Also correct the page pointer: the Relay Check figure is p-09.png, not p-10.png.",
+   "tag": "verified"
+  },
+  {
+   "target": "find-relays.json RLY-08 and verify-relays.json's caveat on it ('K/L/N is the operator-side contact set' is a two-step inference)",
+   "status": "UNCHANGED. Nothing read in this task bears on which physical contact set is front vs rear. The caveat stands: do not make front-vs-rear contact identity load-bearing.",
+   "tag": "verified"
+  }
+ ],
+ "simulatorSpec": {
+  "relayModel": {
+   "tag": "verified",
+   "nodes": [
+    "C",
+    "E",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "N"
+   ],
+   "elements": [
+    "indicator lamp between C and E (a Light Assembly, part 6435 - the same part as a binary output lamp; NOT part of the relay unit)",
+    "coil between E and F",
+    "transfer contact set 1: arm H, N.O. G, N.C. J",
+    "transfer contact set 2: arm L, N.O. K, N.C. N"
+   ],
+   "isolation": "Six mutually distinct contact nodes. No node identity between the two sets. No node identity between the coil pair and any contact node (see residualUnknowns for the confidence on that last one). The only coupling between coil and contacts, and between the two contact sets, is the mechanical crossbar.",
+   "switching": "Coil de-energised: H-J closed, L-N closed, H-G open, L-K open. Coil energised: H-G closed, L-K closed, H-J open, L-N open. Both sets always transfer together and in the same sense.",
+   "drawingConvention": "Published circuit diagrams always show the relay OFF."
+  },
+  "pushbuttonModel": {
+   "tag": "verified",
+   "nodes": [
+    "X",
+    "Y",
+    "Z"
+   ],
+   "elements": [
+    "one transfer contact set: arm Y, N.O. X, N.C. Z"
+   ],
+   "switching": "Released: Y-Z closed, Y-X open. Pressed: Y-X closed, Y-Z open. Momentary."
+  },
+  "slideSwitchModel": {
+   "tag": "verified",
+   "nodes": [
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W"
+   ],
+   "elements": [
+    "transfer set 1: arm S, LEFT contact R, RIGHT contact T",
+    "transfer set 2: arm V, LEFT contact U, RIGHT contact W"
+   ],
+   "switching": "Slide RIGHT: S-T and V-W closed. Slide LEFT: S-R and V-U closed. Latching, two positions."
+  }
+ },
+ "namedFallback": {
+  "needed": false,
+  "reason": "The gap is closed on primary evidence; no fallback is required for the isolation question or for the three figures.",
+  "fallbackForTheOneResidual": {
+   "name": "IDEAL-ISOLATED-COIL",
+   "appliesTo": "The unread residual: whether the coil node pair (E, F) is galvanically distinct from all six contact nodes.",
+   "behaviour": "Model the coil as a two-terminal element between E and F with no electrical relationship to G, H, J, K, L or N. Model the indicator lamp as a two-terminal element between C and E.",
+   "reasoning": "Every published circuit is consistent with it; the Relay Check figure draws it that way; self-latching programs (e.g. the nG/nC pattern in Book III) would latch permanently at power-up under any coil-to-arm bond; and the eight-lug count leaves no lug unaccounted for.",
+   "whatWouldOverturnIt": "An ohmmeter reading on a surviving unit showing continuity from E or F to any of G, H, J, K, L, N; or an under-panel photograph showing a strap between a coil lug and a contact lug."
+  }
+ },
+ "notSettled": [
+  "Whether the slide switch's two transfer sets are electrically isolated from each other. The Slide Switch Check figure ties both arms to '+', so it is consistent with but does not force isolation, and no Experiment-5-style proof was hunted in the program corpus during this task. Strongly implied by the six-terminal / six-solder-connection accounting and by structural identity with the relay. To settle: grep Books II-VI for a published program that wires S and V to different sources, in the way Experiment 5 does for H and L.",
+  "Whether the relay coil node is galvanically distinct from all six contact nodes (see namedFallback IDEAL-ISOLATED-COIL).",
+  "Whether the relay has any internal frame/common return bonding the two arms at high impedance. Not addressed anywhere in the corpus; ruled out at low impedance by Experiment 5.",
+  "The Power Supply Circuit Diagram (MAINT printed p.3 = PDF p.5 = p-05.png) is still unopened by anyone. Out of scope here, but it is the last unread schematic in the Maintenance Manual.",
+  "Which physical contact set (front vs rear of the relay body) is G/H/J and which is K/L/N. Book I p.12's 'The set of contacts closer to the operator is connected to the set of terminals closer to the operator' plus panel row order gives K/L/N = front, but that remains a two-step inference and nothing read here changes it."
+ ],
+ "counts": {
+  "verified": 34,
+  "likely": 1,
+  "unverified": 2
+ }
+}

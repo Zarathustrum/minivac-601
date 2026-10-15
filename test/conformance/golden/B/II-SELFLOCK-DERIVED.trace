@@ -1,0 +1,53 @@
+#!mv601-trace 1
+# id=II-SELFLOCK-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=7
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=383 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc pb1=nc outLamp1=off indLamp1=off  "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes \"self-locking\" in the 1 position."
+   220.1 > button1 target=1000
+   231.3 * pb1 nc->mid
+   233.8 * pb1 mid->no
+   237.1 * outLamp1 off->dim
+   243.8 * indLamp1 off->dim
+   245.0 * relay1 nc->mid
+   246.3 * relay1 mid->no
+   256.0 * outLamp1 dim->on
+   283.8 * indLamp1 dim->on
+   476.1 ? relay1=no pb1=no outLamp1=on indLamp1=on  "Making use of this relay switch, the pushbutton will initially supply current to the relay."
+   476.1 > button1 target=0
+   487.3 * pb1 no->mid
+   489.8 * pb1 mid->nc
+   721.0 ? relay1=no pb1=nc outLamp1=on indLamp1=on  "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes \"self-locking\" in the 1 position."
+   721.0 > button1 target=1000
+   732.2 * pb1 nc->mid
+   734.7 * pb1 mid->no
+   965.9 > button1 target=0
+   977.1 * pb1 no->mid
+   979.6 * pb1 mid->nc
+  1210.8 ? relay1=no pb1=nc outLamp1=on indLamp1=on  "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off."
+  1210.8 > power off
+  1210.8 * power on->off
+  1214.3 * relay1 no->mid
+  1215.2 * relay1 mid->nc
+  1221.9 * indLamp1 on->dim
+  1231.2 * outLamp1 on->dim
+  1277.5 * indLamp1 dim->off
+  1286.8 * outLamp1 dim->off
+  1451.3 ? relay1=nc outLamp1=off indLamp1=off  "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off."
+  1451.3 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc pb1=nc outLamp1=off indLamp1=off  "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off."
+   220.1 > button1 target=1000
+   231.3 * pb1 nc->mid
+   233.8 * pb1 mid->no
+   237.1 * outLamp1 off->dim
+   243.8 * indLamp1 off->dim
+   245.0 * relay1 nc->mid
+   246.3 * relay1 mid->no
+   256.0 * outLamp1 dim->on
+   283.8 * indLamp1 dim->on
+   476.1 > button1 target=0
+   487.3 * pb1 no->mid
+   489.8 * pb1 mid->nc
+   721.0 ? relay1=no pb1=nc outLamp1=on indLamp1=on  "Once current is supplied to the relay coil, the relay will close and a second path for the current will be supplied through the normally open switch of the relay. With this circuit wired, the relay becomes \"self-locking\" in the 1 position."

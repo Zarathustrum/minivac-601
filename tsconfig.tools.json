@@ -1,0 +1,10 @@
+{
+  // `tools/` was in no tsconfig at all and typechecked nothing, while it imports node builtins and
+  // re-exports the KAT's own schema types. It gets its own pass rather than joining tsconfig.json's
+  // include list so that `"types": ["node"]` stays confined to the one place node globals are legal.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"]
+  },
+  "include": ["tools/**/*.ts"]
+}

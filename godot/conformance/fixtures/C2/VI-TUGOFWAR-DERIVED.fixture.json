@@ -1,0 +1,608 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-TUGOFWAR-DERIVED",
+  "source": "Books V-VI printed pp.56-57 = book5-6.pdf PDF pp.62-63; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1X/6X",
+    "1Y/1+",
+    "1Z/6Z",
+    "4Y/D18",
+    "4Z/D9",
+    "6E/6Y",
+    "6F/6-",
+    "6F/6L",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6J/D17",
+    "6N/D18",
+    "D7/D8",
+    "D8/D9",
+    "D16/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1X/6X",
+    "1Y/1+",
+    "1Z/6Z",
+    "4Y/D18",
+    "4Z/D9",
+    "6E/6Y",
+    "6F/6-",
+    "6F/6L",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6J/D17",
+    "6N/D18",
+    "D7/D8",
+    "D8/D9",
+    "D16/D19"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: both buttons up = same; relay 6 coil 6E-6F (6F on -) is fed only from pushbutton 6's arm 6Y; 6Y reaches + through 6Z-1Z (pb1 up) or 6X-1X (pb1 down) from pb1's arm 1Y on +, so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position; relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); from the c0 power-on start the dial runs 0, 15, ..., 10 and stops on 9 because with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short; relays 1-5 have no coil wire, so they stay out; no wire reaches any nA/nB, so every binary output lamp is dark; 6C and 1C-5C are unwired, so no relay indicator lamp has a path",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pb1 up, pb6 down = different; relay 6 coil 6E-6F (6F on -) is fed only from pushbutton 6's arm 6Y; 6Y reaches + through 6Z-1Z (pb1 up) or 6X-1X (pb1 down) from pb1's arm 1Y on +, so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position; the drive flips to clockwise but with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short, so the dial does not move off 9 until the re-set",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pushbutton 4 down opens the STOP short (4Y-4X, 4X unwired), so the driven dial leaves contact 9",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 out: 6H(+)-6J puts + on D17 and 6L(-)-6N puts - on D18, normal RUN polarity, so the dial runs toward increasing numbers (clockwise); the first contact after 9 is 10, off the 7-9 arc, so the restored STOP short does not catch it",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 out: 6H(+)-6J puts + on D17 and 6L(-)-6N puts - on D18, normal RUN polarity, so the dial runs toward increasing numbers (clockwise); the dial runs 10..15, 0, 1, 2, 3 without stopping (no strap contact); c3 is the script's moment for player 1's tug",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pb1 down, pb6 down = same; relay 6 coil 6E-6F (6F on -) is fed only from pushbutton 6's arm 6Y; 6Y reaches + through 6Z-1Z (pb1 up) or 6X-1X (pb1 down) from pb1's arm 1Y on +, so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position; relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); contact 2 is reachable from 3 only by the reversed (decreasing) drive, since the increasing drive would run 4..7 and stop on 7",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); the dial runs 2, 1, 0, 15, ..., 10 and stops on 9, entering it from 10, because with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short; player 1 wins the tug",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: both buttons down = same; relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); pushbutton 4 is held down, so the STOP short is open and the wiper crosses 8 and 7 without stopping",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); pushbutton 4 released on 6, off the strap, so the dial runs 5, ..., 0, 15, ..., 10 and stops on 9 because with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short; same position ends at 9 when the re-set is held past the arc",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pb1 down, pb6 up = different; relay 6 coil 6E-6F (6F on -) is fed only from pushbutton 6's arm 6Y; 6Y reaches + through 6Z-1Z (pb1 up) or 6X-1X (pb1 down) from pb1's arm 1Y on +, so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position; with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short, so the dial holds on 9",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pushbutton 4 down opens the STOP short, so the driven dial leaves contact 9",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 out: 6H(+)-6J puts + on D17 and 6L(-)-6N puts - on D18, normal RUN polarity, so the dial runs toward increasing numbers (clockwise); the dial leaves 9 toward 10 (released in the gap, so the decreasing side's 8 is never touched), runs 10..15, 0..6 and stops on 7, entering it from 6, because with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short; player 2 wins",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: both buttons up = same; relay 6 coil 6E-6F (6F on -) is fed only from pushbutton 6's arm 6Y; 6Y reaches + through 6Z-1Z (pb1 up) or 6X-1X (pb1 down) from pb1's arm 1Y on +, so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position; with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short, so the dial holds on 7",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pushbutton 4 down opens the STOP short, so the driven dial leaves contact 7",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); the first contact after 7 is 6, off the 7-9 arc",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 in: 6H(+)-6G-6N puts + on D18 and 6L(-)-6K-6J puts - on D17, reversed RUN polarity, so the dial runs toward decreasing numbers (counterclockwise); the dial runs 5, ..., 0, 15, 14, 13 without stopping; c13 is the script's moment for player 2's tug",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: pb1 up, pb6 down = different; relay 6 coil 6E-6F (6F on -) is fed only from pushbutton 6's arm 6Y; 6Y reaches + through 6Z-1Z (pb1 up) or 6X-1X (pb1 down) from pb1's arm 1Y on +, so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position; relay 6 out: 6H(+)-6J puts + on D17 and 6L(-)-6N puts - on D18, normal RUN polarity, so the dial runs toward increasing numbers (clockwise); contact 14 is reachable from 13 only by the reversed (increasing) drive, since the decreasing drive would run 12..10 and stop on 9",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start); derived from topology: relay 6 out: 6H(+)-6J puts + on D17 and 6L(-)-6N puts - on D18, normal RUN polarity, so the dial runs toward increasing numbers (clockwise); the dial runs 15, 0, ..., 6 and stops on 7, entering it from 6, because with pushbutton 4 up, 4Y-4Z joins D18 to the D7-D8-D9 strap, and the wiper D16 is tied to D19, so STOP (D18-D19) is shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short; player 2 wins the tug; no wire reaches any nA/nB, so every binary output lamp is dark; 6C and 1C-5C are unwired, so no relay indicator lamp has a path",
+      "quote": "This game is played with two persons; MINIVAC acts as the game board and referee. The object of the game is to make the rotary switch dial stop at the WIN position for the player. If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins. Player 1 uses pushbutton 1; player 2 uses pushbutton 6. The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 16-wire topology and the Books V-VI p.56 rule, not printed. Wires are the printed 16 unchanged (no erratum). Topology: pushbutton 1's arm 1Y is on +; 1Z/6Z and 1X/6X carry it to pushbutton 6's matching contact, and 6Y feeds relay 6's coil (6E/6Y, 6F/6-), so relay 6 is in exactly when pushbuttons 1 and 6 are in the same position. Relay 6 out: 6H(+)-6J puts + on D17 and 6L(-)-6N puts - on D18 (normal RUN, increasing numbers, clockwise). Relay 6 in: 6H-6G-6N puts + on D18 and 6L-6K-6J puts - on D17 (reversed, decreasing, counterclockwise). Pushbutton 4 up (4Y-4Z) ties D18 to the D7-D8-D9 strap and D16/D19 ties the wiper to D19, so STOP is shorted on 7, 8 or 9; play runs over 10-15 and 0-6, 9 is entered from 10 and 7 from 6. No lamp terminal is wired, so all twelve lamps stay dark. Script choices, not printed: power-on dial c0 (construction state, both buttons up, so the power-on run rests on 9); pushbutton 4 released as soon as the dial leaves its rest contact (p.57 'Release pushbutton 4 as the rotary switch knob starts to turn'), except game 2; 100 ms after a player button change before the hold-on-the-arc expects; 10 s settles before each end expect. Game 1: different from 9 (pb1 up, pb6 down), dial asserted on 10 after the re-set (clockwise), player 1 tugs (pb1 down) when the dial reaches 3, then contact 2 proves the reversal, end on 9. Game 2 is the O-R16 crossing case: same from rest on 9 with pushbutton 4 held until the wiper reaches 6, then released; the derived end is 9. A prompt release on that crossing would let the restored STOP short catch the wiper on 8, which the topology also predicts; that depends on the human's hold and is not asserted. Game 3: different with pb1 down, pb6 up, end on 7. Game 4: same with both up from rest on 7, dial asserted on 6 after the re-set (counterclockwise), player 2 tugs (pb6 down) at 13, contact 14 proves the reversal, end on 7. All four button combinations are exercised. The position-triggered tugs replace the printed fixture's fixed 770 ms tug, so this fixture holds at any run rate; the untils allow 15 s, the end settles 10 s (over a full revolution down to about 7 rpm). Relies on the stop-shorted coast staying inside the contact arc (O-R5). The digest is a placeholder for the runner.",
+  "digest": {
+    "eventCount": 211,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      12,
+      4,
+      0,
+      0,
+      16,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      154
+    ]
+  }
+}

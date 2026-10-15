@@ -1,0 +1,67 @@
+#!mv601-trace 1
+# id=I-EXP14 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=6
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=61 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    31.2 * dial c0->gap
+    52.0 * dial gap->c15
+   114.5 * dial c15->gap
+   135.4 * dial gap->c14
+   197.9 * dial c14->gap
+   218.7 * dial gap->c13
+   281.2 * dial c13->gap
+   302.0 * dial gap->c12
+   364.5 * dial c12->gap
+   385.4 * dial gap->c11
+   447.9 * dial c11->gap
+   468.7 * dial gap->c10
+   531.2 * dial c10->gap
+   552.0 * dial gap->c9
+   614.5 * dial c9->gap
+   635.4 * dial gap->c8
+   635.5 ? dial=c8  "Turn power ON and notice the direction of rotation."
+   635.5 > switch6 target=1000
+   662.4 * sw6 nc->mid
+   668.5 * sw6 mid->no
+   695.6 * dial c8->gap
+   716.5 * dial gap->c9
+   779.0 * dial c9->gap
+   799.8 * dial gap->c10
+   862.3 * dial c10->gap
+   883.1 * dial gap->c11
+   945.6 * dial c11->gap
+   966.5 * dial gap->c12
+  1029.0 * dial c12->gap
+  1049.8 * dial gap->c13
+  1112.3 * dial c13->gap
+  1133.1 * dial gap->c14
+  1195.6 * dial c14->gap
+  1216.5 * dial gap->c15
+  1279.0 * dial c15->gap
+  1299.8 * dial gap->c0
+  1299.9 ? dial=c0  "Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction."
+  1362.3 * dial c0->gap
+  1383.1 * dial gap->c1
+  1445.6 * dial c1->gap
+  1466.5 * dial gap->c2
+  1529.0 * dial c2->gap
+  1549.8 * dial gap->c3
+  1612.3 * dial c3->gap
+  1633.1 * dial gap->c4
+  1695.6 * dial c4->gap
+  1716.5 * dial gap->c5
+  1779.0 * dial c5->gap
+  1799.8 * dial gap->c6
+  1862.3 * dial c6->gap
+  1883.1 * dial gap->c7
+  1945.6 * dial c7->gap
+  1966.5 * dial gap->c8
+  2029.0 * dial c8->gap
+  2049.8 * dial gap->c9
+  2112.3 * dial c9->gap
+  2133.1 * dial gap->c10
+  2195.6 * dial c10->gap
+  2216.5 * dial gap->c11
+  2279.0 * dial c11->gap
+  2299.8 * dial gap->c12

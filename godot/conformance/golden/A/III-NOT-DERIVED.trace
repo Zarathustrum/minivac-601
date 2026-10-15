@@ -1,0 +1,62 @@
+#!mv601-trace 1
+# id=III-NOT-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=7
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   520.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+   520.1 > button4 target=1000
+   531.3 * pb4 nc->mid
+   533.8 * pb4 mid->no
+   537.1 * outLamp5 off->dim
+   556.0 * outLamp5 dim->on
+  1076.1 ? outLamp5=on  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  1076.1 > button4 target=0
+  1087.3 * pb4 no->mid
+  1089.8 * pb4 mid->nc
+  1107.8 * outLamp5 on->dim
+  1163.4 * outLamp5 dim->off
+  1627.9 ? outLamp5=off  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  1627.9 > button1 target=1000
+  1639.1 * pb1 nc->mid
+  1641.6 * pb1 mid->no
+  2172.8 ? outLamp5=off  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  2172.8 > button2 target=1000
+  2184.0 * pb2 nc->mid
+  2186.5 * pb2 mid->no
+  2189.8 * outLamp5 off->dim
+  2208.7 * outLamp5 dim->on
+  2728.8 ? outLamp5=on  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  2728.8 > button3 target=1000
+  2740.0 * pb3 nc->mid
+  2742.5 * pb3 mid->no
+  2760.5 * outLamp5 on->dim
+  2816.1 * outLamp5 dim->off
+  3280.6 ? outLamp5=off  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  3280.6 > button4 target=1000
+  3291.8 * pb4 nc->mid
+  3294.3 * pb4 mid->no
+  3297.6 * outLamp5 off->dim
+  3316.5 * outLamp5 dim->on
+  3836.6 ? outLamp5=on  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  3836.6 > button4 target=0
+  3847.8 * pb4 no->mid
+  3850.3 * pb4 mid->nc
+  3868.3 * outLamp5 on->dim
+  3923.9 * outLamp5 dim->off
+  4388.4 ? outLamp5=off  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  4388.4 > button3 target=0
+  4399.6 * pb3 no->mid
+  4402.1 * pb3 mid->nc
+  4405.4 * outLamp5 off->dim
+  4424.3 * outLamp5 dim->on
+  4944.4 ? outLamp5=on  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  4944.4 > button2 target=0
+  4955.6 * pb2 no->mid
+  4958.1 * pb2 mid->nc
+  4976.1 * outLamp5 on->dim
+  5031.7 * outLamp5 dim->off
+  5496.2 ? outLamp5=off  "In the following program, statement A is represented by pushbutton 1, statement B is represented by pushbutton 2, statement C is represented by bushbutton 3, statement D is represented by pushbutton 4, and statement E is represented by light 5. ... Symbolically, the set of relationships may be expressed as: A X B X C̄ + D = E"
+  5496.2 > button1 target=0
+  5507.4 * pb1 no->mid
+  5509.9 * pb1 mid->nc

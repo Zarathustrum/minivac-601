@@ -1,0 +1,52 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-FF2",
+  "source": "BK4 printed p.70 = book2-3-4.pdf PDF p.76",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5+/5G", "5H/5F", "5F/6F", "5C/6C", "6C/6-", "5J/6H", "6G/5E",
+    "6J/6E", "6E/6A", "6B/6-", "5H/5A", "5B/5-", "6+/6Y", "6X/6H"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "5+/5G", "5H/5F", "5F/6F", "5C/6C", "6C/6-", "5J/6H", "6G/5E",
+    "6J/6E", "6E/6A", "6B/6-", "5H/5A", "5B/5-", "6+/6Y", "6X/6H"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay5", "v": "nc" }, { "dev": "relay6", "v": "nc" }],
+      "cite": "BK4 printed p.70 step 1 = book2-3-4.pdf PDF p.76",
+      "quote": "Turn power ON. Notice that both relays 5 and 6 are OFF."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay5", "v": "no" }, { "dev": "relay6", "v": "no" }, { "dev": "pb6", "v": "nc" }],
+      "cite": "BK4 printed p.70 step 2 = book2-3-4.pdf PDF p.76",
+      "quote": "Push and release pushbutton 6. Notice that both relays 5 and 6 are now ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay5", "v": "nc" }, { "dev": "relay6", "v": "no" }, { "dev": "pb6", "v": "no" }],
+      "cite": "BK4 printed p.70 step 3 = book2-3-4.pdf PDF p.76",
+      "quote": "Push pushbutton 6, but do not release. Notice that relay 5 is OFF; relay 6 is ON."
+    }
+  ],
+  "marginal": true,
+  "mechanism": {
+    "profileKey": "L_coil_uh",
+    "decision": "docs/DECISIONS.md#2026-09-01-canonical-marginal-counter-ruling-after-w1"
+  },
+  "note": "Modeled release-path quantization knife edge: under REF-A, relay 5 drops out at tick t=1498 with 17,789 uA against its 17,793-uA threshold, a 4-uA margin. This carve-out does not attribute SDC's documented physical counter marginality to L_coil_uh or identify its physical cause."
+}

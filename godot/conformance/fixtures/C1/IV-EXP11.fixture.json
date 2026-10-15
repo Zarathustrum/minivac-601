@@ -1,0 +1,369 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP11",
+  "source": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (wire table and procedure on p.85 = PDF p.91); errata.pdf p.3 (no entry for p.84 or p.85)",
+  "tier": "C1",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1E/D10",
+    "1F/2F",
+    "1G/3com",
+    "1H/1L",
+    "1K/6K",
+    "1L/2L",
+    "2E/D9",
+    "2F/3F",
+    "2G/5G",
+    "2H/2L",
+    "2H/3H",
+    "2K/3com",
+    "3A/3com",
+    "3B/3-",
+    "3E/D7",
+    "3F/4F",
+    "3G/6E",
+    "3H/3L",
+    "3K/4K",
+    "3L/4L",
+    "4A/4com",
+    "4B/4-",
+    "4E/D6",
+    "4F/5F",
+    "4G/5com",
+    "4H/4L",
+    "4H/5H",
+    "4K/4com",
+    "5A/5com",
+    "5B/5-",
+    "5E/D5",
+    "5F/6F",
+    "5G/6G",
+    "5H/5L",
+    "5K/4com",
+    "5L/6L",
+    "6A/6com",
+    "6B/6-",
+    "6E/D3",
+    "6F/6-",
+    "6G/6com",
+    "6H/6L",
+    "6H/6+",
+    "6K/5com",
+    "D1/6com",
+    "D2/5com",
+    "D4/4com",
+    "D8/3com",
+    "D16/M+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1E/D10",
+    "1F/2F",
+    "1G/3com",
+    "1H/1L",
+    "1K/6K",
+    "1L/2L",
+    "2E/D9",
+    "2F/3F",
+    "2G/5G",
+    "2H/2L",
+    "2H/3H",
+    "2K/3com",
+    "3A/3com",
+    "3B/3-",
+    "3E/D7",
+    "3F/4F",
+    "3G/6E",
+    "3H/3L",
+    "3K/4K",
+    "3L/4L",
+    "4A/4com",
+    "4B/4-",
+    "4E/D6",
+    "4F/5F",
+    "4G/5com",
+    "4H/4L",
+    "4H/5H",
+    "4K/4com",
+    "5A/5com",
+    "5B/5-",
+    "5E/D5",
+    "5F/6F",
+    "5G/6G",
+    "5H/5L",
+    "5K/4com",
+    "5L/6L",
+    "6A/6com",
+    "6B/6-",
+    "6E/D3",
+    "6F/6-",
+    "6G/6com",
+    "6H/6L",
+    "6H/6+",
+    "6K/5com",
+    "D1/6com",
+    "D2/5com",
+    "D4/4com",
+    "D8/3com",
+    "D16/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] To use the Decimal to Binary Converter: Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] To use the Decimal to Binary Converter: Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.85 = book2-3-4.pdf PDF p.91 (procedure); BK1 printed p.20 = book1.pdf PDF p.22 (dial: pointer at N = wiper on DN)",
+      "quote": "[p.85:] To use the Decimal to Binary Converter: Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+    }
+  ],
+  "note": "Printed claims only (Step 6). 49 wires, no errata (the errata sheet has no Book IV page 84 or 85 entry; image-read errata.pdf p.3); wire list image-read at 300 dpi from PDF p.91 and identical to the OCR list. Printed procedure (p.85): turn the rotary switch by hand to any decimal number 0-10; its binary equivalent appears in the binary output lights, ON = 1, OFF = 0. Only decimal 0 is asserted: binary 0 is every output light OFF, which does not depend on which light carries which bit. Positions 1-10 are entered in order, as the procedure invites, with no assert: p.84-85 never ties a lamp to a bit weight (programs.json printedUnprinted), so every nonzero pattern is derived and left to Step 7. The nearest printed basis for the lamp order is elsewhere in Book IV: p.72 (PDF p.78, 'Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001'), p.77 (PDF p.83, 'The answer will be displayed in binary output lights 3, 4, 5 and 6. For example, if lights 3 and 6 are ON and lights 4 and 5 are OFF, the answer is 1001 (9).') and p.79 (PDF p.85, 'light 4 is OFF, and lights 5 and 6 are ON. This is read as 011'), i.e. light 3 high order and light 6 low order on the same four lights this program wires; Tom's 2026-10-14 ruling (O-C12) covers Book IV's slide-switch LEFT=1 convention, not lamp order, and this program uses no slide switch. The final return to 0 is a script choice that re-checks 0 after relays 1-6 have operated (positions 3, 5, 6, 7, 9, 10 drive coils); it goes by hand along the shortest path, and a 3 s dwell lets the lamps cool before the expect. Start dial position D0 is the construction state, restated by the first dialGrab. dialRelease then checks the dial stays at 0 without the hand."
+}

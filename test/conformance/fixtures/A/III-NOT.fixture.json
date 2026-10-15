@@ -1,0 +1,170 @@
+{
+ "schema": "minivac.fixture/1",
+ "id": "III-NOT",
+ "source": "BK3 printed pp.40-41 = book2-3-4.pdf PDF pp.46-47; wires image-read on PDF p.46 at 400 dpi",
+ "tier": "A",
+ "confidence": "verified",
+ "profile": "MV601-REF-A",
+ "contract": "1.1.0",
+ "as_printed": [
+  "1+/1Y",
+  "1X/2Y",
+  "2X/3Y",
+  "3Z/5A",
+  "1Y/4Y",
+  "4X/5A",
+  "5B/5-"
+ ],
+ "errata_applied": [],
+ "note": "Trace-only fixture. The page (printed p.40-41) states no lamp state for any button combination of A x B x C(not) + D = E; light 5's truth table is derived from the formula, so no expect step is asserted (Step 7). ER-09 touches only the prose of the earlier A x B(not) = C paragraph (it names light 3, which this program does not wire); no wire changes.",
+ "wires": [
+  "1+/1Y",
+  "1X/2Y",
+  "2X/3Y",
+  "3Z/5A",
+  "1Y/4Y",
+  "4X/5A",
+  "5B/5-"
+ ],
+ "script": [
+  {
+   "k": "do",
+   "cmd": {
+    "k": "power",
+    "on": true
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 500
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 4,
+    "target": 1000
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 4,
+    "target": 0
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 1,
+    "target": 1000
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 2,
+    "target": 1000
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 3,
+    "target": 1000
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 3,
+    "target": 0
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 2,
+    "target": 0
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  },
+  {
+   "k": "do",
+   "cmd": {
+    "k": "button",
+    "n": 1,
+    "target": 0
+   }
+  },
+  {
+   "k": "settle",
+   "maxMs": 200
+  },
+  {
+   "k": "advance",
+   "ms": 80
+  }
+ ]
+}

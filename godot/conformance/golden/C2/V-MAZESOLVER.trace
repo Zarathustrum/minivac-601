@@ -1,0 +1,1047 @@
+#!mv601-trace 1
+# id=V-MAZESOLVER contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=39
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=25 minTickGap=9 marginal=false
+     0.0 > connect cord=39 a=hole:6E#2 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+    31.2 * dial c0->gap
+    52.0 * dial gap->c1
+    52.1 ? dial=c1  "[p.45:] Turn power on. The computer will go directly to the start position. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+  6052.1 ? dial=c1  "[p.45:] Turn power on. The computer will go directly to the start position. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+  6052.1 > button6 target=1000
+  6063.3 * pb6 nc->mid
+  6065.8 * pb6 mid->no
+  6107.3 * dial c1->gap
+  6128.1 * dial gap->c2
+  6131.4 * outLamp1 off->dim
+  6150.5 * outLamp1 dim->on
+  6191.1 * dial c2->gap
+  6207.4 * outLamp1 on->dim
+  6211.9 * dial gap->c3
+  6215.2 * outLamp5 off->dim
+  6234.3 * outLamp5 dim->on
+  6263.0 * outLamp1 dim->off
+  6274.9 * dial c3->gap
+  6291.2 * outLamp5 on->dim
+  6295.7 * dial gap->c4
+  6297.7 * outLamp1 off->dim
+  6316.8 * outLamp1 dim->on
+  6346.8 * outLamp5 dim->off
+  6358.7 * dial c4->gap
+  6375.2 * outLamp1 on->dim
+  6379.5 * dial gap->c5
+  6382.8 * outLamp4 off->dim
+  6401.9 * outLamp4 dim->on
+  6430.8 * outLamp1 dim->off
+  6442.5 * dial c5->gap
+  6458.8 * outLamp4 on->dim
+  6463.3 * dial gap->c6
+  6465.3 * outLamp1 off->dim
+  6484.4 * outLamp1 dim->on
+  6514.4 * outLamp4 dim->off
+  6526.2 * dial c6->gap
+  6542.7 * outLamp1 on->dim
+  6547.1 * dial gap->c7
+  6550.4 * outLamp3 off->dim
+  6569.5 * outLamp3 dim->on
+  6598.3 * outLamp1 dim->off
+  6610.0 * dial c7->gap
+  6626.3 * outLamp3 on->dim
+  6630.9 * dial gap->c8
+  6632.9 * outLamp1 off->dim
+  6652.0 * outLamp1 dim->on
+  6681.9 * outLamp3 dim->off
+  6693.8 * dial c8->gap
+  6710.3 * outLamp1 on->dim
+  6714.6 * dial gap->c9
+  6765.9 * outLamp1 dim->off
+  6777.1 * dial c9->gap
+  6798.0 * dial gap->c10
+  6860.5 * dial c10->gap
+  6881.3 * dial gap->c11
+  6943.8 * dial c11->gap
+  6964.6 * dial gap->c12
+  7027.1 * dial c12->gap
+  7048.0 * dial gap->c13
+  7110.5 * dial c13->gap
+  7131.3 * dial gap->c14
+  7193.8 * dial c14->gap
+  7214.6 * dial gap->c15
+  7277.1 * dial c15->gap
+  7298.0 * dial gap->c0
+  7360.5 * dial c0->gap
+  7381.3 * dial gap->c1
+  7443.8 * dial c1->gap
+  7464.6 * dial gap->c2
+  7467.9 * outLamp1 off->dim
+  7487.0 * outLamp1 dim->on
+  7527.6 * dial c2->gap
+  7543.9 * outLamp1 on->dim
+  7548.4 * dial gap->c3
+  7551.7 * outLamp5 off->dim
+  7570.8 * outLamp5 dim->on
+  7599.5 * outLamp1 dim->off
+  7611.4 * dial c3->gap
+  7627.7 * outLamp5 on->dim
+  7632.2 * dial gap->c4
+  7634.2 * outLamp1 off->dim
+  7653.3 * outLamp1 dim->on
+  7683.3 * outLamp5 dim->off
+  7695.1 * dial c4->gap
+  7711.6 * outLamp1 on->dim
+  7716.0 * dial gap->c5
+  7719.3 * outLamp4 off->dim
+  7738.4 * outLamp4 dim->on
+  7767.2 * outLamp1 dim->off
+  7778.9 * dial c5->gap
+  7795.2 * outLamp4 on->dim
+  7799.8 * dial gap->c6
+  7801.8 * outLamp1 off->dim
+  7820.9 * outLamp1 dim->on
+  7850.8 * outLamp4 dim->off
+  7862.7 * dial c6->gap
+  7879.2 * outLamp1 on->dim
+  7883.5 * dial gap->c7
+  7886.8 * outLamp3 off->dim
+  7905.9 * outLamp3 dim->on
+  7934.8 * outLamp1 dim->off
+  7946.5 * dial c7->gap
+  7962.8 * outLamp3 on->dim
+  7967.3 * dial gap->c8
+  7969.3 * outLamp1 off->dim
+  7988.4 * outLamp1 dim->on
+  8018.4 * outLamp3 dim->off
+  8030.3 * dial c8->gap
+  8046.8 * outLamp1 on->dim
+  8051.1 * dial gap->c9
+  8102.4 * outLamp1 dim->off
+  8113.6 * dial c9->gap
+  8134.4 * dial gap->c10
+  8196.9 * dial c10->gap
+  8217.8 * dial gap->c11
+  8280.3 * dial c11->gap
+  8301.1 * dial gap->c12
+  8363.6 * dial c12->gap
+  8384.4 * dial gap->c13
+  8446.9 * dial c13->gap
+  8467.8 * dial gap->c14
+  8530.3 * dial c14->gap
+  8551.1 * dial gap->c15
+  8613.6 * dial c15->gap
+  8634.4 * dial gap->c0
+  8696.9 * dial c0->gap
+  8717.8 * dial gap->c1
+  8780.3 * dial c1->gap
+  8801.1 * dial gap->c2
+  8804.4 * outLamp1 off->dim
+  8823.5 * outLamp1 dim->on
+  8864.1 * dial c2->gap
+  8880.4 * outLamp1 on->dim
+  8884.9 * dial gap->c3
+  8888.2 * outLamp5 off->dim
+  8907.3 * outLamp5 dim->on
+  8936.0 * outLamp1 dim->off
+  8947.9 * dial c3->gap
+  8964.2 * outLamp5 on->dim
+  8968.7 * dial gap->c4
+  8970.7 * outLamp1 off->dim
+  8989.8 * outLamp1 dim->on
+  9019.8 * outLamp5 dim->off
+  9031.6 * dial c4->gap
+  9048.1 * outLamp1 on->dim
+  9052.1 > button6 target=0
+  9052.5 * dial gap->c5
+  9055.8 * outLamp4 off->dim
+  9063.3 * pb6 no->mid
+  9065.8 * pb6 mid->nc
+  9074.9 * outLamp4 dim->on
+  9103.7 * outLamp1 dim->off
+  9115.4 * dial c5->gap
+  9131.7 * outLamp4 on->dim
+  9136.2 * dial gap->c6
+  9138.2 * outLamp1 off->dim
+  9157.3 * outLamp1 dim->on
+  9187.3 * outLamp4 dim->off
+  9199.2 * dial c6->gap
+  9215.7 * outLamp1 on->dim
+  9220.0 * dial gap->c7
+  9223.3 * outLamp3 off->dim
+  9242.4 * outLamp3 dim->on
+  9271.3 * outLamp1 dim->off
+  9283.0 * dial c7->gap
+  9299.3 * outLamp3 on->dim
+  9303.8 * dial gap->c8
+  9305.8 * outLamp1 off->dim
+  9324.9 * outLamp1 dim->on
+  9354.9 * outLamp3 dim->off
+  9366.7 * dial c8->gap
+  9383.2 * outLamp1 on->dim
+  9387.6 * dial gap->c9
+  9438.8 * outLamp1 dim->off
+  9450.1 * dial c9->gap
+  9470.9 * dial gap->c10
+  9533.4 * dial c10->gap
+  9554.2 * dial gap->c11
+  9616.7 * dial c11->gap
+  9637.6 * dial gap->c12
+  9700.1 * dial c12->gap
+  9720.9 * dial gap->c13
+  9783.4 * dial c13->gap
+  9804.2 * dial gap->c14
+  9866.7 * dial c14->gap
+  9887.6 * dial gap->c15
+  9950.1 * dial c15->gap
+  9970.9 * dial gap->c0
+ 10033.4 * dial c0->gap
+ 10054.2 * dial gap->c1
+ 17052.1 > disconnect cord=39
+ 17052.1 > connect cord=39 a=hole:6E#2 b=hole:D5#2 r_uohm=0
+ 17552.1 > button6 target=1000
+ 17563.3 * pb6 nc->mid
+ 17565.8 * pb6 mid->no
+ 17607.3 * dial c1->gap
+ 17628.2 * dial gap->c2
+ 17631.5 * outLamp1 off->dim
+ 17650.6 * outLamp1 dim->on
+ 17691.1 * dial c2->gap
+ 17707.4 * outLamp1 on->dim
+ 17711.9 * dial gap->c3
+ 17715.2 * outLamp5 off->dim
+ 17734.3 * outLamp5 dim->on
+ 17763.0 * outLamp1 dim->off
+ 17774.9 * dial c3->gap
+ 17791.2 * outLamp5 on->dim
+ 17795.7 * dial gap->c4
+ 17797.7 * outLamp1 off->dim
+ 17816.8 * outLamp1 dim->on
+ 17846.8 * outLamp5 dim->off
+ 17852.1 > button6 target=0
+ 17858.7 * dial c4->gap
+ 17863.3 * pb6 no->mid
+ 17865.8 * pb6 mid->nc
+ 17875.2 * outLamp1 on->dim
+ 17879.5 * dial gap->c5
+ 17879.6 ? dial=c5  "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+ 17882.8 * outLamp4 off->dim
+ 17891.0 * relay5 nc->mid
+ 17891.2 * relay6 nc->mid
+ 17892.3 * relay5 mid->no
+ 17892.5 * relay6 mid->no
+ 17902.1 * outLamp4 dim->on
+ 17903.4 * relay2 nc->mid
+ 17904.7 * relay2 mid->no
+ 17930.8 * outLamp1 dim->off
+ 23879.6 ? dial=c5  "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+ 23879.6 > button5 target=1000
+ 23890.8 * pb5 nc->mid
+ 23893.3 * pb5 mid->no
+ 23922.9 * dial c5->gap
+ 23930.4 * relay6 no->mid
+ 23930.5 * relay5 no->mid
+ 23931.3 * relay6 mid->nc
+ 23931.4 * relay5 mid->nc
+ 23942.4 * relay3 nc->mid
+ 23942.5 * relay4 nc->mid
+ 23943.7 * relay3 mid->no
+ 23943.8 * relay4 mid->no  dial gap->c6
+ 23947.0 * outLamp1 off->dim
+ 23950.8 * outLamp4 on->dim
+ 23966.3 * outLamp1 dim->on
+ 24006.4 * outLamp4 dim->off
+ 24007.6 * dial c6->gap
+ 24028.8 * dial gap->c7
+ 24092.4 * dial c7->gap
+ 24113.6 * dial gap->c8
+ 24177.2 * dial c8->gap
+ 24179.6 > button5 target=0
+ 24190.8 * pb5 no->mid
+ 24193.3 * pb5 mid->nc
+ 24198.4 * dial gap->c9
+ 24261.9 * dial c9->gap
+ 24283.1 * dial gap->c10
+ 24346.7 * dial c10->gap
+ 24367.9 * dial gap->c11
+ 24431.5 * dial c11->gap
+ 24452.7 * dial gap->c12
+ 24516.3 * dial c12->gap
+ 24537.4 * dial gap->c13
+ 24601.0 * dial c13->gap
+ 24622.2 * dial gap->c14
+ 24685.8 * dial c14->gap
+ 24707.0 * dial gap->c15
+ 24770.6 * dial c15->gap
+ 24791.8 * dial gap->c0
+ 24855.3 * dial c0->gap
+ 24876.5 * dial gap->c1
+ 24876.6 ? dial=c1  "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+ 30876.6 ? dial=c1  "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+ 30876.6 > button6 target=1000
+ 30887.8 * pb6 nc->mid
+ 30890.3 * pb6 mid->no
+ 30932.9 * dial c1->gap
+ 30954.1 * dial gap->c2
+ 31017.7 * dial c2->gap
+ 31038.9 * dial gap->c3
+ 31102.4 * dial c3->gap
+ 31123.6 * dial gap->c4
+ 31176.6 > button6 target=0
+ 31187.2 * dial c4->gap
+ 31187.8 * pb6 no->mid
+ 31190.3 * pb6 mid->nc
+ 31208.4 * dial gap->c5
+ 31208.5 ? dial=c5  "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+ 31219.9 * relay5 nc->mid
+ 31220.1 * relay6 nc->mid
+ 31221.2 * relay5 mid->no
+ 31221.4 * relay6 mid->no
+ 31225.9 * relay3 no->mid  relay4 no->mid
+ 31226.8 * relay3 mid->nc  relay4 mid->nc
+ 31230.1 * outLamp4 off->dim
+ 31246.0 * outLamp1 on->dim
+ 31249.5 * outLamp4 dim->on
+ 31301.6 * outLamp1 dim->off
+ 37208.5 ? dial=c5  "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+ 37208.5 > disconnect cord=39
+ 37208.5 > connect cord=39 a=hole:6E#2 b=free r_uohm=0
+ 37214.1 * relay6 no->mid
+ 37214.2 * relay5 no->mid
+ 37215.0 * relay6 mid->nc
+ 37215.1 * relay5 mid->nc
+ 37226.1 * relay3 nc->mid
+ 37226.3 * relay4 nc->mid
+ 37227.4 * relay3 mid->no
+ 37227.6 * relay4 mid->no
+ 37230.7 * outLamp1 off->dim
+ 37246.3 * dial c5->gap
+ 37246.4 * outLamp4 on->dim
+ 37250.0 * outLamp1 dim->on
+ 37267.5 * dial gap->c6
+ 37302.0 * outLamp4 dim->off
+ 37331.1 * dial c6->gap
+ 37352.3 * dial gap->c7
+ 37415.9 * dial c7->gap
+ 37437.1 * dial gap->c8
+ 37500.6 * dial c8->gap
+ 37521.8 * dial gap->c9
+ 37585.4 * dial c9->gap
+ 37606.6 * dial gap->c10
+ 37670.2 * dial c10->gap
+ 37691.4 * dial gap->c11
+ 37708.5 > button4 target=1000
+ 37719.7 * pb4 nc->mid
+ 37722.2 * pb4 mid->no
+ 37725.6 * relay2 no->mid
+ 37726.5 * relay2 mid->nc
+ 37731.4 * relay4 no->mid
+ 37731.5 * relay3 no->mid
+ 37732.3 * relay4 mid->nc
+ 37732.4 * relay3 mid->nc
+ 37751.6 * outLamp1 on->dim
+ 37754.5 * dial c11->gap
+ 37775.3 * dial gap->c12
+ 37807.3 * outLamp1 dim->off
+ 37837.8 * dial c12->gap
+ 37858.6 * dial gap->c13
+ 37921.1 * dial c13->gap
+ 37942.0 * dial gap->c14
+ 38004.5 * dial c14->gap
+ 38008.5 > button4 target=0
+ 38019.7 * pb4 no->mid
+ 38022.2 * pb4 mid->nc
+ 38025.3 * dial gap->c15
+ 38087.8 * dial c15->gap
+ 38108.6 * dial gap->c0
+ 38171.1 * dial c0->gap
+ 38192.0 * dial gap->c1
+ 46008.5 > button6 target=1000
+ 46019.7 * pb6 nc->mid
+ 46022.2 * pb6 mid->no
+ 46063.6 * dial c1->gap
+ 46084.5 * dial gap->c2
+ 46087.8 * outLamp1 off->dim
+ 46106.9 * outLamp1 dim->on
+ 46147.4 * dial c2->gap
+ 46163.7 * outLamp1 on->dim
+ 46168.3 * dial gap->c3
+ 46171.6 * outLamp5 off->dim
+ 46190.7 * outLamp5 dim->on
+ 46219.3 * outLamp1 dim->off
+ 46231.2 * dial c3->gap
+ 46247.5 * outLamp5 on->dim
+ 46252.1 * dial gap->c4
+ 46254.1 * outLamp1 off->dim
+ 46273.2 * outLamp1 dim->on
+ 46303.1 * outLamp5 dim->off
+ 46315.0 * dial c4->gap
+ 46331.5 * outLamp1 on->dim
+ 46335.8 * dial gap->c5
+ 46339.1 * outLamp4 off->dim
+ 46358.2 * outLamp4 dim->on
+ 46387.1 * outLamp1 dim->off
+ 46398.8 * dial c5->gap
+ 46415.1 * outLamp4 on->dim
+ 46419.6 * dial gap->c6
+ 46421.6 * outLamp1 off->dim
+ 46440.7 * outLamp1 dim->on
+ 46470.7 * outLamp4 dim->off
+ 46482.6 * dial c6->gap
+ 46499.1 * outLamp1 on->dim
+ 46503.4 * dial gap->c7
+ 46506.7 * outLamp3 off->dim
+ 46525.8 * outLamp3 dim->on
+ 46554.7 * outLamp1 dim->off
+ 46566.4 * dial c7->gap
+ 46582.7 * outLamp3 on->dim
+ 46587.2 * dial gap->c8
+ 46589.2 * outLamp1 off->dim
+ 46608.3 * outLamp1 dim->on
+ 46638.3 * outLamp3 dim->off
+ 46650.1 * dial c8->gap
+ 46666.6 * outLamp1 on->dim
+ 46671.0 * dial gap->c9
+ 46722.2 * outLamp1 dim->off
+ 46733.5 * dial c9->gap
+ 46754.3 * dial gap->c10
+ 46816.8 * dial c10->gap
+ 46837.6 * dial gap->c11
+ 46900.1 * dial c11->gap
+ 46921.0 * dial gap->c12
+ 46983.5 * dial c12->gap
+ 47004.3 * dial gap->c13
+ 47066.8 * dial c13->gap
+ 47087.6 * dial gap->c14
+ 47150.1 * dial c14->gap
+ 47171.0 * dial gap->c15
+ 47233.5 * dial c15->gap
+ 47254.3 * dial gap->c0
+ 47316.8 * dial c0->gap
+ 47337.6 * dial gap->c1
+ 47400.1 * dial c1->gap
+ 47421.0 * dial gap->c2
+ 47424.3 * outLamp1 off->dim
+ 47443.4 * outLamp1 dim->on
+ 47483.9 * dial c2->gap
+ 47500.2 * outLamp1 on->dim
+ 47504.7 * dial gap->c3
+ 47508.0 * outLamp5 off->dim
+ 47527.1 * outLamp5 dim->on
+ 47555.8 * outLamp1 dim->off
+ 47567.7 * dial c3->gap
+ 47584.0 * outLamp5 on->dim
+ 47588.5 * dial gap->c4
+ 47590.5 * outLamp1 off->dim
+ 47609.6 * outLamp1 dim->on
+ 47639.6 * outLamp5 dim->off
+ 47651.5 * dial c4->gap
+ 47668.0 * outLamp1 on->dim
+ 47672.3 * dial gap->c5
+ 47675.6 * outLamp4 off->dim
+ 47694.7 * outLamp4 dim->on
+ 47723.6 * outLamp1 dim->off
+ 47735.3 * dial c5->gap
+ 47751.6 * outLamp4 on->dim
+ 47756.1 * dial gap->c6
+ 47758.1 * outLamp1 off->dim
+ 47777.2 * outLamp1 dim->on
+ 47807.2 * outLamp4 dim->off
+ 47819.0 * dial c6->gap
+ 47835.5 * outLamp1 on->dim
+ 47839.9 * dial gap->c7
+ 47843.2 * outLamp3 off->dim
+ 47862.3 * outLamp3 dim->on
+ 47891.1 * outLamp1 dim->off
+ 47902.8 * dial c7->gap
+ 47919.1 * outLamp3 on->dim
+ 47923.7 * dial gap->c8
+ 47925.7 * outLamp1 off->dim
+ 47944.8 * outLamp1 dim->on
+ 47974.7 * outLamp3 dim->off
+ 47986.6 * dial c8->gap
+ 48003.1 * outLamp1 on->dim
+ 48007.4 * dial gap->c9
+ 48058.7 * outLamp1 dim->off
+ 48069.9 * dial c9->gap
+ 48090.8 * dial gap->c10
+ 48153.3 * dial c10->gap
+ 48174.1 * dial gap->c11
+ 48236.6 * dial c11->gap
+ 48257.4 * dial gap->c12
+ 48319.9 * dial c12->gap
+ 48340.8 * dial gap->c13
+ 48403.3 * dial c13->gap
+ 48424.1 * dial gap->c14
+ 48486.6 * dial c14->gap
+ 48507.4 * dial gap->c15
+ 48569.9 * dial c15->gap
+ 48590.8 * dial gap->c0
+ 48653.3 * dial c0->gap
+ 48674.1 * dial gap->c1
+ 48736.6 * dial c1->gap
+ 48757.4 * dial gap->c2
+ 48760.7 * outLamp1 off->dim
+ 48779.8 * outLamp1 dim->on
+ 48820.4 * dial c2->gap
+ 48836.7 * outLamp1 on->dim
+ 48841.2 * dial gap->c3
+ 48844.5 * outLamp5 off->dim
+ 48863.6 * outLamp5 dim->on
+ 48892.3 * outLamp1 dim->off
+ 48904.2 * dial c3->gap
+ 48920.5 * outLamp5 on->dim
+ 48925.0 * dial gap->c4
+ 48927.0 * outLamp1 off->dim
+ 48946.1 * outLamp1 dim->on
+ 48976.1 * outLamp5 dim->off
+ 48987.9 * dial c4->gap
+ 49004.4 * outLamp1 on->dim
+ 49008.5 > button6 target=0
+ 49008.8 * dial gap->c5
+ 49012.1 * outLamp4 off->dim
+ 49019.7 * pb6 no->mid
+ 49022.2 * pb6 mid->nc
+ 49031.2 * outLamp4 dim->on
+ 49060.0 * outLamp1 dim->off
+ 49071.7 * dial c5->gap
+ 49088.0 * outLamp4 on->dim
+ 49092.6 * dial gap->c6
+ 49094.6 * outLamp1 off->dim
+ 49113.7 * outLamp1 dim->on
+ 49143.6 * outLamp4 dim->off
+ 49155.5 * dial c6->gap
+ 49172.0 * outLamp1 on->dim
+ 49176.3 * dial gap->c7
+ 49179.6 * outLamp3 off->dim
+ 49198.7 * outLamp3 dim->on
+ 49227.6 * outLamp1 dim->off
+ 49239.3 * dial c7->gap
+ 49255.6 * outLamp3 on->dim
+ 49260.1 * dial gap->c8
+ 49262.1 * outLamp1 off->dim
+ 49281.2 * outLamp1 dim->on
+ 49311.2 * outLamp3 dim->off
+ 49323.1 * dial c8->gap
+ 49339.6 * outLamp1 on->dim
+ 49343.9 * dial gap->c9
+ 49395.2 * outLamp1 dim->off
+ 49406.4 * dial c9->gap
+ 49427.2 * dial gap->c10
+ 49489.7 * dial c10->gap
+ 49510.6 * dial gap->c11
+ 49573.1 * dial c11->gap
+ 49593.9 * dial gap->c12
+ 49656.4 * dial c12->gap
+ 49677.2 * dial gap->c13
+ 49739.7 * dial c13->gap
+ 49760.6 * dial gap->c14
+ 49823.1 * dial c14->gap
+ 49843.9 * dial gap->c15
+ 49906.4 * dial c15->gap
+ 49927.2 * dial gap->c0
+ 49989.7 * dial c0->gap
+ 50010.6 * dial gap->c1
+ 57008.5 > disconnect cord=39
+ 57008.5 > connect cord=39 a=hole:6E#2 b=hole:D3#2 r_uohm=0
+ 57508.5 > button6 target=1000
+ 57519.7 * pb6 nc->mid
+ 57522.2 * pb6 mid->no
+ 57563.6 * dial c1->gap
+ 57584.5 * dial gap->c2
+ 57587.8 * outLamp1 off->dim
+ 57606.9 * outLamp1 dim->on
+ 57647.4 * dial c2->gap
+ 57663.7 * outLamp1 on->dim
+ 57668.3 * dial gap->c3
+ 57671.6 * outLamp5 off->dim
+ 57679.8 * relay5 nc->mid
+ 57680.0 * relay6 nc->mid
+ 57681.1 * relay5 mid->no
+ 57681.3 * relay6 mid->no
+ 57690.9 * outLamp5 dim->on
+ 57692.2 * relay2 nc->mid
+ 57693.5 * relay2 mid->no
+ 57719.3 * outLamp1 dim->off
+ 57808.5 > button6 target=0
+ 57808.5 ? dial=c3  "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+ 57819.7 * pb6 no->mid
+ 57822.2 * pb6 mid->nc
+ 63808.5 ? dial=c3  "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+ 63808.5 > button5 target=1000
+ 63819.7 * pb5 nc->mid
+ 63822.2 * pb5 mid->no
+ 63851.7 * dial c3->gap
+ 63859.2 * relay6 no->mid
+ 63859.3 * relay5 no->mid
+ 63860.1 * relay6 mid->nc
+ 63860.2 * relay5 mid->nc
+ 63871.2 * relay3 nc->mid
+ 63871.3 * relay4 nc->mid
+ 63872.5 * relay3 mid->no
+ 63872.6 * relay4 mid->no
+ 63872.7 * dial gap->c4
+ 63875.8 * outLamp1 off->dim
+ 63879.6 * outLamp5 on->dim
+ 63895.1 * outLamp1 dim->on
+ 63935.2 * outLamp5 dim->off
+ 63936.5 * dial c4->gap
+ 63957.7 * dial gap->c5
+ 64021.3 * dial c5->gap
+ 64042.5 * dial gap->c6
+ 64106.0 * dial c6->gap
+ 64108.5 > button5 target=0
+ 64119.7 * pb5 no->mid
+ 64122.2 * pb5 mid->nc
+ 64127.2 * dial gap->c7
+ 64190.8 * dial c7->gap
+ 64212.0 * dial gap->c8
+ 64275.6 * dial c8->gap
+ 64296.8 * dial gap->c9
+ 64360.4 * dial c9->gap
+ 64381.5 * dial gap->c10
+ 64445.1 * dial c10->gap
+ 64466.3 * dial gap->c11
+ 64529.9 * dial c11->gap
+ 64551.1 * dial gap->c12
+ 64614.7 * dial c12->gap
+ 64635.9 * dial gap->c13
+ 64699.4 * dial c13->gap
+ 64720.6 * dial gap->c14
+ 64784.2 * dial c14->gap
+ 64805.4 * dial gap->c15
+ 64869.0 * dial c15->gap
+ 64890.2 * dial gap->c0
+ 64953.8 * dial c0->gap
+ 64975.0 * dial gap->c1
+ 64975.1 ? dial=c1  "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+ 70975.1 ? dial=c1  "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+ 70975.1 > button6 target=1000
+ 70986.3 * pb6 nc->mid
+ 70988.8 * pb6 mid->no
+ 71031.3 * dial c1->gap
+ 71052.5 * dial gap->c2
+ 71116.1 * dial c2->gap
+ 71137.3 * dial gap->c3
+ 71148.8 * relay5 nc->mid
+ 71149.0 * relay6 nc->mid
+ 71150.1 * relay5 mid->no
+ 71150.3 * relay6 mid->no
+ 71154.8 * relay3 no->mid  relay4 no->mid
+ 71155.7 * relay3 mid->nc  relay4 mid->nc
+ 71159.0 * outLamp5 off->dim
+ 71174.9 * outLamp1 on->dim
+ 71178.4 * outLamp5 dim->on
+ 71230.5 * outLamp1 dim->off
+ 71275.1 > button6 target=0
+ 71275.1 ? dial=c3  "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+ 71286.3 * pb6 no->mid
+ 71288.8 * pb6 mid->nc
+ 77275.1 ? dial=c3  "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+ 77275.1 > disconnect cord=39
+ 77275.1 > connect cord=39 a=hole:6E#2 b=free r_uohm=0
+ 77280.7 * relay6 no->mid
+ 77280.8 * relay5 no->mid
+ 77281.6 * relay6 mid->nc
+ 77281.7 * relay5 mid->nc
+ 77292.7 * relay3 nc->mid
+ 77292.9 * relay4 nc->mid
+ 77294.0 * relay3 mid->no
+ 77294.2 * relay4 mid->no
+ 77297.3 * outLamp1 off->dim
+ 77312.8 * dial c3->gap  outLamp5 on->dim
+ 77316.6 * outLamp1 dim->on
+ 77334.1 * dial gap->c4
+ 77368.4 * outLamp5 dim->off
+ 77397.7 * dial c4->gap
+ 77418.9 * dial gap->c5
+ 77482.4 * dial c5->gap
+ 77503.6 * dial gap->c6
+ 77567.2 * dial c6->gap
+ 77588.4 * dial gap->c7
+ 77652.0 * dial c7->gap
+ 77673.2 * dial gap->c8
+ 77736.8 * dial c8->gap
+ 77757.9 * dial gap->c9
+ 77775.1 > button4 target=1000
+ 77786.3 * pb4 nc->mid
+ 77788.8 * pb4 mid->no
+ 77792.2 * relay2 no->mid
+ 77793.1 * relay2 mid->nc
+ 77798.0 * relay4 no->mid
+ 77798.1 * relay3 no->mid
+ 77798.9 * relay4 mid->nc
+ 77799.0 * relay3 mid->nc
+ 77818.2 * outLamp1 on->dim
+ 77821.0 * dial c9->gap
+ 77841.9 * dial gap->c10
+ 77873.9 * outLamp1 dim->off
+ 77904.4 * dial c10->gap
+ 77925.2 * dial gap->c11
+ 77987.7 * dial c11->gap
+ 78008.5 * dial gap->c12
+ 78071.0 * dial c12->gap
+ 78075.1 > button4 target=0
+ 78086.3 * pb4 no->mid
+ 78088.8 * pb4 mid->nc
+ 78091.9 * dial gap->c13
+ 78154.4 * dial c13->gap
+ 78175.2 * dial gap->c14
+ 78237.7 * dial c14->gap
+ 78258.5 * dial gap->c15
+ 78321.0 * dial c15->gap
+ 78341.9 * dial gap->c0
+ 78404.4 * dial c0->gap
+ 78425.2 * dial gap->c1
+ 86075.1 > button6 target=1000
+ 86086.3 * pb6 nc->mid
+ 86088.8 * pb6 mid->no
+ 86130.3 * dial c1->gap
+ 86151.1 * dial gap->c2
+ 86154.4 * outLamp1 off->dim
+ 86173.5 * outLamp1 dim->on
+ 86214.1 * dial c2->gap
+ 86230.4 * outLamp1 on->dim
+ 86234.9 * dial gap->c3
+ 86238.2 * outLamp5 off->dim
+ 86257.3 * outLamp5 dim->on
+ 86286.0 * outLamp1 dim->off
+ 86297.9 * dial c3->gap
+ 86314.2 * outLamp5 on->dim
+ 86318.7 * dial gap->c4
+ 86320.7 * outLamp1 off->dim
+ 86339.8 * outLamp1 dim->on
+ 86369.8 * outLamp5 dim->off
+ 86381.6 * dial c4->gap
+ 86398.1 * outLamp1 on->dim
+ 86402.5 * dial gap->c5
+ 86405.8 * outLamp4 off->dim
+ 86424.9 * outLamp4 dim->on
+ 86453.7 * outLamp1 dim->off
+ 86465.4 * dial c5->gap
+ 86481.7 * outLamp4 on->dim
+ 86486.3 * dial gap->c6
+ 86488.3 * outLamp1 off->dim
+ 86507.4 * outLamp1 dim->on
+ 86537.3 * outLamp4 dim->off
+ 86549.2 * dial c6->gap
+ 86565.7 * outLamp1 on->dim
+ 86570.0 * dial gap->c7
+ 86573.3 * outLamp3 off->dim
+ 86592.4 * outLamp3 dim->on
+ 86621.3 * outLamp1 dim->off
+ 86633.0 * dial c7->gap
+ 86649.3 * outLamp3 on->dim
+ 86653.8 * dial gap->c8
+ 86655.8 * outLamp1 off->dim
+ 86674.9 * outLamp1 dim->on
+ 86704.9 * outLamp3 dim->off
+ 86716.8 * dial c8->gap
+ 86733.3 * outLamp1 on->dim
+ 86737.6 * dial gap->c9
+ 86788.9 * outLamp1 dim->off
+ 86800.1 * dial c9->gap
+ 86820.9 * dial gap->c10
+ 86883.4 * dial c10->gap
+ 86904.3 * dial gap->c11
+ 86966.8 * dial c11->gap
+ 86987.6 * dial gap->c12
+ 87050.1 * dial c12->gap
+ 87070.9 * dial gap->c13
+ 87133.4 * dial c13->gap
+ 87154.3 * dial gap->c14
+ 87216.8 * dial c14->gap
+ 87237.6 * dial gap->c15
+ 87300.1 * dial c15->gap
+ 87320.9 * dial gap->c0
+ 87383.4 * dial c0->gap
+ 87404.3 * dial gap->c1
+ 87466.8 * dial c1->gap
+ 87487.6 * dial gap->c2
+ 87490.9 * outLamp1 off->dim
+ 87510.0 * outLamp1 dim->on
+ 87550.5 * dial c2->gap
+ 87566.8 * outLamp1 on->dim
+ 87571.4 * dial gap->c3
+ 87574.7 * outLamp5 off->dim
+ 87593.8 * outLamp5 dim->on
+ 87622.4 * outLamp1 dim->off
+ 87634.3 * dial c3->gap
+ 87650.6 * outLamp5 on->dim
+ 87655.2 * dial gap->c4
+ 87657.2 * outLamp1 off->dim
+ 87676.3 * outLamp1 dim->on
+ 87706.2 * outLamp5 dim->off
+ 87718.1 * dial c4->gap
+ 87734.6 * outLamp1 on->dim
+ 87738.9 * dial gap->c5
+ 87742.2 * outLamp4 off->dim
+ 87761.3 * outLamp4 dim->on
+ 87790.2 * outLamp1 dim->off
+ 87801.9 * dial c5->gap
+ 87818.2 * outLamp4 on->dim
+ 87822.7 * dial gap->c6
+ 87824.7 * outLamp1 off->dim
+ 87843.8 * outLamp1 dim->on
+ 87873.8 * outLamp4 dim->off
+ 87885.7 * dial c6->gap
+ 87902.2 * outLamp1 on->dim
+ 87906.5 * dial gap->c7
+ 87909.8 * outLamp3 off->dim
+ 87928.9 * outLamp3 dim->on
+ 87957.8 * outLamp1 dim->off
+ 87969.5 * dial c7->gap
+ 87985.8 * outLamp3 on->dim
+ 87990.3 * dial gap->c8
+ 87992.3 * outLamp1 off->dim
+ 88011.4 * outLamp1 dim->on
+ 88041.4 * outLamp3 dim->off
+ 88053.2 * dial c8->gap
+ 88069.7 * outLamp1 on->dim
+ 88074.1 * dial gap->c9
+ 88125.3 * outLamp1 dim->off
+ 88136.6 * dial c9->gap
+ 88157.4 * dial gap->c10
+ 88219.9 * dial c10->gap
+ 88240.7 * dial gap->c11
+ 88303.2 * dial c11->gap
+ 88324.1 * dial gap->c12
+ 88386.6 * dial c12->gap
+ 88407.4 * dial gap->c13
+ 88469.9 * dial c13->gap
+ 88490.7 * dial gap->c14
+ 88553.2 * dial c14->gap
+ 88574.1 * dial gap->c15
+ 88636.6 * dial c15->gap
+ 88657.4 * dial gap->c0
+ 88719.9 * dial c0->gap
+ 88740.7 * dial gap->c1
+ 88803.2 * dial c1->gap
+ 88824.1 * dial gap->c2
+ 88827.4 * outLamp1 off->dim
+ 88846.5 * outLamp1 dim->on
+ 88887.0 * dial c2->gap
+ 88903.3 * outLamp1 on->dim
+ 88907.9 * dial gap->c3
+ 88911.2 * outLamp5 off->dim
+ 88930.3 * outLamp5 dim->on
+ 88958.9 * outLamp1 dim->off
+ 88970.8 * dial c3->gap
+ 88987.1 * outLamp5 on->dim
+ 88991.6 * dial gap->c4
+ 88993.6 * outLamp1 off->dim
+ 89012.7 * outLamp1 dim->on
+ 89042.7 * outLamp5 dim->off
+ 89054.6 * dial c4->gap
+ 89071.1 * outLamp1 on->dim
+ 89075.1 > button6 target=0
+ 89075.4 * dial gap->c5
+ 89078.7 * outLamp4 off->dim
+ 89086.3 * pb6 no->mid
+ 89088.8 * pb6 mid->nc
+ 89097.8 * outLamp4 dim->on
+ 89126.7 * outLamp1 dim->off
+ 89138.4 * dial c5->gap
+ 89154.7 * outLamp4 on->dim
+ 89159.2 * dial gap->c6
+ 89161.2 * outLamp1 off->dim
+ 89180.3 * outLamp1 dim->on
+ 89210.3 * outLamp4 dim->off
+ 89222.1 * dial c6->gap
+ 89238.6 * outLamp1 on->dim
+ 89243.0 * dial gap->c7
+ 89246.3 * outLamp3 off->dim
+ 89265.4 * outLamp3 dim->on
+ 89294.2 * outLamp1 dim->off
+ 89305.9 * dial c7->gap
+ 89322.2 * outLamp3 on->dim
+ 89326.8 * dial gap->c8
+ 89328.8 * outLamp1 off->dim
+ 89347.9 * outLamp1 dim->on
+ 89377.8 * outLamp3 dim->off
+ 89389.7 * dial c8->gap
+ 89406.2 * outLamp1 on->dim
+ 89410.5 * dial gap->c9
+ 89461.8 * outLamp1 dim->off
+ 89473.0 * dial c9->gap
+ 89493.9 * dial gap->c10
+ 89556.4 * dial c10->gap
+ 89577.2 * dial gap->c11
+ 89639.7 * dial c11->gap
+ 89660.5 * dial gap->c12
+ 89723.0 * dial c12->gap
+ 89743.9 * dial gap->c13
+ 89806.4 * dial c13->gap
+ 89827.2 * dial gap->c14
+ 89889.7 * dial c14->gap
+ 89910.5 * dial gap->c15
+ 89973.0 * dial c15->gap
+ 89993.9 * dial gap->c0
+ 90056.4 * dial c0->gap
+ 90077.2 * dial gap->c1
+ 97075.1 > disconnect cord=39
+ 97075.1 > connect cord=39 a=hole:6E#2 b=hole:D7#2 r_uohm=0
+ 97575.1 > button6 target=1000
+ 97586.3 * pb6 nc->mid
+ 97588.8 * pb6 mid->no
+ 97630.3 * dial c1->gap
+ 97651.1 * dial gap->c2
+ 97654.4 * outLamp1 off->dim
+ 97673.5 * outLamp1 dim->on
+ 97714.1 * dial c2->gap
+ 97730.4 * outLamp1 on->dim
+ 97734.9 * dial gap->c3
+ 97738.2 * outLamp5 off->dim
+ 97757.3 * outLamp5 dim->on
+ 97786.0 * outLamp1 dim->off
+ 97797.9 * dial c3->gap
+ 97814.2 * outLamp5 on->dim
+ 97818.7 * dial gap->c4
+ 97820.7 * outLamp1 off->dim
+ 97839.8 * outLamp1 dim->on
+ 97869.8 * outLamp5 dim->off
+ 97875.1 > button6 target=0
+ 97881.6 * dial c4->gap
+ 97886.3 * pb6 no->mid
+ 97888.8 * pb6 mid->nc
+ 97898.1 * outLamp1 on->dim
+ 97902.5 * dial gap->c5
+ 97905.8 * outLamp4 off->dim
+ 97924.9 * outLamp4 dim->on
+ 97953.7 * outLamp1 dim->off
+ 97965.4 * dial c5->gap
+ 97981.7 * outLamp4 on->dim
+ 97986.3 * dial gap->c6
+ 97988.3 * outLamp1 off->dim
+ 98007.4 * outLamp1 dim->on
+ 98037.3 * outLamp4 dim->off
+ 98049.2 * dial c6->gap
+ 98065.7 * outLamp1 on->dim
+ 98070.0 * dial gap->c7
+ 98070.1 ? dial=c7  "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+ 98073.3 * outLamp3 off->dim
+ 98081.5 * relay5 nc->mid
+ 98081.7 * relay6 nc->mid
+ 98082.8 * relay5 mid->no
+ 98083.0 * relay6 mid->no
+ 98092.6 * outLamp3 dim->on
+ 98093.9 * relay2 nc->mid
+ 98095.2 * relay2 mid->no
+ 98121.3 * outLamp1 dim->off
+104070.1 ? dial=c7  "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+104070.1 > button5 target=1000
+104081.3 * pb5 nc->mid
+104083.8 * pb5 mid->no
+104113.4 * dial c7->gap
+104120.9 * relay6 no->mid
+104121.0 * relay5 no->mid
+104121.8 * relay6 mid->nc
+104121.9 * relay5 mid->nc
+104132.9 * relay3 nc->mid
+104133.0 * relay4 nc->mid
+104134.2 * relay3 mid->no
+104134.3 * relay4 mid->no
+104134.4 * dial gap->c8
+104137.5 * outLamp1 off->dim
+104141.3 * outLamp3 on->dim
+104156.8 * outLamp1 dim->on
+104196.9 * outLamp3 dim->off
+104198.1 * dial c8->gap
+104219.3 * dial gap->c9
+104282.9 * dial c9->gap
+104304.1 * dial gap->c10
+104367.7 * dial c10->gap
+104370.1 > button5 target=0
+104381.3 * pb5 no->mid
+104383.8 * pb5 mid->nc
+104388.9 * dial gap->c11
+104452.5 * dial c11->gap
+104473.7 * dial gap->c12
+104537.2 * dial c12->gap
+104558.4 * dial gap->c13
+104622.0 * dial c13->gap
+104643.2 * dial gap->c14
+104706.8 * dial c14->gap
+104728.0 * dial gap->c15
+104791.6 * dial c15->gap
+104812.7 * dial gap->c0
+104876.3 * dial c0->gap
+104897.5 * dial gap->c1
+104897.6 ? dial=c1  "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+110897.6 ? dial=c1  "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+110897.6 > button6 target=1000
+110908.8 * pb6 nc->mid
+110911.3 * pb6 mid->no
+110953.9 * dial c1->gap
+110975.1 * dial gap->c2
+111038.6 * dial c2->gap
+111059.8 * dial gap->c3
+111123.4 * dial c3->gap
+111144.6 * dial gap->c4
+111197.6 > button6 target=0
+111208.2 * dial c4->gap
+111208.8 * pb6 no->mid
+111211.3 * pb6 mid->nc
+111229.4 * dial gap->c5
+111293.0 * dial c5->gap
+111314.2 * dial gap->c6
+111377.7 * dial c6->gap
+111398.9 * dial gap->c7
+111399.0 ? dial=c7  "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+111410.4 * relay5 nc->mid
+111410.6 * relay6 nc->mid
+111411.7 * relay5 mid->no
+111411.9 * relay6 mid->no
+111416.4 * relay3 no->mid  relay4 no->mid
+111417.3 * relay3 mid->nc  relay4 mid->nc
+111420.6 * outLamp3 off->dim
+111436.5 * outLamp1 on->dim
+111440.0 * outLamp3 dim->on
+111492.1 * outLamp1 dim->off
+117399.0 ? dial=c7  "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+117399.0 > disconnect cord=39
+117399.0 > connect cord=39 a=hole:6E#2 b=free r_uohm=0
+117404.6 * relay6 no->mid
+117404.7 * relay5 no->mid
+117405.5 * relay6 mid->nc
+117405.6 * relay5 mid->nc
+117416.6 * relay3 nc->mid
+117416.8 * relay4 nc->mid
+117417.9 * relay3 mid->no
+117418.1 * relay4 mid->no
+117421.2 * outLamp1 off->dim
+117436.8 * dial c7->gap
+117436.9 * outLamp3 on->dim
+117440.5 * outLamp1 dim->on
+117458.0 * dial gap->c8
+117492.5 * outLamp3 dim->off
+117521.6 * dial c8->gap
+117542.8 * dial gap->c9
+117606.4 * dial c9->gap
+117627.6 * dial gap->c10
+117691.2 * dial c10->gap
+117712.4 * dial gap->c11
+117775.9 * dial c11->gap
+117797.1 * dial gap->c12
+117860.7 * dial c12->gap
+117881.9 * dial gap->c13
+117899.0 > button4 target=1000
+117910.2 * pb4 nc->mid
+117912.7 * pb4 mid->no
+117916.1 * relay2 no->mid
+117917.0 * relay2 mid->nc
+117921.9 * relay4 no->mid
+117922.0 * relay3 no->mid
+117922.8 * relay4 mid->nc
+117922.9 * relay3 mid->nc
+117942.1 * outLamp1 on->dim
+117945.0 * dial c13->gap
+117965.8 * dial gap->c14
+117997.8 * outLamp1 dim->off
+118028.3 * dial c14->gap
+118049.2 * dial gap->c15
+118111.7 * dial c15->gap
+118132.5 * dial gap->c0
+118195.0 * dial c0->gap
+118199.0 > button4 target=0
+118210.2 * pb4 no->mid
+118212.7 * pb4 mid->nc
+118215.8 * dial gap->c1

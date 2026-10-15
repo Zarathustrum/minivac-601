@@ -1,0 +1,17 @@
+#!mv601-trace 1
+# id=I-EXP3 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp2 off->dim
+    22.1 * outLamp2 dim->on
+    42.2 ? outLamp2=on  "Light 2 comes on as soon as power is turned ON."
+    42.2 > button1 target=1000
+    53.4 * pb1 nc->mid
+    55.9 * pb1 mid->no
+    59.2 * outLamp1 off->dim
+    68.3 * outLamp2 on->dim
+    78.1 * outLamp1 dim->on
+   123.9 * outLamp2 dim->off
+   128.2 ? outLamp1=on outLamp2=off  "Push down on pushbutton 1. Light 2 goes OFF and light 1 comes ON."

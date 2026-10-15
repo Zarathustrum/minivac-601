@@ -1,0 +1,888 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-MAZESOLVER",
+  "source": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/D8",
+    "1B/1+",
+    "2E/4Z",
+    "2F/2+",
+    "2G/6L",
+    "2H/2-",
+    "2K/4Y",
+    "2L/2-",
+    "3A/4J",
+    "3B/3+",
+    "3E/4E",
+    "3E/6N",
+    "3F/4F",
+    "3F/3+",
+    "3H/D3",
+    "3J/5A",
+    "3K/D2",
+    "3L/3-",
+    "4A/4N",
+    "4B/4+",
+    "4H/D7",
+    "4L/D5",
+    "4Y/5G",
+    "5B/5+",
+    "5E/6E",
+    "5F/6F",
+    "5H/5-",
+    "5Y/5-",
+    "6F/6+",
+    "6G/D19",
+    "6H/5Z",
+    "6Y/D1",
+    "6Z/D19",
+    "D2/D4",
+    "D4/D6",
+    "D6/D8",
+    "D16/M-",
+    "D17/M+",
+    "D18/M-",
+    "6E/free"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/D8",
+    "1B/1+",
+    "2E/4Z",
+    "2F/2+",
+    "2G/6L",
+    "2H/2-",
+    "2K/4Y",
+    "2L/2-",
+    "3A/4J",
+    "3B/3+",
+    "3E/4E",
+    "3E/6N",
+    "3F/4F",
+    "3F/3+",
+    "3H/D3",
+    "3J/5A",
+    "3K/D2",
+    "3L/3-",
+    "4A/4N",
+    "4B/4+",
+    "4H/D7",
+    "4L/D5",
+    "4Y/5G",
+    "5B/5+",
+    "5E/6E",
+    "5F/6F",
+    "5H/5-",
+    "5Y/5-",
+    "6F/6+",
+    "6G/D19",
+    "6H/5Z",
+    "6Y/D1",
+    "6Z/D19",
+    "D2/D4",
+    "D4/D6",
+    "D6/D8",
+    "D16/M-",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Turn power on. The computer will go directly to the start position. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Turn power on. The computer will go directly to the start position. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D5#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D5 = dial contact 5 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D5 = dial contact 5 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D5 = dial contact 5 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D5 = dial contact 5 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path B: from 1 to 5 on the rotary switch dial"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D3#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D3 = dial contact 3 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D3 = dial contact 3 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D3 = dial contact 3 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D3 = dial contact 3 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path A: from 1 to 3 on the rotary switch dial"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D7#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D7 = dial contact 7 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D7 = dial contact 7 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51",
+      "quote": "[p.45:] Return the computer to its start position by pushing pushbutton 5. [p.44:] The start position will be the \"1\" setting on the rotary switch dial."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D7 = dial contact 7 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "BK5 printed pp.44-45 = book5-6.pdf PDF pp.50-51; D7 = dial contact 7 per BK1 printed p.20 = book1.pdf PDF p.22: \"The contact on the wiper arm is referred to as 'D16.'\" and \"For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16.\" (docs/research/jack-map.md, Rotary, [verified])",
+      "quote": "[p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path C: from 1 to 7 on the rotary switch dial"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    }
+  ],
+  "digest": {
+    "eventCount": 981,
+    "moverTransitions": [
+      0,
+      12,
+      24,
+      24,
+      24,
+      24,
+      0,
+      0,
+      0,
+      12,
+      12,
+      36,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      482
+    ]
+  },
+  "note": "Printed claims only (Step 6). No errata touch this program (errataRefs empty); wires = the printed 40 less the free-ended line 6E/free*, which is script cord 39 on 6E#2 (6E#1 holds 5E/6E) with a free end. Nominating the goal moves its free end to D5#2 (D5#1 holds 4L/D5), then, after the printed re-set, to D3#2 (D3#1 holds 3H/D3) and then D7#2 (D7#1 holds 4H/D7); removing the connection returns it to a free end at 6E#2. The goal order D5, D3, D7 is a script choice; each goal runs the printed cycle (explore, nominate, pb6, pb5, pb6, remove the connection, pb4). Asserted: the dial rests on the start position c1 after power on and after each pb5; it rests on the goal position (c5, c3, c7) after the goal pb6 push and after the pb6 push from start. The c3/c5/c7 asserts rest on the panel decimal numbering (DN is dial position N, BK1 printed p.20 = book1.pdf PDF p.22), not on Book V text, which pairs the goal wire with D3, D5 or D7 and paths A, B, C with dial 3, 5, 7 only separately. The later cycles do not test the forget button: a scratch run without pb4 still selects D3. Not asserted (not printed): dial motion and where the dial rests during and after 'exploring'; any lamp or relay state; that the second push explores before it selects; 'without exploring' (no dial observable distinguishes it: the wiper passes 2-4 either way); the effect of removing the 6E wire and of the forget button (pb4), whose printed outcome ('the exploring stage again') has no observable. Hold lengths (pb6 3 s while exploring, 300 ms pushes) are script choices. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; until windows are sized for a run rate as slow as 25 rpm."
+}

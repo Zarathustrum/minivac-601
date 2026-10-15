@@ -1,0 +1,1865 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP20-DERIVED",
+  "source": "Books V-VI printed p.34 = book5-6.pdf PDF p.40 (purpose, program, character-count table, procedure); dial plate printed p.33 = PDF p.39; Morse table printed p.32 = PDF p.38; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1T",
+    "1B/1C",
+    "1B/2B",
+    "1C/2C",
+    "1F/2F",
+    "1G/3H",
+    "1H/5R",
+    "1J/5H",
+    "1K/3L",
+    "1L/5U",
+    "1N/5L",
+    "1R/3A",
+    "1S/2U",
+    "1U/2A",
+    "1V/2W",
+    "1W/4A",
+    "2B/3B",
+    "2C/3C",
+    "2F/4R",
+    "2G/4H",
+    "2H/5T",
+    "2J/6H",
+    "2K/4L",
+    "2L/5W",
+    "2N/6L",
+    "2V/2+",
+    "3B/4B",
+    "3C/4C",
+    "3F/3R",
+    "3F/4F",
+    "3G/D15",
+    "3J/D7",
+    "3K/D14",
+    "3N/D6",
+    "3S/4S",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D5",
+    "4K/D12",
+    "4N/D4",
+    "4S/6X",
+    "5C/6C",
+    "5F/6F",
+    "5G/D11",
+    "5J/D3",
+    "5K/D10",
+    "5N/D2",
+    "5S/6R",
+    "5V/6T",
+    "6C/6-",
+    "6G/D9",
+    "6J/D1",
+    "6K/D8",
+    "6N/D0",
+    "6S/6-",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/1T",
+    "1B/1C",
+    "1B/2B",
+    "1C/2C",
+    "1F/2F",
+    "1G/3H",
+    "1H/5R",
+    "1J/5H",
+    "1K/3L",
+    "1L/5U",
+    "1N/5L",
+    "1R/3A",
+    "1S/2U",
+    "1U/2A",
+    "1V/2W",
+    "1W/4A",
+    "2B/3B",
+    "2C/3C",
+    "2F/4R",
+    "2G/4H",
+    "2H/5T",
+    "2J/6H",
+    "2K/4L",
+    "2L/5W",
+    "2N/6L",
+    "2V/2+",
+    "3B/4B",
+    "3C/4C",
+    "3F/3R",
+    "3F/4F",
+    "3G/D15",
+    "3J/D7",
+    "3K/D14",
+    "3N/D6",
+    "3S/4S",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D5",
+    "4K/D12",
+    "4N/D4",
+    "4S/6X",
+    "5C/6C",
+    "5F/6F",
+    "5G/D11",
+    "5J/D3",
+    "5K/D10",
+    "5N/D2",
+    "5S/6R",
+    "5V/6T",
+    "6C/6-",
+    "6G/D9",
+    "6J/D1",
+    "6K/D8",
+    "6N/D0",
+    "6S/6-",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40 \"With the dial plate from experiment 19 in place, turn power on.\"; derived from topology: pushbutton 6 up leaves 6X (D17, 3S, 4S) dead, so no coil and no RUN feed; all switches LEFT: 2V(+)-2U-1S-1R-3A lights output light 3 (3B on the 1B-4B/1C-6C minus chain); lights 1, 2, 4 unfed; 5A, 6A unwired; dial stays at its c0 start",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter E (., 1 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5R-1H-1G(relay 1 in)-3H-3J(relay 3 out)-D7; switches 4-6 still LEFT from power-on puts D16/D19 on minus, the STOP short, so the wiper can rest only on D7 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2U-1S-1T-1A lights output light 1; plate Band 1 sector 7 reads E; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter E (., 1 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5R-1H-1G(relay 1 in)-3H-3J(relay 3 out)-D7; switches 4-6 still LEFT from power-on puts D16/D19 on minus, the STOP short, so the wiper can rest only on D7 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2U-1S-1T-1A lights output light 1; plate Band 1 sector 7 reads E; held; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40; letter E after pushbutton 6 is released; derived from topology: 6X loses +, so every coil is unfed (relays out, indicator lamps dark) and RUN is dead; the wiper was at rest on D7 under the STOP short, so with no drive it stays there; output light 1 is fed from 2V(+) through switches 1 and 2 alone and stays on; Step 7 note \"Post-release dial c4 to c3 etc. is O-R13's second instance\"; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c11"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter N (-., 2 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5R-1H-1J(relay 1 out)-5H-5G(relay 5 in)-D11; switches 5, 6 still LEFT puts D16/D19 on minus, the STOP short, so the wiper can rest only on D11 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1U-2A lights output light 2; plate Band 2 sector 11 reads N; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c11"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter N (-., 2 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5R-1H-1J(relay 1 out)-5H-5G(relay 5 in)-D11; switches 5, 6 still LEFT puts D16/D19 on minus, the STOP short, so the wiper can rest only on D11 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1U-2A lights output light 2; plate Band 2 sector 11 reads N; held; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c11"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40; letter N after pushbutton 6 is released; derived from topology: 6X loses +, so every coil is unfed (relays out, indicator lamps dark) and RUN is dead; the wiper was at rest on D11 under the STOP short, so with no drive it stays there; output light 2 is fed from 2V(+) through switches 1 and 2 alone and stays on; Step 7 note \"Post-release dial c4 to c3 etc. is O-R13's second instance\"; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter R (.-., 3 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5T-2H-2G(relay 2 in)-4H-4J(relay 4 out)-D5; switch 6 still LEFT puts D16/D19 on minus, the STOP short, so the wiper can rest only on D5 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2U-1S-1R-3A lights output light 3; plate Band 3 sector 5 reads R; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter R (.-., 3 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5T-2H-2G(relay 2 in)-4H-4J(relay 4 out)-D5; switch 6 still LEFT puts D16/D19 on minus, the STOP short, so the wiper can rest only on D5 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2U-1S-1R-3A lights output light 3; plate Band 3 sector 5 reads R; held; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40; letter R after pushbutton 6 is released; derived from topology: 6X loses +, so every coil is unfed (relays out, indicator lamps dark) and RUN is dead; the wiper was at rest on D5 under the STOP short, so with no drive it stays there; output light 3 is fed from 2V(+) through switches 1 and 2 alone and stays on; Step 7 note \"Post-release dial c4 to c3 etc. is O-R13's second instance\"; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter Q (--.-, 4 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5T-2H-2G(relay 2 in)-4H-4G(relay 4 in)-D13 puts D16/D19 on minus, the STOP short, so the wiper can rest only on D13 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1W-4A lights output light 4; plate Band 4 sector 13 reads Q; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter Q (--.-, 4 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6R-5S-5T-2H-2G(relay 2 in)-4H-4G(relay 4 in)-D13 puts D16/D19 on minus, the STOP short, so the wiper can rest only on D13 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1W-4A lights output light 4; plate Band 4 sector 13 reads Q; held; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40; letter Q after pushbutton 6 is released; derived from topology: 6X loses +, so every coil is unfed (relays out, indicator lamps dark) and RUN is dead; the wiper was at rest on D13 under the STOP short, so with no drive it stays there; output light 4 is fed from 2V(+) through switches 1 and 2 alone and stays on; Step 7 note \"Post-release dial c4 to c3 etc. is O-R13's second instance\"; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter C (-.-., 4 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6T-5V-5U-1L-1N(relay 1 out)-5L-5K(relay 5 in)-D10 puts D16/D19 on minus, the STOP short, so the wiper can rest only on D10 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1W-4A lights output light 4; plate Band 4 sector 10 reads C; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter C (-.-., 4 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6T-5V-5U-1L-1N(relay 1 out)-5L-5K(relay 5 in)-D10 puts D16/D19 on minus, the STOP short, so the wiper can rest only on D10 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1W-4A lights output light 4; plate Band 4 sector 10 reads C; held; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40; letter C after pushbutton 6 is released; derived from topology: 6X loses +, so every coil is unfed (relays out, indicator lamps dark) and RUN is dead; the wiper was at rest on D10 under the STOP short, so with no drive it stays there; output light 4 is fed from 2V(+) through switches 1 and 2 alone and stays on; Step 7 note \"Post-release dial c4 to c3 etc. is O-R13's second instance\"; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter H (...., 4 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6T-5V-5W-2L-2N(relay 2 out)-6L-6N(relay 6 out)-D0 puts D16/D19 on minus, the STOP short, so the wiper can rest only on D0 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1W-4A lights output light 4; plate Band 4 sector 0 reads H; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40, dial plate printed p.33 = PDF p.39, Morse table printed p.32 = PDF p.38; letter H (...., 4 characters) with switch 3.. RIGHT = dot, LEFT = dash; derived from topology: pushbutton 6 puts + on 6X = D17 (RUN, D18/M-) and on 3S, 4S; switch 4 LEFT feeds relays 1, 2 (4R-2F/1F), switch 3 LEFT feeds relays 3-6 (3R-3F..6F), coil returns via nE-lamp-nC on the minus chain; the minus-rooted tree 6S(-)-6T-5V-5W-2L-2N(relay 2 out)-6L-6N(relay 6 out)-D0 puts D16/D19 on minus, the STOP short, so the wiper can rest only on D0 (pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6, LEFT = 1); 2V(+)-2W-1V-1W-4A lights output light 4; plate Band 4 sector 0 reads H; held; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.34 = book5-6.pdf PDF p.40; letter H after pushbutton 6 is released; derived from topology: 6X loses +, so every coil is unfed (relays out, indicator lamps dark) and RUN is dead; the wiper was at rest on D0 under the STOP short, so with no drive it stays there; output light 4 is fed from 2V(+) through switches 1 and 2 alone and stays on; Step 7 note \"Post-release dial c4 to c3 etc. is O-R13's second instance\"; rule p.34 \"The rotary switch will turn to the correct spot on the dial.\" and \"Read the letter in Band n if output light n is on.\"",
+      "quote": "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A). No erratum touches p.34. Every assert is derived by hand from the 60-wire topology and the printed rule, not printed against dial pads. Topology: pushbutton 6 (6Y/6+) is the only + feed for RUN (6X/D17, D18/M-) and for the coils (4S/6X, 3S/4S): switch 4 LEFT (4R/2F, 1F/2F) pulls in relays 1 and 2, switch 3 LEFT (3F/3R, 3F..6F) pulls in relays 3-6, each coil returning through its indicator lamp to the 1C-6C/6C/6- minus chain. The selection tree is rooted on minus at 6S (6S/6-): switch 6 picks 6R-5S or 6T-5V, switch 5 picks relay 1 or relay 2 arms, relays 1-2 (switch 4) pick relays 3-6 arms, relays 3-6 (switch 3) pick the pad, so pad = 8*sw3 + 4*sw4 + 2*sw5 + sw6 with LEFT (dash) = 1, which matches every letter on the printed plate. D16/D19 puts the selected pad on the STOP short; on any other contact or gap the motor is driven, so with pushbutton 6 held the wiper can rest only on the selected pad. Output lights: 2V(+) through switch 2 set 2 and switch 1 sets 1/2 to 1A/2A/3A/4A, per the printed character-count table; 5A, 6A unwired. Letters E, N, R (the E-, N- and O-class cases printedUnprinted names) and Q, C, H are a script choice covering all four switch 5/6 branches, both states of every relay level and the all-relays-out pad D0; consecutive pads differ, and each relays-out pad (2*sw5 + sw6, selected until the relays pull in) is at least three pads from the start pad, H aside (its pad is that pad). Switches beyond a letter's length keep their earlier setting. Post-release asserts are the Step 7 note: with no drive and the wiper at rest, the dial does not move (O-R13). Rotary run rate, geometry and coast stay profile fallbacks O-R1, O-R3 and O-R5.",
+  "digest": {
+    "eventCount": 422,
+    "moverTransitions": [
+      12,
+      12,
+      12,
+      12,
+      12,
+      12,
+      0,
+      0,
+      0,
+      0,
+      0,
+      24,
+      6,
+      6,
+      10,
+      6,
+      6,
+      2,
+      96
+    ]
+  }
+}

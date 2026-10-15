@@ -1,0 +1,314 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of find-relays.json - relay, lamp, pushbutton, slide-switch and power-supply electrical behavior",
+  "verifier_note": "Independent re-read of the primary sources. Posture was refutation-by-default. Every item below states what I personally did to check it. Page images I opened this pass (8 total): book1 p-16 (printed 14), book1 p-18 (printed 16), book1 p-19 (printed 17), maintenance p-05 (printed 3), book7 p-12 (printed 7), book7 p-13 (printed 8), book7 p-15 (printed 10), book7 p-16 (printed 11), plus the panel photograph at full frame and two magnified crops (COMMON/CAPACITOR strip; LIGHT/COIL bracket row). Everything else was checked against fresh pdftotext -layout extractions I ran myself, not against the finder's quoted text.",
+  "date_verified": "2026-08-30",
+  "target_file": "docs/research/raw/find-relays.json",
+
+  "headline": "One hard factual error in a transcribed connection list (RLY-27). One over-broad [verified] exhaustive negative that primary text contradicts (TIM-01). Three wrong page citations. One evidence item sourced from the task brief rather than from the page. A systemic misuse of the [likely] tag for the finder's own inferences. Against that: the load-bearing structural claims - relay coil/lamp topology, contact letters and truth table, power-supply topology, the Book VII bias procedure, capacitor values, COMMON semantics - all survived independent re-reading of the page images and are solid.",
+
+  "refuted": [
+    {
+      "id": "REF-01",
+      "severity": "high",
+      "target": "RLY-27 (Book I Experiment 8 program)",
+      "finder_claim": "Program: 1+/1Y, 1+/1H, 2+/2H, 1Y/1C, 1G/2C, 2G/2A, 1F/1-, 2F/2-, 2B/2-.  Tagged [verified], with an ocr_caveat saying 'Verify against the page image before use.'",
+      "correction": "The second-column first entry is 1X/1C, NOT 1Y/1C.",
+      "evidence": "I opened docs/research/raw/pdf/pages/book1/p-18.png (Book I printed p.16). The program block is printed in three columns and reads, clean and unambiguous:  row1: 1+/1Y   1+/1H   2+/2H  |  row2: 1X/1C   1G/2C   2G/2A  |  row3: 1F/1-   2F/2-   2B/2-.  The circuit diagram on the same page corroborates it: the bottom trace runs 1Y - 1X - 1C - 1E - 1F - 1-, with 1Z drawn as the unconnected N.C. stub above 1X.",
+      "why_it_matters": "With 1Y/1C the pushbutton is bypassed entirely: 1+ ties to 1Y, and 1Y ties to 1C, so relay 1's coil is permanently energised the moment power comes on. That destroys the experiment - steps 2 and 3 require relay 1 and relay 2 to sit de-energised so the operator can push their crossbars by hand, and step 4 requires pushbutton 1 to be what turns relay 1 ON. A simulator built from the finder's list would show relay 1 latched ON at power-up.",
+      "class": "OCR read tagged [verified] against the finder's own written warning not to trust it"
+    },
+    {
+      "id": "REF-02",
+      "severity": "medium",
+      "target": "TIM-01",
+      "finder_claim": "'NO NUMBERS ANYWHERE. Not one operate time, release time, bounce figure, or millisecond value appears in Book I, Books II-IV, Books V-VI, the Maintenance Manual, the Errata, or Book VII. I grepped all six text extracts ... and found no timing specification at all.' Tagged [verified].",
+      "correction": "Primary timing figures do exist. What is absent is RELAY operate/release/bounce data specifically. The [verified] tag on an exhaustive negative derived from a grep is inference.",
+      "evidence": "Book II printed p.8 (book2-3-4.pdf PDF p.14), 'The Binary Nature of Storage': 'the rotary switch system requires more than a second to go from zero to nine' and, of the binary input button, 'since it has only two physical positions, is simpler in construction and can be moved from one position to another in a fraction of a second.' Maintenance Manual printed p.10 (PDF p.12), rotary-switch step 3: 'The resistors should heat up in about 20 seconds.' I extracted all three myself with pdftotext -layout.",
+      "why_it_matters": "TIM-01 is used to justify the whole invented MINIVAC-DEFAULT-TIMING profile in TIM-05. The correct statement - no relay timing data - still justifies it, but the claim as written is false and is tagged [verified].",
+      "class": "exhaustive negative dressed as verified"
+    },
+    {
+      "id": "REF-03",
+      "severity": "low",
+      "target": "RLY-26 (Book II SINGLE INPUT FLIP-FLOP) - citation and errata attachment",
+      "finder_claim": "'BOOK II SINGLE INPUT FLIP-FLOP (printed p.11)' plus an errata_note quoting ERRATA 'BOOK IV page 69' about pushing pushbutton 6 slowly.",
+      "correction": "(a) The single-input flip-flop program is printed on Book II page 12, not page 11. Page 11 carries the TWO-BUTTON RELAY MEMORY CIRCUIT and the prose introducing the single-input circuit ('The circuit and program below are for a single input flip flop') - the program itself falls on the next page. (b) The errata note the finder attached belongs to a DIFFERENT circuit: the Book IV page 69 single-input flip-flop, which is a six-relay-era circuit driven by pushbutton 6, not the two-relay Book II p.12 circuit driven by pushbutton 1.",
+      "evidence": "pdftotext -layout -f 18 -l 18 book2-3-4.pdf prints the fourteen-connection program list (1-/1B ... 2-/2C) followed by the footer '12'. pdftotext -f 17 -l 17 ends mid-sentence with '...The circuit and program below are for a single input flip-flop.' Errata text: 'BOOK IV / page 69: Note - push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on...' - Light 6 and pushbutton 6, whereas the Book II circuit's own text says 'Light 1 will be ON when the flip-flop is remembering a 1' and uses pushbutton 1.",
+      "note": "The fourteen-connection program list itself is transcribed correctly - I checked all fourteen against the page text.",
+      "class": "wrong page + cross-book conflation inside a [verified] claim"
+    },
+    {
+      "id": "REF-04",
+      "severity": "low",
+      "target": "RLY-17 citation",
+      "finder_claim": "Attributes both the pull-in/drop-out DEFINITION sentence and the bi-stable-region paragraph to BK7 printed p.7 (PDF p.12), 'read from the page image'.",
+      "correction": "The definition sentence ('The voltage at which a relay turns on is called the pull-in voltage; the voltage at which a relay turns off is called the drop-out voltage') is on Book VII printed p.6 (PDF p.11), in the same paragraph block as the 'either G and H or K and L' sentence the finder correctly cites to p.6 in RLY-21. Printed p.7 (PDF p.12) carries the two graphs, the shaded-region paragraph, the bias-resistor paragraph and 'The mid-region voltage is the bias voltage for the relay.'",
+      "evidence": "I opened docs/research/raw/pdf/pages/book7/p-12.png. Its full text is the graph plus three paragraphs beginning 'From this sketch we can see that there is region between the drop-out and pull-in voltages...' - the definition sentence is not on it. The definition appears in the pdftotext text layer of PDF p.11.",
+      "substance": "The SUBSTANCE of RLY-17 is confirmed. The quoted region paragraph matches the page image essentially word for word.",
+      "class": "wrong page"
+    },
+    {
+      "id": "REF-05",
+      "severity": "low",
+      "target": "COM-03 citation",
+      "finder_claim": "cite: 'BK56 Book VI printed p.51 (Secret Code) and p.53 (Electronic Maze)' for both the six-com program and the warning 'Be sure though, that there are connections to each of the six common terminals.'",
+      "correction": "That warning is the starred footnote at the bottom of Book VI printed p.51, immediately under the Secret Code program - not on p.53.",
+      "evidence": "book5-6.txt lines 2698-2703: the starred connections 2T/1com*, 6W/2com*, 4T/3com*, 2W/4com*, 6T/5com*, 4W/6com* are followed by '* These connections may be interchanged for new codes. Be sure though, that there are connections to each of the six common terminals.' then the page footer 51.",
+      "class": "wrong page"
+    },
+    {
+      "id": "REF-06",
+      "severity": "medium",
+      "target": "DISC-01, watertown_evidence item 2",
+      "finder_claim": "'BK56 copyright page: same Watertown address (per the task brief; consistent with BK1)' - listed as evidence inside a [verified] block.",
+      "correction": "This item is sourced from the task brief, i.e. from the secondary prebrief chain, not from the page. The project rule is that prebrief-derived claims are [unverified] until confirmed. Provenance refuted.",
+      "evidence_and_outcome": "I confirmed the underlying FACT independently: book5-6.txt line 42 reads 'Copyright ( c ) 1961 by Scientific Development Corporation, 372 M ain Street, Watertown, Massachusetts', and line 3196 repeats '372 Main Street, Watertown, Massachusetts'. Note the Books V-VI title/half-title page (PDF p.1-3) shows only 'SCIENTIFIC DEVELOPMENT CORP. / WATERTOWN, MASS.' without the street - the street address is on the separate copyright line. So the fact stands; the finder's route to it did not.",
+      "class": "manual fact contaminated by the secondary prebrief"
+    },
+    {
+      "id": "REF-07",
+      "severity": "medium",
+      "target": "PS-16 (supply source resistance 0.67 ohm), tagged [likely]",
+      "finder_claim": "'13.0 V open circuit falling to 12.0 V nominal at the 1.5 A continuous rating implies an effective source resistance of about 0.67 ohm.'",
+      "correction": "The premise is not in any source. The Maintenance Manual says 'The power supply is rated at 1.5 amps continuous with a nominal 12 volts output' - that is a nameplate pair, not a measured terminal voltage AT 1.5 A. Book I p.3 likewise says the supply converts mains 'to a safe working level of 12 volts DC' with no load stated. Nothing anywhere says 12.0 V is what you measure at the rated current. The 0.67 ohm figure is an inference from an unstated premise and should be [unverified], not [likely].",
+      "evidence": "Fresh read of maintenance-manual.txt (ratings paragraph, printed p.2) and of book1.pdf printed p.3.",
+      "downstream": "REC-03 hard-codes 13.0 V / 0.7 ohm as a 'must'. Keep the SHAPE of the recommendation (non-ideal source, loads interact - RLY-14's bypass circuit is real primary evidence for that) but do not let 0.67 ohm inherit a [likely] tag."
+    },
+    {
+      "id": "REF-08",
+      "severity": "medium",
+      "target": "systemic tag misuse across PS-09, PS-16, RLY-10, RLY-16, CAP-07",
+      "finder_claim": "All five carry [likely].",
+      "correction": "The project defines [likely] as 'consistent secondary sources agree, no primary read' and [unverified] as 'single weak source, or your inference.' All five are the finder's own inference from primary text, with no secondary corroboration at all - RLY-16 even names its cite as 'inference from RLY-13'. By the project's own definitions they are [unverified]. This is not pedantry: a downstream agent filtering on tag will treat five inferences as externally corroborated.",
+      "evidence": "Read of the tag definitions in the project rules against the five claims' own cite/reasoning fields."
+    },
+    {
+      "id": "REF-09",
+      "severity": "low",
+      "target": "PS-12 ('The POWER control is an ON/OFF slide switch')",
+      "finder_claim": "Tagged [verified], cited to PHOTO + BK1 p.3.",
+      "correction": "No source calls it a slide switch. Book I printed p.3 calls it 'The POWER SWITCH'. The Maintenance Manual calls it 'the power switch' throughout and its replacement instruction ('drill out the rivets which hold the switch') happens to match the slide switch's, which is suggestive but not a naming. The photograph shows a slide-type actuator with ON above OFF. 'Slide switch' is a reasonable read of the photo but is the verifier's/finder's word, not SDC's. Downgrade the word 'slide' to [likely]; the ON/OFF two-position behaviour and the panel layout are [verified].",
+      "evidence": "pdftotext of book1 printed p.3; maintenance-manual.txt step 10; full-frame read of image_3.jpg."
+    },
+    {
+      "id": "REF-10",
+      "severity": "low",
+      "target": "RLY-04 simulator_consequence and LMP-04 simulator_consequence",
+      "finder_claim": "RLY-04: '8 connections = 2 coil + 6 contact.'  LMP-04: 'Rated voltage is above the 12-13 V rail. A 14 V lamp on a 12 V rail is the obvious reading.'",
+      "correction": "Both are the finder's inference riding inside a [verified] claim's payload. The Maintenance Manual says only 'disconnect the eight connections to the relay' - it never breaks the eight down. The 14 V lamp figure is invented outright; the manual says only 'The lights are operated at less than their rated voltage.'",
+      "evidence": "maintenance-manual.txt, printed p.8 (relay replacement) and printed p.2 (ratings paragraph).",
+      "note": "The 2+6 split is almost certainly right for a DPDT with a separate coil, but it is not read."
+    },
+    {
+      "id": "REF-11",
+      "severity": "medium",
+      "target": "601 vs 6010 scope on the Book VII relay claims (RLY-17, RLY-18, RLY-19, RLY-20, RLY-21)",
+      "finder_claim": "All tagged [verified] as MINIVAC 601 facts. The finder applied a 601/6010 scope caveat to Book VII's CAPACITOR statements (OQ-07) but not to its RELAY statements.",
+      "correction": "Book VII's PDF metadata title is 'Book VII - MINIVAC 601/6010 Capacitor/Resistor Manual' and its cover reads 'Minivac 601/6010'. Its relay text says 'the MINIVAC's relays', 'each MINIVAC relay' - it never distinguishes the models. The same caveat the finder correctly applied to capacitors applies verbatim to pull-in/drop-out, hysteresis, the bias procedure and the per-relay bias table. The G/H and K/L terminal letters in RLY-21 do at least tie the passage to the 601 panel nomenclature, which is corroborating but not conclusive.",
+      "evidence": "pdfinfo book7-capacitor-resistor.pdf: 'Title: Book VII - MINIVAC 601/6010 Capacitor/Resistor Manual; Subject: MINIVAC 601; MINIVAC 6010; MINIVAC Book VII'. Cover page image text 'Minivac 601/6010 Capacitor/Resistor Manual', copyright 1962."
+    }
+  ],
+
+  "confirmed_under_re_reading": [
+    {
+      "id": "OK-01",
+      "target": "RLY-13 - the coil/lamp series topology. THE central claim.",
+      "verdict": "FULLY CONFIRMED, twice over, independently of the finder.",
+      "how": "(a) I opened docs/research/raw/pdf/pages/book1/p-16.png (printed p.14). The right-hand schematic is drawn explicitly: three labelled nodes C, E, F; between C and E a circle marked LIGHT; between E and F a solenoid marked RELAY COIL. (b) I cropped the panel photograph at the coil terminal row (offset 340,120, 260x45, upscaled): the silkscreen bracket 'LIGHT' spans the C jack to the E jack, and the bracket 'COIL' spans the E jack to the F jack. (c) The body text independently forces it by elimination: 'When the relay coil is energized by connecting power to C and F, the light directly below the relay comes ON ... If the relay coil is energized by supplying power through contacts E and F, the light beneath the relay will NOT come on because there is no current flowing through the light.'",
+      "note": "The finder's quote of that paragraph is verbatim accurate against the page image."
+    },
+    {
+      "id": "OK-02",
+      "target": "RLY-06, RLY-07, RLY-08 - contact letters, roles, truth table, row order",
+      "verdict": "CONFIRMED.",
+      "how": "Book I printed p.14 page image shows the six contact jacks drawn as two rows: G H J in the upper oval, K L N in the lower oval. The full-frame panel photograph shows, per section in the STORAGE/PROCESSING band, the legends 'N.O.  ARM  N.C.' silkscreened above the G / H / J jacks, with the K / L / N row directly beneath sharing those three column positions and carrying no headings of its own. Book I printed p.12 text supplies the truth table verbatim: 'When the relay is OFF, separate electrical connections are made between terminals H and J and terminals L and N. When the relay is ON, separate electrical connections are made between terminals H and G and terminals L and K,' and 'The normally-open (N.O.) contact is connected to the left terminal, the relay arm (common contact) is connected to the center terminal, and the normally-closed (N.C.) contact is connected to the right terminal.'",
+      "caveat": "RLY-08's leap from 'K L N is the lower printed row' to 'K/L/N is the operator-side contact set' rests on the manual's sentence 'The set of contacts closer to the operator is connected to the set of terminals closer to the operator' plus the observed row order. That chain is sound but it IS a two-step inference; the manual never names which physical contact set is which. Fine as stated, but a simulator should not treat front-vs-rear contact identity as load-bearing."
+    },
+    {
+      "id": "OK-03",
+      "target": "PS-07, PS-08 - power supply topology and absence of a filter capacitor",
+      "verdict": "CONFIRMED. I read the schematic myself rather than taking the finder's word.",
+      "how": "docs/research/raw/pdf/pages/maintenance/p-05.png (printed p.3). Labels read POWER CORD, POWER SWITCH (in one primary leg), BLACK WIRE x2, TRANSFORMER, YELLOW/BLACK WIRE (both secondary ends, to the two diode symbols inside the RECTIFIER callout), rectifier common up to the '+' terminal, YELLOW WIRE from the secondary centre tap down through the CIRCUIT BREAKER to the '-' terminal, and POWER LIGHT drawn between the + and - lines. No capacitor symbol appears anywhere on the drawing.",
+      "independent_corroboration": "Maintenance step 9 text corroborates the breaker's position without needing the drawing at all: 'Connect a binary output light between the + power supply terminal and the circuit breaker terminal which leads to the transformer ... Connect a binary output light between the + power supply terminal and the circuit breaker terminal which leads to the power light.' Two breaker terminals, one facing the transformer centre tap, one facing the power light and the - rail. Step 7 likewise: 'connect a binary output light between the transformer center top [tap] (yellow wire) and the center terminal on the rectifier.'",
+      "keep": "REC-06 (breaker in series with the whole negative return) stands."
+    },
+    {
+      "id": "OK-04",
+      "target": "RLY-20 - the Book VII bias-resistor test program",
+      "verdict": "CONFIRMED verbatim.",
+      "how": "docs/research/raw/pdf/pages/book7/p-13.png (printed p.8). The program column reads exactly: A/G, B/-, E/X, F/-, H/+, Y/+, and the braced pair (+/omega over omega/E) with an asterisk. The circuit above it draws + -> RESISTOR -> E -> RELAY COIL -> F -> -, with the A-B lamp branch off node A (A tied to G, B to -) and the pushbutton with Y on + and X on E. The heading is 'SELECTING A BIAS RESISTOR FOR EACH MINIVAC RELAY' and the block capitals read 'THE FOLLOWING INSTRUCTIONS ARE FOR A SINGLE RELAY. THIS PROCEDURE MUST BE CARRIED OUT FOR EACH INDIVIDUAL RELAY.'",
+      "addition": "The asterisk footnote, which the finder did not record, reads: 'Decreasing values of resistance will be tried here. Start with the highest valued resistor in the kit.' That is primary evidence a resistor KIT shipped as a distinct article - relevant to OQ-07 and OQ-08."
+    },
+    {
+      "id": "OK-05",
+      "target": "RLY-22 - Book I Experiment 9 program and circuit trace",
+      "verdict": "CONFIRMED.",
+      "how": "docs/research/raw/pdf/pages/book1/p-19.png (printed p.17). Program printed in two columns: 1F/1-, 1C/1X, 1Y/2Y | 2Y/2+, 2Z/1L, 1K/1C. The circuit diagram beneath traces 2+ - 2Y, with 2Z going up to the 1L/1K contact and 1N hanging as the unconnected N.C. stub, and the bottom rail 1Y - 1X - 1C - (lamp) - 1E - (coil) - 1F - 1-. The finder's set-path/hold-path trace is correct, including the observation that both paths run through the indicator lamp at 1C."
+    },
+    {
+      "id": "OK-06",
+      "target": "RLY-24 - Book II p.10 SELF-LOCKING RELAY MEMORY CIRCUIT",
+      "verdict": "CONFIRMED. The finder's OCR normalisation was right.",
+      "how": "pdftotext -layout -f 16 -l 16 book2-3-4.pdf gives the mangled '7-f-/lV / 74-/1H / 1X/1C / 1-/IF / 1G/1A / IB/1- / 1C/1A'. The preceding MANUAL RELAY MEMORY CIRCUIT on the same page OCRs cleanly as '1+/1Y / 1+/1H / 1X/1C / 1-/1F / 1G/1A / 1B/1-', i.e. the identical list minus the 1C/1A hold connection - which is exactly what the surrounding prose says the modification is. The normalisation is forced by the clean twin. Note the finder's version here uses 1X/1C, which is right; the RLY-27 error is not systematic."
+    },
+    {
+      "id": "OK-07",
+      "target": "CAP-03, CAP-04, CAP-05, CAP-06 - capacitor values, fixed negative end, purpose, resistor notation",
+      "verdict": "CONFIRMED verbatim from the page images.",
+      "how": "book7 p-15.png (printed p.10) ends: 'For example, the capacitors for sections 1 through 5 of the MINIVAC are 500 micro-farad capacitors. The capacitor for section 6 is a 1000 micro-farad capacitor.' book7 p-16.png (printed p.11) carries, verbatim as the finder quoted: 'Note: Since one end of the capacitor is permanently connected to the negative power source, we will always show negative power on one end of the capacitor. No connection need be made between the capacitor and negative power. As indicated in Book I (page 25) there are terminals on the MINIVAC console for the capacitors. These terminals will be indicated in a program by: 1cap, 2cap, 3cap, etc.' and the (1+/omega220 / omega220 1/cap) example with 'means: use a 220 ohm resistor to make the connection between 1 cap and 1+', and the whole 'The Use of Capacitors' paragraph the finder quotes in CAP-05.",
+      "scope_flag": "See REF-11 - these are 601/6010 joint statements about 'the MINIVAC'."
+    },
+    {
+      "id": "OK-08",
+      "target": "CAP-02 - hole counts on the COMMON/CAPACITOR strip",
+      "verdict": "CONFIRMED by magnified crop.",
+      "how": "sips crop of image_3.jpg at offset (585,120), 440x60, upscaled 4x. Each COMMON jack is a single horizontal row of FOUR holes; each CAPACITOR jack is a single row of TWO. Independently corroborated by the errata's own vocabulary: 'the two terminals at 6R, the six at M10, or the four at 3com.'"
+    },
+    {
+      "id": "OK-09",
+      "target": "SW-08 - Book I p.24 MOTOR REVERSING program",
+      "verdict": "CONFIRMED.",
+      "how": "pdftotext -layout -f 26 -l 26 book1.pdf prints '6+/6R  6T/6U  6V/D17 / 6+/6W  6S/D18 / 6-/6T'. Same six connections the finder lists. The errata correction 'page 24: MOTOR REVERSING circuit diagram incorrectly labeled - change 6Y to 6V' applies to the DIAGRAM, not the program list; the finder stated that correctly."
+    },
+    {
+      "id": "OK-10",
+      "target": "COM-01, COM-02, COM-05, CAP-01 - auxiliary terminal semantics",
+      "verdict": "CONFIRMED verbatim.",
+      "how": "pdftotext -layout -f 27 -l 27 book1.pdf reproduces section 9 AUXILIARY TERMINALS word for word as the finder transcribed it, including 'The four COMMON terminals are connected together, but are not connected to any other component' and the CAPACITOR 'At present these terminals may be ignored.' Errata first column reproduces the 6R/M10/3com sentence and the 1X/4R + 4R/6A routing example verbatim."
+    },
+    {
+      "id": "OK-11",
+      "target": "COM-04 - the six COMMON jacks are six isolated nodes",
+      "verdict": "CONFIRMED and, in my judgement, UPGRADEABLE from [likely] to [verified].",
+      "how": "I read the Secret Code section myself (book5-6.txt lines 2670-2723). The basic sequence-recognition program contains 1com/2L, 2com/3L, 3com/4L, 4com/5L, 5com/6L and 6F/6com. If the six commons were one node, those five connections would tie relay arms 2L through 6L together and the recognizer could not work. The starred-connection paragraph then says interchanging which com a wire lands on generates 63 different codes - impossible on a single node. Book I's 'not connected to any other component' closes it from the other side."
+    },
+    {
+      "id": "OK-12",
+      "target": "PB-01..PB-08, LMP-01..LMP-05, SW-01..SW-06, RLY-01..RLY-03, RLY-05, RLY-09, RLY-11, RLY-12, RLY-14, RLY-15, RLY-19, RLY-21, RLY-23, RLY-28, RLY-29, PS-01..PS-06, PS-10, PS-11, PS-13, PS-14, PS-15",
+      "verdict": "All spot-checked against fresh extractions. Quotes accurate, page numbers correct, no fabrication found.",
+      "specific_re_reads": [
+        "PB-05 break-before-make: Book I printed p.9 step 8 quoted verbatim and correctly, including 'This feature is necessary for the proper operation of some MINIVAC circuits.'",
+        "PS-15 / LMP-05: Book I printed p.22 RESISTORS paragraph quoted verbatim; the lights-limit-relay-coil-current analogy is real and is SDC's own wording.",
+        "PS-10: Book I printed p.3 CIRCUIT BREAKER paragraph verbatim, including the CAUTION about not holding the button in.",
+        "PS-13: errata 'All + and - terminals are connected together ... a connection to 1+ is the same as a connection to 3+, 6+, or M+' verbatim.",
+        "RLY-14: errata BOOK IV page 72 note verbatim, both the 'somewhat strained' sentence and the 'by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably' sentence.",
+        "RLY-19: confirmed - book7 p-12.png's two graphs carry NO numeric axis values, and the bias table on printed p.9 is blank for the owner to fill in.",
+        "RLY-21: Book VII printed p.6 text layer reads 'This requires the use of a normally-open contact - either G and H or K and L - which leaves only one contact free for additional circuitry.' Finder's paraphrase accurate.",
+        "RLY-15: 'Light Assembly' (part 6435) covers binary lights, relay indicator lights and the power light - all three replacement instructions in the Maintenance Manual say 'light assembly'. Confirmed.",
+        "SW-06 and PB-08: the Maintenance Manual's slide-switch and pushbutton check procedures are quoted correctly.",
+        "PS-02..PS-06: the entire ratings paragraph on Maintenance printed p.2 is transcribed correctly in verbatim_transcriptions."
+      ]
+    },
+    {
+      "id": "OK-13",
+      "target": "BK1 bibliographic metadata",
+      "verdict": "CONFIRMED. book1.txt line 99 'First Printing- August, 1961'; line 105 'Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'."
+    }
+  ],
+
+  "missed_by_the_finder": [
+    {
+      "id": "MISS-01",
+      "severity": "high",
+      "finding": "THE SOURCES DO SETTLE COIL AND LAMP POLARITY, and the finder never asked the question. Book II's SINGLE INPUT FLIP-FLOP (printed p.12) contains the connections 1-/1C and 2-/2C, i.e. the relay indicator lamp's C terminal driven NEGATIVE. Every other relay circuit I read - Book I Experiments 7, 8 and 9, Book II p.10, Book VII p.8 - drives C or E from + and F to -. So the same lamp-plus-coil chain is published being driven in BOTH polarities.",
+      "consequence": "The relay coil and the indicator lamp are non-polarised, or at least SDC published programs that assume so. This matters directly: a simulator that models the relay lamp as a diode-like or polarity-sensitive element, or that assumes current always enters at C, will fail Book II's single-input flip-flop.",
+      "cite": "BK234 Book II printed p.12 (PDF p.18) program list, extracted with pdftotext -layout; contrast BK1 printed pp.15-17."
+    },
+    {
+      "id": "MISS-02",
+      "severity": "medium",
+      "finding": "Errata 'BOOK I page 13: circuit diagram incorrect - delete line connecting 1B and 2B.' This is a correction to Experiment 6, MANUAL RELAY OPERATION - the first relay circuit in the manual set and directly in the finder's topic. Not recorded anywhere in find-relays.json.",
+      "cite": "ERRATA, 'Notes and Corrections by page', BOOK I."
+    },
+    {
+      "id": "MISS-03",
+      "severity": "medium",
+      "finding": "Errata 'BOOK IV page 43: program correction for Relay AND Circuit - change 2+/2H to 1G/2H.' A relay-circuit program correction, not recorded.",
+      "cite": "ERRATA, BOOK IV page 43."
+    },
+    {
+      "id": "MISS-04",
+      "severity": "medium",
+      "finding": "Errata 'BOOK II page 14: program correction for Experiment 6 - change 2Z/2C to 2X/2C.' Another relay-coil-drive terminal correction touching a C terminal. Not recorded. (Note the shape of the error SDC itself was correcting is the same shape as REF-01: a Z/Y/X mix-up on the pushbutton feeding a C terminal.)",
+      "cite": "ERRATA, BOOK II page 14."
+    },
+    {
+      "id": "MISS-05",
+      "severity": "medium",
+      "finding": "The Maintenance Manual's 'Circuit Diagram - Relay Check' (printed p.7) is the only published relay TEST circuit: coil driven through a pushbutton, with four lights on both contact sets. 'Turn power on. Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on.' The finder cited the analogous slide-switch check (SW-06) for ganged-contact behaviour but not the relay one, which is the stronger evidence for the relay and is a ready-made simulator acceptance test.",
+      "cite": "MAINT printed p.7 (PDF p.9)."
+    },
+    {
+      "id": "MISS-06",
+      "severity": "medium",
+      "finding": "Book VII printed p.6 gives SDC's own PHYSICAL EXPLANATION of the hysteresis, which is a better simulator basis than the finder's invented pull-in/drop-out numbers: the magnetic force depends on coil voltage AND on the gap between the coil core and the arm; for a given voltage, the smaller the gap the greater the force; therefore once the arm is pulled in the gap is very small and 'less voltage is required to hold it in than is required to [pull] it in'. That is a gap-dependent force model, and it explains why drop-out sits far below pull-in without needing any measured numbers.",
+      "cite": "BK7 printed p.6 (PDF p.11), text layer (degraded but legible on this point)."
+    },
+    {
+      "id": "MISS-07",
+      "severity": "low",
+      "finding": "Book VII printed p.7's graph axis is labelled 'VOLTAGE -> (TO FULL POWER SUPPLY VOLTAGE)', and both the drop-out and pull-in thresholds are drawn strictly inside that span. That is a published bound the finder did not extract: pull-in voltage is below full supply voltage. The page also names the mid-band point: 'The mid-region voltage is the bias voltage for the relay.'",
+      "cite": "BK7 printed p.7 (PDF p.12), page image."
+    },
+    {
+      "id": "MISS-08",
+      "severity": "low",
+      "finding": "Book I printed p.4 carries the primary statement of the jack model that REC-05 depends on, and the finder sourced it only from the errata: 'Each terminal has two holes side-by-side which are connected together underneath the computer panel. Programming wires may be plugged into either (or both) holes of the terminal.' The same page also states the panel labelling convention: 'Each terminal is identified by a letter printed below it, and by the number printed at the top of the section in which it is located.'",
+      "cite": "BK1 printed p.4 (PDF p.6)."
+    },
+    {
+      "id": "MISS-09",
+      "severity": "low",
+      "finding": "Errata 'BOOK V page 25: Note - to re-set the automatic sequence control, turn power OFF, then ON again' and, for Book VI, 'Note - to re-set the game, turn power off, then on again.' These establish that a power cycle is SDC's published global relay reset - the machine has no reset line. Directly relevant to simulator power-on state (all relays de-energised, all latches cleared).",
+      "cite": "ERRATA, BOOK V page 25 and the Book VI game notes."
+    },
+    {
+      "id": "MISS-10",
+      "severity": "low",
+      "finding": "Errata 'BOOK IV page 71: chart title incorrect - change Pushbutton carry to Pushbutton' and the full alternate three-bit counter program (48 connections) printed in the errata. The finder cited the alternate counter's PURPOSE (RLY-14) and its procedure note (TIM-03b) but did not transcribe the program, which is the only published lamp-bypass relay circuit and the concrete worked example of driving coils at E instead of C.",
+      "cite": "ERRATA, BOOK IV page 72, 'THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT (Middle Stage Only)'.",
+      "spot_check": "I note the errata's own program list contains OCR-hostile entries (e.g. '61/6-' which is almost certainly '6J/6-', 'IF/TH' for '1F/1H', 'lG/l-f' for '1G/1+'). Anyone transcribing it must work from the page image, not the text layer."
+    }
+  ],
+
+  "tag_reassignments_recommended": {
+    "downgrade_to_unverified": [
+      "PS-09 (selenium rectifier) - finder's inference, no secondary source",
+      "PS-16 (0.67 ohm source resistance) - see REF-07",
+      "RLY-10 (relay contacts break-before-make) - finder's inference; sound mechanically, but no source and no secondary",
+      "RLY-16 (C-E alone lights lamp without operating relay) - self-declared inference",
+      "CAP-07 (capacitors factory-fitted) - finder's inference"
+    ],
+    "downgrade_to_likely": [
+      "PS-12 - only the words 'slide switch' (see REF-09)",
+      "RLY-04 - only the 2-coil + 6-contact breakdown of the eight connections",
+      "LMP-04 - only the '14 V lamp' consequence; the manual quote itself stays [verified]",
+      "RLY-17, RLY-18, RLY-19, RLY-20, RLY-21, CAP-03, CAP-04, CAP-05, CAP-06 - keep [verified] as readings of Book VII, but every one must carry the 601/6010 scope flag (REF-11) before it is used as a 601 fact",
+      "TIM-01 - restate as 'no relay operate/release/bounce figure appears anywhere in the primary set' and tag [likely]; the absolute version is refuted (REF-02)"
+    ],
+    "upgrade_to_verified": [
+      "COM-04 - the Secret Code program and the starred-connection paragraph together settle it (OK-11)",
+      "RLY-18 - the sentence is legible in the text layer and its substance is confirmed by the p.7 page image I read; the only defect is the page number (p.6, not p.7)"
+    ]
+  },
+
+  "still_not_settled_by_the_sources": [
+    "Relay coil resistance, rated coil voltage, pull-in voltage, drop-out voltage. Confirmed absent from Books I-VII, the Maintenance Manual and the Errata. Book VII's blank per-relay bias table is affirmative evidence SDC would not publish a number. The finder's OQ-01 is correct.",
+    "Lamp voltage, current, bulb number, base type. Confirmed absent. OQ-02 correct.",
+    "Transformer secondary voltage/VA, rectifier part number and technology, circuit-breaker trip current. Confirmed absent; only the spare-part prices exist. OQ-03 correct.",
+    "Whether a filter capacitor exists in the chassis. The drawing shows none; nothing in the text mentions one either way. OQ-04 correct, and the finder's own [unverified] tag on PS-17 is the right call.",
+    "Relay contact break-before-make and its both-open interval. SDC states break-before-make explicitly for the pushbuttons (Book I p.9) and for the rotary switch, and never for the relay. OQ-05 correct.",
+    "Slide switch break-before-make vs shorting. OQ-06 correct.",
+    "Whether the six capacitors are factory-fitted in a base 601. NOW SLIGHTLY BETTER EVIDENCED THAN THE FINDER HAD IT: Book VII p.8's footnote 'the highest valued resistor in the kit' proves a resistor kit was a separate article, which weakens the argument-from-symmetry that the capacitors must also have been factory-fitted. Still not settled; if anything the balance has moved toward 'kit'.",
+    "Rotary-switch motor-drive resistor values. OQ-08 correct.",
+    "Contact bounce for any contact. OQ-09 correct.",
+    "NEW: whether the two motor-drive resistors sit in series with the motor, one per leg, or in some other arrangement. The Maintenance Manual prints a 'Circuit Diagram - Rotary Switch Motor Drive' on printed p.9 (PDF p.11) that would answer it. Neither the finder nor I opened that page image. Would settle: one page image."
+  ],
+
+  "known_discrepancy_status": {
+    "verdict": "The finder's handling is correct in outcome and I did not resolve it either. Watertown appears in five printed places, all of which I confirmed myself this pass except the Maintenance Manual order address (confirmed) - specifically: book1.txt line 105 (BK1 copyright), book5-6.txt lines 42 and 3196 (BK V-VI copyright and back matter), book2-3-4.txt line 4287, maintenance-manual.txt title page and order address, and the errata twice. Cambridge appears once, on the silkscreened logo plate in image_3.jpg, which I read at full frame: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U.S.A. Patents applied for.' Both remain primary. NOT RESOLVED.",
+    "correction_to_finder": "One of the finder's five Watertown attestations was taken from the task brief rather than read (REF-06). I have since read it. The count of five stands."
+  },
+
+  "verifier_verdict": "The find-relays.json file is broadly trustworthy on structure and untrustworthy on transcription discipline. Every claim I could reach a page image for - the C/LIGHT/E/COIL/F topology, the G-H-J / K-L-N letters and truth table, the panel legends, the power-supply schematic, the Book VII bias procedure and hysteresis chapter, the capacitor values, the COMMON semantics - held up under independent reading. But one of five transcribed connection lists has a wrong line (Experiment 8: 1Y/1C should be 1X/1C) that silently breaks the circuit, and it was tagged [verified] over the finder's own written warning that it had not been checked against the image. Three page citations are off by one page or one book. One evidence item was taken from the task brief. And the [likely] tag is being used for the finder's own inferences in five places, which will mislead any downstream filter. Treat the structural findings as solid, re-derive every program list from a page image before coding it, and re-tag before use."
+}

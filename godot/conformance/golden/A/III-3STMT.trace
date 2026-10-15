@@ -1,0 +1,16 @@
+#!mv601-trace 1
+# id=III-3STMT contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=4
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 > button1 target=1000
+     0.0 * power off->on
+    11.2 * pb1 nc->mid
+    13.7 * pb1 mid->no
+    44.9 ? outLamp3=off  "Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON."
+    44.9 > button2 target=1000
+    56.1 * pb2 nc->mid
+    58.6 * pb2 mid->no
+    61.9 * outLamp3 off->dim
+    80.8 * outLamp3 dim->on
+   100.9 ? outLamp3=on  "Using the circuit and representation indicated above, pushing both pushbutton 1 and pushbutton 2 indicates to the computer that both statements A and B are true ... it can indicate that statement C must also be true"

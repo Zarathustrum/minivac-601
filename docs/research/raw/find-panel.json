@@ -1,0 +1,1264 @@
+{
+  "topic": "MINIVAC 601 front panel: layout, legends, geometry, materials",
+  "agent_task": "find-panel",
+  "generated_utc": "2026-08-30",
+  "scope_note": "MINIVAC 601 only. No MINIVAC 6010 claims except where explicitly labelled as a 6010 delta. No emulator source code was opened, fetched or read (ORACLE-ONLY RULE observed).",
+  "sources_read": [
+    {
+      "id": "B1",
+      "kind": "primary",
+      "what": "Book I, 'Getting acquainted with Minivac 601', Scientific Development Corporation, first printing August 1961",
+      "path": "docs/research/raw/pdf/book1.pdf",
+      "note": "OCR text read in full; page images read for p.1 (cover), p.18, p.20, p.25. PDF page = printed book page + 2."
+    },
+    {
+      "id": "B234",
+      "kind": "primary",
+      "what": "Books II, III & IV",
+      "path": "docs/research/raw/pdf/book2-3-4.pdf",
+      "note": "OCR text searched for terminal designations only."
+    },
+    {
+      "id": "B56",
+      "kind": "primary",
+      "what": "Books V & VI ('How Computers Work for Man' / 'Minivac Games')",
+      "path": "docs/research/raw/pdf/book5-6.pdf",
+      "note": "OCR text; Tic-Tac-Toe section pp.55-56 read closely."
+    },
+    {
+      "id": "PH",
+      "kind": "primary artifact",
+      "what": "Top-down colour photograph of a real MINIVAC 601 unit, 1536x1152",
+      "path": "docs/research/raw/prebrief/images/image_3.jpg",
+      "note": "Read whole, then 12 magnified crops (4x-8x lanczos) of individual panel regions. Near-orthographic; modest perspective. Warm/dim tungsten-ish lighting, so colour values off it are not trustworthy."
+    },
+    {
+      "id": "WP",
+      "kind": "secondary",
+      "what": "Wikipedia, 'Minivac 601'",
+      "url": "https://en.wikipedia.org/wiki/Minivac_601"
+    },
+    {
+      "id": "CH",
+      "kind": "secondary",
+      "what": "Centre for Computing History catalogue entry 499",
+      "url": "https://www.computinghistory.org.uk/det/499/minivac-601/"
+    },
+    {
+      "id": "SS",
+      "kind": "secondary",
+      "what": "System Source Computer Museum artifact 205",
+      "url": "https://museumlegacy.syssrc.com/artifact/205/"
+    },
+    {
+      "id": "TH",
+      "kind": "secondary",
+      "what": "Trammell Hudson, Minivac 601 notes",
+      "url": "https://trmm.net/Minivac_601/"
+    },
+    {
+      "id": "PB",
+      "kind": "secondary map, not a source",
+      "what": "prebrief.md",
+      "path": "docs/research/raw/prebrief/prebrief.md"
+    }
+  ],
+  "sources_attempted_and_failed": [
+    {
+      "what": "Mike Gardi's 'Minivac 601 Replica (Version 0.9)' Instructable",
+      "url": "https://www.instructables.com/Minivac-601-Replica-Version-09/",
+      "result": "WebFetch returned page title only (JS-rendered body). No measured dimensions obtained."
+    },
+    {
+      "what": "Thingiverse thing:3689581 (Gardi replica STLs)",
+      "url": "https://www.thingiverse.com/thing:3689581",
+      "result": "HTTP 403."
+    },
+    {
+      "what": "EDN, 'Mega-Cool Replica of the Classic Minivac 601'",
+      "url": "https://www.edn.com/mega-cool-replica-of-the-classic-minivac-601/",
+      "result": "fetch timeout."
+    }
+  ],
+  "method_notes": [
+    "Every geometric proportion in the 'redraw_spec' block was measured by me off image_3.jpg by cropping at known offsets. It is therefore MY MEASUREMENT of one photograph of one aged unit, not a manufacturer figure. All such numbers are tagged [unverified] and carry an explicit error estimate. No panel geometry, jack numbering or terminal letter in this file was invented; anything the scans did not settle is listed under 'not_settled'.",
+    "Photograph crop coordinates are recorded per finding so another agent can re-derive them."
+  ],
+  "claims": [
+    {
+      "id": "P001",
+      "area": "gross layout",
+      "tag": "verified",
+      "claim": "The panel is divided by a full-height vertical stripe into a LEFT FIELD carrying six identical vertical channels (sections 1-6) and a narrower RIGHT-HAND COLUMN carrying the logo plate, MATRIX, POWER and DECIMAL INPUT-OUTPUT.",
+      "citation": "PH image_3.jpg (whole panel, and crop x=990 y=470 w=330 h=240 showing the vertical stripe running between relay contacts of section 6 and the MATRIX block); B1 cover photograph (PDF p.1)."
+    },
+    {
+      "id": "P002",
+      "area": "gross layout",
+      "tag": "verified",
+      "claim": "LEFT FIELD, top to bottom, is six horizontal bands in this exact order: (1) BINARY OUTPUT [dark field]; (2) a light-blue stripe carrying the + / - power terminals; (3) STORAGE/PROCESSING [dark field]; (4) a light-blue stripe carrying COMMON and CAPACITOR terminals; (5) SECONDARY STORAGE [dark field]; (6) BINARY INPUT [dark field]. A third light-blue stripe separates band 5 from band 6 and carries NOTHING - no jacks, no legend.",
+      "citation": "PH image_3.jpg; crop x=430 y=250 w=360 h=590 scale 3 (vertical strip through channels 1-2 showing all four dark bands and all three blue stripes in order); B1 cover photograph (PDF p.1) shows the same order."
+    },
+    {
+      "id": "P003",
+      "area": "gross layout",
+      "tag": "verified",
+      "claim": "RIGHT-HAND COLUMN, top to bottom: (a) the 'Minivac 601' logo plate on the dark field; (b) the same light-blue stripe as left band 2, here carrying one + terminal, one - terminal, and the legend POWER at its right end; (c) a dark block split by a vertical cream rule into MATRIX (left, wider) and the POWER controls (right, narrow); (d) a light-blue stripe; (e) a dark block holding DECIMAL INPUT-OUTPUT.",
+      "citation": "PH crops: x=1120 y=160 w=380 h=150 (logo+stripe); x=1120 y=280 w=380 h=270 (matrix+power); x=1120 y=540 w=390 h=380 (decimal). B1 p.25 figure and B1 p.20 figure draw the same right-column contents."
+    },
+    {
+      "id": "P004",
+      "area": "gross layout",
+      "tag": "verified",
+      "claim": "The blue stripe carrying + / - (left band 2) runs continuously across BOTH the left field and the right-hand column at the same height. The COMMON/CAPACITOR stripe and the blank stripe do NOT cross into the right column; the right column has its own single horizontal blue stripe at a different (higher) height, between the MATRIX/POWER block and the DECIMAL INPUT-OUTPUT block.",
+      "citation": "PH crop x=990 y=470 w=330 h=240 scale 4 - shows the CAPACITOR stripe terminating at the vertical divider while the right column's own stripe sits visibly higher."
+    },
+    {
+      "id": "P005",
+      "area": "channel geometry",
+      "tag": "verified",
+      "claim": "Each of the six channels is organised on THREE vertical terminal columns of equal pitch: LEFT, MIDDLE, RIGHT. The component itself (output lamp, relay indicator lamp, slide switch, pushbutton) sits on the MIDDLE column; the relay body straddles all three. Column assignment by band - LEFT: A / + / C / G,K / R,U / X. MIDDLE: (lamp) / (nothing) / E / H,L / S,V / Y. RIGHT: B / - / F / J,N / T,W / Z.",
+      "citation": "PH crops at constant x-origin 110 across bands: band 1 (y=170), relay top (y=330), relay contacts (y=510), secondary storage (y=645), binary input (y=790). Terminal hole x-positions in source pixels repeat at ~134/151 (left), ~181/198 (middle), ~229/246 (right) for section 1 in every band."
+    },
+    {
+      "id": "P006",
+      "area": "channel geometry",
+      "tag": "verified",
+      "claim": "The section number 1..6 is printed ONCE per channel, as a large numeral in the BINARY OUTPUT band, above and slightly left of that channel's output lamp. No section numerals are printed in any lower band.",
+      "citation": "PH image_3.jpg (numerals 1-6 visible only along the top); B1 p.4: 'Each terminal is identified by a letter printed below it, and by the number printed at the top of the section in which it is located.'; B1 p.18 perspective figure draws numerals 1 and 2 only at the top edge."
+    },
+    {
+      "id": "P007",
+      "area": "terminals",
+      "tag": "verified",
+      "claim": "Every ordinary terminal is TWO holes side by side, electrically joined under the panel. Wiring shorthand joins two terminals with a slash, e.g. 1+/1A.",
+      "citation": "B1 p.4: 'Each terminal has two holes side-by-side which are connected together underneath the computer panel. Programming wires may be plugged into either (or both) holes of the terminal.'; B1 p.5 'WIRING SHORTHAND'."
+    },
+    {
+      "id": "P008",
+      "area": "terminals",
+      "tag": "verified",
+      "claim": "The identifying letter is printed immediately BELOW its hole-pair, essentially centred on the pair (measurably ~3 source-pixels left of the pair's centre in the photograph). Group legends (N.O., ARM, N.C., LIGHT, COIL, the arrows, +, -, COMMON, CAPACITOR) are printed ABOVE the terminals they govern.",
+      "citation": "PH crops band_out (y=170), band_relaybot (y=510), band_ss (y=645), band_bi (y=790), all at 4x."
+    },
+    {
+      "id": "P010",
+      "area": "band 1 BINARY OUTPUT",
+      "tag": "verified",
+      "claim": "Band 1 holds six indicator lamps, one per channel, on the MIDDLE column. Each lamp is a red translucent cap seated in a white/cream bezel ring, standing proud of the panel. Its A terminal (2 holes, letter 'A' below) is on the LEFT column; its B terminal (2 holes, letter 'B' below) is on the RIGHT column. The band legend 'BINARY OUTPUT' is centred on the left field, BELOW the row of lamps, near the bottom edge of the band.",
+      "citation": "PH crop x=110 y=170 w=340 h=170 scale 4; B1 p.6: 'The terminals labeled A and B on either side of each light are used to supply the electrical power to turn the light ON.' and 'Each light is identified by the section number directly above it.'"
+    },
+    {
+      "id": "P011",
+      "area": "band 2 POWER STRIP",
+      "tag": "verified",
+      "claim": "Band 2 is a light-blue stripe. Per channel it carries two terminals: '+' (2 holes) on the LEFT column and '-' (2 holes) on the RIGHT column, each with its glyph printed above it. On the blue stripes the hole pairs sit on a dark oval escutcheon/field so they read against the blue.",
+      "citation": "PH crop x=110 y=170 w=340 h=170 scale 4 (lower third shows the stripe with + and - for sections 1 and 2); B1 p.3: 'This low voltage DC is used to power MINIVAC and is connected to all terminals + and - on the power panel.'"
+    },
+    {
+      "id": "P012",
+      "area": "band 2 POWER STRIP",
+      "tag": "verified",
+      "claim": "There are SEVEN + terminals and SEVEN - terminals on the panel: 1+ .. 6+ and 1- .. 6- in the left field, plus one further + and one further - in the right-hand column's segment of the same blue stripe, positioned above the MATRIX block.",
+      "citation": "PH image_3.jpg whole panel plus crop x=1120 y=280 w=380 h=270 scale 4; B1 p.25 matrix figure draws the + and - terminals in the right column between the logo and the matrix."
+    },
+    {
+      "id": "P013",
+      "area": "band 2 POWER STRIP",
+      "tag": "verified",
+      "claim": "The right-hand column's two power terminals are designated M+ and M- in the manuals' wiring programs. They are the matrix section's power terminals under the same rule as 1+/1-.",
+      "citation": "B1 p.31-32 ANSWERS 13,14,15,18,19 use 'M-/D18' and 'M+/D16'; B234 lines using 'D16/M+', 'D17/M+', 'D18/M-'; B56 Tic-Tac-Toe program line 'M-/D17'. Panel position per PH crop x=1120 y=280 w=380 h=270."
+    },
+    {
+      "id": "P020",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "Band 3 holds six relays. Above each relay, on the dark field, are THREE 2-hole terminals lettered C (LEFT column), E (MIDDLE column), F (RIGHT column). Two bracket ornaments sit above them: 'LIGHT' spanning C to E, and 'COIL' spanning E to F. Each bracket is a horizontal cream rule with downturned end-ticks, the word set into the middle of the rule.",
+      "citation": "PH crops x=110 y=330 w=340 h=120 scale 4 and x=430 y=250 w=360 h=590 scale 3 (the second shows the E of relay 2 unobstructed); B1 p.14: 'Three terminals are located directly above each relay on the computer panel... Two terminals are connected directly to the relay coil, and the third terminal is connected to a light wired in series with the relay coil.'"
+    },
+    {
+      "id": "P021",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "The electrical chain implied by the LIGHT and COIL brackets is C -(indicator lamp)- E -(relay coil)- F. Energising across C and F lights the indicator lamp; energising across E and F does not.",
+      "citation": "B1 p.14: 'When the relay coil is energized by connecting power to C and F, the light directly below the relay comes ON because the light is wired in series with the relay coil. If the relay coil is energized by supplying power through contacts E and F, the light beneath the relay will NOT come on.' Bracket spans per PH crop x=110 y=330 w=340 h=120."
+    },
+    {
+      "id": "P022",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "The relay itself is mounted on the panel face, contacts visible: a cylindrical coil bobbin on the LEFT (horizontal axis) and a white plastic crossbar block on the RIGHT with a vertical slot; contact springs behind the crossbar. Book I calls the coil 'a round white coil, located to the left of the arms'; in the photographed unit the bobbin reads tan/buff (aged).",
+      "citation": "PH crops x=110 y=330 w=340 h=120 scale 4 and x=430 y=250 w=360 h=590 scale 3; B1 p.14 text; B1 p.12: 'The MINIVAC relays are mounted on the computer panel with the contacts of the relay switch visible. The relay arm is in the middle, between the other two contacts.'"
+    },
+    {
+      "id": "P023",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "Below each relay, on the MIDDLE column (aligned under terminal E), is that relay's indicator lamp: a red lens in a white/cream bezel, same style as the BINARY OUTPUT lamps. Six of these, giving twelve lamps on the panel in total.",
+      "citation": "PH crop x=430 y=250 w=360 h=590 scale 3 (relay lamps of sections 1 and 2 visible directly under the E column); B1 p.14 'the light directly below the relay'."
+    },
+    {
+      "id": "P024",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "The band legend 'STORAGE/PROCESSING' is centred on the left field, in the gap between the row of relay indicator lamps and the relay contact terminals below.",
+      "citation": "PH crop x=430 y=250 w=360 h=590 scale 3."
+    },
+    {
+      "id": "P025",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "Below the STORAGE/PROCESSING legend each channel carries TWO ROWS of three 2-hole terminals. Top row letters, left to right: G, H, J. Bottom row letters, left to right: K, L, N. The group legends 'N.O.', 'ARM', 'N.C.' are printed once, above the TOP row only, over the left/middle/right columns respectively; they govern both rows.",
+      "citation": "PH crop x=110 y=510 w=340 h=130 scale 4; B1 p.12: 'The terminals are labeled: G, H, J, & K, L, N.' and 'The normally-open (N.O.) contact is connected to the left terminal, the relay arm (common contact) is connected to the center terminal, and the normally-closed (N.C.) contact is connected to the right terminal.'"
+    },
+    {
+      "id": "P026",
+      "area": "band 3 STORAGE/PROCESSING",
+      "tag": "verified",
+      "claim": "Row assignment to contact sets: 'The set of contacts closer to the operator is connected to the set of terminals closer to the operator' - i.e. the LOWER row (K, L, N) is the near contact set and the UPPER row (G, H, J) the far set. Relay OFF: H-J and L-N closed. Relay ON: H-G and L-K closed. Both sets always switch together (mechanically ganged by the plastic crossbar).",
+      "citation": "B1 p.12."
+    },
+    {
+      "id": "P030",
+      "area": "band 4 COMMON/CAPACITOR",
+      "tag": "verified",
+      "claim": "Band 4 is a light-blue stripe. Per channel it carries, left half, a FOUR-hole terminal with 'COMMON' printed above it, and, right half, a TWO-hole terminal with 'CAPACITOR' printed above it. The COMMON terminal's four holes span horizontally from the LEFT column to the MIDDLE column; the CAPACITOR terminal sits on the RIGHT column.",
+      "citation": "PH crop x=110 y=510 w=340 h=130 scale 4 (lower band) and crop x=430 y=250 w=360 h=590 scale 3; B1 p.25 \u00a79 AUXILIARY TERMINALS and its perspective figure showing '\u2022\u2022\u2022\u2022 \u2022\u2022' on the stripe."
+    },
+    {
+      "id": "P031",
+      "area": "band 4 COMMON/CAPACITOR",
+      "tag": "verified",
+      "claim": "Book I \u00a79 exact text: 'Auxiliary terminals are provided between the slide switches and the relays for each of the six sections.' / 'The terminals with four holes labeled COMMON may be used when more than two connections must be made to a set of terminals on the computer panel. The four COMMON terminals are connected together, but are not connected to any other component.' / 'The terminals marked \"CAPACITOR\" are used when auxiliary components are added to the MINIVAC 601 in advanced programs. At present these terminals may be ignored.'",
+      "citation": "B1 p.25 (PDF p.27), read from the page image."
+    },
+    {
+      "id": "P032",
+      "area": "band 4 COMMON/CAPACITOR",
+      "tag": "likely",
+      "claim": "Reading of P031: 'The four COMMON terminals are connected together' means the FOUR HOLES of one COMMON terminal are commoned, not that the six channels' COMMON terminals are commoned to each other. Each channel's COMMON is an isolated four-hole junction block.",
+      "citation": "Inference from B1 p.25 combined with B56 p.56 Tic-Tac-Toe program, which uses 1com, 2com, 3com, 4com, 5com, 6com as six distinct nodes (e.g. '1com/2L', '2com/3L', '3com/4L', '4com/5L', '5com/6L') - if all six were bonded those lines would short all six relay L arms together. Panel shows exactly one four-hole COMMON per channel (PH crop x=110 y=510 w=340 h=130)."
+    },
+    {
+      "id": "P033",
+      "area": "band 4 COMMON/CAPACITOR",
+      "tag": "verified",
+      "claim": "The COMMON terminals are addressed in wiring programs as '<section>com', e.g. 1com, 6com. The CAPACITOR terminals are never used in any wiring program in Books I-VI.",
+      "citation": "B56 pp.51-56 program tables ('1com/2L', '6com/D4', '6com/D9', '4R/3com', ...); B234 line 'D16/M+' block ('2K/3com', '4G/5com', '6A/6com'). Grep of all three OCR files for a capacitor-terminal designation returns nothing."
+    },
+    {
+      "id": "P040",
+      "area": "band 5 SECONDARY STORAGE",
+      "tag": "verified",
+      "claim": "Band 5 legend 'SECONDARY STORAGE' is centred on the left field at the TOP of the band, immediately below the COMMON/CAPACITOR stripe and above the terminal rows.",
+      "citation": "PH crop x=430 y=250 w=360 h=590 scale 3."
+    },
+    {
+      "id": "P041",
+      "area": "band 5 SECONDARY STORAGE",
+      "tag": "verified",
+      "claim": "Each channel in band 5 has TWO ROWS of three 2-hole terminals. Top row letters left to right: R, S, T. Bottom row letters left to right: U, V, W. Above the top row are three legends: a long LEFT-POINTING ARROW over the R column, 'ARM' over the S column, and a long RIGHT-POINTING ARROW over the T column. The two arrows emanate from over the ARM and point outward. No legends are printed over the bottom row.",
+      "citation": "PH crop x=110 y=645 w=340 h=130 scale 4; B1 p.18: 'Each of the six slide switches has six terminals located directly above it on the computer panel... The terminals are labeled R, S, T, U, V, W'."
+    },
+    {
+      "id": "P042",
+      "area": "band 5 SECONDARY STORAGE",
+      "tag": "verified",
+      "claim": "Arrow semantics: pushed LEFT connects S-R and V-U; pushed RIGHT connects S-T and V-W. The two sets always work together.",
+      "citation": "B1 p.18, both captions and the two schematics, plus the bracketed line '(The two sets of terminals R, S, T, and U, V, W, always work together.)' read from the page image."
+    },
+    {
+      "id": "P043",
+      "area": "band 5 SECONDARY STORAGE",
+      "tag": "verified",
+      "claim": "Below the U/V/W row, on the MIDDLE column, is the slide switch: a red rectangular actuator running in a light (ivory/cream) housing, travelling horizontally. It is flanked left and right by two round cream/ivory discs, one aligned under the R/U column and one under the T/W column.",
+      "citation": "PH crop x=110 y=645 w=340 h=130 scale 4 and crop x=430 y=250 w=360 h=590 scale 3."
+    },
+    {
+      "id": "P044",
+      "area": "band 5 SECONDARY STORAGE",
+      "tag": "unverified",
+      "claim": "The two round cream discs flanking each slide switch are most likely the switch's panel-mounting rivets or screw heads. The same disc appears above 'ON' and below 'OFF' on the POWER slide switch, which is the same switch type mounted vertically - consistent with a mounting feature rather than an indicator.",
+      "citation": "PH crops x=110 y=645 w=340 h=130 and x=1395 y=290 w=130 h=260 scale 6. Book I's slide-switch figure on p.18 draws the switch schematically and does NOT show these discs, so no manual confirms their function."
+    },
+    {
+      "id": "P050",
+      "area": "band 6 BINARY INPUT",
+      "tag": "verified",
+      "claim": "Band 6 legend 'BINARY INPUT' is centred on the left field at the TOP of the band, immediately below the blank blue stripe and above the terminal row.",
+      "citation": "PH crop x=430 y=250 w=360 h=590 scale 3 and whole-panel view."
+    },
+    {
+      "id": "P051",
+      "area": "band 6 BINARY INPUT",
+      "tag": "verified",
+      "claim": "Each channel in band 6 has ONE row of three 2-hole terminals: X (LEFT column), Y (MIDDLE column), Z (RIGHT column), with 'N.O.' above X, 'ARM' above Y, 'N.C.' above Z, and the letter below each pair. Below the row, on approximately the MIDDLE column, is the pushbutton: a large round flat-topped red cap. A slotted screw head is visible on the panel beside/above each button.",
+      "citation": "PH crop x=110 y=790 w=340 h=120 scale 4; B1 p.8: 'Each of the six binary input pushbuttons has three terminals located directly above it on the computer panel... The terminals are labeled X, Y and Z.'"
+    },
+    {
+      "id": "P052",
+      "area": "band 6 BINARY INPUT",
+      "tag": "verified",
+      "claim": "Pushbutton semantics: UP connects Y-Z (normally closed); DOWN connects X-Y (normally open). Y is the common contact. The pushbuttons are break-before-make.",
+      "citation": "B1 p.8-9."
+    },
+    {
+      "id": "P060",
+      "area": "right column - logo plate",
+      "tag": "verified",
+      "claim": "The logo plate occupies the full width of the right-hand column at the top, on the dark field. Main line: 'Minivac 601' - large, mixed case (capital M, lowercase 'inivac', then space, then '601'), in a heavy geometric/grotesque sans with very tight sidebearings, set left-aligned and running nearly the full plate width.",
+      "citation": "PH crop x=1120 y=160 w=380 h=150 scale 4."
+    },
+    {
+      "id": "P061",
+      "area": "right column - logo plate",
+      "tag": "verified",
+      "claim": "Immediately beneath the logotype, in one line of small type: 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.'",
+      "citation": "PH crop x=1120 y=160 w=380 h=150 scale 4. Read directly off the plate; letterforms at this magnification are legible though soft."
+    },
+    {
+      "id": "P070",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "The MATRIX block occupies the left/wider part of the dark block below the power stripe. Its terminals are laid out as a tic-tac-toe board: a 3x3 array of numbered positions with two long vertical cream rules and two long horizontal cream rules drawn between the cells (the board lines). Numbering: TOP ROW 1, 2, 3 (left to right); MIDDLE ROW 8, 9, 4 (left to right); BOTTOM ROW 7, 6, 5 (left to right). Position 9 is the centre. Positions 1..8 therefore run clockwise around the centre starting at top-left.",
+      "citation": "PH crop x=1120 y=280 w=380 h=270 scale 4; B1 p.25 figure (PDF p.27) draws the identical arrangement with 10 and 11 outside."
+    },
+    {
+      "id": "P071",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "Two further positions sit OUTSIDE the 3x3 board, on the middle row's height: 10 to the LEFT of the board, 11 to the RIGHT of the board.",
+      "citation": "PH crop x=1120 y=280 w=380 h=270 scale 4; B1 p.25 figure."
+    },
+    {
+      "id": "P072",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "Each of positions 1..9 is a 2x2 cluster of four holes: a TOP pair joined by a short printed cream line, and a BOTTOM pair joined by a short printed cream line, with NO line between top and bottom. The position numeral is printed in the gap between the two pairs. The top pair is terminal M<n>t, the bottom pair M<n>b.",
+      "citation": "PH crop x=1140 y=400 w=160 h=120 scale 8 (positions 8, 9, 7, 6 and all of 10 at high magnification); B1 p.25: 'The matrix terminals are designated by: M = matrix / 6 = terminal number (1 to 11) / t = top or \"b\" for bottom ... for example M6t' and 'The lines between the terminals indicate terminals which are connected together to form a single contact.'"
+    },
+    {
+      "id": "P073",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "Positions 10 and 11 are NOT 2x2. Each is a 2-column x 3-row array of SIX holes, and the printed cream lines form a closed loop around it (a line across the top pair, a line across the bottom pair, and vertical lines down the left column and the right column through the middle holes). By the manual's own rule that printed lines mark terminals joined into a single contact, all six holes of position 10 are one terminal, and likewise position 11. The numeral is printed BELOW the cluster, not inside it.",
+      "citation": "PH crop x=1140 y=400 w=160 h=120 scale 8 (position 10 fully resolved) and crop x=1120 y=280 w=380 h=270 scale 4 (position 11); B1 p.25 line rule."
+    },
+    {
+      "id": "P074",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "No program in Books I-VI ever writes M10t, M10b, M11t or M11b; positions 10 and 11 are always addressed bare as M10 and M11, while positions 1-9 are always addressed with a t or b suffix. Tally over all three OCR files: M10 x11, M11 x1, and M1t..M9t / M1b..M9b throughout.",
+      "citation": "Grep over book1.txt, book2-3-4.txt, book5-6.txt for /M ?[0-9]{1,2} ?[tb]\\b|M ?1[01]\\b/."
+    },
+    {
+      "id": "P075",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "Matrix terminals are pure junction points with no wiring under the panel: 'The matrix consists of a number of terminals, located in the upper right corner of the computer panel. The terminals are used as junction points, and there are no connections to the terminals below the panel.'",
+      "citation": "B1 p.25 (PDF p.27)."
+    },
+    {
+      "id": "P076",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "Stated purpose of the matrix: 'The matrix provides convenient junction points for use when the computer plays games or recognizes symbols.' and 'The matrix terminals are arranged in a convenient pattern for playing games like tic-tac-toe or solving character recognition problems. When the computer is programmed to play tic-tac-toe, the various plays are recorded by making connections on the matrix terminals. When the computer is programmed to recognize characters, the characters are formed by making connections on the matrix.'",
+      "citation": "B1 p.25 (PDF p.27)."
+    },
+    {
+      "id": "P077",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "Book VI's Tic-Tac-Toe use fixes the convention: the machine's 'play' wire goes into the BOTTOM contact (M<n>b) of the matrix position matching the machine's last move; the player's 'play' wire goes into the TOP contact (M<n>t) of the position matching his move. M10 is the machine's play-wire home and M11 the player's play-wire home - the program table's last lines are 'M10/free*' and 'M11/free**' with the footnotes '* this is the machine's \"play\" wire' and '** this is the player's \"play\" wire'. Play starts with the machine's free end placed in 6com.",
+      "citation": "B56 pp.55-56 (Tic-Tac-Toe program table and 'To play' instructions)."
+    },
+    {
+      "id": "P078",
+      "area": "right column - MATRIX",
+      "tag": "verified",
+      "claim": "The legend 'MATRIX' is printed in the BOTTOM-LEFT corner of the matrix block, left-aligned near the vertical divider stripe, in the same heavy caps as the other block legends but larger than the small labels.",
+      "citation": "PH crops x=1120 y=280 w=380 h=270 scale 4 and x=990 y=470 w=330 h=240 scale 4."
+    },
+    {
+      "id": "P080",
+      "area": "right column - POWER",
+      "tag": "verified",
+      "claim": "The POWER sub-block is a narrow vertical strip at the far right of the panel, separated from the MATRIX block by a vertical cream rule. Its legend 'POWER' sits in the blue stripe above it, at the right end of that stripe. Contents top to bottom: a dark round component; the two-line legend 'CIRCUIT BREAKER'; a large red push button; a small cream disc; the legend 'ON'; a red slide switch mounted vertically; the legend 'OFF'; a small cream disc.",
+      "citation": "PH crop x=1395 y=290 w=130 h=260 scale 6."
+    },
+    {
+      "id": "P081",
+      "area": "right column - POWER",
+      "tag": "verified",
+      "claim": "The red push button is the circuit breaker, and the red slide switch below it is the power switch: 'The red button above the power switch labeled CIRCUIT BREAKER is a safety switch which automatically turns off the power supply when it is overloaded.' The power switch is used to turn power ON and OFF.",
+      "citation": "B1 p.3."
+    },
+    {
+      "id": "P082",
+      "area": "right column - POWER",
+      "tag": "likely",
+      "claim": "The dark round component at the top of the POWER strip, above the CIRCUIT BREAKER legend, is the power indicator lamp. Book I states 'The red power light shows when the power is ON'; the POWER strip contains no other unexplained component, and this one reads as a lamp holder/jewel gone dark in the photographed unit.",
+      "citation": "B1 p.3 for the lamp's existence; PH crop x=1395 y=290 w=130 h=260 scale 6 for the object's position. The photograph does not resolve it well enough to confirm it is a lens rather than, say, a bushing."
+    },
+    {
+      "id": "P090",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "verified",
+      "claim": "The DECIMAL INPUT-OUTPUT block fills the lower right column. Dominating it is a circular dial divided into SIXTEEN sectors by radial cream rules, drawn between three concentric cream circles: an inner circle around the knob, a middle circle, and an outer circle. The sector NUMBER is printed in the inner annulus (between inner and middle circle); the sector's TERMINAL - two holes - sits in the outer annulus (between middle and outer circle).",
+      "citation": "PH crop x=1120 y=540 w=390 h=380 scale 3; B1 p.20 figure (PDF p.22) draws the same ring of numbered sectors each with its two-hole terminal outside."
+    },
+    {
+      "id": "P091",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "verified",
+      "claim": "Dial numbering runs 0 at the 12 o'clock position and increases CLOCKWISE: 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15. Position 4 is at 3 o'clock, 8 at 6 o'clock, 12 at 9 o'clock.",
+      "citation": "PH crop x=1120 y=540 w=390 h=380 scale 3; B1 p.20 panel figure."
+    },
+    {
+      "id": "P092",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "verified",
+      "claim": "At the centre is the pointer knob: in the photographed unit a large red cylindrical knob carrying a cream/white pointer blade that reaches out to the number ring.",
+      "citation": "PH crop x=1120 y=540 w=390 h=380 scale 3."
+    },
+    {
+      "id": "P093",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "verified",
+      "claim": "To the LEFT of the dial, in a vertical stack, are four numbered 2-hole terminals: 16 (with 'ARM' printed below it), then lower down 17, 18, 19. A printed cream bracket links 17 and 18 and is labelled 'RUN'; a second bracket links 18 and 19 and is labelled 'STOP'. The numeral is printed to the LEFT of each hole-pair.",
+      "citation": "PH crop x=1120 y=540 w=390 h=380 scale 3; B1 p.20 figure (PDF p.22) shows '16 oo ARM', '17 oo', '18 oo' bracketed RUN, '18 oo', '19 oo' bracketed STOP."
+    },
+    {
+      "id": "P094",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "verified",
+      "claim": "Terminal designations: D = Decimal Input-Output, followed by terminal number 1 to 19 (e.g. D8). The wiper-arm contact is D16. D17/D18 are the motor RUN pair; a short across D18/D19 stops the motor. Terminals 17, 18 and 19 are 'located on the panel just to the left of the pointer knob and rotary switch terminals'.",
+      "citation": "B1 p.20 and p.22."
+    },
+    {
+      "id": "P095",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "verified",
+      "claim": "The block legend 'DECIMAL INPUT-OUTPUT' is printed across the BOTTOM of the block, below the dial, roughly centred/slightly right, in heavy letterspaced caps with a hyphen.",
+      "citation": "PH crop x=1120 y=540 w=390 h=380 scale 3; B1 p.20 figure draws the same legend below the dial."
+    },
+    {
+      "id": "P096",
+      "area": "right column - DECIMAL INPUT-OUTPUT",
+      "tag": "unverified",
+      "claim": "Two small pale metal discs (rivet or screw heads) sit on the dark field at the upper-left of the DECIMAL INPUT-OUTPUT block, above the '16 ARM' terminal, offset diagonally from one another. No manual figure shows them; they appear to be fasteners for the motor/rotary-switch assembly beneath.",
+      "citation": "PH crops x=1120 y=540 w=390 h=380 scale 3 and x=990 y=470 w=330 h=240 scale 4."
+    },
+    {
+      "id": "P100",
+      "area": "legends - complete inventory",
+      "tag": "verified",
+      "claim": "Complete list of printed panel legends, exact text and capitalisation, is transcribed in the 'legend_inventory' table below.",
+      "citation": "PH image_3.jpg and its 12 crops; corroborated where possible by B1 figures."
+    },
+    {
+      "id": "P110",
+      "area": "typography",
+      "tag": "verified",
+      "claim": "All block and group legends are set in a heavy, wide, sans-serif grotesque, all-caps, with generous letterspacing on the long band titles (BINARY OUTPUT, SECONDARY STORAGE, BINARY INPUT, DECIMAL INPUT-OUTPUT) and tighter setting on STORAGE/PROCESSING and the small labels. Terminal letters (A, B, C, E, F, G, H, J, K, L, N, R, S, T, U, V, W, X, Y, Z) are the same heavy caps at small size. Section numerals 1-6 are the same face, much larger and bolder. The 'Minivac 601' logotype is the odd one out: mixed case, tightly fitted, heavier and more geometric than the panel legends.",
+      "citation": "PH crops at 3x-8x. Description of character only - the actual typeface is not named by any source read."
+    },
+    {
+      "id": "P120",
+      "area": "materials and colour",
+      "tag": "verified",
+      "claim": "The panel field is very dark (reads black to near-black under the photograph's warm light, with brown/olive mottling from age and handling). The separator stripes, the panel's outer border, the vertical column divider and the case's outer edges are all a single light blue / turquoise. All printed legends, rules, brackets, board lines and dial graphics are a single cream / off-white.",
+      "citation": "PH image_3.jpg and crops; B1 cover photograph (PDF p.1), which is printed black plus one light-blue spot colour and shows the same stripe/border scheme."
+    },
+    {
+      "id": "P121",
+      "area": "materials and colour",
+      "tag": "verified",
+      "claim": "Control colours: all six BINARY INPUT pushbuttons red; all six SECONDARY STORAGE slide actuators red; the POWER slide actuator red; the CIRCUIT BREAKER button red; the DECIMAL INPUT-OUTPUT pointer knob red with a cream pointer blade; all twelve lamp lenses red, each in a white/cream bezel ring.",
+      "citation": "PH image_3.jpg and crops."
+    },
+    {
+      "id": "P122",
+      "area": "materials and colour",
+      "tag": "unverified",
+      "claim": "Precise colour values are NOT established. RGB sampled from image_3.jpg gives the blue stripe around #7C909D-#658795 and the dark field around #533E2C, but the photograph is lit warm and dim; these are photograph values, not paint values. The Book I cover is a two-colour print and cannot settle it either.",
+      "citation": "My own pixel sampling of image_3.jpg via ffmpeg at (600,310), (600,615), (620,430), (300,950). Recorded as measurement, not as the object's colour."
+    },
+    {
+      "id": "P130",
+      "area": "physical",
+      "tag": "likely",
+      "claim": "Case: 5 1/8 x 24 x 13 1/4 inches; weight 9 kg (20 lb); originally housed in a blue-painted WOODEN case; 110 VAC input.",
+      "citation": "WP https://en.wikipedia.org/wiki/Minivac_601 infobox. Not stated anywhere in Books I-VI. Consistency check: the panel's measured aspect ratio in image_3.jpg is ~1.79 : 1, against 24/13.25 = 1.81 : 1 - so the quoted footprint is consistent with the photograph."
+    },
+    {
+      "id": "P131",
+      "area": "physical",
+      "tag": "verified",
+      "claim": "The case is a shallow rectangular box with the panel forming its whole top surface; the box sides are noticeably deep (a slab, not a thin plate), and the panel's blue border is the case colour carried onto the top face.",
+      "citation": "B1 cover photograph (PDF p.1), a three-quarter product photograph of the complete machine; PH image_3.jpg shows the blue case edge on all four sides."
+    },
+    {
+      "id": "P132",
+      "area": "physical",
+      "tag": "unverified",
+      "claim": "The panel material is not established by any source read. Candidates (hardboard/Masonite, phenolic, painted metal) were searched for and none confirmed.",
+      "citation": "Books I-VI contain no statement of panel material; web search for 'Minivac 601' with masonite/pressboard/hardboard/silk-screen returned nothing on point."
+    },
+    {
+      "id": "P140",
+      "area": "6010 delta",
+      "tag": "likely",
+      "claim": "DELTA, NOT 601: the later MINIVAC 6010 (c.1962) was housed in a grey/gunmetal METAL case with higher-quality components and additional patch cords containing resistors, capacitors and diodes; price rose from $79.95 to $479. This is a case/packaging change relative to the 601's blue wooden case.",
+      "citation": "WP https://en.wikipedia.org/wiki/Minivac_601; CH https://www.computinghistory.org.uk/det/499/minivac-601/ ('repainted from red and blue to gunmetal-grey')."
+    }
+  ],
+  "legend_inventory": {
+    "note": "Exact text and capitalisation as printed. Position is given relative to the jacks or control the legend labels. All read off image_3.jpg unless a Book I figure is cited.",
+    "left_field": [
+      {
+        "text": "1  2  3  4  5  6",
+        "form": "large numerals, one per channel",
+        "position": "top of each channel, in the BINARY OUTPUT band, above and slightly left of that channel's lamp"
+      },
+      {
+        "text": "BINARY OUTPUT",
+        "position": "centred on the left field, below the row of six lamps, at the bottom of band 1"
+      },
+      {
+        "text": "A",
+        "position": "below the left-hand 2-hole terminal of each output lamp"
+      },
+      {
+        "text": "B",
+        "position": "below the right-hand 2-hole terminal of each output lamp"
+      },
+      {
+        "text": "+",
+        "position": "on the blue power stripe, above the left-hand 2-hole terminal of each channel"
+      },
+      {
+        "text": "-",
+        "position": "on the blue power stripe, above the right-hand 2-hole terminal of each channel"
+      },
+      {
+        "text": "LIGHT",
+        "position": "band 3, in a bracket ornament spanning from terminal C to terminal E, above them"
+      },
+      {
+        "text": "COIL",
+        "position": "band 3, in a bracket ornament spanning from terminal E to terminal F, above them"
+      },
+      {
+        "text": "C",
+        "position": "below the left of the three coil-side terminals above each relay"
+      },
+      {
+        "text": "E",
+        "position": "below the middle of the three coil-side terminals above each relay"
+      },
+      {
+        "text": "F",
+        "position": "below the right of the three coil-side terminals above each relay"
+      },
+      {
+        "text": "STORAGE/PROCESSING",
+        "position": "centred on the left field, in the gap between the row of relay indicator lamps and the relay contact terminals"
+      },
+      {
+        "text": "N.O.",
+        "position": "band 3, above the top-row LEFT terminal (G) of each relay; governs both rows"
+      },
+      {
+        "text": "ARM",
+        "position": "band 3, above the top-row MIDDLE terminal (H) of each relay; governs both rows"
+      },
+      {
+        "text": "N.C.",
+        "position": "band 3, above the top-row RIGHT terminal (J) of each relay; governs both rows"
+      },
+      {
+        "text": "G",
+        "position": "below the top-row left relay-contact terminal"
+      },
+      {
+        "text": "H",
+        "position": "below the top-row middle relay-contact terminal"
+      },
+      {
+        "text": "J",
+        "position": "below the top-row right relay-contact terminal"
+      },
+      {
+        "text": "K",
+        "position": "below the bottom-row left relay-contact terminal"
+      },
+      {
+        "text": "L",
+        "position": "below the bottom-row middle relay-contact terminal"
+      },
+      {
+        "text": "N",
+        "position": "below the bottom-row right relay-contact terminal"
+      },
+      {
+        "text": "COMMON",
+        "position": "on the blue auxiliary stripe, above the 4-hole terminal in the left half of each channel"
+      },
+      {
+        "text": "CAPACITOR",
+        "position": "on the blue auxiliary stripe, above the 2-hole terminal in the right half of each channel"
+      },
+      {
+        "text": "SECONDARY STORAGE",
+        "position": "centred on the left field, at the TOP of band 5, above the terminal rows"
+      },
+      {
+        "text": "<long left-pointing arrow>",
+        "position": "band 5, above the R column, pointing left, tail extending back over the ARM"
+      },
+      {
+        "text": "ARM",
+        "position": "band 5, above the S column"
+      },
+      {
+        "text": "<long right-pointing arrow>",
+        "position": "band 5, above the T column, pointing right, tail extending back over the ARM"
+      },
+      {
+        "text": "R",
+        "position": "below the top-row left slide-switch terminal"
+      },
+      {
+        "text": "S",
+        "position": "below the top-row middle slide-switch terminal"
+      },
+      {
+        "text": "T",
+        "position": "below the top-row right slide-switch terminal"
+      },
+      {
+        "text": "U",
+        "position": "below the bottom-row left slide-switch terminal"
+      },
+      {
+        "text": "V",
+        "position": "below the bottom-row middle slide-switch terminal"
+      },
+      {
+        "text": "W",
+        "position": "below the bottom-row right slide-switch terminal"
+      },
+      {
+        "text": "BINARY INPUT",
+        "position": "centred on the left field, at the TOP of band 6, above the terminal row"
+      },
+      {
+        "text": "N.O.",
+        "position": "band 6, above the X terminal of each channel"
+      },
+      {
+        "text": "ARM",
+        "position": "band 6, above the Y terminal of each channel"
+      },
+      {
+        "text": "N.C.",
+        "position": "band 6, above the Z terminal of each channel"
+      },
+      {
+        "text": "X",
+        "position": "below the left pushbutton terminal"
+      },
+      {
+        "text": "Y",
+        "position": "below the middle pushbutton terminal"
+      },
+      {
+        "text": "Z",
+        "position": "below the right pushbutton terminal"
+      }
+    ],
+    "right_column": [
+      {
+        "text": "Minivac 601",
+        "form": "mixed-case logotype, large",
+        "position": "logo plate, top of the right column, left-aligned, near full plate width"
+      },
+      {
+        "text": "Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.",
+        "form": "one line of small type",
+        "position": "immediately below the logotype on the same plate"
+      },
+      {
+        "text": "+",
+        "position": "on the blue power stripe in the right column, above a 2-hole terminal (designated M+ in the manuals)"
+      },
+      {
+        "text": "-",
+        "position": "on the blue power stripe in the right column, above a 2-hole terminal (designated M-)"
+      },
+      {
+        "text": "POWER",
+        "position": "on the blue power stripe, at the right end, over the POWER sub-block"
+      },
+      {
+        "text": "1 2 3 / 8 9 4 / 7 6 5",
+        "form": "small numerals",
+        "position": "one per matrix cell, printed in the gap between that cell's top hole-pair and bottom hole-pair"
+      },
+      {
+        "text": "10",
+        "position": "below the six-hole cluster to the LEFT of the 3x3 board"
+      },
+      {
+        "text": "11",
+        "position": "below the six-hole cluster to the RIGHT of the 3x3 board"
+      },
+      {
+        "text": "MATRIX",
+        "position": "bottom-left corner of the matrix block, left-aligned against the vertical divider"
+      },
+      {
+        "text": "CIRCUIT BREAKER",
+        "form": "two lines, all caps",
+        "position": "POWER sub-block, above the large red button"
+      },
+      {
+        "text": "ON",
+        "position": "POWER sub-block, above the vertical red slide switch"
+      },
+      {
+        "text": "OFF",
+        "position": "POWER sub-block, below the vertical red slide switch"
+      },
+      {
+        "text": "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15",
+        "position": "one per dial sector, in the inner annulus of the dial, 0 at 12 o'clock, increasing clockwise"
+      },
+      {
+        "text": "16",
+        "position": "to the LEFT of the wiper-arm terminal, upper left of the decimal block"
+      },
+      {
+        "text": "ARM",
+        "position": "below the 16 terminal"
+      },
+      {
+        "text": "17",
+        "position": "to the left of its 2-hole terminal"
+      },
+      {
+        "text": "18",
+        "position": "to the left of its 2-hole terminal"
+      },
+      {
+        "text": "19",
+        "position": "to the left of its 2-hole terminal"
+      },
+      {
+        "text": "RUN",
+        "position": "outside a printed bracket that links terminals 17 and 18"
+      },
+      {
+        "text": "STOP",
+        "position": "outside a printed bracket that links terminals 18 and 19"
+      },
+      {
+        "text": "DECIMAL INPUT-OUTPUT",
+        "position": "across the bottom of the decimal block, below the dial"
+      }
+    ]
+  },
+  "terminal_designation_table": {
+    "note": "Complete panel terminal namespace as evidenced by the manuals and the photograph.",
+    "per_channel_n_in_1_to_6": [
+      {
+        "name": "n+",
+        "holes": 2,
+        "band": "power stripe",
+        "column": "left",
+        "function": "+12 V DC rail"
+      },
+      {
+        "name": "n-",
+        "holes": 2,
+        "band": "power stripe",
+        "column": "right",
+        "function": "supply negative"
+      },
+      {
+        "name": "nA",
+        "holes": 2,
+        "band": "BINARY OUTPUT",
+        "column": "left",
+        "function": "output lamp, one side"
+      },
+      {
+        "name": "nB",
+        "holes": 2,
+        "band": "BINARY OUTPUT",
+        "column": "right",
+        "function": "output lamp, other side"
+      },
+      {
+        "name": "nC",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING upper",
+        "column": "left",
+        "function": "free end of the relay indicator lamp (lamp then goes to E)"
+      },
+      {
+        "name": "nE",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING upper",
+        "column": "middle",
+        "function": "junction of indicator lamp and coil"
+      },
+      {
+        "name": "nF",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING upper",
+        "column": "right",
+        "function": "far end of the relay coil"
+      },
+      {
+        "name": "nG",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING lower, top row",
+        "column": "left",
+        "function": "N.O. contact, far contact set"
+      },
+      {
+        "name": "nH",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING lower, top row",
+        "column": "middle",
+        "function": "arm, far contact set"
+      },
+      {
+        "name": "nJ",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING lower, top row",
+        "column": "right",
+        "function": "N.C. contact, far contact set"
+      },
+      {
+        "name": "nK",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING lower, bottom row",
+        "column": "left",
+        "function": "N.O. contact, near contact set"
+      },
+      {
+        "name": "nL",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING lower, bottom row",
+        "column": "middle",
+        "function": "arm, near contact set"
+      },
+      {
+        "name": "nN",
+        "holes": 2,
+        "band": "STORAGE/PROCESSING lower, bottom row",
+        "column": "right",
+        "function": "N.C. contact, near contact set"
+      },
+      {
+        "name": "ncom",
+        "holes": 4,
+        "band": "auxiliary stripe",
+        "column": "left-to-middle",
+        "function": "isolated 4-hole junction block, no internal connection to anything else"
+      },
+      {
+        "name": "(CAPACITOR)",
+        "holes": 2,
+        "band": "auxiliary stripe",
+        "column": "right",
+        "function": "reserved for auxiliary components; never used in any published program; no designation appears in any manual"
+      },
+      {
+        "name": "nR",
+        "holes": 2,
+        "band": "SECONDARY STORAGE, top row",
+        "column": "left",
+        "function": "left contact, contact set 1"
+      },
+      {
+        "name": "nS",
+        "holes": 2,
+        "band": "SECONDARY STORAGE, top row",
+        "column": "middle",
+        "function": "arm, contact set 1"
+      },
+      {
+        "name": "nT",
+        "holes": 2,
+        "band": "SECONDARY STORAGE, top row",
+        "column": "right",
+        "function": "right contact, contact set 1"
+      },
+      {
+        "name": "nU",
+        "holes": 2,
+        "band": "SECONDARY STORAGE, bottom row",
+        "column": "left",
+        "function": "left contact, contact set 2"
+      },
+      {
+        "name": "nV",
+        "holes": 2,
+        "band": "SECONDARY STORAGE, bottom row",
+        "column": "middle",
+        "function": "arm, contact set 2"
+      },
+      {
+        "name": "nW",
+        "holes": 2,
+        "band": "SECONDARY STORAGE, bottom row",
+        "column": "right",
+        "function": "right contact, contact set 2"
+      },
+      {
+        "name": "nX",
+        "holes": 2,
+        "band": "BINARY INPUT",
+        "column": "left",
+        "function": "N.O. contact"
+      },
+      {
+        "name": "nY",
+        "holes": 2,
+        "band": "BINARY INPUT",
+        "column": "middle",
+        "function": "arm / common"
+      },
+      {
+        "name": "nZ",
+        "holes": 2,
+        "band": "BINARY INPUT",
+        "column": "right",
+        "function": "N.C. contact"
+      }
+    ],
+    "right_column": [
+      {
+        "name": "M+",
+        "holes": 2,
+        "position": "power stripe, right column, left of centre",
+        "function": "+ rail"
+      },
+      {
+        "name": "M-",
+        "holes": 2,
+        "position": "power stripe, right column, right of centre",
+        "function": "- rail"
+      },
+      {
+        "name": "M1t .. M9t",
+        "holes": 2,
+        "position": "top pair of matrix cells 1..9",
+        "function": "junction only"
+      },
+      {
+        "name": "M1b .. M9b",
+        "holes": 2,
+        "position": "bottom pair of matrix cells 1..9",
+        "function": "junction only"
+      },
+      {
+        "name": "M10",
+        "holes": 6,
+        "position": "six-hole ring left of the 3x3 board",
+        "function": "junction only; Tic-Tac-Toe home of the machine's play wire"
+      },
+      {
+        "name": "M11",
+        "holes": 6,
+        "position": "six-hole ring right of the 3x3 board",
+        "function": "junction only; Tic-Tac-Toe home of the player's play wire"
+      },
+      {
+        "name": "D0 .. D15",
+        "holes": 2,
+        "position": "outer annulus of the dial, one per sector, 0 at 12 o'clock increasing clockwise",
+        "function": "rotary switch fixed contacts"
+      },
+      {
+        "name": "D16",
+        "holes": 2,
+        "position": "upper left of the decimal block, labelled 16 with ARM below",
+        "function": "rotary switch wiper arm"
+      },
+      {
+        "name": "D17",
+        "holes": 2,
+        "position": "left of the dial",
+        "function": "motor RUN, with D18"
+      },
+      {
+        "name": "D18",
+        "holes": 2,
+        "position": "left of the dial",
+        "function": "motor RUN with D17; motor STOP with D19"
+      },
+      {
+        "name": "D19",
+        "holes": 2,
+        "position": "left of the dial",
+        "function": "motor STOP, shorted to D18"
+      }
+    ]
+  },
+  "redraw_spec": {
+    "tag": "unverified",
+    "warning": "EVERY number in this block is MY measurement off image_3.jpg, not a manufacturer figure. Estimated error +/- 2 percent of panel dimension. Use for proportioning a redraw, never as a dimensional authority.",
+    "photo_reference": {
+      "file": "image_3.jpg",
+      "panel_corners_px": {
+        "top_left": [
+          75,
+          163
+        ],
+        "top_right": [
+          1487,
+          160
+        ],
+        "bottom_left": [
+          72,
+          945
+        ],
+        "bottom_right": [
+          1490,
+          940
+        ]
+      },
+      "panel_extent_px": {
+        "w": 1423,
+        "h": 795
+      },
+      "aspect": 1.79
+    },
+    "vertical_divider": {
+      "left_field_right_edge_frac_of_width": 0.731,
+      "right_column_left_edge_frac_of_width": 0.738
+    },
+    "horizontal_bands_left_field_frac_of_height": [
+      {
+        "band": "outer blue border (top)",
+        "from": 0.0,
+        "to": 0.016
+      },
+      {
+        "band": "1 BINARY OUTPUT (dark)",
+        "from": 0.016,
+        "to": 0.17
+      },
+      {
+        "band": "2 power stripe (blue)",
+        "from": 0.17,
+        "to": 0.22
+      },
+      {
+        "band": "3 STORAGE/PROCESSING (dark)",
+        "from": 0.22,
+        "to": 0.547
+      },
+      {
+        "band": "4 COMMON/CAPACITOR stripe (blue)",
+        "from": 0.547,
+        "to": 0.61
+      },
+      {
+        "band": "5 SECONDARY STORAGE (dark)",
+        "from": 0.61,
+        "to": 0.767
+      },
+      {
+        "band": "blank divider stripe (blue)",
+        "from": 0.767,
+        "to": 0.799
+      },
+      {
+        "band": "6 BINARY INPUT (dark)",
+        "from": 0.799,
+        "to": 0.975
+      },
+      {
+        "band": "outer blue border (bottom)",
+        "from": 0.975,
+        "to": 1.0
+      }
+    ],
+    "horizontal_blocks_right_column_frac_of_height": [
+      {
+        "block": "logo plate (dark)",
+        "from": 0.016,
+        "to": 0.17
+      },
+      {
+        "block": "power stripe (blue), carries M+ M- POWER",
+        "from": 0.17,
+        "to": 0.21
+      },
+      {
+        "block": "MATRIX + POWER controls (dark)",
+        "from": 0.21,
+        "to": 0.474
+      },
+      {
+        "block": "divider stripe (blue)",
+        "from": 0.474,
+        "to": 0.501
+      },
+      {
+        "block": "DECIMAL INPUT-OUTPUT (dark)",
+        "from": 0.501,
+        "to": 0.975
+      }
+    ],
+    "channel_pitch": {
+      "note": "six channels evenly spaced across the left field",
+      "pitch_px_in_photo": 168,
+      "pitch_frac_of_panel_width": 0.118
+    },
+    "terminal_columns_within_a_channel": {
+      "note": "measured for section 1; hole-pair x positions in photo pixels, repeated identically in every band",
+      "left_column_hole_x_px": [
+        134,
+        151
+      ],
+      "middle_column_hole_x_px": [
+        181,
+        198
+      ],
+      "right_column_hole_x_px": [
+        229,
+        246
+      ],
+      "hole_pair_spacing_px": 17,
+      "column_spacing_px": 47,
+      "column_spacing_frac_of_channel_pitch": 0.28
+    },
+    "matrix_block": {
+      "cells": "3x3, each a 2x2 hole cluster; cell numbering top row 1 2 3, middle 8 9 4, bottom 7 6 5",
+      "outliers": "10 to the left of the board, 11 to the right, each a 2-wide x 3-tall six-hole cluster on the middle row's height",
+      "board_rules": "two long vertical cream rules and two long horizontal cream rules drawn between cells, forming a tic-tac-toe grid; the rules do not touch any hole",
+      "total_holes": 48
+    },
+    "decimal_block": {
+      "dial": "three concentric circles, 16 radial dividers; numbers in the inner annulus, hole-pairs in the outer annulus",
+      "zero_position": "12 o'clock",
+      "direction": "increasing clockwise",
+      "left_stack": "16 (ARM) high, then 17, 18, 19 lower, with RUN bracket 17-18 and STOP bracket 18-19"
+    }
+  },
+  "discrepancies_and_cross_checks": [
+    {
+      "id": "D1",
+      "kind": "KNOWN, do not resolve",
+      "tag": "verified on both sides",
+      "finding": "Address conflict. All three PDFs (Books I-VI, all first printing August 1961) carry 'Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts' on the copyright page AND '372 Main Street, Watertown, Massachusetts' on the back cover; the Book I front cover's copyright block reads 'SCIENTIFIC DEVELOPMENT CORPORATION / Watertown Mass.'. The panel legend plate on the photographed unit reads 'Scientific Development Corporation, Cambridge, Massachusetts.' Both are primary. Reported, not resolved.",
+      "citation": "B1 copyright page and back cover; B234 back cover; B56 copyright page and back cover; B1 front cover (PDF p.1); PH crop x=1120 y=160 w=380 h=150 scale 4.",
+      "secondary_note": "Wikipedia asserts 'Cambridge, Massachusetts (later in Watertown, Massachusetts)', implying Cambridge is the EARLIER address. That would make the photographed unit older than the August 1961 first printing. Single secondary source, tagged [unverified], recorded only so a later pass can chase it."
+    },
+    {
+      "id": "D2",
+      "tag": "verified",
+      "finding": "Panel legend vs manual prose: the panel reads 'STORAGE/PROCESSING' (slash, no spaces). Book I's body text calls the relays 'storage-processing' (hyphen, lower case) on p.12.",
+      "citation": "PH crop x=430 y=250 w=360 h=590; B1 p.12."
+    },
+    {
+      "id": "D3",
+      "tag": "verified",
+      "finding": "Panel legend vs manual prose: the panel reads 'DECIMAL INPUT-OUTPUT' (caps). Book I writes it as 'Decimal Input-Output' in prose and in quotation marks.",
+      "citation": "PH crop x=1120 y=540 w=390 h=380; B1 p.20, p.22."
+    },
+    {
+      "id": "D4",
+      "tag": "verified",
+      "finding": "MATERIAL DISCREPANCY. Book I p.25 states the matrix designation rule as 'M = matrix / 6 = terminal number (1 to 11) / t = top or \"b\" for bottom', which implies M10t/M10b/M11t/M11b exist. The panel shows positions 10 and 11 as single six-hole ring terminals with no top/bottom split, and every wiring program in Books I-VI addresses them as bare M10 and M11. The manual's rule is over-general and only holds for positions 1-9.",
+      "citation": "B1 p.25 (PDF p.27); PH crop x=1140 y=400 w=160 h=120 scale 8; grep tally over all three OCR files."
+    },
+    {
+      "id": "D5",
+      "tag": "verified",
+      "finding": "AMBIGUOUS WORDING. Book I p.25 says 'The four COMMON terminals are connected together, but are not connected to any other component.' Taken literally that asserts four COMMON terminals are bonded. The panel shows SIX COMMON terminals, one per channel, each with four holes, and Book VI's Tic-Tac-Toe program treats 1com..6com as six independent nodes. The sentence must mean the four HOLES of one COMMON terminal.",
+      "citation": "B1 p.25; PH crop x=110 y=510 w=340 h=130; B56 p.56 program table."
+    },
+    {
+      "id": "D6",
+      "tag": "verified",
+      "finding": "Book I p.20's second figure ('VIEW UNDER PANEL') numbers the dial 0 at top with 1,2,3... running COUNTER-clockwise. That is the mirror of the panel face, which runs clockwise. Expected for an under-panel view; noted so nobody reads it as a contradiction.",
+      "citation": "B1 p.20 (PDF p.22) both figures; PH crop x=1120 y=540 w=390 h=380."
+    },
+    {
+      "id": "D7",
+      "tag": "verified",
+      "finding": "Book I p.14 describes 'a round white coil, located to the left of the arms'. In the photographed unit the coil bobbins read tan/buff. Ambiguous: aged white paper wrap, or the manual simplifying. Does not affect layout.",
+      "citation": "B1 p.14; PH crop x=110 y=330 w=340 h=120."
+    },
+    {
+      "id": "D8",
+      "tag": "verified",
+      "finding": "Book I p.20's panel figure draws the rotary pointer knob as a teardrop/leaf shape. The photographed unit has a red cylindrical knob with a cream pointer blade. Drawing simplification or a production change; not settled.",
+      "citation": "B1 p.20 (PDF p.22); PH crop x=1120 y=540 w=390 h=380."
+    },
+    {
+      "id": "D9",
+      "tag": "verified",
+      "finding": "Book I p.18's slide-switch figure draws the switch schematically and omits the two round cream discs that flank every slide switch on the real panel. The discs appear on the photograph in all six channels and again above/below the POWER switch, and are unexplained by any manual read.",
+      "citation": "B1 p.18 (PDF p.20); PH crops x=110 y=645 w=340 h=130 and x=1395 y=290 w=130 h=260."
+    },
+    {
+      "id": "D10",
+      "tag": "verified",
+      "finding": "AGREEMENT (recorded as a positive cross-check). Book I's cover product photograph, Book I p.25's matrix figure, Book I p.20's rotary figure and Book I p.18's slide-switch figure all agree with the photographed unit on band order, right-column contents, matrix arrangement, dial numbering, terminal lettering and the position of the section numerals. No layout differences were found between the Book I figures and the photograph.",
+      "citation": "B1 PDF pp.1, 20, 22, 27; PH image_3.jpg."
+    }
+  ],
+  "not_settled": [
+    {
+      "question": "Panel substrate material (hardboard / phenolic / painted steel / aluminium).",
+      "would_settle_it": "The SDC Maintenance Manual (not in the local set), or a photograph of the panel's cut edge or its underside, or physical inspection of a unit."
+    },
+    {
+      "question": "True paint colours: the blue of the case and stripes, the black of the panel field, the cream of the legends.",
+      "would_settle_it": "A colour-managed photograph of an unfaded unit with a colour target in frame, or a factory paint spec. Sampling image_3.jpg gives photograph values only."
+    },
+    {
+      "question": "The typeface family used for the panel legends and for the 'Minivac 601' logotype.",
+      "would_settle_it": "Higher-resolution flat scans of the legends, or SDC artwork. Character can be described from the photograph; the family cannot be named responsibly."
+    },
+    {
+      "question": "Function of the two round cream discs flanking each slide switch and bracketing the POWER switch. Best guess is mounting rivets, but no source says.",
+      "would_settle_it": "An underside photograph of the panel, or the Maintenance Manual's slide-switch mounting detail."
+    },
+    {
+      "question": "Identity of the dark round component at the top of the POWER strip. Book I says a red power light exists; the photograph does not resolve whether this object is that lamp.",
+      "would_settle_it": "A photograph of a powered unit, or the Maintenance Manual's power-supply parts list."
+    },
+    {
+      "question": "Exact absolute panel dimensions and the absolute pitch of the jack grid.",
+      "would_settle_it": "A dimensioned drawing, Mike Gardi's replica CAD/STL files or his Instructables step text (both fetch attempts failed here), or a scale-referenced photograph."
+    },
+    {
+      "question": "Whether the two small pale discs at the upper left of the DECIMAL INPUT-OUTPUT block are fasteners or something functional.",
+      "would_settle_it": "Underside photograph or Maintenance Manual."
+    },
+    {
+      "question": "Which address is chronologically earlier, Cambridge (panel) or Watertown (all six books, Aug 1961). Deliberately NOT resolved here.",
+      "would_settle_it": "Dated SDC advertising, incorporation records, or serial-numbered units with both plate variants."
+    },
+    {
+      "question": "Whether other production units carry a Watertown plate, i.e. whether the plate text varies by production run.",
+      "would_settle_it": "Photographs of several units' logo plates with provenance."
+    }
+  ],
+  "counts": {
+    "verified": 53,
+    "likely": 4,
+    "unverified": 5,
+    "note": "claims block: 53 verified / 4 likely / 4 unverified, plus the redraw_spec block which is a single [unverified] measurement set."
+  }
+}

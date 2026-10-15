@@ -1,0 +1,63 @@
+Minivac 601 simulator
+Copyright (c) 2026 Tom Leonard
+Licensed under the MIT License; see LICENSE. The MIT License covers this
+project's own code and text only, not the third-party material below.
+
+
+Third-party material
+--------------------
+
+Minivac 601 manuals (docs/research/raw/pdf/)
+  Scientific Development Corporation. Books I-VI were published in 1961 with
+  a copyright notice, and Book VII in 1962 with a copyright notice. The errata
+  sheet is dated 1961/62. The maintenance manual is dated 1961 in
+  docs/research; no copyright notice appears in its text extract. Book I was
+  registered on 19 Aug 1961 as A526420 (Catalog of Copyright Entries, 3rd
+  series, vol. 15, p. 1698). A search of the US Copyright Office online
+  catalog and of NYPL's cce-renewals transcription (1978-2001) on 2026-10-15
+  found no renewal of any of them, so the 1961 books lapsed into the US
+  public domain at the end of 1989 and Book VII at the end of 1990. Their
+  status outside the US may differ. See docs/research/history-and-artifacts.md.
+  Scans by Adolfo García Yagüe / ccapitalia.net ("EX LIBRIS ccapitalia.net"),
+  mirrored on archive.org item 1961Minivac601Book234; Book VII from archive.org
+  item book-vii_202512. The .txt files are text extracts of those scans.
+  This project is not affiliated with Scientific Development Corporation or
+  ccapitalia.net.
+
+Photographs (docs/research/raw/photos/; none is shipped in a build)
+  commons-minivac601-main.jpg - "Autopilot", CC BY-SA 4.0
+    (https://creativecommons.org/licenses/by-sa/4.0/),
+    https://commons.wikimedia.org/wiki/File:Minivac_601.jpg
+  commons-minivac601-DSCF1392.jpg - Mike Rosenberg, CC BY 2.0
+    (https://creativecommons.org/licenses/by/2.0/),
+    https://commons.wikimedia.org/wiki/File:Minivac_601_DSCF1392.jpg
+  commons-minivac6010-mit-museum.jpg - Daderot, CC0 1.0
+    (https://creativecommons.org/publicdomain/zero/1.0/),
+    https://commons.wikimedia.org/wiki/File:Minivac_6010_Computer,_Scientific_Development_Corporation,_1962_-_MIT_Museum_-_Cambridge,_MA_-_DSC09163.jpg
+
+Panel art
+  The procedural HTML/CSS/SVG panel redraw is an adaptation of the "Autopilot"
+  photograph above. The panel-art derivative, the panel redraw described in
+  data/public-assets.json record panel-ph2-primary, is licensed CC BY-SA 4.0
+  (https://creativecommons.org/licenses/by-sa/4.0/).
+
+Audio (CC0 1.0: https://creativecommons.org/publicdomain/zero/1.0/)
+  docs/research/raw/audio/relay-switch-bassmosphere-preview.mp3 - bassmosphere,
+    CC0 1.0, https://freesound.org/people/bassmosphere/sounds/384698/
+  docs/research/raw/audio/rotary-drive-jwiese-loop.flac - jwiese, CC0 1.0,
+    https://opengameart.org/content/enginemechanic-working-sound
+  public/audio/ and godot/audio/ hold the shipped derivatives:
+    relay-cue.wav and relay-drop-out-cue.wav from the bassmosphere source,
+    rotary-drive-loop.wav from the jwiese source. They are simulated cues,
+    not recordings of a Minivac.
+  Full provenance (source URLs, capture dates, sha256, derivation) is in
+  data/public-assets.json.
+
+Greg Sadetsky, Minivac 601 simulator (minivac.greg.technology)
+  Used only as an external behavioural check. Its source was not read and
+  nothing here is derived from it (see docs/research/METHOD.md).
+
+Minivac and Minivac 601 are names of Scientific Development Corporation
+products; any trademark rights in them belong to their owners. This project is
+not affiliated with or endorsed by Scientific Development Corporation or any
+successor.

@@ -1,0 +1,904 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-APX-2BITADDER",
+  "source": "BK4 Appendix, Two-Bit Adder with Automatic Decimal Conversion, printed p.87 = book2-3-4.pdf PDF p.93; BK4 printed p.80 = PDF p.86 (O-C12 slide-switch convention); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/4H",
+    "1F/2F",
+    "1G/3H",
+    "1H/6G",
+    "1J/2H",
+    "1K/3L",
+    "1L/6J",
+    "1N/2L",
+    "2C/4K",
+    "2C/3C",
+    "2F/3F",
+    "2G/D5",
+    "2J/D1",
+    "2K/D4",
+    "2N/D0",
+    "3F/4F",
+    "3G/D7",
+    "3J/D3",
+    "3K/D6",
+    "3N/D2",
+    "4A/5R",
+    "4A/4K",
+    "4B/4-",
+    "4C/5V",
+    "4F/5F",
+    "4G/5J",
+    "4H/5A",
+    "4J/5G",
+    "4L/4J",
+    "5B/5-",
+    "5C/6R",
+    "5F/6F",
+    "5H/5+",
+    "5S/5W",
+    "5U/5Z",
+    "5W/5X",
+    "5Y/6Y",
+    "6A/6C",
+    "6B/6-",
+    "6C/6V",
+    "6F/6-",
+    "6H/5-",
+    "6S/6W",
+    "6U/6Z",
+    "6W/6X",
+    "6Y/6+",
+    "D16/D19",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/4H",
+    "1F/2F",
+    "1G/3H",
+    "1H/6G",
+    "1J/2H",
+    "1K/3L",
+    "1L/6J",
+    "1N/2L",
+    "2C/4K",
+    "2C/3C",
+    "2F/3F",
+    "2G/D5",
+    "2J/D1",
+    "2K/D4",
+    "2N/D0",
+    "3F/4F",
+    "3G/D7",
+    "3J/D3",
+    "3K/D6",
+    "3N/D2",
+    "4A/5R",
+    "4A/4K",
+    "4B/4-",
+    "4C/5V",
+    "4F/5F",
+    "4G/5J",
+    "4H/5A",
+    "4J/5G",
+    "4L/4J",
+    "5B/5-",
+    "5C/6R",
+    "5F/6F",
+    "5H/5+",
+    "5S/5W",
+    "5U/5Z",
+    "5W/5X",
+    "5Y/6Y",
+    "6A/6C",
+    "6B/6-",
+    "6C/6V",
+    "6F/6-",
+    "6H/5-",
+    "6S/6W",
+    "6U/6Z",
+    "6W/6X",
+    "6Y/6+",
+    "D16/D19",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 0 + 0 = 0. A = 0 (switches 5, 6 RIGHT), B = 0. 6V and 5V float (6W-6X and 5W-5X open, buttons up); 6R and 5R float (switches RIGHT), so relays 4-6 and lights 4-6 are off; 4H gets no + (relays 4, 5 off: 4J-5G open), relays 1-3 off. Minus 6H-6J-1L-1N-2L-2N-D0 stops the dial at 0",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 1 + 0 = 1. A = 1 (switch 6 LEFT), B = 0. + 6Y-6Z-6U-6V-6C/6A: relay 6 and light 6 on (s0 = a0 XOR b0); 6R gets nothing (6W needs pb6 down), relay 5 off; 4H dead, relays 1-3 and lights 4, 5 off. Minus 6H-6G-1H-1J-2H-2J-D1",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 1 + 1 = 2. A = 1, B = 1 (pb6 down). 6Z opens, 6V floats: relay 6, light 6 off. + 6Y-6X-6W-6S-6R-5C: relay 5 on (carry c0). 5H(+)-5G-4J-4H (relay 4 off): light 5 and relay 1 on (s1 = x1 XOR c0 = 1). 4A dead: light 4, relays 2, 3 off. Minus 6H-6J-1L-1K-3L-3N-D2",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 1 + 0 = 1. pb6 released: back to A = 1, B = 0, same paths as the sum-1 checkpoint; relay 5 drops (6W dead), relay 1 drops (4H dead). Minus 6H-6G-1H-1J-2H-2J-D1",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 3 + 0 = 3. A = 3 (switch 5 LEFT too), B = 0. + 5Y-5Z-5U-5V-4C: relay 4 on (x1 = 1). Relay 6 on as before. 5H(+)-5J-4G-4H (relay 5 off, relay 4 on): light 5, relay 1 on. 4A: 5R needs pb5 down, 4K-4L-4J-5G open (relay 5 off): light 4, relays 2, 3 off. Minus 6H-6G-1H-1G-3H-3J-D3",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 3 + 1 = 4. A = 3, B = 1 (pb6 down). Relay 6, light 6 off; relay 5 on via 6X-6W-6S-6R-5C; relay 4 on. 4H: 4G-5J opens (relay 5 on), 4J not on the arm: light 5, relay 1 off. Carry ripple 5H(+)-5G-4J-4L-4K (relay 4 on)-4A: light 4 on, relays 2, 3 on via 2C/3C. Minus 6H-6J-1L-1N-2L-2K-D4",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 3 + 3 = 6. A = 3, B = 3 (pb5 and pb6 down). 5Z opens, 5V floats: relay 4 off. + 5Y-5X-5W-5S-5R-4A (g1): light 4, relays 2, 3 on. Relay 5 on, relay 6 off. 5H(+)-5G-4J-4H (relay 4 off): light 5, relay 1 on. Minus 6H-6J-1L-1K-3L-3K-D6",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 3 + 0 = 3. pb5 and pb6 released in one tick: back to A = 3, B = 0, the sum-3 paths. Minus 6H-6G-1H-1G-3H-3J-D3",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 2 + 0 = 2. A = 2 (switch 6 RIGHT), B = 0. 6V-6W-6X open (pb6 up): relay 6, light 6 off; 6S-6T: 5C dead, relay 5 off. Relay 4 on (5V-5U-5Z-5Y). 5H(+)-5J-4G-4H: light 5, relay 1 on. 4A dead: light 4, relays 2, 3 off. Minus 6H-6J-1L-1K-3L-3N-D2",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 30000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "cite": "BK4 printed p.87 = book2-3-4.pdf PDF p.93 (purpose and procedure); BK4 printed p.80 = book2-3-4.pdf PDF p.86 (slide switch LEFT = 1, O-C12); BK4 printed p.72 = book2-3-4.pdf PDF p.78 (lights 4, 5, 6 read high to low order); BK1 printed p.20 = book1.pdf PDF p.22 (pointer at N = wiper on DN); derived from topology: 2 + 3 = 5. A = 2, B = 3 (pb5 and pb6 pushed in one tick). + 6Y-6X-6W-6V-6C/6A: relay 6, light 6 on. 5C dead (6S-6T), relay 5 off. 5Z opens: relay 4 off. + 5Y-5X-5W-5S-5R-4A: light 4, relays 2, 3 on. 4H via 4J-5G open (relay 5 off): light 5, relay 1 off. Minus 6H-6G-1H-1J-2H-2G-D5",
+      "quote": "[p.87:] A two-bit adder is combined with binary-to-decimal converter so that when two 2-bit binary numbers are added together the sum is shown on the decimal output dial. / The rotary switch dial will turn to the decimal sum of the numbers. (Binary output lights 4, 5 and 6 will display the sum in binary.) [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 331,
+    "moverTransitions": [
+      16,
+      6,
+      6,
+      8,
+      8,
+      14,
+      0,
+      0,
+      0,
+      0,
+      6,
+      10,
+      0,
+      0,
+      0,
+      0,
+      4,
+      6,
+      106
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 49-wire topology and the p.87 rule, not printed; p.87 gives no input/output pair. No errata for this page; wires as printed (page prints 5Y/6Y and '2N/DO', read D0). Bit convention: slide switch LEFT = 1 (p.80, O-C12), pushbutton down = 1, switch/pushbutton 6 = 1s bit, 5 = 2s bit, lights 4, 5, 6 = 4s, 2s, 1s (p.72 reading). Topology: all coil F ends on minus, pushbutton arms 5Y/6Y on +. Bit 0 half adder: 6V (= 6C, 6A) is + when switch 6 LEFT with pb6 up (6U-6Z-6Y) or RIGHT with pb6 down (6W-6X-6Y), so relay 6 and light 6 = a0 XOR b0; 6S/6W and 6R/5C put + on 5C only with switch 6 LEFT and pb6 down, so relay 5 = carry c0. Bit 1: 5V (= 4C) gives relay 4 = a1 XOR b1 the same way; 5S/5W and 5R/4A give g1 = a1 AND b1 on node 4A (= 4K, 2C, 3C). Relay 4/5 transfer: 5H(+) reaches 4H (light 5 via 5A, relay 1 via 1C) through 5J-4G when relay 4 in and relay 5 out, or 5G-4J when relay 4 out and relay 5 in (s1 = x1 XOR c0); with both in, 5G-4J/4L-4K carries + to 4A (c1 = g1 OR x1 c0), lighting light 4 and pulling relays 2 and 3. Decoder: minus on arm 6H; relay 6 (s0) selects 1H/1L, relay 1 (s1) selects 2H/3H or 2L/3L, relays 2/3 (c1) select D0-D7 so the minus contact is D(sum). D16/D19 ties the wiper to STOP, D17/M+ and D18/M- run the motor, so the dial runs until the wiper meets the minus contact, which shorts STOP (D18-D19 through the wiper) and stops the motor. Script from the reviewed draft: switches 5, 6 RIGHT, power on (10 s), then switch 6 LEFT, pb6 down, pb6 up, switch 5 LEFT, pb6 down, pb5 down, both up in one tick, switch 6 RIGHT, both down in one tick, 30 s dwell after each (as slow as 25 rpm). Sums 0, 1, 2, 1, 3, 4, 6, 3, 2, 5: every reachable dial value 0-6 and both carry paths (ripple 3 + 1, generate 3 + 3 and 2 + 3). D7 is unreachable. The pad-stop on the target rests on the profile's STOP-short coast (O-R5); indicator lamps are not asserted (relay states stand for them). Digest is a placeholder for the runner."
+}

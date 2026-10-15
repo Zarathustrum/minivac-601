@@ -1,0 +1,186 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP5",
+  "source": "BK5-6 printed pp.5-6 = book5-6.pdf PDF pp.11-12",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4A/4+",
+    "4B/D1",
+    "5A/5+",
+    "5B/D14",
+    "5E/5+",
+    "5F/5Z",
+    "5H/5-",
+    "5J/D18",
+    "5Y/D6",
+    "6A/6+",
+    "6B/D7",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D10/D11",
+    "D11/D12",
+    "D12/D13",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4A/4+",
+    "4B/D1",
+    "5A/5+",
+    "5B/D14",
+    "5E/5+",
+    "5F/5Z",
+    "5H/5-",
+    "5J/D18",
+    "5Y/D6",
+    "6A/6+",
+    "6B/D7",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D10/D11",
+    "D11/D12",
+    "D12/D13",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.6 = book5-6.pdf PDF p.12",
+      "quote": "Turn power on. The \"red\" light (light 4) comes ON. / In actual practice, this traffic light would be tied to a complementary light facing the flow of traffic. This traffic light, facing the pedestrian, would normally be red,"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.6 = book5-6.pdf PDF p.12",
+      "quote": "To cross the street: push pushbutton 5 until the \"red\" light (light 4) goes OFF and the \"green light\" (light 6) comes ON."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.6 = book5-6.pdf PDF p.12",
+      "quote": "After the light has turned green, it will go to amber (light 5) and return to red again."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.6 = book5-6.pdf PDF p.12",
+      "quote": "After the light has turned green, it will go to amber (light 5) and return to red again."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.6 = book5-6.pdf PDF p.12",
+      "quote": "After the light has turned green, it will go to amber (light 5) and return to red again. / In actual practice, this traffic light would be tied to a complementary light facing the flow of traffic. This traffic light, facing the pedestrian, would normally be red,"
+    }
+  ],
+  "digest": {
+    "eventCount": 63,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      34
+    ]
+  },
+  "note": "Printed claims only (Step 6). No erratum touches Experiment 5; the 26 printed wires stand (no D13/D14 strap, unlike Experiment 4, as printed). The dial starts at c0 (fixture default; the page gives no starting knob setting). Mechanism read off the wiring: relay 5 (coil fed 5E/5+, 5F/5Z through pb5 N.C. to 5Y/D6) holds whenever the wiper is on the D1-D6 red bus, and its N.C. contact 5H/5J opens the motor feed (5H/5-, 5J/D18; D17/M+, D16/M-), so the dial rests on red; pb5 opens the coil, the motor runs, and the dial must reach the D7-D13 green bus before pb5 is released. pb5 is held until the printed observable (red off, green on) and released at once; the hold length is a script choice. The return-to-red until is followed by a 6 s rest window and a second expect, quoting the page's \"would normally be red\" for the rest state. Not asserted: lamps 5 and 6 off at power-on and at rest, red/green off while amber is lit (not printed as observables; the dial is break-before-make, but lamp filament decay makes neighbouring lamps overlap briefly in the trace, e.g. amber on at 7043.1 ms while green is dim until 7073.8 ms), the dial position at rest (not printed), and the complementary light facing traffic (described, not part of the program). Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; every until and rest window is sized for a run rate as slow as 25 rpm (one revolution 2.4 s). At MV601-REF-A the red rest is on D1: the one-shot drive-removed coast (9.54 deg since 2026-10-14, O-R5) stops the wiper on the pad it reached (at the earlier invented 20 deg the coast carried it from D1 to D2 in one tick). In the motor sweep (2026-10-14, at 9.54 deg) coast_udeg_drive_removed at 14.06-16.88 deg or 39.38-42.19 deg, or contact_arc_udeg at or below 11.25 deg, make script[2] or script[9] fail (the stop coast leaves the wiper in a break-before-make gap on the red bus, relay 5 drops, the motor re-drives and the dial walks off red); run_mrpm passes over 25-60 rpm. This is reported, not tuned (motor-sensitivity.md, O-R5, O-R13)."
+}

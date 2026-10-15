@@ -1,0 +1,42 @@
+#!mv601-trace 1
+# id=III-NOT contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=7
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 > button4 target=1000
+    31.3 * pb4 nc->mid
+    33.8 * pb4 mid->no
+    37.1 * outLamp5 off->dim
+    56.0 * outLamp5 dim->on
+   156.1 > button4 target=0
+   167.3 * pb4 no->mid
+   169.8 * pb4 mid->nc
+   187.4 * outLamp5 on->dim
+   243.1 * outLamp5 dim->off
+   287.5 > button1 target=1000
+   298.7 * pb1 nc->mid
+   301.2 * pb1 mid->no
+   412.4 > button2 target=1000
+   423.6 * pb2 nc->mid
+   426.1 * pb2 mid->no
+   429.3 * outLamp5 off->dim
+   448.2 * outLamp5 dim->on
+   548.3 > button3 target=1000
+   559.5 * pb3 nc->mid
+   562.0 * pb3 mid->no
+   579.6 * outLamp5 on->dim
+   635.3 * outLamp5 dim->off
+   679.7 > button3 target=0
+   690.9 * pb3 no->mid
+   693.4 * pb3 mid->nc
+   696.0 * outLamp5 off->dim
+   714.9 * outLamp5 dim->on
+   815.0 > button2 target=0
+   826.2 * pb2 no->mid
+   828.7 * pb2 mid->nc
+   846.3 * outLamp5 on->dim
+   902.0 * outLamp5 dim->off
+   946.4 > button1 target=0
+   957.6 * pb1 no->mid
+   960.1 * pb1 mid->nc

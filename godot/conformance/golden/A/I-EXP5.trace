@@ -1,0 +1,22 @@
+#!mv601-trace 1
+# id=I-EXP5 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 ? outLamp1=off  "The light does not come on because there is not a closed circuit."
+    20.1 > button1 target=1000
+    31.3 * pb1 nc->mid
+    33.8 * pb1 mid->no
+    37.1 * outLamp1 off->dim
+    56.0 * outLamp1 dim->on
+    76.1 ? outLamp1=on  "Push down pushbutton 1. Light 1 comes ON."
+    76.1 > button1 target=0
+    76.1 > button2 target=1000
+    87.3 * pb1 no->mid  pb2 nc->mid
+    89.8 * pb1 mid->nc  pb2 mid->no
+   121.0 ? outLamp1=on  "Release pushbutton 1 and push down pushbutton 2. The light again comes ON."
+   121.0 > button1 target=1000
+   132.2 * pb1 nc->mid
+   134.7 * pb1 mid->no
+   165.9 ? outLamp1=on  "The circuit is closed and the light comes ON if either pushbutton 1 is down OR if pushbutton 2 is down OR if both pushbutton 1 and pushbutton 2 are down at the same time."

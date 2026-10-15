@@ -1,0 +1,790 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP12-DERIVED",
+  "source": "BK5-6 printed pp.21-23 = book5-6.pdf PDF pp.27-29 (ten-forms sentence p.21, CHARACTER FORMS AND CODES and program p.22, procedure p.23); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/2C",
+    "1F/M9t",
+    "1G/6com",
+    "1H/4K",
+    "1J/D0",
+    "2C/3C",
+    "2F/M5t",
+    "2G/D2",
+    "2H/4G",
+    "2J/D3",
+    "3C/4C",
+    "3F/M6t",
+    "3G/D6",
+    "3H/4N",
+    "3J/D9",
+    "3K/D8",
+    "3L/4J",
+    "3N/D7",
+    "4C/5C",
+    "4F/M8t",
+    "4H/5J",
+    "4L/5K",
+    "5C/6C",
+    "5F/M4t",
+    "5G/D5",
+    "5H/6G",
+    "5L/6J",
+    "5N/D1",
+    "6C/6-",
+    "6F/M7t",
+    "6H/6-",
+    "6X/M10",
+    "6X/D17",
+    "6Y/6+",
+    "6com/D4",
+    "M10/M11",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/2C",
+    "1F/M9t",
+    "1G/6com",
+    "1H/4K",
+    "1J/D0",
+    "2C/3C",
+    "2F/M5t",
+    "2G/D2",
+    "2H/4G",
+    "2J/D3",
+    "3C/4C",
+    "3F/M6t",
+    "3G/D6",
+    "3H/4N",
+    "3J/D9",
+    "3K/D8",
+    "3L/4J",
+    "3N/D7",
+    "4C/5C",
+    "4F/M8t",
+    "4H/5J",
+    "4L/5K",
+    "5C/6C",
+    "5F/M4t",
+    "5G/D5",
+    "5H/6G",
+    "5L/6J",
+    "5N/D1",
+    "6C/6-",
+    "6F/M7t",
+    "6H/6-",
+    "6X/M10",
+    "6X/D17",
+    "6Y/6+",
+    "6com/D4",
+    "M10/M11",
+    "D16/D19",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 43,
+        "a": {
+          "k": "hole",
+          "hole": "M11#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M11#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M11#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M3t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M5t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M9t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (form 9, code 23459) and p.23 = PDF p.29 rule; derived from topology: cells 4, 5, 9 energize relays 5, 2, 1 (cells 2, 3 feed no coil); tree 6H-6J (R6 off) - 5L-5K (R5 on) - 4L-4N (R4 off) - 3H-3J (R3 off) - D9 shorts STOP at pad 9; relay n coil runs nC(-, via the 1C..6C chain and 6C/6-) - indicator lamp - nE - coil - nF - Mnt; cell to relay: M9t=1, M5t=2, M6t=3, M8t=4, M4t=5, M7t=6; pushbutton 6 (6Y/6+) puts + on 6X = M10 = M11 = the drawn cells and on D17 (RUN, D18/M-); D16/D19 STOP shorts when the wiper sits on the one D pad the relay tree ties to 6H(-): 6H-6J-5L | 6H-6G-5H; R6 off, R5 off: 5N/D1; R6 off, R5 on: 5K-4L, R4 on: 4K-1H, R1 on 1G-6com-D4, R1 off 1J/D0; R4 off: 4N-3H, R3 on 3G/D6, R3 off 3J/D9; R6 on, R5 on: 5G/D5; R6 on, R5 off: 5J-4H, R4 on: 4G-2H, R2 on 2G/D2, off 2J/D3; R4 off: 4J-3L, R3 on 3K/D8, off 3N/D7",
+      "quote": "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.23 = book5-6.pdf PDF p.29 rule, form 9 = 23459 on printed p.22 = PDF p.28; derived from topology: with pushbutton 6 held, + on M10/M11 reaches 1F (M9t), 2F (M5t), 5F (M4t); 3F (M6t), 4F (M8t), 6F (M7t) are undrawn; STOP short through D9 holds the knob on 9",
+      "quote": "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 42,
+        "a": {
+          "k": "hole",
+          "hole": "M11#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M10#3"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M2t#1"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "M10#4"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M4t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 40,
+        "a": {
+          "k": "hole",
+          "hole": "M10#5"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M6t#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 41,
+        "a": {
+          "k": "hole",
+          "hole": "M10#6"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "M8t#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 (tenth form, the diamond, code 2468, no numeral printed beside it); p.21 = PDF p.27 \"the numbers 0 through 9 ... ten forms\" so the diamond is 0 by elimination; derived from topology: cells 4, 6, 8 energize relays 5, 3, 4; tree 6H-6J (R6 off) - 5L-5K (R5 on) - 4L-4K (R4 on) - 1H-1J (R1 off) - D0 shorts STOP at pad 0; relay n coil runs nC(-, via the 1C..6C chain and 6C/6-) - indicator lamp - nE - coil - nF - Mnt; cell to relay: M9t=1, M5t=2, M6t=3, M8t=4, M4t=5, M7t=6; pushbutton 6 (6Y/6+) puts + on 6X = M10 = M11 = the drawn cells and on D17 (RUN, D18/M-); D16/D19 STOP shorts when the wiper sits on the one D pad the relay tree ties to 6H(-): 6H-6J-5L | 6H-6G-5H; R6 off, R5 off: 5N/D1; R6 off, R5 on: 5K-4L, R4 on: 4K-1H, R1 on 1G-6com-D4, R1 off 1J/D0; R4 off: 4N-3H, R3 on 3G/D6, R3 off 3J/D9; R6 on, R5 on: 5G/D5; R6 on, R5 off: 5J-4H, R4 on: 4G-2H, R2 on 2G/D2, off 2J/D3; R4 off: 4J-3L, R3 on 3K/D8, off 3N/D7",
+      "quote": "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.22 = book5-6.pdf PDF p.28 diamond 2468, p.21 = PDF p.27 ten forms for 0-9, p.23 = PDF p.29 rule; derived from topology: + on M10/M11 reaches 3F (M6t), 4F (M8t), 5F (M4t); each lit indicator lamp is in series with its energized coil (nC on -); the tree selects only D0, so the STOP short holds the knob on 0",
+      "quote": "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.23 = book5-6.pdf PDF p.29 rule; derived from topology: releasing pushbutton 6 removes + from M10/M11 (every coil) and from D17 (RUN), so all relays drop and the unfed motor leaves the knob on 0",
+      "quote": "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number \"drawn\" on the matrix. [p.21:] We can uniquely define the numbers 0 through 9 using the full game matrix on the MINIVAC. The result will be ten forms, each with a unique recognition code.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 113,
+    "moverTransitions": [
+      4,
+      4,
+      4,
+      4,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      32
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the printed 38-wire topology and the p.23 rule, not printed. No erratum changes a wire; ER-33 (draw on TOP terminals) is honoured by using Mnt holes only. Free wires are cords 38-41 on M10#3..#6 and 42-45 on M11#2..#5, as in C2/V-EXP12; a drawn end goes in Mnt#1 for cells 1-3 and Mnt#2 for cells 4-9 (Mnt#1 holds the coil feed). Derived case: the tenth form, the diamond 2468, which p.22 prints without a numeral and p.21 makes 0 by elimination (programs.json printedUnprinted). Topology gives D0 for it: relays 3, 4, 5 in, 1, 2, 6 out. Script choices, not printed: numeral 9 first, so the knob leaves the power-on D0 and the diamond run has to travel back to 0 (an assert at 0 without the move would not discriminate); relay states for 9 and the diamond, and the post-release state, are derived. Both runs keep relay 6 out (the knife-edge pull-in seen at numeral 8 in C2/V-EXP12). Hold lengths are script choices; untils allow 15 s for a run rate as slow as 25 rpm (profile fallbacks O-R1, O-R3, O-R5)."
+}

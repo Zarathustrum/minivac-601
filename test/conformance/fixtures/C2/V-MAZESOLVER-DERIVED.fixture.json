@@ -1,0 +1,1113 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-MAZESOLVER-DERIVED",
+  "source": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51 (rule p.44 = PDF p.50, program and procedure p.45 = PDF p.51), image-read; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/D8",
+    "1B/1+",
+    "2E/4Z",
+    "2F/2+",
+    "2G/6L",
+    "2H/2-",
+    "2K/4Y",
+    "2L/2-",
+    "3A/4J",
+    "3B/3+",
+    "3E/4E",
+    "3E/6N",
+    "3F/4F",
+    "3F/3+",
+    "3H/D3",
+    "3J/5A",
+    "3K/D2",
+    "3L/3-",
+    "4A/4N",
+    "4B/4+",
+    "4H/D7",
+    "4L/D5",
+    "4Y/5G",
+    "5B/5+",
+    "5E/6E",
+    "5F/6F",
+    "5H/5-",
+    "5Y/5-",
+    "6F/6+",
+    "6G/D19",
+    "6H/5Z",
+    "6Y/D1",
+    "6Z/D19",
+    "D2/D4",
+    "D4/D6",
+    "D6/D8",
+    "D16/M-",
+    "D17/M+",
+    "D18/M-",
+    "6E/free"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 39-wire topology and the p.44 rule, not printed. No erratum touches this program. The free-ended 6E/free* line is script cord 39 on 6E#2 (6E#1 holds 5E/6E); goals use D5#2, D3#2, D7#2 (hole #1 holds 4L/D5, 3H/D3, 4H/D7). Topology: the motor sits permanently on RUN (D17/M+, D18/M-) and stops only when D19 is shorted to minus, through relay 6 N.O. 6G (arm 6H on minus via pushbutton 5 N.C.) or through pushbutton 6 N.C. 6Z (arm 6Y on D1, minus only with the wiper on 1). Relays 5 and 6 (parallel coils) pull in only while the wiper rests on the goal contact. Relay 2 is the memory: set by relay 5, latched through 2K, cleared by pushbutton 4. Relays 3 and 4 (parallel coils) are on when relay 2 is on and relay 6 is out; they blank the path lights 5, 4, 3 (on D3, D5, D7) and light light 1 through the D2-D4-D6-D8 chain. The circuit remembers that a goal was found, not which contact: the goal itself stays the wire. Derived, not printed: removing the goal wire while the dial rests on the goal sends the dial back to 1 by itself (the 6G STOP short opens). Script choices, not printed: goal order D5, D3, D7; pushbutton 6 and 5 held until the dial reaches its target; 3000 ms rests after each until. Rest positions depend on the wiper stopping on the pad with no coast overrun (O-R5, O-R13, O-R14; phase-5-step7-notes V-MAZESOLVER).",
+  "wires": [
+    "1A/D8",
+    "1B/1+",
+    "2E/4Z",
+    "2F/2+",
+    "2G/6L",
+    "2H/2-",
+    "2K/4Y",
+    "2L/2-",
+    "3A/4J",
+    "3B/3+",
+    "3E/4E",
+    "3E/6N",
+    "3F/4F",
+    "3F/3+",
+    "3H/D3",
+    "3J/5A",
+    "3K/D2",
+    "3L/3-",
+    "4A/4N",
+    "4B/4+",
+    "4H/D7",
+    "4L/D5",
+    "4Y/5G",
+    "5B/5+",
+    "5E/6E",
+    "5F/6F",
+    "5H/5-",
+    "5Y/5-",
+    "6F/6+",
+    "6G/D19",
+    "6H/5Z",
+    "6Y/D1",
+    "6Z/D19",
+    "D2/D4",
+    "D4/D6",
+    "D6/D8",
+    "D16/M-",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): after power on, the motor runs until the wiper reaches D1, where D1(-)-6Y-6Z (pushbutton 6 N.C.)-D19 shorts the motor (STOP)",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Turn power on. The computer will go directly to the start position. [p.44:] The start position will be the \"1\" setting on the rotary switch dial.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): at power-on rest no relay coil has a path to minus: 6E/5E hangs on the free goal wire, 2E reaches only 4Z-4Y, whose sources 2K and 5G are open N.O. contacts, and 3E/4E reaches only 6N-6L-2G, open with relay 2 out; the wiper on D1 feeds only 6Y, so the D2-D8 chain and D3, D5, D7 carry no minus and every output light is off (lights 2 and 6 are unwired)",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Turn power on. The computer will go directly to the start position. [p.44:] The start position will be the \"1\" setting on the rotary switch dial.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 6 held opens 6Y-6Z, removing the only STOP short (relay 6 is out), so the dial turns continuously; on release the D1 short returns and the dial stops on 1",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Push pushbutton 6. The computer is now \"exploring\" the possible paths.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): exploring with no goal wire leaves nothing set: the free goal wire never brings minus to 6E/5E, so relay 5 never closes 5G and relay 2 never latches; relays 3 and 4 stay out (2G open) and every output light is off at rest on 1",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Push pushbutton 6. The computer is now \"exploring\" the possible paths.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D5#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 6 opens the D1 STOP short and the dial leaves 1; on D5 relay 6 shorts STOP through 6H-6G, which pushbutton 6 does not touch",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path B: from 1 to 5 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): the wiper on the goal contact puts minus on the goal wire to 6E/5E, so relays 5 and 6 pull in; 6H(-, via 5Z-5Y)-6G shorts D19 to minus (STOP) and the dial rests on the goal; relay 5 N.O. 5H(-)-5G puts minus on 4Y-4Z-2E and relay 2 pulls in and latches through 2L(-)-2K-4Y; relay 6 N.C. 6L-6N is open, so relays 3 and 4 stay out and relay 3 N.O. 3K leaves the D2-D4-D6-D8 chain (and light 1 at 1A/D8) without minus; D5(-)-4L-4N (relay 4 N.C.)-4A, light 4 to 4B(+) on; D3 and D7 carry no minus, so lights 5 and 3 are off; relay 1 is unwired and every indicator lamp hangs on an unwired nC",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path B: from 1 to 5 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 5 opens 5Y-5Z, taking minus off 6H, so the 6G STOP short is gone and the dial leaves D5; relays 5 and 6 drop; the dial runs on to D1, where the pushbutton 6 N.C. short stops it",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Return the computer to its start position by pushing pushbutton 5.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): relay 2 stays latched (2L(-)-2K-4Y-4Z-2E); relays 5 and 6 are out because the wiper left the goal, so relay 6 N.C. 6L-6N closes and 2H(-)-2G-6L-6N-3E/4E pulls relays 3 and 4 in; 3L(-)-3K puts minus on D2-D4-D6-D8 and light 1 (1A/D8, 1B at +) lights; the D1 STOP short (D1 wiper(-)-6Y-6Z-D19, pushbutton 6 released) holds the dial on 1; relay 3 N.C. 3J and relay 4 N.C. 4J and 4N are open, so lights 5, 3 and 4 are off",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Return the computer to its start position by pushing pushbutton 5.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 6 opens the D1 STOP short; the dial runs to D5, where the goal wire pulls relays 5 and 6 and 6H-6G shorts STOP",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths. [p.44:] Path B: from 1 to 5 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): relay 6 N.C. 6L-6N opens on arrival, so relays 3 and 4 drop and light 1 goes out; relay 2 is still latched; the wiper on the goal contact puts minus on the goal wire to 6E/5E, so relays 5 and 6 pull in; 6H(-, via 5Z-5Y)-6G shorts D19 to minus (STOP) and the dial rests on the goal; D5(-)-4L-4N (relay 4 N.C.)-4A, light 4 to 4B(+) on; D3 and D7 carry no minus, so lights 5 and 3 are off",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] If you now push pushbutton 6, the computer will go directly to the \"correct\" path without exploring possible paths.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): removing the goal wire takes minus off 6E/5E, relays 5 and 6 drop, the 6G STOP short opens and nothing else shorts STOP off D1, so the dial leaves the goal by itself and stops on 1",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] To set the computer to the \"exploring\" stage again, remove the connection from 6E to the path you selected and push the \"forget\" button—pushbutton 4.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): with the goal wire removed and no button pressed, relay 2 stays latched (2L(-)-2K-4Y-4Z-2E); relays 5 and 6 are out because the wiper left the goal, so relay 6 N.C. 6L-6N closes and 2H(-)-2G-6L-6N-3E/4E pulls relays 3 and 4 in; 3L(-)-3K puts minus on D2-D4-D6-D8 and light 1 (1A/D8, 1B at +) lights; the D1 STOP short (D1 wiper(-)-6Y-6Z-D19, pushbutton 6 released) holds the dial on 1; relay 3 N.C. 3J and relay 4 N.C. 4J and 4N are open, so lights 5, 3 and 4 are off",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] To set the computer to the \"exploring\" stage again, remove the connection from 6E to the path you selected and push the \"forget\" button—pushbutton 4.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 4 opens 4Y-4Z, so relay 2 loses its coil minus and drops, opening its latch 2K; on release 4Y has no source (2K and 5G open) and relay 2 stays out; 2G opens, relays 3 and 4 drop, 3K takes minus off the D2-D8 chain and light 1 goes out; the D1 short holds the dial on 1",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] To set the computer to the \"exploring\" stage again, remove the connection from 6E to the path you selected and push the \"forget\" button—pushbutton 4.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D3#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 6 opens the D1 STOP short; on D3 the goal wire pulls relays 5 and 6 and 6H-6G shorts STOP",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path A: from 1 to 3 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): the wiper on the goal contact puts minus on the goal wire to 6E/5E, so relays 5 and 6 pull in; 6H(-, via 5Z-5Y)-6G shorts D19 to minus (STOP) and the dial rests on the goal; relay 5 N.O. 5H(-)-5G puts minus on 4Y-4Z-2E and relay 2 pulls in and latches through 2L(-)-2K-4Y; relay 6 N.C. 6L-6N is open, so relays 3 and 4 stay out and relay 3 N.O. 3K leaves the D2-D4-D6-D8 chain (and light 1 at 1A/D8) without minus; D3(-)-3H-3J (relay 3 N.C.)-5A, light 5 to 5B(+) on; D5 and D7 carry no minus, so lights 4 and 3 are off",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path A: from 1 to 3 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): removing the goal wire drops relays 5 and 6 and opens the 6G STOP short; the dial runs to D1 and stops",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] To set the computer to the \"exploring\" stage again, remove the connection from 6E to the path you selected and push the \"forget\" button—pushbutton 4.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 2000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): after the goal wire is removed and pushbutton 4 pushed: relay 2's latch broken at 4Y-4Z, relays 3 and 4 out, light 1 out, dial held on 1 by the D1 short",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] To set the computer to the \"exploring\" stage again, remove the connection from 6E to the path you selected and push the \"forget\" button—pushbutton 4.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 39,
+        "a": {
+          "k": "hole",
+          "hole": "6E#2"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D7#2"
+        }
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): pushbutton 6 opens the D1 STOP short; on D7 the goal wire pulls relays 5 and 6 and 6H-6G shorts STOP",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path C: from 1 to 7 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.44-45 = book5-6.pdf PDF pp.50-51; rule: learn the correct path, remember it until told to forget; derived from topology (motor on RUN permanently, D17/M+ and D18/M-; wiper D16/M-; STOP short D19-D18 through 6G (relay 6 N.O., arm 6H on minus via pushbutton 5 N.C. 5Z-5Y) or through 6Z (pushbutton 6 N.C., arm 6Y on D1); relays 5 and 6 coils in parallel, F ends on plus, E ends on the goal wire; relay 2 coil 2E fed from 4Z-4Y (pushbutton 4 N.C.) by relay 5 N.O. 5G or its own latch 2K-2L; relays 3 and 4 coils in parallel, 3E fed through relay 6 N.C. 6N-6L from relay 2 N.O. 2G-2H; every nC unwired, so no indicator lamp can light): the wiper on the goal contact puts minus on the goal wire to 6E/5E, so relays 5 and 6 pull in; 6H(-, via 5Z-5Y)-6G shorts D19 to minus (STOP) and the dial rests on the goal; relay 5 N.O. 5H(-)-5G puts minus on 4Y-4Z-2E and relay 2 pulls in and latches through 2L(-)-2K-4Y; relay 6 N.C. 6L-6N is open, so relays 3 and 4 stay out and relay 3 N.O. 3K leaves the D2-D4-D6-D8 chain (and light 1 at 1A/D8) without minus; D7(-)-4H-4J (relay 4 N.C.)-3A, light 3 to 3B(+) on; D3 and D5 carry no minus, so lights 5 and 4 are off",
+      "quote": "[p.44:] The program which follows permits the computer to \"learn\" which of three possible paths is the correct path to a goal, and to \"remember\" the correct path until instructed to \"forget\" it. [p.45:] The computer will find this correct path and will then always take that path until it is instructed to forget it. [p.45:] Release pushbutton 6 and indicate a \"correct\" path by connecting the wire from 6E to D3, D5 or D7. Push pushbutton 6 again. The computer selects the \"Correct\" path and stops. [p.45 footnote:] * This programming wire may be connected to D3, D5 or D7 to indicate the goal. [p.44:] Path C: from 1 to 7 on the rotary switch dial",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 467,
+    "moverTransitions": [
+      0,
+      10,
+      12,
+      12,
+      14,
+      14,
+      0,
+      0,
+      0,
+      8,
+      4,
+      20,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      206
+    ]
+  }
+}

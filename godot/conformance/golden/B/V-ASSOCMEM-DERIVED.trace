@@ -1,0 +1,340 @@
+#!mv601-trace 1
+# id=V-ASSOCMEM-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=40
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=4 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 > button1 target=1000
+   231.3 * pb1 nc->mid
+   233.8 * pb1 mid->no
+   243.7 * indLamp1 off->dim
+   244.8 * relay1 nc->mid
+   246.1 * relay1 mid->no
+   249.4 * outLamp1 off->dim
+   268.3 * outLamp1 dim->on
+   283.8 * indLamp1 dim->on
+   503.9 > button1 target=0
+   515.1 * pb1 no->mid
+   517.6 * pb1 mid->nc
+   519.8 * relay1 no->mid
+   520.7 * relay1 mid->nc
+   526.3 * indLamp1 on->dim
+   540.3 * outLamp1 on->dim
+   581.9 * indLamp1 dim->off
+   595.9 * outLamp1 dim->off
+   760.4 > button2 target=1000
+   771.6 * pb2 nc->mid
+   774.1 * pb2 mid->no
+   784.0 * indLamp2 off->dim
+   785.3 * relay2 nc->mid
+   786.6 * relay2 mid->no
+   789.9 * outLamp2 off->dim
+   808.8 * outLamp2 dim->on
+   824.1 * indLamp2 dim->on
+  1044.2 > button2 target=0
+  1055.4 * pb2 no->mid
+  1057.9 * pb2 mid->nc
+  1060.1 * relay2 no->mid
+  1061.0 * relay2 mid->nc
+  1066.6 * indLamp2 on->dim
+  1080.6 * outLamp2 on->dim
+  1122.2 * indLamp2 dim->off
+  1136.2 * outLamp2 dim->off
+  1300.7 > button3 target=1000
+  1311.9 * pb3 nc->mid
+  1314.4 * pb3 mid->no
+  1324.3 * indLamp3 off->dim
+  1325.7 * relay3 nc->mid
+  1327.0 * relay3 mid->no
+  1330.3 * outLamp3 off->dim
+  1349.2 * outLamp3 dim->on
+  1364.4 * indLamp3 dim->on
+  1584.5 > button3 target=0
+  1595.7 * pb3 no->mid
+  1598.2 * pb3 mid->nc
+  1600.4 * relay3 no->mid
+  1601.3 * relay3 mid->nc
+  1606.9 * indLamp3 on->dim
+  1620.9 * outLamp3 on->dim
+  1662.5 * indLamp3 dim->off
+  1676.5 * outLamp3 dim->off
+  1841.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off indLamp4=off indLamp5=off indLamp6=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  1841.0 > button2 target=1000
+  1841.0 > button3 target=1000
+  1852.2 * pb2 nc->mid  pb3 nc->mid
+  1854.7 * pb2 mid->no  pb3 mid->no
+  1864.6 * indLamp2 off->dim  indLamp3 off->dim
+  1865.9 * relay2 nc->mid
+  1866.0 * relay3 nc->mid
+  1867.2 * relay2 mid->no
+  1867.3 * relay3 mid->no
+  1870.5 * outLamp2 off->dim
+  1870.6 * outLamp3 off->dim
+  1877.4 * indLamp5 off->dim
+  1879.4 * relay5 nc->mid
+  1880.7 * relay5 mid->no
+  1889.6 * outLamp2 dim->on
+  1889.7 * outLamp3 dim->on
+  1905.1 * indLamp2 dim->on  indLamp3 dim->on
+  1917.8 * indLamp5 dim->on
+  2137.9 > button2 target=0
+  2137.9 > button3 target=0
+  2149.1 * pb2 no->mid  pb3 no->mid
+  2151.6 * pb2 mid->nc  pb3 mid->nc
+  2153.8 * relay2 no->mid  relay3 no->mid
+  2154.7 * relay2 mid->nc  relay3 mid->nc
+  2160.2 * indLamp2 on->dim  indLamp3 on->dim
+  2174.2 * outLamp2 on->dim  outLamp3 on->dim
+  2215.8 * indLamp2 dim->off  indLamp3 dim->off
+  2229.8 * outLamp2 dim->off  outLamp3 dim->off
+  2394.3 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=nc outLamp1=off outLamp2=off outLamp3=off indLamp4=off indLamp6=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  2394.3 > button1 target=1000
+  2405.5 * pb1 nc->mid
+  2408.0 * pb1 mid->no
+  2417.9 * indLamp1 off->dim
+  2419.0 * relay1 nc->mid
+  2420.3 * relay1 mid->no
+  2423.6 * outLamp1 off->dim
+  2442.5 * outLamp1 dim->on
+  2458.1 * indLamp1 dim->on
+  2678.2 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=no relay6=nc outLamp1=on outLamp2=off outLamp3=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  2678.2 > button1 target=0
+  2689.4 * pb1 no->mid
+  2691.9 * pb1 mid->nc
+  2694.1 * relay1 no->mid
+  2695.0 * relay1 mid->nc
+  2700.5 * indLamp1 on->dim
+  2714.5 * outLamp1 on->dim
+  2756.2 * indLamp1 dim->off
+  2770.2 * outLamp1 dim->off
+  2934.6 > button3 target=1000
+  2945.8 * pb3 nc->mid
+  2948.3 * pb3 mid->no
+  2958.2 * indLamp2 off->dim  indLamp3 off->dim
+  2959.5 * relay2 nc->mid
+  2959.7 * relay3 nc->mid
+  2960.8 * relay2 mid->no
+  2961.0 * relay3 mid->no
+  2964.1 * outLamp2 off->dim
+  2964.3 * outLamp3 off->dim
+  2983.2 * outLamp2 dim->on
+  2983.4 * outLamp3 dim->on
+  2998.7 * indLamp2 dim->on  indLamp3 dim->on
+  3218.8 ? relay1=nc relay2=no relay3=no relay4=nc relay5=no relay6=nc outLamp1=off outLamp2=on outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  3218.8 > button3 target=0
+  3230.0 * pb3 no->mid
+  3232.5 * pb3 mid->nc
+  3234.7 * relay2 no->mid  relay3 no->mid
+  3235.6 * relay2 mid->nc  relay3 mid->nc
+  3241.1 * indLamp2 on->dim  indLamp3 on->dim
+  3255.1 * outLamp2 on->dim  outLamp3 on->dim
+  3296.7 * indLamp2 dim->off  indLamp3 dim->off
+  3310.7 * outLamp2 dim->off  outLamp3 dim->off
+  3475.2 > button1 target=1000
+  3475.2 > button2 target=1000
+  3475.2 > button3 target=1000
+  3486.4 * pb1 nc->mid  pb2 nc->mid  pb3 nc->mid
+  3488.9 * pb1 mid->no  pb2 mid->no  pb3 mid->no
+  3498.8 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim
+  3499.9 * relay1 nc->mid
+  3500.1 * relay2 nc->mid
+  3500.3 * relay3 nc->mid
+  3501.2 * relay1 mid->no
+  3501.4 * relay2 mid->no
+  3501.6 * relay3 mid->no
+  3504.5 * outLamp1 off->dim
+  3504.7 * outLamp2 off->dim
+  3504.9 * outLamp3 off->dim
+  3511.6 * indLamp4 off->dim
+  3511.8 * indLamp6 off->dim
+  3513.6 * relay4 nc->mid
+  3514.2 * relay6 nc->mid
+  3514.9 * relay4 mid->no
+  3515.5 * relay6 mid->no
+  3523.8 * outLamp1 dim->on
+  3524.0 * outLamp2 dim->on
+  3524.2 * outLamp3 dim->on
+  3539.9 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on
+  3552.5 * indLamp4 dim->on
+  3552.7 * indLamp6 dim->on
+  3772.8 > button1 target=0
+  3772.8 > button2 target=0
+  3772.8 > button3 target=0
+  3784.0 * pb1 no->mid  pb2 no->mid  pb3 no->mid
+  3786.5 * pb1 mid->nc  pb2 mid->nc  pb3 mid->nc
+  3788.6 * relay3 no->mid
+  3788.7 * relay1 no->mid  relay2 no->mid
+  3789.5 * relay3 mid->nc
+  3789.6 * relay1 mid->nc  relay2 mid->nc
+  3794.9 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+  3808.9 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim
+  3850.5 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+  3864.6 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off
+  4029.0 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=no relay6=no outLamp1=off outLamp2=off outLamp3=off indLamp1=off indLamp2=off indLamp3=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  4029.0 > button2 target=1000
+  4040.2 * pb2 nc->mid
+  4042.7 * pb2 mid->no
+  4052.6 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim
+  4053.8 * relay1 nc->mid
+  4054.0 * relay2 nc->mid
+  4054.1 * relay3 nc->mid
+  4055.1 * relay1 mid->no
+  4055.3 * relay2 mid->no
+  4055.4 * relay3 mid->no
+  4058.4 * outLamp1 off->dim  outLamp3 off->dim
+  4058.6 * outLamp2 off->dim
+  4077.7 * outLamp1 dim->on  outLamp3 dim->on
+  4077.9 * outLamp2 dim->on
+  4093.7 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on
+  4313.8 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  4313.8 > button2 target=0
+  4325.0 * pb2 no->mid
+  4327.5 * pb2 mid->nc
+  4329.6 * relay3 no->mid
+  4329.7 * relay1 no->mid  relay2 no->mid
+  4330.5 * relay3 mid->nc
+  4330.6 * relay1 mid->nc  relay2 mid->nc
+  4335.9 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+  4349.9 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim
+  4391.5 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+  4405.6 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off
+  4570.0 > button6 target=1000
+  4581.2 * pb6 nc->mid
+  4583.7 * pb6 mid->no
+  4585.8 * relay4 no->mid  relay5 no->mid  relay6 no->mid
+  4586.7 * relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+  4592.4 * indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  4648.0 * indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  4814.9 > button6 target=0
+  4826.1 * pb6 no->mid
+  4828.6 * pb6 mid->nc
+  5059.8 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off indLamp4=off indLamp5=off indLamp6=off  "To instruct the computer to forget the associations, push the \"forget\" button—pushbutton 6. The computer is once again ready to \"learn\" associations."
+  5059.8 > button1 target=1000
+  5059.8 > button2 target=1000
+  5071.0 * pb1 nc->mid  pb2 nc->mid
+  5073.5 * pb1 mid->no  pb2 mid->no
+  5083.4 * indLamp1 off->dim  indLamp2 off->dim
+  5084.5 * relay1 nc->mid
+  5084.7 * relay2 nc->mid
+  5085.8 * relay1 mid->no
+  5086.0 * relay2 mid->no
+  5089.1 * outLamp1 off->dim
+  5089.3 * outLamp2 off->dim
+  5096.1 * indLamp4 off->dim
+  5097.9 * relay4 nc->mid
+  5099.2 * relay4 mid->no
+  5108.2 * outLamp1 dim->on
+  5108.4 * outLamp2 dim->on
+  5123.9 * indLamp1 dim->on  indLamp2 dim->on
+  5136.5 * indLamp4 dim->on
+  5356.6 > button1 target=0
+  5356.6 > button2 target=0
+  5367.8 * pb1 no->mid  pb2 no->mid
+  5370.3 * pb1 mid->nc  pb2 mid->nc
+  5372.5 * relay1 no->mid  relay2 no->mid
+  5373.4 * relay1 mid->nc  relay2 mid->nc
+  5378.9 * indLamp1 on->dim  indLamp2 on->dim
+  5392.9 * outLamp1 on->dim  outLamp2 on->dim
+  5434.5 * indLamp1 dim->off  indLamp2 dim->off
+  5448.5 * outLamp1 dim->off  outLamp2 dim->off
+  5613.0 > button2 target=1000
+  5624.2 * pb2 nc->mid
+  5626.7 * pb2 mid->no
+  5636.6 * indLamp1 off->dim  indLamp2 off->dim
+  5637.7 * relay1 nc->mid
+  5637.9 * relay2 nc->mid
+  5639.0 * relay1 mid->no
+  5639.2 * relay2 mid->no
+  5642.3 * outLamp1 off->dim
+  5642.5 * outLamp2 off->dim
+  5661.4 * outLamp1 dim->on
+  5661.6 * outLamp2 dim->on
+  5677.1 * indLamp1 dim->on  indLamp2 dim->on
+  5897.2 ? relay1=no relay2=no relay3=nc relay4=no relay5=nc relay6=nc outLamp1=on outLamp2=on outLamp3=off  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it. ... To instruct the computer to forget the associations, push the \"forget\" button—pushbutton 6. The computer is once again ready to \"learn\" associations."
+  5897.2 > button2 target=0
+  5908.4 * pb2 no->mid
+  5910.9 * pb2 mid->nc
+  5913.1 * relay1 no->mid  relay2 no->mid
+  5914.0 * relay1 mid->nc  relay2 mid->nc
+  5919.5 * indLamp1 on->dim  indLamp2 on->dim
+  5933.5 * outLamp1 on->dim  outLamp2 on->dim
+  5975.1 * indLamp1 dim->off  indLamp2 dim->off
+  5989.1 * outLamp1 dim->off  outLamp2 dim->off
+  6153.6 > button3 target=1000
+  6164.8 * pb3 nc->mid
+  6167.3 * pb3 mid->no
+  6177.2 * indLamp3 off->dim
+  6178.7 * relay3 nc->mid
+  6180.0 * relay3 mid->no
+  6183.3 * outLamp3 off->dim
+  6202.2 * outLamp3 dim->on
+  6217.4 * indLamp3 dim->on
+  6437.5 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it."
+  6437.5 > button3 target=0
+  6448.7 * pb3 no->mid
+  6451.2 * pb3 mid->nc
+  6453.4 * relay3 no->mid
+  6454.3 * relay3 mid->nc
+  6459.8 * indLamp3 on->dim
+  6473.8 * outLamp3 on->dim
+  6515.5 * indLamp3 dim->off
+  6529.5 * outLamp3 dim->off
+  6693.9 > button6 target=1000
+  6705.1 * pb6 nc->mid
+  6707.6 * pb6 mid->no
+  6709.7 * relay4 no->mid
+  6710.6 * relay4 mid->nc
+  6716.4 * indLamp4 on->dim
+  6772.0 * indLamp4 dim->off
+  6938.8 > button6 target=0
+  6950.0 * pb6 no->mid
+  6952.5 * pb6 mid->nc
+  7183.7 > button1 target=1000
+  7183.7 > button3 target=1000
+  7194.9 * pb1 nc->mid  pb3 nc->mid
+  7197.4 * pb1 mid->no  pb3 mid->no
+  7207.3 * indLamp1 off->dim  indLamp3 off->dim
+  7208.4 * relay1 nc->mid
+  7208.7 * relay3 nc->mid
+  7209.7 * relay1 mid->no
+  7210.0 * relay3 mid->no
+  7213.0 * outLamp1 off->dim
+  7213.3 * outLamp3 off->dim
+  7220.1 * indLamp6 off->dim
+  7222.3 * relay6 nc->mid
+  7223.6 * relay6 mid->no
+  7232.1 * outLamp1 dim->on
+  7232.4 * outLamp3 dim->on
+  7247.8 * indLamp1 dim->on  indLamp3 dim->on
+  7260.5 * indLamp6 dim->on
+  7480.6 > button1 target=0
+  7480.6 > button3 target=0
+  7491.8 * pb1 no->mid  pb3 no->mid
+  7494.3 * pb1 mid->nc  pb3 mid->nc
+  7496.5 * relay1 no->mid  relay3 no->mid
+  7497.4 * relay1 mid->nc  relay3 mid->nc
+  7502.9 * indLamp1 on->dim  indLamp3 on->dim
+  7516.9 * outLamp1 on->dim  outLamp3 on->dim
+  7558.5 * indLamp1 dim->off  indLamp3 dim->off
+  7572.5 * outLamp1 dim->off  outLamp3 dim->off
+  7737.0 > button3 target=1000
+  7748.2 * pb3 nc->mid
+  7750.7 * pb3 mid->no
+  7760.6 * indLamp1 off->dim  indLamp3 off->dim
+  7761.7 * relay1 nc->mid
+  7762.1 * relay3 nc->mid
+  7763.0 * relay1 mid->no
+  7763.4 * relay3 mid->no
+  7766.3 * outLamp1 off->dim  outLamp3 off->dim
+  7785.4 * outLamp1 dim->on  outLamp3 dim->on
+  7801.1 * indLamp1 dim->on  indLamp3 dim->on
+  8021.2 ? relay1=no relay2=nc relay3=no relay4=nc relay5=nc relay6=no outLamp1=on outLamp2=off outLamp3=on  "MINIVAC is programmed so that if pushbuttons 1, 2 or 3 are pushed separately lights 1, 2 or 3 respectively will come on. However, if two or three pushbuttons are pushed simultaneously, the computer will remember them in association. Once any combination of pushbuttons has been pushed, the computer will turn on all associated lights whenever any one of the associated pushbuttons is pushed. MINIVAC will remember the association until instructed to forget it. ... To instruct the computer to forget the associations, push the \"forget\" button—pushbutton 6. The computer is once again ready to \"learn\" associations."
+  8021.2 > button3 target=0
+  8032.4 * pb3 no->mid
+  8034.9 * pb3 mid->nc
+  8037.1 * relay1 no->mid  relay3 no->mid
+  8038.0 * relay1 mid->nc  relay3 mid->nc
+  8043.5 * indLamp1 on->dim  indLamp3 on->dim
+  8057.5 * outLamp1 on->dim  outLamp3 on->dim
+  8099.1 * indLamp1 dim->off  indLamp3 dim->off
+  8113.1 * outLamp1 dim->off  outLamp3 dim->off

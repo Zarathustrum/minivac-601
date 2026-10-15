@@ -1,0 +1,402 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of gap-canonical-errata-applied-program-corpus.json",
+  "gap_question": "Where is the single reconciled, errata-applied, image-verified program corpus with per-program expected observable output, from which golden fixtures are generated?",
+  "verifier": "subagent gap-verify-canonical-errata-applied-program-corpus",
+  "date": "2026-08-30",
+  "target_file": "docs/research/raw/gap-canonical-errata-applied-program-corpus.json",
+  "oracle_only_compliance": "I did not open, fetch, clone, read or quote the source of any existing Minivac emulator (minivac.greg.technology or any repository). Every read below is a local PDF, its pdftotext -layout text layer, or a 300-dpi page render I made myself.",
+
+  "posture": "The target file is unusually careful and its transcription work survives adversarial re-reading almost intact. I re-derived every wire list it claims to have image-verified, independently confirmed six of its eight binding rulings, image-verified two of its own stated open items and closed them in its favour, and found ZERO fabricated wires and ZERO hallucinated terminal letters. What it does have wrong is (a) two fixture-tier assignments that contradict its own tier definitions, (b) one expected-value observable recorded against the wrong observable class, (c) one worked example inside its named fallback that is electrically backwards, (d) one 'not settled by the sources' item that IS settled in Book I, and (e) a set of missed Book IV material that includes the single richest printed expected-output table in the whole manual set.",
+
+  "sources_i_opened_myself": [
+    {"file": "docs/research/raw/pdf/errata.pdf", "how": "pdftotext -layout full text, plus three 300-dpi crops I rendered (p1 right column bottom in two slices, p2 right column, p4 right column)"},
+    {"file": "docs/research/raw/pdf/errata.txt", "how": "read in full, specifically to test RUL-08's refutation of the gap brief"},
+    {"file": "docs/research/raw/pdf/book2-3-4.pdf", "how": "pdftotext -layout of PDF pp.5, 13, 18, 19, 20, 21, 42, 43, 47, 50, 74, 75, 76, 77, 78, 79; plus one 300-dpi crop of PDF p76"},
+    {"file": "docs/research/raw/pdf/book1.pdf", "how": "pdftotext -layout of PDF pp.7-23; plus one 300-dpi crop of PDF p33"},
+    {"file": "docs/research/raw/pdf/book5-6.pdf", "how": "pdftotext -layout of PDF p62 (Tic-Tac-Toe program table), to test RUL-01"},
+    {"file": "docs/research/raw/find-programs.json", "how": "structural read - program count and image_reads_spent count, to test RUL-05's premise"},
+    {"file": "docs/research/raw/verify-programs.json", "how": "structural read - the 14 recovered programs, to test merge step 2"},
+    {"file": "docs/", "how": "directory listing, to test whether the corpus the gap question asks for exists"}
+  ],
+
+  "image_reads_spent": [
+    "errata.pdf PDF p2, right column @300dpi - the full THREE-BIT BINARY COUNTER ALTERNATE CIRCUIT diagram, 48-line program table, and procedure paragraph",
+    "errata.pdf PDF p1, right column bottom @300dpi (two slices) - ER-05, ER-06, the BOOK III page 36 heading, and the full replacement circuit diagram beneath it",
+    "errata.pdf PDF p4, right column @300dpi - ER-43 (Match Game), ER-44 (Tic-Tac-Toe), ER-45 (Mind Reading Trick), ER-46 (Reaction Time Tester), the second-edition note and the editor's name",
+    "book2-3-4.pdf PDF p76 @300dpi - SINGLE-INPUT FLIP-FLOP SECOND VERSION: full circuit diagram, 14-line program table, printed 3-step procedure, and the 4-line carry addition",
+    "book1.pdf PDF p33 @300dpi - ANSWER 13 and ANSWER 14 wire lists and circuit diagrams"
+  ],
+
+  "headline": "The target file's transcriptions hold up. Its framing does not, in five specific places, and its fixture tiering would misfile a large slice of the corpus if run mechanically. Separately: the corpus itself still does not exist - docs/programs.json is not on disk - so the gap the file was spawned to close is not closed. The file says as much in its own first section, which is honest, but the gap must stay open.",
+
+  "refuted": [
+    {
+      "id": "RF-01",
+      "severity": "high",
+      "claim": "II-EXP2 (Book II Experiment 2, Decimal Input) has fixture_tier 'A' and appears in tier_A_seed_set_build_this_first.",
+      "correction": "II-EXP2 is tier C by the target file's OWN tier-C criterion. Its 23-wire program contains 5Y/D16, D1/1G, D2/2G, D3/3G, D4/4G and D5/5G - six rotary-switch terminals. The file's tier C criterion reads 'Any program touching D0..D19, M+, M-, or the RUN/STOP/ARM jacks', and its tier C pass criterion is 'deferred. Do not attempt until the rotary timing model exists.' The file therefore simultaneously says build this first and do not attempt this.",
+      "evidence": "book2-3-4.pdf PDF p13 (printed p.7), pdftotext -layout: the 5-column program table reads 1H/2H, 2H/3H, 3H/4H, 4H/5H, 5H/6Y | 6Z/6+, 6Y/5X, 5Y/D16, D1/1G, 1G/1C | 1F/1-, D2/2G, 2G/2C, 2F/2-, D3/3G | 3G/3C, 3F/3-, D4/4G, 4G/4C, 4F/4- | D5/5G, 5G/5C, 5F/5-. [verified from text layer, and the count 23 matches the file's own image read]",
+      "note_on_the_right_fix": "The defensible repair is to split tier C, not to move the program. II-EXP2 and I-EXP11 need only the STATIC dial-position-to-contact mapping (knob at n closes D16-Dn); neither runs the motor. Tier C as written conflates 'needs rotary contact geometry' with 'needs the motor stepping model'. Proposed: C1 = static rotary position, buildable now; C2 = motor stepping, deferred. That is a judgement call and must be labelled as one, not slipped in.",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-02",
+      "severity": "high",
+      "claim": "I-EXP11 (book1.pdf printed p.21) appears in tier_A_seed_set_build_this_first with no qualification.",
+      "correction": "Book I Experiment 11 is titled 'MANUAL OPERATION OF ROTARY SWITCH' and its entire five-wire program is rotary: 6+/D16, D1/5A, D2/6A, 5B/6B, 6-/6B. It is tier C under the file's own criterion. Same misfiling as RF-01, same proposed repair.",
+      "evidence": "book1.pdf, printed p.21 (PDF p23), pdftotext -layout: 'EXPERIMENT II ... MANUAL OPERATION OF ROTARY SWITCH ... The program for this circuit is: 6+/D16  D1/5A / D2/6A  5B/6B / 6-/6B'. [verified from text layer]",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-03",
+      "severity": "high",
+      "claim": "II-EXP2's expected script, step 1, asserts then.lamps = {\"4\": \"ON\"}; step 2 asserts then.lamps = {\"4\": \"OFF\"}.",
+      "correction": "Wrong observable class. The printed page says 'Relay light 4 comes ON to indicate that a four is being stored' and 'relay light 4 goes OFF'. A relay light is the indicator built into a relay section (terminals nC-nE); the BINARY OUTPUT lamps are terminals nA-nB and are a different observable in the file's own schema, which keeps separate 'lamps' and 'relays' maps. Decisive: II-EXP2's 23-wire program contains NO A or B terminal at all, so no binary-output lamp is even in the circuit. A fixture generated from this record would assert the state of an unwired lamp. The assertion must be relays = {\"4\": \"ON\"} / {\"4\": \"OFF\"}.",
+      "evidence": "book2-3-4.pdf PDF p13 (printed p.7), pdftotext -layout, steps 1 and 2 verbatim; and the wire list above, which has no nA/nB terminal. The same page also prints the disambiguating sentence: 'With decimal data, the number being remembered corresponds with the section (1-6) which has a relay light ON.' [verified from text layer]",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-04",
+      "severity": "high",
+      "claim": "named_fallback FALLBACK-PWRUP-COLD, behaviour clause: 'A circuit that latches itself on during that first settle (the self-locking memory, for instance) is expected to come up ON - that is a real property of the circuit, not a violation of the fallback.'",
+      "correction": "The named example is electrically backwards. II-SELFLOCK is 1+/1Y, 1+/1H, 1X/1C, 1-/1F, 1G/1A, 1B/1-, 1C/1A. The holding path is 1+ -> 1H (relay 1's contact common) -> 1G (relay 1's NORMALLY OPEN contact) -> 1A -> 1C -> relay lamp -> 1E -> coil -> 1F -> minus. At cold start relay 1 is unoperated, so 1H-1G is OPEN, the coil sees nothing, and the relay stays OFF. The self-locking memory comes up OFF and latches only after pushbutton 1 has been pressed once. The general fallback rule is sound; this worked example is not, and a fixture author following the sentence literally would write a wrong step-1 expectation for one of the file's own tier-B seed programs.",
+      "evidence": "Wire list from verify-programs.json missed_programs_book_ii, II-SELFLOCK (printed p.10, PDF p16) [likely, OCR-sourced]. Contact polarity H=common, G=normally open, J=normally closed is [verified] and derivable two ways from primary text: (a) III-RELAYNOT, book2-3-4.pdf PDF p50, uses 1+/1H, 1J/2A so that lamp 2 is ON when relay 1 is OFF - J must be normally closed; (b) III-RELAYAND corrected by ER-12 uses 1+/1H, 1G/2H so that lamp 3 is ON only when BOTH relays are ON - G must be normally open.",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-05",
+      "severity": "medium",
+      "claim": "not_settled_by_the_sources item 1: 'Relay pull-in and drop-out times, and contact transfer order (break-before-make vs make-before-break). ... No manual gives a millisecond figure.'",
+      "correction": "Contact transfer order IS settled for pushbuttons and for the rotary switch, in Book I, in body text, explicitly, and it is called out there as load-bearing. Only RELAY contact transfer order and the millisecond figures remain open. Bundling three separate questions into one 'not settled' item hides a fact the simulator needs.",
+      "evidence": "book1.pdf printed p.9 (PDF p11), verbatim: 'One light always goes OFF before the other light comes ON. There is a position, with the pushbutton only partly depressed, where both lights are OFF. ... The switch breaks one connection before it makes the other connection. The pushbuttons are thus called \"break-before-make\" switches. This is important because it shows that the normally open contact is never connected directly to the normally closed contact, even for a very short time. This feature is necessary for the proper operation of some MINIVAC circuits.' And book1.pdf printed p.21 (PDF p23), verbatim: 'Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as \"break-before-make,\" and thus is similar to the pushbutton switches.' [verified from text layer - both are clean body text, not display headings]",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-06",
+      "severity": "low",
+      "claim": "flip_flop_settlement headline: Book IV FF2 and Book II FF1 are 'identical in five of six electrical nets'.",
+      "correction": "Contradicts the same file's own result_II_vs_IV2.identical_nets = 4, and 4 is the right number. I rebuilt both partitions independently under the errata's all-plus-one-node / all-minus-one-node rule and the file's stated relabelling {relay 1->5, relay 2->6, pushbutton 1->pushbutton 6}. Book II relabelled: {5A,5E,6G}, {5B,5C,6B,6C,MINUS}, {5F,5H,6F}, {5G,6Y,PLUS}, {5J,6H,6X}, {6A,6E,6J}. Book IV v2: {5A,5F,5H,6F}, {5B,5C,6B,6C,MINUS}, {5E,6G}, {5G,6Y,PLUS}, {5J,6H,6X}, {6A,6E,6J}. Four nets identical, two differ, and they differ only by which one holds 5A. If 5A is set aside, all six agree. 'Five of six' is not true under either reading.",
+      "evidence": "Computed from the file's own two wire lists, both of which I have now independently confirmed - II-FF1 from book2-3-4.pdf PDF p18 text layer, IV-FF2 from my own 300-dpi image of PDF p76.",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-07",
+      "severity": "low",
+      "claim": "merge_procedure step 2: 'Append verify-programs.json's 14 recovered programs (11 Book II + 2 Book III + the errata alternate counter). Corpus = 98 programs + 1 errata circuit.'",
+      "correction": "The breakdown is right - verify-programs.json really does hold 11 Book II records, 2 Book III records and the alternate counter - but the total double-counts. 84 + 14 = 98, and the errata alternate counter is already one of the 14. The corpus is 98, not '98 + 1'. A mechanical merge that trusts the stated total will look for a 99th record that does not exist.",
+      "evidence": "find-programs.json programs[] length = 84. verify-programs.json missed_programs_book_ii.programs[] length = 11, missed_programs_book_iii[] length = 2, errata_alternate_counter is a single object. [verified by structural read]",
+      "tag": "verified"
+    },
+    {
+      "id": "RF-08",
+      "severity": "low",
+      "claim": "III-XOR-PB expected script: step 1 (neither pushbutton down, lamp 3 OFF) is tagged 'unverified' with source 'derived from the printed truth table'; step 5 (pushbutton 2 released, so again neither down, lamp 3 OFF) is tagged 'verified' with source 'printed p.41'.",
+      "correction": "The same physical state carries two different tags in the same script. Book III printed p.41 prints only two claims - 'if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON' and 'Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed'. Neither covers the neither-pushed case. Step 1 is tagged correctly; step 5 should carry the same [unverified] tag and the same 'derived' source. This is exactly the leak the file's own anti_fabrication_rule exists to prevent.",
+      "evidence": "book2-3-4.pdf PDF p47 (printed p.41), pdftotext -layout, prose quoted in full. [verified from text layer]",
+      "tag": "verified"
+    }
+  ],
+
+  "downgraded": [
+    {
+      "id": "DG-01",
+      "severity": "medium",
+      "claim": "'SAME FLIP-FLOP TOPOLOGY, different indicator tap' / headline 'Book IV's second-version flip-flop is the SAME circuit relabelled - identical in five of six electrical nets - differing only in where indicator lamp 5's anode taps' / consequence 'they will agree in the stable states and may differ transiently.'",
+      "downgrade_to": "The net computation is correct and both wire lists are now verified, so the STRUCTURAL finding stands. The word 'only' and the stable-state prediction do not. On this machine an indicator lamp is a series element in the coil path, not a passive tap - the errata itself says so: ER-21, 'The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.' Moving lamp 5's anode from the {5E,6G} node (the relay-lamp/coil junction, where in Book II it parallels relay 5's own indicator lamp) to the {5F,5H,6F} node (the coil's far end and contact common) changes coil loading, not just what a bulb displays. 'They will agree in the stable states' is an untagged inference with no primary support and should be tagged [unverified] or dropped.",
+      "evidence": "ER-21 verbatim, image-read by me at 300 dpi on errata.pdf p2 right column. Lamp-in-series topology corroborated by the alternate counter's own printed circuit diagram on the same crop, which draws 3C-(lamp)-3E-(coil)-3F and 4C-(lamp)-4E-(coil)-4F, and by book2-3-4.pdf PDF p76's diagram, which draws 5C-(lamp)-5E-(coil)-5F. [verified]",
+      "keep": "The file's operational conclusion - keep both as separate fixtures, do NOT unify the wire lists, assert lamp 5 in both - is right and should survive unchanged."
+    },
+    {
+      "id": "DG-02",
+      "severity": "medium",
+      "claim": "ER-ALTCOUNTER expected: 'Not printed on the errata sheet - it defers to Book IV printed p.72. The expected-state script must be lifted from IV-EXP1 and re-pointed at this wire list.'",
+      "downgrade_to": "This is presented as a mechanical operation. It is an inference, and a risky one. Book IV printed p.72 asserts its observables as 'Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001'. But the alternate circuit taps every one of those three lamps differently from the main counter: main counter ties 2F/4A, 4F/5A, 6A/6F (coil far-ends); alternate ties 1H/4A, 3H/5A, 5H/6A (contact commons). The cathode wiring differs too - main uses six separate nB/n- wires, alternate chains 1B/1C, 1B/2B, 2B/3B, 3B/4B, 4B/5B, 5B/6B with 1C/2C, 2C/2- carrying the chain to minus. Whether lights 4, 5 and 6 still read the count in the alternate circuit is NOT settled by the errata sheet. The instruction should say so and the resulting step tags should be [unverified].",
+      "evidence": "Alternate counter program: my own 300-dpi image of errata.pdf p2 right column. Main counter program and procedure: book2-3-4.pdf PDF p78 (printed p.72), pdftotext -layout, 44 connections in 4 columns x 11 rows, followed by the numbered procedure. [verified]"
+    },
+    {
+      "id": "DG-03",
+      "severity": "low",
+      "claim": "named_fallback reasoning: 'Book IV printed p.69 step 1, \"Turn power ON. Notice that both relays 5 and 6 are OFF\"' and 'Book II Experiment 5 step 2, \"Turn power ON. Relay 3 comes ON because both numbers are zero\"'.",
+      "downgrade_to": "Both quotations are real and verbatim; both page citations are off by one. The IV-FF2 numbered steps are on printed p.70 (PDF p76) - printed p.69 (PDF p75) carries only the prose that introduces the second version. The Experiment 5 numbered steps are on printed p.14 (PDF p20); the file cites II-EXP5 as printed p.13 elsewhere, which is where the experiment heading sits. Cosmetic for a human, load-bearing for a corpus keyed on (pdf_file, pdf_page, printed_page), which is the file's own stated key.",
+      "evidence": "book2-3-4.pdf PDF p76 image (mine, 300 dpi) shows the SINGLE-INPUT FLIP-FLOP-SECOND VERSION caption and steps 1-3 on the page whose printed folio is 70. book2-3-4.pdf PDF p20 text layer shows Experiment 5 steps 1-5 on the page whose printed folio is 14. [verified]"
+    },
+    {
+      "id": "DG-04",
+      "severity": "low",
+      "claim": "RUL-01 (Tic-Tac-Toe 4G/5N is correct as printed) is tagged [likely] and inherited from verify-programs.json rather than re-read.",
+      "downgrade_to": "No downgrade - the tag is honest and the ruling is right. Adding corroboration: I read book5-6.pdf PDF p62's program table in the text layer and every element of the ruling's internal-consistency argument is visible there. 3G/4N, 4G/5N and 5G/6N are all present; so are 3G/D7, 4G/D5 and 5G/D3. The ruling can be promoted from 'inherited' to 'inherited and independently corroborated by a second reading of the same table', but stays [likely] until someone renders p62 at 300 dpi.",
+      "evidence": "book5-6.pdf PDF p62 (printed p.56), pdftotext -layout, 72-line program table. [likely - text layer only]"
+    },
+    {
+      "id": "DG-05",
+      "severity": "low",
+      "claim": "RUL-07 (IV-FF1 connection_count is 15, not 16) tagged [likely], 'needs one 300-dpi crop of book2-3-4.pdf PDF p74 bottom and p75 top to promote to [verified]'.",
+      "downgrade_to": "No downgrade. Corroborated: the text layer of PDF pp.74-75 shows the four printed stage blocks cleanly separated by their introductory sentences, containing 6, 4, 3 and 2 connections. 6+4+3+2 = 15. The arithmetic is settled; only the terminal letters would benefit from an image, and none of them is a known-risky glyph pair.",
+      "evidence": "book2-3-4.pdf PDF pp.74-75 (printed 68-69), pdftotext -layout: stage 1 = 5+/5H, 5H/6H, 5G/5F, 6G/6F, 5C/6C, 6C/6-; stage 2 = 6H/6Y, 6X/5L, 5K/6F, 5N/6E; stage 3 = 6Z/6L, 6K/5E, 6N/5F; stage 4 = 6G/6A, 6B/6-. [likely - text layer only]"
+    }
+  ],
+
+  "upgraded": [
+    {
+      "id": "UP-01",
+      "claim": "ER-ALTCOUNTER - the 48-connection alternate three-bit binary counter.",
+      "upgrade": "Independently image-verified by me at 300 dpi. The printed table is 4 columns x 12 rows and the target file's as_printed_column_major list matches it entry for entry in exactly the stated column-major order. All six of its claimed OCR corrections are confirmed against the print: 1F/1H (OCR 'IF/TH'), 6L/6- (OCR '61/6-'), 1G/1+, 3G/3+, 5G/5+, 6Y/6+ (OCR renders every plus as '-f' or '-|-'). The procedure paragraph is verbatim: 'Use the procedure on page 72 of Book IV. When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter.' The circuit-diagram labels including 'TO 5L (CARRY IN)' and 'TO 2H (CARRY OUT)' are as described. [verified]",
+      "cite": "errata.pdf PDF p2, right column, 300-dpi render, crop x=1250 y=1350 w=1350 h=1900"
+    },
+    {
+      "id": "UP-02",
+      "claim": "RUL-08 - REFUTED: errata.txt does NOT drop 12 of the 48 connections.",
+      "upgrade": "Confirmed twice over. errata.txt lines 100-122 contain all 48 entries laid out as 4 columns x 12 rows, and every one of them corresponds to a line I can now read in the 300-dpi image. The gap brief's premise was false and the target file was right to say so. The four corruption classes it names (two terminal letters, the plus glyph, two-column interleave, one line destroyed) are exactly what the text layer shows. [verified]",
+      "cite": "errata.txt read in full; errata.pdf PDF p2 right column @300dpi"
+    },
+    {
+      "id": "UP-03",
+      "claim": "IV-FF2 wire list - the target file's own 'what_would_overturn_this' item, previously [likely] on OCR only.",
+      "upgrade": "PROMOTED TO [verified] and it does NOT overturn. I rendered book2-3-4.pdf PDF p76 at 300 dpi. The printed program table is two columns of seven: 5+/5G, 5H/5F, 5F/6F, 5C/6C, 6C/6-, 5J/6H, 6G/5E | 6J/6E, 6E/6A, 6B/6-, 5H/5A, 5B/5-, 6+/6Y, 6X/6H. Fourteen wires, identical to the target file's list. The one-wire difference from Book II's flip-flop is real print, not an OCR artefact. The open item in not_settled_by_the_sources ('Whether IV-FF2's wire list is transcribed correctly ... what_would_settle_it: one 300-dpi crop of book2-3-4.pdf PDF p76') is CLOSED. [verified]",
+      "cite": "book2-3-4.pdf PDF p76 (printed p.70), 300-dpi render"
+    },
+    {
+      "id": "UP-04",
+      "claim": "ER-43, ER-44, ER-45, ER-46 - the four Book VI errata notes, previously [likely], 'errata p4 right col, OCR only - this block sits in the one column I did not image-read'.",
+      "upgrade": "ALL FOUR PROMOTED TO [verified]. I rendered errata.pdf p4 right column at 300 dpi. The printed text matches the target file's OCR transcription of all four, word for word, including the Match Game replacement sentence 'Turn the rotary switch to 15, indicating that there are 15 matches in the pile.' The same crop confirms the second-edition note and the editor's name, Linda G. Sprague. The errata master table is now 46 of 46 image-verified and its to_finish item is discharged. [verified]",
+      "cite": "errata.pdf PDF p4, right column, 300-dpi render"
+    },
+    {
+      "id": "UP-05",
+      "claim": "ER-07 - the Book III page 36 replacement circuit diagram, which the target file recovered and used to close a prior file's 'NOT TRANSCRIBED'.",
+      "upgrade": "Independently image-verified label for label. The printed heading reads 'page 36: circuit diagram for COMPUTER REPRESENTATION OF THREE STATEMENTS:' and beneath it the replacement diagram reads left to right: filled node 1+ - 1Y - pushbutton arm rising to 1Z - 1X - 2Y - pushbutton arm rising to 2Z - 2X - rising to 3A - lamp - 3B - filled node 3-. Every terminal the target file listed is legible and no terminal it did not list is present. It also corroborates the claim that this erratum leaves the III-3STMT program list (1+/1Y, 1X/2Y, 2X/3A, 3B/3-) unchanged: the corrected diagram is precisely that list. [verified]",
+      "cite": "errata.pdf PDF p1, right column bottom, 300-dpi render, two slices"
+    },
+    {
+      "id": "UP-06",
+      "claim": "I-ANSWER13 and the ANSWER 14 neighbour list.",
+      "upgrade": "Independently image-verified. ANSWER 13 prints 6+/6Y, 6X/6A, 6B/6-, 6X/D17, D18/M- with a diagram showing 6A-lamp-6B-6-, 6X tied both to 6A and down to D17, 6Y tied to 6+, 6Z the unused normally-closed terminal, and M- / D18 / D19 feeding the motor through resistors. ANSWER 14 prints 5+/5Y, 5Z/6X, 6Y/D17, M-/D18. Both match the target file exactly. [verified]",
+      "cite": "book1.pdf PDF p33 (printed p.31), 300-dpi render"
+    },
+    {
+      "id": "UP-07",
+      "claim": "RUL-03 - printed p.36 is Book III, not Book II; key on (pdf_file, pdf_page, printed_page) and derive book_label.",
+      "upgrade": "Independently confirmed from a source the target file cited but I re-read myself. book2-3-4.pdf CONTENTS (PDF p5) prints BOOK II running from Preface p.1 to APPENDIX p.32, and BOOK III: HOW COMPUTERS MAKE LOGICAL DECISIONS beginning Preface p.35, with 'The Operation AND' at p.35. Printed p.36 is inside Book III. The derived-label ruling is correct and the pagination offset is stable at printed = PDF - 6 across every page I checked (7/13, 12/18, 14/20, 15/21, 36/42, 41/47, 44/50, 68/74, 70/76, 71/77, 72/78). [verified]",
+      "cite": "book2-3-4.pdf PDF p5, pdftotext -layout"
+    },
+    {
+      "id": "UP-08",
+      "claim": "RUL-04 - the elevator reliability block belongs to Book V Experiment 9, not Experiment 8.",
+      "upgrade": "Independently confirmed from the text layer's preserved column layout, without needing the image. errata.txt right column reads, in order: 'page 11: First sentence under \"To use the program\" (experiment 8) should read: \"Set the elevator at the first floor by pushing pushbutton 5.\"' then a SEPARATE entry 'page 11: Experiment 9 program corrections: change 4G/4H to 4G/5H / change D16/M- to D16/M+' then the pointer-knob Note, then 'Note: If the performance of the circuit is unsatisfactory, make the following changes to the program: remove 5F/6C, 6C/6- add 5F/6E, 6E/6-, 4E/6C' then 'page 12: program corrections for automatic toll collector'. Both Notes sit inside the Experiment 9 entry and before the page 12 entry. find-rotary.json IO02 is wrong; the ruling is right. [verified]",
+      "cite": "errata.txt, Book V block; corroborates the target file's own 300-dpi read of errata.pdf p3 right column"
+    },
+    {
+      "id": "UP-09",
+      "claim": "The five other newly_image_verified_programs' wire lists and counts: II-EXP2 = 23, II-EXP7 = 16, II-FF1 = 14, III-XOR-PB = 5, III-RELAYXOR = 11.",
+      "upgrade": "All five independently confirmed line for line and in the stated column-major order from the pdftotext -layout text layer, which preserves the printed column structure on all five pages. II-EXP7's stray '6Z' is confirmed to sit above the table, outside the program block, consistent with the file's claim that it is a circuit-diagram label rather than a program line - though 'it is pushbutton 6's normally-closed terminal drawn on the diagram' remains an inference, correctly not a transcription. II-EXP7's initial setting is confirmed verbatim: 'Set all slide switches in the RIGHT position.' [verified for the wire lists; the 6Z explanation is likely]",
+      "cite": "book2-3-4.pdf PDF pp.13, 21, 18, 47, 50, pdftotext -layout"
+    },
+    {
+      "id": "UP-10",
+      "claim": "III-RELAYXOR's expected script is DERIVED, not printed, and is 'a WEAK fixture: a mismatch means either a simulator bug or a wrong derivation'.",
+      "upgrade": "The derivation is correct - I re-derived it from scratch and every one of the four steps is right. With pushbutton polarity Y=common, X=normally open, Z=normally closed, and relay polarity H=common, G=normally open, J=normally closed, the 11-wire circuit routes 1+ -> 1H and splits into 1J->2G and 1G->2J, both converging on 2H -> 3A -> lamp 3 -> 3B -> 3-. Exactly one branch conducts when the relays disagree and neither conducts when they agree. Both contact polarities are themselves [verified] from print (see RF-04 evidence). The file's decision to keep every step tagged [unverified] is more conservative than it needed to be, and that is the right direction to err.",
+      "cite": "book2-3-4.pdf PDF p50 (printed p.44) for the wire list; PDF p50 top (III-RELAYNOT) and errata ER-12 for the contact polarities"
+    },
+    {
+      "id": "UP-11",
+      "claim": "RUL-05's premise - 'the finder's own image_reads_spent list (9 entries) is the whitelist'.",
+      "upgrade": "Premise checks out exactly. find-programs.json holds programs[] of length 84 and image_reads_spent[] of length 9. The mechanical re-tag rule is executable as written. [verified by structural read]",
+      "cite": "docs/research/raw/find-programs.json"
+    }
+  ],
+
+  "missed": [
+    {
+      "id": "MS-01",
+      "severity": "CRITICAL",
+      "what": "The BINARY COUNTER - SEQUENCE OF OPERATIONS chart on book2-3-4.pdf printed p.71 (PDF p77). This is a complete printed state table: nine paired rows covering counts 0 through 8, each row giving flip-flop A, carry B-to-A, flip-flop B, carry C-to-B, flip-flop C, pushbutton UP/DOWN, and the running count. It is by a wide margin the richest printed expected-output source in the entire manual set - a full per-step golden trace, printed, needing no derivation - and the target file's fixture_definition never mentions it.",
+      "why_it_matters": "The file spends a whole section defining what a fixture is and what the pass criterion should be, then builds a tier-B seed set of seven programs, and omits the one place where the manufacturer printed a complete state-by-state trace. Every other tier-B fixture in the file has at most three printed steps.",
+      "cite": "book2-3-4.pdf PDF p77 (printed p.71), pdftotext -layout, chart transcribed in full below under recovered_material",
+      "tag": "verified"
+    },
+    {
+      "id": "MS-02",
+      "severity": "high",
+      "what": "IV-EXP1's own 44-connection program (printed p.72, PDF p78, 4 columns x 11 rows) and its printed 3-step procedure. The file's ER-21 makes IV-EXP1 the program the alternate counter REPLACES, and its ER-ALTCOUNTER record says the expected script 'must be lifted from IV-EXP1'. Neither the wire list nor the procedure is anywhere in the file. Merge step 5 cannot apply ER-21 without them.",
+      "cite": "book2-3-4.pdf PDF p78 (printed p.72), pdftotext -layout, transcribed in full below",
+      "tag": "verified"
+    },
+    {
+      "id": "MS-03",
+      "severity": "high",
+      "what": "The SINGLE-INPUT FLIP-FLOP WITH CARRY, printed p.70 (PDF p76). It is IV-FF2's 14 wires plus four more - 5G/5N, 5L/6L, 6K/4A, 4B/4- - for eighteen total, with its own printed observable: 'Light 4 will now indicate that a carry is taking place.' This is the actual building block of the three-bit counter (three of these, one per bit) and it is a distinct program from IV-FF2. It appears in neither newly_image_verified_programs nor either seed set.",
+      "cite": "book2-3-4.pdf PDF p76 (printed p.70), my own 300-dpi image read",
+      "tag": "verified"
+    },
+    {
+      "id": "MS-04",
+      "severity": "high",
+      "what": "IV-FF2's printed 3-step trace is quoted in the tier_B_seed_set 'why' field but no expected_state_script is ever written for it - even though the file itself calls it 'the fullest printed step-by-step trace of any flip-flop'. The seven programs that DO get scripts are the seven the author transcribed; the one with the best printed trace is not among them. I have now image-verified the trace and transcribed it below so it can be written directly.",
+      "cite": "book2-3-4.pdf PDF p76 (printed p.70), my own 300-dpi image read",
+      "tag": "verified"
+    },
+    {
+      "id": "MS-05",
+      "severity": "medium",
+      "what": "The corpus does not exist. docs/ contains plans/, research/, DECISIONS.md and PROJECT-BRIEF.md. There is no docs/programs.json. The gap question asks where the reconciled corpus is; the answer is still nowhere. The target file states this plainly in its own what_this_file_is section ('This file does NOT contain a full re-transcription of all 98 programs'), so it is honest rather than concealed - but the gap must stay OPEN, and the file should not be read as closing it.",
+      "cite": "directory listing of docs/",
+      "tag": "verified"
+    },
+    {
+      "id": "MS-06",
+      "severity": "medium",
+      "what": "No fixture tier is assigned to the ~91 programs outside the seven transcribed here. Merge step 7 says 'assign fixture_tier by the tier criteria', but the criteria as written sweep every hand-turned-rotary program into deferred tier C (see RF-01, RF-02). Running step 7 mechanically would defer a large and genuinely testable slice of Books I and II - every program that reads a static dial position without touching the motor.",
+      "tag": "verified"
+    },
+    {
+      "id": "MS-07",
+      "severity": "low",
+      "what": "The file's claim_counts (verified 58 / likely 9 / unverified 6 = 73) cannot be reconciled with the file's contents - the errata_master_table alone carries 46 corrections plus 5 global facts, all tagged. Whatever it counts, it is not the file's tagged claims. Cosmetic, but it means the counts cannot be used as a coverage metric.",
+      "tag": "unverified"
+    }
+  ],
+
+  "recovered_material": {
+    "note": "Transcribed here so the corpus builder does not have to re-open these pages. All from pdftotext -layout of book2-3-4.pdf unless marked as an image read.",
+
+    "IV-EXP1_program_printed_p72_pdf_p78": {
+      "name": "Experiment 1: A Three-Bit Binary Counter (Full program for Binary Counter)",
+      "pdf_file": "book2-3-4.pdf",
+      "pdf_page": 78,
+      "printed_page": 72,
+      "book_label": "IV",
+      "layout_as_printed": {"columns": 4, "rows": 11, "read_order": "column-major", "total": 44},
+      "as_printed_column_major": [
+        "1A/2E","1B/1-","1C/2C","1E/2G","1F/2F","1F/1H","1G/1+","1J/2H","1J/4K","2A/4E","2B/2-",
+        "2C/3C","2E/2J","2F/4A","3A/6E","3B/3-","3C/4C","3E/4G","3F/3H","3F/4F","3G/3+","3J/4H",
+        "3J/6K","3L/4L","3N/4H","4B/4-","4C/5C","4E/4J","4F/5A","5B/5-","5C/6C","5E/6G","5F/6F",
+        "5F/5H","5G/5+","5J/6H","5J/6X","5L/6L","5N/6H","6A/6F","6B/6-","6C/6-","6E/6J","6Y/6+"
+      ],
+      "connection_count": 44,
+      "tag": "likely",
+      "tag_reason": "text layer only - I did not render this page. Two glyph risks remain: the plus signs (1G/1+, 3G/3+, 5G/5+, 6Y/6+) and the pair 1B/1- which OCR shows as 'IB/1—'. Needs one 300-dpi crop of PDF p78 to reach [verified].",
+      "printed_procedure_verbatim": [
+        "1. Turn power ON. Push pushbutton 6 and release. Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. The Binary Counter is displaying a 1.",
+        "2. Push pushbutton 6 again and release. Binary output lights 4, 5 and 6 will now read OFF, ON, OFF or 010. The Binary Counter is now displaying a 2.",
+        "3. Push and release pushbutton 6 several times. Each time after releasing the pushbutton, note the binary number displayed in lights 4, 5 and 6. Compare your numbers with the table of binary numbers on page 66."
+      ],
+      "printed_bit_assignment_verbatim": "'the low order flip-flop (represented by light 6) changes each time the pushbutton is pushed and released. The low order flip-flop represents 1's (units). The next flip-flop to the left (represented by light 5) changes every other time... And of course, the high order flip-flop (represented by light 4) changes every fourth time...'",
+      "printed_wrap_verbatim": "'You will notice that the counter repeats after it has reached 7.'",
+      "fixture_tier": "B",
+      "simulator_note": "Light 4 = MSB (4's), light 5 = 2's, light 6 = LSB (1's). This is the observable mapping DG-02 says cannot be assumed to carry over to ER-ALTCOUNTER."
+    },
+
+    "IV_binary_counter_sequence_chart_printed_p71_pdf_p77": {
+      "what": "BINARY COUNTER - SEQUENCE OF OPERATIONS. Printed as seven columns; the manual states 'the chart is read from right to left'. Rows are paired: for each count, an UP row and a DOWN row.",
+      "columns_as_printed": ["Flip-Flop A", "Carry B to A", "Flip-Flop B", "Carry C to B", "Flip-Flop C", "Pushbutton", "Times Pushed"],
+      "rows_as_printed": [
+        ["0","NO","0","NO","0","UP","0"],
+        ["0","NO","0","NO","1","DOWN",""],
+        ["0","NO","0","NO","1","UP","1"],
+        ["0","NO","1","YES","1","DOWN",""],
+        ["0","NO","1","NO","(blank in print)","UP","2"],
+        ["0","NO","1","NO","1","DOWN",""],
+        ["0","NO","1","NO","1","UP","3"],
+        ["1","YES","1","YES","1","DOWN",""],
+        ["1","NO","0","NO","(blank in print)","UP","4"],
+        ["1","NO","0","NO","1","DOWN",""],
+        ["1","NO","1","NO","1","UP","5"],
+        ["1","NO","1","YES","1","DOWN",""],
+        ["1","NO","1","NO","(blank in print)","UP","6"],
+        ["1","NO","1","NO","1","DOWN",""],
+        ["1","NO","1","NO","1","UP","7"],
+        ["1","YES","1","YES","1","DOWN",""],
+        ["0","NO","0","NO","0","UP","0 or 8"]
+      ],
+      "tag": "likely",
+      "tag_reason": "pdftotext -layout only. Three cells in the Flip-Flop C column render as blank in the text layer (the UP rows for counts 2, 4 and 6). By the counter's own logic those cells must read 0, but I am NOT writing 0 into them - that would be inference presented as transcription. ONE 300-dpi crop of PDF p77 settles all three and promotes this whole table to [verified]. It is the single highest-value remaining image read in the program corpus.",
+      "why_this_is_the_prize": "Seventeen printed rows of ground truth for a sequential circuit, including the carry signals, and it costs one image read.",
+      "cite": "book2-3-4.pdf PDF p77 (printed p.71)"
+    },
+
+    "IV-FF2_printed_trace_image_verified": {
+      "applies_to": "IV-FF2 (SINGLE-INPUT FLIP-FLOP - SECOND VERSION), book2-3-4.pdf PDF p76, printed p.70",
+      "read_from": "my own 300-dpi render of PDF p76",
+      "tag": "verified",
+      "preamble_verbatim": "'We now have a single-input flip-flop with contacts free for a carry signal. With the power OFF, program this flip-flop on your MINIVAC 601. Then:'",
+      "steps_verbatim": [
+        "1. Turn power ON. Notice that both relays 5 and 6 are OFF.",
+        "2. Push and release pushbutton 6. Notice that both relays 5 and 6 are now ON.",
+        "3. Push pushbutton 6, but do not release. Notice that relay 5 is OFF; relay 6 is ON. We want a carry signal to occur NOW."
+      ],
+      "as_an_expected_state_script": {
+        "steps": [
+          {"n":1,"do":[{"type":"power","value":"ON"}],"settle":"fixpoint","then":{"relays":{"5":"OFF","6":"OFF"}},"source":"printed p.70 step 1","tag":"verified"},
+          {"n":2,"do":[{"type":"pushbutton","n":6,"action":"press"},{"type":"pushbutton","n":6,"action":"release"}],"settle":"fixpoint","then":{"relays":{"5":"ON","6":"ON"}},"source":"printed p.70 step 2","tag":"verified"},
+          {"n":3,"do":[{"type":"pushbutton","n":6,"action":"press"}],"settle":"hold","then":{"relays":{"5":"OFF","6":"ON"}},"source":"printed p.70 step 3 ('but do not release')","tag":"verified"}
+        ]
+      },
+      "note": "Step 1 here is a PRINTED power-up assertion, so it does NOT need FALLBACK-PWRUP-COLD. It is also the strongest single piece of evidence FOR that fallback."
+    },
+
+    "IV-FF2-CARRY_printed_p70": {
+      "name": "Single-Input Flip-Flop With Carry",
+      "pdf_file": "book2-3-4.pdf",
+      "pdf_page": 76,
+      "printed_page": 70,
+      "book_label": "IV",
+      "tag": "verified",
+      "read_from": "my own 300-dpi render of PDF p76",
+      "as_printed": ["5+/5G","5H/5F","5F/6F","5C/6C","6C/6-","5J/6H","6G/5E","6J/6E","6E/6A","6B/6-","5H/5A","5B/5-","6+/6Y","6X/6H","5G/5N","5L/6L","6K/4A","4B/4-"],
+      "connection_count": 18,
+      "printed_addition_verbatim": "'To add the carry signal, we will add the connections: 5G/5N  6K/4A / 5L/6L  4B/4-'",
+      "printed_observable_verbatim": "'Light 4 will now indicate that a carry is taking place.'",
+      "fixture_tier": "B",
+      "expected": "The page prints no separate numbered trace for the with-carry version; it inherits IV-FF2's steps 1-3 and adds the light-4 carry observable at step 3. Any step asserting light 4 must be tagged [unverified] - the page states WHAT light 4 means, not its value at a given step."
+    },
+
+    "contact_polarity_settled": {
+      "pushbuttons": "Y = common (arm), X = normally open (closes when pressed), Z = normally closed (opens when pressed). [verified] book1.pdf printed p.9: 'The normally closed contact (Y/Z) may be used to complete a circuit when the pushbutton is UP, and the normally open contact (X/Y) may be used to complete a circuit when the pushbutton is DOWN.'",
+      "relay_first_contact_set": "H = common, G = normally open, J = normally closed. [verified] by two independent circuits: III-RELAYNOT (1+/1H, 1J/2A - lamp 2 ON while relay 1 is OFF) and III-RELAYAND as corrected by ER-12 (1+/1H, 1G/2H - lamp 3 ON only when both relays are ON).",
+      "relay_second_contact_set": "K, L, N. By analogy L = common, K and N the two contacts - NOT settled by anything I read. Book IV printed p.69 confirms only that the second set exists and that IV-FF1 consumes it ('since all contacts on both relays are used'). What would settle it: the Maintenance Manual, or a 300-dpi read of the IV-FF1 circuit diagram on PDF p75.",
+      "transfer_order": "Pushbuttons and the rotary switch are BREAK-BEFORE-MAKE, printed and emphasised. [verified] - see RF-05. Relay contact transfer order is genuinely not settled by anything I read."
+    }
+  },
+
+  "fallback_judgement": {
+    "fallback": "FALLBACK-PWRUP-COLD - at power ON every relay coil is de-energised and every relay sits in its unoperated position; slide switches and dial hold their initial_settings; then iterate to fixpoint and only then assert step 1.",
+    "is_it_defensible": "YES. It is physically correct for single-coil spring-return relays, which is what this machine has, and it is the only power-up rule any of these manuals asserts. It makes every fixture reproducible, and the alternative - modelling a power-up race - would be an invented model, which is the worse failure for this project.",
+    "is_it_honestly_labelled": "YES, and better than most. It lives in a block called named_fallback, not among the findings. It carries an explicit what_would_overturn_it. It mandates that every assertion generated under it carry tag='unverified' and source='FALLBACK-PWRUP-COLD', and that the harness be able to list on demand which expectations rest on it rather than on print. That is the right shape for a fallback and it is not dressed up as a finding anywhere in the file.",
+    "additional_support_i_found": "Book IV printed p.70 step 1, image-verified by me: 'Turn power ON. Notice that both relays 5 and 6 are OFF.' This is the fallback asserted in print for a BISTABLE circuit, which is the hard case, and it is the strongest single piece of evidence for the rule. Also Book I printed p.9 step 6: 'Turn the power switch ON. Light 2 comes on as soon as power is turned ON' - a cold-start-then-settle through a normally-closed contact.",
+    "its_one_defect": "The worked example inside the behaviour clause is wrong - see RF-04. The self-locking memory comes up OFF, not ON, because its holding path runs through its own normally-open contact. Replace the example or delete it; the rule itself is unaffected.",
+    "verdict": "Keep the fallback. Fix the example. Keep the tagging discipline exactly as written."
+  },
+
+  "the_gap_itself": {
+    "question": "Where is the single reconciled, errata-applied, image-verified program corpus with per-program expected observable output, from which golden fixtures are generated?",
+    "answer": "It still does not exist. docs/programs.json is not on disk.",
+    "what_the_target_file_actually_delivers": [
+      "A schema for it, keyed on (pdf_file, pdf_page, printed_page), which is the right key and which I confirmed is necessary (RUL-03 is real).",
+      "An eight-item ruling set that unblocks the merge; six of the eight I independently confirmed, one I corroborated, one I found unreliable in framing only.",
+      "The errata sheet promoted to fully image-verified - 42 of 46 by the author, the last 4 by me. That part IS finished.",
+      "Seven programs transcribed to fixture quality, all of which survived re-reading.",
+      "A fixture definition, tiering and pass criterion that no prior file supplied - genuinely new, and mostly sound, with two tier assignments wrong.",
+      "A merge procedure in eight steps that is executable, with the two arithmetic and tiering defects noted above."
+    ],
+    "distance_remaining": "The mechanical merge (steps 1-8) has not been run. Until it is, there is no corpus and no fixtures. The blocking research is done; the blocking engineering is not.",
+    "cheapest_high_value_next_reads": [
+      "ONE 300-dpi crop of book2-3-4.pdf PDF p77 - promotes the 17-row BINARY COUNTER SEQUENCE OF OPERATIONS chart to [verified] and settles the three blank Flip-Flop C cells. Highest value per image read left in the corpus.",
+      "ONE 300-dpi crop of book2-3-4.pdf PDF p78 - promotes IV-EXP1's 44-wire program to [verified]. Required before ER-21's substitution can be applied.",
+      "ONE 300-dpi crop of book2-3-4.pdf PDF p75 - promotes IV-FF1's 15 wires to [verified] (discharges RUL-07's 'needs') and may settle the relay K/L/N contact polarity from the circuit diagram.",
+      "Six 300-dpi crops of book1.pdf PDF pp.31-34 - the Book I ANSWERS 1-12 and 16+, still [unverified], as the target file already says."
+    ]
+  },
+
+  "claim_counts": {
+    "refuted": 8,
+    "downgraded": 5,
+    "upgraded": 11,
+    "missed": 7,
+    "image_reads_spent": 5,
+    "wire_lists_independently_re_derived": 12,
+    "fabricated_wires_found": 0,
+    "hallucinated_terminal_letters_found": 0
+  },
+
+  "verdict": "The transcription work in this file is sound - I re-derived twelve wire lists against the primary sources and found zero fabricated wires and zero invented terminal letters, and I closed two of its own stated open items (IV-FF2's wire list, the four Book VI errata notes) in its favour with fresh 300-dpi reads. Its failures are in framing and in tiering, not in reading: two tier-A assignments contradict its own tier-C rule, one expected value is recorded against the wrong observable class, one worked example inside the named fallback is electrically backwards, one 'not settled' item is settled in Book I, and it misses the richest printed expected-output table in the manual set. Trust its transcriptions; audit its tiers, its tags and its worked examples before generating a single fixture; and do not treat the gap as closed, because the corpus file it specifies does not exist."
+}

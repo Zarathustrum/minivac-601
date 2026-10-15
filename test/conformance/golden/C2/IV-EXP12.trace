@@ -1,0 +1,145 @@
+#!mv601-trace 1
+# id=IV-EXP12 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=50
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=95 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+    11.0 * relay1 nc->mid
+    11.1 * relay2 nc->mid
+    11.3 * relay3 nc->mid
+    11.5 * relay4 nc->mid
+    11.7 * relay5 nc->mid
+    11.9 * relay6 nc->mid
+    12.3 * relay1 mid->no
+    12.4 * relay2 mid->no
+    12.6 * relay3 mid->no
+    12.8 * relay4 mid->no
+    13.0 * relay5 mid->no
+    13.2 * relay6 mid->no
+    50.1 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+   500.0 > switch3 target=0
+   500.0 > switch4 target=0
+   500.0 > switch5 target=0
+   500.0 > switch6 target=0
+  1000.0 > button6 target=1000
+  1011.2 * pb6 nc->mid
+  1013.7 * pb6 mid->no
+  1045.4 * dial c0->gap
+  1066.6 * dial gap->c1
+  1130.0 * dial c1->gap
+  1151.1 * dial gap->c2
+  1214.5 * dial c2->gap
+  1235.6 * dial gap->c3
+  1299.0 * dial c3->gap
+  1320.1 * dial gap->c4
+  1383.5 * dial c4->gap
+  1404.6 * dial gap->c5
+  1468.0 * dial c5->gap
+  1489.2 * dial gap->c6
+  1552.6 * dial c6->gap
+  1573.7 * dial gap->c7
+  1637.1 * dial c7->gap
+  1658.2 * dial gap->c8
+  1721.6 * dial c8->gap
+  1742.7 * dial gap->c9
+  1806.1 * dial c9->gap
+  1827.2 * dial gap->c10
+  1890.6 * dial c10->gap
+  1911.8 * dial gap->c11
+  1975.1 * dial c11->gap
+  1996.3 * dial gap->c12
+  2059.7 * dial c12->gap
+  2080.8 * dial gap->c13
+  2144.2 * dial c13->gap
+  2165.3 * dial gap->c14
+  2228.7 * dial c14->gap
+  2249.8 * dial gap->c15
+  2249.9 ? dial=c15  "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+  8249.9 ? dial=c15  "[p.85:] The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch. / Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+  8249.9 > button6 target=0
+  8261.1 * pb6 no->mid
+  8263.6 * pb6 mid->nc
+ 11249.9 ? dial=c15  "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 11249.9 > switch3 target=1000
+ 11249.9 > switch4 target=1000
+ 11249.9 > switch5 target=1000
+ 11249.9 > switch6 target=1000
+ 11276.8 * sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+ 11281.4 * relay4 no->mid  relay5 no->mid  relay6 no->mid
+ 11281.5 * relay1 no->mid  relay2 no->mid  relay3 no->mid
+ 11282.3 * relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+ 11282.4 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc
+ 11282.9 * sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+ 11287.9 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 11343.5 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 11749.9 > button6 target=1000
+ 11761.1 * pb6 nc->mid
+ 11763.6 * pb6 mid->no
+ 11807.9 * dial c15->gap
+ 11828.7 * dial gap->c0
+ 11828.8 ? dial=c0  "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 17828.8 ? dial=c0  "[p.85:] The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch. / Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 17828.8 > button6 target=0
+ 17840.0 * pb6 no->mid
+ 17842.5 * pb6 mid->nc
+ 20828.8 ? dial=c0  "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 20828.8 > switch3 target=0
+ 20828.8 > switch4 target=0
+ 20828.8 > switch5 target=0
+ 20828.8 > switch6 target=0
+ 20855.7 * sw3 no->mid  sw4 no->mid  sw5 no->mid  sw6 no->mid
+ 20861.8 * sw3 mid->nc  sw4 mid->nc  sw5 mid->nc  sw6 mid->nc
+ 20871.7 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 20872.9 * relay1 nc->mid
+ 20873.0 * relay2 nc->mid
+ 20873.2 * relay3 nc->mid
+ 20873.4 * relay4 nc->mid
+ 20873.6 * relay5 nc->mid
+ 20873.8 * relay6 nc->mid
+ 20874.2 * relay1 mid->no
+ 20874.3 * relay2 mid->no
+ 20874.5 * relay3 mid->no
+ 20874.7 * relay4 mid->no
+ 20874.9 * relay5 mid->no
+ 20875.1 * relay6 mid->no
+ 20912.0 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 21328.8 > button6 target=1000
+ 21340.0 * pb6 nc->mid
+ 21342.5 * pb6 mid->no
+ 21387.1 * dial c0->gap
+ 21408.2 * dial gap->c1
+ 21471.6 * dial c1->gap
+ 21492.8 * dial gap->c2
+ 21556.2 * dial c2->gap
+ 21577.3 * dial gap->c3
+ 21640.7 * dial c3->gap
+ 21661.8 * dial gap->c4
+ 21725.2 * dial c4->gap
+ 21746.3 * dial gap->c5
+ 21809.7 * dial c5->gap
+ 21830.8 * dial gap->c6
+ 21894.2 * dial c6->gap
+ 21915.4 * dial gap->c7
+ 21978.7 * dial c7->gap
+ 21999.9 * dial gap->c8
+ 22063.3 * dial c8->gap
+ 22084.4 * dial gap->c9
+ 22147.8 * dial c9->gap
+ 22168.9 * dial gap->c10
+ 22232.3 * dial c10->gap
+ 22253.4 * dial gap->c11
+ 22316.8 * dial c11->gap
+ 22337.9 * dial gap->c12
+ 22401.3 * dial c12->gap
+ 22422.5 * dial gap->c13
+ 22485.9 * dial c13->gap
+ 22507.0 * dial gap->c14
+ 22570.4 * dial c14->gap
+ 22591.5 * dial gap->c15
+ 22591.6 ? dial=c15  "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 28591.6 ? dial=c15  "[p.85:] The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch. / Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."
+ 28591.6 > button6 target=0
+ 28602.8 * pb6 no->mid
+ 28605.3 * pb6 mid->nc
+ 31591.6 ? dial=c15  "[p.85:] Enter any binary number from 0 through 15 on slide switches 3 through 6. Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number. [p.80:] (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) [BK1 p.20:] For example, when the pointer knob points at 1, the wiper arm makes an electrical connection between D1 and D16."

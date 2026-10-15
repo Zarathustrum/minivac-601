@@ -1,0 +1,25 @@
+#!mv601-trace 1
+# id=II-MANUALMEM contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=6
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=252 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 > button1 target=1000
+    31.3 * pb1 nc->mid
+    33.8 * pb1 mid->no
+    43.7 * indLamp1 off->dim
+    44.8 * relay1 nc->mid
+    46.1 * relay1 mid->no
+    49.4 * outLamp1 off->dim
+    68.3 * outLamp1 dim->on
+    83.8 * indLamp1 dim->on
+   133.9 ? relay1=no pb1=no  "This simple circuit may be thought of as a manual memory: as long as the pushbutton is being held DOWN, the relay remembers a one."
+   133.9 > button1 target=0
+   145.1 * pb1 no->mid
+   147.6 * pb1 mid->nc
+   149.9 * relay1 no->mid
+   150.8 * relay1 mid->nc
+   154.7 * indLamp1 on->dim
+   169.4 * outLamp1 on->dim
+   210.4 * indLamp1 dim->off
+   219.5 ? relay1=nc pb1=nc  "When the pushbutton is released, the relay forgets the one and starts remembering a zero."

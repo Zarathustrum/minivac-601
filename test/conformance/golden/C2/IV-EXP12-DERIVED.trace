@@ -1,0 +1,294 @@
+#!mv601-trace 1
+# id=IV-EXP12-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=50
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=56 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+    11.0 * relay1 nc->mid
+    11.1 * relay2 nc->mid
+    11.3 * relay3 nc->mid
+    11.5 * relay4 nc->mid
+    11.7 * relay5 nc->mid
+    11.9 * relay6 nc->mid
+    12.3 * relay1 mid->no
+    12.4 * relay2 mid->no
+    12.6 * relay3 mid->no
+    12.8 * relay4 mid->no
+    13.0 * relay5 mid->no
+    13.2 * relay6 mid->no
+    50.1 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+   500.0 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no dial=c0 outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=on indLamp2=on indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+   500.0 > switch4 target=1000
+   500.0 > switch5 target=1000
+   500.0 > switch6 target=1000
+   526.9 * sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+   531.5 * relay4 no->mid  relay5 no->mid  relay6 no->mid
+   531.6 * relay1 no->mid  relay2 no->mid  relay3 no->mid
+   532.4 * relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+   532.5 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc
+   533.0 * sw4 mid->no  sw5 mid->no  sw6 mid->no
+   538.0 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+   593.6 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  1000.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  1000.0 > button6 target=1000
+  1011.2 * pb6 nc->mid
+  1013.7 * pb6 mid->no
+  1045.0 * dial c0->gap
+  1065.8 * dial gap->c1
+  1128.3 * dial c1->gap
+  1149.2 * dial gap->c2
+  1211.7 * dial c2->gap
+  1232.5 * dial gap->c3
+  1295.0 * dial c3->gap
+  1315.8 * dial gap->c4
+  1378.3 * dial c4->gap
+  1399.2 * dial gap->c5
+  1461.7 * dial c5->gap
+  1482.5 * dial gap->c6
+  1545.0 * dial c6->gap
+  1565.8 * dial gap->c7
+  1628.3 * dial c7->gap
+  1649.2 * dial gap->c8
+  1649.3 ? dial=c8  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  3649.3 ? dial=c8  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  3649.3 > button6 target=0
+  3660.5 * pb6 no->mid
+  3663.0 * pb6 mid->nc
+  4649.3 > switch3 target=1000
+  4649.3 > switch4 target=0
+  4676.2 * sw3 nc->mid  sw4 no->mid
+  4682.3 * sw3 mid->no  sw4 mid->nc
+  4692.2 * indLamp1 off->dim
+  4693.3 * relay1 nc->mid
+  4694.6 * relay1 mid->no
+  4732.0 * indLamp1 dim->on
+  5149.3 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c8 indLamp1=on indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  5149.3 > button6 target=1000
+  5160.5 * pb6 nc->mid
+  5163.0 * pb6 mid->no
+  5207.1 * dial c8->gap
+  5227.9 * dial gap->c9
+  5290.6 * dial c9->gap
+  5311.5 * dial gap->c10
+  5374.1 * dial c10->gap
+  5395.0 * dial gap->c11
+  5457.7 * dial c11->gap
+  5478.6 * dial gap->c12
+  5541.2 * dial c12->gap
+  5562.1 * dial gap->c13
+  5624.8 * dial c13->gap
+  5645.6 * dial gap->c14
+  5708.3 * dial c14->gap
+  5729.2 * dial gap->c15
+  5791.8 * dial c15->gap
+  5812.7 * dial gap->c0
+  5875.4 * dial c0->gap
+  5896.3 * dial gap->c1
+  5958.9 * dial c1->gap
+  5979.8 * dial gap->c2
+  6042.5 * dial c2->gap
+  6063.3 * dial gap->c3
+  6126.0 * dial c3->gap
+  6146.9 * dial gap->c4
+  6147.0 ? dial=c4  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  8147.0 ? dial=c4  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  8147.0 > button6 target=0
+  8158.2 * pb6 no->mid
+  8160.7 * pb6 mid->nc
+  9147.0 > switch4 target=1000
+  9147.0 > switch5 target=0
+  9173.9 * sw4 nc->mid  sw5 no->mid
+  9178.6 * relay1 no->mid
+  9179.5 * relay1 mid->nc
+  9180.0 * sw4 mid->no  sw5 mid->nc
+  9185.2 * indLamp1 on->dim
+  9189.9 * indLamp2 off->dim
+  9191.2 * relay2 nc->mid
+  9192.5 * relay2 mid->no
+  9229.7 * indLamp2 dim->on
+  9240.8 * indLamp1 dim->off
+  9647.0 ? relay1=nc relay2=no relay3=nc relay4=nc relay5=nc relay6=nc dial=c4 indLamp1=off indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+  9647.0 > button6 target=1000
+  9658.2 * pb6 nc->mid
+  9660.7 * pb6 mid->no
+  9704.8 * dial c4->gap
+  9725.7 * dial gap->c5
+  9788.4 * dial c5->gap
+  9809.2 * dial gap->c6
+  9871.9 * dial c6->gap
+  9892.8 * dial gap->c7
+  9955.4 * dial c7->gap
+  9976.3 * dial gap->c8
+ 10039.0 * dial c8->gap
+ 10059.9 * dial gap->c9
+ 10122.5 * dial c9->gap
+ 10143.4 * dial gap->c10
+ 10206.0 * dial c10->gap
+ 10226.9 * dial gap->c11
+ 10289.6 * dial c11->gap
+ 10310.5 * dial gap->c12
+ 10373.1 * dial c12->gap
+ 10394.0 * dial gap->c13
+ 10456.7 * dial c13->gap
+ 10477.6 * dial gap->c14
+ 10540.2 * dial c14->gap
+ 10561.1 * dial gap->c15
+ 10623.7 * dial c15->gap
+ 10644.6 * dial gap->c0
+ 10707.3 * dial c0->gap
+ 10728.2 * dial gap->c1
+ 10790.8 * dial c1->gap
+ 10811.7 * dial gap->c2
+ 10811.8 ? dial=c2  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 12811.8 ? dial=c2  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 12811.8 > button6 target=0
+ 12823.0 * pb6 no->mid
+ 12825.5 * pb6 mid->nc
+ 13811.8 > switch5 target=1000
+ 13811.8 > switch6 target=0
+ 13838.7 * sw5 nc->mid  sw6 no->mid
+ 13843.4 * relay2 no->mid
+ 13844.3 * relay2 mid->nc
+ 13844.8 * sw5 mid->no  sw6 mid->nc
+ 13850.0 * indLamp2 on->dim
+ 13854.7 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 13856.2 * relay3 nc->mid
+ 13856.4 * relay4 nc->mid
+ 13856.5 * relay5 nc->mid
+ 13856.7 * relay6 nc->mid
+ 13857.5 * relay3 mid->no
+ 13857.7 * relay4 mid->no
+ 13857.8 * relay5 mid->no
+ 13858.0 * relay6 mid->no
+ 13894.8 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 13905.6 * indLamp2 dim->off
+ 14311.8 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no dial=c2 indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 14311.8 > button6 target=1000
+ 14323.0 * pb6 nc->mid
+ 14325.5 * pb6 mid->no
+ 14370.0 * dial c2->gap
+ 14391.0 * dial gap->c3
+ 14454.1 * dial c3->gap
+ 14475.1 * dial gap->c4
+ 14538.2 * dial c4->gap
+ 14559.2 * dial gap->c5
+ 14622.3 * dial c5->gap
+ 14643.3 * dial gap->c6
+ 14706.4 * dial c6->gap
+ 14727.5 * dial gap->c7
+ 14790.6 * dial c7->gap
+ 14811.6 * dial gap->c8
+ 14874.7 * dial c8->gap
+ 14895.7 * dial gap->c9
+ 14958.8 * dial c9->gap
+ 14979.8 * dial gap->c10
+ 15042.9 * dial c10->gap
+ 15063.9 * dial gap->c11
+ 15127.0 * dial c11->gap
+ 15148.1 * dial gap->c12
+ 15211.2 * dial c12->gap
+ 15232.2 * dial gap->c13
+ 15295.3 * dial c13->gap
+ 15316.3 * dial gap->c14
+ 15379.4 * dial c14->gap
+ 15400.4 * dial gap->c15
+ 15463.5 * dial c15->gap
+ 15484.5 * dial gap->c0
+ 15547.6 * dial c0->gap
+ 15568.7 * dial gap->c1
+ 15568.8 ? dial=c1  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 17568.8 ? dial=c1  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 17568.8 > button6 target=0
+ 17580.0 * pb6 no->mid
+ 17582.5 * pb6 mid->nc
+ 18568.8 > switch3 target=0
+ 18568.8 > switch4 target=0
+ 18595.7 * sw3 no->mid  sw4 no->mid
+ 18601.8 * sw3 mid->nc  sw4 mid->nc
+ 18611.7 * indLamp1 off->dim
+ 18612.9 * relay1 nc->mid
+ 18614.2 * relay1 mid->no
+ 18651.9 * indLamp1 dim->on
+ 19068.8 ? relay1=no relay2=nc relay3=no relay4=no relay5=no relay6=no dial=c1 indLamp1=on indLamp2=off indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 19068.8 > button6 target=1000
+ 19080.0 * pb6 nc->mid
+ 19082.5 * pb6 mid->no
+ 19127.1 * dial c1->gap
+ 19148.2 * dial gap->c2
+ 19211.5 * dial c2->gap
+ 19232.5 * dial gap->c3
+ 19295.8 * dial c3->gap
+ 19316.9 * dial gap->c4
+ 19380.1 * dial c4->gap
+ 19401.2 * dial gap->c5
+ 19464.5 * dial c5->gap
+ 19485.5 * dial gap->c6
+ 19548.8 * dial c6->gap
+ 19569.9 * dial gap->c7
+ 19633.1 * dial c7->gap
+ 19654.2 * dial gap->c8
+ 19717.4 * dial c8->gap
+ 19738.5 * dial gap->c9
+ 19801.8 * dial c9->gap
+ 19822.8 * dial gap->c10
+ 19886.1 * dial c10->gap
+ 19907.2 * dial gap->c11
+ 19970.4 * dial c11->gap
+ 19991.5 * dial gap->c12
+ 20054.7 * dial c12->gap
+ 20075.8 * dial gap->c13
+ 20075.9 ? dial=c13  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 22075.9 ? dial=c13  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 22075.9 > button6 target=0
+ 22087.1 * pb6 no->mid
+ 22089.6 * pb6 mid->nc
+ 23075.9 > switch3 target=1000
+ 23075.9 > switch5 target=0
+ 23075.9 > switch6 target=1000
+ 23102.8 * sw3 nc->mid  sw5 no->mid  sw6 nc->mid
+ 23107.4 * relay4 no->mid  relay5 no->mid  relay6 no->mid
+ 23107.5 * relay3 no->mid
+ 23108.3 * relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+ 23108.4 * relay3 mid->nc
+ 23108.9 * sw3 mid->no  sw5 mid->nc  sw6 mid->no
+ 23113.9 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 23118.8 * indLamp2 off->dim
+ 23120.1 * relay2 nc->mid
+ 23121.4 * relay2 mid->no
+ 23158.7 * indLamp2 dim->on
+ 23169.5 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 23575.9 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc dial=c13 indLamp1=on indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 23575.9 > button6 target=1000
+ 23587.1 * pb6 nc->mid
+ 23589.6 * pb6 mid->no
+ 23634.0 * dial c13->gap
+ 23655.0 * dial gap->c14
+ 23717.8 * dial c14->gap
+ 23738.7 * dial gap->c15
+ 23801.5 * dial c15->gap
+ 23822.4 * dial gap->c0
+ 23885.2 * dial c0->gap
+ 23906.1 * dial gap->c1
+ 23968.9 * dial c1->gap
+ 23989.9 * dial gap->c2
+ 24052.7 * dial c2->gap
+ 24073.6 * dial gap->c3
+ 24136.4 * dial c3->gap
+ 24157.3 * dial gap->c4
+ 24220.1 * dial c4->gap
+ 24241.0 * dial gap->c5
+ 24303.8 * dial c5->gap
+ 24324.8 * dial gap->c6
+ 24324.9 ? dial=c6  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 26324.9 ? dial=c6  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 26324.9 > button6 target=0
+ 26336.1 * pb6 no->mid
+ 26338.6 * pb6 mid->nc
+ 27324.9 > button6 target=1000
+ 27336.1 * pb6 nc->mid
+ 27338.6 * pb6 mid->no
+ 29324.9 ? dial=c6  "With a \"tree\" circuit, each combination of switches energizes one and only one terminal of the rotary switch. The rotary switch is programmed so that when it turns to the energized terminal it will stop. Thus, setting a binary number in the slide switches will result in the same number being displayed on the rotary switch."
+ 29324.9 > button6 target=0
+ 29336.1 * pb6 no->mid
+ 29338.6 * pb6 mid->nc

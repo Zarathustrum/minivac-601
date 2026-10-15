@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>minivac-trace</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Minivac.Core/Minivac.Core.csproj" />
+    <ProjectReference Include="../Minivac.Conformance/Minivac.Conformance.csproj" />
+  </ItemGroup>
+</Project>

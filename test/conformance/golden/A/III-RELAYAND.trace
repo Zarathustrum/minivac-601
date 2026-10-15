@@ -1,0 +1,23 @@
+#!mv601-trace 1
+# id=III-RELAYAND contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=10
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=252 minTickGap=13 marginal=false
+     0.0 > power on
+     0.0 > button1 target=1000
+     0.0 * power off->on
+    11.2 * pb1 nc->mid
+    13.7 * pb1 mid->no
+    23.6 * indLamp1 off->dim
+    24.7 * relay1 nc->mid
+    26.0 * relay1 mid->no
+    51.3 > button2 target=1000
+    62.5 * pb2 nc->mid
+    63.4 * indLamp1 dim->on
+    65.0 * pb2 mid->no
+    74.9 * indLamp2 off->dim
+    76.2 * relay2 nc->mid
+    77.5 * relay2 mid->no
+    80.8 * outLamp3 off->dim
+    99.7 * outLamp3 dim->on
+   115.1 * indLamp2 dim->on
+   135.2 ? outLamp3=on  "Light 3 indicates when the \"AND\" condition is met—both relay 1 and relay 2 are closed (ON)."

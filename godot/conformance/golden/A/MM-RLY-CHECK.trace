@@ -1,0 +1,19 @@
+#!mv601-trace 1
+# id=MM-RLY-CHECK contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=13
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=456 minTickGap=13 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim  outLamp3 off->dim
+    22.2 * outLamp1 dim->on  outLamp3 dim->on
+    42.3 ? outLamp1=on outLamp3=on  "Turn power on. Lights 1 and 3 should come on."
+    42.3 > button1 target=1000
+    53.5 * pb1 nc->mid
+    56.0 * pb1 mid->no
+    66.7 * relay1 nc->mid
+    68.0 * relay1 mid->no
+    71.3 * outLamp2 off->dim  outLamp4 off->dim
+    83.7 * outLamp1 on->dim  outLamp3 on->dim
+    90.3 * outLamp2 dim->on  outLamp4 dim->on
+   139.3 * outLamp1 dim->off  outLamp3 dim->off
+   140.4 ? outLamp1=off outLamp2=on outLamp3=off outLamp4=on  "Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on."

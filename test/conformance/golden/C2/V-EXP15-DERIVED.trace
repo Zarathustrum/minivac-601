@@ -1,0 +1,337 @@
+#!mv601-trace 1
+# id=V-EXP15-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=47
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=53 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In the following program, pushing pushbutton 6 will start the automatic sequence."
+   500.0 > button6 target=1000
+   511.2 * pb6 nc->mid
+   513.7 * pb6 mid->no
+   517.0 * outLamp1 off->dim
+   523.7 * indLamp6 off->dim
+   525.8 * relay6 nc->mid
+   527.1 * relay6 mid->no
+   536.0 * outLamp1 dim->on
+   536.1 ? outLamp1=on  "In the following program, pushing pushbutton 6 will start the automatic sequence."
+   536.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+   558.7 * dial c0->gap
+   564.3 * indLamp6 dim->on
+   579.7 * dial gap->c1
+   642.6 * dial c1->gap
+   663.6 * dial gap->c2
+   726.5 * dial c2->gap
+   736.1 > button6 target=0
+   747.3 * pb6 no->mid
+   747.5 * dial gap->c3
+   749.8 * pb6 mid->nc
+   810.4 * dial c3->gap
+   831.3 * dial gap->c4
+   894.3 * dial c4->gap
+   915.2 * dial gap->c5
+   978.2 * dial c5->gap
+   999.1 * dial gap->c6
+  1062.0 * dial c6->gap
+  1083.0 * dial gap->c7
+  1145.9 * dial c7->gap
+  1166.9 * dial gap->c8
+  1229.8 * dial c8->gap
+  1250.8 * dial gap->c9
+  1313.7 * dial c9->gap
+  1334.7 * dial gap->c10
+  1397.6 * dial c10->gap
+  1418.6 * dial gap->c11
+  1481.5 * dial c11->gap
+  1502.5 * dial gap->c12
+  1565.4 * dial c12->gap
+  1586.4 * dial gap->c13
+  1649.3 * dial c13->gap
+  1670.3 * dial gap->c14
+  1733.2 * dial c14->gap
+  1754.1 * dial gap->c15
+  1757.4 * outLamp2 off->dim
+  1764.2 * indLamp5 off->dim
+  1766.3 * relay5 nc->mid
+  1767.6 * relay5 mid->no
+  1776.6 * outLamp2 dim->on
+  1776.7 ? outLamp2=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  1776.7 ? relay1=nc relay2=nc relay3=nc relay4=nc relay6=no outLamp1=on outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  1805.2 * indLamp5 dim->on
+  1817.7 * dial c15->gap
+  1838.8 * dial gap->c0
+  1902.1 * dial c0->gap
+  1923.2 * dial gap->c1
+  1986.5 * dial c1->gap
+  2007.6 * dial gap->c2
+  2070.9 * dial c2->gap
+  2092.1 * dial gap->c3
+  2155.4 * dial c3->gap
+  2176.5 * dial gap->c4
+  2239.8 * dial c4->gap
+  2260.9 * dial gap->c5
+  2324.2 * dial c5->gap
+  2345.3 * dial gap->c6
+  2408.6 * dial c6->gap
+  2429.7 * dial gap->c7
+  2493.0 * dial c7->gap
+  2514.1 * dial gap->c8
+  2577.4 * dial c8->gap
+  2598.5 * dial gap->c9
+  2661.8 * dial c9->gap
+  2682.9 * dial gap->c10
+  2746.3 * dial c10->gap
+  2767.4 * dial gap->c11
+  2830.7 * dial c11->gap
+  2851.8 * dial gap->c12
+  2915.1 * dial c12->gap
+  2936.2 * dial gap->c13
+  2999.5 * dial c13->gap
+  3020.6 * dial gap->c14
+  3023.9 * outLamp3 off->dim
+  3030.7 * indLamp4 off->dim
+  3032.7 * relay4 nc->mid
+  3034.0 * relay4 mid->no
+  3043.2 * outLamp3 dim->on
+  3043.3 ? outLamp3=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  3043.3 ? relay1=nc relay2=nc relay3=nc relay5=no relay6=no outLamp1=on outLamp2=on outLamp4=off outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  3071.9 * indLamp4 dim->on
+  3084.5 * dial c14->gap
+  3105.8 * dial gap->c15
+  3169.5 * dial c15->gap
+  3190.8 * dial gap->c0
+  3254.5 * dial c0->gap
+  3275.7 * dial gap->c1
+  3339.4 * dial c1->gap
+  3360.7 * dial gap->c2
+  3424.4 * dial c2->gap
+  3445.7 * dial gap->c3
+  3509.4 * dial c3->gap
+  3530.6 * dial gap->c4
+  3594.3 * dial c4->gap
+  3615.6 * dial gap->c5
+  3679.3 * dial c5->gap
+  3700.5 * dial gap->c6
+  3764.3 * dial c6->gap
+  3785.5 * dial gap->c7
+  3849.2 * dial c7->gap
+  3870.5 * dial gap->c8
+  3934.2 * dial c8->gap
+  3955.4 * dial gap->c9
+  4019.1 * dial c9->gap
+  4040.4 * dial gap->c10
+  4104.1 * dial c10->gap
+  4125.4 * dial gap->c11
+  4189.1 * dial c11->gap
+  4210.3 * dial gap->c12
+  4274.0 * dial c12->gap
+  4295.3 * dial gap->c13
+  4298.6 * outLamp4 off->dim
+  4305.4 * indLamp3 off->dim
+  4307.2 * relay3 nc->mid
+  4308.5 * relay3 mid->no
+  4318.0 * outLamp4 dim->on
+  4318.1 ? outLamp4=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  4318.1 ? relay1=nc relay2=nc relay4=no relay5=no relay6=no outLamp1=on outLamp2=on outLamp3=on outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  4346.9 * indLamp3 dim->on
+  4359.6 * dial c13->gap
+  4381.0 * dial gap->c14
+  4445.2 * dial c14->gap
+  4466.5 * dial gap->c15
+  4530.7 * dial c15->gap
+  4552.0 * dial gap->c0
+  4616.2 * dial c0->gap
+  4637.5 * dial gap->c1
+  4701.7 * dial c1->gap
+  4723.0 * dial gap->c2
+  4787.2 * dial c2->gap
+  4808.5 * dial gap->c3
+  4872.7 * dial c3->gap
+  4894.0 * dial gap->c4
+  4958.2 * dial c4->gap
+  4979.5 * dial gap->c5
+  5043.7 * dial c5->gap
+  5065.0 * dial gap->c6
+  5129.2 * dial c6->gap
+  5150.5 * dial gap->c7
+  5214.7 * dial c7->gap
+  5236.0 * dial gap->c8
+  5300.2 * dial c8->gap
+  5321.5 * dial gap->c9
+  5385.7 * dial c9->gap
+  5407.0 * dial gap->c10
+  5471.2 * dial c10->gap
+  5492.5 * dial gap->c11
+  5556.7 * dial c11->gap
+  5578.0 * dial gap->c12
+  5581.3 * outLamp5 off->dim
+  5588.1 * indLamp2 off->dim
+  5589.8 * relay2 nc->mid
+  5591.1 * relay2 mid->no
+  5600.8 * outLamp5 dim->on
+  5600.9 ? outLamp5=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  5600.9 ? relay1=nc relay3=no relay4=no relay5=no relay6=no outLamp1=on outLamp2=on outLamp3=on outLamp4=on outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  5629.9 * indLamp2 dim->on
+  5642.8 * dial c12->gap
+  5664.3 * dial gap->c13
+  5728.9 * dial c13->gap
+  5750.4 * dial gap->c14
+  5814.9 * dial c14->gap
+  5836.4 * dial gap->c15
+  5901.0 * dial c15->gap
+  5922.5 * dial gap->c0
+  5987.0 * dial c0->gap
+  6008.6 * dial gap->c1
+  6073.1 * dial c1->gap
+  6094.6 * dial gap->c2
+  6159.2 * dial c2->gap
+  6180.7 * dial gap->c3
+  6245.2 * dial c3->gap
+  6266.8 * dial gap->c4
+  6331.3 * dial c4->gap
+  6352.8 * dial gap->c5
+  6417.4 * dial c5->gap
+  6438.9 * dial gap->c6
+  6503.4 * dial c6->gap
+  6524.9 * dial gap->c7
+  6589.5 * dial c7->gap
+  6611.0 * dial gap->c8
+  6675.6 * dial c8->gap
+  6697.1 * dial gap->c9
+  6761.6 * dial c9->gap
+  6783.1 * dial gap->c10
+  6847.7 * dial c10->gap
+  6869.2 * dial gap->c11
+  6872.5 * outLamp6 off->dim
+  6879.4 * indLamp1 off->dim
+  6880.9 * relay1 nc->mid
+  6882.2 * relay1 mid->no
+  6892.0 * outLamp6 dim->on
+  6892.1 ? outLamp6=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  6921.3 * indLamp1 dim->on
+  6934.4 * dial c11->gap
+  6956.0 * dial gap->c12
+  7021.0 * dial c12->gap
+  7042.6 * dial gap->c13
+  7092.1 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp1=on outLamp2=on outLamp3=on outLamp4=on outLamp5=on outLamp6=on indLamp1=on indLamp2=on indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  7092.1 > button5 target=1000
+  7103.3 * pb5 nc->mid
+  7105.8 * pb5 mid->no
+  7107.6 * dial c13->gap
+  7116.3 * relay6 no->mid
+  7117.2 * relay6 mid->nc
+  7120.8 * dial gap->c14
+  7129.9 * indLamp6 on->dim
+  7136.1 * outLamp1 on->dim
+  7185.5 * indLamp6 dim->off
+  7191.8 * outLamp1 dim->off
+  7592.1 > button5 target=0
+  7603.3 * pb5 no->mid
+  7605.8 * pb5 mid->nc
+  8592.1 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=nc outLamp1=off outLamp2=on outLamp3=on outLamp4=on outLamp5=on outLamp6=on indLamp1=on indLamp2=on indLamp3=on indLamp4=on indLamp5=on indLamp6=off  "When the last light—light 6—comes on, pushing pushbutton 5 will turn the system off."
+  8592.1 > power off
+  8592.1 * power on->off
+  8595.6 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid
+  8596.5 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc
+  8602.8 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim
+  8612.2 * outLamp2 on->dim  outLamp3 on->dim  outLamp4 on->dim  outLamp5 on->dim  outLamp6 on->dim
+  8658.4 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+  8667.8 * outLamp2 dim->off  outLamp3 dim->off  outLamp4 dim->off  outLamp5 dim->off  outLamp6 dim->off
+  9092.1 > power on
+     0.0 * power off->on
+   500.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Note — to re-set the automatic sequence control, turn power OFF, then ON again."
+   500.0 > button6 target=1000
+   511.2 * pb6 nc->mid
+   513.7 * pb6 mid->no
+   517.0 * outLamp1 off->dim
+   523.7 * indLamp6 off->dim
+   525.8 * relay6 nc->mid
+   527.1 * relay6 mid->no
+   536.0 * outLamp1 dim->on
+   536.1 ? outLamp1=on  "In the following program, pushing pushbutton 6 will start the automatic sequence."
+   536.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+   564.3 * indLamp6 dim->on
+   568.5 * dial c14->gap
+   589.5 * dial gap->c15
+   592.8 * outLamp2 off->dim
+   599.6 * indLamp5 off->dim
+   601.7 * relay5 nc->mid
+   603.0 * relay5 mid->no
+   612.0 * outLamp2 dim->on
+   640.6 * indLamp5 dim->on
+   653.0 * dial c15->gap
+   674.2 * dial gap->c0
+   736.1 > button6 target=0
+   736.1 ? outLamp2=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+   736.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay6=no outLamp1=on outLamp3=off outLamp4=off outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+   737.5 * dial c0->gap
+   747.3 * pb6 no->mid
+   749.8 * pb6 mid->nc
+   758.6 * dial gap->c1
+   821.9 * dial c1->gap
+   843.0 * dial gap->c2
+   906.3 * dial c2->gap
+   927.4 * dial gap->c3
+   990.7 * dial c3->gap
+  1011.8 * dial gap->c4
+  1075.1 * dial c4->gap
+  1096.3 * dial gap->c5
+  1159.6 * dial c5->gap
+  1180.7 * dial gap->c6
+  1244.0 * dial c6->gap
+  1265.1 * dial gap->c7
+  1328.4 * dial c7->gap
+  1349.5 * dial gap->c8
+  1412.8 * dial c8->gap
+  1433.9 * dial gap->c9
+  1497.2 * dial c9->gap
+  1518.3 * dial gap->c10
+  1581.6 * dial c10->gap
+  1602.7 * dial gap->c11
+  1666.0 * dial c11->gap
+  1687.1 * dial gap->c12
+  1750.5 * dial c12->gap
+  1771.6 * dial gap->c13
+  1834.9 * dial c13->gap
+  1856.0 * dial gap->c14
+  1859.3 * outLamp3 off->dim
+  1866.1 * indLamp4 off->dim
+  1868.1 * relay4 nc->mid
+  1869.4 * relay4 mid->no
+  1878.6 * outLamp3 dim->on
+  1878.7 ? outLamp3=on  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  1878.7 ? relay1=nc relay2=nc relay3=nc relay5=no relay6=no outLamp1=on outLamp2=on outLamp4=off outLamp5=off outLamp6=off  "Lights 1 through 6 will come on in order, indicating that each step in the sequence has been completed."
+  1878.7 > button5 target=1000
+  1889.9 * pb5 nc->mid
+  1892.4 * pb5 mid->no
+  1903.0 * relay6 no->mid
+  1903.9 * relay6 mid->nc
+  1907.3 * indLamp4 dim->on
+  1907.5 * dial c14->gap
+  1916.8 * indLamp6 on->dim
+  1923.0 * outLamp1 on->dim
+  1972.5 * indLamp6 dim->off
+  1978.7 * outLamp1 dim->off
+  2378.7 > button5 target=0
+  2389.9 * pb5 no->mid
+  2392.4 * pb5 mid->nc
+ 12378.7 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=no relay6=nc outLamp1=off outLamp2=on outLamp3=on outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=on indLamp5=on indLamp6=off  "Notice that the sequence can be stopped at any time by pushing pushbutton 5."
+ 12378.7 > power off
+ 12378.7 * power on->off
+ 12382.2 * relay4 no->mid  relay5 no->mid
+ 12383.1 * relay4 mid->nc  relay5 mid->nc
+ 12389.7 * indLamp4 on->dim  indLamp5 on->dim
+ 12399.0 * outLamp2 on->dim  outLamp3 on->dim
+ 12445.3 * indLamp4 dim->off  indLamp5 dim->off
+ 12454.6 * outLamp2 dim->off  outLamp3 dim->off
+ 12878.7 > dialGrab targetUdeg=337500000
+ 12882.9 * dial gap->c15
+ 13078.7 > dialRelease
+ 13278.7 > power on
+     0.0 * power off->on
+     3.2 * outLamp2 off->dim
+     9.9 * indLamp5 off->dim
+    11.8 * relay5 nc->mid
+    13.1 * relay5 mid->no
+    22.1 * outLamp2 dim->on
+    49.9 * indLamp5 dim->on
+   500.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=nc dial=c15 outLamp1=off outLamp2=on outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=on indLamp6=off  "Note — to re-set the automatic sequence control, turn power OFF, then ON again."

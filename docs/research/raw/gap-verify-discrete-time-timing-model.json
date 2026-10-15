@@ -1,0 +1,275 @@
+{
+ "topic": "ADVERSARIAL VERIFICATION of gap-discrete-time-timing-model: tick, per-device latencies, contact-transfer semantics, intra-tick settling rule",
+ "verifies_file": "docs/research/raw/gap-discrete-time-timing-model.json",
+ "date_verified": "2026-08-30",
+ "agent_note": "I went to the primary sources independently rather than re-reading the finder's citations. Headline result: the finder's SOURCE work is excellent - every one of the 18 quoted primary passages I checked is verbatim-accurate, and the three circuit traces are structurally correct where I could re-derive them. But the single piece of ELECTRICAL physics on which the entire named fallback rests (M-04, and through it hard constraint R1 and the 'proof against the single-input flip-flop') is factually wrong about the actual topology, and its margin arithmetic checks the wrong transition. A second, smaller error invalidates the file's one falsifiable prediction. A universal claim (M-02) is refuted by two published circuits the finder did not trace.",
+ "oracle_rule_compliance": "No Minivac emulator source was opened, fetched, cloned, read or quoted. I did not visit minivac.greg.technology or any emulator repository. No web access was used at all in this verification pass - everything below is from the local primary scans.",
+ "sources_i_read_myself": [
+  "book1.txt - full read of printed pp.9 (Experiment 3 step 8, pushbutton), pp.12-13 (relay description + Experiment 5), pp.17-19 (slide switches + Experiment 10), pp.20-21 (Experiment 11 rotary)",
+  "book2-3-4.pdf - fresh `pdftotext -layout` of PDF pp.16-19 (Book II printed pp.10-13, the single-input flip-flop) and PDF pp.74-79 (Book IV printed pp.68-73: both flip-flop versions, the SEQUENCE OF OPERATIONS chart, the full three-bit counter program, Experiments 1-3)",
+  "book5-6.txt - Book V printed p.6 (speed timer worked example); Book VI printed pp.56 (Philosophic Tug of War), 59 (Scissors Paper or Stone), 60 (Reaction Time Tester), 51 (basic sequence-recognition circuit), plus Book V pp.12 and 24 program lists reached by regex",
+  "book7-capacitor-resistor.txt - printed pp.1-4 region: 'The Use of Resistors', pull-in/drop-out passage, the bias-resistor measurement procedure and chart",
+  "errata.txt - full read, both columns, including the alternate three-bit counter program and the Watertown footer",
+  "maintenance-manual.txt - full read",
+  "PAGE IMAGE OPENED (1): pages/maintenance/p-05.png (Maintenance Manual printed p.3, Power Supply Circuit Diagram) - opened to independently re-read the schematic the finder's T-11 rests on. I deliberately did not re-open the four book2-3-4 images because fresh pdftotext of those pages returned clean, unambiguous program lists that matched the finder's transcriptions character for character.",
+  "Regex sweeps of all six local text extracts, OCR-space-tolerant, for the self-interrupting relay pattern and for 'break-before-make' in all spacings"
+ ],
+ "overall_verdict": {
+  "source_fidelity": "HIGH. 18/18 quoted primary passages verbatim-accurate. Zero fabricated quotes. Zero fabricated panel geometry or terminal letters. The one address discrepancy is carried, not resolved, exactly as instructed.",
+  "reasoning_fidelity": "MIXED. The topological reasoning (node maps, circuit identity, carry path, ripple direction) is correct and in one place better than the finder claims. The electrical reasoning at the centre of the fallback is wrong. The one falsifiable prediction is mis-arithmetised. One universal claim is refuted by circuits the finder never traced.",
+  "labelling_honesty": "HIGH. MV601-TIMING-A is explicitly labelled a fallback; 'None of them is a source-derived fact' appears in the implementer instruction; not_settled_by_the_sources is candid and, as far as I can tell, complete. Tag counts in the file (18 verified / 3 likely / 10 unverified) are arithmetically correct and every claim carries exactly one tag.",
+  "actionability": "The STRUCTURE is buildable as written. The NUMBERS are not safe to adopt: the shipped default parameter set fails hard constraint R1 as the file states it, fails the correctly-derived binding condition by ~4%, and fails R5 by the file's own admission - an implementer who writes the load-time assertions the file instructs them to write gets an immediate failure."
+ },
+ "refuted": [
+  {
+   "id": "REF-01",
+   "severity": "HIGH - this is the load-bearing one",
+   "target": "M-04 (tag: unverified), and through it hard constraint R1 and named_fallback.proof_against_the_single_input_flip_flop",
+   "claim_as_written": "'Under break-before-make, node_B floats for t_bothopen and relay2's coil is dead for that long. Relay2 survives if and only if t_bothopen is shorter than its release time.'",
+   "correction": "Relay 2's coil is NOT dead during relay 1's both-open window. On the finder's own (correct) node map, when node_B floats the two coils are left in SERIES between a live node and ground: POS -> node_A -> coil1 -> node_B -> coil2 -> node_C -> (relay lamp 2 parallel binary light 2) -> NEG. Relay 2 stays partially energised through the whole float at roughly half its normal current. The survival condition is therefore NOT 't_bothopen < t_release'; it is whether the series-divided voltage across coil 2 stays above its drop-out - which, given SDC's own statement that the pull-in/drop-out spread is deliberately large (Book VII), it plausibly does with margin. R1 as stated may be entirely moot.",
+   "why_it_matters_more": "The same series path puts a non-zero voltage back across coil 1, in the reversed direction, at the exact moment relay 1 is mid-release. Under the finder's own M-06 travel model - which is magnitude-based and has no polarity - the solver will compute |V_coil1| well above drop_out_v (3.0 V) and ARREST and REVERSE relay 1's release. Travel climbs back above make_frac, contact 1H re-touches 1G, coil 1 is shorted again, travel falls, 1H leaves 1G, the series path returns. That is a limit cycle at the contact boundary: MV601-TIMING-A as specified makes the canonical single-input flip-flop CHATTER instead of toggle. The file's 'proof_against_the_single_input_flip_flop' asserts the opposite and does not survive the topology it is proving against.",
+   "evidence": "Book II printed p.12 program list, which I re-extracted independently with `pdftotext -layout -f 18 -l 18 book2-3-4.pdf` and which matches the finder's transcription exactly: 1-/1B, 1-/1C, 1A/1E, 1E/2G, 1F/2F, 1H/1F, 1G/1Y, 1Y/1+, 1X/1J, 1J/2H, 2J/2E, 2E/2A, 2B/2-, 2-/2C. With coil n spanning nE..nF and lamp nC..nE (find-relays RLY-13): coil1 = node_A..node_B, coil2 = node_C..node_B, node_A and node_C each reach NEG only through lamps, and node_B's ONLY switched source is relay 1's own arm 1H. Float node_B and the series path is forced.",
+   "my_tag": "verified (the topology and the series path); unverified (whether the real relay actually holds - that turns on coil and lamp resistances the sources never give)",
+   "what_would_settle_it": "Measured coil resistance and lamp hot resistance for an original MINIVAC relay and light assembly, plus that relay's drop-out current. Nothing in the corpus gives any of the three."
+  },
+  {
+   "id": "REF-02",
+   "severity": "HIGH",
+   "target": "named_fallback.hard_constraints_the_numbers_must_satisfy R1.satisfied_by_defaults",
+   "claim_as_written": "'3.0 ms both-open on operate vs 8.0 ms open release: 2.7x.'",
+   "correction": "That checks the wrong transition. On the Book II / Book IV-second-version topology the transfer that floats node_B and threatens relay 2 is relay 1's SHORTED RELEASE (the S1 + button-down step), not its operate. With the file's own defaults that both-open window is 0.25 x relay_release_shorted_ms = 0.25 x 20.0 = 5.0 ms. Relay 2, starting from travel 1.0 and falling at 1/relay_release_open_ms, reaches relay_break_frac after (1 - 0.35) x 8.0 = 5.2 ms. Margin is 5.2/5.0 = 1.04x, not 2.7x. The file demands 'at least 3x margin' in the same breath. The shipped defaults miss it by a factor of three.",
+   "and_the_suggested_fix_is_also_mis-derived": "The file offers 'tighten break_frac/make_frac to 0.40/0.55 if a stricter margin is wanted'. Under the correct binding case that gives float = 0.15 x 20 = 3.0 ms against (1 - 0.40) x 8.0 = 4.8 ms, i.e. 1.6x - better, but still half the stated requirement, and the file does not say so because it never computed the binding case.",
+   "compounding": "R5 is also failed by the shipped defaults on the file's own admission (relay_release_open_ms 8.0 < 8.33 ms). So of five hard constraints the file tells the implementer to assert at load time, the shipped parameter set fails two.",
+   "evidence": "Arithmetic on named_fallback.parameters as written, against trace_1's own state table row 'S1 + button DOWN'. Note this critique is INDEPENDENT of REF-01: even granting the finder's (wrong) premise that the coil goes dead, the margin they report is for the wrong stroke.",
+   "my_tag": "verified (it is arithmetic on the file's own numbers)"
+  },
+  {
+   "id": "REF-03",
+   "severity": "MEDIUM",
+   "target": "circuit_traces.trace_3.falsifiable_prediction, and hard constraint R4's form",
+   "claim_as_written": "'counts 0->1, 1->2, 2->3, 4->5, 5->6, 6->7 need one stage-time of hold, 3->4 needs two, 7->0 needs three.'",
+   "correction": "Wrong on three of the eight counts. Working the transitions against the finder's own trace_1 state table (a stage going 0->1 does an OPERATE and emits no carry; a stage going 1->0 does a shorted RELEASE and emits a carry; the hold must cover the final operate too, because a stage that loses its input mid-operate never latches), the serial device-time chains on the DOWN edge are: 0->1 = 1; 1->2 = 2 (C releases + carry, then B operates); 2->3 = 1; 3->4 = 3 (C releases, B releases, A operates); 4->5 = 1; 5->6 = 2; 6->7 = 1; 7->0 = 3. So 1->2 and 5->6 need two, not one, and 3->4 needs three, not two.",
+   "consequence_for_the_prediction": "The predicted signature is still selective rather than uniform - the finder's qualitative point survives - but the pattern to look for in a video is 1,2,1,3,1,2,1,3, and a marginal tap should fail FIRST at 3->4 and 7->0 and SECOND at 1->2 and 5->6, never at the even->odd steps. As written the prediction would be scored 'confirmed' by a unit that actually behaves differently from the model.",
+   "consequence_for_R4": "R4's form 'N * (t_release_shorted + contact transfer)' is only right for 7->0. For 3->4 the chain is two shorted releases plus one operate; for 1->2 and 5->6 it is one shorted release plus one operate. R4 should be stated as the sum along the actual chain, with the terminating stage contributing t_operate when it goes 0->1.",
+   "evidence": "Book IV printed p.71, 'BINARY COUNTER - SEQUENCE OF OPERATIONS' chart, re-extracted by me; plus circuit_traces.trace_1.state_table in the file under review.",
+   "my_tag": "verified"
+  },
+  {
+   "id": "REF-04",
+   "severity": "MEDIUM",
+   "target": "M-02 (tag: unverified) and its consequence",
+   "claim_as_written": "'There is no published circuit in which two relays are driven simultaneously and the outcome depends on which wins.' Consequence: 'A simulator does NOT need per-relay speed differences, randomised operate times, or tie-breaking to reproduce the manuals.'",
+   "correction": "Refuted by two published circuits the finder did not trace. (a) Book VI, Reaction Time Tester, printed p.60: the circuit's entire published purpose is to decide which of two near-simultaneous pushbutton presses came first - 'each player tries to push his pushbutton down first. MINIVAC will indicate a winner'. When the two presses fall inside one relay operate time the outcome is decided by which relay wins, and a simulator with identical relay parameters and a deterministic solve will produce a symmetric non-physical state (both winner lights, or neither) unless it has a tie-break or per-relay variation. (b) Book VI, Scissors Paper or Stone, printed p.59: SDC prints an explicit ordering instruction - 'Player 1 should move just before player 2 moves since the relays will move after player 2 indicates his move.' That is SDC conceding the circuit is order-sensitive and resolving it by instructing the human, not by design.",
+   "nuance_i_grant_the_finder": "(b) actually SUPPORTS the spirit of M-02 - determinism is imposed from outside the relay fabric - but it refutes M-02's letter, which is a universal over 'every published circuit'. And (a) refutes both letter and consequence. The finder traced three circuits and quantified over roughly a hundred.",
+   "evidence": "book5-6.txt, Book VI printed p.60 program list and 'To play' text; Book VI printed p.59 'To Play' paragraph.",
+   "my_tag": "verified (the quotes and the game premises); likely (that the lockout is relay-decided rather than resolved elsewhere in the circuit - I did not trace the 51-connection Reaction Time Tester program)"
+  },
+  {
+   "id": "REF-05",
+   "severity": "LOW",
+   "target": "T-12's supporting argument (the conclusion stands; one of its two legs does not)",
+   "claim_as_written": "cite: 'inference from T-11 plus the absence of any capacitor in the Maintenance Manual spare-parts list and any mention of one in the text'",
+   "correction": "The spare-parts-list leg is worthless. That list (Maintenance Manual printed p.11: parts 6431-6491) also omits the two motor-drive resistors, which the SAME manual proves exist three pages earlier: 'Check each of the two resistors by connecting power across them. The resistors should heat up in about 20 seconds. If a resistor does not heat up, it is defective.' A list that omits a component the manual elsewhere tells you to test and replace is not evidence of absence for any other component.",
+   "net": "T-12 stays [likely] on the schematic read alone, which is genuinely good evidence. Drop the parts-list argument.",
+   "evidence": "maintenance-manual.txt printed pp.10-11, read in full by me.",
+   "my_tag": "verified"
+  }
+ ],
+ "downgraded": [
+  {
+   "id": "DWN-01",
+   "target": "T-03",
+   "from": "verified",
+   "to": "likely",
+   "why": "The two quotes are verbatim-correct and I confirm both. But the CLAIM is an attribution - that the errata's 'page 69' note belongs to the first-version circuit rather than the second - and the errata never names a version. The finder's argument is strong (the first version's indicator is light 6 via 6G/6A + 6B/6-, and the errata note says light 6 indicates the state; the second version's own text on the same printed page says light 6 is NOT an indicator) and I independently re-derived that both circuits sit in the p.68-70 neighbourhood with those exact indicator wirings. But printed p.69 physically carries the first version's completed program AND the prose introducing the second version, so a page-keyed errata note is not by itself decisive. Inference this good is [likely], not [verified].",
+   "note": "The finder's correction of find-relays RLY-26 and verify-relays REF-03(b) is nonetheless right in substance and should be adopted."
+  },
+  {
+   "id": "DWN-02",
+   "target": "T-18 (no astable circuit is published)",
+   "from": "verified",
+   "to": "likely",
+   "why": "Two reasons. (1) It is a negative existential over program tables in scans the project brief itself calls 'unreliable on tables'. (2) The stated search undercounts. The file reports the nJ/nC, nN/nC, nJ/nE, nN/nE family 'occurs seven times'. An OCR-space-tolerant regex over all six extracts returns at least 18: book1 x1 (2J/2E), book2-3-4 x5, book5-6 x9 (including 6E/6N three times, 3E/3J, 4E/4J x2, 6E/6J x2), errata x3. A naive grep for 'break-before-make' similarly returns one hit where the corpus has two, because Book I p.21 is OCR'd as 'b re a k-b e fo re -m ak e'.",
+   "but": "I inspected the occurrences the finder most plausibly missed and the CONCLUSION survives. Book VI's basic sequence-recognition circuit (printed p.51) has 6E/6N with 6H/6+ and 6F/6G - which looks like a self-interrupter until you notice 6F/6G is a self-hold that takes over the instant the armature pulls in, so it latches rather than buzzes. The Philosophic Tug of War (printed p.56) has 6G/6N, 6F/6L, 6H/6+ - that one routes power to the motor RUN terminals D17/D18 for direction reversal and is not a self-interrupter either. So: right answer, thinner evidence than claimed.",
+   "simulator_consequence_unchanged": "The finder's advice - do not model armature natural frequency, but DO detect and report a non-settling relay as a diagnostic because user wiring can make one - is correct and should be kept."
+  },
+  {
+   "id": "DWN-03",
+   "target": "M-02's consequence, independently of REF-04",
+   "issue": "It contradicts the file's own T-05, which is [verified] and which I confirmed verbatim: 'the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit.' That is SDC saying unit-to-unit relay variation determines whether a canonical published circuit works at all. Calling per-relay variation 'a fidelity flourish, not a correctness requirement' is not compatible with that sentence."
+  },
+  {
+   "id": "DWN-04",
+   "target": "M-07's causal attribution",
+   "issue": "M-07 says the slow shorted-release is 'the specific physical reason SDC had to print push pushbutton 6 slowly'. The finder's own trace_2.failure_mode_under_a_fast_press attributes that failure to relay 6's OPERATE stroke: 'press and release before relay6 has completed its operate stroke'. Both are true, on alternating presses - the push phase drives relay 6 ON from one state and OFF (by shorting) from the other. The singular causal claim is not supported by the file's own trace.",
+   "what_survives": "The MECHANISM in M-07 - that a coil short-circuited by contacts is a freewheeling loop and decays on L/R_coil rather than collapsing into an open circuit - is standard and I have no quarrel with it. Carrying two release rates is a good call. The claim that this specific mechanism explains a specific errata note is not.",
+   "bonus": "The finder's core_loop step 5 re-selects the release rate every tick from the live connectivity, which correctly handles the fact that the short OPENS partway through the stroke when the arm leaves its contact. That is better than the M-07 prose suggests and is worth calling out to the implementer."
+  },
+  {
+   "id": "DWN-05",
+   "target": "M-08 -> M-09 chain",
+   "issue": "M-08's ripple argument bounds the HOLD/RELEASE dynamics: an armature must not drop out inside an 8.33 ms supply trough. M-09 then says 'Combined with M-08 this brackets relay operate time to roughly 8-40 ms.' That is a non-sequitur - a relay can have a 5 ms operate time and still not chatter on unfiltered DC, because chatter is a release-side phenomenon. The lower bound does not transfer to operate. Separately, the 40 ms upper is an unexplained halving of M-09's own ~80 ms dwell bound.",
+   "net": "The operate-time bracket is unsupported at both ends. Since it is [unverified] and feeds only a tunable, the harm is contained - but an implementer should not read '8-40 ms' as derived."
+  },
+  {
+   "id": "DWN-06",
+   "target": "M-05's justification (not its conclusion)",
+   "issue": "'100 us resolves both with at least ten samples' - the file's own default relay_bounce_on_make_ms is 0.5, which is five ticks, not ten. Minor, but the tick choice is presented as arithmetically forced when it is a judgement call.",
+   "net": "100 us is still a defensible tick and I would keep it. The 'fixed tick beats event queue for reproducibility' argument and the 'skip to next interesting tick' optimisation note are both sound."
+  },
+  {
+   "id": "DWN-07",
+   "target": "M-01's framing",
+   "issue": "'THE SETTLING RULE IS A NON-QUESTION' is true only because the chosen tick is roughly two orders of magnitude smaller than the shortest device latency. It is a consequence of M-05, not an independent structural result. If anyone later proposes a coarser tick - one tick per relay step, say, which is a natural thing to try for a teaching simulator - the settling question comes straight back. State the dependency.",
+   "what_is_genuinely_right": "The underlying observation is correct and worth keeping: no element in the MINIVAC closes a loop from a node voltage back to a contact position in zero time, so with contacts frozen the per-tick network is a static graph. I checked the parts inventory against the Maintenance Manual (transformer, rectifier, breaker, power switch, lights, pushbuttons, relays, slide switches, rotary switch, motor, two motor resistors, program wires) and found nothing that violates it."
+  }
+ ],
+ "upgraded_or_confirmed": [
+  {
+   "id": "OK-01",
+   "target": "T-07 pushbutton break-before-make",
+   "result": "CONFIRMED verbatim, Book I printed p.9 (book1.txt lines ~452-462). Every clause the finder quotes is present, including 'This feature is necessary for the proper operation of some MINIVAC circuits.' Also confirms X = N.O., Y = arm, Z = N.C. from the same page's summary sentence."
+  },
+  {
+   "id": "OK-02",
+   "target": "T-08 rotary break-before-make",
+   "result": "CONFIRMED verbatim, Book I printed p.21, Experiment 11 step 3. Note for future agents: this passage is OCR'd with intra-word spaces ('b re a k-b e fo re -m ak e'), so a literal grep for the term finds only the Book I p.9 hit. The finder's quote is exact."
+  },
+  {
+   "id": "OK-03",
+   "target": "T-09 relay contact description",
+   "result": "CONFIRMED verbatim, Book I printed p.12: 'Each relay has two sets of contacts, similar to the pushbutton contacts, which open and close together' (book1.txt lines 598-600) and 'The two relay arms are connected together mechanically with a plastic crossbar. Both arms move together and make or break contact at the same time.' I initially suspected this quote was a paraphrase; it is not."
+  },
+  {
+   "id": "OK-04",
+   "target": "T-10 slide-switch silence",
+   "result": "CONFIRMED by full read of Book I printed pp.17-19. The slide-switch section says only 'Each switch has two sets of contacts which open and close together'; Experiment 10 has the user observe light 1 off / light 2 on with no 'both off' step. The Maintenance Manual's Slide Switch Check adds nothing either. M-11's 'not settled by the sources' is correct."
+  },
+  {
+   "id": "OK-05",
+   "target": "T-11 power supply schematic",
+   "result": "CONFIRMED by my own read of pages/maintenance/p-05.png. Every element the finder reports is there and correctly described: power cord -> power switch -> black wires -> transformer primary; centre-tapped secondary with the centre tap labelled YELLOW WIRE and the two ends labelled YELLOW/BLACK WIRE; RECTIFIER drawn as two diode symbols meeting at the + output; the yellow centre tap running down through the CIRCUIT BREAKER to the - output; POWER LIGHT drawn across + and -. No capacitor symbol anywhere on the drawing. Full-wave centre-tapped, unfiltered as drawn."
+  },
+  {
+   "id": "OK-06",
+   "target": "T-13 supply figures",
+   "result": "CONFIRMED verbatim, all three sentences, Maintenance Manual printed pp.1 and 3."
+  },
+  {
+   "id": "OK-07",
+   "target": "T-14 the two rotary speeds",
+   "result": "CONFIRMED. Book V printed p.6: 'For example: assume that the checkpoints are 50 yards apart, and that the rotary switch turns 45 full revolutions per minute.' - explicitly an assumption inside a worked example, and step 3 of the same procedure tells the owner to 'Count the number of complete revolutions which your rotary switch makes in one minute'. Book II printed p.6: 'the rotary switch system requires more than a second to go from zero to nine' - a rhetorical comparison, not a spec. The arithmetic in T-14 (83 ms/position at 45 rpm x 16 positions; >111 ms/position from the Book II figure) checks out, and the two figures do genuinely disagree. Keeping dial speed configurable is the right call."
+  },
+  {
+   "id": "OK-08",
+   "target": "T-15, T-16, T-17",
+   "result": "CONFIRMED verbatim, Book IV printed pp.68, 69, 70. The master-slave prose, the three observed steps, and the both-ON-or-both-OFF stable-state sentence are all exactly as quoted."
+  },
+  {
+   "id": "OK-09",
+   "target": "T-02, T-04, T-05, T-06",
+   "result": "CONFIRMED verbatim from a full read of the errata."
+  },
+  {
+   "id": "OK-10",
+   "target": "D-01 the address discrepancy",
+   "result": "CONFIRMED and correctly carried unresolved. Every printed document in the corpus says Watertown: Book II-III-IV title page and p.4287 footer, Book V-VI copyright line ('Copyright (c) 1961 by Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'), Book VII, the errata header and footer, and the Maintenance Manual ('Watertown 72, Massachusetts'). The panel legend's Cambridge stands alone against all of them - which is interesting but is NOT a resolution, and the finder rightly does not treat it as one."
+  },
+  {
+   "id": "OK-11",
+   "target": "circuit_traces trace_1 / trace_2 / trace_3 program transcriptions",
+   "result": "CONFIRMED character for character against fresh pdftotext of PDF pp.18, 74, 75, 76, 78. Book II p.12 flip-flop (14 connections), Book IV first version (15 connections across three groups plus the indicator pair), Book IV second version (14 connections), the carry additions (4), and the full 44-connection three-bit counter on printed p.72 all match exactly. The finder's [likely] tag on the counter program is conservative - it is clean in the text layer - but conservative is the right direction."
+  },
+  {
+   "id": "OK-12",
+   "target": "trace_3's node-for-node identity between Book II p.12 and Book IV p.70",
+   "result": "CONFIRMED by independent re-derivation. 5+/5G maps to 1G/1Y + 1Y/1+; node_B = 5H=5F=6F maps to 1H=1F=2F; node_A = 5E=6G maps to 1E=2G; node_C = 6E=6J maps to 2E=2J; node_D = 5J=6H=6X maps to 1J=2H=1X. Only the lamp hangings differ, exactly as the finder says. This is careful work."
+  },
+  {
+   "id": "OK-13",
+   "target": "trace_3's carry path in the full counter",
+   "result": "CONFIRMED. In the printed p.72 program the carry is taken from the stage's own input node, not from POS: node_D -> memory relay N.C. set2 -> memory relay ARM set2 -> slave relay ARM set2 -> slave relay N.O. set2 -> next stage's node_D (5N/6H, 5L/6L, 3J/6K for C->B; 3N/4H, 3L/4L, 1J/4K for B->A). Stage A has no carry-out wiring, matching SDC's 'no carry out is required for the high order bit'. The finder's read is right and it is a genuinely useful structural insight for the simulator."
+  },
+  {
+   "id": "OK-14",
+   "target": "trace_3's ripple-on-the-down-edge finding",
+   "result": "CONFIRMED, and BETTER SUPPORTED THAN THE FILE CLAIMS - see MISS-01."
+  }
+ ],
+ "missed": [
+  {
+   "id": "MISS-01",
+   "what": "Book IV printed p.71, the chart titled 'BINARY COUNTER - SEQUENCE OF OPERATIONS', is direct primary corroboration for the file's ripple-direction finding and is not cited anywhere.",
+   "detail": "The chart has alternating UP and DOWN rows and shows every carry asserted on a DOWN row. At the 3->4 transition it prints: '0 NO / 1 NO / 1 / UP / 3' then '1 YES / 1 YES / 1 / DOWN' then '1 NO / 0 NO / 0 / UP / 4'. So the high-order bit has ALREADY flipped to 1 while the button is still down, and both carries read YES on that same down row. The file rests its ripple-direction claim entirely on the errata's 'hold the pushbutton down long enough for any carry to propagate' - which is good evidence, but this chart is SDC's own published tick-by-tick behavioural spec for the counter and it should be transcribed into the corpus in full. It is also the datum against which REF-03's corrected per-count chain lengths should be regression-tested.",
+   "errata_cross_check": "The errata's 'page 71: chart title incorrect - change Pushbutton carry to Pushbutton' confirms this is the chart in question."
+  },
+  {
+   "id": "MISS-02",
+   "what": "Book I printed p.12 carries a much stronger primary basis for M-03 (relay break-before-make) than the sentence the file quotes.",
+   "detail": "'The relay arm is in the middle, between the other two contacts.' and, in Experiment 5's setup, 'Notice how the arm leaves the normally-closed contact and swings over to touch the normally open contact.' A single arm between two fixed stops, described as leaving one before touching the other, cannot make before it breaks. The file relies instead on 'similar to the pushbutton contacts', which in its immediate context is about terminal PATTERN and wiring similarity - a weaker peg. M-03 should stay [likely] (SDC still never writes the words for the relay) but its argument gets materially stronger with these two sentences carried."
+  },
+  {
+   "id": "MISS-03",
+   "what": "Book VII states the pull-in/drop-out hysteresis in SDC's own words and says it is deliberate - the file leans on this through a prior-file reference (RLY-17) but never quotes it, and it is the most load-bearing verified statement available for M-06's bi-stable band.",
+   "quote": "'The voltage at which a relay turns on is called the \"pull-in\" voltage; the voltage at which a relay turns off is called [the drop-out] voltage. The MINIVAC's relays are deliberately [designed] so that there is a great difference between the \"pull-in\" and \"drop-out\" voltages.' (bracketed words are OCR damage in the scan, the sense is unambiguous)",
+   "also": "The same section documents the owner-measured per-relay BIAS RESISTOR procedure and its chart (Omega-B1 .. Omega-B6), which is direct primary evidence that unit-to-unit relay variation is real and large enough that SDC made owners characterise each relay individually. That is relevant to DWN-03 and to REF-04.",
+   "scope_caveat": "Book VII is the 1962 'MINIVAC 601/6010 Capacitor/Resistor Manual' - an accessory for both machines. Per project rule 4 anything drawn from it needs an explicit 601-versus-6010 delta label, which the file under review does not apply.",
+   "why_it_matters_here": "This large hysteresis is precisely what makes my REF-01 refutation uncertain rather than decisive: a relay with a very low drop-out may well ride out the series-coil brownout, in which case the finder's flip-flop still toggles - just not for the reason they give."
+  },
+  {
+   "id": "MISS-04",
+   "what": "Book VI printed p.59, Scissors Paper or Stone: 'Player 1 should move just before player 2 moves since the relays will move after player 2 indicates his move.'",
+   "why": "A primary statement that SDC handled an ordering hazard by instructing the operator rather than by circuit design. It cuts both ways - it supports the file's M-02 thesis that determinism is imposed from outside the relay fabric, and it refutes M-02's letter by demonstrating a published circuit that is order-sensitive. Either way it belongs in the timing corpus."
+  },
+  {
+   "id": "MISS-05",
+   "what": "No constraint is derived from T-05, even though T-05 is [verified] and describes a behaviourally visible, reproducible failure.",
+   "detail": "SDC published an ENTIRE ALTERNATE COUNTER whose stated purpose is to bypass the relay indicator lights 'so that full voltage is supplied to the relay coils, causing them to pull in more reliably'. That is a testable model requirement: with the indicator lamp in series the coil voltage must sit close enough to pull-in that the three-bit counter is marginal, and removing the lamp must fix it. That deserves to be constraint R6, and it is the ONLY constraint in this whole area that is anchored to a verified primary statement about a published circuit rather than to inference. The file mentions the lamp resistance in M-12 but never turns it into a constraint or a test."
+  },
+  {
+   "id": "MISS-06",
+   "what": "The rotary's 16 contact positions - used in T-14's arithmetic - is settled by the Maintenance Manual and is not cited.",
+   "quote": "'Check the rotary switch by connecting D16 (the switch arm) to + and connecting output lights through the rotary switch contacts, D0 through D15.' (Maintenance Manual printed p.10)",
+   "note": "Also settles that D16 is the arm, which Book I's Experiment 11 program (6+/D16, D1/5A, D2/6A) corroborates. Worth carrying because T-14's 83 ms/position depends on it."
+  },
+  {
+   "id": "MISS-07",
+   "what": "The intra-tick determinism guarantee - which is the literal thing the gap question asks for - is never stated as a rule.",
+   "detail": "The file answers 'there is nothing to settle' at the level of network topology, which is right, but never says what happens when two or more armatures cross a contact threshold in the SAME tick. The core_loop actually handles it correctly and order-independently - step 3 freezes all contacts, step 4 solves once, step 5 advances all armatures from that one solution - so the answer is 'simultaneous threshold crossings are resolved simultaneously and the update order within step 5 cannot affect the result'. That sentence is the settling rule the gap asked for and it should be written down explicitly, because an implementer who mutates contacts inside step 5 instead of after it silently reintroduces order dependence."
+  },
+  {
+   "id": "MISS-08",
+   "what": "The Maintenance Manual's own component check circuits are a free behavioural test suite for exactly the devices this gap models, and are not referenced.",
+   "detail": "Pushbutton Check ('Light 1 should come on. Push the pushbutton. Light 1 should go off and light 2 should come on'), Relay Check ('Lights 1 and 3 should come on. Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on' - which exercises BOTH contact sets and proves they move together), and Slide Switch Check. Also the Relay adjustment sentence the file does cite, and the motor-drive check with the STOP-terminal short. There is a separate gap file for the maintenance check circuits, so this may be deliberate division of labour - but the Relay Check in particular is the cheapest possible regression test for the transfer model and deserved a pointer."
+  }
+ ],
+ "judgement_on_the_named_fallback": {
+  "is_it_honestly_labelled_as_a_fallback": "YES, and better than most. It is under a key called named_fallback, every parameter is called a tunable, the implementer instruction says in terms 'None of them is a source-derived fact', and not_settled_by_the_sources lists ten items candidly including 'contact bounce, for any contact in the machine. Not mentioned anywhere.' There is no smuggling of invented numbers into [verified] claims. Rule 2 is respected throughout - I found no inference tagged [verified] except the two attribution/absence cases I downgraded (DWN-01, DWN-02), and neither is a fabricated fact.",
+  "is_the_structure_defensible": "YES. Fixed integer tick; freeze contacts, solve once, advance armatures; continuous travel scalar with break_frac/make_frac giving operate time, release time, both-open window, interrupted-stroke behaviour and marginal-bias behaviour from one parameter set; two release rates keyed to whether the coil branch is shorted; the same travel machinery reused for pushbuttons, slide switches and the dial. That is a good architecture and it is the right answer to the gap question. Keep it.",
+  "are_the_numbers_defensible": "NO, not as shipped. Three problems, in order of severity: (1) the physical premise behind the constraint that sizes break_frac/make_frac is wrong (REF-01); (2) the margin arithmetic for R1 checks the wrong stroke and the true margin under the file's own model is 1.04x against a stated requirement of 3x (REF-02); (3) R5 is failed outright by relay_release_open_ms = 8.0 < 8.33, which the file admits in passing. An implementer who writes the load-time assertions the file instructs them to write will not get past startup.",
+  "what_i_would_tell_the_implementer": [
+   "Adopt the structure verbatim. It is sound and it is the genuinely valuable output of this pass.",
+   "Do NOT adopt the parameter block as a starting point until R1 is re-derived. Re-derive it against the SHORTED-RELEASE stroke of the memory relay, not the operate stroke.",
+   "Before sizing break_frac/make_frac at all, decide what the solver does with the series-coil path through a floating node (REF-01). That single modelling decision determines whether the canonical flip-flop toggles, chatters, or hangs - and it is not a tuning question, it is a solver-semantics question that belongs with gap-electrical-solver-class.",
+   "Write the Book IV p.71 SEQUENCE OF OPERATIONS chart (MISS-01) into the test suite as the counter's golden trace, and use REF-03's corrected 1,2,1,3,1,2,1,3 chain lengths as the hold-time regression.",
+   "Add the T-05 constraint as R6 (MISS-05): lamp-in-series makes the counter marginal, lamp bypassed makes it reliable. It is the only constraint here anchored to a verified primary statement about observable behaviour.",
+   "Keep two release rates and keep the per-tick re-selection in core_loop step 5 - that is right even though the prose around M-07 overclaims.",
+   "Do not treat '8-40 ms operate' as derived (DWN-05). It is a guess wearing a derivation."
+  ]
+ },
+ "not_settled_by_the_sources_i_confirm_and_extend": {
+  "i_confirm_all_ten_of_the_finders_items": "I re-ran the searches independently. No relay operate time, release time, bounce figure, coil resistance, coil inductance, or relay part-number-plus-datasheet exists anywhere in Book I, Books II-III-IV, Books V-VI, Book VII, the Maintenance Manual or the Errata. SDC part 6437 'Relay, $6.00' remains the only handle. The finder's T-01 is correct.",
+  "i_add": [
+   "COIL RESISTANCE and LAMP HOT RESISTANCE. Not given anywhere. These are now load-bearing, not decorative: REF-01 shows the canonical flip-flop's behaviour during a contact transfer depends on a two-coil-plus-lamp voltage divider. Without those two numbers the both-open behaviour of the machine's most important circuit cannot be settled at all. Would be settled by an ohmmeter on an original relay and an original light assembly.",
+   "DROP-OUT VOLTAGE AS A FRACTION OF PULL-IN. Book VII establishes qualitatively that the gap is deliberately large (MISS-03) but gives no number, and the number decides REF-01.",
+   "WHETHER THE COUNTER'S OBSERVED MIS-COUNT PATTERN UNDER A FAST TAP IS 1,2,1,3,1,2,1,3. This is now the sharpest falsifiable prediction available in this area (REF-03) and a single video of a real unit being tapped fast settles it."
+  ]
+ },
+ "counts": {
+  "refuted": 5,
+  "downgraded": 7,
+  "confirmed_or_upgraded": 14,
+  "missed": 8
+ },
+ "my_own_tag_discipline_note": "Everything I assert above about what a source SAYS is [verified] - I read it in the scan myself this pass. Everything I assert about what a circuit DOES (REF-01's series path, REF-03's chain lengths, the Book VI lockout in REF-04) is derivation from verified program lists and verified terminal semantics, and is [likely] at best - the same epistemic class as the finder's own traces. I have not measured a MINIVAC."
+}

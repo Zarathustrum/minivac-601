@@ -1,0 +1,711 @@
+#!mv601-trace 1
+# id=V-EXP11 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=52
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=9 minTickGap=1 marginal=false
+     0.0 > switch6 target=1000
+    26.9 * sw6 nc->mid
+    33.0 * sw6 mid->no
+   300.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   546.8 * dial c0->gap
+   551.5 * relay1 no->mid
+   552.4 * relay1 mid->nc
+   558.1 * indLamp1 on->dim
+   578.1 * dial gap->c1
+   584.7 * outLamp6 off->dim
+   586.7 * outLamp4 off->dim  outLamp5 off->dim
+   589.6 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   589.7 * relay6 nc->mid
+   590.8 * outLamp3 off->dim  indLamp6 off->dim
+   591.0 * relay6 mid->no
+   613.7 * indLamp1 dim->off
+   614.4 * outLamp6 dim->on
+   661.8 * outLamp3 dim->on  indLamp6 dim->on
+   674.7 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialRelease
+  1700.0 > switch6 target=0
+  1726.9 * sw6 no->mid
+  1733.0 * sw6 mid->nc
+  1764.5 * dial c1->gap
+  1764.6 * dial gap->c0
+  1764.7 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  1774.5 * indLamp1 off->dim
+  1775.6 * relay1 nc->mid
+  1776.9 * relay1 mid->no
+  1781.5 * outLamp4 on->dim  outLamp5 on->dim
+  1814.6 * indLamp1 dim->on
+  1826.3 * indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+  1839.2 * outLamp4 dim->off  outLamp5 dim->off
+  6764.7 ? dial=c0 outLamp4=off outLamp5=off outLamp6=on  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 1 / Three-Bit Gray Code 001"
+  6764.7 > switch6 target=1000
+  6791.6 * sw6 nc->mid
+  6797.7 * sw6 mid->no
+  7064.7 > power off
+  7064.7 * power on->off
+  7068.2 * relay1 no->mid  relay6 no->mid
+  7069.1 * relay1 mid->nc  relay6 mid->nc
+  7069.2 * outLamp3 on->dim  indLamp6 on->dim
+  7075.7 * indLamp1 on->dim
+  7085.0 * outLamp6 on->dim
+  7124.8 * outLamp3 dim->off  indLamp6 dim->off
+  7131.4 * indLamp1 dim->off
+  7140.6 * outLamp6 dim->off
+  7564.7 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.5 * dial c0->gap
+   526.2 * relay1 no->mid
+   527.1 * relay1 mid->nc
+   532.8 * indLamp1 on->dim
+   552.7 * dial gap->c1
+   559.3 * outLamp6 off->dim
+   561.3 * outLamp4 off->dim  outLamp5 off->dim
+   564.2 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   564.3 * relay6 nc->mid
+   565.4 * outLamp3 off->dim  indLamp6 off->dim
+   565.6 * relay6 mid->no
+   588.4 * indLamp1 dim->off
+   589.0 * outLamp6 dim->on
+   636.4 * outLamp3 dim->on  indLamp6 dim->on
+   649.3 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialRelease
+  2700.0 > switch6 target=0
+  2726.9 * sw6 no->mid
+  2733.0 * sw6 mid->nc
+  2764.6 * dial c2->gap
+  2764.7 * dial gap->c1
+  2813.6 * dial c1->gap
+  2813.7 * dial gap->c0
+  2813.8 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  2823.6 * indLamp1 off->dim
+  2824.8 * relay1 nc->mid
+  2826.1 * relay1 mid->no
+  2828.3 * outLamp5 dim->on  outLamp6 dim->on
+  2840.7 * outLamp4 on->dim
+  2864.1 * indLamp1 dim->on
+  2884.1 * indLamp2 dim->off  indLamp3 dim->off
+  2896.4 * outLamp4 dim->off
+  7813.8 ? dial=c0 outLamp4=off outLamp5=on outLamp6=on  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 2 / Three-Bit Gray Code 011"
+  7813.8 > switch6 target=1000
+  7840.7 * sw6 nc->mid
+  7846.8 * sw6 mid->no
+  8113.8 > power off
+  8113.8 * power on->off
+  8117.3 * relay1 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+  8118.2 * relay1 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc  outLamp3 on->dim  indLamp6 on->dim
+  8124.7 * indLamp1 on->dim  indLamp4 on->dim  indLamp5 on->dim
+  8134.0 * outLamp5 on->dim  outLamp6 on->dim
+  8173.8 * outLamp3 dim->off  indLamp6 dim->off
+  8180.3 * indLamp1 dim->off  indLamp4 dim->off  indLamp5 dim->off
+  8189.6 * outLamp5 dim->off  outLamp6 dim->off
+  8613.8 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.3 * dial c0->gap
+   526.0 * relay1 no->mid
+   526.9 * relay1 mid->nc
+   532.6 * indLamp1 on->dim
+   552.5 * dial gap->c1
+   559.1 * outLamp6 off->dim
+   561.1 * outLamp4 off->dim  outLamp5 off->dim
+   564.0 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   564.1 * relay6 nc->mid
+   565.2 * outLamp3 off->dim  indLamp6 off->dim
+   565.4 * relay6 mid->no
+   588.2 * indLamp1 dim->off
+   588.8 * outLamp6 dim->on
+   636.2 * outLamp3 dim->on  indLamp6 dim->on
+   649.1 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialGrab targetUdeg=67500000
+  2546.8 * dial c2->gap
+  2578.1 * dial gap->c3
+  2591.4 * relay6 no->mid
+  2592.3 * relay6 mid->nc
+  2603.2 * outLamp5 dim->on
+  3500.0 > dialRelease
+  3700.0 > switch6 target=0
+  3726.9 * sw6 no->mid
+  3733.0 * sw6 mid->nc
+  3764.5 * dial c3->gap
+  3764.6 * dial gap->c2
+  3772.1 * outLamp3 on->dim  indLamp6 on->dim
+  3813.3 * dial c2->gap
+  3813.4 * dial gap->c1
+  3862.0 * dial c1->gap
+  3862.1 * dial gap->c0
+  3862.2 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  3872.0 * indLamp1 off->dim
+  3873.2 * relay1 nc->mid
+  3874.5 * relay1 mid->no
+  3881.1 * outLamp4 on->dim
+  3912.2 * indLamp1 dim->on
+  3924.2 * outLamp3 dim->off  indLamp6 dim->off
+  3925.2 * indLamp2 dim->off  indLamp3 dim->off
+  3936.2 * outLamp6 dim->off
+  3938.0 * outLamp4 dim->off
+  8862.2 ? dial=c0 outLamp4=off outLamp5=on outLamp6=off  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 3 / Three-Bit Gray Code 010"
+  8862.2 > switch6 target=1000
+  8889.1 * sw6 nc->mid
+  8895.2 * sw6 mid->no
+  9162.2 > power off
+  9162.2 * power on->off
+  9165.7 * relay1 no->mid  relay4 no->mid  relay5 no->mid
+  9166.6 * relay1 mid->nc  relay4 mid->nc  relay5 mid->nc
+  9173.2 * indLamp1 on->dim  indLamp4 on->dim  indLamp5 on->dim
+  9182.5 * outLamp5 on->dim
+  9228.8 * indLamp1 dim->off  indLamp4 dim->off  indLamp5 dim->off
+  9238.1 * outLamp5 dim->off
+  9662.2 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.4 * dial c0->gap
+   526.1 * relay1 no->mid
+   527.0 * relay1 mid->nc
+   532.7 * indLamp1 on->dim
+   552.7 * dial gap->c1
+   559.3 * outLamp6 off->dim
+   561.3 * outLamp4 off->dim  outLamp5 off->dim
+   564.2 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   564.3 * relay6 nc->mid
+   565.4 * outLamp3 off->dim  indLamp6 off->dim
+   565.6 * relay6 mid->no
+   588.3 * indLamp1 dim->off
+   589.0 * outLamp6 dim->on
+   636.4 * outLamp3 dim->on  indLamp6 dim->on
+   649.3 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialGrab targetUdeg=67500000
+  2546.8 * dial c2->gap
+  2578.1 * dial gap->c3
+  2591.4 * relay6 no->mid
+  2592.3 * relay6 mid->nc
+  2603.2 * outLamp5 dim->on
+  3500.0 > dialGrab targetUdeg=90000000
+  3546.8 * dial c3->gap
+  3578.1 * dial gap->c4
+  3589.9 * relay2 nc->mid
+  3590.2 * relay3 nc->mid
+  3591.2 * relay2 mid->no
+  3591.5 * relay3 mid->no
+  3594.9 * indLamp2 dim->on  indLamp3 dim->on
+  3604.0 * outLamp6 dim->on
+  3604.5 * outLamp3 on->dim  indLamp6 on->dim
+  3611.9 * outLamp4 on->dim
+  3617.9 * outLamp5 on->dim
+  4500.0 > dialRelease
+  4700.0 > switch6 target=0
+  4726.9 * sw6 no->mid
+  4733.0 * sw6 mid->nc
+  4764.7 * dial c4->gap
+  4764.8 * dial gap->c3
+  4813.7 * dial c3->gap
+  4813.8 * dial gap->c2
+  4862.7 * dial c2->gap
+  4862.8 * dial gap->c1
+  4911.7 * dial c1->gap
+  4911.8 * dial gap->c0
+  4911.9 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  4921.7 * indLamp1 off->dim
+  4922.9 * relay1 nc->mid
+  4924.2 * relay1 mid->no
+  4929.1 * outLamp4 dim->on  outLamp5 dim->on
+  4937.8 * outLamp6 on->dim
+  4962.2 * indLamp1 dim->on
+  4981.6 * outLamp3 dim->off  indLamp6 dim->off
+  4994.4 * outLamp6 dim->off
+  9911.9 ? dial=c0 outLamp4=on outLamp5=on outLamp6=off  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 4 / Three-Bit Gray Code 110"
+  9911.9 > switch6 target=1000
+  9938.8 * sw6 nc->mid
+  9944.9 * sw6 mid->no
+ 10211.9 > power off
+ 10211.9 * power on->off
+ 10215.4 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid
+ 10216.3 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc
+ 10222.8 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim
+ 10232.1 * outLamp4 on->dim  outLamp5 on->dim
+ 10278.4 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+ 10287.7 * outLamp4 dim->off  outLamp5 dim->off
+ 10711.9 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.1 * dial c0->gap
+   525.8 * relay1 no->mid
+   526.7 * relay1 mid->nc
+   532.4 * indLamp1 on->dim
+   552.4 * dial gap->c1
+   559.0 * outLamp6 off->dim
+   561.0 * outLamp4 off->dim  outLamp5 off->dim
+   563.9 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   564.0 * relay6 nc->mid
+   565.1 * outLamp3 off->dim  indLamp6 off->dim
+   565.3 * relay6 mid->no
+   588.0 * indLamp1 dim->off
+   588.7 * outLamp6 dim->on
+   636.1 * outLamp3 dim->on  indLamp6 dim->on
+   649.0 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialGrab targetUdeg=67500000
+  2546.8 * dial c2->gap
+  2578.1 * dial gap->c3
+  2591.4 * relay6 no->mid
+  2592.3 * relay6 mid->nc
+  2603.2 * outLamp5 dim->on
+  3500.0 > dialGrab targetUdeg=90000000
+  3546.8 * dial c3->gap
+  3578.1 * dial gap->c4
+  3589.9 * relay2 nc->mid
+  3590.2 * relay3 nc->mid
+  3591.2 * relay2 mid->no
+  3591.5 * relay3 mid->no
+  3594.9 * indLamp2 dim->on  indLamp3 dim->on
+  3604.0 * outLamp6 dim->on
+  3604.5 * outLamp3 on->dim  indLamp6 on->dim
+  3611.9 * outLamp4 on->dim
+  3617.9 * outLamp5 on->dim
+  4500.0 > dialGrab targetUdeg=112500000
+  4546.8 * dial c4->gap
+  4578.1 * dial gap->c5
+  4584.9 * outLamp6 on->dim
+  4585.9 * relay6 nc->mid
+  4587.2 * relay6 mid->no
+  4609.7 * outLamp3 dim->on  indLamp6 dim->on
+  4628.5 * outLamp4 dim->off  outLamp5 dim->off
+  4640.5 * outLamp6 dim->off
+  5500.0 > dialRelease
+  5700.0 > switch6 target=0
+  5726.9 * sw6 no->mid
+  5733.0 * sw6 mid->nc
+  5764.7 * dial c5->gap
+  5764.8 * dial gap->c4
+  5813.9 * dial c4->gap
+  5814.0 * dial gap->c3
+  5863.0 * dial c3->gap
+  5863.1 * dial gap->c2
+  5912.2 * dial c2->gap
+  5912.3 * dial gap->c1
+  5961.3 * dial c1->gap
+  5961.4 * dial gap->c0
+  5961.5 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  5971.4 * indLamp1 off->dim
+  5972.5 * relay1 nc->mid
+  5973.8 * relay1 mid->no
+  5977.1 * outLamp4 off->dim  outLamp5 off->dim  outLamp6 off->dim
+  5996.4 * outLamp4 dim->on  outLamp5 dim->on  outLamp6 dim->on
+  6012.4 * indLamp1 dim->on
+ 10961.5 ? dial=c0 outLamp4=on outLamp5=on outLamp6=on  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 5 / Three-Bit Gray Code 111"
+ 10961.5 > switch6 target=1000
+ 10988.4 * sw6 nc->mid
+ 10994.5 * sw6 mid->no
+ 11261.5 > power off
+ 11261.5 * power on->off
+ 11265.0 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+ 11265.7 * outLamp3 on->dim  indLamp6 on->dim
+ 11265.9 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+ 11272.3 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim
+ 11281.6 * outLamp4 on->dim  outLamp5 on->dim  outLamp6 on->dim
+ 11321.3 * outLamp3 dim->off  indLamp6 dim->off
+ 11327.9 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off
+ 11337.2 * outLamp4 dim->off  outLamp5 dim->off  outLamp6 dim->off
+ 11761.5 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.1 * dial c0->gap
+   525.8 * relay1 no->mid
+   526.7 * relay1 mid->nc
+   532.4 * indLamp1 on->dim
+   552.3 * dial gap->c1
+   558.9 * outLamp6 off->dim
+   560.9 * outLamp4 off->dim  outLamp5 off->dim
+   563.8 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   563.9 * relay6 nc->mid
+   565.0 * outLamp3 off->dim  indLamp6 off->dim
+   565.2 * relay6 mid->no
+   588.0 * indLamp1 dim->off
+   588.6 * outLamp6 dim->on
+   636.0 * outLamp3 dim->on  indLamp6 dim->on
+   648.9 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialGrab targetUdeg=67500000
+  2546.8 * dial c2->gap
+  2578.1 * dial gap->c3
+  2591.4 * relay6 no->mid
+  2592.3 * relay6 mid->nc
+  2603.2 * outLamp5 dim->on
+  3500.0 > dialGrab targetUdeg=90000000
+  3546.8 * dial c3->gap
+  3578.1 * dial gap->c4
+  3589.9 * relay2 nc->mid
+  3590.2 * relay3 nc->mid
+  3591.2 * relay2 mid->no
+  3591.5 * relay3 mid->no
+  3594.9 * indLamp2 dim->on  indLamp3 dim->on
+  3604.0 * outLamp6 dim->on
+  3604.5 * outLamp3 on->dim  indLamp6 on->dim
+  3611.9 * outLamp4 on->dim
+  3617.9 * outLamp5 on->dim
+  4500.0 > dialGrab targetUdeg=112500000
+  4546.8 * dial c4->gap
+  4578.1 * dial gap->c5
+  4584.9 * outLamp6 on->dim
+  4585.9 * relay6 nc->mid
+  4587.2 * relay6 mid->no
+  4609.7 * outLamp3 dim->on  indLamp6 dim->on
+  4628.5 * outLamp4 dim->off  outLamp5 dim->off
+  4640.5 * outLamp6 dim->off
+  5500.0 > dialGrab targetUdeg=135000000
+  5546.8 * dial c5->gap
+  5578.1 * dial gap->c6
+  5589.3 * relay5 no->mid
+  5589.6 * relay4 no->mid
+  5590.2 * relay5 mid->nc
+  5590.5 * relay4 mid->nc
+  6500.0 > dialRelease
+  6700.0 > switch6 target=0
+  6726.9 * sw6 no->mid
+  6733.0 * sw6 mid->nc
+  6735.6 * outLamp5 off->dim
+  6738.5 * outLamp4 off->dim  outLamp6 off->dim
+  6764.6 * dial c6->gap
+  6764.7 * dial gap->c5
+  6780.2 * outLamp5 dim->on
+  6813.6 * dial c5->gap
+  6813.7 * dial gap->c4
+  6845.1 * indLamp4 on->dim  indLamp5 on->dim
+  6862.5 * dial c4->gap
+  6862.6 * dial gap->c3
+  6911.5 * dial c3->gap
+  6911.6 * dial gap->c2
+  6960.4 * dial c2->gap
+  6960.5 * dial gap->c1
+  7009.4 * dial c1->gap
+  7009.5 * dial gap->c0
+  7009.6 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  7019.4 * indLamp1 off->dim
+  7020.6 * relay1 nc->mid
+  7021.9 * relay1 mid->no
+  7024.1 * outLamp4 dim->on  outLamp6 dim->on
+  7036.5 * outLamp5 on->dim
+  7059.9 * indLamp1 dim->on
+  7079.9 * indLamp4 dim->off  indLamp5 dim->off
+  7092.2 * outLamp5 dim->off
+ 12009.6 ? dial=c0 outLamp4=on outLamp5=off outLamp6=on  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 6 / Three-Bit Gray Code 101"
+ 12009.6 > switch6 target=1000
+ 12036.5 * sw6 nc->mid
+ 12042.6 * sw6 mid->no
+ 12309.6 > power off
+ 12309.6 * power on->off
+ 12313.1 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay6 no->mid
+ 12314.0 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay6 mid->nc  outLamp3 on->dim  indLamp6 on->dim
+ 12320.5 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+ 12329.8 * outLamp4 on->dim  outLamp6 on->dim
+ 12369.6 * outLamp3 dim->off  indLamp6 dim->off
+ 12376.1 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+ 12385.4 * outLamp4 dim->off  outLamp6 dim->off
+ 12809.6 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.2 * dial c0->gap
+   525.9 * relay1 no->mid
+   526.8 * relay1 mid->nc
+   532.5 * indLamp1 on->dim
+   552.5 * dial gap->c1
+   559.1 * outLamp6 off->dim
+   561.1 * outLamp4 off->dim  outLamp5 off->dim
+   564.0 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   564.1 * relay6 nc->mid
+   565.2 * outLamp3 off->dim  indLamp6 off->dim
+   565.4 * relay6 mid->no
+   588.1 * indLamp1 dim->off
+   588.8 * outLamp6 dim->on
+   636.2 * outLamp3 dim->on  indLamp6 dim->on
+   649.1 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialGrab targetUdeg=67500000
+  2546.8 * dial c2->gap
+  2578.1 * dial gap->c3
+  2591.4 * relay6 no->mid
+  2592.3 * relay6 mid->nc
+  2603.2 * outLamp5 dim->on
+  3500.0 > dialGrab targetUdeg=90000000
+  3546.8 * dial c3->gap
+  3578.1 * dial gap->c4
+  3589.9 * relay2 nc->mid
+  3590.2 * relay3 nc->mid
+  3591.2 * relay2 mid->no
+  3591.5 * relay3 mid->no
+  3594.9 * indLamp2 dim->on  indLamp3 dim->on
+  3604.0 * outLamp6 dim->on
+  3604.5 * outLamp3 on->dim  indLamp6 on->dim
+  3611.9 * outLamp4 on->dim
+  3617.9 * outLamp5 on->dim
+  4500.0 > dialGrab targetUdeg=112500000
+  4546.8 * dial c4->gap
+  4578.1 * dial gap->c5
+  4584.9 * outLamp6 on->dim
+  4585.9 * relay6 nc->mid
+  4587.2 * relay6 mid->no
+  4609.7 * outLamp3 dim->on  indLamp6 dim->on
+  4628.5 * outLamp4 dim->off  outLamp5 dim->off
+  4640.5 * outLamp6 dim->off
+  5500.0 > dialGrab targetUdeg=135000000
+  5546.8 * dial c5->gap
+  5578.1 * dial gap->c6
+  5589.3 * relay5 no->mid
+  5589.6 * relay4 no->mid
+  5590.2 * relay5 mid->nc
+  5590.5 * relay4 mid->nc
+  6500.0 > dialGrab targetUdeg=157500000
+  6546.8 * dial c6->gap
+  6555.5 * outLamp5 off->dim
+  6558.4 * outLamp4 off->dim  outLamp6 off->dim
+  6578.1 * dial gap->c7
+  6591.4 * relay6 no->mid
+  6592.3 * relay6 mid->nc
+  6601.0 * outLamp5 dim->on
+  6649.7 * outLamp4 dim->on
+  6652.9 * indLamp4 on->dim  indLamp5 on->dim
+  7500.0 > dialRelease
+  7700.0 > switch6 target=0
+  7726.9 * sw6 no->mid
+  7733.0 * sw6 mid->nc
+  7764.5 * dial c7->gap
+  7764.6 * dial gap->c6
+  7772.1 * outLamp3 on->dim  indLamp6 on->dim
+  7813.3 * dial c6->gap
+  7813.4 * dial gap->c5
+  7862.0 * dial c5->gap
+  7862.1 * dial gap->c4
+  7910.7 * dial c4->gap
+  7910.8 * dial gap->c3
+  7959.4 * dial c3->gap
+  7959.5 * dial gap->c2
+  8008.1 * dial c2->gap
+  8008.2 * dial gap->c1
+  8056.8 * dial c1->gap
+  8056.9 * dial gap->c0
+  8057.0 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  8066.8 * indLamp1 off->dim
+  8068.0 * relay1 nc->mid
+  8069.3 * relay1 mid->no
+  8075.6 * outLamp5 on->dim
+  8107.0 * indLamp1 dim->on
+  8117.8 * outLamp3 dim->off  indLamp6 dim->off
+  8119.8 * indLamp4 dim->off  indLamp5 dim->off
+  8131.2 * outLamp6 dim->off
+  8132.6 * outLamp5 dim->off
+ 13057.0 ? dial=c0 outLamp4=on outLamp5=off outLamp6=off  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 7 / Three-Bit Gray Code 100"
+ 13057.0 > switch6 target=1000
+ 13083.9 * sw6 nc->mid
+ 13090.0 * sw6 mid->no
+ 13357.0 > power off
+ 13357.0 * power on->off
+ 13360.5 * relay1 no->mid  relay2 no->mid  relay3 no->mid
+ 13361.4 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc
+ 13368.0 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim
+ 13377.3 * outLamp4 on->dim
+ 13423.6 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off
+ 13432.9 * outLamp4 dim->off
+ 13857.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp1 off->dim
+    10.9 * relay1 nc->mid
+    12.2 * relay1 mid->no
+    49.6 * indLamp1 dim->on
+   500.0 > dialGrab targetUdeg=22500000
+   521.3 * dial c0->gap
+   526.0 * relay1 no->mid
+   526.9 * relay1 mid->nc
+   532.6 * indLamp1 on->dim
+   552.6 * dial gap->c1
+   559.2 * outLamp6 off->dim
+   561.2 * outLamp4 off->dim  outLamp5 off->dim
+   564.1 * indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim
+   564.2 * relay6 nc->mid
+   565.3 * outLamp3 off->dim  indLamp6 off->dim
+   565.5 * relay6 mid->no
+   588.2 * indLamp1 dim->off
+   588.9 * outLamp6 dim->on
+   636.3 * outLamp3 dim->on  indLamp6 dim->on
+   649.2 * outLamp4 dim->on  outLamp5 dim->on
+  1500.0 > dialGrab targetUdeg=45000000
+  1546.8 * dial c1->gap
+  1578.1 * dial gap->c2
+  1590.3 * relay4 nc->mid
+  1590.7 * relay5 nc->mid
+  1591.6 * relay4 mid->no
+  1592.0 * relay5 mid->no
+  1601.0 * indLamp4 dim->on  indLamp5 dim->on
+  1625.4 * outLamp5 on->dim
+  1661.0 * outLamp6 on->dim
+  2500.0 > dialGrab targetUdeg=67500000
+  2546.8 * dial c2->gap
+  2578.1 * dial gap->c3
+  2591.4 * relay6 no->mid
+  2592.3 * relay6 mid->nc
+  2603.2 * outLamp5 dim->on
+  3500.0 > dialGrab targetUdeg=90000000
+  3546.8 * dial c3->gap
+  3578.1 * dial gap->c4
+  3589.9 * relay2 nc->mid
+  3590.2 * relay3 nc->mid
+  3591.2 * relay2 mid->no
+  3591.5 * relay3 mid->no
+  3594.9 * indLamp2 dim->on  indLamp3 dim->on
+  3604.0 * outLamp6 dim->on
+  3604.5 * outLamp3 on->dim  indLamp6 on->dim
+  3611.9 * outLamp4 on->dim
+  3617.9 * outLamp5 on->dim
+  4500.0 > dialGrab targetUdeg=112500000
+  4546.8 * dial c4->gap
+  4578.1 * dial gap->c5
+  4584.9 * outLamp6 on->dim
+  4585.9 * relay6 nc->mid
+  4587.2 * relay6 mid->no
+  4609.7 * outLamp3 dim->on  indLamp6 dim->on
+  4628.5 * outLamp4 dim->off  outLamp5 dim->off
+  4640.5 * outLamp6 dim->off
+  5500.0 > dialGrab targetUdeg=135000000
+  5546.8 * dial c5->gap
+  5578.1 * dial gap->c6
+  5589.3 * relay5 no->mid
+  5589.6 * relay4 no->mid
+  5590.2 * relay5 mid->nc
+  5590.5 * relay4 mid->nc
+  6500.0 > dialGrab targetUdeg=157500000
+  6546.8 * dial c6->gap
+  6555.5 * outLamp5 off->dim
+  6558.4 * outLamp4 off->dim  outLamp6 off->dim
+  6578.1 * dial gap->c7
+  6591.4 * relay6 no->mid
+  6592.3 * relay6 mid->nc
+  6601.0 * outLamp5 dim->on
+  6649.7 * outLamp4 dim->on
+  6652.9 * indLamp4 on->dim  indLamp5 on->dim
+  7500.0 > dialGrab targetUdeg=180000000
+  7546.8 * dial c7->gap
+  7578.1 * dial gap->c8
+  7590.0 * relay3 no->mid
+  7590.4 * relay2 no->mid
+  7590.9 * relay3 mid->nc
+  7591.2 * outLamp3 on->dim  indLamp6 on->dim
+  7591.3 * relay2 mid->nc
+  7649.4 * outLamp5 on->dim
+  8500.0 > dialRelease
+  8700.0 > switch6 target=0
+  8726.9 * sw6 no->mid
+  8733.0 * sw6 mid->nc
+  8741.0 * outLamp4 on->dim
+  8750.1 * indLamp2 on->dim  indLamp3 on->dim
+  8764.3 * dial c8->gap
+  8764.4 * dial gap->c7
+  8770.0 * outLamp3 dim->off  indLamp6 dim->off
+  8772.4 * indLamp4 dim->off  indLamp5 dim->off
+  8783.5 * outLamp6 dim->off
+  8785.2 * outLamp5 dim->off
+  8796.8 * outLamp4 dim->off
+  8805.7 * indLamp2 dim->off  indLamp3 dim->off
+  8812.4 * dial c7->gap
+  8812.5 * dial gap->c6
+  8860.5 * dial c6->gap
+  8860.6 * dial gap->c5
+  8908.6 * dial c5->gap
+  8908.7 * dial gap->c4
+  8956.7 * dial c4->gap
+  8956.8 * dial gap->c3
+  9004.8 * dial c3->gap
+  9004.9 * dial gap->c2
+  9052.9 * dial c2->gap
+  9053.0 * dial gap->c1
+  9101.0 * dial c1->gap
+  9101.1 * dial gap->c0
+  9101.2 ? dial=c0  "Set slide switch 6 LEFT. The rotary switch will return to 0"
+  9111.0 * indLamp1 off->dim
+  9112.1 * relay1 nc->mid
+  9113.4 * relay1 mid->no
+  9150.8 * indLamp1 dim->on
+ 14101.2 ? dial=c0 outLamp4=off outLamp5=off outLamp6=off  "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 8 / Three-Bit Gray Code 000"

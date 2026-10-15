@@ -1,0 +1,250 @@
+#!mv601-trace 1
+# id=IV-EXP3 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=50
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=29 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 > switch6 target=0
+    40.1 > button6 target=1000
+    51.3 * pb6 nc->mid
+    53.8 * pb6 mid->no
+    57.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+    63.9 * indLamp5 off->dim
+    66.1 * relay5 nc->mid
+    67.4 * relay5 mid->no
+    76.2 * outLamp3 dim->on  indLamp6 dim->on
+    77.1 * outLamp6 dim->on
+   105.5 * indLamp5 dim->on
+   120.1 > button6 target=0
+   131.3 * pb6 no->mid
+   133.8 * pb6 mid->nc
+   144.8 * relay6 nc->mid
+   146.1 * relay6 mid->no
+   271.4 > button6 target=1000
+   282.6 * pb6 nc->mid
+   285.1 * pb6 mid->no
+   296.3 * relay5 no->mid
+   297.2 * relay5 mid->nc
+   300.5 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+   307.4 * indLamp3 off->dim
+   309.2 * relay3 nc->mid
+   310.5 * relay3 mid->no
+   319.8 * outLamp2 dim->on  indLamp4 dim->on
+   320.6 * outLamp5 dim->on
+   349.3 * indLamp3 dim->on
+   351.4 > button6 target=0
+   362.6 * pb6 no->mid
+   365.1 * pb6 mid->nc
+   373.4 * relay6 no->mid
+   373.5 * relay4 nc->mid
+   374.3 * relay6 mid->nc
+   374.8 * relay4 mid->no
+   374.9 * outLamp3 on->dim  indLamp6 on->dim
+   386.6 * indLamp5 on->dim
+   387.1 * outLamp6 on->dim
+   430.7 * outLamp3 dim->off  indLamp6 dim->off
+   442.3 * indLamp5 dim->off
+   442.8 * outLamp6 dim->off
+   507.2 > button6 target=1000
+   518.4 * pb6 nc->mid
+   520.9 * pb6 mid->no
+   523.8 * outLamp6 off->dim
+   523.9 * outLamp3 off->dim  indLamp6 off->dim
+   530.1 * indLamp5 off->dim
+   533.3 * relay5 nc->mid
+   534.6 * relay5 mid->no
+   543.1 * outLamp3 dim->on  indLamp6 dim->on
+   543.9 * outLamp6 dim->on
+   572.2 * indLamp5 dim->on
+   587.2 > button6 target=0
+   598.4 * pb6 no->mid
+   600.9 * pb6 mid->nc
+   612.1 * relay6 nc->mid
+   613.4 * relay6 mid->no
+   738.7 > button6 target=1000
+   749.9 * pb6 nc->mid
+   752.4 * pb6 mid->no
+   763.5 * relay5 no->mid
+   764.4 * relay5 mid->nc
+   776.2 * relay3 no->mid
+   777.1 * relay3 mid->nc
+   780.4 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+   787.3 * indLamp1 off->dim
+   788.8 * relay1 nc->mid
+   790.1 * relay1 mid->no
+   799.8 * outLamp1 dim->on  indLamp2 dim->on
+   800.7 * outLamp4 dim->on
+   818.7 > button6 target=0
+   829.7 * indLamp1 dim->on
+   829.9 * pb6 no->mid
+   832.4 * pb6 mid->nc
+   839.8 * relay6 no->mid
+   840.1 * relay2 nc->mid
+   840.3 * relay4 no->mid
+   840.7 * relay6 mid->nc
+   841.2 * relay4 mid->nc  outLamp3 on->dim  indLamp6 on->dim
+   841.4 * relay2 mid->no  outLamp2 on->dim  indLamp4 on->dim
+   852.8 * indLamp3 on->dim
+   852.9 * indLamp5 on->dim
+   853.5 * outLamp6 on->dim
+   853.7 * outLamp5 on->dim
+   897.0 * outLamp3 dim->off  indLamp6 dim->off
+   897.2 * outLamp2 dim->off  indLamp4 dim->off
+   908.5 * indLamp3 dim->off  indLamp5 dim->off
+   909.1 * outLamp6 dim->off
+   909.3 * outLamp5 dim->off
+   973.8 > button6 target=1000
+   985.0 * pb6 nc->mid
+   987.5 * pb6 mid->no
+   990.4 * outLamp6 off->dim
+   990.5 * outLamp3 off->dim  indLamp6 off->dim
+   996.7 * indLamp5 off->dim
+   999.9 * relay5 nc->mid
+  1001.2 * relay5 mid->no
+  1009.7 * outLamp3 dim->on  indLamp6 dim->on
+  1010.5 * outLamp6 dim->on
+  1038.8 * indLamp5 dim->on
+  1053.8 > button6 target=0
+  1065.0 * pb6 no->mid
+  1067.5 * pb6 mid->nc
+  1078.7 * relay6 nc->mid
+  1080.0 * relay6 mid->no
+  1205.3 > button6 target=1000
+  1216.5 * pb6 nc->mid
+  1219.0 * pb6 mid->no
+  1230.1 * relay5 no->mid
+  1231.0 * relay5 mid->nc
+  1234.3 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  1241.2 * indLamp3 off->dim
+  1243.1 * relay3 nc->mid
+  1244.4 * relay3 mid->no
+  1253.7 * outLamp2 dim->on  indLamp4 dim->on
+  1254.5 * outLamp5 dim->on
+  1283.5 * indLamp3 dim->on
+  1285.3 > button6 target=0
+  1296.5 * pb6 no->mid
+  1299.0 * pb6 mid->nc
+  1307.2 * relay6 no->mid
+  1307.5 * relay4 nc->mid
+  1308.1 * relay6 mid->nc
+  1308.5 * outLamp3 on->dim  indLamp6 on->dim
+  1308.8 * relay4 mid->no
+  1320.4 * indLamp5 on->dim
+  1320.9 * outLamp6 on->dim
+  1364.4 * outLamp3 dim->off  indLamp6 dim->off
+  1376.0 * indLamp5 dim->off
+  1376.5 * outLamp6 dim->off
+  1441.0 > button6 target=1000
+  1452.2 * pb6 nc->mid
+  1454.7 * pb6 mid->no
+  1457.6 * outLamp6 off->dim
+  1457.7 * outLamp3 off->dim  indLamp6 off->dim
+  1463.9 * indLamp5 off->dim
+  1467.3 * relay5 nc->mid
+  1468.6 * relay5 mid->no
+  1477.1 * outLamp3 dim->on  indLamp6 dim->on
+  1477.8 * outLamp6 dim->on
+  1506.3 * indLamp5 dim->on
+  1521.0 > button6 target=0
+  1532.2 * pb6 no->mid
+  1534.7 * pb6 mid->nc
+  1546.1 * relay6 nc->mid
+  1547.4 * relay6 mid->no
+  1672.7 ? outLamp4=on outLamp5=on outLamp6=on  "a. Move slide switch 6 to the LEFT. | b. Enter the larger number (7) by pushing pushbutton 6 the correct number of times. The counter is now displaying the larger number. | 1 | NO | 1 | NO | 1 | UP | 7 | the low order flip-flop (represented by light 6) changes each time the pushbutton is pushed and released. The low order flip-flop represents 1's (units). The next flip-flop to the left (represented by light 5) changes every other time the pushbutton is pushed and released. This flip-flop represents 2's. And of course, the high order flip-flop (represented by light 4) changes every fourth time the pushbutton is pushed and released; the high order flip-flop thus represents 4's. | Light 4 | FLIP-FLOP A | Light 5 | FLIP-FLOP B | Light 6 | FLIP-FLOP C | Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. The Binary Counter is displaying a 1."
+  1672.7 > switch6 target=1000
+  1699.6 * sw6 nc->mid
+  1705.7 * sw6 mid->no
+  1752.6 > button6 target=1000
+  1763.8 * pb6 nc->mid
+  1766.3 * pb6 mid->no
+  1777.4 * relay5 no->mid
+  1778.3 * relay5 mid->nc
+  1832.6 > button6 target=0
+  1843.8 * pb6 no->mid
+  1846.3 * pb6 mid->nc
+  1852.5 * relay6 no->mid
+  1853.4 * relay6 mid->nc
+  1854.1 * outLamp3 on->dim  indLamp6 on->dim
+  1867.8 * indLamp5 on->dim
+  1868.4 * outLamp6 on->dim
+  1909.9 * outLamp3 dim->off  indLamp6 dim->off
+  1923.4 * indLamp5 dim->off
+  1924.0 * outLamp6 dim->off
+  1988.5 > button6 target=1000
+  1999.7 * pb6 nc->mid
+  2002.2 * pb6 mid->no
+  2005.1 * outLamp6 off->dim
+  2005.2 * outLamp3 off->dim  indLamp6 off->dim
+  2011.4 * indLamp5 off->dim
+  2014.8 * relay5 nc->mid
+  2016.1 * relay5 mid->no
+  2024.6 * outLamp3 dim->on  indLamp6 dim->on
+  2025.3 * outLamp6 dim->on
+  2027.7 * relay3 no->mid
+  2028.6 * relay3 mid->nc
+  2053.9 * indLamp5 dim->on
+  2068.5 > button6 target=0
+  2079.7 * pb6 no->mid
+  2082.2 * pb6 mid->nc
+  2091.0 * relay6 nc->mid
+  2091.2 * relay4 no->mid
+  2092.0 * outLamp2 on->dim  indLamp4 on->dim
+  2092.1 * relay4 mid->nc
+  2092.3 * relay6 mid->no
+  2103.6 * indLamp3 on->dim
+  2104.5 * outLamp5 on->dim
+  2148.0 * outLamp2 dim->off  indLamp4 dim->off
+  2159.3 * indLamp3 dim->off
+  2160.1 * outLamp5 dim->off
+  2224.6 > button6 target=1000
+  2235.8 * pb6 nc->mid
+  2238.3 * pb6 mid->no
+  2249.4 * relay5 no->mid
+  2250.3 * relay5 mid->nc
+  2304.6 > button6 target=0
+  2315.8 * pb6 no->mid
+  2318.3 * pb6 mid->nc
+  2324.5 * relay6 no->mid
+  2325.4 * relay6 mid->nc
+  2326.3 * outLamp3 on->dim  indLamp6 on->dim
+  2339.9 * indLamp5 on->dim
+  2340.5 * outLamp6 on->dim
+  2382.0 * outLamp3 dim->off  indLamp6 dim->off
+  2395.5 * indLamp5 dim->off
+  2396.1 * outLamp6 dim->off
+  2460.6 > button6 target=1000
+  2471.8 * pb6 nc->mid
+  2474.3 * pb6 mid->no
+  2477.2 * outLamp6 off->dim
+  2477.3 * outLamp3 off->dim  indLamp6 off->dim
+  2483.5 * indLamp5 off->dim
+  2486.7 * relay5 nc->mid
+  2488.0 * relay5 mid->no
+  2491.3 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  2496.9 * outLamp3 dim->on  indLamp6 dim->on
+  2497.6 * outLamp6 dim->on
+  2498.2 * indLamp3 off->dim
+  2500.2 * relay3 nc->mid
+  2501.5 * relay3 mid->no
+  2510.8 * outLamp2 dim->on  indLamp4 dim->on
+  2511.7 * outLamp5 dim->on
+  2513.8 * relay1 no->mid
+  2514.7 * relay1 mid->nc
+  2526.5 * indLamp5 dim->on
+  2540.6 > button6 target=0
+  2540.8 * indLamp3 dim->on
+  2551.8 * pb6 no->mid
+  2554.3 * pb6 mid->nc
+  2563.3 * relay4 nc->mid
+  2563.7 * relay6 nc->mid
+  2564.5 * outLamp1 on->dim  indLamp2 on->dim
+  2564.6 * relay4 mid->no
+  2565.0 * relay6 mid->no
+  2566.3 * relay2 no->mid
+  2567.2 * relay2 mid->nc
+  2576.8 * indLamp1 on->dim
+  2578.0 * outLamp4 on->dim
+  2621.5 * outLamp1 dim->off  indLamp2 dim->off
+  2632.4 * indLamp1 dim->off
+  2633.7 * outLamp4 dim->off
+  2698.1 ? outLamp4=off outLamp5=on outLamp6=on  "c. Move slide switch 6 to the RIGHT. | d. Enter the smaller number (4) by pushing pushbutton 6. The counter is now displaying the answer: 7 — 4 = 3. | 0 | NO | 1 | NO | 1 | UP | 3 | the low order flip-flop (represented by light 6) changes each time the pushbutton is pushed and released. The low order flip-flop represents 1's (units). The next flip-flop to the left (represented by light 5) changes every other time the pushbutton is pushed and released. This flip-flop represents 2's. And of course, the high order flip-flop (represented by light 4) changes every fourth time the pushbutton is pushed and released; the high order flip-flop thus represents 4's. | Light 4 | FLIP-FLOP A | Light 5 | FLIP-FLOP B | Light 6 | FLIP-FLOP C | Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. The Binary Counter is displaying a 1."

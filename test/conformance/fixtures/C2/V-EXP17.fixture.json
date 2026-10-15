@@ -1,0 +1,313 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP17",
+  "source": "Books V-VI printed pp.30-31 = book5-6.pdf PDF pp.36-37 (Experiment 17: Automatic Name Transmission); ERRATA sheet ER-37, errata.pdf p.4 'page 31: Note — Light 6 flashes on very briefly when indicating a dot.' (prose only, no wire change; scope shared with Experiment 18, whose SOS fits 'three successive dots')",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "3C/4C",
+    "3F/4G",
+    "3G/3K",
+    "3G/5com",
+    "3H/D12",
+    "3J/6com",
+    "3L/D13",
+    "4C/5C",
+    "4E/5K",
+    "4F/4G",
+    "4F/5N",
+    "4H/5H",
+    "4K/5F",
+    "4L/D15",
+    "4N/5E",
+    "5A/5com",
+    "5B/6B",
+    "5C/6C",
+    "5F/5G",
+    "5H/5+",
+    "5L/D0",
+    "5X/6E",
+    "5Y/6Y",
+    "5com/D11",
+    "6A/6com",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/6X",
+    "6G/D17",
+    "6H/6+",
+    "6H/6Y",
+    "6com/D2",
+    "D3/D4",
+    "D4/D5",
+    "D5/D12",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "3C/4C",
+    "3F/4G",
+    "3G/3K",
+    "3G/5com",
+    "3H/D12",
+    "3J/6com",
+    "3L/D13",
+    "4C/5C",
+    "4E/5K",
+    "4F/4G",
+    "4F/5N",
+    "4H/5H",
+    "4K/5F",
+    "4L/D15",
+    "4N/5E",
+    "5A/5com",
+    "5B/6B",
+    "5C/6C",
+    "5F/5G",
+    "5H/5+",
+    "5L/D0",
+    "5X/6E",
+    "5Y/6Y",
+    "5com/D11",
+    "6A/6com",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/6X",
+    "6G/D17",
+    "6H/6+",
+    "6H/6Y",
+    "6com/D2",
+    "D3/D4",
+    "D4/D5",
+    "D5/D12",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Set the rotary switch at 0 and turn power on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 on represents a dot."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 5 on represents a dash."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "That is, on its first revolution the rotary switch will instruct the computer to transmit \"JO\"; on its second revolution it will instruct the computer to transmit \"HN.\""
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 on represents a dot."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 5 on represents a dash."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "That is, on its first revolution the rotary switch will instruct the computer to transmit \"JO\"; on its second revolution it will instruct the computer to transmit \"HN.\""
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 on represents a dot."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 5 on represents a dash."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "That is, on its first revolution the rotary switch will instruct the computer to transmit \"JO\"; on its second revolution it will instruct the computer to transmit \"HN.\""
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "To stop transmission, push pushbutton 5."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "To stop transmission, push pushbutton 5."
+    }
+  ],
+  "digest": {
+    "eventCount": 324,
+    "moverTransitions": [0, 0, 8, 8, 6, 48, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 0, 104]
+  },
+  "note": "Printed-only assertions. Wire list image-read against PDF p.37 and matches the 38 printed wires; ER-37 is prose only and changes no wire. Script follows the printed procedure: rotary at 0, power on, push pushbutton 6 (press and release), let it transmit, push pushbutton 5 (press and release). Untils assert, in sequence, that light 6 (dot) and light 5 (dash) light and that the rotary switch keeps turning back through 0; sequential untils with 6000 ms caps do not confine a flash to a particular revolution, so the per-revolution JO/HN claim is left for Step 7; the stop expects assert both lights dark after pushbutton 5. The JOHN dot/dash sequence against dial position and where the dial comes to rest are derived and left for Step 7. The per-revolution JO/HN claim is printed (p.30; p.31 'Notice that as the rotary switch turns the computer alternately transmits \"JO\" and \"HN.\"') but sequential untils cannot confine it to one revolution, so it is also left for Step 7. Rotary geometry, run rate, coast, and fitted motor resistances remain profile fallbacks O-R1, O-R3, and O-R5. Lamp untils combine printed text: p.31 'Push pushbutton 6. The system will immediately begin transmitting \"JOHN\" in Morse Code.', the p.30 Morse table (J: · — — —, O: — — —, H: · · · ·, N: — ·), and p.31 'Light 6 on represents a dot.' / 'Light 5 on represents a dash.' Trips the knife-edge trigger (minDecisionUa 0, a ramp-tick sampling artifact per the 2026-10-13 triage); blessed under BLESS-ROBUSTNESS, all six perturbations held."
+}

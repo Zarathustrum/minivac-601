@@ -1,0 +1,840 @@
+#!mv601-trace 1
+# id=VI-TICTACTOE-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=70
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=8 minTickGap=8 marginal=false
+     0.0 > connect cord=70 a=hole:M10#3 b=free r_uohm=0
+     0.0 > connect cord=71 a=hole:M11#3 b=free r_uohm=0
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > disconnect cord=70
+   500.0 > connect cord=70 a=hole:M10#3 b=hole:6com#2 r_uohm=0
+   800.0 > button6 target=1000
+   811.2 * pb6 nc->mid
+   813.7 * pb6 mid->no
+   817.0 * outLamp1 off->dim
+   823.7 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+   825.3 * relay3 nc->mid
+   825.4 * relay4 nc->mid
+   825.6 * relay5 nc->mid
+   825.8 * relay6 nc->mid
+   826.6 * relay3 mid->no
+   826.7 * relay4 mid->no
+   826.9 * relay5 mid->no
+   827.1 * relay6 mid->no
+   836.0 * outLamp1 dim->on
+   864.0 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+  1100.0 > button1 target=1000
+  1111.2 * pb1 nc->mid
+  1113.7 * pb1 mid->no
+  1116.1 * relay6 no->mid
+  1116.2 * relay4 no->mid  relay5 no->mid
+  1116.3 * relay3 no->mid
+  1117.0 * relay6 mid->nc
+  1117.1 * relay4 mid->nc  relay5 mid->nc
+  1117.2 * relay3 mid->nc
+  1123.6 * indLamp2 off->dim
+  1124.9 * relay2 nc->mid
+  1125.0 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  1126.2 * relay2 mid->no
+  1135.8 * outLamp1 on->dim
+  1157.6 * dial c0->gap
+  1164.0 * indLamp2 dim->on
+  1178.5 * dial gap->c15
+  1180.6 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  1191.4 * outLamp1 dim->off
+  1241.1 * dial c15->gap
+  1262.0 * dial gap->c14
+  1324.7 * dial c14->gap
+  1345.6 * dial gap->c13
+  1408.2 * dial c13->gap
+  1429.1 * dial gap->c12
+  1491.8 * dial c12->gap
+  1512.6 * dial gap->c11
+  1575.3 * dial c11->gap
+  1596.2 * dial gap->c10
+  1658.8 * dial c10->gap
+  1679.7 * dial gap->c9
+  1679.8 ? dial=c9  "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix."
+  1691.9 * relay2 no->mid
+  1692.8 * relay2 mid->nc
+  3679.8 > button1 target=0
+  3679.8 > button6 target=0
+  3691.0 * pb1 no->mid  pb6 no->mid
+  3693.5 * pb1 mid->nc  pb6 mid->nc
+  3711.5 * indLamp2 on->dim
+  3767.1 * indLamp2 dim->off
+  3979.8 > disconnect cord=70
+  3979.8 > connect cord=70 a=hole:M10#3 b=hole:M9b#2 r_uohm=0
+  3979.8 > disconnect cord=71
+  3979.8 > connect cord=71 a=hole:M11#3 b=hole:M1t#2 r_uohm=0
+  4279.8 > button6 target=1000
+  4291.0 * pb6 nc->mid
+  4293.5 * pb6 mid->no
+  4296.8 * outLamp1 off->dim
+  4303.5 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+  4304.7 * relay1 nc->mid
+  4305.1 * relay3 nc->mid
+  4305.3 * relay4 nc->mid
+  4305.4 * relay5 nc->mid
+  4305.6 * relay6 nc->mid
+  4306.0 * relay1 mid->no
+  4306.4 * relay3 mid->no
+  4306.6 * relay4 mid->no
+  4306.7 * relay5 mid->no
+  4306.9 * relay6 mid->no
+  4307.7 * relay6 no->mid
+  4308.0 * relay5 no->mid
+  4308.2 * relay4 no->mid
+  4308.5 * relay3 no->mid  relay6 mid->nc
+  4308.8 * relay5 mid->nc
+  4309.0 * relay4 mid->nc
+  4309.3 * relay3 mid->nc
+  4329.9 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  4343.4 * indLamp1 dim->on
+  4360.9 * outLamp1 dim->off
+  4579.8 > button2 target=1000
+  4591.0 * pb2 nc->mid
+  4593.5 * pb2 mid->no
+  4603.4 * indLamp2 off->dim
+  4604.7 * relay2 nc->mid
+  4606.0 * relay2 mid->no
+  4638.1 * dial c9->gap
+  4643.9 * indLamp2 dim->on
+  4659.1 * dial gap->c8
+  4721.9 * dial c8->gap
+  4742.8 * dial gap->c7
+  4805.6 * dial c7->gap
+  4826.5 * dial gap->c6
+  4889.3 * dial c6->gap
+  4910.2 * dial gap->c5
+  4973.0 * dial c5->gap
+  4994.0 * dial gap->c4
+  5056.8 * dial c4->gap
+  5077.7 * dial gap->c3
+  5140.5 * dial c3->gap
+  5161.4 * dial gap->c2
+  5161.5 ? dial=c2  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+  5173.6 * relay2 no->mid
+  5174.5 * relay2 mid->nc
+  7161.5 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c2 outLamp1=off outLamp2=off  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+  7161.5 > button2 target=0
+  7161.5 > button6 target=0
+  7172.7 * pb2 no->mid  pb6 no->mid
+  7175.2 * pb2 mid->nc  pb6 mid->nc
+  7179.4 * relay1 no->mid
+  7180.3 * relay1 mid->nc
+  7189.9 * indLamp1 on->dim
+  7196.9 * indLamp2 on->dim
+  7245.9 * indLamp1 dim->off
+  7252.5 * indLamp2 dim->off
+  7461.5 > disconnect cord=70
+  7461.5 > connect cord=70 a=hole:M10#3 b=hole:M2b#2 r_uohm=0
+  7461.5 > disconnect cord=71
+  7461.5 > connect cord=71 a=hole:M11#3 b=hole:M6t#2 r_uohm=0
+  7761.5 > button6 target=1000
+  7772.7 * pb6 nc->mid
+  7775.2 * pb6 mid->no
+  7778.5 * outLamp1 off->dim
+  7785.2 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+  7786.4 * relay1 nc->mid
+  7786.8 * relay3 nc->mid
+  7787.0 * relay4 nc->mid
+  7787.1 * relay5 nc->mid
+  7787.3 * relay6 nc->mid
+  7787.7 * relay1 mid->no
+  7788.1 * relay3 mid->no
+  7788.3 * relay4 mid->no
+  7788.4 * relay5 mid->no
+  7788.6 * relay6 mid->no
+  7789.4 * relay6 no->mid
+  7789.7 * relay5 no->mid
+  7789.9 * relay4 no->mid
+  7790.2 * relay3 no->mid  relay6 mid->nc
+  7790.5 * relay5 mid->nc
+  7790.7 * relay4 mid->nc
+  7791.0 * relay3 mid->nc
+  7811.6 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+  7825.1 * indLamp1 dim->on
+  7842.6 * outLamp1 dim->off
+  8061.5 > button3 target=1000
+  8072.7 * pb3 nc->mid
+  8075.2 * pb3 mid->no
+  8085.1 * indLamp2 off->dim
+  8086.4 * relay2 nc->mid
+  8087.7 * relay2 mid->no
+  8119.9 * dial c2->gap
+  8125.6 * indLamp2 dim->on
+  8140.8 * dial gap->c1
+  8203.6 * dial c1->gap
+  8224.6 * dial gap->c0
+  8287.4 * dial c0->gap
+  8308.3 * dial gap->c15
+  8371.1 * dial c15->gap
+  8392.0 * dial gap->c14
+  8454.8 * dial c14->gap
+  8475.7 * dial gap->c13
+  8538.5 * dial c13->gap
+  8559.5 * dial gap->c12
+  8622.3 * dial c12->gap
+  8643.2 * dial gap->c11
+  8706.0 * dial c11->gap
+  8726.9 * dial gap->c10
+  8789.7 * dial c10->gap
+  8810.6 * dial gap->c9
+  8873.4 * dial c9->gap
+  8894.4 * dial gap->c8
+  8957.2 * dial c8->gap
+  8978.1 * dial gap->c7
+  8978.2 ? dial=c7  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+  8990.3 * relay2 no->mid
+  8991.2 * relay2 mid->nc
+ 10978.2 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c7 outLamp1=off outLamp2=off  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 10978.2 > button3 target=0
+ 10978.2 > button6 target=0
+ 10989.4 * pb3 no->mid  pb6 no->mid
+ 10991.9 * pb3 mid->nc  pb6 mid->nc
+ 10996.1 * relay1 no->mid
+ 10997.0 * relay1 mid->nc
+ 11006.6 * indLamp1 on->dim
+ 11013.6 * indLamp2 on->dim
+ 11062.6 * indLamp1 dim->off
+ 11069.2 * indLamp2 dim->off
+ 11278.2 > disconnect cord=70
+ 11278.2 > connect cord=70 a=hole:M10#3 b=hole:M7b#2 r_uohm=0
+ 11278.2 > disconnect cord=71
+ 11278.2 > connect cord=71 a=hole:M11#3 b=hole:M3t#2 r_uohm=0
+ 11578.2 > button6 target=1000
+ 11589.4 * pb6 nc->mid
+ 11591.9 * pb6 mid->no
+ 11595.2 * outLamp1 off->dim
+ 11601.9 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 11603.1 * relay1 nc->mid
+ 11603.5 * relay3 nc->mid
+ 11603.7 * relay4 nc->mid
+ 11603.8 * relay5 nc->mid
+ 11604.0 * relay6 nc->mid
+ 11604.4 * relay1 mid->no
+ 11604.8 * relay3 mid->no
+ 11605.0 * relay4 mid->no
+ 11605.1 * relay5 mid->no
+ 11605.3 * relay6 mid->no
+ 11606.1 * relay6 no->mid
+ 11606.4 * relay5 no->mid
+ 11606.6 * relay4 no->mid
+ 11606.9 * relay3 no->mid  relay6 mid->nc
+ 11607.2 * relay5 mid->nc
+ 11607.4 * relay4 mid->nc
+ 11607.7 * relay3 mid->nc
+ 11628.3 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 11641.8 * indLamp1 dim->on
+ 11659.3 * outLamp1 dim->off
+ 11878.2 > button4 target=1000
+ 11889.4 * pb4 nc->mid
+ 11891.9 * pb4 mid->no
+ 11901.8 * indLamp2 off->dim
+ 11903.1 * relay2 nc->mid
+ 11904.4 * relay2 mid->no
+ 11936.6 * dial c7->gap
+ 11942.3 * indLamp2 dim->on
+ 11957.5 * dial gap->c6
+ 12020.3 * dial c6->gap
+ 12041.2 * dial gap->c5
+ 12104.0 * dial c5->gap
+ 12125.0 * dial gap->c4
+ 12125.1 ? dial=c4  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 12137.2 * relay2 no->mid
+ 12138.1 * relay2 mid->nc
+ 14125.1 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c4 outLamp1=off outLamp2=off  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 14125.1 > button4 target=0
+ 14125.1 > button6 target=0
+ 14136.3 * pb4 no->mid  pb6 no->mid
+ 14138.8 * pb4 mid->nc  pb6 mid->nc
+ 14143.0 * relay1 no->mid
+ 14143.9 * relay1 mid->nc
+ 14153.5 * indLamp1 on->dim
+ 14160.5 * indLamp2 on->dim
+ 14209.5 * indLamp1 dim->off
+ 14216.1 * indLamp2 dim->off
+ 14425.1 > disconnect cord=70
+ 14425.1 > connect cord=70 a=hole:M10#3 b=hole:M4b#2 r_uohm=0
+ 14425.1 > disconnect cord=71
+ 14425.1 > connect cord=71 a=hole:M11#3 b=hole:M8t#2 r_uohm=0
+ 14725.1 > button6 target=1000
+ 14736.3 * pb6 nc->mid
+ 14738.8 * pb6 mid->no
+ 14742.1 * outLamp1 off->dim
+ 14748.8 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 14750.0 * relay1 nc->mid
+ 14750.4 * relay3 nc->mid
+ 14750.6 * relay4 nc->mid
+ 14750.7 * relay5 nc->mid
+ 14750.9 * relay6 nc->mid
+ 14751.3 * relay1 mid->no
+ 14751.7 * relay3 mid->no
+ 14751.9 * relay4 mid->no
+ 14752.0 * relay5 mid->no
+ 14752.2 * relay6 mid->no
+ 14753.0 * relay6 no->mid
+ 14753.3 * relay5 no->mid
+ 14753.5 * relay4 no->mid
+ 14753.8 * relay3 no->mid  relay6 mid->nc
+ 14754.1 * relay5 mid->nc
+ 14754.3 * relay4 mid->nc
+ 14754.6 * relay3 mid->nc
+ 14775.2 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 14788.7 * indLamp1 dim->on
+ 14806.2 * outLamp1 dim->off
+ 15025.1 > button5 target=1000
+ 15036.3 * pb5 nc->mid
+ 15038.8 * pb5 mid->no
+ 15042.1 * outLamp2 off->dim
+ 15061.0 * outLamp2 dim->on
+ 17025.1 ? relay1=no relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c4 outLamp1=off outLamp2=on  "If the human player consistently follows the \"move 4 to the right\" rule, every game will end in a tie. / The play continues as above until either light 1 comes on—indicating that MINIVAC wins; or light 2 comes on—indicating a tie. / ER-44: Note: if the game is a tie, MINIVAC will indicate a tie on the fifth move but will not indicate a move into the last available space."
+ 17025.1 > button5 target=0
+ 17025.1 > button6 target=0
+ 17036.3 * pb5 no->mid  pb6 no->mid
+ 17038.8 * pb5 mid->nc  pb6 mid->nc
+ 17041.0 * relay1 no->mid
+ 17041.9 * relay1 mid->nc
+ 17047.5 * indLamp1 on->dim
+ 17056.8 * outLamp2 on->dim
+ 17103.1 * indLamp1 dim->off
+ 17112.4 * outLamp2 dim->off
+ 17325.1 > disconnect cord=70
+ 17325.1 > connect cord=70 a=hole:M10#3 b=free r_uohm=0
+ 17325.1 > disconnect cord=71
+ 17325.1 > connect cord=71 a=hole:M11#3 b=free r_uohm=0
+ 17625.1 > disconnect cord=70
+ 17625.1 > connect cord=70 a=hole:M10#3 b=hole:6com#2 r_uohm=0
+ 17925.1 > button6 target=1000
+ 17936.3 * pb6 nc->mid
+ 17938.8 * pb6 mid->no
+ 17942.1 * outLamp1 off->dim
+ 17948.8 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 17950.4 * relay3 nc->mid
+ 17950.5 * relay4 nc->mid
+ 17950.7 * relay5 nc->mid
+ 17950.9 * relay6 nc->mid
+ 17951.7 * relay3 mid->no
+ 17951.8 * relay4 mid->no
+ 17952.0 * relay5 mid->no
+ 17952.2 * relay6 mid->no
+ 17961.1 * outLamp1 dim->on
+ 17989.1 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 18225.1 > button1 target=1000
+ 18236.3 * pb1 nc->mid
+ 18238.8 * pb1 mid->no
+ 18241.2 * relay6 no->mid
+ 18241.3 * relay4 no->mid  relay5 no->mid
+ 18241.4 * relay3 no->mid
+ 18242.1 * relay6 mid->nc
+ 18242.2 * relay4 mid->nc  relay5 mid->nc
+ 18242.3 * relay3 mid->nc
+ 18248.7 * indLamp2 off->dim
+ 18250.0 * relay2 nc->mid
+ 18250.1 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 18251.3 * relay2 mid->no
+ 18260.9 * outLamp1 on->dim
+ 18283.4 * dial c4->gap
+ 18289.1 * indLamp2 dim->on
+ 18304.2 * dial gap->c3
+ 18305.7 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 18316.5 * outLamp1 dim->off
+ 18366.9 * dial c3->gap
+ 18387.8 * dial gap->c2
+ 18450.4 * dial c2->gap
+ 18471.3 * dial gap->c1
+ 18534.0 * dial c1->gap
+ 18554.9 * dial gap->c0
+ 18617.5 * dial c0->gap
+ 18638.4 * dial gap->c15
+ 18701.1 * dial c15->gap
+ 18721.9 * dial gap->c14
+ 18784.6 * dial c14->gap
+ 18805.5 * dial gap->c13
+ 18868.1 * dial c13->gap
+ 18889.0 * dial gap->c12
+ 18951.7 * dial c12->gap
+ 18972.6 * dial gap->c11
+ 19035.2 * dial c11->gap
+ 19056.1 * dial gap->c10
+ 19118.8 * dial c10->gap
+ 19139.6 * dial gap->c9
+ 19139.7 ? dial=c9  "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix."
+ 19151.8 * relay2 no->mid
+ 19152.7 * relay2 mid->nc
+ 21139.7 > button1 target=0
+ 21139.7 > button6 target=0
+ 21150.9 * pb1 no->mid  pb6 no->mid
+ 21153.4 * pb1 mid->nc  pb6 mid->nc
+ 21171.4 * indLamp2 on->dim
+ 21227.0 * indLamp2 dim->off
+ 21439.7 > disconnect cord=70
+ 21439.7 > connect cord=70 a=hole:M10#3 b=hole:M9b#2 r_uohm=0
+ 21439.7 > disconnect cord=71
+ 21439.7 > connect cord=71 a=hole:M11#3 b=hole:M1t#2 r_uohm=0
+ 21739.7 > button6 target=1000
+ 21750.9 * pb6 nc->mid
+ 21753.4 * pb6 mid->no
+ 21756.7 * outLamp1 off->dim
+ 21763.4 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 21764.6 * relay1 nc->mid
+ 21765.0 * relay3 nc->mid
+ 21765.2 * relay4 nc->mid
+ 21765.3 * relay5 nc->mid
+ 21765.5 * relay6 nc->mid
+ 21765.9 * relay1 mid->no
+ 21766.3 * relay3 mid->no
+ 21766.5 * relay4 mid->no
+ 21766.6 * relay5 mid->no
+ 21766.8 * relay6 mid->no
+ 21767.6 * relay6 no->mid
+ 21767.9 * relay5 no->mid
+ 21768.1 * relay4 no->mid
+ 21768.4 * relay3 no->mid  relay6 mid->nc
+ 21768.7 * relay5 mid->nc
+ 21768.9 * relay4 mid->nc
+ 21769.2 * relay3 mid->nc
+ 21789.8 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 21803.3 * indLamp1 dim->on
+ 21820.8 * outLamp1 dim->off
+ 22039.7 > button2 target=1000
+ 22050.9 * pb2 nc->mid
+ 22053.4 * pb2 mid->no
+ 22063.3 * indLamp2 off->dim
+ 22064.6 * relay2 nc->mid
+ 22065.9 * relay2 mid->no
+ 22098.0 * dial c9->gap
+ 22103.8 * indLamp2 dim->on
+ 22119.0 * dial gap->c8
+ 22181.8 * dial c8->gap
+ 22202.7 * dial gap->c7
+ 22265.5 * dial c7->gap
+ 22286.4 * dial gap->c6
+ 22349.2 * dial c6->gap
+ 22370.2 * dial gap->c5
+ 22433.0 * dial c5->gap
+ 22453.9 * dial gap->c4
+ 22516.7 * dial c4->gap
+ 22537.6 * dial gap->c3
+ 22600.4 * dial c3->gap
+ 22621.3 * dial gap->c2
+ 22621.4 ? dial=c2  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 22633.5 * relay2 no->mid
+ 22634.4 * relay2 mid->nc
+ 24621.4 > button2 target=0
+ 24621.4 > button6 target=0
+ 24632.6 * pb2 no->mid  pb6 no->mid
+ 24635.1 * pb2 mid->nc  pb6 mid->nc
+ 24639.3 * relay1 no->mid
+ 24640.2 * relay1 mid->nc
+ 24649.8 * indLamp1 on->dim
+ 24656.8 * indLamp2 on->dim
+ 24705.8 * indLamp1 dim->off
+ 24712.4 * indLamp2 dim->off
+ 24921.4 > disconnect cord=70
+ 24921.4 > connect cord=70 a=hole:M10#3 b=hole:M2b#2 r_uohm=0
+ 24921.4 > disconnect cord=71
+ 24921.4 > connect cord=71 a=hole:M11#3 b=hole:M5t#2 r_uohm=0
+ 25221.4 > button6 target=1000
+ 25232.6 * pb6 nc->mid
+ 25235.1 * pb6 mid->no
+ 25238.4 * outLamp1 off->dim
+ 25245.1 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 25246.7 * relay3 nc->mid
+ 25246.8 * relay4 nc->mid
+ 25247.0 * relay5 nc->mid
+ 25247.2 * relay6 nc->mid
+ 25248.0 * relay3 mid->no
+ 25248.1 * relay4 mid->no
+ 25248.3 * relay5 mid->no
+ 25248.5 * relay6 mid->no
+ 25257.4 * outLamp1 dim->on
+ 25285.4 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 25521.4 > button3 target=1000
+ 25532.6 * pb3 nc->mid
+ 25535.1 * pb3 mid->no
+ 25545.1 * indLamp2 off->dim
+ 25546.4 * relay2 nc->mid
+ 25547.7 * relay2 mid->no
+ 25580.3 * dial c2->gap
+ 25586.0 * indLamp2 dim->on
+ 25601.4 * dial gap->c1
+ 25664.9 * dial c1->gap
+ 25686.1 * dial gap->c0
+ 25749.6 * dial c0->gap
+ 25770.8 * dial gap->c15
+ 25834.3 * dial c15->gap
+ 25855.4 * dial gap->c14
+ 25918.9 * dial c14->gap
+ 25940.1 * dial gap->c13
+ 26003.6 * dial c13->gap
+ 26024.8 * dial gap->c12
+ 26088.3 * dial c12->gap
+ 26109.4 * dial gap->c11
+ 26172.9 * dial c11->gap
+ 26194.1 * dial gap->c10
+ 26257.6 * dial c10->gap
+ 26278.8 * dial gap->c9
+ 26342.3 * dial c9->gap
+ 26363.4 * dial gap->c8
+ 26426.9 * dial c8->gap
+ 26448.1 * dial gap->c7
+ 26511.6 * dial c7->gap
+ 26532.8 * dial gap->c6
+ 26532.9 ? dial=c6  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 26544.9 * relay2 no->mid
+ 26545.8 * relay2 mid->nc
+ 28532.9 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no dial=c6 outLamp1=on outLamp2=off  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win. / The play continues as above until either light 1 comes on—indicating that MINIVAC wins; or light 2 comes on—indicating a tie."
+ 28532.9 > button3 target=0
+ 28532.9 > button6 target=0
+ 28544.1 * pb3 no->mid  pb6 no->mid
+ 28546.6 * pb3 mid->nc  pb6 mid->nc
+ 28549.5 * relay6 no->mid
+ 28549.6 * relay5 no->mid
+ 28549.7 * relay4 no->mid
+ 28549.8 * relay3 no->mid
+ 28550.4 * relay6 mid->nc
+ 28550.5 * relay5 mid->nc
+ 28550.6 * relay4 mid->nc
+ 28550.7 * relay3 mid->nc
+ 28558.9 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 28567.9 * indLamp2 on->dim
+ 28569.1 * outLamp1 on->dim
+ 28614.6 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 28623.6 * indLamp2 dim->off
+ 28624.7 * outLamp1 dim->off
+ 28832.9 > disconnect cord=70
+ 28832.9 > connect cord=70 a=hole:M10#3 b=free r_uohm=0
+ 28832.9 > disconnect cord=71
+ 28832.9 > connect cord=71 a=hole:M11#3 b=free r_uohm=0
+ 29132.9 > disconnect cord=70
+ 29132.9 > connect cord=70 a=hole:M10#3 b=hole:6com#2 r_uohm=0
+ 29432.9 > button6 target=1000
+ 29444.1 * pb6 nc->mid
+ 29446.6 * pb6 mid->no
+ 29449.9 * outLamp1 off->dim
+ 29456.6 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 29458.2 * relay3 nc->mid
+ 29458.3 * relay4 nc->mid
+ 29458.5 * relay5 nc->mid
+ 29458.7 * relay6 nc->mid
+ 29459.5 * relay3 mid->no
+ 29459.6 * relay4 mid->no
+ 29459.8 * relay5 mid->no
+ 29460.0 * relay6 mid->no
+ 29468.9 * outLamp1 dim->on
+ 29496.9 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 29732.9 > button1 target=1000
+ 29744.1 * pb1 nc->mid
+ 29746.6 * pb1 mid->no
+ 29749.0 * relay6 no->mid
+ 29749.1 * relay4 no->mid  relay5 no->mid
+ 29749.2 * relay3 no->mid
+ 29749.9 * relay6 mid->nc
+ 29750.0 * relay4 mid->nc  relay5 mid->nc
+ 29750.1 * relay3 mid->nc
+ 29756.5 * indLamp2 off->dim
+ 29757.8 * relay2 nc->mid
+ 29757.9 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 29759.1 * relay2 mid->no
+ 29768.7 * outLamp1 on->dim
+ 29791.6 * dial c6->gap
+ 29796.9 * indLamp2 dim->on
+ 29812.5 * dial gap->c5
+ 29813.5 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 29824.3 * outLamp1 dim->off
+ 29875.1 * dial c5->gap
+ 29896.0 * dial gap->c4
+ 29958.7 * dial c4->gap
+ 29979.6 * dial gap->c3
+ 30042.2 * dial c3->gap
+ 30063.1 * dial gap->c2
+ 30125.8 * dial c2->gap
+ 30146.6 * dial gap->c1
+ 30209.3 * dial c1->gap
+ 30230.2 * dial gap->c0
+ 30292.8 * dial c0->gap
+ 30313.7 * dial gap->c15
+ 30376.4 * dial c15->gap
+ 30397.3 * dial gap->c14
+ 30459.9 * dial c14->gap
+ 30480.8 * dial gap->c13
+ 30543.5 * dial c13->gap
+ 30564.3 * dial gap->c12
+ 30627.0 * dial c12->gap
+ 30647.9 * dial gap->c11
+ 30710.5 * dial c11->gap
+ 30731.4 * dial gap->c10
+ 30794.1 * dial c10->gap
+ 30815.0 * dial gap->c9
+ 30815.1 ? dial=c9  "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix."
+ 30827.2 * relay2 no->mid
+ 30828.1 * relay2 mid->nc
+ 32815.1 > button1 target=0
+ 32815.1 > button6 target=0
+ 32826.3 * pb1 no->mid  pb6 no->mid
+ 32828.8 * pb1 mid->nc  pb6 mid->nc
+ 32846.8 * indLamp2 on->dim
+ 32902.4 * indLamp2 dim->off
+ 33115.1 > disconnect cord=70
+ 33115.1 > connect cord=70 a=hole:M10#3 b=hole:M9b#2 r_uohm=0
+ 33115.1 > disconnect cord=71
+ 33115.1 > connect cord=71 a=hole:M11#3 b=hole:M1t#2 r_uohm=0
+ 33415.1 > button6 target=1000
+ 33426.3 * pb6 nc->mid
+ 33428.8 * pb6 mid->no
+ 33432.1 * outLamp1 off->dim
+ 33438.8 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 33440.0 * relay1 nc->mid
+ 33440.4 * relay3 nc->mid
+ 33440.6 * relay4 nc->mid
+ 33440.7 * relay5 nc->mid
+ 33440.9 * relay6 nc->mid
+ 33441.3 * relay1 mid->no
+ 33441.7 * relay3 mid->no
+ 33441.9 * relay4 mid->no
+ 33442.0 * relay5 mid->no
+ 33442.2 * relay6 mid->no
+ 33443.0 * relay6 no->mid
+ 33443.3 * relay5 no->mid
+ 33443.5 * relay4 no->mid
+ 33443.8 * relay3 no->mid  relay6 mid->nc
+ 33444.1 * relay5 mid->nc
+ 33444.3 * relay4 mid->nc
+ 33444.6 * relay3 mid->nc
+ 33465.2 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 33478.7 * indLamp1 dim->on
+ 33496.2 * outLamp1 dim->off
+ 33715.1 > button2 target=1000
+ 33726.3 * pb2 nc->mid
+ 33728.8 * pb2 mid->no
+ 33738.7 * indLamp2 off->dim
+ 33740.0 * relay2 nc->mid
+ 33741.3 * relay2 mid->no
+ 33773.4 * dial c9->gap
+ 33779.2 * indLamp2 dim->on
+ 33794.3 * dial gap->c8
+ 33857.1 * dial c8->gap
+ 33878.0 * dial gap->c7
+ 33940.8 * dial c7->gap
+ 33961.8 * dial gap->c6
+ 34024.5 * dial c6->gap
+ 34045.5 * dial gap->c5
+ 34108.3 * dial c5->gap
+ 34129.2 * dial gap->c4
+ 34192.0 * dial c4->gap
+ 34212.9 * dial gap->c3
+ 34275.7 * dial c3->gap
+ 34296.6 * dial gap->c2
+ 34296.7 ? dial=c2  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 34308.8 * relay2 no->mid
+ 34309.7 * relay2 mid->nc
+ 36296.7 > button2 target=0
+ 36296.7 > button6 target=0
+ 36307.9 * pb2 no->mid  pb6 no->mid
+ 36310.4 * pb2 mid->nc  pb6 mid->nc
+ 36314.6 * relay1 no->mid
+ 36315.5 * relay1 mid->nc
+ 36325.1 * indLamp1 on->dim
+ 36332.1 * indLamp2 on->dim
+ 36381.1 * indLamp1 dim->off
+ 36387.7 * indLamp2 dim->off
+ 36596.7 > disconnect cord=70
+ 36596.7 > connect cord=70 a=hole:M10#3 b=hole:M2b#2 r_uohm=0
+ 36596.7 > disconnect cord=71
+ 36596.7 > connect cord=71 a=hole:M11#3 b=hole:M6t#2 r_uohm=0
+ 36896.7 > button6 target=1000
+ 36907.9 * pb6 nc->mid
+ 36910.4 * pb6 mid->no
+ 36913.7 * outLamp1 off->dim
+ 36920.4 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 36921.6 * relay1 nc->mid
+ 36922.0 * relay3 nc->mid
+ 36922.2 * relay4 nc->mid
+ 36922.3 * relay5 nc->mid
+ 36922.5 * relay6 nc->mid
+ 36922.9 * relay1 mid->no
+ 36923.3 * relay3 mid->no
+ 36923.5 * relay4 mid->no
+ 36923.6 * relay5 mid->no
+ 36923.8 * relay6 mid->no
+ 36924.6 * relay6 no->mid
+ 36924.9 * relay5 no->mid
+ 36925.1 * relay4 no->mid
+ 36925.4 * relay3 no->mid  relay6 mid->nc
+ 36925.7 * relay5 mid->nc
+ 36925.9 * relay4 mid->nc
+ 36926.2 * relay3 mid->nc
+ 36946.8 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 36960.3 * indLamp1 dim->on
+ 36977.8 * outLamp1 dim->off
+ 37196.7 > button3 target=1000
+ 37207.9 * pb3 nc->mid
+ 37210.4 * pb3 mid->no
+ 37220.3 * indLamp2 off->dim
+ 37221.6 * relay2 nc->mid
+ 37222.9 * relay2 mid->no
+ 37255.1 * dial c2->gap
+ 37260.8 * indLamp2 dim->on
+ 37276.1 * dial gap->c1
+ 37338.9 * dial c1->gap
+ 37359.8 * dial gap->c0
+ 37422.6 * dial c0->gap
+ 37443.5 * dial gap->c15
+ 37506.3 * dial c15->gap
+ 37527.2 * dial gap->c14
+ 37590.0 * dial c14->gap
+ 37611.0 * dial gap->c13
+ 37673.8 * dial c13->gap
+ 37694.7 * dial gap->c12
+ 37757.5 * dial c12->gap
+ 37778.4 * dial gap->c11
+ 37841.2 * dial c11->gap
+ 37862.1 * dial gap->c10
+ 37924.9 * dial c10->gap
+ 37945.9 * dial gap->c9
+ 38008.7 * dial c9->gap
+ 38029.6 * dial gap->c8
+ 38092.4 * dial c8->gap
+ 38113.3 * dial gap->c7
+ 38113.4 ? dial=c7  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 38125.5 * relay2 no->mid
+ 38126.4 * relay2 mid->nc
+ 40113.4 > button3 target=0
+ 40113.4 > button6 target=0
+ 40124.6 * pb3 no->mid  pb6 no->mid
+ 40127.1 * pb3 mid->nc  pb6 mid->nc
+ 40131.3 * relay1 no->mid
+ 40132.2 * relay1 mid->nc
+ 40141.8 * indLamp1 on->dim
+ 40148.8 * indLamp2 on->dim
+ 40197.8 * indLamp1 dim->off
+ 40204.4 * indLamp2 dim->off
+ 40413.4 > disconnect cord=70
+ 40413.4 > connect cord=70 a=hole:M10#3 b=hole:M7b#2 r_uohm=0
+ 40413.4 > disconnect cord=71
+ 40413.4 > connect cord=71 a=hole:M11#3 b=hole:M3t#2 r_uohm=0
+ 40713.4 > button6 target=1000
+ 40724.6 * pb6 nc->mid
+ 40727.1 * pb6 mid->no
+ 40730.4 * outLamp1 off->dim
+ 40737.1 * indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 40738.3 * relay1 nc->mid
+ 40738.7 * relay3 nc->mid
+ 40738.9 * relay4 nc->mid
+ 40739.0 * relay5 nc->mid
+ 40739.2 * relay6 nc->mid
+ 40739.6 * relay1 mid->no
+ 40740.0 * relay3 mid->no
+ 40740.2 * relay4 mid->no
+ 40740.3 * relay5 mid->no
+ 40740.5 * relay6 mid->no
+ 40741.3 * relay6 no->mid
+ 40741.6 * relay5 no->mid
+ 40741.8 * relay4 no->mid
+ 40742.1 * relay3 no->mid  relay6 mid->nc
+ 40742.4 * relay5 mid->nc
+ 40742.6 * relay4 mid->nc
+ 40742.9 * relay3 mid->nc
+ 40763.5 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 40777.0 * indLamp1 dim->on
+ 40794.5 * outLamp1 dim->off
+ 41013.4 > button4 target=1000
+ 41024.6 * pb4 nc->mid
+ 41027.1 * pb4 mid->no
+ 41037.0 * indLamp2 off->dim
+ 41038.3 * relay2 nc->mid
+ 41039.6 * relay2 mid->no
+ 41071.8 * dial c7->gap
+ 41077.5 * indLamp2 dim->on
+ 41092.7 * dial gap->c6
+ 41155.5 * dial c6->gap
+ 41176.5 * dial gap->c5
+ 41239.3 * dial c5->gap
+ 41260.2 * dial gap->c4
+ 41260.3 ? dial=c4  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 41272.4 * relay2 no->mid
+ 41273.3 * relay2 mid->nc
+ 43260.3 > button4 target=0
+ 43260.3 > button6 target=0
+ 43271.5 * pb4 no->mid  pb6 no->mid
+ 43274.0 * pb4 mid->nc  pb6 mid->nc
+ 43278.2 * relay1 no->mid
+ 43279.1 * relay1 mid->nc
+ 43288.7 * indLamp1 on->dim
+ 43295.7 * indLamp2 on->dim
+ 43344.7 * indLamp1 dim->off
+ 43351.3 * indLamp2 dim->off
+ 43560.3 > disconnect cord=70
+ 43560.3 > connect cord=70 a=hole:M10#3 b=hole:M4b#2 r_uohm=0
+ 43560.3 > disconnect cord=71
+ 43560.3 > connect cord=71 a=hole:M11#3 b=hole:M5t#2 r_uohm=0
+ 43860.3 > button6 target=1000
+ 43871.5 * pb6 nc->mid
+ 43874.0 * pb6 mid->no
+ 43877.3 * outLamp1 off->dim
+ 43884.0 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 43885.6 * relay3 nc->mid
+ 43885.7 * relay4 nc->mid
+ 43885.9 * relay5 nc->mid
+ 43886.1 * relay6 nc->mid
+ 43886.9 * relay3 mid->no
+ 43887.0 * relay4 mid->no
+ 43887.2 * relay5 mid->no
+ 43887.4 * relay6 mid->no
+ 43896.3 * outLamp1 dim->on
+ 43924.3 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 44160.3 > button5 target=1000
+ 44171.5 * pb5 nc->mid
+ 44174.0 * pb5 mid->no
+ 44184.0 * indLamp2 off->dim
+ 44185.3 * relay2 nc->mid
+ 44186.6 * relay2 mid->no
+ 44219.1 * dial c4->gap
+ 44224.9 * indLamp2 dim->on
+ 44240.3 * dial gap->c3
+ 44303.8 * dial c3->gap
+ 44325.0 * dial gap->c2
+ 44388.5 * dial c2->gap
+ 44409.6 * dial gap->c1
+ 44473.1 * dial c1->gap
+ 44494.3 * dial gap->c0
+ 44557.8 * dial c0->gap
+ 44579.0 * dial gap->c15
+ 44642.5 * dial c15->gap
+ 44663.6 * dial gap->c14
+ 44727.1 * dial c14->gap
+ 44748.3 * dial gap->c13
+ 44811.8 * dial c13->gap
+ 44832.9 * dial gap->c12
+ 44896.4 * dial c12->gap
+ 44917.6 * dial gap->c11
+ 44981.1 * dial c11->gap
+ 45002.3 * dial gap->c10
+ 45065.8 * dial c10->gap
+ 45086.9 * dial gap->c9
+ 45150.4 * dial c9->gap
+ 45171.6 * dial gap->c8
+ 45171.7 ? dial=c8  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win."
+ 45183.7 * relay2 no->mid
+ 45184.6 * relay2 mid->nc
+ 47171.7 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no dial=c8 outLamp1=on outLamp2=off  "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win. / The play continues as above until either light 1 comes on—indicating that MINIVAC wins; or light 2 comes on—indicating a tie."
+ 47171.7 > button5 target=0
+ 47171.7 > button6 target=0
+ 47182.9 * pb5 no->mid  pb6 no->mid
+ 47185.4 * pb5 mid->nc  pb6 mid->nc
+ 47188.3 * relay6 no->mid
+ 47188.4 * relay5 no->mid
+ 47188.5 * relay4 no->mid
+ 47188.6 * relay3 no->mid
+ 47189.2 * relay6 mid->nc
+ 47189.3 * relay5 mid->nc
+ 47189.4 * relay4 mid->nc
+ 47189.5 * relay3 mid->nc
+ 47197.8 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 47206.8 * indLamp2 on->dim
+ 47207.9 * outLamp1 on->dim
+ 47253.4 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 47262.4 * indLamp2 dim->off
+ 47263.5 * outLamp1 dim->off

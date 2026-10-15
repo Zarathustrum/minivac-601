@@ -1,0 +1,4764 @@
+{
+ "topic": "MINIVAC 601 - manual programs transcribed as jack-connection lists",
+ "researcher": "subagent find-programs",
+ "date": "2026-08-30",
+ "sources_read": [
+  {
+   "id": "B1",
+   "file": "docs/research/raw/pdf/book1.pdf",
+   "title": "Book I - Getting acquainted with MINIVAC 601",
+   "pages_pdf": 36,
+   "note": "printed page N = PDF page N+2 for pp.3-32"
+  },
+  {
+   "id": "B234",
+   "file": "docs/research/raw/pdf/book2-3-4.pdf",
+   "title": "Books II, III & IV",
+   "pages_pdf": 94,
+   "note": "printed page N = PDF page N+6 for Book II p1 onward"
+  },
+  {
+   "id": "B56",
+   "file": "docs/research/raw/pdf/book5-6.pdf",
+   "title": "Books V & VI - How Computers Work for Man / MINIVAC Games",
+   "pages_pdf": 68,
+   "note": "printed page N = PDF page N+6 for Book V p1 onward; Book VI p51 = PDF p57"
+  }
+ ],
+ "transcription_policy": {
+  "shorthand": "Two terminals joined by a slash, e.g. 1+/1A. Stated in Book I, PDF p7 (printed p5): 'A WIRING SHORTHAND is used to indicate connections which are to be made on the computer by simply writing the two terminal designations with a slash in between.' [verified]",
+  "terminal_grammar_used_for_normalisation": "Section-scoped terminals are <1-6> followed by a letter or +/-. Rotary-switch terminals are D0..D19. Matrix terminals are M1..M11 with suffix t/b, plus M10, M11, M+, M-. Auxiliary common terminals are written <1-6>com.",
+  "ocr_normalisations_applied": [
+   "Letter I and lowercase l at the start of a terminal normalised to digit 1 (e.g. 'IB/1-' -> '1B/1-', 'lcom/2L' -> '1com/2L'). The grammar admits no terminal beginning with a letter except M.",
+   "Letter O inside a rotary-switch terminal normalised to digit 0 (e.g. 'DO' -> 'D0', '3G/D0').",
+   "Em dash / en dash after a section digit normalised to the minus power terminal, e.g. '1\u2014' -> '1-'.",
+   "Stray internal spaces removed, e.g. '2L/D 11' -> '2L/D11', 'M9b/Ml 1' -> 'M9b/M11'.",
+   "Every such normalisation is mechanical and reversible; where a line was NOT mechanically resolvable it is listed in per_line_flags and tagged down."
+  ],
+  "tag_meaning": {
+   "verified": "read by me in a rendered page image of the primary source at 500-600 dpi, or unambiguous body prose in a clean OCR layer that I cross-checked against a second printing of the same program",
+   "likely": "clean typeset body OCR from the primary PDF text layer, internally consistent with the terminal grammar, but not image-verified",
+   "unverified": "single damaged OCR line, or my inference"
+  }
+ },
+ "image_reads_spent": [
+  "book5-6.pdf p62 columns 1-2 @600dpi (tic-tac-toe)",
+  "book5-6.pdf p62 columns 3-4 @600dpi (tic-tac-toe)",
+  "book1.pdf p12/p13/p15/p17 program blocks @500dpi (Exp 4,5,6-intro,7)",
+  "book1.pdf p15/p17/p18/p19 program blocks @500dpi (Exp 6,7-mod,8,9)",
+  "book1.pdf p15 wide @500dpi (Exp 6 program)",
+  "book5-6.pdf p11 + p58 columns @500dpi (traffic light M terminals, combination lock 5A/6J)",
+  "book1.pdf p25 @500dpi (Exp 13 combined program)",
+  "book2-3-4.pdf p49 @500dpi (Relay AND circuit program)",
+  "book5-6.pdf p57 @500dpi (Secret Code starred common connections)"
+ ],
+ "programs": [
+  {
+   "id": "VI-TICTACTOE",
+   "name": "Tic-Tac-Toe",
+   "book": "Book VI (MINIVAC Games)",
+   "section": "1. MINIVAC as an Opponent",
+   "printed_page": "55 (prose + rules) and 56 (wiring table + play procedure)",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "61 (prose, printed 55) and 62 (the wiring table, printed 56)",
+   "table_read_from": "PAGE IMAGE, book5-6.pdf PDF page 62, rendered at 600 dpi and read in two halves (columns 1-2, columns 3-4)",
+   "tag": "verified",
+   "layout": "4 columns x 18 rows, read COLUMN-MAJOR (column 1 top-to-bottom, then column 2, ...). 72 connections.",
+   "connections": [
+    "1A/1N",
+    "1B/1-",
+    "1C/2C",
+    "1F/M11",
+    "1G/2A",
+    "1H/5X",
+    "1J/2F",
+    "1L/1Z",
+    "1N/3F",
+    "1X/2H",
+    "1X/2X",
+    "1Y/2Y",
+    "1Y/2G",
+    "2B/2-",
+    "2C/3C",
+    "2E/D16",
+    "2F/2H",
+    "2G/2K",
+    "2L/D18",
+    "2N/D19",
+    "2X/3X",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/4F",
+    "3G/D7",
+    "3G/4N",
+    "3H/M3b",
+    "3H/M7t",
+    "3J/3K",
+    "3K/D8",
+    "3L/M4b",
+    "3L/M8t",
+    "3N/6G",
+    "3X/4X",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5F",
+    "4G/D5",
+    "4H/M1b",
+    "4H/M5t",
+    "4J/4K",
+    "4K/D6",
+    "4L/M2b",
+    "4L/M6t",
+    "4G/5N",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5H/M7b",
+    "5H/M3t",
+    "5J/5K",
+    "5K/D4",
+    "5L/M8b",
+    "5L/M4t",
+    "5G/6N",
+    "5Y/M10",
+    "6+/6Y",
+    "6-/6C",
+    "6G/D1",
+    "6H/M1t",
+    "6H/M5b",
+    "6J/6K",
+    "6K/D2",
+    "6L/M2t",
+    "6L/M6b",
+    "6X/M10",
+    "6com/D9",
+    "M9b/M11",
+    "M-/D17",
+    "M10/free*",
+    "M11/free**"
+   ],
+   "connection_count": 72,
+   "footnotes_as_printed": [
+    "* this is the machine's \"play\" wire   (attached to M10)",
+    "** this is the player's \"play\" wire  (attached to M11)"
+   ],
+   "per_line_flags": [
+    {
+     "line": "4G/5N",
+     "tag": "verified",
+     "note": "Printed exactly as '4G/5N' in column 3 row 9 (image-confirmed at 600 dpi). It is anomalous: (a) 4G already appears as '4G/D5' in the same column, and (b) the column is otherwise in strict alphabetical order and this slot falls between 4L/M6t and 4Y/5Y, where a '4N/...' entry belongs. The rest of the program does drive 4N (via 3G/4N). A typographic error for '4N/5N' is plausible but is MY INFERENCE and is tagged [unverified]; the printed text is 4G/5N."
+    },
+    {
+     "line": "6+/6Y",
+     "tag": "verified",
+     "note": "printed with the plus sign spaced: '6 + /6Y'"
+    },
+    {
+     "line": "6-/6C",
+     "tag": "verified",
+     "note": "printed '6 \u2014 /6C'"
+    }
+   ],
+   "initial_settings": [
+    "Power ON.",
+    "Place the free end of the machine's 'play' wire (the wire on M10) in 6com.",
+    "Player's 'play' wire (the wire on M11) starts free.",
+    "No slide-switch or dial pre-setting is stated."
+   ],
+   "procedure_as_printed": [
+    "(Note: it will probably be most convenient to keep track of the game on a piece of paper.)",
+    "Turn power ON.",
+    "Place the free end of the machine's 'play' wire in 6 com.",
+    "Push pushbutton 6 and hold pushbutton 6 down while you push pushbutton 1. The pointer knob will turn to indicate the machine's first move.",
+    "Release both pushbuttons 1 and 6.",
+    "All succeeding moves: place the free end of the machine's 'play' wire in the BOTTOM contact of the matrix terminal corresponding to the machine's last move (as indicated by the pointer knob).",
+    "Player selects his move and indicates it by placing the free end of the player's 'play' wire in the TOP contact of the matrix terminal corresponding to his move.",
+    "Push pushbutton 6 and hold pushbutton 6 down while you push the pushbutton corresponding to the move (pushbutton 2 the second time, pushbutton 3 the third time, etc.)",
+    "Play continues until either light 1 comes on - indicating that MINIVAC wins; or light 2 comes on - indicating a tie.",
+    "To begin another game, be sure that the player's 'play' wire and the machine's 'play' wire are both free."
+   ],
+   "expected_behaviour": [
+    "Light 1 ON = MINIVAC wins. [verified]",
+    "Light 2 ON = tie. [verified]",
+    "The pointer knob of the rotary switch indicates the machine's move. [verified]",
+    "The machine always moves first, and its first move is always the CENTRE of the game matrix (matrix square 9). [verified]"
+   ],
+   "stated_playing_rule_verbatim": "The MINIVAC is so programmed that the machine will move 5 squares to the right of its own last move if and only if the human opponent has blocked that last move by moving 4 squares to the right of the machine's last move. If the human player did not move 4 squares to the right of the machine's last move, MINIVAC will move into that square and indicate a win. If the human player consistently follows the 'move 4 to the right' rule, every game will end in a tie.",
+   "cannot_lose_claim_verbatim": "MINIVAC can be programmed to play tic-tac-toe against a human opponent. A warning though: with this program, MINIVAC can not lose. The human opponent may tie the game, but he can never win. This is because of the decision rules which are the basis of the program.",
+   "first_move_claim_verbatim": "This program requires that MINIVAC make the first move; the machine's first move will always be to the center of the game matrix. A program which would allow the human opponent to move first would require more storage and processing capacity than is available on MINIVAC 601.",
+   "notes": [
+    "'5 squares to the right' and '4 squares to the right' are moves around the ring of the 8 outer matrix squares (numbered 1-2-3 / 8-9-4 / 7-6-5 clockwise around centre 9 per the panel); the manual does not restate that numbering here. The ring geometry itself is NOT settled by this page - it must come from the panel photograph. [unverified as to geometry]",
+    "Matrix terminals carry a t/b suffix: Book I (PDF p27, printed p25) states 'M = matrix, 6 = terminal number (1 to 11), t = top or b for bottom ... for example M6t'. [verified]",
+    "M10 and M11 appear in this program both as wired nodes (5Y/M10, 6X/M10, 1F/M11, M9b/M11) and as the anchor points of the two free play wires."
+   ]
+  },
+  {
+   "id": "VI-SEQREC",
+   "name": "Basic sequence recognition circuit (shared by Secret Code, Combination Lock, Electronic Maze)",
+   "book": "Book VI",
+   "printed_page": "51 (Secret Code printing), 52 (Combination Lock printing), 53 (Electronic Maze printing)",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "57, 58, 59",
+   "tag": "likely",
+   "connections": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+"
+   ],
+   "connection_count": 38,
+   "per_line_flags": [
+    {
+     "line": "6A/6J",
+     "tag": "verified",
+     "note": "KNOWN INTERNAL DISCREPANCY, do not silently resolve. The Secret Code printing (PDF p57) and the Electronic Maze printing (PDF p59) both read 6A/6J. The Combination Lock printing (PDF p58) reads 5A/6J - I confirmed '5A/6J' from the 500 dpi page image of PDF p58, and the manual itself says on that page '(This is the same basic circuit as was used in the previous game)'. Two printings say 6A/6J, one says 5A/6J. Both are primary. Recorded, not resolved."
+    }
+   ],
+   "notes": [
+    "All three printings are otherwise identical, 38 connections, differing only in column break-up.",
+    "The circuit chains relays 1..6 so that the pushbuttons (or dial positions, or matrix touches) must be actuated in one specific order; light 1 = solved, light 6 = error + automatic re-set."
+   ]
+  },
+  {
+   "id": "VI-SECRETCODE",
+   "name": "The Secret Code",
+   "book": "Book VI",
+   "section": "1. MINIVAC as an Opponent",
+   "printed_page": "51-52",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "57-58",
+   "tag": "likely",
+   "requires": "VI-SEQREC (the 38-connection basic sequence recognition circuit) wired first",
+   "additional_connections": [
+    "1R/6V",
+    "1R/1W",
+    "1S/1X",
+    "1T/1U",
+    "1T/2S",
+    "1V/2X",
+    "1Y/2Y",
+    "2R/2W",
+    "2T/2U",
+    "2V/3R",
+    "2Y/3Y",
+    "3R/3W",
+    "3S/3X",
+    "3T/3U",
+    "3T/4S",
+    "3V/4X",
+    "3Y/4Y",
+    "4R/4W",
+    "4T/4U",
+    "4V/5R",
+    "4Y/5Y",
+    "5R/5W",
+    "5S/5X",
+    "5T/5U",
+    "5T/6S",
+    "5V/6X",
+    "5Y/6Y",
+    "6R/6W",
+    "6T/6U",
+    "6Y/6+",
+    "2T/1com*",
+    "6W/2com*",
+    "4T/3com*",
+    "2W/4com*",
+    "6T/5com*",
+    "4W/6com*"
+   ],
+   "additional_connection_count": 36,
+   "total_connection_count": 74,
+   "image_verified_subset": "The last nine lines of column 4 (6R/6W, 6T/6U, 6Y/6+, 2T/1com*, 6W/2com*, 4T/3com*, 2W/4com*, 6T/5com*, 4W/6com*) were read from the 500 dpi image of PDF p57. All six starred entries carry a single asterisk. [verified]",
+   "footnote_verbatim": "* These connections may be interchanged for new codes. Be sure though, that there are connections to each of the six common terminals.",
+   "initial_settings": [
+    "Program a code by setting the six slide switches in various positions.",
+    "Example given: with this program and ALL SIX SLIDE SWITCHES TO THE RIGHT, the code is solved by pushing the pushbuttons in sequence from 6 through 1."
+   ],
+   "procedure_as_printed": [
+    "Wire the basic circuit, then add the connections above.",
+    "Set the slide switches to choose a code.",
+    "Player pushes the six pushbuttons in an attempted order.",
+    "Light 1 ON = 'Code Solved'. Light 6 ON = an error has been made and MINIVAC automatically re-sets for the next attempt.",
+    "Example of re-coding: change 2T/1com to 2T/2com and 6W/2com to 6W/1com."
+   ],
+   "expected_behaviour": [
+    "'Using the slide switches, you can generate 63 different codes; by simple re-programming you can generate 720 different codes.' [verified quote]",
+    "Later on the same page: 'you will be able to generate 63 different codes' after interchanging starred connections. The 63 vs 720 figures both appear; recorded as printed."
+   ]
+  },
+  {
+   "id": "VI-COMBOLOCK",
+   "name": "The Combination Lock",
+   "book": "Book VI",
+   "printed_page": "52",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "58",
+   "tag": "likely",
+   "requires": "VI-SEQREC, in the printing that reads 5A/6J (see VI-SEQREC per_line_flags)",
+   "additional_connections": [
+    "D16/M+"
+   ],
+   "combination_program_as_printed": [
+    {
+     "combination_step": "left to 13",
+     "connection": "D13/6com"
+    },
+    {
+     "combination_step": "right to 2",
+     "connection": "D2/5com"
+    },
+    {
+     "combination_step": "left to 10",
+     "connection": "D11/4com"
+    },
+    {
+     "combination_step": "left to 10 (second wire)",
+     "connection": "D10/3com"
+    },
+    {
+     "combination_step": "right to 6",
+     "connection": "D6/2com"
+    },
+    {
+     "combination_step": "left to 9",
+     "connection": "D9/1com"
+    },
+    {
+     "combination_step": "(optional)",
+     "connection": "D8/6E*"
+    }
+   ],
+   "footnote_verbatim": "* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point.",
+   "design_rules_verbatim": "When you are designing a combination, you must not include any connection which will touch off a connection further along. Also, you must make connections to each of the six common terminals in order.",
+   "expected_behaviour": [
+    "Light 1 ON = combination solved. Light 6 ON = error, machine re-sets and the player must start over."
+   ],
+   "notes": [
+    "The 'left to 10' row of the printed table carries TWO connections (D11/4com and D10/3com) - the dial passes 11 then stops on 10. Printed as two lines against one combination step. [likely]",
+    "'You may wish to add dummy connections to the rotary switch dial so that the pertinent connections will not be obvious.'"
+   ]
+  },
+  {
+   "id": "VI-MAZE",
+   "name": "The Electronic Maze",
+   "book": "Book VI",
+   "printed_page": "53-54",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "59-60",
+   "tag": "likely",
+   "requires": "VI-SEQREC (printing reads 6A/6J)",
+   "additional_connections": [
+    "a programming wire at M+ with one end left free - this is the 'play wire'"
+   ],
+   "example_path_program": {
+    "path_verbatim": "from 8 to 1 to 2 to 9 to 6 to 5",
+    "connections": [
+     "M8t/6com",
+     "M1t/5com",
+     "M2t/4com",
+     "M9t/3com",
+     "M6t/2com",
+     "M5t/1com"
+    ]
+   },
+   "dummy_connections_example": [
+    "M3t/6R",
+    "M4t/6S",
+    "M7t/6T"
+   ],
+   "short_path_variant": {
+    "path_verbatim": "from 8 to 9 to 4",
+    "connections": [
+     "M8t/3com",
+     "M9t/2com",
+     "M4t/1com"
+    ],
+    "extra_setup": "Before beginning the play, manually push relays 4, 5 and 6 to the left. Whenever an error is made, relays 4, 5 and 6 must be pushed to the left before play is resumed."
+   },
+   "procedure_as_printed": [
+    "The player takes the free end of the 'play wire' (connected to M+) and touches it to the TOP terminals of the game matrix squares.",
+    "'(The wire need not be plugged into the terminal; touching the terminal will make the contact.)'",
+    "You may tell the player his START and GOAL points; if you wish to make the game more difficult you need not give him this information."
+   ],
+   "expected_behaviour": [
+    "Light 1 indicates success; light 6 indicates error and re-set."
+   ]
+  },
+  {
+   "id": "VI-MATCHGAME",
+   "name": "The Match Game",
+   "book": "Book VI",
+   "printed_page": "54-55",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "60-61",
+   "tag": "likely",
+   "connections": [
+    "3A/3E",
+    "3B/3-",
+    "3E/3G",
+    "3F/3-",
+    "3G/D0",
+    "3H/3Z",
+    "3Y/4Y",
+    "4C/5C",
+    "4E/D14",
+    "4F/4X",
+    "4F/4G",
+    "4H/4L",
+    "4H/5H",
+    "4K/5K",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5E/D13",
+    "5F/5X",
+    "5F/5G",
+    "5H/6H",
+    "5K/6K",
+    "5L/6L",
+    "5Y/6Y",
+    "6C/6-",
+    "6E/D15",
+    "6F/6X",
+    "6F/6G",
+    "6H/6+",
+    "6K/D18",
+    "6Y/6+",
+    "D1/D4",
+    "D2/D5",
+    "D3/D6",
+    "D4/D7",
+    "D5/D8",
+    "D6/D9",
+    "D7/D10",
+    "D8/D11",
+    "D9/D12",
+    "D10/D13",
+    "D11/D14",
+    "D12/D15",
+    "D16/M+",
+    "D17/M-"
+   ],
+   "connection_count": 45,
+   "per_line_flags": [
+    {
+     "line": "6Y/6+",
+     "tag": "verified",
+     "note": "OCR text layer renders this as '6Y/&+'. Read from the 500 dpi image of PDF p61: it is 6Y/6+."
+    },
+    {
+     "line": "D16/M+",
+     "tag": "verified",
+     "note": "image-confirmed, PDF p61 @500dpi"
+    },
+    {
+     "line": "D17/M-",
+     "tag": "verified",
+     "note": "image-confirmed, PDF p61 @500dpi"
+    }
+   ],
+   "control_assignment_verbatim": [
+    "Pushbutton 3 is the re-set button.",
+    "Pushbutton 4 is used for 'player removes 1 match.'",
+    "Pushbutton 5 is used for 'player removes 2 matches.'",
+    "Pushbutton 6 is used for 'machine moves.'",
+    "Light 3 is the 'win' indicator. The last player to move before light 3 comes on wins the game."
+   ],
+   "procedure_as_printed": [
+    "Push the re-set button (pushbutton 3). The rotary switch dial will turn to 15, indicating that there are 15 matches in the pile.",
+    "Player moves first: pushbutton 4 removes 1 match, pushbutton 5 removes 2 matches.",
+    "After the player's move the dial shows the number of matches remaining.",
+    "MINIVAC moves next: player must push pushbutton 6; the dial turns to the number remaining after the machine's move.",
+    "Play alternates. Light 3 comes on after the last move. The last player to move before light 3 comes on wins.",
+    "To start another game, push pushbutton 3."
+   ],
+   "expected_behaviour": [
+    "'The game is started with the rotary switch dial at 15 ... MINIVAC 601 will always win.' [verified quote, printed p54]"
+   ]
+  },
+  {
+   "id": "VI-TUGOFWAR",
+   "name": "The Philosophic Tug of War",
+   "book": "Book VI",
+   "section": "2. MINIVAC as a Referee",
+   "printed_page": "56-57",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "62-63",
+   "tag": "likely",
+   "connections": [
+    "1X/6X",
+    "1Y/1+",
+    "1Z/6Z",
+    "4Y/D18",
+    "4Z/D9",
+    "6E/6Y",
+    "6F/6-",
+    "6F/6L",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6J/D17",
+    "6N/D18",
+    "D7/D8",
+    "D8/D9",
+    "D16/D19"
+   ],
+   "connection_count": 16,
+   "initial_settings": [
+    "Player 1 uses pushbutton 1; player 2 uses pushbutton 6.",
+    "Pushbutton 4 is the re-set button."
+   ],
+   "procedure_as_printed": [
+    "Push pushbutton 4 (re-set). Release pushbutton 4 as the rotary switch knob starts to turn.",
+    "As soon as the knob starts to turn, each player tries to control its direction using his pushbutton.",
+    "The game ends when the pointer knob stops - either at 9 (player 1 wins) or at 7 (player 2 wins).",
+    "To start another game, push the re-set button (pushbutton 4)."
+   ],
+   "expected_behaviour": [
+    "The rotary switch knob turns counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down).",
+    "It turns clockwise (towards 7) if pushbuttons 1 and 6 are in different positions.",
+    "Dial stops at 9 -> player 1 wins. Dial stops at 7 -> player 2 wins."
+   ]
+  },
+  {
+   "id": "VI-MINDREADING",
+   "name": "The Mind Reading Trick",
+   "book": "Book VI (a re-print of the Book III 'Mind Reading Program')",
+   "printed_page": "57",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "63",
+   "tag": "likely",
+   "cross_check": "The identical 32-connection set is printed independently in Book III, printed p53, PDF book2-3-4.pdf p59. The two printings agree on all 32 connections (one is written 6A/6C in Book VI and 6C/6A in Book III - the same connection). This cross-printing agreement is why the tag is 'likely' rather than 'unverified' despite no image read.",
+   "connections": [
+    "5V/4S",
+    "4R/4A",
+    "4B/4-",
+    "5C/5A",
+    "5B/5-",
+    "6A/6C",
+    "6B/6-",
+    "6X/6V",
+    "6V/5V",
+    "6U/6C",
+    "5U/5C",
+    "5F/6F",
+    "6F/6-",
+    "M-/D18",
+    "D18/4V",
+    "4U/6S",
+    "4W/5S",
+    "5R/6H",
+    "5T/6L",
+    "6R/5H",
+    "6T/5L",
+    "M+/6Y",
+    "6X/D17",
+    "D16/D19",
+    "D0/6N",
+    "D1/6K",
+    "D2/6J",
+    "D3/6G",
+    "D4/5N",
+    "D5/5J",
+    "D6/5K",
+    "D7/5G"
+   ],
+   "connection_count": 32,
+   "initial_settings": [
+    "Slide switches 4, 5 and 6 carry the three answers. LEFT = YES, RIGHT = NO."
+   ],
+   "procedure_as_printed": [
+    "Ask a friend to think of a number between 0 and 7.",
+    "A. Is the number greater than 3?  -> slide switch 4 LEFT for YES, RIGHT for NO",
+    "B. When the number is divided by 4, is the remainder greater than 1? -> slide switch 5 LEFT for YES, RIGHT for NO",
+    "C. Is the number odd? -> slide switch 6 LEFT for YES, RIGHT for NO",
+    "After the replies have been indicated, push pushbutton 6. The pointer knob of the rotary switch will turn to the number your friend had in mind."
+   ],
+   "variation_verbatim": "The same program can be used substituting names for numbers as follows: 0 = Karen, 1 = David, 2 = Catherine, 3 = Robert, 4 = Peggy, 5 = Andy, 6 = Dorothy, 7 = Hartley. Questions: A. Does the name end in 'Y'? B. Does the name have more than 5 letters? C. Is the name a boy's name?"
+  },
+  {
+   "id": "VI-FORTUNETELLER",
+   "name": "The Fortune Teller",
+   "book": "Book VI",
+   "printed_page": "58",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "64",
+   "tag": "likely",
+   "connections": [
+    "1A/3G",
+    "1B/1-",
+    "1C/3E",
+    "1E/2E",
+    "2A/3K",
+    "2B/2-",
+    "2C/4E",
+    "2E/3C",
+    "2F/2X",
+    "2G/6L",
+    "2H/2L",
+    "2K/5L",
+    "2L/2Y",
+    "2Y/2+",
+    "3A/3J",
+    "3B/3-",
+    "3C/4C",
+    "3F/5G",
+    "3H/4K",
+    "3L/4N",
+    "3N/4A",
+    "4B/4-",
+    "4C/5C",
+    "4F/6G",
+    "4L/4X",
+    "4Y/4+",
+    "5A/5E",
+    "5B/5-",
+    "5C/6C",
+    "5E/6K",
+    "5F/6N",
+    "5F/5G",
+    "5H/5+",
+    "5K/6F",
+    "5N/6E",
+    "6A/6E",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6H/6+"
+   ],
+   "connection_count": 40,
+   "procedure_as_printed": [
+    "Ask MINIVAC a yes-or-no question.",
+    "Push the 'contemplate' button (pushbutton 2). Hold it down while MINIVAC considers the question.",
+    "Release the 'contemplate' button and push the 'answer' button (pushbutton 4)."
+   ],
+   "expected_behaviour": [
+    "light 1 - Absolutely No",
+    "light 2 - Doubtful",
+    "light 3 - Perhaps",
+    "light 4 - Definitely Yes",
+    "Lights 5 and 6 are MINIVAC's 'contemplation' lights."
+   ]
+  },
+  {
+   "id": "VI-RANDOM",
+   "name": "The Random Number Generator",
+   "book": "Book VI",
+   "printed_page": "59",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "65",
+   "tag": "likely",
+   "connections": "SAME WIRING AS VI-FORTUNETELLER - no separate program is printed.",
+   "procedure_as_printed": [
+    "Program MINIVAC as for the Fortune Teller program.",
+    "Push pushbutton 2 to allow MINIVAC to generate a random number.",
+    "Release pushbutton 2 and push pushbutton 4 to display it."
+   ],
+   "expected_behaviour": [
+    "Light 1 indicates '1', light 2 indicates '2', light 3 indicates '3', light 4 indicates '4'. Equivalent to throwing a four-sided die."
+   ]
+  },
+  {
+   "id": "VI-SPS",
+   "name": "Scissors, Paper or Stone",
+   "book": "Book VI",
+   "printed_page": "59",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "65",
+   "tag": "likely",
+   "connections": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/2F",
+    "1G/3G",
+    "1H/4H",
+    "1H/5L",
+    "1K/3K",
+    "1L/1X",
+    "1L/3H",
+    "1Y/2Y",
+    "2C/4X",
+    "2F/3F",
+    "2G/4G",
+    "2H/5H",
+    "2X/3L",
+    "2Y/3Y",
+    "3A/5K",
+    "3A/4A",
+    "3B/4B",
+    "3C/4C",
+    "3F/4F",
+    "3G/5G",
+    "3H/6H",
+    "3K/5K",
+    "3L/5H",
+    "3X/5L",
+    "3Y/4Y",
+    "4B/4-",
+    "4C/5X",
+    "4F/5F",
+    "4G/6G",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5Y/6Y",
+    "6A/6G",
+    "6B/6-",
+    "6C/6X",
+    "6F/6-",
+    "6Y/6+"
+   ],
+   "connection_count": 41,
+   "per_line_flags": [
+    {
+     "line": "3C/4C",
+     "tag": "unverified",
+     "note": "OCR text layer reads '3C/AC'. Normalised to 3C/4C on grammar grounds (no terminal 'AC'); not image-verified."
+    }
+   ],
+   "control_assignment_verbatim": [
+    "Player 1: Scissors = pushbutton 1, Paper = pushbutton 2, Stone = pushbutton 3",
+    "Player 2: Scissors = pushbutton 4, Paper = pushbutton 5, Stone = pushbutton 6"
+   ],
+   "procedure_as_printed": [
+    "Each player decides upon a move and indicates it by pushing his appropriate pushbutton.",
+    "Player 1 should move just before player 2 moves since the relays will move after player 2 indicates his move.",
+    "You may find it convenient to fix a tall piece of cardboard between pushbuttons 3 and 4 to keep players from observing their opponent's move in advance."
+   ],
+   "expected_behaviour": [
+    "Player 1 wins: light 1 comes on.",
+    "Player 2 wins: light 6 comes on.",
+    "Tie: lights 3 and 4 come on."
+   ]
+  },
+  {
+   "id": "VI-REACTION",
+   "name": "Reaction Time Tester",
+   "book": "Book VI",
+   "printed_page": "60",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "66",
+   "tag": "likely",
+   "connections": [
+    "1A/3F",
+    "1B/1-",
+    "1E/2E",
+    "1E/1-",
+    "1F/2A",
+    "1F/1G",
+    "1G/5J",
+    "1H/2H",
+    "1H/3Z",
+    "1K/2K",
+    "1L/2L",
+    "1X/5H",
+    "1Y/4J",
+    "2B/2-",
+    "2E/3E",
+    "2F/2G",
+    "2F/5A",
+    "2G/5N",
+    "2H/3H",
+    "2K/3K",
+    "2L/3L",
+    "3A/6K",
+    "3A/4A",
+    "3B/4B",
+    "3E/4E",
+    "3F/3G",
+    "3G/5G",
+    "3H/4H",
+    "3J/6Y",
+    "3K/4K",
+    "3L/4L",
+    "3Y/3+",
+    "3Z/6H",
+    "4B/4-",
+    "4F/6A",
+    "4F/4G",
+    "4G/5K",
+    "4K/D19",
+    "4L/4-",
+    "5B/5-",
+    "5E/6G",
+    "5F/5-",
+    "5L/6X",
+    "6B/6-",
+    "6E/6G",
+    "6E/D2",
+    "6F/6-",
+    "6L/6+",
+    "6L/D17",
+    "D16/D17",
+    "D18/M-"
+   ],
+   "connection_count": 51,
+   "control_assignment_verbatim": [
+    "Player 1 uses pushbutton 1",
+    "Player 2 uses pushbutton 6",
+    "Pushbutton 3 is the re-set button",
+    "Light 1 indicates that player 1 wins.",
+    "Light 2 indicates that player 1 has fouled.",
+    "Light 5 indicates that player 2 has fouled.",
+    "Light 6 indicates that player 2 wins.",
+    "Lights 3 and 4 give the signal 'START'."
+   ],
+   "procedure_as_printed": [
+    "Each player should be ready at his pushbutton.",
+    "Push the re-set button (pushbutton 3).",
+    "As soon as lights 3 and 4 come on, each player tries to be the first to push his pushbutton.",
+    "If either player pushes before lights 3 and 4 come on, MINIVAC indicates who has fouled and the game must be begun again.",
+    "To start another game push the re-set button."
+   ]
+  },
+  {
+   "id": "V-EXP1",
+   "name": "Experiment 1: The Lights on the Stairs (dual-control light)",
+   "book": "Book V",
+   "printed_page": "2",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "8",
+   "tag": "likely",
+   "connections": [
+    "1A/1+",
+    "1B/1V",
+    "1U/2U",
+    "1W/2W",
+    "2V/2-"
+   ],
+   "connection_count": 5,
+   "initial_settings": [
+    "Slide switch 1 = the switch at the top of the stairs; slide switch 2 = the switch at the bottom."
+   ],
+   "procedure_as_printed": [
+    "Light 1 can be turned either ON or OFF using slide switches 1 or 2.",
+    "For example, moving slide switch 1 to the LEFT will turn light 1 ON if slide switch 2 is RIGHT. The light will go OFF if slide switch 2 is now moved to the LEFT."
+   ],
+   "expected_behaviour": [
+    "Two-way switching: light 1 toggles from either switch, regardless of the other switch's position."
+   ],
+   "notes": [
+    "TOC calls it 'The Light on the Stairs'; the section heading reads 'The Lights on the Stairs'. The manual calls this 'a version of the AND circuit'."
+   ]
+  },
+  {
+   "id": "V-EXP2",
+   "name": "Experiment 2: The Burglar Alarm",
+   "book": "Book V",
+   "printed_page": "3",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "9",
+   "tag": "likely",
+   "connections": [
+    "1X/6F",
+    "1Y/2Y",
+    "2Y/2-",
+    "2Z/3Y",
+    "3Z/4Y",
+    "4Z/5Y",
+    "5A/5+",
+    "5B/5J",
+    "5E/5+",
+    "5F/5H",
+    "5J/6J",
+    "5Z/6Y",
+    "6C/6+",
+    "6F/6L",
+    "6H/6-",
+    "6K/6Z"
+   ],
+   "connection_count": 16,
+   "procedure_as_printed": [
+    "Turn power ON. The alarm (light 5) comes ON.",
+    "Set the system by pushing the re-set button (pushbutton 1). The burglar alarm is now set.",
+    "If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm will come on.",
+    "After an alarm has been given, the system can be re-set by pushing pushbutton 1."
+   ],
+   "expected_behaviour": [
+    "Light 5 = the alarm. Pushbutton 1 = re-set. Pushbuttons 2-6 = the protected contacts. Illustrates the NOT function."
+   ]
+  },
+  {
+   "id": "V-EXP3",
+   "name": "Experiment 3: The Metronome",
+   "book": "Book V",
+   "printed_page": "3-4",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "10",
+   "tag": "likely",
+   "connections": [
+    "4R/D3",
+    "4S/5R",
+    "4T/D5",
+    "4U/D7",
+    "4V/5T",
+    "4W/D9",
+    "5S/6K",
+    "6C/6L",
+    "6E/D16",
+    "6F/6-",
+    "6G/D1",
+    "6G/6N",
+    "6H/D17",
+    "6J/6K",
+    "6J/6+",
+    "6L/D18",
+    "6N/6-"
+   ],
+   "connection_count": 17,
+   "procedure_as_printed": [
+    "Turn power on. The rotary switch dial will begin to turn back and forth, generating a periodic signal.",
+    "To change the period of the signal, move slide switches 4 and 5."
+   ],
+   "expected_behaviour": [
+    "Rotary switch oscillates between two dial points. Four periods are selectable via slide switches 4 and 5. 'Through an appropriate circuit, the MINIVAC is capable of generating 15 different periods.'"
+   ]
+  },
+  {
+   "id": "V-EXP4",
+   "name": "Experiment 4: The Traffic Light",
+   "book": "Book V",
+   "printed_page": "5",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "11",
+   "tag": "verified",
+   "connections": [
+    "4A/4+",
+    "4B/D11",
+    "5A/5+",
+    "5B/D7",
+    "6A/6+",
+    "6B/D1",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D11/D12",
+    "D12/D13",
+    "D13/D14",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M-",
+    "D18/M+"
+   ],
+   "connection_count": 22,
+   "image_verified": "Column 4 (D15/D0, D16/M-, D17/M-, D18/M+) and the D11/D12 line read from the 500 dpi image of book5-6.pdf PDF page 11.",
+   "per_line_flags": [
+    {
+     "line": "D17/M-",
+     "tag": "verified",
+     "note": "As printed BOTH D16 and D17 go to M-, and D18 goes to M+. That is unusual (D17/D18 are the motor RUN pair) but it is what the page says at 500 dpi. Compare V-EXP5, which prints D16/M- and D17/M+. Recorded, not resolved."
+    },
+    {
+     "line": "D11/D12",
+     "tag": "verified",
+     "note": "OCR text layer renders 'D1I/D12'; image confirms D11/D12."
+    }
+   ],
+   "procedure_as_printed": [
+    "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession.",
+    "Light 4 = 'red', light 5 = 'amber', light 6 = 'green'.",
+    "The length of time any given light remains on may be varied by changing the connections on the rotary switch."
+   ]
+  },
+  {
+   "id": "V-EXP5",
+   "name": "Experiment 5: The Traffic Light with Pedestrian Control",
+   "book": "Book V",
+   "printed_page": "5-6",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "11-12",
+   "tag": "verified",
+   "connections": [
+    "4A/4+",
+    "4B/D1",
+    "5A/5+",
+    "5B/D14",
+    "5E/5+",
+    "5F/5Z",
+    "5H/5-",
+    "5J/D18",
+    "5Y/D6",
+    "6A/6+",
+    "6B/D7",
+    "D1/D2",
+    "D2/D3",
+    "D3/D4",
+    "D4/D5",
+    "D5/D6",
+    "D7/D8",
+    "D8/D9",
+    "D9/D10",
+    "D10/D11",
+    "D11/D12",
+    "D12/D13",
+    "D14/D15",
+    "D15/D0",
+    "D16/M-",
+    "D17/M+"
+   ],
+   "connection_count": 26,
+   "image_verified": "D15/D0, D16/M-, D17/M+ read from the 500 dpi image of book5-6.pdf PDF page 11.",
+   "procedure_as_printed": [
+    "Turn power on. The 'red' light (light 4) comes ON.",
+    "To cross the street: push pushbutton 5 until the 'red' light (light 4) goes OFF and the 'green' light (light 6) comes ON.",
+    "After the light has turned green, it will go to amber (light 5) and return to red again."
+   ],
+   "notes": [
+    "Note there is no D13/D14 connection in this program, unlike V-EXP4. As printed."
+   ]
+  },
+  {
+   "id": "V-EXP6",
+   "name": "Experiment 6: The Automobile Speed Timer",
+   "book": "Book V",
+   "printed_page": "6-8",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "12-14",
+   "tag": "likely",
+   "connections": [
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1H/1+",
+    "1H/2H",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2H/3H",
+    "2L/D11",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3H/4H",
+    "3L/D12",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/5-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+   ],
+   "connection_count": 35,
+   "procedure_as_printed": [
+    "Push pushbutton 6 as a car passes the first check point (starts the timing motor).",
+    "Push pushbutton 5 as the car passes the second check point (stops the motor).",
+    "Read the speed of the passing car from the dial plate: the speed is read from the band corresponding to the LOWEST NUMBERED relay indicator light which is on."
+   ],
+   "expected_behaviour": [
+    "The rotary switch runs while timing; relay indicator lights 1-5 count the revolutions.",
+    "Manual note: 'the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution' - so the counted cycle is 0..15 then 15..14 then 14..13, etc."
+   ],
+   "dial_plate_calibration_as_printed": [
+    "1. Measure the distance between the two check-points.",
+    "2. Convert to miles (e.g. yards / 1760).",
+    "3. Count complete revolutions per minute, multiply by 16/15.",
+    "4. Multiply by 60 -> revolutions per hour.",
+    "5. Multiply by the distance in miles -> mph for one revolution.",
+    "Worked example: 50 yards = .029 miles; 45 rev/min x 16/15 = 48 rev/min; x60 = 2880 rev/hr; .029 x 2880 = 83.52 mph for one revolution; 41.76 mph for two; 27.64 mph for three (as printed - 83.52/3 = 27.84, the manual prints 27.64)."
+   ],
+   "per_line_flags": [
+    {
+     "line": "2L/D11",
+     "tag": "likely",
+     "note": "OCR renders '2L/D 11'; the series 2L/D11, 3L/D12, 4L/D13, 5L/D14 is internally consistent."
+    }
+   ]
+  },
+  {
+   "id": "V-EXP7",
+   "name": "Experiment 7: The Train Gate Control",
+   "book": "Book V",
+   "printed_page": "8-10",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "15-16",
+   "tag": "likely",
+   "connections": [
+    "4C/5C",
+    "4F/4X",
+    "4F/4K",
+    "4G/5G",
+    "4H/5H",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6X",
+    "5F/5K",
+    "5G/6F",
+    "5H/5+",
+    "5L/5X",
+    "5Y/6Y",
+    "6C/6-",
+    "6G/6N",
+    "6H/6-",
+    "6J/6K",
+    "6J/D17",
+    "6L/6+",
+    "6L/6Y",
+    "6N/D18",
+    "D0/M+",
+    "D7/M-",
+    "D16/D19"
+   ],
+   "connection_count": 25,
+   "initial_settings": [
+    "Turn power on and set the pointer knob of the rotary switch at 0.",
+    "The rotary switch at 0 represents the gate up; 7 represents the gate closed."
+   ],
+   "procedure_as_printed": [
+    "1. Push pushbutton 4.",
+    "2. While holding pushbutton 4 down, push pushbutton 5.",
+    "3. Hold pushbutton 5 down and release pushbutton 4.",
+    "4. While holding pushbutton 5 down, push pushbutton 6.",
+    "5. Hold pushbutton 6 down and release pushbutton 5.",
+    "6. Release pushbutton 6.",
+    "Then: push pushbutton 5 alone. This represents a car passing over the centre of the crossing. Notice that the gate does not close."
+   ],
+   "input_sequence_table": {
+    "columns": [
+     "Pushbutton 4",
+     "Pushbutton 5",
+     "Pushbutton 6"
+    ],
+    "rows": [
+     [
+      0,
+      0,
+      0
+     ],
+     [
+      1,
+      0,
+      0
+     ],
+     [
+      1,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      0
+     ],
+     [
+      0,
+      1,
+      1
+     ],
+     [
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0
+     ]
+    ],
+    "tag": "likely"
+   },
+   "expected_behaviour": [
+    "The gate closes (pointer knob moves to the 'gate closed' position - 7) as soon as the first switch is activated and remains closed until none of the switches is activated.",
+    "The centre switch (pushbutton 5) alone does not close the gate."
+   ]
+  },
+  {
+   "id": "V-EXP8",
+   "name": "Experiment 8: The Two-Floor Elevator",
+   "book": "Book V",
+   "printed_page": "10-11",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "16-18",
+   "tag": "likely",
+   "connections": [
+    "5A/6C",
+    "5B/5-",
+    "5B/6B",
+    "5C/5-",
+    "5C/5H",
+    "5F/6X",
+    "5G/6E",
+    "5L/5X",
+    "5N/6E",
+    "5Y/6Y",
+    "6A/6K",
+    "6C/6G",
+    "6J/D17",
+    "6F/6-",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6L/6-",
+    "6N/D18",
+    "6Y/D1",
+    "D1/M+",
+    "D7/M-",
+    "D16/D19"
+   ],
+   "connection_count": 23,
+   "initial_settings": [
+    "Set the 'elevator' at the first floor by setting the pointer knob of the rotary switch at 1."
+   ],
+   "procedure_as_printed": [
+    "To call the 'elevator' to the second floor, push pushbutton 6. The pointer knob will point to 7.",
+    "To return the 'elevator' to the first floor, push pushbutton 5."
+   ],
+   "expected_behaviour": [
+    "Dial 1 = first floor, dial 7 = second floor.",
+    "Binary output light 5 ON = elevator at first floor; light 6 ON = elevator at second floor.",
+    "Pushbuttons 5 and 6 serve as both the floor call buttons and the in-car buttons."
+   ],
+   "reused_later": "Book V printed p26 reuses this circuit to demonstrate manual 'control with feedback': set the knob at 1, push pushbutton 6 (knob to 7, light 6 = feedback indicator), then push pushbutton 5 (knob to 1, light 5 = feedback indicator)."
+  },
+  {
+   "id": "V-EXP9",
+   "name": "Experiment 9: The Three-Floor Elevator",
+   "book": "Book V",
+   "printed_page": "11-12",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "17-18",
+   "tag": "likely",
+   "connections": [
+    "1A/1E",
+    "1B/1-",
+    "1C/2C",
+    "1E/D1",
+    "1F/1G",
+    "1G/1X",
+    "1H/1+",
+    "1H/1L",
+    "1J/2H",
+    "1K/5E",
+    "1Y/2Y",
+    "2A/2E",
+    "2B/2-",
+    "2C/3C",
+    "2E/D7",
+    "2F/2G",
+    "2G/2X",
+    "2J/3H",
+    "2X/6H",
+    "2Y/3Y",
+    "3A/3E",
+    "3B/3-",
+    "3C/4C",
+    "3E/D13",
+    "3F/3G",
+    "3G/3X",
+    "3J/4E",
+    "3Y/4J",
+    "4C/5F",
+    "4F/4+",
+    "4G/4H",
+    "4H/4+",
+    "4L/D19",
+    "4N/D18",
+    "5C/5G",
+    "5E/6G",
+    "5F/6C",
+    "5G/5N",
+    "5J/5K",
+    "5J/D17",
+    "5L/5-",
+    "5N/D18",
+    "6C/6-",
+    "6F/D12",
+    "D0/D1",
+    "D6/D7",
+    "D12/D13",
+    "D16/M-"
+   ],
+   "connection_count": 48,
+   "floor_map_table": {
+    "columns": [
+     "",
+     "call button",
+     "indicator light",
+     "rotary switch pair"
+    ],
+    "rows": [
+     [
+      "Floor 1",
+      "pushbutton 1",
+      "output light 1",
+      "D0-D1"
+     ],
+     [
+      "Floor 2",
+      "pushbutton 2",
+      "output light 2",
+      "D6-D7"
+     ],
+     [
+      "Floor 3",
+      "pushbutton 3",
+      "output light 3",
+      "D12-D13"
+     ]
+    ],
+    "tag": "likely"
+   },
+   "initial_settings": [
+    "Set the 'elevator' at the first floor by setting the pointer knob at D0.",
+    "Turn power on. Output light 1 will come on indicating the location of the 'elevator'."
+   ],
+   "procedure_as_printed": [
+    "To call the 'elevator' to the third floor, push pushbutton 3.",
+    "To direct the 'elevator' to the second floor, push pushbutton 2."
+   ],
+   "expected_behaviour": [
+    "Nine-step behaviour is stated: sense present floor, compare with destination, store destination, select direction, move, interlock the pushbuttons while moving, continue to destination, stop and clear the stored destination, clear the interlock.",
+    "'the system is still not able to accept more than one command at once.'"
+   ],
+   "notes": [
+    "Both 4N/D18 and 5N/D18 appear. As printed."
+   ]
+  },
+  {
+   "id": "V-EXP10",
+   "name": "Experiment 10: The Automatic Toll Collector",
+   "book": "Book V",
+   "printed_page": "12-13",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "18-19",
+   "tag": "likely",
+   "connections": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4X",
+    "3L/3Y",
+    "3N/6Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4H/5N",
+    "4K/5N",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5L/6G",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+   ],
+   "connection_count": 55,
+   "control_assignment_verbatim": [
+    "Output light 1 ON represents 'Thank You - Go Ahead'",
+    "Output light 2 ON represents 'Stop - Pay Toll 10c'",
+    "Relay 1 and relay indicator light 1 ON represents 'Alarm'",
+    "Pushing pushbutton 3 represents 'Drive Away'",
+    "Pushing pushbutton 4 represents depositing one dime",
+    "Pushing pushbutton 5 represents depositing one nickel",
+    "Pushing pushbutton 6 represents depositing pennies (number of pennies indicated on rotary switch)"
+   ],
+   "procedure_as_printed": [
+    "Turn power on. Output light 2 comes on indicating 'Stop - Pay Toll 10c'.",
+    "one dime: push pushbutton 4",
+    "two nickels: push pushbutton 5 twice",
+    "one nickel and five pennies: push pushbutton 5 once; then set the rotary switch dial to 5 and push pushbutton 6",
+    "ten pennies: set the rotary switch dial to 10 and push pushbutton 6",
+    "When 10c has been deposited, output light 1 comes on ('Thank You - Go Ahead').",
+    "Push pushbutton 3 to 'Drive Away'. The toll collector will re-set.",
+    "If you try to drive away without depositing enough money, the alarm will sound. To turn off the alarm, deposit 10c.",
+    "If you deposit more than 10c, the automatic toll collector will accept the extra money and do nothing about it."
+   ]
+  },
+  {
+   "id": "V-EXP11",
+   "name": "Experiment 11: The Telephone Dialing System (decimal to 3-bit Gray code)",
+   "book": "Book V",
+   "printed_page": "13-14",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "19-20",
+   "tag": "likely",
+   "connections": [
+    "1C/1-",
+    "1C/1H",
+    "1F/D0",
+    "1G/4B",
+    "2C/3C",
+    "2E/3E",
+    "2F/3F",
+    "2F/3G",
+    "2G/2N",
+    "2H/5G",
+    "2J/2K",
+    "2J/6E",
+    "2L/5J",
+    "2N/6G",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4J",
+    "3F/4G",
+    "3G/4A",
+    "3H/3+",
+    "3K/4E",
+    "3L/6K",
+    "3N/4F",
+    "4B/5B",
+    "4C/5C",
+    "4E/5E",
+    "4F/5F",
+    "4H/6N",
+    "5A/5K",
+    "5B/6B",
+    "5C/6C",
+    "5F/5K",
+    "5H/6T",
+    "5L/6H",
+    "6A/6F",
+    "6C/6-",
+    "6F/6G",
+    "6H/6+",
+    "6L/6W",
+    "6R/6U",
+    "6S/D1",
+    "6U/D18",
+    "6V/D2",
+    "D1/D3",
+    "D2/D4",
+    "D3/D5",
+    "D4/D6",
+    "D5/D7",
+    "D6/D8",
+    "D16/M+",
+    "D17/M-"
+   ],
+   "connection_count": 52,
+   "gray_code_table": {
+    "columns": [
+     "Decimal Number",
+     "Three-Bit Gray Code"
+    ],
+    "rows": [
+     [
+      "1",
+      "001"
+     ],
+     [
+      "2",
+      "011"
+     ],
+     [
+      "3",
+      "010"
+     ],
+     [
+      "4",
+      "110"
+     ],
+     [
+      "5",
+      "111"
+     ],
+     [
+      "6",
+      "101"
+     ],
+     [
+      "7",
+      "100"
+     ],
+     [
+      "8",
+      "000"
+     ]
+    ],
+    "tag": "likely",
+    "note": "OCR renders 2 as 'O ll' and 4/5 with a leading space; normalised on the stated Gray-code rule (one bit changes per step). The row label for 1 is missing in the OCR but the table is headed 'we will use the Gray Code equivalent of zero for 8 so that we can represent the numbers 1 through 8'."
+   },
+   "initial_settings": [
+    "With power OFF, set slide switch 6 RIGHT.",
+    "Set the rotary switch dial at 0.",
+    "Turn power on."
+   ],
+   "procedure_as_printed": [
+    "Slowly turn the rotary switch dial to the number you wish to 'dial'. (Be sure that the pointer knob is pointing directly at the number.)",
+    "Set slide switch 6 LEFT.",
+    "The rotary switch will return to 0 and the number 'dialed' will appear in Gray Code on output lights 4, 5, and 6.",
+    "(Note: output light 3 should be ignored.)",
+    "To 'dial' another number, set slide switch 6 RIGHT and re-set the system by turning power off and on again."
+   ]
+  },
+  {
+   "id": "V-EXP12",
+   "name": "Experiment 12: Arabic Numeral Recognition",
+   "book": "Book V",
+   "printed_page": "22-23",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "28-29",
+   "tag": "likely",
+   "connections": [
+    "1C/2C",
+    "1F/M9t",
+    "1G/6com",
+    "1H/4K",
+    "1J/D0",
+    "2C/3C",
+    "2F/M5t",
+    "2G/D2",
+    "2H/4G",
+    "2J/D3",
+    "3C/4C",
+    "3F/M6t",
+    "3G/D6",
+    "3H/4N",
+    "3J/D9",
+    "3K/D8",
+    "3L/4J",
+    "3N/D7",
+    "4C/5C",
+    "4F/M8t",
+    "4H/5J",
+    "4L/5K",
+    "5C/6C",
+    "5F/M4t",
+    "5G/D5",
+    "5H/6G",
+    "5L/6J",
+    "5N/D1",
+    "6C/6-",
+    "6F/M7t",
+    "6H/6-",
+    "6X/M10",
+    "6X/D17",
+    "6Y/6+",
+    "6com/D4",
+    "M10/M11",
+    "D16/D19",
+    "D18/M-"
+   ],
+   "connection_count": 38,
+   "extra_setup_verbatim": "Now connect four short programming wires to M10, leaving one end of each free. Also, connect four short programming wires to M11, leaving one end of each free.",
+   "character_code_table": {
+    "note": "The 'FORM / CODE' table on printed p22 is heavily damaged in OCR and was NOT image-verified. Fragments captured: '269','235','6789','126','789','24689','2345679','24569','12379','23679','23459','2468'. Do not use as a fixture.",
+    "tag": "unverified"
+   },
+   "procedure_as_printed": [
+    "Turn power on. Select a number from 0 to 10.",
+    "'Draw' this number on the TOP terminals of the matrix with the free wires from M10 and M11, using the arabic numeral code.",
+    "Push pushbutton 6. The pointer knob of the rotary switch will turn to the number 'drawn' on the matrix.",
+    "To try another number, be sure that all eight wires to M10 and M11 are free."
+   ]
+  },
+  {
+   "id": "V-EXP13",
+   "name": "Experiment 13: Multiple Point Control",
+   "book": "Book V",
+   "printed_page": "24",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "30",
+   "tag": "likely",
+   "connections": [
+    "1V/1Y",
+    "1W/2V",
+    "1Z/2Y",
+    "2W/3V",
+    "2Z/3Y",
+    "3W/4V",
+    "3Z/4Y",
+    "4A/6K",
+    "4B/4-",
+    "4W/5V",
+    "4Z/5Y",
+    "5A/5E",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5W/6V",
+    "5Z/6Y",
+    "6A/6E",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6H/6W",
+    "6L/6Z",
+    "6Z/6+"
+   ],
+   "connection_count": 28,
+   "initial_settings": [
+    "Set all slide switches to the RIGHT. Turn power on."
+   ],
+   "procedure_as_printed": [
+    "Light 4 may be turned on or off by pushing any pushbutton or by moving any slide switch to the LEFT and then back to the RIGHT.",
+    "(Note: lights 5 and 6 are wired into the control circuit.)"
+   ],
+   "expected_behaviour": [
+    "A single light controlled from twelve different 'locations' (six pushbuttons + six slide switches). An expansion of the Light on the Stairs circuit."
+   ]
+  },
+  {
+   "id": "V-EXP14",
+   "name": "Experiment 14: Sequence Control with Manual Operation",
+   "book": "Book V",
+   "printed_page": "24-25",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "30-31",
+   "tag": "likely",
+   "connections": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "1R/6com",
+    "1S/1X",
+    "1T/2T",
+    "1Y/2Y",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "2R/5com",
+    "2S/2X",
+    "2T/3T",
+    "2Y/3Y",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "3R/4com",
+    "3S/3X",
+    "3T/4T",
+    "3Y/4Y",
+    "4C/5C",
+    "4F/5G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "4R/3com",
+    "4S/4X",
+    "4T/5T",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "5R/2com",
+    "5S/5X",
+    "5T/6T",
+    "5Y/6Y",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "6R/1com",
+    "6S/6X",
+    "6Y/6+"
+   ],
+   "connection_count": 60,
+   "per_line_flags": [
+    {
+     "line": "4F/5G",
+     "tag": "unverified",
+     "note": "Every other stage of this circuit uses the pattern <n>F/<n>G (1F/1G, 3F/3G, 5F/5G). This one prints '4F/5G' while '4H/5G' also appears. Could be a print/OCR error for 4F/4G. Not image-verified."
+    }
+   ],
+   "initial_settings": [
+    "Set all six slide switches to the RIGHT and turn power on."
+   ],
+   "procedure_as_printed": [
+    "Set slide switch 1 LEFT; push pushbutton 1; set slide switch 2 LEFT; push pushbutton 2; set slide switch 3 LEFT; push pushbutton 3; and so on, through pushbutton 6.",
+    "When you have completed all twelve steps, light 1 will come on indicating 'operation complete.'",
+    "If you attempt to carry out a step in the wrong order, nothing will happen.",
+    "To re-set the system, set all slide switches to the RIGHT and turn power off, then on again."
+   ]
+  },
+  {
+   "id": "V-EXP15",
+   "name": "Experiment 15: Automatic Sequence Control",
+   "book": "Book V",
+   "printed_page": "25",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "31",
+   "tag": "likely",
+   "connections": [
+    "1A/6G",
+    "1B/1-",
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1G/6A",
+    "1H/1+",
+    "1H/2H",
+    "2A/5G",
+    "2B/2-",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2G/5A",
+    "2H/3H",
+    "2L/D11",
+    "3A/4G",
+    "3B/3-",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3G/4A",
+    "3H/4H",
+    "3L/D12",
+    "4B/4-",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5B/5-",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/M-",
+    "6B/6-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+   ],
+   "connection_count": 47,
+   "procedure_as_printed": [
+    "Turn power on. Start the system by pushing pushbutton 6.",
+    "Lights 1 through 6 will come on in order, representing the completion of six successive steps.",
+    "When light 6 has come on, push pushbutton 5 to stop the system.",
+    "The sequence can be stopped at any time by pushing pushbutton 5."
+   ]
+  },
+  {
+   "id": "V-EXP16",
+   "name": "Experiment 16: Automatic Message Transmission (automatic CQ transmitter)",
+   "book": "Book V",
+   "printed_page": "29-30",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "36",
+   "tag": "likely",
+   "connections": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6E",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+   ],
+   "connection_count": 20,
+   "initial_settings": [
+    "Set the rotary switch at 0 and turn power on."
+   ],
+   "procedure_as_printed": [
+    "Push pushbutton 6. This provides the input command 'start transmission.'",
+    "As the rotary switch turns, lights 5 and 6 will flash the CQ signal.",
+    "To stop transmission, push pushbutton 5."
+   ],
+   "expected_behaviour": [
+    "Light 5 on represents a DASH. Light 6 on represents a DOT."
+   ]
+  },
+  {
+   "id": "V-EXP17",
+   "name": "Experiment 17: Automatic Name Transmission (JOHN in Morse)",
+   "book": "Book V",
+   "printed_page": "30-31",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "37",
+   "tag": "likely",
+   "connections": [
+    "3C/4C",
+    "3F/4G",
+    "3G/3K",
+    "3G/5com",
+    "3H/D12",
+    "3J/6com",
+    "3L/D13",
+    "4C/5C",
+    "4E/5K",
+    "4F/4G",
+    "4F/5N",
+    "4H/5H",
+    "4K/5F",
+    "4L/D15",
+    "4N/5E",
+    "5A/5com",
+    "5B/6B",
+    "5C/6C",
+    "5F/5G",
+    "5H/5+",
+    "5L/D0",
+    "5X/6E",
+    "5Y/6Y",
+    "5com/D11",
+    "6A/6com",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/6X",
+    "6G/D17",
+    "6H/6+",
+    "6H/6Y",
+    "6com/D2",
+    "D3/D4",
+    "D4/D5",
+    "D5/D12",
+    "D16/D17",
+    "D18/M-"
+   ],
+   "connection_count": 38,
+   "initial_settings": [
+    "Set the rotary switch at 0 and turn power on."
+   ],
+   "procedure_as_printed": [
+    "Push pushbutton 6. The system will immediately begin transmitting.",
+    "To stop transmission, push pushbutton 5."
+   ],
+   "expected_behaviour": [
+    "Two-path 'selective sequencing': on its first revolution the rotary switch transmits 'JO', on its second 'HN'.",
+    "Light 5 on represents a dash. Light 6 on represents a dot."
+   ]
+  },
+  {
+   "id": "V-EXP18",
+   "name": "Experiment 18: Automatic Transmission with Differential Spacing (SOS)",
+   "book": "Book V",
+   "printed_page": "31",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "38",
+   "tag": "likely",
+   "connections": [
+    "3E/3H",
+    "3F/3-",
+    "3J/6A",
+    "4C/5C",
+    "4C/4F",
+    "4E/5E",
+    "5C/5F",
+    "5E/D19",
+    "5F/6K",
+    "6A/D1",
+    "6B/6-",
+    "6C/6-",
+    "6E/D9",
+    "6F/6G",
+    "6G/D4",
+    "6H/D16",
+    "6L/D18",
+    "D1/D2",
+    "D2/D3",
+    "D3/D6",
+    "D6/D7",
+    "D7/D8",
+    "D8/D11",
+    "D11/D12",
+    "D12/D13",
+    "D16/D17",
+    "D17/M+",
+    "D18/M-"
+   ],
+   "connection_count": 28,
+   "procedure_as_printed": [
+    "Turn power on. The system will immediately begin transmitting 'SOS'.",
+    "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot."
+   ]
+  },
+  {
+   "id": "V-EXP19",
+   "name": "Experiment 19: Encoder for Morse Code",
+   "book": "Book V",
+   "printed_page": "32-34",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "39-40",
+   "tag": "likely",
+   "connections": [
+    "2C/3B",
+    "2C/3C",
+    "2F/D15",
+    "2G/4F",
+    "2H/2L",
+    "2H/3H",
+    "2K/5F",
+    "3A/3K",
+    "3B/4B",
+    "3C/4C",
+    "3E/D0",
+    "3F/3G",
+    "3G/D8",
+    "3H/3L",
+    "3L/4L",
+    "4A/4com",
+    "4B/5B",
+    "4C/5C",
+    "4F/D14",
+    "4G/4com",
+    "4H/4L",
+    "4H/5U",
+    "4K/5com",
+    "4com/D12",
+    "4com/5G",
+    "5A/5com",
+    "5B/6B",
+    "5C/6C",
+    "5F/D13",
+    "5H/5L",
+    "5H/6L",
+    "5K/6com",
+    "5com/6K",
+    "5com/D2",
+    "6A/6com",
+    "6C/6-",
+    "6F/D3",
+    "6G/6com",
+    "6H/6L",
+    "6H/6+",
+    "6com/D1",
+    "D1/D9",
+    "D2/D10",
+    "D3/D11",
+    "D4/D12",
+    "D5/D13",
+    "D6/D14",
+    "D7/D15",
+    "D16/M+"
+   ],
+   "connection_count": 49,
+   "per_line_flags": [
+    {
+     "line": "4H/5U",
+     "tag": "unverified",
+     "note": "'5U' is a slide-switch terminal; every other connection in this program is to relay/light/common/rotary terminals. Possible OCR error for 4H/5L or 4H/5H. Not image-verified."
+    },
+    {
+     "line": "4com/D12",
+     "tag": "likely",
+     "note": "OCR renders '4com/Dl 2'."
+    }
+   ],
+   "initial_settings": [
+    "Make up the alphabetic dial plate shown on printed p33 (traced onto paper and fitted over the dial).",
+    "Set the rotary switch dial to 0 and turn power on."
+   ],
+   "procedure_as_printed": [
+    "Turn the rotary switch clockwise until the pointer knob points at the letter you wish to code.",
+    "Read the Morse Code representation of the letter starting with output light 3.",
+    "Band 1 of the dial plate: read only light 3. Band 2: read lights 3 and 4. Band 3: lights 3, 4, 5. Band 4: lights 3, 4, 5 and 6.",
+    "A light ON represents a dash. A light OFF represents a dot."
+   ]
+  },
+  {
+   "id": "V-EXP20",
+   "name": "Experiment 20: Decoder for Morse Code",
+   "book": "Book V",
+   "printed_page": "34-35",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "40-41",
+   "tag": "likely",
+   "connections": [
+    "1A/1T",
+    "1B/1C",
+    "1B/2B",
+    "1C/2C",
+    "1F/2F",
+    "1G/3H",
+    "1H/5R",
+    "1J/5H",
+    "1K/3L",
+    "1L/5U",
+    "1N/5L",
+    "1R/3A",
+    "1S/2U",
+    "1U/2A",
+    "1V/2W",
+    "1W/4A",
+    "2B/3B",
+    "2C/3C",
+    "2F/4R",
+    "2G/4H",
+    "2H/5T",
+    "2J/6H",
+    "2K/4L",
+    "2L/5W",
+    "2N/6L",
+    "2V/2+",
+    "3B/4B",
+    "3C/4C",
+    "3F/3R",
+    "3F/4F",
+    "3G/D15",
+    "3J/D7",
+    "3K/D14",
+    "3N/D6",
+    "3S/4S",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D5",
+    "4K/D12",
+    "4N/D4",
+    "4S/6X",
+    "5C/6C",
+    "5F/6F",
+    "5G/D11",
+    "5J/D3",
+    "5K/D10",
+    "5N/D2",
+    "5S/6R",
+    "5V/6T",
+    "6C/6-",
+    "6G/D9",
+    "6J/D1",
+    "6K/D8",
+    "6N/D0",
+    "6S/6-",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+   ],
+   "connection_count": 60,
+   "initial_settings": [
+    "With the dial plate from experiment 19 in place, turn power on.",
+    "Set slide switches 1 and 2 to indicate the NUMBER OF CHARACTERS to decode."
+   ],
+   "character_count_table": {
+    "columns": [
+     "Number of Characters",
+     "Slide Switch 1",
+     "Slide Switch 2"
+    ],
+    "rows": [
+     [
+      "1",
+      "0 (right)",
+      "1 (left)"
+     ],
+     [
+      "2",
+      "1 (left)",
+      "0 (right)"
+     ],
+     [
+      "3",
+      "1 (left)",
+      "1 (left)"
+     ],
+     [
+      "4",
+      "0 (right)",
+      "0 (right)"
+     ]
+    ],
+    "tag": "likely"
+   },
+   "procedure_as_printed": [
+    "Starting with slide switch 3, enter the dots and dashes: a slide switch RIGHT represents a DOT; a slide switch LEFT represents a DASH.",
+    "Push pushbutton 6: this gives the computer the instruction 'read out'. The rotary switch will turn.",
+    "Read the letter in Band 1 if output light 1 is on; Band 2 if light 2 is on; Band 3 if light 3 is on; Band 4 if light 4 is on."
+   ]
+  },
+  {
+   "id": "V-EXP21",
+   "name": "Experiment 21: 'Search and Track' Radar",
+   "book": "Book V",
+   "printed_page": "35-36",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "41-42",
+   "tag": "likely",
+   "connections": [
+    "1A/2E",
+    "1B/1-",
+    "2A/3E",
+    "2B/2-",
+    "2C/3C",
+    "2E/3G",
+    "2F/3F",
+    "2F/2H",
+    "2G/2+",
+    "2J/3H",
+    "2K/3N",
+    "2K/2-",
+    "2L/D17",
+    "2N/3K",
+    "3A/5E",
+    "3H/4F",
+    "3B/3-",
+    "3C/4C",
+    "3E/3J",
+    "3K/3+",
+    "3L/D18",
+    "4C/5C",
+    "4F/5K",
+    "4G/5E",
+    "4H/5H",
+    "5C/6E",
+    "5F/5G",
+    "5F/6G",
+    "5H/6H",
+    "5L/6J",
+    "6A/6V",
+    "6B/6-",
+    "6E/6-",
+    "6F/6U",
+    "6H/6+",
+    "6V/D16",
+    "M+/D1"
+   ],
+   "connection_count": 37,
+   "footnote_verbatim": "M+/D1, 2, etc.   * Connection can be made between M+ and any point on the rotary switch dial.",
+   "initial_settings": [
+    "Set slide switch 6 RIGHT and turn power on. The system is now operating in the SEARCH mode."
+   ],
+   "procedure_as_printed": [
+    "In search mode, light 3 will flash on whenever the system detects an object signal (a connection on the switch dial).",
+    "Set slide switch 6 LEFT. The system is now operating in the TRACK mode. The rotary switch oscillates about the object signal.",
+    "If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it."
+   ]
+  },
+  {
+   "id": "V-XLAT-IHREM",
+   "name": "Selection rule for translation of 'ihrem' (German/English)",
+   "book": "Book V",
+   "printed_page": "38",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "45",
+   "tag": "likely",
+   "connections": [
+    "1A/3G",
+    "1B/1-",
+    "1X/3H",
+    "1Y/3X",
+    "1Y/4A",
+    "2A/3J",
+    "2B/2-",
+    "2X/3C",
+    "2Y/3Y",
+    "2Y/2+",
+    "3A/3C",
+    "3B/3-",
+    "3B/3F",
+    "4B/4-"
+   ],
+   "connection_count": 14,
+   "control_assignment_verbatim": [
+    "Output light 1 on represents 'their'",
+    "Output light 2 on represents 'her'",
+    "Output light 3 on represents 'Pete'",
+    "Output light 4 on represents 'Eve'",
+    "Pushbutton 1 represents 'ihrem'",
+    "Pushbutton 2 represents 'Piet'",
+    "Pushbutton 3 represents 'Eva'"
+   ],
+   "procedure_as_printed": [
+    "Select a singular or plural subject by pushing pushbuttons 2 and/or 3.",
+    "Enter the adjective 'ihrem' by pushing pushbutton 1.",
+    "The English translation of the German input will appear in the output lights."
+   ]
+  },
+  {
+   "id": "V-XLAT-FULL",
+   "name": "English/German translation program (tense + adjective selection)",
+   "book": "Book V",
+   "printed_page": "39-40",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "46",
+   "tag": "likely",
+   "connections": [
+    "1A/2V",
+    "1B/1E",
+    "1B/2B",
+    "1C/2U",
+    "1C/4C",
+    "1E/2E",
+    "1R/2U",
+    "1S/2S",
+    "1T/2V",
+    "2A/3G",
+    "2B/3B",
+    "2C/3K",
+    "2E/3E",
+    "2R/3H",
+    "2S/3S",
+    "2T/3L",
+    "2W/4A",
+    "3A/3N",
+    "3B/4B",
+    "3C/3J",
+    "3E/4E",
+    "3F/6A",
+    "3F/3R",
+    "3S/3+",
+    "4B/5B",
+    "5A/5+",
+    "5B/6B",
+    "6B/6-"
+   ],
+   "connection_count": 28,
+   "control_assignment_verbatim": [
+    "Slide switch 1 RIGHT = 'Pete'; LEFT = 'Eve'",
+    "Slide switch 2 RIGHT = 'Pete or Eve'; LEFT = 'Pete and Eve'",
+    "Slide switch 3 RIGHT = present tense; LEFT = past perfect tense",
+    "Output light 1 on = 'Piet'; Relay light 1 on = 'Eva'",
+    "Output light 2 on = 'haben mit'; Relay light 2 on = 'hat mit'",
+    "Output light 3 on = 'spielt mit'; Relay light 3 on = 'spielen mit'",
+    "Output light 4 on = 'seinem'; Relay light 4 on = 'ihrem'",
+    "Output light 5 on = 'Ball'",
+    "Output light 6 on = 'gespielt'"
+   ],
+   "procedure_as_printed": [
+    "Enter an English idea by moving slide switches 1, 2 and 3 appropriately. Read the German sentence from the output lights and the relay indicator lights, in the stated sequence."
+   ]
+  },
+  {
+   "id": "V-JOBSELECT",
+   "name": "Job Selection comparison program (one section shown, repeated x6)",
+   "book": "Book V",
+   "printed_page": "41-42",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "48",
+   "tag": "likely",
+   "connections_section1": [
+    "1A/1S",
+    "1B/1-",
+    "1Y/1+",
+    "1R/1X",
+    "1T/1Z"
+   ],
+   "connection_count": 5,
+   "extra_setup_verbatim": "Repeat this program for sections 2 through 6 on MINIVAC.  (i.e. 30 connections in total)",
+   "procedure_as_printed": [
+    "Enter the job requirements on the slide switches: LEFT if the answer was 'a', RIGHT if the answer was 'b'.",
+    "Then enter the applicant's replies on the pushbuttons and note whether the corresponding light goes on or off.",
+    "Some output lights will already be on; note that they do not go off when the applicant's replies are entered.",
+    "Record the total number of lights that went or stayed on."
+   ],
+   "notes": [
+    "The Mate Selection application (printed p42-43) reuses the same comparison scheme with different questionnaires; no separate wiring list is printed for it."
+   ]
+  },
+  {
+   "id": "V-ASSOCMEM",
+   "name": "Associative Memory (conditioning simulation)",
+   "book": "Book V",
+   "printed_page": "44",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "50",
+   "tag": "likely",
+   "connections": [
+    "1A/1K",
+    "1B/1-",
+    "1C/2C",
+    "1F/4H",
+    "1F/1X",
+    "1G/6F",
+    "1H/3K",
+    "1K/2H",
+    "1L/2L",
+    "1L/1Y",
+    "1Y/2Y",
+    "2A/2K",
+    "2B/2-",
+    "2C/3C",
+    "2F/5H",
+    "2F/2X",
+    "2G/4F",
+    "2K/3H",
+    "2L/3L",
+    "2Y/3Y",
+    "3A/3K",
+    "3B/3-",
+    "3C/4C",
+    "3F/6H",
+    "3F/3X",
+    "3G/5F",
+    "3L/4L",
+    "4C/5C",
+    "4F/4K",
+    "4G/5H",
+    "4H/6G",
+    "4L/5L",
+    "5C/6C",
+    "5F/5K",
+    "5G/6H",
+    "5L/6L",
+    "6C/6-",
+    "6F/6K",
+    "6L/6Z",
+    "6Y/6+"
+   ],
+   "connection_count": 40,
+   "procedure_as_printed": [
+    "Turn power on. Push pushbuttons 1, 2 and 3 individually - each turns on the single light associated with it.",
+    "Now push two pushbuttons simultaneously (e.g. 2 and 3). From now on, pushing either of the associated pushbuttons will turn on both of the associated lights.",
+    "Pushing all three together makes any one of them turn on all three lights.",
+    "To instruct the computer to forget the associations, push the 'forget' button - pushbutton 6."
+   ]
+  },
+  {
+   "id": "V-MAZESOLVER",
+   "name": "A Simulated Maze Solver",
+   "book": "Book V",
+   "printed_page": "44-45",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "51",
+   "tag": "likely",
+   "connections": [
+    "1A/D8",
+    "1B/1+",
+    "2E/4Z",
+    "2F/2+",
+    "2G/6L",
+    "2H/2-",
+    "2K/4Y",
+    "2L/2-",
+    "3A/4J",
+    "3B/3+",
+    "3E/4E",
+    "3E/6N",
+    "3F/4F",
+    "3F/3+",
+    "3H/D3",
+    "3J/5A",
+    "3K/D2",
+    "3L/3-",
+    "4A/4N",
+    "4B/4+",
+    "4H/D7",
+    "4L/D5",
+    "4Y/5G",
+    "5B/5+",
+    "5E/6E",
+    "5F/6F",
+    "5H/5-",
+    "5Y/5-",
+    "6F/6+",
+    "6G/D19",
+    "6H/5Z",
+    "6Y/D1",
+    "6Z/D19",
+    "D2/D4",
+    "D4/D6",
+    "D6/D8",
+    "D16/M-",
+    "D17/M+",
+    "D18/M-",
+    "6E/free*"
+   ],
+   "connection_count": 40,
+   "footnote_verbatim": "* This programming wire may be connected to D3, D5 or D7 to indicate the goal.",
+   "paths_verbatim": [
+    "Start = the '1' setting on the rotary switch dial.",
+    "Path A: from 1 to 3 on the rotary switch dial",
+    "Path B: from 1 to 5 on the rotary switch dial",
+    "Path C: from 1 to 7 on the rotary switch dial"
+   ],
+   "procedure_as_printed": [
+    "Turn power on. The computer will go directly to the start position.",
+    "Push pushbutton 6. The computer is now 'exploring' the possible paths.",
+    "Release pushbutton 6 and indicate a 'correct' path by connecting the wire from 6E to D3, D5 or D7.",
+    "Push pushbutton 6 again. The computer selects the 'correct' path and stops.",
+    "Return the computer to its start position by pushing pushbutton 5. Pushing pushbutton 6 now goes directly to the correct path without exploring.",
+    "To set the computer to the 'exploring' stage again, remove the 6E connection and push the 'forget' button - pushbutton 4."
+   ],
+   "notes": [
+    "Both D16/M- and D18/M- appear, plus D17/M+. As printed."
+   ]
+  },
+  {
+   "id": "V-FLASHINGLIGHTS",
+   "name": "The Flashing Lights Circuit (science-fiction film prop)",
+   "book": "Book V",
+   "printed_page": "45",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "51-52",
+   "tag": "likely",
+   "connections": [
+    "1A/D1",
+    "1B/1-",
+    "2A/D2",
+    "2B/2-",
+    "3A/D3",
+    "3B/3-",
+    "4A/D4",
+    "4B/4-",
+    "5A/D5",
+    "5B/5-",
+    "6A/D6",
+    "6B/6-",
+    "D1/D12",
+    "D2/D11",
+    "D3/D10",
+    "D4/D9",
+    "D5/D8",
+    "D6/D13",
+    "D8/D14",
+    "D10/D0",
+    "D11/D15",
+    "D16/M+",
+    "D17/M+",
+    "D18/M-"
+   ],
+   "connection_count": 24,
+   "notes": [
+    "Both D16/M+ and D17/M+ appear. As printed.",
+    "No operating procedure is printed beyond wiring it and turning it on."
+   ]
+  },
+  {
+   "id": "V-SUPERCIRCUIT",
+   "name": "The 'Super' Circuit",
+   "book": "Book V",
+   "printed_page": "46",
+   "pdf_file": "book5-6.pdf",
+   "pdf_page": "52",
+   "tag": "likely",
+   "connections": [
+    "1A/1E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/1H",
+    "1F/2F",
+    "1G/1+",
+    "1J/2H",
+    "1K/D1",
+    "1L/3K",
+    "1N/D8",
+    "2A/D14",
+    "2B/2-",
+    "2C/3C",
+    "2E/5A",
+    "2E/2J",
+    "2H/4N",
+    "2K/D4",
+    "2L/3N",
+    "3A/3E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3H/4L",
+    "3J/4H",
+    "3L/6com",
+    "4A/4E",
+    "4B/4-",
+    "4C/3-",
+    "4E/4J",
+    "4H/5K",
+    "5B/5-",
+    "5C/5com",
+    "5F/5-",
+    "5G/6E",
+    "5H/4-",
+    "5L/5+",
+    "5com/D13",
+    "6A/D0",
+    "6B/6-",
+    "6C/6G",
+    "6E/6com",
+    "6F/6-",
+    "6G/6N",
+    "6H/6+",
+    "6H/D16",
+    "6J/6K",
+    "6J/D17",
+    "6L/M-",
+    "6N/D18",
+    "D0/D2",
+    "D2/D6",
+    "D3/D15",
+    "D3/D5",
+    "D5/D9",
+    "D6/D7",
+    "D7/D11",
+    "D9/D10",
+    "D11/D12",
+    "D14/D15"
+   ],
+   "connection_count": 63,
+   "per_line_flags": [
+    {
+     "line": "4C/3-",
+     "tag": "unverified",
+     "note": "Cross-section connection to a minus power terminal of a different section; unusual but not impossible. Could be an OCR error for 4C/4- (but 4B/4- already present). Not image-verified."
+    },
+    {
+     "line": "5H/4-",
+     "tag": "unverified",
+     "note": "Same class of oddity. Not image-verified."
+    },
+    {
+     "line": "5com/D13",
+     "tag": "likely",
+     "note": "OCR renders '5com/Dl 3'."
+    },
+    {
+     "line": "6A/D0",
+     "tag": "likely",
+     "note": "OCR renders '6A/DO'."
+    }
+   ],
+   "notes": [
+    "The manual: 'this one does absolutely nothing constructive, although it appears to be diligently operating to solve the problems of the world.'"
+   ]
+  },
+  {
+   "id": "I-EXP1",
+   "name": "Experiment 1: Use of Programming Wires",
+   "book": "Book I",
+   "printed_page": "5",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "7",
+   "tag": "verified",
+   "connections": [
+    "1+/1A",
+    "1B/1-"
+   ],
+   "connection_count": 2,
+   "procedure_as_printed": [
+    "Take two programming wires. Connect one end of the first wire to terminal 1+ 'by pushing it into one of the two holes just below the + in section 1 of the computer.'",
+    "Connect the other end of that wire to terminal 1A 'by pushing it into one of the two holes just above the letter A in section 1 of the computer.'",
+    "Similarly, connect terminal 1B to terminal 1- with the second programming wire.",
+    "Turn the Power Switch on: lamp 1 lights.",
+    "Disconnect the wires by pulling both ends from the terminals - not by pulling on the wire."
+   ],
+   "expected_behaviour": [
+    "Light 1 comes on when power is on."
+   ],
+   "notes": [
+    "This page is the source of the two-holes-per-terminal statement and of the slash shorthand. [verified]"
+   ]
+  },
+  {
+   "id": "I-EXP2",
+   "name": "Experiment 2: Single Light Operation",
+   "book": "Book I",
+   "printed_page": "7",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "9",
+   "tag": "verified",
+   "connections": [
+    "1+/1A",
+    "1-/1B"
+   ],
+   "connection_count": 2,
+   "procedure_as_printed": [
+    "Using two short programming wires, make the connections 1+/1A and 1-/1B.",
+    "Turn the power switch ON. Light 1 comes ON because current flows through the light.",
+    "Turn the power switch OFF and disconnect the programming wires."
+   ],
+   "expected_behaviour": [
+    "Light 1 ON. 'Any of the lights may be operated by connecting programming wires from + to A and from - to B just as was done for light 1.'",
+    "'The light OFF will represent a zero (0) and the light ON will represent a one (1).'"
+   ]
+  },
+  {
+   "id": "I-EXP3",
+   "name": "Experiment 3: Pushbutton Operation",
+   "book": "Book I",
+   "printed_page": "9",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "11",
+   "tag": "verified",
+   "connections_step2": [
+    "1+/1Y",
+    "1X/1A",
+    "1-/1B"
+   ],
+   "connections_step4_added": [
+    "1Z/2A",
+    "2B/2-"
+   ],
+   "connection_count": 5,
+   "procedure_as_printed": [
+    "Program the normally-open pushbutton-light circuit: 1+/1Y, 1X/1A, 1-/1B.",
+    "Turn power ON. Push DOWN on pushbutton 1: light 1 comes ON. Release: light 1 goes OFF. Turn power OFF.",
+    "Add the normally-closed branch: 1Z/2A, 2B/2-.",
+    "Turn power ON. Light 2 comes on as soon as power is turned ON (through the normally closed contact Z of pushbutton 1).",
+    "Push down on pushbutton 1. Light 2 goes OFF and light 1 comes ON.",
+    "Push up and down slowly: one light always goes OFF before the other comes ON - the pushbuttons are 'break-before-make'."
+   ],
+   "expected_behaviour": [
+    "Pushbutton contacts: UP = Y/Z connected; DOWN = X/Y connected. Y is the common contact. [verified from the same page]",
+    "'The pushbutton UP will represent a zero (0), and the pushbutton DOWN will represent a one (1).'"
+   ]
+  },
+  {
+   "id": "I-EXP4",
+   "name": "Experiment 4: Series Circuit (AND)",
+   "book": "Book I",
+   "printed_page": "10",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "12",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book1.pdf PDF page 12",
+   "connections": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/2A",
+    "2B/2-"
+   ],
+   "connection_count": 4,
+   "procedure_as_printed": [
+    "Turn the power switch ON and push down pushbutton 1. Light 2 does NOT light.",
+    "Release pushbutton 1 and push down pushbutton 2. Light 2 still does NOT light.",
+    "Push down both pushbutton 1 and pushbutton 2 at the same time and see light 2 go ON."
+   ],
+   "expected_behaviour": [
+    "Light 2 lights only when both pushbuttons are down. 'AN AND CIRCUIT.'"
+   ]
+  },
+  {
+   "id": "I-EXP5",
+   "name": "Experiment 5: Parallel Circuit (OR)",
+   "book": "Book I",
+   "printed_page": "11",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "13",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book1.pdf PDF page 13",
+   "connections": [
+    "1+/1Y",
+    "1X/1A",
+    "1B/1-",
+    "1Y/2Y",
+    "2X/1X"
+   ],
+   "connection_count": 5,
+   "procedure_as_printed": [
+    "Turn the power switch ON. The light does not come on.",
+    "Push down pushbutton 1. Light 1 comes ON (through 1X).",
+    "Release pushbutton 1 and push down pushbutton 2. The light again comes ON (through 2X).",
+    "Push down both at the same time. The light is ON."
+   ],
+   "expected_behaviour": [
+    "Light 1 lights if pushbutton 1 OR pushbutton 2 OR both are down. 'AN OR CIRCUIT.'"
+   ]
+  },
+  {
+   "id": "I-EXP6",
+   "name": "Experiment 6: Manual Relay Operation",
+   "book": "Book I",
+   "printed_page": "13",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "15",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book1.pdf PDF page 15; independently restated on printed p15 (PDF p17) as the Experiment 6 contact program",
+   "connections": [
+    "1+/1H",
+    "1J/2A",
+    "1B/1-",
+    "1G/1A",
+    "2B/2-"
+   ],
+   "connection_count": 5,
+   "procedure_as_printed": [
+    "Connect the contacts of relay 1 to turn light 2 ON when the relay is OFF, and to turn light 1 ON when the relay is ON.",
+    "Turn power ON. Light 2 comes ON.",
+    "Gently push the relay crossbar to the left. Light 2 goes OFF and light 1 comes ON."
+   ],
+   "expected_behaviour": [
+    "Relay OFF: H-J and L-N connected. Relay ON: H-G and L-K connected. [verified, book1 PDF p14 printed p12]",
+    "Relay terminals below the relay: G, H, J, K, L, N. [verified, same page]"
+   ]
+  },
+  {
+   "id": "I-EXP7",
+   "name": "Experiment 7: Electrical Relay Operation",
+   "book": "Book I",
+   "printed_page": "15",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "17",
+   "tag": "verified",
+   "verification": "both programs and the modification read from 500 dpi crops of book1.pdf PDF page 17",
+   "connections_contacts": [
+    "1+/1H",
+    "1J/2A",
+    "1B/1-",
+    "1G/1A",
+    "2B/2-"
+   ],
+   "connections_coil": [
+    "1+/1Y",
+    "1X/1E",
+    "1F/1-"
+   ],
+   "modification": {
+    "remove": [
+     "1X/1E"
+    ],
+    "add": [
+     "1X/1C"
+    ],
+    "effect": "the coil indicator lamp will light when the coil of relay 1 is energized"
+   },
+   "connection_count": 8,
+   "procedure_as_printed": [
+    "Turn power ON. Light 2 comes ON.",
+    "Press down pushbutton 1 and see the relay operate. Light 2 goes OFF and light 1 comes ON.",
+    "(Open exercise) Connect the other set of relay contacts (1K, 1L, 1N) to two unused lights so one light comes ON when the relay is OFF and the other when it is ON."
+   ],
+   "expected_behaviour": [
+    "Relay coil terminals above each relay are C, E and F. Energizing through C and F lights the relay indicator lamp (which is wired in series with the coil); energizing through E and F does not. [verified, book1 PDF p16 printed p14]"
+   ]
+  },
+  {
+   "id": "I-EXP8",
+   "name": "Experiment 8: A Relay Controls Another",
+   "book": "Book I",
+   "printed_page": "16",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "18",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book1.pdf PDF page 18",
+   "connections": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "1+/1H",
+    "1G/2C",
+    "2F/2-",
+    "2+/2H",
+    "2G/2A",
+    "2B/2-"
+   ],
+   "connection_count": 9,
+   "procedure_as_printed": [
+    "Turn power ON and manually operate relay 2 by pushing the plastic crossbar to the left. See light 2 come ON.",
+    "Release relay 2 and manually operate relay 1. Relay 2 will click ON and light 2 will come ON.",
+    "Release relay 1 and press pushbutton 1. Relay 1 is turned ON by pushbutton 1, relay 2 by relay 1's contacts, and light 2 by relay 2's contacts.",
+    "(Open exercise) Expand to all six relays in a chain, the last turning light 6 ON."
+   ]
+  },
+  {
+   "id": "I-EXP9",
+   "name": "Experiment 9: A Relay Controls Itself (bistable / self-holding)",
+   "book": "Book I",
+   "printed_page": "17",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "19",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book1.pdf PDF page 19",
+   "connections": [
+    "1F/1-",
+    "1C/1X",
+    "1Y/2Y",
+    "2Y/2+",
+    "2Z/1L",
+    "1K/1C"
+   ],
+   "connection_count": 6,
+   "procedure_as_printed": [
+    "Push pushbutton 1 and release. The relay indicator light comes ON and stays ON.",
+    "Push pushbutton 2 and release. This momentarily interrupts current flow through the coil and turns the relay OFF.",
+    "Operate the circuit back and forth a few times."
+   ],
+   "expected_behaviour": [
+    "Relay 1 latches ON via its own K/L contacts; pushbutton 2 (normally-closed 2Z) breaks the hold. 'This circuit is called bistable.'",
+    "Relay OFF represents 0, relay ON represents 1."
+   ]
+  },
+  {
+   "id": "I-EXP10",
+   "name": "Experiment 10: Slide Switch Operation",
+   "book": "Book I",
+   "printed_page": "19",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "21",
+   "tag": "likely",
+   "connections": [
+    "1-/1B",
+    "1A/1R",
+    "1S/1+",
+    "2-/2B",
+    "2A/1W",
+    "1V/1S"
+   ],
+   "connection_count": 6,
+   "procedure_as_printed": [
+    "Move switch 1 to the LEFT and turn the power ON. Light 1 comes ON but light 2 remains OFF.",
+    "Move switch 1 to the right. Light 1 goes OFF and light 2 comes ON."
+   ],
+   "expected_behaviour": [
+    "Slide switch terminals are R, S, T, U, V, W. LEFT: S-R and V-U connected. RIGHT: S-T and V-W connected. [verified, book1 PDF p20 printed p18]"
+   ]
+  },
+  {
+   "id": "I-EXP11",
+   "name": "Experiment 11: Manual Operation of Rotary Switch",
+   "book": "Book I",
+   "printed_page": "21",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "23",
+   "tag": "verified",
+   "verification": "the same five connections appear verbatim inside the Experiment 13 combined program, which I read from a 500 dpi crop of book1.pdf PDF page 25",
+   "connections": [
+    "6+/D16",
+    "D2/6A",
+    "6-/6B",
+    "D1/5A",
+    "5B/6B"
+   ],
+   "connection_count": 5,
+   "procedure_as_printed": [
+    "Turn power ON and rotate the pointer to number 1. Light 5 comes ON and remains ON as long as the pointer points at 1.",
+    "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON. Light 5 goes OFF BEFORE light 6 comes on - the rotary switch is 'break-before-make'."
+   ],
+   "expected_behaviour": [
+    "D = Decimal Input-Output; terminal numbers 1 to 19; the wiper-arm contact is referred to as D16. When the pointer knob points at 1, the wiper connects D1 and D16. [verified, book1 PDF p22 printed p20]"
+   ]
+  },
+  {
+   "id": "I-EXP12",
+   "name": "Experiment 12: Basic Motor Operation",
+   "book": "Book I",
+   "printed_page": "23",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "25",
+   "tag": "likely",
+   "connections": [
+    "6+/5Y",
+    "5X/D17",
+    "6-/D18",
+    "6-/6Y",
+    "6X/D19"
+   ],
+   "connection_count": 5,
+   "per_line_flags": [
+    {
+     "line": "6-/D18",
+     "tag": "unverified",
+     "note": "KNOWN INTERNAL DISCREPANCY. Experiment 13 on the same printed page restates the combined program with '5-/D18' (image-verified). Experiment 12's own list prints '6-/D18' in the OCR text layer and was NOT image-verified. Both are electrically the same node if the six section minus terminals are one rail, but the printed text differs. Recorded, not resolved."
+    }
+   ],
+   "procedure_as_printed": [
+    "Turn the power ON. Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate.",
+    "While holding pushbutton 5 down, push pushbutton 6. The motor stops because a short circuit is created across the STOP terminals (D18 and D19).",
+    "While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again.",
+    "Release pushbutton 5. The motor drive stops."
+   ],
+   "expected_behaviour": [
+    "Terminals 17, 18 and 19 sit just to the left of the pointer knob. Power must be supplied to 17 and 18 (RUN) to operate the motor drive; a short circuit across 18 and 19 (STOP) halts it. [verified, book1 PDF p24 printed p22]"
+   ]
+  },
+  {
+   "id": "I-EXP13",
+   "name": "Experiment 13: Motor Driven Rotary Switch (pulse generator / programmer)",
+   "book": "Book I",
+   "printed_page": "23",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "25",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book1.pdf PDF page 25",
+   "connections": [
+    "6+/D16",
+    "D2/6A",
+    "6-/6B",
+    "D1/5A",
+    "5B/6B",
+    "6+/5Y",
+    "5X/D17",
+    "5-/D18",
+    "6-/6Y",
+    "6X/D19"
+   ],
+   "connection_count": 10,
+   "procedure_as_printed": [
+    "Push pushbutton 5. The motor rotates the pointer knob. As the knob turns, light 5 and light 6 flash ON in sequence, once each revolution.",
+    "While holding pushbutton 5 down, push pushbutton 6. The pointer knob STOPS turning and the lights STOP flashing."
+   ],
+   "expected_behaviour": [
+    "The rotary switch is automatically generating electrical pulses ('clock' pulses) to flash the lights; first light 5 flashes then light 6, once each revolution."
+   ]
+  },
+  {
+   "id": "I-EXP14",
+   "name": "Experiment 14: Motor Reversing",
+   "book": "Book I",
+   "printed_page": "24",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "26",
+   "tag": "likely",
+   "connections": [
+    "6+/6R",
+    "6+/6W",
+    "6-/6T",
+    "6T/6U",
+    "6S/D18",
+    "6V/D17"
+   ],
+   "connection_count": 6,
+   "procedure_as_printed": [
+    "Trace the direction of current flow from 6+ through the motor to 6- with the switch in the right position and then again with the switch in the left position.",
+    "Turn power ON and notice the direction of rotation.",
+    "Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction."
+   ],
+   "expected_behaviour": [
+    "Slide switch 6 reverses the polarity applied to the motor RUN terminals D17/D18, reversing the rotary switch direction."
+   ],
+   "notes": [
+    "Self-consistent: with the switch LEFT, S-R puts D18 at +, V-U puts D17 at - (via the 6T/6U jumper to 6-); with the switch RIGHT, S-T puts D18 at - and V-W puts D17 at +."
+   ]
+  },
+  {
+   "id": "I-PROBLEMS",
+   "name": "Book I problem set (20 problems) and their printed answers",
+   "book": "Book I",
+   "printed_page": "28 (problems), 29-32 (answers)",
+   "pdf_file": "book1.pdf",
+   "pdf_page": "30 (problems), 31-34 (answers)",
+   "tag": "unverified",
+   "warning": "THE ANSWER PAGES WERE NOT IMAGE-VERIFIED. They are hand-lettered and interleaved with circuit drawings; the OCR layer is materially degraded (1/I/l and 0/O/D confusions, dropped lines). Every connection list below is [unverified] and MUST be re-read from 500 dpi images of book1.pdf PDF pages 31-34 before being used as a conformance fixture. Where I applied the mechanical grammar normalisation it is noted.",
+   "answers": [
+    {
+     "n": 1,
+     "connections": [
+      "1+/1Y",
+      "1X/1A",
+      "2+/2Y",
+      "2X/2A",
+      "1B/1-",
+      "2B/2-"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 2,
+     "connections": [
+      "1+/1Y",
+      "1Z/2X",
+      "2Y/1A",
+      "1B/1-"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 3,
+     "connections": [
+      "1+/1Y",
+      "1X/2X",
+      "1Z/2Z",
+      "2Y/1A",
+      "1B/1-"
+     ],
+     "tag": "unverified",
+     "note": "OCR shows '1 +/1 Y  1 V 2Z / 1 V 2X  2Y/1A / 1B/l -'; the middle two lines are ambiguous. Best mechanical reading is 1X/2Z and 1Z/2X (an EITHER-BUT-NOT-BOTH), which the problem statement demands (light 1 ON if either pushbutton but not both). NOT settled by the OCR."
+    },
+    {
+     "n": 4,
+     "connections": [
+      "1+/1Y",
+      "1X/2A",
+      "2B/2-",
+      "1Z/2X",
+      "2Y/1A",
+      "1B/1-"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 5,
+     "connections": [
+      "1+/1S",
+      "1S/1Y",
+      "1Y/2Y",
+      "2X/1X",
+      "1R/1X",
+      "1X/1A",
+      "1B/1-"
+     ],
+     "tag": "unverified",
+     "note": "OCR shows '1+ /1S  1 V 'R / 1S/1 Y  1 V IA / 1Y/2Y  1B/l - / 2X/1X'. The two '1 V' tokens are unreadable; my reading of 1R/1X and 1X/1A is inference."
+    },
+    {
+     "n": 6,
+     "connections": [
+      "1+/1Y",
+      "1X/1R",
+      "1S/2Y",
+      "2X/2T",
+      "2S/1A",
+      "1-/1B"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 7,
+     "connections": [
+      "1-/1B",
+      "1A/1X",
+      "1+/1Y",
+      "1X/1Z",
+      "1X/2X",
+      "2Y/1C",
+      "1F/2-"
+     ],
+     "tag": "unverified",
+     "note": "heavily damaged OCR"
+    },
+    {
+     "n": 8,
+     "connections": [
+      "1-/1B",
+      "1X/1R",
+      "1+/1S",
+      "1S/1V",
+      "1W/1C",
+      "1F/1-",
+      "2-/2B",
+      "2A/1T",
+      "2-/2F",
+      "2C/1U"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 9,
+     "connections": [
+      "1+/1G",
+      "1G/1X",
+      "1Y/1H",
+      "1H/1C",
+      "1F/1-",
+      "1F/2Y",
+      "1E/2X"
+     ],
+     "tag": "unverified",
+     "note": "printed note: '2Z (not used)' - this is the answer to problem 9, which forbids terminal 2Z"
+    },
+    {
+     "n": 10,
+     "connections": [
+      "1+/1Y",
+      "1X/1S",
+      "1R/1C",
+      "1T/2C",
+      "1F/1-",
+      "2F/2-"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 11,
+     "connections": [
+      "1+/1H",
+      "1H/1Y",
+      "1Y/2Y",
+      "1X/1C",
+      "1F/1-",
+      "2X/2C",
+      "2F/2-",
+      "1G/1R",
+      "1S/2S",
+      "2T/2J",
+      "2H/1A",
+      "1B/2-"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 12,
+     "connections": [
+      "2-/2B",
+      "2A/1T",
+      "2+/2Y",
+      "2Y/1Y",
+      "1T/2R",
+      "2R/1J",
+      "1J/2G",
+      "1+/1S",
+      "1S/2S",
+      "2S/1H",
+      "1H/2H",
+      "1X/1C",
+      "1F/1-",
+      "2X/2C",
+      "2F/2-"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 13,
+     "connections": [
+      "6+/6Y",
+      "6J/6A",
+      "6B/6-",
+      "6Y/D17",
+      "D18/M-"
+     ],
+     "tag": "unverified",
+     "note": "OCR shows '6 )/6 A' for the second line"
+    },
+    {
+     "n": 14,
+     "connections": [
+      "5+/5Y",
+      "5Z/6X",
+      "6Y/D17",
+      "M-/D18"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 15,
+     "connections": [
+      "6+/6X",
+      "6Y/D17",
+      "M-/D18",
+      "D18/5X",
+      "5Y/D19"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 16,
+     "connections": [
+      "5+/5Y",
+      "5Z/6X",
+      "6Y/6J",
+      "6Z/5X",
+      "6Z/6C",
+      "6F/6-",
+      "6J/6K",
+      "6-/6G",
+      "6G/6N",
+      "6L/D18",
+      "6H/D17"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 17,
+     "connections": [
+      "6+/6J",
+      "6J/6K",
+      "6K/D6",
+      "6E/D16",
+      "6F/6-",
+      "6G/D1",
+      "6C/6L",
+      "6L/D18",
+      "6H/D17",
+      "6-/6N",
+      "6N/6G"
+     ],
+     "tag": "unverified",
+     "note": "This is the cleanest of the answer OCRs (11 wires, matching the problem's 'Use only 11 programming wires'). Problem 17: turn the rotary switch back and forth between numbers 1 and 6."
+    },
+    {
+     "n": 18,
+     "connections": [
+      "6+/6Y",
+      "6X/D17",
+      "M-/D18",
+      "5Z/D18",
+      "5Y/D0",
+      "D16/D19"
+     ],
+     "tag": "unverified",
+     "note": "OCR shows '6X/DU' for the second line"
+    },
+    {
+     "n": 19,
+     "connections": [
+      "D1/1A",
+      "D2/2A",
+      "D3/3A",
+      "D4/4A",
+      "D5/5A",
+      "D6/6A",
+      "1B/1-",
+      "2B/2-",
+      "3B/3-",
+      "4B/4-",
+      "5B/5-",
+      "6B/6-",
+      "6+/6Y",
+      "6X/D17",
+      "M-/D18",
+      "M+/D16"
+     ],
+     "tag": "unverified"
+    },
+    {
+     "n": 20,
+     "connections": [
+      "1-/1B",
+      "1-/1C",
+      "1A/1E",
+      "1E/2G",
+      "1F/2F",
+      "1H/1F",
+      "1G/1Y",
+      "1Y/1+",
+      "1X/1J",
+      "1J/2H",
+      "2J/2E",
+      "2E/2A",
+      "2B/2-",
+      "2-/2C"
+     ],
+     "tag": "unverified"
+    }
+   ],
+   "problem_statements_captured": "All 20 problem statements are in clean body OCR on book1.pdf PDF page 30 (printed p28) and are reproduced in the notes field of this record's parent research; the key ones for fixtures: P1 two independent lights; P2 exclusive-or; P3/P4 truth tables given; P5 OR with a slide switch; P6 four-term AND; P7-P12 relays; P13-P19 rotary switch; P17 'turn the rotary switch back and forth between numbers 1 and 6, use only 11 programming wires'; P20 toggle relay 1 on successive presses of pushbutton 1 without the rotary switch."
+  },
+  {
+   "id": "II-3STMT",
+   "name": "Computer representation of three statements (A AND B -> C)",
+   "book": "Book II",
+   "printed_page": "36",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "42",
+   "tag": "likely",
+   "connections": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/3A",
+    "3B/3-"
+   ],
+   "connection_count": 4,
+   "expected_behaviour": [
+    "Pushbutton 1 = statement A, pushbutton 2 = statement B, light 3 = statement C. Both down -> light 3 ON."
+   ]
+  },
+  {
+   "id": "III-ANDOR",
+   "name": "Computer representation of 'AND' and 'OR' statements",
+   "book": "Book III",
+   "printed_page": "38-39",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "45",
+   "tag": "likely",
+   "connections": [
+    "1Y/3Y",
+    "1X/2Y",
+    "2X/3X",
+    "3X/4A",
+    "4B/4-"
+   ],
+   "connection_count": 5
+  },
+  {
+   "id": "III-NOT",
+   "name": "A x B x C(not) + D = E  (pushbutton NOT / OR combination)",
+   "book": "Book III",
+   "printed_page": "40",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "46",
+   "tag": "unverified",
+   "connections": [
+    "1+/1Y",
+    "1X/2Y",
+    "2X/3Y",
+    "3Z/5A",
+    "1Y/4Y",
+    "4X/5A",
+    "5B/5-"
+   ],
+   "connection_count": 7,
+   "per_line_flags": [
+    {
+     "line": "1+/1Y",
+     "tag": "unverified",
+     "note": "OCR renders the first line as '1\u2014' / '|\u2014/1Y' across two broken lines. 1+/1Y is my mechanical reading; not image-verified."
+    }
+   ],
+   "expected_behaviour": [
+    "Statement A = pushbutton 1, B = pushbutton 2, C = pushbutton 3, D = pushbutton 4, E = light 5.",
+    "'the normally open contacts of pushbuttons 1, 2 and 4 are used, while pushbutton 3 is wired using the normally closed contacts.'"
+   ]
+  },
+  {
+   "id": "III-RELAYAND",
+   "name": "The Relay AND Circuit",
+   "book": "Book III",
+   "printed_page": "43",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "49",
+   "tag": "verified",
+   "verification": "read from a 500 dpi crop of book2-3-4.pdf PDF page 49; exactly ten lines, no more",
+   "connections": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "2+/2Y",
+    "2X/2C",
+    "2F/2-",
+    "1+/1H",
+    "2+/2H",
+    "2G/3A",
+    "3B/3-"
+   ],
+   "connection_count": 10,
+   "anomaly": {
+    "tag": "unverified",
+    "note": "AS PRINTED this circuit does not implement AND: relay 1's G contact goes nowhere, and light 3 is driven from 2+ through relay 2 alone, so light 3 follows relay 2 regardless of relay 1. The obvious intended wiring is '1G/2H' in place of '2+/2H' (power 1+ -> 1H -> 1G -> 2H -> 2G -> 3A). That substitution is MY INFERENCE and is tagged [unverified]; the printed page really does read 2+/2H. Compare the Relay OR circuit on the same page, which prints 1+/1H, 1G/3A, 2+/2H, 2G/3A - two genuinely parallel paths."
+   },
+   "expected_behaviour": [
+    "Stated intent: 'if relay 1 is ON (=1) AND relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically, A x B = C'"
+   ]
+  },
+  {
+   "id": "III-RELAYOR",
+   "name": "The Relay OR Circuit",
+   "book": "Book III",
+   "printed_page": "43",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "49",
+   "tag": "likely",
+   "connections": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "2+/2Y",
+    "2X/2C",
+    "2F/2-",
+    "1+/1H",
+    "1G/3A",
+    "2+/2H",
+    "2G/3A",
+    "3B/3-"
+   ],
+   "connection_count": 11
+  },
+  {
+   "id": "III-RELAYNOT",
+   "name": "The Relay NOT Circuit",
+   "book": "Book III",
+   "printed_page": "44",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "50",
+   "tag": "likely",
+   "connections": [
+    "1+/1Y",
+    "1X/1C",
+    "1F/1-",
+    "1+/1H",
+    "1J/2A",
+    "2B/2-"
+   ],
+   "connection_count": 6,
+   "expected_behaviour": [
+    "'if relay 1 is not energized (is not ON) light 2 will come ON'"
+   ]
+  },
+  {
+   "id": "III-MINDREADING",
+   "name": "A Mind Reading Program",
+   "book": "Book III",
+   "printed_page": "50-53",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "56-59",
+   "tag": "likely",
+   "connections": [
+    "5V/4S",
+    "4R/4A",
+    "4B/4-",
+    "5C/5A",
+    "5B/5-",
+    "6C/6A",
+    "6B/6-",
+    "6X/6V",
+    "6V/5V",
+    "6U/6C",
+    "5U/5C",
+    "5F/6F",
+    "6F/6-",
+    "M-/D18",
+    "D18/4V",
+    "4U/6S",
+    "4W/5S",
+    "5R/6H",
+    "5T/6L",
+    "6R/5H",
+    "6T/5L",
+    "M+/6Y",
+    "6X/D17",
+    "D16/D19",
+    "D0/6N",
+    "D1/6K",
+    "D2/6J",
+    "D3/6G",
+    "D4/5N",
+    "D5/5J",
+    "D6/5K",
+    "D7/5G"
+   ],
+   "connection_count": 32,
+   "cross_check": "Identical set to VI-MINDREADING (Book VI printed p57). The two printings differ only in writing 6C/6A here vs 6A/6C there.",
+   "initial_settings": [
+    "Slide switch LEFT indicates a YES answer; a slide switch RIGHT indicates a NO answer.",
+    "A (slide switch 4): Is the number greater than 3?",
+    "B (slide switch 5): When the number is divided by 4, is the remainder greater than 1?",
+    "C (slide switch 6): Is the number odd?"
+   ],
+   "procedure_as_printed": [
+    "Set the three slide switches from the answers, then push pushbutton 6. The pointer knob turns to the number."
+   ],
+   "expected_behaviour": [
+    "Slide switches = data input/storage; relays = processing and operating storage; rotary switch = output; pushbutton 6 = the read-out instruction."
+   ]
+  },
+  {
+   "id": "III-QUANTITY",
+   "name": "Quantity Recognition",
+   "book": "Book III",
+   "printed_page": "54-56",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "60-63",
+   "tag": "likely",
+   "connections": [
+    "1B/1-",
+    "2B/2-",
+    "3B/3-",
+    "4B/4-",
+    "5B/5-",
+    "6B/6-",
+    "2F/3F",
+    "3F/4F",
+    "4F/5F",
+    "5F/6F",
+    "6F/6-",
+    "6+/6S",
+    "6S/4V",
+    "4V/3V",
+    "3V/2V",
+    "2U/2C",
+    "2C/3C",
+    "3U/4C",
+    "4C/5C",
+    "4U/6C",
+    "5A/2G",
+    "4A/2K",
+    "3A/2N",
+    "2A/2T",
+    "1A/3J",
+    "6A/3N",
+    "6T/5V",
+    "6R/5S",
+    "5U/5T",
+    "5U/4S",
+    "5R/6H",
+    "5W/6L",
+    "4T/6K",
+    "4R/6J",
+    "6N/5L",
+    "6J/5H",
+    "6G/4H",
+    "6K/4L",
+    "5J/4K",
+    "5N/3L",
+    "5K/4N",
+    "5G/4J",
+    "4N/3H",
+    "4J/2L",
+    "4G/2H",
+    "4K/2S",
+    "3J/3K",
+    "3G/2T",
+    "2J/2K",
+    "2N/2R"
+   ],
+   "connection_count": 50,
+   "initial_settings": [
+    "Set slide switches 2 through 6 to the RIGHT (the slide switches are now OFF).",
+    "Turn power ON. Light 6 will come ON indicating that NO switches are ON."
+   ],
+   "procedure_as_printed": [
+    "Set any two of the slide switches 2 through 6 to the LEFT. Light 2 will come ON indicating that two switches are ON.",
+    "Set all switches to the RIGHT again - light 6 comes ON.",
+    "Select various combinations; in each case the output lights indicate how many switches are ON."
+   ],
+   "expected_behaviour": [
+    "Light 1 ON = 1 switch ON; light 2 = 2; light 3 = 3; light 4 = 4; light 5 = 5; light 6 ON = NO switches ON.",
+    "'There are 120 possible combinations of switches' (as printed - there are 2^5 = 32 states of five switches; recorded as printed, not corrected)."
+   ]
+  },
+  {
+   "id": "III-3GIRLS-BOOLEAN",
+   "name": "A Problem Involving Three Girls - 'Boolean' solution",
+   "book": "Book III",
+   "printed_page": "59",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "65",
+   "tag": "likely",
+   "connections": [
+    "1+/2S",
+    "2S/3V",
+    "2T/3S",
+    "3T/3com",
+    "2R/1S",
+    "1T/3com",
+    "3U/2V",
+    "2V/1V",
+    "1W/2W",
+    "2W/3com",
+    "3A/3com",
+    "3B/3-"
+   ],
+   "connection_count": 12,
+   "initial_settings": [
+    "Slide switch 1 = Camille, slide switch 2 = Sara, slide switch 3 = Wanda.",
+    "Slide switch LEFT = the positive condition (Camille could / Sara should / Wanda would); RIGHT = the negative condition.",
+    "Light 3 ON = an error."
+   ],
+   "procedure_as_printed": [
+    "Turn power ON. Try combinations on slide switches 1, 2 and 3 until the error light (light 3) goes OFF.",
+    "If power is ON and light 3 is OFF, the slide switches indicate a correct solution."
+   ],
+   "notes": [
+    "The 'com' terminals are used here because light 3 needs three contacts and only two are available: 'Since there are three error conditions and only two contacts for light 3, we will use the Common terminals to provide the necessary extra contacts. (The notation for a connection to a common terminal is 1com, 2com, etc.)' [verified quote]"
+   ]
+  },
+  {
+   "id": "III-3GIRLS-AUTO",
+   "name": "A Problem Involving Three Girls - 'automatic' solution",
+   "book": "Book III",
+   "printed_page": "60",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "66",
+   "tag": "likely",
+   "connections": [
+    "1+/1Y",
+    "1Y/2Y",
+    "2Y/3Y",
+    "1X/1C",
+    "2X/2C",
+    "3X/3C",
+    "2K/1X",
+    "2L/2+",
+    "2N/3C",
+    "3G/1H",
+    "1H/1C",
+    "1G/2C",
+    "3H/3+",
+    "1F/2F",
+    "2F/3F",
+    "3F/3-"
+   ],
+   "connection_count": 16,
+   "expected_behaviour": [
+    "Relay light 1 = Camille, relay light 2 = Sara, relay light 3 = Wanda. Relay light ON = the positive condition.",
+    "Turn power ON and a correct solution appears immediately in the relay indicator lights.",
+    "Pushbuttons 1, 2 and 3 enter additional positive information about Camille, Sara and Wanda respectively; a pushbutton UP transmits no additional information."
+   ]
+  },
+  {
+   "id": "III-FARMER",
+   "name": "The Farmer, the Goose, the Corn and the Wolf",
+   "book": "Book III",
+   "printed_page": "60-63",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "66-69",
+   "tag": "likely",
+   "connections": [
+    "1A/1J",
+    "1B/1-",
+    "1C/1G",
+    "1E/1U",
+    "1F/2F",
+    "1H/2H",
+    "1K/2K",
+    "1K/1+",
+    "1L/2L",
+    "1N/3K",
+    "1U/2V",
+    "1V/1X",
+    "1X/6X",
+    "1Y/1+",
+    "2A/2J",
+    "2B/2-",
+    "2E/2U",
+    "2C/2G",
+    "2F/3F",
+    "2H/3H",
+    "2N/3N",
+    "2W/3V",
+    "3A/3J",
+    "3B/3-",
+    "3C/3G",
+    "3E/3U",
+    "3F/4F",
+    "3H/4H",
+    "3K/4K",
+    "3L/5A",
+    "3N/4N",
+    "3W/4V",
+    "4A/4J",
+    "4B/4-",
+    "4C/4G",
+    "4E/4U",
+    "4F/4-",
+    "4H/4+",
+    "4L/6A",
+    "5B/5-",
+    "6B/6-",
+    "6Y/6-"
+   ],
+   "connection_count": 42,
+   "conventions_verbatim": [
+    "An output light ON represents an object at home.",
+    "A relay indicator light ON represents an object across the river.",
+    "A slide switch LEFT represents an object in the boat.",
+    "A slide switch RIGHT represents an object not in the boat.",
+    "Light 5 ON represents the condition 'Wolf eats goose'.",
+    "Light 6 ON represents the condition 'Goose eats corn'.",
+    "Pushbutton 6 represents moving the boat towards home.",
+    "Pushbutton 1 represents moving the boat from home."
+   ],
+   "component_map_table": {
+    "columns": [
+     "",
+     "Output Light",
+     "Relay",
+     "Slide Switch"
+    ],
+    "rows": [
+     [
+      "Farmer",
+      1,
+      1,
+      1
+     ],
+     [
+      "Goose",
+      2,
+      2,
+      2
+     ],
+     [
+      "Wolf",
+      3,
+      3,
+      3
+     ],
+     [
+      "Corn",
+      4,
+      4,
+      4
+     ]
+    ],
+    "tag": "likely"
+   },
+   "procedure_as_printed": [
+    "1. Turn power ON. Manually push relays 1 through 4 to the LEFT. Move slide switches 1 through 4 to the RIGHT.",
+    "2. Place the farmer in the boat by moving slide switch 1 to the LEFT. (The farmer must be in the boat or the boat will not move.)",
+    "3. Choose another object and place it in the boat by pushing the appropriate slide switch to the LEFT.",
+    "4. Move the boat across the river by pushing pushbutton 6. If lights 5 and 6 remain OFF, no error has been made.",
+    "5. Continue until all four objects are at home (output lights 1 through 4 ON). Remove objects from the boat when they reach the other side.",
+    "6. If an error is made, reset by setting slide switches 1 through 4 RIGHT and manually setting relays 1 through 4 LEFT."
+   ]
+  },
+  {
+   "id": "III-TELEVISION",
+   "name": "The Television Problem ('Boolean' solution)",
+   "book": "Book III",
+   "printed_page": "63-65",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "69-71",
+   "tag": "likely",
+   "connections": [
+    "1U/1S",
+    "1S/2S",
+    "1T/2R",
+    "2R/2V",
+    "2U/3W",
+    "2W/3U",
+    "3R/4R",
+    "3S/3V",
+    "3T/4T",
+    "4A/4S",
+    "4B/4-",
+    "4U/5V",
+    "4U/1V",
+    "4V/4+",
+    "5W/1U"
+   ],
+   "connection_count": 15,
+   "conventions_verbatim": [
+    "Slide switch 1 = Barry, 2 = Clara, 3 = David, 4 = Edward, 5 = Francis.",
+    "A slide switch LEFT indicates that the person is watching television; a slide switch RIGHT indicates that the person is NOT watching television.",
+    "Light 4 ON indicates that the solution represented by the slide switches is CORRECT; light 4 OFF indicates NOT CORRECT."
+   ],
+   "procedure_as_printed": [
+    "Set slide switches 1 through 5 to the LEFT (this indicates that no one is watching television).",
+    "Turn power ON. By moving slide switches 1 through 5, try various solutions. Light 4 will come ON only when the correct solution has been indicated."
+   ],
+   "internal_contradiction": {
+    "tag": "verified",
+    "note": "The conventions say a slide switch LEFT means the person IS watching; the operating instruction then says 'Set slide switches 1 through 5 to the LEFT (this indicates that no one is watching television)'. Both sentences are on the same printed page (65). Recorded, not resolved."
+   }
+  },
+  {
+   "id": "IV-SELFHOLD",
+   "name": "Two self-holding relays (base of the single-input flip-flop)",
+   "book": "Book IV",
+   "printed_page": "68",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "74",
+   "tag": "likely",
+   "connections": [
+    "5+/5H",
+    "5H/6H",
+    "5G/5F",
+    "6G/6F",
+    "5C/6C",
+    "6C/6-"
+   ],
+   "connection_count": 6
+  },
+  {
+   "id": "IV-FF1",
+   "name": "Single-input flip-flop, FIRST version (built incrementally)",
+   "book": "Book IV",
+   "printed_page": "68-69",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "74-75",
+   "tag": "likely",
+   "stage1_self_holding": [
+    "5+/5H",
+    "5H/6H",
+    "5G/5F",
+    "6G/6F",
+    "5C/6C",
+    "6C/6-"
+   ],
+   "stage2_pushbutton6_makes_relay6_follow_relay5": [
+    "6H/6Y",
+    "6X/5L",
+    "5K/6F",
+    "5N/6E"
+   ],
+   "stage3_on_release_relay5_goes_opposite_to_relay6": [
+    "6Z/6L",
+    "6K/5E",
+    "6N/5F"
+   ],
+   "stage4_indicator_light": [
+    "6G/6A",
+    "6B/6-"
+   ],
+   "connection_count": 16,
+   "notes": [
+    "Stated limitation: 'our single-input flip-flop still cannot be used for arithmetic: it does not provide a carry signal ... since all contacts on both relays are used, we cannot arrange for a carry signal by merely adding connections.'"
+   ]
+  },
+  {
+   "id": "IV-FF2",
+   "name": "Single-input flip-flop, SECOND version (with contacts free for a carry)",
+   "book": "Book IV",
+   "printed_page": "69-70",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "76",
+   "tag": "likely",
+   "connections": [
+    "5+/5G",
+    "5H/5F",
+    "5F/6F",
+    "5C/6C",
+    "6C/6-",
+    "5J/6H",
+    "6G/5E",
+    "6J/6E",
+    "6E/6A",
+    "6B/6-",
+    "5H/5A",
+    "5B/5-",
+    "6+/6Y",
+    "6X/6H"
+   ],
+   "connection_count": 14,
+   "carry_addition": [
+    "5G/5N",
+    "5L/6L",
+    "6K/4A",
+    "4B/4-"
+   ],
+   "connection_count_with_carry": 18,
+   "procedure_as_printed": [
+    "Turn power ON. Notice that both relays 5 and 6 are OFF.",
+    "Push and release pushbutton 6. Notice that both relays 5 and 6 are now ON.",
+    "Push pushbutton 6, but do not release. Notice that relay 5 is OFF; relay 6 is ON. A carry signal should occur NOW.",
+    "After adding the carry connections, light 4 will indicate that a carry is taking place."
+   ],
+   "expected_behaviour": [
+    "Light 5 indicates the state of the flip-flop. 'Light 6 is used only to provide a path for current when relay 6 is shorted-out (OFF); light 6 is not used as an indicator in this program.'"
+   ]
+  },
+  {
+   "id": "IV-EXP1",
+   "name": "Experiment 1: A Three-Bit Binary Counter",
+   "book": "Book IV",
+   "printed_page": "71-72",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "77-78",
+   "tag": "likely",
+   "connections": [
+    "1A/2E",
+    "1B/1-",
+    "1C/2C",
+    "1E/2G",
+    "1F/2F",
+    "1F/1H",
+    "1G/1+",
+    "1J/2H",
+    "1J/4K",
+    "2A/4E",
+    "2B/2-",
+    "2C/3C",
+    "2E/2J",
+    "2F/4A",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3+",
+    "3J/4H",
+    "3J/6K",
+    "3L/4L",
+    "3N/4H",
+    "4B/4-",
+    "4C/5C",
+    "4E/4J",
+    "4F/5A",
+    "5B/5-",
+    "5C/6C",
+    "5E/6G",
+    "5F/6F",
+    "5F/5H",
+    "5G/5+",
+    "5J/6H",
+    "5J/6X",
+    "5L/6L",
+    "5N/6H",
+    "6A/6F",
+    "6B/6-",
+    "6C/6-",
+    "6E/6J",
+    "6Y/6+"
+   ],
+   "connection_count": 44,
+   "procedure_as_printed": [
+    "1. Turn power ON. Push pushbutton 6 and release. Lights 4, 5, 6 read OFF, OFF, ON = 001.",
+    "2. Push and release again: OFF, ON, OFF = 010.",
+    "3. Push and release several times; the counter repeats after 7."
+   ],
+   "expected_behaviour": [
+    "Three flip-flops using two relays each; light 6 = 1's, light 5 = 2's, light 4 = 4's; counts 0-7 then wraps.",
+    "Leave the Binary Counter on the MINIVAC for Experiment 2."
+   ]
+  },
+  {
+   "id": "IV-EXP2",
+   "name": "Experiment 2: Counter Arithmetic",
+   "book": "Book IV",
+   "printed_page": "73",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "79",
+   "tag": "likely",
+   "connections": "NO NEW WIRING - uses the Experiment 1 counter as wired.",
+   "procedure_as_printed": [
+    "To add 2 and 3: push and release pushbutton 6 twice (counter shows 2); push three more times (counter shows 5).",
+    "Push five more times (ten total): the counter shows 010, the low-order three bits of decimal 10 (1010)."
+   ]
+  },
+  {
+   "id": "IV-EXP3",
+   "name": "Experiment 3: Universal Counter Arithmetic (up/down counter)",
+   "book": "Book IV",
+   "printed_page": "73-74",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "79-80",
+   "tag": "likely",
+   "modify_from": "IV-EXP1",
+   "remove": [
+    "6K/3J",
+    "4K/1J"
+   ],
+   "add": [
+    "3K/6W",
+    "3N/4N",
+    "6R/6K",
+    "4K/6U",
+    "5N/6N",
+    "5K/6T",
+    "6S/3J",
+    "6V/1J"
+   ],
+   "notes": [
+    "The removes are written 6K/3J and 4K/1J; in the Experiment 1 list the same connections appear as 3J/6K and 1J/4K.",
+    "Note that Experiment 1 already contains 3N/4H and 5N/6H; the additions 3N/4N and 5N/6N are ADDITIONAL, not substitutions, as printed. Flagged."
+   ],
+   "procedure_as_printed": [
+    "If slide switch 6 is LEFT, the counter counts UP; if RIGHT, it counts DOWN.",
+    "Subtract 4 from 7: (a) slide switch 6 LEFT, (b) push pushbutton 6 seven times, (c) slide switch 6 RIGHT, (d) push pushbutton 6 four times. Counter shows 3.",
+    "Addition is carried out exactly as in experiment 2 when slide switch 6 is LEFT."
+   ]
+  },
+  {
+   "id": "IV-EXP4",
+   "name": "Experiment 4: A Half-Adder with Carry",
+   "book": "Book IV",
+   "printed_page": "75",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "81",
+   "tag": "likely",
+   "connections": [
+    "5A/6U",
+    "5B/5-",
+    "6A/6S",
+    "6B/6-",
+    "6R/6Z",
+    "6T/6X",
+    "6T/6V",
+    "6Y/6+"
+   ],
+   "connection_count": 8,
+   "initial_settings": [
+    "Slide switch 6 = input A (RIGHT = 0, LEFT = 1). Pushbutton 6 = input B (up = 0, down = 1)."
+   ],
+   "procedure_as_printed": [
+    "1. Power ON, slide switch 6 RIGHT, pushbutton up: lights 5 and 6 OFF (sum 0, carry 0).",
+    "2. Push pushbutton 6 and hold: light 6 comes ON (0 + 1 = 1).",
+    "3. Release, move slide switch 6 LEFT: light 6 comes ON (1 + 0 = 1).",
+    "4. With the slide switch LEFT, push pushbutton 6: light 6 goes OFF and light 5 comes ON (1 + 1 = 0 carry 1)."
+   ],
+   "expected_behaviour": [
+    "Light 6 = sum; light 5 = carry out."
+   ]
+  },
+  {
+   "id": "IV-EXP5",
+   "name": "Experiment 5: A Full Adder",
+   "book": "Book IV",
+   "printed_page": "76-77",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "82-83",
+   "tag": "likely",
+   "connections": [
+    "5A/6U",
+    "5B/5-",
+    "5C/6S",
+    "5F/5-",
+    "5G/6J",
+    "5H/5+",
+    "5J/6G",
+    "6A/6H",
+    "6B/6-",
+    "6J/6L",
+    "6K/6U",
+    "6R/6Z",
+    "6T/6X",
+    "6T/6V",
+    "6Y/6+"
+   ],
+   "connection_count": 15,
+   "procedure_as_printed": [
+    "1. Power ON, slide switch 6 RIGHT (A=0), pushbutton 6 up (B=0), relay 6 OFF (carry in = 0). Lights 5 and 6 OFF.",
+    "2. Slide switch 6 LEFT (A=1): light 6 comes ON (1+0+0=1).",
+    "3. Manually move relay 6 to the left (carry in = 1): light 6 goes OFF and light 5 comes ON (1+0+1 = 0 carry 1).",
+    "4. Try other combinations."
+   ],
+   "expected_behaviour": [
+    "Relay 6 = carry in from a previous stage. Relay 5 = the sum of inputs A and B."
+   ]
+  },
+  {
+   "id": "IV-EXP6",
+   "name": "Experiment 6: A Three-Bit Adder",
+   "book": "Book IV",
+   "printed_page": "77",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "83",
+   "tag": "likely",
+   "connections": [
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2N/4U",
+    "3A/M10",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3H/4Z",
+    "3J/4T",
+    "3K/4R",
+    "3K/M10",
+    "3L/4X",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4K/5Z",
+    "4L/5A",
+    "4N/5X",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6E/6-",
+    "6G/6R",
+    "6H/6X",
+    "6J/6K",
+    "6L/6Z",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+"
+   ],
+   "connection_count": 48,
+   "procedure_as_printed": [
+    "1. Turn power ON. Enter a binary number using slide switches 4, 5 and 6 (e.g. binary 4 = 100: switch 4 LEFT, 5 RIGHT, 6 RIGHT).",
+    "2. Enter another binary number using pushbuttons 4, 5 and 6 (e.g. binary 5 = 101: push 4 and 6, not 5).",
+    "3. The answer is displayed in binary output lights 3, 4, 5 and 6 (e.g. lights 3 and 6 ON = 1001 = 9)."
+   ],
+   "expected_behaviour": [
+    "Three full adders using only five relays; the carry out of the high-order stage is displayed by light 3, giving a 4-bit result from a 3-bit adder.",
+    "Uses matrix terminal M10 purely as a junction point (3A/M10 and 3K/M10)."
+   ]
+  },
+  {
+   "id": "IV-EXP7",
+   "name": "Experiment 7: A Three-Bit Subtractor (two's complement)",
+   "book": "Book IV",
+   "printed_page": "78-79",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "84-85",
+   "tag": "likely",
+   "modify_from": "IV-EXP6",
+   "remove": [
+    "3A/M10",
+    "3L/4X",
+    "3H/4Z",
+    "4N/5X",
+    "4K/5Z",
+    "6H/6X",
+    "6L/6Z"
+   ],
+   "add": [
+    "6F/M10",
+    "3L/4Z",
+    "3H/4X",
+    "4N/5Z",
+    "4K/5X",
+    "6C/6F",
+    "6H/6Z",
+    "6L/6X"
+   ],
+   "procedure_as_printed": [
+    "Enter the subtrahend (3-bit) on slide switches 4, 5, 6.",
+    "Enter the subtractor on pushbuttons 4, 5, 6 (uncomplemented - the program complements it automatically).",
+    "The answer appears in the binary output lights.",
+    "Example: 5 - 2: slide switches 4 and 6 LEFT, 5 RIGHT; push pushbutton 5 only. Lights: 4 OFF, 5 and 6 ON = 011 = 3."
+   ],
+   "expected_behaviour": [
+    "If relay 6 (the carry-in relay of the low order stage) fails to pull in, an incorrect (negative) subtraction was attempted."
+   ]
+  },
+  {
+   "id": "IV-EXP8",
+   "name": "Experiment 8: The Shifting Operation (the accumulator, manual shift register)",
+   "book": "Book IV",
+   "printed_page": "80",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "86",
+   "tag": "likely",
+   "connections": [
+    "1A/1S",
+    "1B/1-",
+    "1C/3U",
+    "1F/2F",
+    "1G/2W",
+    "1H/2A",
+    "1J/2U",
+    "1K/1T",
+    "1L/2R",
+    "1N/1R",
+    "1N/2T",
+    "1U/M10",
+    "1V/1T",
+    "2B/2-",
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2L/2S",
+    "2N/4U",
+    "2S/2V",
+    "3A/3S",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3H/4Z",
+    "3J/3R",
+    "3J/4T",
+    "3K/4R",
+    "3L/4X",
+    "3V/3T",
+    "3T/4R",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4K/5Z",
+    "4L/5A",
+    "4N/5X",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6C/M10",
+    "6E/6-",
+    "6G/6R",
+    "6H/6X",
+    "6J/6K",
+    "6L/6Z",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+"
+   ],
+   "connection_count": 67,
+   "procedure_as_printed": [
+    "LEFT SHIFT (multiply by two): 1. Enter a binary number on the slide switches (RIGHT = 0, LEFT = 1). 2. Beginning at the left end of the console, set slide switch 1 to whatever position slide switch 2 is in, switch 2 to switch 3's position, and so on until switches 1-5 hold what 2-6 held. Set slide switch 6 to zero.",
+    "RIGHT SHIFT (divide by two): 1. Enter a binary number. 2. Beginning at the right end, set slide switch 6 to switch 5's position, 5 to 4's, and so on until switches 2-6 hold what 1-5 held. Set slide switch 1 to zero. Anything to the right of the binary point is remainder.",
+    "Leave this program wired for experiment 9."
+   ],
+   "notes": [
+    "Uses matrix terminal M10 as a junction point (1U/M10, 6C/M10)."
+   ]
+  },
+  {
+   "id": "IV-EXP9",
+   "name": "Experiment 9: The Accumulator (multiplication by successive additions and shifts)",
+   "book": "Book IV",
+   "printed_page": "81-82",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "87-88",
+   "tag": "likely",
+   "connections": "NO NEW WIRING - uses the Experiment 8 accumulator as wired.",
+   "procedure_as_printed": [
+    "Worked example 6 x 10 (110 x 1010): the slide switches should all be RIGHT; push pushbuttons 4 and 5 to enter 110; output lights show 000110; record it, release the pushbuttons, enter the recorded number on the slide switches and shift left one bit -> 001100; next multiplier bit is 0, shift left again -> 011000; next multiplier bit is 1, add 110 through the pushbuttons -> 011110; record, enter on slide switches, shift left one -> 111100 (printed as '11100'); low order multiplier bit is 0, so stop."
+   ],
+   "expected_behaviour": [
+    "'The limit of this accumulator is 111111 (63).'",
+    "The printed worked example contains arithmetic slips (it writes 11100 then 111100 then '= 60' where 6 x 10 = 60 and 111100 = 60). Recorded as printed."
+   ]
+  },
+  {
+   "id": "IV-EXP10",
+   "name": "Experiment 10: Division (combination shift register and subtractor)",
+   "book": "Book IV",
+   "printed_page": "83-84",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "89-90",
+   "tag": "likely",
+   "connections": [
+    "1A/1V",
+    "1B/1-",
+    "1R/3K",
+    "1S/2G",
+    "1T/3J",
+    "1U/2N",
+    "1W/2K",
+    "1X/3H",
+    "1Y/2H",
+    "1Y/2Y",
+    "1Z/3L",
+    "2A/4L",
+    "2B/2-",
+    "2C/3G",
+    "2F/3F",
+    "2L/2+",
+    "2R/3T",
+    "2S/4F",
+    "2T/3R",
+    "2T/2V",
+    "2U/4G",
+    "2X/4K",
+    "2Y/6S",
+    "2Z/4N",
+    "3A/5L",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3K/M10",
+    "3R/6G",
+    "3S/5G",
+    "3T/6N",
+    "3U/5N",
+    "3V/3Y",
+    "3W/5K",
+    "3X/6L",
+    "3Y/3+",
+    "3Z/6H",
+    "4A/4R",
+    "4B/4-",
+    "4E/5F",
+    "4H/4N",
+    "4S/4+",
+    "5A/5R",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5H/5+",
+    "5S/5+",
+    "6A/6R",
+    "6B/6-",
+    "6E/6-",
+    "6F/M10",
+    "6J/6K",
+    "6S/6+"
+   ],
+   "connection_count": 56,
+   "procedure_as_printed": [
+    "Worked example 27 / 5 (011011 / 101): write the dividend with a vertical line between the third and fourth digits so the divisor is greater than whatever is left of the line.",
+    "Place the dividend on the slide switches; the output lights show 011011.",
+    "Shift left one bit whenever the divisor is greater than the left-most three bits.",
+    "Subtract the divisor by entering it on pushbuttons 1, 2 and 3; place the result in the slide switches; when the subtraction proceeded properly add 1 to the low order bit.",
+    "Continue until there have been as many left shifts as there were bits to the right of the vertical line. Answer is right of the line, remainder left of it: 010 | 101 -> 27/5 = 5 remainder 2."
+   ],
+   "notes": [
+    "Uses matrix terminal M10 as a junction point (3K/M10, 6F/M10)."
+   ]
+  },
+  {
+   "id": "IV-EXP11",
+   "name": "Experiment 11: Decimal to Binary Converter",
+   "book": "Book IV",
+   "printed_page": "84-85",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "90-91",
+   "tag": "likely",
+   "connections": [
+    "1E/D10",
+    "1F/2F",
+    "1G/3com",
+    "1H/1L",
+    "1K/6K",
+    "1L/2L",
+    "2E/D9",
+    "2F/3F",
+    "2G/5G",
+    "2H/2L",
+    "2H/3H",
+    "2K/3com",
+    "3A/3com",
+    "3B/3-",
+    "3E/D7",
+    "3F/4F",
+    "3G/6E",
+    "3H/3L",
+    "3K/4K",
+    "3L/4L",
+    "4A/4com",
+    "4B/4-",
+    "4E/D6",
+    "4F/5F",
+    "4G/5com",
+    "4H/4L",
+    "4H/5H",
+    "4K/4com",
+    "5A/5com",
+    "5B/5-",
+    "5E/D5",
+    "5F/6F",
+    "5G/6G",
+    "5H/5L",
+    "5K/4com",
+    "5L/6L",
+    "6A/6com",
+    "6B/6-",
+    "6E/D3",
+    "6F/6-",
+    "6G/6com",
+    "6H/6L",
+    "6H/6+",
+    "6K/5com",
+    "D1/6com",
+    "D2/5com",
+    "D4/4com",
+    "D8/3com",
+    "D16/M+"
+   ],
+   "connection_count": 49,
+   "procedure_as_printed": [
+    "Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position.",
+    "The binary equivalent appears in the binary output lights (light ON = 1, light OFF = 0)."
+   ],
+   "notes": [
+    "Heavy use of the four COMMON terminals plus 5com/6com. Note the manual's own Book I text says only FOUR common terminals exist ('The four COMMON terminals are connected together'), yet 1com through 6com are used throughout Books III-VI. NOT SETTLED by these pages - see notSettled."
+   ]
+  },
+  {
+   "id": "IV-EXP12",
+   "name": "Experiment 12: Binary to Decimal Converter (tree circuit)",
+   "book": "Book IV",
+   "printed_page": "85",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "91",
+   "tag": "likely",
+   "connections": [
+    "1C/4R",
+    "1F/2F",
+    "1G/6H",
+    "1H/5U",
+    "1J/5H",
+    "1K/6L",
+    "1L/5W",
+    "1N/5L",
+    "2C/5R",
+    "2F/3F",
+    "2G/3H",
+    "2H/4U",
+    "2J/4H",
+    "2K/3L",
+    "2L/4W",
+    "2N/4L",
+    "3C/6R",
+    "3C/4C",
+    "3F/4F",
+    "3G/D15",
+    "3J/D14",
+    "3K/D11",
+    "3N/D10",
+    "3U/4V",
+    "3V/3-",
+    "3W/5V",
+    "4C/5C",
+    "4F/5F",
+    "4G/D13",
+    "4J/D12",
+    "4K/D9",
+    "4N/D8",
+    "4S/4+",
+    "4S/5S",
+    "5C/6C",
+    "5F/6F",
+    "5G/D3",
+    "5J/D2",
+    "5K/D1",
+    "5N/D0",
+    "5S/6S",
+    "6F/6-",
+    "6G/D7",
+    "6J/D6",
+    "6K/D5",
+    "6N/D4",
+    "6X/D17",
+    "6Y/6+",
+    "D16/D19",
+    "D18/M-"
+   ],
+   "connection_count": 50,
+   "procedure_as_printed": [
+    "Enter any binary number from 0 through 15 on slide switches 3 through 6.",
+    "Push pushbutton 6. The rotary switch will indicate the decimal equivalent of the binary number."
+   ]
+  },
+  {
+   "id": "IV-APX-SHIFTREG",
+   "name": "Appendix: Automatic Shift Register (full six-bit)",
+   "book": "Book IV",
+   "printed_page": "86-87",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "92-93",
+   "tag": "likely",
+   "connections": [
+    "1A/1X",
+    "1B/1-",
+    "1C/2C",
+    "1E/2N",
+    "1F/1G",
+    "1F/2K",
+    "1G/1X",
+    "1H/2H",
+    "1L/D1",
+    "1Y/2Y",
+    "2A/2X",
+    "2B/2-",
+    "2C/3C",
+    "2E/3N",
+    "2F/2G",
+    "2F/3K",
+    "2G/2X",
+    "2H/3H",
+    "2L/D2",
+    "2Y/3Y",
+    "3A/3X",
+    "3B/3-",
+    "3C/4C",
+    "3E/4N",
+    "3F/3G",
+    "3F/4K",
+    "3G/3X",
+    "3H/4H",
+    "3L/D3",
+    "3Y/4Y",
+    "4A/4X",
+    "4B/4-",
+    "4C/5C",
+    "4E/5N",
+    "4F/4G",
+    "4F/5K",
+    "4G/4X",
+    "4H/5H",
+    "4L/D4",
+    "4Y/5Y",
+    "5A/5X",
+    "5B/5-",
+    "5C/6C",
+    "5E/6N",
+    "5F/5G",
+    "5F/6K",
+    "5G/5X",
+    "5H/6H",
+    "5L/D5",
+    "5Y/6Y",
+    "6A/6X",
+    "6B/6-",
+    "6C/6-",
+    "6E/D7",
+    "6F/6G",
+    "6G/6X",
+    "6H/6+",
+    "6L/D6",
+    "6Y/D16",
+    "D16/M+"
+   ],
+   "connection_count": 60,
+   "procedure_as_printed": [
+    "Enter a binary number in the shift register by pushing and releasing the appropriate pushbuttons. The number appears in the output lights.",
+    "Shift LEFT one bit by slowly turning the rotary switch dial one complete revolution.",
+    "To shift left more than one bit simply turn the dial the desired number of revolutions."
+   ]
+  },
+  {
+   "id": "IV-APX-2BITADDER",
+   "name": "Appendix: Two-Bit Adder with Automatic Decimal Conversion",
+   "book": "Book IV",
+   "printed_page": "87",
+   "pdf_file": "book2-3-4.pdf",
+   "pdf_page": "93",
+   "tag": "likely",
+   "connections": [
+    "1C/4H",
+    "1F/2F",
+    "1G/3H",
+    "1H/6G",
+    "1J/2H",
+    "1K/3L",
+    "1L/6J",
+    "1N/2L",
+    "2C/4K",
+    "2C/3C",
+    "2F/3F",
+    "2G/D5",
+    "2J/D1",
+    "2K/D4",
+    "2N/D0",
+    "3F/4F",
+    "3G/D7",
+    "3J/D3",
+    "3K/D6",
+    "3N/D2",
+    "4A/5R",
+    "4A/4K",
+    "4B/4-",
+    "4C/5V",
+    "4F/5F",
+    "4G/5J",
+    "4H/5A",
+    "4J/5G",
+    "4L/4J",
+    "5B/5-",
+    "5C/6R",
+    "5F/6F",
+    "5H/5+",
+    "5S/5W",
+    "5U/5Z",
+    "5W/5X",
+    "5Y/6V",
+    "6A/6C",
+    "6B/6-",
+    "6C/6V",
+    "6F/6-",
+    "6H/5-",
+    "6S/6W",
+    "6U/6Z",
+    "6W/6X",
+    "6Y/6+",
+    "D16/D19",
+    "D17/M+",
+    "D18/M-"
+   ],
+   "connection_count": 49,
+   "procedure_as_printed": [
+    "Enter a 2-bit binary number in slide switches 5 and 6.",
+    "Enter a second 2-bit binary number on pushbuttons 5 and 6.",
+    "The rotary switch dial will turn to the decimal sum. (Binary output lights 4, 5 and 6 will display the sum in binary.)"
+   ]
+  }
+ ],
+ "discrepancies_recorded_not_resolved": [
+  {
+   "id": "D1",
+   "where": "Book VI, basic sequence recognition circuit",
+   "detail": "Secret Code printing (book5-6.pdf p57, printed 51) and Electronic Maze printing (p59, printed 53) read '6A/6J'. Combination Lock printing (p58, printed 52) reads '5A/6J' - image-confirmed at 500 dpi - on a page that says the circuit is 'the same basic circuit as was used in the previous game'. Both primary. Simulator should treat this as a choice the fixture set must document, not silently pick.",
+   "tag": "verified"
+  },
+  {
+   "id": "D2",
+   "where": "Book VI, Tic-Tac-Toe wiring table, column 3 row 9",
+   "detail": "Printed '4G/5N'. 4G already appears in the same column as '4G/D5', and the column's otherwise strict alphabetical order places a 4N entry in this slot. '4N/5N' would be the ordered reading and the circuit does otherwise drive 4N (3G/4N). Printed text is 4G/5N [verified]; 4N/5N is inference [unverified].",
+   "tag": "verified"
+  },
+  {
+   "id": "D3",
+   "where": "Book I, Experiment 12 vs Experiment 13, both on printed p23",
+   "detail": "Exp 12 prints '6-/D18'; the Exp 13 combined list prints '5-/D18' (image-confirmed at 500 dpi). Electrically the same node if the six section minus terminals share one rail, but the printed text differs.",
+   "tag": "verified"
+  },
+  {
+   "id": "D4",
+   "where": "Book V, Experiment 4 (Traffic Light) vs Experiment 5 (with Pedestrian Control), both printed p5",
+   "detail": "Exp 4 prints D16/M-, D17/M-, D18/M+. Exp 5 prints D16/M-, D17/M+ (no D18 line). Both image-confirmed at 500 dpi from book5-6.pdf PDF page 11. Exp 4 puts TWO rotary terminals on M-.",
+   "tag": "verified"
+  },
+  {
+   "id": "D5",
+   "where": "Book III, The Relay AND Circuit, printed p43",
+   "detail": "The printed ten-line program does not implement AND - relay 1's G contact is unconnected and light 3 follows relay 2 alone. Image-confirmed there are exactly ten lines. The intended line is probably 1G/2H in place of 2+/2H, but that is inference.",
+   "tag": "verified"
+  },
+  {
+   "id": "D6",
+   "where": "Book III, The Television Problem, printed p65",
+   "detail": "The conventions say 'A slide switch LEFT indicates that the person is watching television'; the operating instruction on the same page says 'Set slide switches 1 through 5 to the LEFT (this indicates that no one is watching television)'. Self-contradictory as printed.",
+   "tag": "verified"
+  },
+  {
+   "id": "D7",
+   "where": "Book I p25 (printed 25) vs Books III-VI throughout",
+   "detail": "Book I says of the auxiliary terminals: 'The terminals with four holes labeled COMMON may be used when more than two connections must be made ... The four COMMON terminals are connected together, but are not connected to any other component.' But Books III, IV, V and VI address SIX independent common terminals, 1com through 6com, used as six separate junction nodes (e.g. the Book VI sequence recognition circuit requires 'connections to each of the six common terminals'). Either the Book I sentence is wrong, or 'four' counts holes/pairs rather than terminals. NOT settled by the manuals; must be settled from the panel photograph.",
+   "tag": "verified"
+  },
+  {
+   "id": "D8",
+   "where": "Book V-VI copyright page vs the panel legend",
+   "detail": "Copyright page of book5-6.pdf (PDF p4, and the p1 masthead) reads 'Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts'; book2-3-4.pdf carries the same Watertown/372 Main Street line. The brief reports the panel legend in image_3.jpg reads 'Cambridge, Massachusetts'. I did NOT open the panel photograph (it is another agent's primary). Both are primary; reported, not resolved.",
+   "tag": "likely"
+  },
+  {
+   "id": "D9",
+   "where": "Book III, Quantity Recognition, printed p56",
+   "detail": "'There are 120 possible combinations of switches' - five slide switches give 32 states. Recorded as printed.",
+   "tag": "likely"
+  },
+  {
+   "id": "D10",
+   "where": "Book V, Experiment 6 speed timer worked example, printed p7",
+   "detail": "83.52 / 3 is printed as 27.64 mph (should be 27.84). Recorded as printed.",
+   "tag": "likely"
+  },
+  {
+   "id": "D11",
+   "where": "Book VI, Secret Code, printed p51-52",
+   "detail": "'you can generate 63 different codes; by simple re-programming you can generate 720 different codes' at the top of p51, and 'you will be able to generate 63 different codes' after interchanging the starred connections on p52. Both figures printed.",
+   "tag": "likely"
+  }
+ ],
+ "headline_findings_for_the_simulator": [
+  "The tic-tac-toe table is 72 connections in 4 columns of 18, read column-major, on printed page 56 (PDF page 62 of book5-6.pdf). Full transcription is image-verified at 600 dpi; the only anomaly is the printed '4G/5N'.",
+  "Terminal namespaces the simulator must model: <1-6> + {A,B} (lights), {X,Y,Z} (pushbuttons), {C,E,F} (relay coil, with F/C giving the indicator lamp in series), {G,H,J,K,L,N} (relay contacts, two ganged sets: H-J/H-G and L-N/L-K), {R,S,T,U,V,W} (slide switch, LEFT = S-R and V-U, RIGHT = S-T and V-W), {+,-} (section power), plus D0-D19 (rotary, D16 = wiper, D17/D18 = motor RUN, D18/D19 = motor STOP), M1t..M9t / M1b..M9b, M10, M11, M+, M-, and 1com..6com.",
+  "M+ and M- are used in programs exactly like power terminals feeding the rotary switch and its motor (D16/M+, D18/M-, D17/M+). Whether they are physically part of the MATRIX block or a separate motor-power pair is NOT settled by the manuals.",
+  "Both pushbuttons and the rotary switch are explicitly BREAK-BEFORE-MAKE (Book I printed pp.9 and 21). A simulator that lets a normally-open contact touch the normally-closed one, even for one tick, will produce wrong behaviour in the manual's own circuits.",
+  "Relay contacts are ganged: 'The two relay arms are connected together mechanically with a plastic crossbar. Both arms move together and make or break contact at the same time.' Relays can also be actuated MANUALLY - several programs require the operator to push relays left before play (Electronic Maze short path; Farmer/Goose/Corn/Wolf reset; Full Adder carry-in).",
+  "The motor is a real DC motor with a friction drive and current-limiting resistors: RUN = power across D17/D18, STOP = a short across D18/D19, and reversing the polarity across D17/D18 reverses rotation (Book I Experiment 14). Timing-dependent programs (metronome, traffic light, speed timer, radar) depend on continuous rotation, so the simulator needs a modelled dial speed.",
+  "Programs routinely make more than two connections to one terminal - the manuals say every terminal has two holes, and the com terminals have four - so the simulator's netlist must allow multi-way joins per terminal, with a documented limit.",
+  "Four Book V/VI programs use a free-ended 'play wire' the operator touches to a terminal rather than plugs in (Tic-Tac-Toe M10/M11, Electronic Maze M+, Arabic Numeral Recognition four wires each on M10 and M11, Maze Solver 6E). The simulator needs a first-class 'touch a terminal with a loose wire end' input.",
+  "Book VI's three sequence games share one 38-connection 'basic sequence recognition circuit'; getting that one subcircuit right buys the Secret Code, Combination Lock and Electronic Maze at once.",
+  "The Book I experiments 1-14 are all short (2-10 wires) and every one of them has a stated observable; they are the right conformance-suite floor and all fourteen are transcribed here, ten of them image-verified.",
+  "The Book I answer pages (printed 29-32) contain 20 more small programs but are hand-lettered; their OCR is degraded and they are all tagged [unverified]. They need a 500 dpi image pass before use."
+ ],
+ "not_settled_by_the_sources": [
+  "How many COMMON terminals there physically are. Book I printed p25 says four; Books III-VI address six (1com..6com). Needs the panel photograph.",
+  "Where M+ and M- physically sit on the panel, and whether they are matrix terminals, motor-power terminals, or main supply terminals. The manuals only use them in wiring lists.",
+  "The ring order of the nine matrix squares that makes the tic-tac-toe 'move 4/5 squares to the right' rule concrete. Book VI states the rule but never restates the numbering; Book I only gives the naming convention M<n><t|b>.",
+  "Whether the six section minus terminals (1- .. 6-) and plus terminals are one common supply rail or six separately-fused nodes. Book I Exp 12 vs Exp 13 print 6-/D18 and 5-/D18 for the same circuit, which implies one rail, but no page says so.",
+  "The character code table for Experiment 12 (Arabic Numeral Recognition), printed p22. The OCR of the FORM/CODE table is unreadable and it was not image-verified.",
+  "Whether Book I Experiment 12's '6-/D18' or Experiment 13's '5-/D18' is the typo (or whether both are correct because the rails are common).",
+  "Whether the Combination Lock's '5A/6J' or the other two printings' '6A/6J' is the typo in the basic sequence recognition circuit.",
+  "The exact rotary-switch dial speed and the friction-drive behaviour, which every timing program depends on. Book I says only that the resistors limit motor current; no rpm figure is given (Book V asks the reader to count revolutions per minute on their own machine).",
+  "Book I answer pages 29-32 (PDF pages 31-34): all 20 answer programs need a 500 dpi image read. I ran out of image budget after eleven reads.",
+  "Book V Experiment 19's '4H/5U' and Experiment 14's '4F/5G', and the Super Circuit's '4C/3-' and '5H/4-': each is a single line whose terminal class is out of pattern for its program. Each needs a single-line image read."
+ ],
+ "claim_counts": {
+  "verified": 32,
+  "likely": 80,
+  "unverified": 31
+ },
+ "program_count": 84
+}

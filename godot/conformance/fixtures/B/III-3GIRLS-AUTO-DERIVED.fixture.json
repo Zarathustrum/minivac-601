@@ -1,0 +1,385 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-3GIRLS-AUTO-DERIVED",
+  "source": "BK3 printed p.60 = book2-3-4.pdf PDF p.66 (program, circuit and procedure, 'Automatic' solution); relay light assignment BK3 printed p.59 = book2-3-4.pdf PDF p.65; image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1Y/2Y",
+    "2Y/3Y",
+    "1X/1C",
+    "2X/2C",
+    "3X/3C",
+    "2K/1X",
+    "2L/2+",
+    "2N/3C",
+    "3G/1H",
+    "1H/1C",
+    "1G/2C",
+    "3H/3+",
+    "1F/2F",
+    "2F/3F",
+    "3F/3-"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 16-wire topology and the p.59-60 rule, not printed. No erratum covers p.60; ER-15 (p.58) changes only the error expression. Topology: pushbutton arms 1Y/2Y/3Y on plus, each N.O. nX on relay n's lamp end nC; coils' far ends 1F/2F/3F on minus; relay 2 set 2 arm 2L on plus with N.O. 2K to 1C and N.C. 2N to 3C; relay 3 set 1 arm 3H on plus with N.O. 3G to 1H/1C; relay 1 set 1 N.O. 1G to 2C. Power-on settles to relays 1 and 2 operated, relay 3 released (C x S x notW; Step 7 notes, III-3GIRLS-AUTO). The script follows the printed procedure: power on, then each pushbutton pushed and released singly (pushbuttons 1, 2, 3); press and release are separate steps. The settle and 200 ms advance after each command are script choices, not from the source.",
+  "wires": [
+    "1+/1Y",
+    "1Y/2Y",
+    "2Y/3Y",
+    "1X/1C",
+    "2X/2C",
+    "3X/3C",
+    "2K/1X",
+    "2L/2+",
+    "2N/3C",
+    "3G/1H",
+    "1H/1C",
+    "1G/2C",
+    "3H/3+",
+    "1F/2F",
+    "2F/3F",
+    "3F/3-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "pb3",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed p.60 = book2-3-4.pdf PDF p.66 automatic solution, power on with no pushbutton down; relay light n indicates girl n (BK3 printed p.59 = book2-3-4.pdf PDF p.65), ON = positive; derived from topology: at cold start relay 2 is out, so its set 2 arm 2L (2L/2+) touches N.C. 2N and 2N/3C energises relay 3 through indicator lamp 3; relay 3 in closes 3H(+)-3G, and 3G/1H/1C energises relay 1; relay 1 in closes 1H-1G and 1G/2C energises relay 2; relay 2 in opens 2N (relay 3 drops) and makes 2K, which keeps + on 1C; settled: with relay 2 operated, 2L(+)-2K puts + on 1X/1C, so relay 1 holds (1C-indicator lamp 1-1E-coil-1F, 1F/2F/3F/3- on minus); relay 1 operated closes 1H-1G, and 1H/1C with 1G/2C puts + on 2C, so relay 2 holds through indicator lamp 2; 2L-2N is open, so 3C has no source and relay 3 and indicator lamp 3 are out (the C x S x notW solution)",
+      "quote": "When the power is turned ON, a correct solution will immediately appear in the relay indicator lights.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "no"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "pb3",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed p.60 = book2-3-4.pdf PDF p.66 pushbutton 1 held (positive information for Camille); derived from topology: pushbutton 1 arm 1Y (on +, 1+/1Y chain) touches N.O. 1X, and 1X/1C puts + on 1C, a node already at + from 2K (2K/1X); no other node changes, so the solution stays: with relay 2 operated, 2L(+)-2K puts + on 1X/1C, so relay 1 holds (1C-indicator lamp 1-1E-coil-1F, 1F/2F/3F/3- on minus); relay 1 operated closes 1H-1G, and 1H/1C with 1G/2C puts + on 2C, so relay 2 holds through indicator lamp 2; 2L-2N is open, so 3C has no source and relay 3 and indicator lamp 3 are out (the C x S x notW solution)",
+      "quote": "By pushing a pushbutton, we may enter additional positive information about a girl. The relay indicator lights will then indicate the correct solution to the problem with the added information.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "no"
+        },
+        {
+          "dev": "pb3",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed p.60 = book2-3-4.pdf PDF p.66 pushbutton 2 held (positive information for Sara); derived from topology: pushbutton 2 arm 2Y (on +, 1+/1Y chain) touches N.O. 2X, and 2X/2C puts + on 2C, a node already at + from 1G (1G/2C); no other node changes, so the solution stays: with relay 2 operated, 2L(+)-2K puts + on 1X/1C, so relay 1 holds (1C-indicator lamp 1-1E-coil-1F, 1F/2F/3F/3- on minus); relay 1 operated closes 1H-1G, and 1H/1C with 1G/2C puts + on 2C, so relay 2 holds through indicator lamp 2; 2L-2N is open, so 3C has no source and relay 3 and indicator lamp 3 are out (the C x S x notW solution)",
+      "quote": "By pushing a pushbutton, we may enter additional positive information about a girl. The relay indicator lights will then indicate the correct solution to the problem with the added information.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "pb3",
+          "v": "no"
+        }
+      ],
+      "cite": "BK3 printed p.60 = book2-3-4.pdf PDF p.66 pushbutton 3 held (Wanda would); derived from topology: pushbutton 3 arm 3Y (on +) touches N.O. 3X, and 3X/3C energises relay 3 through indicator lamp 3; relay 3 in closes 3H(+)-3G onto 1H/1C, already at + from 2K, so relays 1 and 2 stay operated and the lights show C x S x W",
+      "quote": "By pushing a pushbutton, we may enter additional positive information about a girl. The relay indicator lights will then indicate the correct solution to the problem with the added information.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 1000
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "pb1",
+          "v": "nc"
+        },
+        {
+          "dev": "pb2",
+          "v": "nc"
+        },
+        {
+          "dev": "pb3",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK3 printed p.60 = book2-3-4.pdf PDF p.66 pushbutton 3 released; derived from topology: 3Y-3X opens and 2N/3C is the only other feed to 3C, open because relay 2 is operated, so relay 3 drops and indicator lamp 3 goes out; relays 1 and 2 hold each other through 2L-2K and 1H-1G as before: with relay 2 operated, 2L(+)-2K puts + on 1X/1C, so relay 1 holds (1C-indicator lamp 1-1E-coil-1F, 1F/2F/3F/3- on minus); relay 1 operated closes 1H-1G, and 1H/1C with 1G/2C puts + on 2C, so relay 2 holds through indicator lamp 2; 2L-2N is open, so 3C has no source and relay 3 and indicator lamp 3 are out (the C x S x notW solution)",
+      "quote": "A pushbutton UP transmits no additional information to the computer.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

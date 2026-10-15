@@ -1,0 +1,806 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP6-DERIVED",
+  "source": "Books V-VI printed pp.6-8 = book5-6.pdf PDF pp.12-14 (Experiment 6: The Automobile Speed Timer; program and rule p.6 = PDF p.12, revolution count p.7 = PDF p.13, dial plate and procedure p.8 = PDF p.14); Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1H/1+",
+    "1H/2H",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2H/3H",
+    "2L/D11",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3H/4H",
+    "3L/D12",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/5-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/1G",
+    "1C/2K",
+    "1F/1-",
+    "1H/1+",
+    "1H/2H",
+    "2C/2G",
+    "2C/3K",
+    "2F/2-",
+    "2H/3H",
+    "2L/D11",
+    "3C/3G",
+    "3C/4K",
+    "3F/3-",
+    "3H/4H",
+    "3L/D12",
+    "4C/4G",
+    "4C/5K",
+    "4F/4-",
+    "4H/5H",
+    "4L/D13",
+    "5C/5G",
+    "5C/D15",
+    "5F/5-",
+    "5L/D14",
+    "5X/6E",
+    "5Y/5-",
+    "6C/6G",
+    "6C/6X",
+    "6F/6-",
+    "6H/6+",
+    "6H/6L",
+    "6K/D17",
+    "6Y/6+",
+    "D16/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "breaker",
+          "v": "ok"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.6 = book5-6.pdf PDF p.12; rule: pushbutton 6 starts the timing motor; derived from topology: every + source (1H-5H on 1+, 6H, 6L, 6Y) sits on an open N.O. contact or an up pushbutton, and the wiper (D16/M+) rests on D0, which is wired to nothing, so no coil, lamp or motor has a path",
+      "quote": "Pushing pushbutton 6 starts the timing motor (in this case the rotary switch); pushing pushbutton 5 stops the motor. As the rotary switch turns, MINIVAC will count its revolutions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.6 = book5-6.pdf PDF p.12; rule: pushbutton 6 starts the timing motor; derived from topology: pb6 down puts + (6Y/6+) through 6X onto 6C, lamp 6, coil 6 to 6F/6-; relay 6 pulls and holds through 6H(+)-6G-6C after the release; 6H/6L-6K/D17 puts + on D17 with D18/M-, so the motor runs; 150 ms from rest the wiper has not reached D15, so relays 1-5 are still out",
+      "quote": "Pushing pushbutton 6 starts the timing motor (in this case the rotary switch); pushing pushbutton 5 stops the motor. As the rotary switch turns, MINIVAC will count its revolutions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "maxMs": 4000,
+      "cite": "Books V-VI printed p.7 = book5-6.pdf PDF p.13; rule: a revolution is counted when the dial has completed 15/16 of a revolution, i.e. 0 to 15 (direction: D17 at +, D18 at - turns toward increasing numbers, O-R11); derived from topology: increasing from 0 the wiper reaches D8 before D15, the only pad that feeds a coil with relays 1-5 out (5C/D15); reversed, D15 is the first pad and relay 5 would latch before D8, so this until fails",
+      "quote": "Since the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution, we must multiply the number of complete revolutions in a minute by 16/15 to obtain a \"revolutions per minute\" figure for the dial plate.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "maxMs": 4000,
+      "cite": "Books V-VI printed p.7 = book5-6.pdf PDF p.13 and Books V-VI printed p.8 = book5-6.pdf PDF p.14; rule: the relay indicator lights count revolutions, one revolution reads in the RELAY LIGHT 5 band (83.52 at 15); derived from topology: at D15 the wiper (+) feeds 5C/D15, lamp 5, coil 5, 5F/5-; relay 5 holds through 5H(+)-5G-5C; D11-D14 feed only arms 2L-5L, whose N.O. contacts 2K-5K are open while relays 2-5 are out",
+      "quote": "Since the program is such that the relay indicator lights count the number of revolutions of the rotary switch, we will know which speed to read by observing which relay lights are on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "maxMs": 4000,
+      "cite": "Books V-VI printed p.7 = book5-6.pdf PDF p.13 and Books V-VI printed p.8 = book5-6.pdf PDF p.14; rule: two revolutions, 0 to 15 then 15 to 14, read in the RELAY LIGHT 4 band (41.76 at 14); derived from topology: at D14 the wiper feeds 5L/D14, 5L-5K (relay 5 in), 4C/5K, lamp 4, coil 4, 4F/4-; relay 4 holds through 4H(+)-4G-4C; D11-D13 still dead (relays 2-4 arms open at 2K, 3K, 4K before relay 4 pulls)",
+      "quote": "Since the program is such that the relay indicator lights count the number of revolutions of the rotary switch, we will know which speed to read by observing which relay lights are on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "maxMs": 4000,
+      "cite": "Books V-VI printed p.7 = book5-6.pdf PDF p.13 and Books V-VI printed p.8 = book5-6.pdf PDF p.14; rule: three revolutions, 0 to 15, 15 to 14, 14 to 13, read in the RELAY LIGHT 3 band (27.64 at 13); derived from topology: at D13 the wiper feeds 4L/D13, 4L-4K (relay 4 in), 3C/4K, lamp 3, coil 3, 3F/3-; relay 3 holds through 3H(+)-3G-3C",
+      "quote": "Since the program is such that the relay indicator lights count the number of revolutions of the rotary switch, we will know which speed to read by observing which relay lights are on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "breaker",
+          "v": "ok"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "Books V-VI printed p.6 = book5-6.pdf PDF p.12; rule: pushing pushbutton 5 stops the motor; derived from topology: pb5 down ties 6E to - (5X/6E, 5Y/5-), shorting coil 6 (6F/6-); relay 6 drops, 6H-6G opens the latch (6C unfed, lamp 6 off) and 6L-6K takes + off D17, so the motor stops; pb5 was pushed at D8, four pads short of D12, and with the motor running D12 would put + through 3L-3K (relay 3 in) onto 2C and pull relay 2 within 3 s even at 25 rpm, so relay 2 still out shows the stop without asserting the coast-dependent rest pad (O-R14); relays 3-5 hold on 1H/1+ through their own G contacts, independent of relay 6",
+      "quote": "Pushing pushbutton 6 starts the timing motor (in this case the rotary switch); pushing pushbutton 5 stops the motor. As the rotary switch turns, MINIVAC will count its revolutions.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "maxMs": 4000,
+      "cite": "Books V-VI printed p.7 = book5-6.pdf PDF p.13 and Books V-VI printed p.8 = book5-6.pdf PDF p.14; rule: the relay indicator lights count revolutions, four reads in the RELAY LIGHT 2 band (20.13 at 12); script restarts the motor with pushbutton 6 (relay 6 relatches as before); derived from topology: from the rest pad (below D12) the wiper next feeds D12, 3L/D12, 3L-3K (relay 3 in), 2C/3K, lamp 2, coil 2, 2F/2-; relay 2 holds through 2H(+)-2G-2C; D11 on the way was dead (2L-2K open)",
+      "quote": "Since the program is such that the relay indicator lights count the number of revolutions of the rotary switch, we will know which speed to read by observing which relay lights are on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 4000,
+      "cite": "Books V-VI printed p.7 = book5-6.pdf PDF p.13 and Books V-VI printed p.8 = book5-6.pdf PDF p.14; rule: five revolutions read in the RELAY LIGHT 1 band (16.70 at 11); derived from topology: at D11 the wiper feeds 2L/D11, 2L-2K (relay 2 in), 1C/2K, lamp 1, coil 1, 1F/1-; relay 1 holds through 1H(+)-1G-1C",
+      "quote": "Since the program is such that the relay indicator lights count the number of revolutions of the rotary switch, we will know which speed to read by observing which relay lights are on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "breaker",
+          "v": "ok"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.8 = book5-6.pdf PDF p.14; rule: pushbutton 5 stops the motor and the speed is read from the lowest numbered relay light on (light 1 here); derived from topology: pb5 shorts coil 6 as before; relays 1-5 hold on the 1H-5H + chain through their own G contacts, so the reading stays after the stop",
+      "quote": "Read the speed of the passing car from the dial plate: the speed is read from the band corresponding to the lowest numbered relay indicator light which is on.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 35-wire topology and the p.6-8 rule (pushbutton 6 starts the motor, pushbutton 5 stops it, the relay indicator lights count revolutions, a revolution is counted at 15/16 of a turn, the speed is read from the band of the lowest numbered relay light on), not printed; the printed fixture C2/V-EXP6 covers the dial sequence. No erratum touches Book V pp.6-8, so the wires are as printed (list over diagram for 5L/D14 and D18/M-). Topology: relay 6 is the start/stop latch: pb6 (6Y/6+, 6X/6C) pulls it, 6H(+)-6G-6C holds it, pb5 (5Y/5-, 5X/6E) shorts its coil; 6H/6L-6K/D17 runs the motor with D18/M- (increasing numbers, O-R11). The wiper is on + (D16/M+). Relays 1-5 each hold through nH(+, the 1H-5H chain on 1+)-nG-nC; relay 5 is set by D15 (5C/D15); relay n (n = 4..1) is set by D(n+10) through arm (n+1)L and N.O. (n+1)K only when relay n+1 is already in. So the first D15 crossing sets relay 5 (one revolution, 0 to 15), the next D14 relay 4, then D13 relay 3, D12 relay 2, D11 relay 1, matching the p.7 count 0-15, 15-14, 14-13 and the p.8 band labels. Checkpoints: power-on idle; relay 6 latched after the pb6 release; c8 of the first pass with relays 1-5 out (direction: reversed, D15 comes first); c8 after each of revolutions 1-3 (relay 5, then 4, then 3); pb5 pushed at that c8, then 3000 ms later relay 6 out and relay 2 still out (the stop witness: a running motor would have reached D12); pb6 restart (a script choice, not in the printed procedure) to c5 after relays 2 and 1; a final pb5 stop with all five count relays held. Script choices, not printed: pb6 held 100 ms, pb5 200 ms; until windows of 4000 ms, sized for a run rate as slow as 25 rpm; each until state holds on only one pass of its pad, so a long window cannot match the wrong revolution. Not asserted: the rest pad after either stop (coast constant, O-R14), states during a set pad dwell, output lamps (nA/nB unwired). Assumptions: each count relay pulls in and makes its own G contact within one pad dwell of the wiper (the page design depends on it), and an indicator lamp in series with its latched coil reads on (the plate bands say RELAY LIGHT n IS ON).",
+  "digest": {
+    "eventCount": 241,
+    "moverTransitions": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      8,
+      0,
+      0,
+      0,
+      0,
+      8,
+      8,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      170
+    ]
+  }
+}

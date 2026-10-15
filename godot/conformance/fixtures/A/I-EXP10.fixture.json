@@ -1,0 +1,39 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP10",
+  "source": "BK1 printed p.19 = book1.pdf PDF p.21",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1-/1B", "1A/1R", "1S/1+", "2-/2B", "2A/1W", "1V/1S"],
+  "errata_applied": [],
+  "wires": ["1-/1B", "1A/1R", "1S/1+", "2-/2B", "2A/1W", "1V/1S"],
+  "script": [
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" },
+        { "dev": "outLamp2", "v": "off" }
+      ],
+      "cite": "BK1 printed p.19 = book1.pdf PDF p.21",
+      "quote": "Light 1 comes ON but light 2 remains OFF."
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "off" },
+        { "dev": "outLamp2", "v": "on" }
+      ],
+      "cite": "BK1 printed p.19 = book1.pdf PDF p.21",
+      "quote": "Move switch 1 to the right. Light 1 goes OFF and light 2 comes ON."
+    }
+  ]
+}

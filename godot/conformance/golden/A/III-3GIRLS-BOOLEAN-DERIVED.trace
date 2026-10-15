@@ -1,0 +1,46 @@
+#!mv601-trace 1
+# id=III-3GIRLS-BOOLEAN-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=12
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=61 marginal=false
+     0.0 > switch1 target=0
+     0.0 > switch2 target=0
+     0.0 > switch3 target=0
+     0.0 > power on
+     0.0 * power off->on
+   520.1 ? outLamp3=off  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+   520.1 > switch3 target=1000
+   547.0 * sw3 nc->mid
+   553.1 * sw3 mid->no
+  1100.0 ? outLamp3=off  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  1100.0 > switch2 target=1000
+  1126.9 * sw2 nc->mid
+  1133.0 * sw2 mid->no
+  1136.3 * outLamp3 off->dim
+  1155.2 * outLamp3 dim->on
+  1679.9 ? relay3=nc outLamp3=on indLamp3=off  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  1679.9 > switch3 target=0
+  1706.8 * sw3 no->mid
+  1712.9 * sw3 mid->nc
+  2259.8 ? outLamp3=on  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  2259.8 > switch1 target=1000
+  2286.7 * sw1 nc->mid
+  2292.8 * sw1 mid->no
+  2839.7 ? outLamp3=on  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  2839.7 > switch3 target=1000
+  2866.6 * sw3 nc->mid
+  2872.7 * sw3 mid->no
+  3419.6 ? outLamp3=on  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  3419.6 > switch2 target=0
+  3446.5 * sw2 no->mid
+  3452.6 * sw2 mid->nc
+  3999.5 ? outLamp3=on  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  3999.5 > switch3 target=0
+  4026.4 * sw3 no->mid
+  4032.5 * sw3 mid->nc
+  4579.4 ? outLamp3=on  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"
+  4579.4 > switch1 target=0
+  4606.3 * sw1 no->mid
+  4612.4 * sw1 mid->nc
+  4626.8 * outLamp3 on->dim
+  4682.4 * outLamp3 dim->off
+  5159.3 ? outLamp3=off  "Light 3 ON represents an error. ... If the power is ON and light 3 is OFF, slide switches 1, 2 and 3 are indicating a correct solution to the problem. (Note: for some logical riddles there is more than one complete solution)"

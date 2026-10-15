@@ -1,0 +1,780 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-MATCHGAME",
+  "source": "BK6 printed pp.54-55 = book5-6.pdf PDF pp.60-61; errata.pdf PDF p.4 (ER-43)",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "3A/3E",
+    "3B/3-",
+    "3E/3G",
+    "3F/3-",
+    "3G/D0",
+    "3H/3Z",
+    "3Y/4Y",
+    "4C/5C",
+    "4E/D14",
+    "4F/4X",
+    "4F/4G",
+    "4H/4L",
+    "4H/5H",
+    "4K/5K",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5E/D13",
+    "5F/5X",
+    "5F/5G",
+    "5H/6H",
+    "5K/6K",
+    "5L/6L",
+    "5Y/6Y",
+    "6C/6-",
+    "6E/D15",
+    "6F/6X",
+    "6F/6G",
+    "6H/6+",
+    "6K/D18",
+    "6Y/6+",
+    "D1/D4",
+    "D2/D5",
+    "D3/D6",
+    "D4/D7",
+    "D5/D8",
+    "D6/D9",
+    "D7/D10",
+    "D8/D11",
+    "D9/D12",
+    "D10/D13",
+    "D11/D14",
+    "D12/D15",
+    "D16/M+",
+    "D17/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "3A/3E",
+    "3B/3-",
+    "3E/3G",
+    "3F/3-",
+    "3G/D0",
+    "3H/3Z",
+    "3Y/4Y",
+    "4C/5C",
+    "4E/D14",
+    "4F/4X",
+    "4F/4G",
+    "4H/4L",
+    "4H/5H",
+    "4K/5K",
+    "4L/5L",
+    "4Y/5Y",
+    "5C/6C",
+    "5E/D13",
+    "5F/5X",
+    "5F/5G",
+    "5H/6H",
+    "5K/6K",
+    "5L/6L",
+    "5Y/6Y",
+    "6C/6-",
+    "6E/D15",
+    "6F/6X",
+    "6F/6G",
+    "6H/6+",
+    "6K/D18",
+    "6Y/6+",
+    "D1/D4",
+    "D2/D5",
+    "D3/D6",
+    "D4/D7",
+    "D5/D8",
+    "D6/D9",
+    "D7/D10",
+    "D8/D11",
+    "D9/D12",
+    "D10/D13",
+    "D11/D14",
+    "D12/D15",
+    "D16/M+",
+    "D17/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "Books V-VI printed p.54 = book5-6.pdf PDF p.60; errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\" (ER-43); dial sector numerals 0-15 per panel.md / rotary.md section 1",
+      "quote": "[p.54:] \"The game is started with the rotary switch dial at 15.\" / [errata:] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\" (ER-43); dial sector numerals 0-15 per panel.md / rotary.md section 1",
+      "quote": "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 1 match by pushing pushbutton 4\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c14"
+        }
+      ],
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\" (ER-43); dial sector numerals 0-15 per panel.md / rotary.md section 1",
+      "quote": "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 1 match by pushing pushbutton 4\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61",
+      "quote": "\"MINIVAC moves next: player must push pushbutton 6; the rotary switch will turn to the number of matches remaining after the machine's move.\""
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 337500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "cite": "Books V-VI printed p.54 = book5-6.pdf PDF p.60; errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\" (ER-43); dial sector numerals 0-15 per panel.md / rotary.md section 1",
+      "quote": "[p.54:] \"The game is started with the rotary switch dial at 15.\" / [errata:] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\" (ER-43); dial sector numerals 0-15 per panel.md / rotary.md section 1",
+      "quote": "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 2 matches by pushing pushbutton 5\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c13"
+        }
+      ],
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61; errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\" (ER-43); dial sector numerals 0-15 per panel.md / rotary.md section 1",
+      "quote": "[errata, replacing the first two sentences under \"To Play the Match Game\":] \"Turn the rotary switch to 15, indicating that there are 15 matches in the pile.\" / [p.55:] \"removing 2 matches by pushing pushbutton 5\" / \"After the player indicates his move, the rotary switch dial will indicate the number of matches remaining.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "Books V-VI printed p.55 = book5-6.pdf PDF p.61",
+      "quote": "\"MINIVAC moves next: player must push pushbutton 6; the rotary switch will turn to the number of matches remaining after the machine's move.\""
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    }
+  ],
+  "digest": {
+    "eventCount": 430,
+    "moverTransitions": [
+      0,
+      0,
+      6,
+      20,
+      20,
+      40,
+      0,
+      0,
+      4,
+      20,
+      20,
+      40,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      66
+    ]
+  },
+  "note": "Printed claims only (Step 6). Wires are the printed 45; no erratum changes a wire. ER-43 (errata.pdf PDF p.4, Book VI, \"The Match Game (page 55)\") is prose only, so errata_applied is empty and the erratum is applied to the script: the printed first step \"Push the re-set button (pushbutton 3). The rotary switch dial will turn to 15\" is replaced by setting the dial to 15 by hand (dialGrab 337.5 deg, then dialRelease). In game 1 the hand set is done before power on, so the construction-state D0 does not latch relay 3 and light 3 first lights at the end of the game; that order is a script choice, not printed. Game 2 follows the printed \"To start another game, push the re-set button (pushbutton 3)\", then ER-43's hand set to 15; the page does not fix that order. Presses are 50 ms taps (pushbutton arms are fed from 6Y/6+; each coil latches through its own N.O. contact). Player moves are script choices: game 1 takes 1,2,1,2,1; game 2 takes 2,1,2,1,2. Asserted: the dial at 15 at the start of each game, after the ER-43 hand set (p.54 'The game is started with the rotary switch dial at 15.'); the dial after the player's first move of each game (15-1 = 14 by pushbutton 4; 15-2 = 13 by pushbutton 5), each as an until (passes through) and an expect after a 5 s window (rests); and the dial leaving its pad after the machine's first move of each game (p.55 'the rotary switch will turn'). Not asserted: the dial after every machine move and after every later player move (the machine's reply is unprinted; the 'always win' positions 12/9/6/3/0 are derived, Step 7); light 3 on after the last move (which press is the last move depends on the machine's unprinted replies, so it is derived, Step 7); light 3 off before the machine's last move (derived from 'MINIVAC 601 will always win' plus the win rule); the dial resting at 15 after the end of a game. COAST (2026-10-14): with the invented 20 deg coast_udeg_drive_removed (open-questions.md O-R5) both dial expects failed (c14 got c13; c13 got c12): the coil-short stop removes motor drive about 12 ms after the wiper lands (relay dropout) with STOP not shorted, and the coast carried the wiper onto the next pad. These rest asserts (script[10], [12], [62], [64]) hold to 13.713926 deg; the fixture's first failure is earlier, at 13.385388 deg, in script[68], the machine-move until on the gap, because c13->gap->c12 then completes inside the 50 ms pushbutton 6 tap before the until starts (a tap-window edge, not a printed rest; O-R14). Tom's ruling (DECISIONS.md 2026-10-14, 'Coast set from printed bounds') set it to 9.54 deg, the middle of the band in which every printed claim and assert passes; every assert here passes at it. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; windows are sized for a run rate as slow as 25 rpm. KNIFE-EDGE: minDecisionUa 5 (profile min_decision_ua 14) trips the bless gate; all 6 BLESS-ROBUSTNESS perturbations hold (DECISIONS.md 2026-10-13). This is relay 4's pull-in through lamp 4 in series (coilUa 43712, margin 5 uA) on every pb4 press. Relays 5 and 6 in the same lamp-in-series circuit pull in with 73 and 114 uA. The margin does not depend on coast. Not marked marginal."
+}

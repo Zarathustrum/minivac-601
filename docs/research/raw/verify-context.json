@@ -1,0 +1,437 @@
+{
+  "topic": "Adversarial verification of find-context.json (MINIVAC 601 history, artifacts, replicas, emulators, missing-source acquisition)",
+  "agent": "verify-context",
+  "date_generated": "2026-08-30",
+  "raw_file_under_review": "docs/research/raw/find-context.json",
+  "method": {
+    "posture": "Adversarial. Default to refuting when a claim could not be independently reproduced. Every [verified] tag in the reviewed file was traced back to a specific manual page image, page-image-confirmed text, or panel photograph; where the finder cited only OCR text or a secondary source, that is recorded.",
+    "page_images_opened": [
+      "raw/pdf/pages/maintenance/p-05.png (Power Supply Circuit Diagram, printed p.3)",
+      "raw/pdf/pages/maintenance/p-10.png (Slide Switch Check figure, printed p.8)",
+      "raw/pdf/pages/maintenance/p-11.png (Rotary Switch Motor Drive figure, printed p.9)",
+      "raw/pdf/pages/maintenance/p-13.png (MINIVAC 601 - SPARE PARTS, printed p.11)",
+      "raw/pdf/pages/book1/p-20.png (Book I sec.6 SLIDE SWITCHES, printed p.18)",
+      "errata.pdf sheet page 1 (rendered fresh at 175 dpi)",
+      "errata.pdf sheet page 2 (rendered fresh at 170 dpi)",
+      "errata.pdf sheet page 3 (rendered fresh at 170 dpi)",
+      "raw/prebrief/images/image_3.jpg (whole panel, 1536x1152)",
+      "raw/photos/commons-minivac601-main.jpg (whole panel downsampled to 1500px, plus a full-resolution logo-plate crop)",
+      "raw/photos/commons-minivac601-DSCF1392.jpg (whole panel downsampled to 1500px) - the third 601 the finder acquired and never inspected",
+      "raw/photos/commons-minivac6010-mit-museum.jpg (whole panel downsampled, plus a full-resolution logo-plate crop) - 6010, explicitly labelled as a delta"
+    ],
+    "text_checks": [
+      "Space-insensitive re-run of the finder's 'Shannon' grep across all six local .txt files (a naive grep is unsound on this OCR - see refutation R6).",
+      "Per-page pdftotext sweep of book2-3-4.pdf and book1.pdf to locate the pages by printed page number rather than by line offset.",
+      "md5 of every local PDF against the archive.org item manifest and against the ccapitalia publisher scan.",
+      "Live re-fetch of archive.org item manifests, the archive.org 'minivac' advanced-search result set, the Computer History Museum catalog record, Wikipedia raw wikitext, and Hacker News item 45950396 via the Algolia API."
+    ]
+  },
+
+  "headline": "The reviewed file is technically strong on everything it actually looked at - its manual quotations, its figure readings and its emulator research all survive independent checking. It fails on scope: a seventh SDC manual (Book VII, MINIVAC 601/6010 Capacitor/Resistor Manual, 1962) was already sitting on disk twelve minutes before the file was written, and it refutes three separate 'nothing found anywhere' statements. Two [verified] universals were asserted over photographs the finder had downloaded and not opened; one of them is false.",
+
+  "refuted": [
+    {
+      "id": "R1",
+      "severity": "high",
+      "claim_as_written": "acquisitions.where_i_looked_and_found_nothing_further: 'archive.org - the item 1961Minivac601Book234 is the only Minivac item; it holds five originals, all now local.' Tagged [verified] via acquisitions.provenance_of_the_scans.",
+      "correction": "FALSE. archive.org holds a SECOND MINIVAC 601 text item: identifier 'book-vii_202512', title 'Book VII - MINIVAC 601/6010 Capacitor/Resistor Manual', creator 'Scientific Development Corporation', date 1962-01-01, uploaded 2025-12-21 21:41:39 by <withheld>. Item subject tags: ['MINIVAC 601','MINIVAC 6010','MINIVAC Book VII'].",
+      "evidence": "archive.org advancedsearch for q=minivac returns exactly two MINIVAC 601 text items: 1961Minivac601Book234 and book-vii_202512. https://archive.org/metadata/book-vii_202512 lists two PDFs: 'Book VII.pdf' 139,626,576 B md5 d9953e46808f3435ed03782eecb57e2c, and 'Book VII_text.pdf' 4,052,767 B md5 d03919b7d05537ff3410ceb3e29d2170. The local file docs/research/raw/pdf/book7-capacitor-resistor.pdf is 4,052,767 B, md5 d03919b7d05537ff3410ceb3e29d2170 - byte-identical to 'Book VII_text.pdf'. Its embedded PDF metadata reads Title 'Book VII - MINIVAC 601/6010 Capacitor/Resistor Manual', Subject 'MINIVAC 601; MINIVAC 6010; MINIVAC Book VII', Author 'Scientific Development Corporation', Keywords 'https://archive.org/details/book-vii_202512', 55 pages.",
+      "aggravating": "The file existed on disk at 2026-08-30 07:24:06. find-context.json was written at 2026-08-30 07:36:06 - twelve minutes later, in the sibling directory.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R2",
+      "severity": "high",
+      "claim_as_written": "acquisitions.still_missing_after_the_hunt[0]: 'A MINIVAC 6010 manual or schematic of any kind. Nothing found anywhere. This is the blocker for answering are the 601 and 6010 internals identical?' Restated in not_settled[2] and in the [unverified] 6010-delta claim.",
+      "correction": "REFUTED. Book VII is a joint 601/6010 manual. Its cover reads 'Minivac 601/6010 / Capacitor/Resistor Manual / Copyright (c) 1962 by SCIENTIFIC DEVELOPMENT CORPORATION', and its back cover reads 'MINIVAC 601/6010 AND THE MINIVAC MANUAL ARE PRODUCTS OF: SCIENTIFIC DEVELOPMENT CORPORATION / 372 Main Street, Watertown, Massachusetts'. A manual whose programs are written to be wired on either machine is direct primary evidence that the two share terminal designations and the programming model. It is not a schematic, so it does not settle the internals question outright - but 'nothing found anywhere' is wrong, and the blocker is smaller than stated.",
+      "evidence": "raw/pdf/book7-capacitor-resistor.pdf, cover page and back cover (raw/pdf/book7-capacitor-resistor.txt lines 7-24 and lines 431-438). archive.org item description for book-vii_202512: 'The addition of capacitors and resistors to the basic MINIVAC extends the computer's capabilities... This manual assumes a familiarity with the basic MINIVAC components and their use such as would be gained through the use of the MINIVAC Manual, Books I through VI.'",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R3",
+      "severity": "high",
+      "claim_as_written": "history/address, tagged [unverified]: 'THE WATERTOWN / CAMBRIDGE DISCREPANCY IS NOT RESOLVED BY THE SOURCES. Two primary streams disagree and both are internally consistent: every piece of paper says Watertown, every panel says Cambridge. Wikipedia asserts Cambridge, Massachusetts, later in Watertown, Massachusetts but attaches NO citation to that ordering - it is an uncited editorial claim, not evidence.' Supported by the [verified] claim 'No Watertown-legend panel has been found.'",
+      "correction": "The second half is FALSE. A MINIVAC panel DOES say Watertown. The MINIVAC 6010 on exhibit at the MIT Museum carries the legend 'Scientific Development Corporation, Watertown, Massachusetts. Made in U. S. A. Patents applied for.' in small type directly beneath the 'Minivac 6010' logotype - the identical layout to the 601's plate, with Watertown where the 601 reads Cambridge. The finder downloaded this photograph, tagged it [verified], and declared reading it 'out of my topic' - while simultaneously asserting a universal over panels that the photograph refutes.",
+      "evidence": "raw/photos/commons-minivac6010-mit-museum.jpg (5161x2759, CC0), full-resolution crop of the logo plate. Cross-checked against a full-resolution crop of the 601 plate in raw/photos/commons-minivac601-main.jpg, which reads 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.'",
+      "consequence": "The corrected picture is: 601 panels (two units read) = Cambridge; 6010 panel (1962, one unit read) = Watertown; ALL paper 1961 and 1962 (Books I-VI, Book VII, errata, maintenance manual) = Watertown. That is consistent with Cambridge being the earlier address, which is what Wikipedia's uncited infobox says. This is corroboration of the ordering, NOT proof: the 601 silkscreen could equally have been cut in Cambridge and reused unchanged after a move. Still not settled - but it is no longer 'every panel says Cambridge'.",
+      "tag": "[verified] for the 6010 legend reading; [likely] for the Cambridge-then-Watertown ordering it corroborates"
+    },
+    {
+      "id": "R4",
+      "severity": "high",
+      "claim_as_written": "transcriptions.errata_full_text.note: 'The complete errata sheet is transcribed verbatim in raw/pdf/minivac601-errata.txt (pdftotext -layout, 18 KB). It is short, dense and almost entirely load-bearing. It is NOT reproduced inline here because the text file is the pristine capture; read it directly.'",
+      "correction": "FALSE and actively dangerous for this project. errata.txt / minivac601-errata.txt is a pdftotext -layout extraction of a TWO-COLUMN sheet. It interleaves the two columns line by line, it DROPS 12 of the 48 connections in the alternate three-bit binary counter program, and it CORRUPTS terminal letters in two of the 36 it does keep. Terminal letters are exactly the payload this project cannot afford to lose.",
+      "evidence": "errata.txt lines 103-113 contain only 9 rows x 4 columns = 36 connections. The rendered page image of errata sheet page 2 shows a 4-column x 12-row table = 48 connections. Corruptions in the .txt: printed '1F/1H' appears as 'IF/TH'; printed '1G/1+' appears as 'lG/l-f'. Missing entirely from the .txt: 1J/2H, 2A/4E, 2B/3B, 3F/3H, 3F/4F, 3G/3+, 5B/6B, 5C/6C, 5E/6G, 6H/6X, 6L/6-, 6Y/6+.",
+      "action": "Never build an errata-corrected test vector from errata.txt. Use the page images. The corrected full listing is transcribed in this file under transcriptions.errata_alternate_three_bit_counter.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R5",
+      "severity": "medium",
+      "claim_as_written": "Two errata sheet-page citations. (a) technical/relay-lamp-series cites 'Errata sheet, page 3, BOOK IV / page 72 note'. (b) technical/rotary cites 'Errata sheet, page 4, page 11: Experiment 9 note' for the wiper dead zone.",
+      "correction": "Both are off by one. The BOOK IV page-72 note and the THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT figure and its 48-connection program are on errata SHEET PAGE 2. The BOOK V page-11 'elevator gets stuck between D6 and D7' note is on errata SHEET PAGE 3. The errata sheet is 4 pages; sheet page 1 is the masthead plus the general notes plus BOOK I and the start of BOOK II.",
+      "evidence": "errata.pdf rendered page by page: page 2 carries BOOK III pp.38-62 in its left column and BOOK IV pp.69-72 plus the counter figure and program in its right column; page 3 carries BOOK IV pp.73-83 and BOOK V pp.2-25.",
+      "note": "The QUOTED TEXT of both notes is verbatim correct. Only the page numbers are wrong.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R6",
+      "severity": "medium",
+      "claim_as_written": "history/shannon [verified]: 'Across all six books the name Shannon appears exactly once' ... 'Verified by exhaustive grep for shannon across book1.txt, book2-3-4.txt and book5-6.txt - zero hits in Books I, V and VI.'",
+      "correction": "Two problems. (1) The name appears TWICE, in two consecutive sentences of one passage: 'first suggested in 1938 by Dr. Claude Shannon of the Massachusetts Institute of Technology. It was Dr. Shannon's original development work which led to the MINIVAC 601.' One passage, two occurrences. (2) The stated METHOD does not support the stated confidence. A naive grep is unsound on this OCR: `grep -i watertown book1.txt` returns ZERO hits even though Book I's copyright page carries '372 Main Street, Watertown, Massachusetts' - the OCR renders it 'W atertow n'. Any absence conclusion drawn from a plain grep over these files is unsafe.",
+      "evidence": "book2-3-4.txt lines 2205-2206. Re-ran the search whitespace-stripped (`tr -d ' \\t'`) and hyphen/newline-joined across all six local .txt files: still zero Shannon hits outside Book III. So the CONCLUSION survives - but only after a method the finder did not use.",
+      "note": "The substance of the finding (the manuals credit lineage from the 1938 thesis, not authorship) is correct and important. The count and the method are not.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R7",
+      "severity": "medium",
+      "claim_as_written": "artifacts/variants [verified]: 'No panel variant of any kind was found. TWO independently photographed units carry an identical logo plate, identical band layout and identical sub-panel arrangement.' And history/address [verified]: 'I confirmed this on TWO INDEPENDENT UNITS.'",
+      "correction": "An undercount, and a [verified] universal asserted over evidence the finder had and did not open. A THIRD 601 was already on disk - raw/photos/commons-minivac601-DSCF1392.jpg, which the finder acquired and labelled '[verified] (file acquired; contents not yet fully read)'. I opened it. It is the Centre for Computing History unit in its display case (the CCH 1961 interpretation card is in frame). Its band layout and sub-panel arrangement DO match. Its logo-plate fine print is NOT legible at that camera angle, so it does not add a third independent Cambridge reading.",
+      "evidence": "raw/photos/commons-minivac601-DSCF1392.jpg downsampled to 1500x996 and read.",
+      "note": "Also unrecorded: the console frame reads teal/blue-green on the Wikimedia 'Autopilot' unit and on raw/prebrief/images/image_3.jpg, and near-black on the CCH unit's photograph. Almost certainly lighting and a dark display plinth, not a variant - but a [verified] claim of 'identical' should have recorded the observation rather than omitted it.",
+      "tag": "[verified] that a third unit was on disk and unexamined; [unverified] as to whether the frame-colour difference means anything"
+    },
+    {
+      "id": "R8",
+      "severity": "low",
+      "claim_as_written": "acquisitions.provenance_of_the_scans [verified]: 'all_five_originals_in_the_item: 1961-minivac601-book1.pdf (1714771 B) ...'",
+      "correction": "The archive.org book1 PDF is NOT the publisher original, and it is NOT the file we hold. Our local raw/pdf/book1.pdf is 1,707,863 B, md5 b25e4dcb50071d1e047eeae33d737eb7. The archive.org copy is 1,714,771 B, md5 984a7035c6e1d049a76c1f188ee9b55c - a different file, re-derived by the Internet Archive. Our local book1.pdf is byte-identical to the ccapitalia publisher scan at https://www.ccapitalia.net/descarga/docs/1961-minivac601-book1.pdf (fetched with a full browser UA: HTTP 200, 1,707,863 B, md5 b25e4dcb50071d1e047eeae33d737eb7).",
+      "evidence": "md5 of raw/pdf/book1.pdf, book2-3-4.pdf, book5-6.pdf against https://archive.org/metadata/1961Minivac601Book234. book2-3-4.pdf (e93e0924618ddc24b2af16820e02418b) and book5-6.pdf (485d742e52772c4c44d4324de1eaab7b) DO match the archive item exactly. Only book1 differs.",
+      "note": "Calling the archive.org file set 'the five originals' is wrong for Book I. ccapitalia is the origin; archive.org is a mirror with at least one re-processed file. Consequence: page-count and page-offset arithmetic derived from one book1 file should not be assumed to hold for the other.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R9",
+      "severity": "low",
+      "claim_as_written": "technical/power-supply [verified]: 'A circuit breaker is in series on the rail from the transformer, and the power light sits across the DC output.'",
+      "correction": "Imprecise in a way that matters if anyone models it. From the figure, the circuit breaker is in the TRANSFORMER CENTRE-TAP rail - the yellow wire, i.e. the NEGATIVE rail - between the centre tap and the node that feeds both the power light and the '-' output terminal. It is not in the rectifier-output (+) rail.",
+      "evidence": "raw/pdf/pages/maintenance/p-05.png read directly: the two yellow/black secondary leads go to the two diodes, whose junction rises to the '+' output; the yellow centre-tap wire runs along the bottom through the circuit-breaker gap to the '-' output, with the POWER LIGHT bridging + to that bottom rail downstream of the breaker. Confirmed by the manual's own step 9 text, which names the breaker's two terminals as 'the circuit breaker terminal which leads to the transformer' and 'the circuit breaker terminal which leads to the power light' (Maintenance Manual printed p.4).",
+      "note": "Everything else in that claim - the nine printed labels, the two-diode centre-tapped full-wave topology, the absence of any filter capacitor in the drawing - is confirmed exactly as written.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "R10",
+      "severity": "low",
+      "claim_as_written": "Repeated throughout: 'the six-book set', 'all six books', 'Books I-VI'.",
+      "correction": "The SDC documentation set is larger. It is at minimum: Books I-VI (Aug 1961), the Maintenance Manual, the 'Notes and Corrections' errata sheet, and Book VII, the MINIVAC 601/6010 Capacitor/Resistor Manual (copyright 1962). The errata sheet's own masthead says 'this sheet of notes and corrections to the six-book set of instruction manuals' - which is correct FOR THE ERRATA, written before or alongside Book VII, and should not be generalised into a claim that six is the whole set.",
+      "evidence": "errata.pdf sheet page 1 masthead, read from the rendered image. book7-capacitor-resistor.pdf cover.",
+      "tag": "[verified]"
+    }
+  ],
+
+  "downgraded": [
+    {
+      "id": "D1",
+      "claim": "technical/slide-switch, tagged [verified]: 'SLIDE SWITCH TERMINALS AND POLARITY. Six terminals per slide switch, lettered R, S, T (first pole) and U, V, W (second pole). S and V are the COMMONS. RIGHT closes S-T and V-W; LEFT closes S-R and V-U.'",
+      "why_downgraded": "The FACT is right - see U1, where I upgrade it on better evidence. The TAG was wrong for the evidence cited. The finder's citation is a scanned-figure reading plus a two-step derivation from a caption, and its own note concedes 'The LEFT/RIGHT-to-throw mapping is my reading of a scanned figure plus its caption text; it is corroborated but a geometry agent should confirm against Book I's own slide-switch page before it is frozen into the model.' A claim its author says needs confirming is not [verified]. This is the pattern the review was looking for: inference dressed as [verified].",
+      "new_tag_for_the_evidence_as_cited": "[likely]",
+      "but_see": "U1 - the claim is independently [verified] from a page the finder did not read."
+    },
+    {
+      "id": "D2",
+      "claim": "history/address, tagged [verified]: 'Every printed SDC document I hold gives the same address: 372 Main Street, Watertown, Massachusetts.'",
+      "why_downgraded": "Still true, and it survives the addition of Book VII (whose back cover also reads 372 Main Street, Watertown, Massachusetts, in 1962). But the set 'every printed SDC document I hold' was smaller than the set actually on disk, so the universal was asserted over an incomplete census. Restate it as an enumeration, not a universal.",
+      "corrected_enumeration": "Watertown, 372 Main Street appears on: Book I copyright page and back cover; Books II-IV copyright page and back cover; Books V-VI copyright page and back cover; Book VII back cover (1962); the errata sheet masthead and footer; the Maintenance Manual title page; and the Maintenance Manual spare-parts order block, which uniquely adds the pre-ZIP postal zone 'Watertown 72, Massachusetts'.",
+      "new_tag": "[verified] as an enumeration"
+    },
+    {
+      "id": "D3",
+      "claim": "acquisitions.still_missing_after_the_hunt: 'Relay coil resistance / pull-in and drop-out voltages, and lamp current. The maintenance manual gives ratings for the supply, switches and contacts but not for coils or lamps.' Repeated in not_settled.",
+      "why_downgraded": "The numeric values are indeed still missing, so the item stands. But it is now only half true as a statement about the primary record. Book VII devotes its opening section to exactly this and states a first-order QUALITATIVE fact the finder listed as unavailable: 'The voltage at which a relay turns on is called the pull-in voltage; the voltage at which a relay turns off is called the [drop-out] voltage. The MINIVAC's relays are deliberately [designed] so that there is a great [difference] between the pull-in and drop-out voltages.' Book VII then gives an owner-run procedure to determine a per-relay bias resistance, with a blank chart for relays 1-6 - which tells you the value is unit-to-unit variable and was never published.",
+      "new_tag": "[verified] that Book VII establishes the deliberate wide pull-in/drop-out hysteresis; [verified] that no numeric coil or lamp values appear in any primary document now on disk",
+      "citation": "raw/pdf/book7-capacitor-resistor.pdf, 'The Use of Resistors' section (text at book7-capacitor-resistor.txt lines 54-140). NOTE: this PDF's OCR text layer is badly damaged; the sentences above are reconstructed from a mangled extraction and the bracketed words are my reading. Confirm against the page image or the 139 MB high-resolution scan before quoting."
+    },
+    {
+      "id": "D4",
+      "claim": "technical/relay, tagged [verified] with an [unverified] rider: 'EIGHT ELECTRICAL CONNECTIONS PER RELAY... Eight is consistent with a DPDT relay wired out as 2 coil + 2 common + 4 throw = 8. That decomposition is my inference, [unverified]; the count of eight is [verified].'",
+      "why_downgraded": "The tagging discipline here is correct and I am not refuting it. I am flagging that the inferred decomposition is contradicted by what the panel actually shows, so it should not be carried forward even as an [unverified] guess. The panel photographs show, per relay section: a bracket labelled LIGHT over terminals C and E, a bracket labelled COIL over terminals E and F, and below the relay two rows lettered G H J and K L N under headings N.O. / ARM / N.C. That is a shared centre terminal E between the light pair and the coil pair, and two transfer contact sets - not '2 coil + 2 common + 4 throw'.",
+      "new_tag": "[verified] that the panel carries C, E, F under LIGHT/COIL and G H J / K L N under N.O./ARM/N.C.; the 8-wire decomposition remains [unverified] and belongs to the relay agent",
+      "citation": "raw/prebrief/images/image_3.jpg and raw/photos/commons-minivac601-main.jpg, STORAGE/PROCESSING band. Book VII's prose independently references 'the normally-open contact - either G and H or K and [L]' and 'both contacts (G, H and J and K, L, and N)', but its OCR is unreliable on exactly these letters and I did not open the Book VII page image."
+    },
+    {
+      "id": "D5",
+      "claim": "artifacts/museum [likely] (CHM): includes 'The Wikipedia dimensions field (5 1/8 x 24 x 13 1/4 in) is sourced to this same CHM record.'",
+      "why_downgraded": "Correct about Wikipedia's sourcing, but the live CHM catalog record I fetched exposes no dimensions field at all - only a weight of 10 lb. And Wikipedia's own infobox gives weight = 9 kg (about 20 lb), which contradicts the CHM 10 lb it otherwise leans on. The finder repeated the CHM figure without noticing the conflict.",
+      "new_tag": "[likely] for the CHM record contents; [unverified] for any dimension or weight figure until one primary measurement exists"
+    },
+    {
+      "id": "D6",
+      "claim": "acquisitions 'canonical_url_verified: HTTP 200 ... NOTE: ccapitalia.net 403s a bare curl; it requires a browser User-Agent.'",
+      "why_downgraded": "Not downgraded on substance - it reproduces. Recorded because the reproduction is fragile and the note undersells it. A short UA string ('Mozilla/5.0' alone) still gets 403. A full Chrome UA gets HTTP 200 and the exact byte counts claimed (erratas.pdf 140,730 B; maintenance-manual.pdf 231,416 B; book1.pdf 1,707,863 B). Separately, https://www.ccapitalia.net/?p=1257 currently serves a CloudLinux 'Test Page for the HTTP Server' to some requests, so the site is not reliably up. Mirror anything still wanted from it now.",
+      "new_tag": "[verified] with a reproduction caveat"
+    }
+  ],
+
+  "upgraded": [
+    {
+      "id": "U1",
+      "claim": "Slide-switch throw mapping and terminal lettering.",
+      "upgrade": "Book I states it verbatim on printed page 18 (PDF page 20 of book1.pdf), section 6, SLIDE SWITCHES. This is the authoritative primary statement and it is stronger than anything the finder cited. Exact wording: 'When the switch is pushed to the left, separate electrical connections are made between terminals S and R and between terminals V and U:' / 'When the switch is pushed to the right, separate electrical connections are made between terminals S and T and between terminals V and W:' with the parenthetical '(The two sets of terminals R, S, T, and U, V, W, always work together.)' The same page also states: 'Six identical slide switches labeled Secondary Storage are used by MINIVAC 601 for manual storage of data... Each switch has two sets of contacts which open and close together.' and 'Each of the six slide switches has six terminals located directly above it on the computer panel. These terminals are connected underneath the panel to the slide switch contacts. The terminals are labeled R,S,T, U,V,W, and are connected in the same manner for all six switches. Each switch is identified by its section number.'",
+      "citation": "Book I, printed page 18; raw/pdf/pages/book1/p-20.png, read visually.",
+      "tag": "[verified]",
+      "note": "The finder never cited this page. It cited the Maintenance Manual figure and a Book I program listing instead, and hedged. The finder's Book I cross-check ('1A/1R  2A/1W' with '1S/1+' and '1V/1S') is Experiment 10 on the FACING page, printed page 19 - and it is consistent: LEFT closes S-R, lighting light 1 through 1R, while V-W is open so light 2 on 1W stays off, exactly as the experiment's step 3 describes."
+    },
+    {
+      "id": "U2",
+      "claim": "history/spare-parts-pricing, tagged [likely] 'only for the two prices the OCR mangled'.",
+      "upgrade": "[likely] -> [verified]. I read raw/pdf/pages/maintenance/p-13.png directly. All twelve rows resolve unambiguously. The two OCR casualties are Circuit Breaker 1.00 (OCR 'T.00') and Transformer 10.00 (OCR 'io.oo'). Every part number, description and price in the finder's transcription matches the page exactly, as does the order address block, the 25-cent handling charge, and the previous owner's pencil arithmetic below the rule ('6 1.25 / 2.50 / 6 3.75'). No hallucinated row, no missing row.",
+      "citation": "MINIVAC 601 Maintenance Manual, printed page 11; raw/pdf/pages/maintenance/p-13.png.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "U3",
+      "claim": "technical/rotary-motor: rotary switch motor drive topology.",
+      "upgrade": "Confirmed exactly as the finder described, from the page image. The drawing: D17 (top) runs right to a node from which a resistor descends to the bottom rail; D18 (middle) runs right, and from that rail BOTH the MOTOR and a second resistor descend in parallel to the bottom rail; D19 (bottom) is the bottom rail. The 'RESISTORS' callout has an arrow to each of the two zigzags. Printed labels, verbatim: 'D 17', 'RUN', 'D 18', 'STOP', 'MOTOR', 'D 19', 'RESISTORS'. No values printed. Caption: 'Circuit Diagram - Rotary Switch Motor Drive'. Printed page 9.",
+      "citation": "raw/pdf/pages/maintenance/p-11.png.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "U4",
+      "claim": "transcriptions.slide_switch_check_diagram: the figure's wiring.",
+      "upgrade": "Confirmed exactly. The figure's top row reads, left to right: 1A (lamp) 1B, 1-, 2A (lamp) 2B, 2-, 3A (lamp) 3B, 3-, 4A (lamp) 4B, 4-. Descending wires connect T->1A, R->2A, W->3A, U->4A. Two '+' terminals feed S and V. Pole 1 pivots at S between T (upper) and R (lower); pole 2 pivots at V between W (upper) and U (lower). The finder's reading is correct in every particular. Printed page 8.",
+      "citation": "raw/pdf/pages/maintenance/p-10.png.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "U5",
+      "claim": "The errata's alternate three-bit binary counter is a '48-connection alternate program listing'.",
+      "upgrade": "Confirmed: exactly 48, laid out 4 columns x 12 rows. Full listing transcribed from the page image in this file (transcriptions.errata_alternate_three_bit_counter). The accompanying figure is captioned 'THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT / (Middle Stage Only)'.",
+      "citation": "errata sheet page 2, rendered at 170 dpi.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "U6",
+      "claim": "The Shannon passage is on Book III printed page 44.",
+      "upgrade": "Confirmed by printed-page-number sweep, not by line offset: book2-3-4.pdf PDF page 49 ends with printed footer '43', PDF page 50 (which contains the passage) ends '44', PDF page 51 ends '45'.",
+      "citation": "book2-3-4.pdf, per-page pdftotext.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "U7",
+      "claim": "technical/rotary: D0-D15 dial positions, D16 arm, D17/D18 RUN, D18/D19 STOP with D18 shared.",
+      "upgrade": "Independently confirmed on the PANEL as well as in the text, which the finder did not do. The DECIMAL INPUT-OUTPUT sub-panel carries, down its left edge: '16 / ARM', then '17', then a bracket labelled RUN spanning 17 and 18, then '18', then a bracket labelled STOP spanning 18 and 19, then '19'. The bracket geometry on the panel is the physical statement of the shared D18. The dial itself is numbered 0 at top and 1-15 clockwise.",
+      "citation": "raw/prebrief/images/image_3.jpg, DECIMAL INPUT-OUTPUT sub-panel, read visually. Text side: Maintenance Manual printed pages 9-10.",
+      "tag": "[verified]"
+    },
+    {
+      "id": "U8",
+      "claim": "artifacts/museum (CHM), tagged [likely].",
+      "upgrade": "Every field reproduces verbatim against the live catalog record: Title 'MINIVAC 601'; Manufacturer 'Scientific Development Corporation'; Place of Manufacture 'Watertown, MA'; Date 'ca. 1963 (Made)'; Catalog Number 102622941; Accession X2079.2001; Credit Line 'Gift of Gene Mandel'; Serial Number 1886; Weight 10 (lb); Description 'minivac, original cardboard box, 3 bags of jumper cables, 6 electrolitic capacitors', owner identification 'Stamped inside the box lid'. Remains [likely] under this project's tag scheme (a museum catalogue record is not a manual page or a panel photograph), but it is now a checked [likely].",
+      "citation": "https://www.computerhistory.org/collections/catalog/102622941 fetched 2026-08-30.",
+      "tag": "[likely], verified against source"
+    },
+    {
+      "id": "U9",
+      "claim": "The whole emulators/sadetsky block.",
+      "upgrade": "Every quotation attributed to Greg Sadetsky reproduces verbatim in Hacker News item 45950396, read via the Algolia API. Specifically confirmed: the Circuit Sandbox quote in full; 'The relay click sound you're hearing should only happen when a relay turns on, and when it turns off. There is no sound when a button is pressed'; 'I'm using (gasp) not the original Minivac Relay sound'; '((Once/if I get to see a Minivac in real life, I may learn that buttons do make sounds..))'; the share-URL form 'https://minivac.greg.technology/simulator/#wires=1%2B%2F1C%2...' (HN truncates the tail, but the fragment scheme and the slash shorthand are visible); 'One of the crucial things I didn't get to yet is making that wheel controllable - some circuits in the manuals do require you to turn it. That's high in the todo list (with mobile support)'; and the request to a collector to help 'figure out some specifics about the motor wheel (its speed and whether it experiences any speed up)'. Also confirmed: user 'anonzzzies' - 'I have a stack of these... they still work (they are fairly easy to fix)'; user 'mrandish' - 'I saw one on the Vintage Computer Federation forums offered in 2021 for $500.' No source code was accessed at any point in this verification.",
+      "citation": "https://hn.algolia.com/api/v1/items/45950396, fetched 2026-08-30.",
+      "tag": "[likely] -> [likely], every quotation checked at source"
+    },
+    {
+      "id": "U10",
+      "claim": "The errata's two load-bearing general notes (single global power net; commons as free junctions).",
+      "upgrade": "Both confirmed from the rendered page image of errata sheet page 1, not just from OCR. Verbatim: 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.' and 'In addition to those terminals specifically marked \"common,\" common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.' The masthead reads: 'In response to questions from MINIVAC owners, Scientific Development Corporation has prepared this sheet of notes and corrections to the six-book set of instruction manuals. Should you have any questions which are not answered here, please do not hesitate to contact us at 372 Main Street, Watertown, Massachusetts.'",
+      "caveat": "In my rendered crop the numeral before 'at M10' fell just outside the frame. The word 'six' there is from the OCR only. Everything else on the passage is read from the image. Re-crop errata page 1 left column if that count is about to become load-bearing.",
+      "citation": "errata.pdf sheet page 1, rendered at 175 dpi.",
+      "tag": "[verified] except the 'six at M10' numeral, which is [likely]"
+    }
+  ],
+
+  "missed": [
+    {
+      "id": "M1",
+      "severity": "high",
+      "what": "BOOK VII - MINIVAC 601/6010 CAPACITOR/RESISTOR MANUAL, Scientific Development Corporation, copyright 1962, 55 pages. Already on disk at raw/pdf/book7-capacitor-resistor.pdf twelve minutes before find-context.json was written. Source: archive.org item book-vii_202512.",
+      "why_it_matters": "It is the seventh SDC manual, it is the only primary document that names the 6010, and it introduces programming constructs absent from Books I-VI: capacitor terminals used in programs as '1cap', '2cap', '1cap/D16'; bias resistors written as an omega with a relay subscript (transcribed in the OCR as Q_B1 ... Q_B6) and used as a two-connection program instruction; and a full automatic-counter program driven from the rotary switch. Its cover blurb: 'Creative circuits, expanded arithmetic capabilities and more sophisticated programs using capacitors and resistors.'",
+      "also": "A far better scan of the same document exists in the same item: 'Book VII.pdf', 139,626,576 B, md5 d9953e46808f3435ed03782eecb57e2c. The 4 MB copy on disk is the Internet Archive '_text' derivative and its OCR text layer is severely damaged - the cover page alone garbles the title as 'Minivac 601/60}0'. Acquire the large scan before mining Book VII for terminal letters."
+    },
+    {
+      "id": "M2",
+      "severity": "high",
+      "what": "Book I, printed page 18: the explicit primary statement of slide-switch terminal lettering and throw mapping. See U1.",
+      "why_it_matters": "The finder built a [verified] claim out of a figure reading plus a derivation, and flagged in its own note that the authoritative page needed checking - while the authoritative page was two pages away in a file it already had extracted."
+    },
+    {
+      "id": "M3",
+      "severity": "high",
+      "what": "The MINIVAC 6010 logo-plate legend reads Watertown. See R3.",
+      "why_it_matters": "The finder downloaded the photograph, tagged the acquisition [verified], and declined to read it as out of scope - having already asserted a universal over panels ('every panel says Cambridge') that reading it would have refuted. If you assert a universal over a class of artifact, you must open every artifact of that class you hold."
+    },
+    {
+      "id": "M4",
+      "severity": "medium",
+      "what": "Book VII's material bearing on the finder's own not_settled list: the deliberate wide pull-in/drop-out hysteresis of the MINIVAC relays; the per-relay bias-resistance determination procedure with its blank owner-filled chart; and 'Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor' - the only resistance figures in the whole primary record touching the rotary-switch motor circuit.",
+      "why_it_matters": "The finder listed all three as 'nothing found' and 'not settled'. They remain unsettled numerically, but the primary record has more to say about them than the finder recorded. Note the 15/22/33 ohm figures are for an EXTERNAL user-added patch resistor, NOT the two internal drive resistors - do not conflate them.",
+      "caveat": "All Book VII readings here come from a damaged OCR layer. Treat every one as [unverified] until read from a page image."
+    },
+    {
+      "id": "M5",
+      "severity": "low",
+      "what": "The provenance mismatch on Book I (R8): our local book1.pdf is the ccapitalia file, not the archive.org file, and the two are different bytes."
+    },
+    {
+      "id": "M6",
+      "severity": "low",
+      "what": "Wikipedia's infobox weight (9 kg, about 20 lb) contradicts the CHM record's 10 lb that the finder cited approvingly from the same page's reference. Neither is a measurement we can trace to a primary source."
+    },
+    {
+      "id": "M7",
+      "severity": "low",
+      "what": "Wikipedia's infobox also asserts 'developer = Claude Shannon' with no citation, in addition to the uncited manufacturer field the finder did flag. Same defect, same page, worth naming so nobody launders it back in."
+    }
+  ],
+
+  "confirmed_unchanged": [
+    "history/shannon: the Book III p.44 passage, quoted verbatim, is exactly as the finder gives it, and it is the only mention of Shannon in Books I-VI. Substance stands (see R6 for the count and the method).",
+    "history/authorship: 'The Minivac Manual was prepared and edited by the staff of Scientific Development Corporation' / 'First Printing - August, 1961' appears on the front matter of Book I (book1.txt:92-99), Books II-IV and Books V-VI. Confirmed.",
+    "history/sdc-staff: the errata's closing paragraph naming 'the Editor of the MINIVAC Manual: Linda G. Sprague' is verbatim correct, read on the rendered errata page.",
+    "history/address: 'Watertown 72, Massachusetts' on the Maintenance Manual spare-parts page, confirmed on the page image. The pre-ZIP postal-zone reading is sound.",
+    "technical/power-nets: the single global +/- net quotation is verbatim correct (see U10).",
+    "technical/commons: the commons-as-free-junctions quotation and the 1X/6A worked example are verbatim correct (see U10).",
+    "technical/relay-lamp-series: the Book IV p.72 note is quoted verbatim and correctly - only its sheet-page citation is wrong (R5). The 'by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably' wording is exact, and it is the single most important electrical fact in the file.",
+    "technical/rotary dead zone: the Book V p.11 'elevator' note is quoted verbatim and correctly - only its sheet-page citation is wrong (R5).",
+    "technical/power-supply ratings: all five quoted sentences from Maintenance Manual pp.1-2 are verbatim, including the 'berryllium copper' misspelling, which is the manual's own.",
+    "technical/relay: 'disconnect the eight connections to the relay' is verbatim, Maintenance Manual printed p.8, confirmed on the page image.",
+    "technical/panel construction details: all confirmed in the maintenance manual text.",
+    "technical/programming: the errata's power-off-while-wiring rule, the circuit-breaker-after-correcting rule, the run-it-slowly note and the relay-arms-fouled-by-short-wires note are all verbatim correct.",
+    "technical/errata-scope: every individual errata correction the finder quotes was checked against the rendered errata pages and every one is exact - Book I p.13 'delete line connecting 1B and 2B'; Book I p.24 'change 6Y to 6V'; Book II p.11 'change 1A/1C to 1A/1G; delete 1A/1C connection on circuit diagram'; Book II p.14 'change 2Z/2C to 2X/2C'; Book III p.43 'change 2+/2H to 1G/2H'; Book III p.46 complementarity laws; Book III p.54 'change 5V/45 to 5V/4S'; Book III p.59 'change 1R, 1S, 1T on far right slide switch to 3R, 3S, 3T'.",
+    "The action item 'every program listing taken from the six books must be errata-corrected before it is used as a test vector' is correct and should be carried forward verbatim - with R4 attached, because the errata .txt cannot be used to do it.",
+    "The Gardi-replica findings, including the critical 'I don't have a vintage unit so this replica has been constructed based on photos and from the original manuals' caveat and the solenoid-clutch warning, are consistent with the sources cited and I found nothing to contradict them. Not independently re-fetched.",
+    "The entire oracle-only compliance posture. Nothing in the reviewed file quotes or paraphrases emulator source. This verification pass likewise touched no emulator source: no repository file, no bundle, no script from minivac.greg.technology, and nothing from github.com/jkoets/Minivac-601-Emulator."
+  ],
+
+  "transcriptions": {
+    "errata_alternate_three_bit_counter": {
+      "source": "MINIVAC 601 'Notes and Corrections to the Minivac Manual' errata sheet, SHEET PAGE 2 (not page 3 as the reviewed file states), right column, under 'BOOK IV / page 72'. Read from a 170 dpi rendering of errata.pdf page 2.",
+      "figure_caption": "THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT / (Middle Stage Only)",
+      "heading": "Program for alternate counter:",
+      "layout": "4 columns x 12 rows, read column by column",
+      "count": 48,
+      "column_1": ["1A/2E","1B/1C","1B/2B","1C/2C","1E/2G","1F/2F","1F/1H","1G/1+","1H/4A","1J/2H","2A/4E","2B/3B"],
+      "column_2": ["2C/2-","2E/2J","2G/2N","2H/3L","2L/2-","3A/6E","3B/4B","3C/4C","3E/4G","3F/3H","3F/4F","3G/3+"],
+      "column_3": ["3H/5A","3J/4H","3N/4N","4B/5B","4C/4-","4E/4J","4G/4N","4H/5L","4L/4-","5B/6B","5C/6C","5E/6G"],
+      "column_4": ["5F/6F","5F/5H","5G/5+","5H/6A","5J/6H","5N/6N","6C/6-","6E/6J","6G/6N","6H/6X","6L/6-","6Y/6+"],
+      "procedure_note_verbatim": "Procedure: Use the procedure on page 72 of Book IV. When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter.",
+      "figure_labels_read_from_the_drawing": ["2A","2B","-","5A","5B","-","3C","3E","3F","4-","4C","4E","4F","3J","4J","3G","3+","TO 5L (CARRY IN)","4H","4G","3H","3N","4N","TO 2H (CARRY OUT)","3L","3K","4-","4L","4K"],
+      "universal_counter_modification_verbatim": {
+        "context": "errata sheet page 3, under 'page 73: Experiment 2 ... Experiment 3 - If you used the alternate circuit for experiments 1 and 2, use it for this experiment as well. To modify the alternate circuit for a universal counter, make the following changes:'",
+        "remove": ["3N/4N","5N/6N"],
+        "add": ["3K/4V","5K/6V","3N/4S","5N/6S","4J/4W","6J/6W","4N/4R","6N/6R"],
+        "then": "Follow the procedure on page 73 with this exception: the counter will count UP when BOTH slide switch 4 and slide switch 6 are LEFT; the counter will count DOWN when BOTH slide switch 4 and slide switch 6 are RIGHT."
+      },
+      "subtractor_modification_verbatim": {
+        "context": "errata sheet page 3, under 'page 79: Note on Experiment 7 - if you used the alternate circuit for the counter, make the following changes to the program for a three-bit subtractor'",
+        "remove": ["2C/2G","3C/3G","5C/6K","6C/6F","6F/M10"],
+        "add": ["2E/2G","3E/3G","5E/6K","6C/M10","6F/M+"]
+      },
+      "tag": "[verified]"
+    },
+    "book1_p18_slide_switches": {
+      "source": "Book I, 'Getting acquainted with Minivac 601', printed page 18 (PDF page 20). raw/pdf/pages/book1/p-20.png, read visually.",
+      "section_heading": "6  SLIDE SWITCHES",
+      "verbatim": [
+        "Six identical slide switches labeled \"Secondary Storage\" are used by MINIVAC 601 for manual storage of data and for other computer switching functions. Each switch has two sets of contacts which open and close together.",
+        "The slide switch is set to one of two positions by the computer operator, and it stays in that position until moved. The switch thus \"remembers\" its position and \"stores\" this information. The slide switch also provides a convenient means for changing circuits which are programmed on the computer, and it may be used for other computer switching functions as well.",
+        "Each of the six slide switches has six terminals located directly above it on the computer panel. These terminals are connected underneath the panel to the slide switch contacts. The terminals are labeled R,S,T, U,V,W, and are connected in the same manner for all six switches. Each switch is identified by its section number.",
+        "When the switch is pushed to the left, separate electrical connections are made between terminals S and R and between terminals V and U:",
+        "When the switch is pushed to the right, separate electrical connections are made between terminals S and T and between terminals V and W:",
+        "(The two sets of terminals R, S, T, and U, V, W, always work together.)"
+      ],
+      "figure_note": "Two schematics below the text, each showing R S T (left group) and U V W (right group) with the arm pivoting at S and at V. A bold arrow points LEFT under the first pair and RIGHT under the second.",
+      "tag": "[verified]"
+    },
+    "panel_logo_plates": {
+      "minivac_601": {
+        "logotype": "Minivac 601",
+        "fine_print_verbatim": "Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.",
+        "read_on": [
+          "raw/photos/commons-minivac601-main.jpg - full-resolution crop, entirely legible",
+          "raw/prebrief/images/image_3.jpg - legible at native 1536px"
+        ],
+        "not_legible_on": "raw/photos/commons-minivac601-DSCF1392.jpg (Centre for Computing History unit, oblique angle through a display case)",
+        "tag": "[verified]"
+      },
+      "minivac_6010_DELTA": {
+        "logotype": "Minivac 6010",
+        "fine_print_verbatim": "Scientific Development Corporation, Watertown, Massachusetts. Made in U. S. A. Patents applied for.",
+        "read_on": "raw/photos/commons-minivac6010-mit-museum.jpg - full-resolution crop, legible",
+        "note": "6010 ONLY. Same plate layout, same trailing 'Made in U. S. A. Patents applied for.' Watertown where the 601 reads Cambridge.",
+        "tag": "[verified]"
+      }
+    },
+    "minivac_6010_panel_observations_DELTA": {
+      "scope": "6010 ONLY. Recorded because the reviewed file identified this comparison as the cheapest partial answer to its own open question and then did not make it. Whole-panel read at 1500px; NOT a substitute for a proper 6010 pass by the panel-geometry agent.",
+      "same_as_601": [
+        "Six horizontal bands in the same order: BINARY OUTPUT / a + and - strip / STORAGE-PROCESSING / a COMMON and CAPACITOR strip / SECONDARY STORAGE / BINARY INPUT.",
+        "Right-hand column carries, top to bottom: the logo plate, MATRIX (3x3 with 10 and 11 outside), POWER (circuit breaker), DECIMAL INPUT-OUTPUT with a 16-position dial.",
+        "Terminal lettering visible and unchanged: A / B on binary output; N.O. ARM N.C. over G H J and K L N on the relay sections; R S T over U V W on secondary storage; X Y Z on binary input; COMMON and CAPACITOR on the intermediate strip.",
+        "Six relay sections, six slide switches, six pushbuttons."
+      ],
+      "differs_from_601": [
+        "Case is dark metal, not the 601's blue-painted wooden console.",
+        "Relays carry clear plastic dust covers; the 601's relays are open.",
+        "Clear tubular patch-cord components (the resistor/capacitor cords) are plugged into the panel in the photograph - the physical accessory Book VII is written for."
+      ],
+      "not_settled_by_this": "Jack-hole counts per terminal, exact jack pitch, and any electrical difference. A panel-geometry pass on the full-resolution 6010 image would settle the first two.",
+      "tag": "[verified] for the observations listed; [unverified] for any inference about internal equivalence"
+    }
+  },
+
+  "still_not_settled": [
+    {
+      "question": "Watertown vs Cambridge.",
+      "status_after_this_pass": "MOVED, not settled. 601 panels read Cambridge; the 6010 panel (1962) reads Watertown; all paper from 1961 and 1962 reads Watertown. Consistent with Cambridge-then-Watertown, which is what Wikipedia's uncited infobox says - but a silkscreen reused after a move would produce the same pattern.",
+      "what_would_settle_it": "A MINIVAC trademark registration (owner address of record plus first-use-in-commerce date); a Massachusetts corporate registration for Scientific Development Corporation 1960-63; a Cambridge or Boston city directory entry for the same years; or any dated advertisement carrying a Cambridge address. Additional cheap step the finder did not take: read the logo plate on every further 601 photograph that surfaces, and look for a 601 unit whose plate reads Watertown - one would settle the direction immediately."
+    },
+    {
+      "question": "Are the 601 and 6010 electrically identical?",
+      "status_after_this_pass": "Still open, but the 'no 6010 document exists' framing is gone. Book VII is a joint 601/6010 manual, and the 6010 panel photograph shows the same six bands and the same terminal lettering. What is missing is a 6010 schematic or parts list.",
+      "what_would_settle_it": "A 6010 maintenance manual. Failing that, a full-resolution jack-by-jack comparison of the MIT Museum 6010 photograph against the 601 photographs."
+    },
+    {
+      "question": "Internal resistor values in the rotary-switch motor drive; motor RPM and spin-up.",
+      "status_after_this_pass": "Unchanged. Book VII's '15, 22 or 33 ohm' figures are for an external user-added patch resistor and must not be read as the internal values. The maintenance manual's only characterisation of the internal pair remains 'The resistors should heat up in about 20 seconds.'",
+      "what_would_settle_it": "A measurement from a surviving unit, or a timed video of one running."
+    },
+    {
+      "question": "Relay coil resistance, pull-in and drop-out voltages, lamp current.",
+      "status_after_this_pass": "Numerically unchanged. Qualitatively advanced: Book VII states the relays are deliberately designed with a large gap between pull-in and drop-out, and treats per-relay bias resistance as a value the owner must measure - i.e. it was never a published constant.",
+      "what_would_settle_it": "Measurement from a surviving unit, or identification of the exact relay and lamp parts from an under-panel photograph."
+    },
+    {
+      "question": "How many holes does a terminal have, and which designations have more than two?",
+      "status_after_this_pass": "Unchanged and still fully answerable from the photographs already on disk. Belongs to the panel-geometry agent. Note that the 'six at M10' numeral in the errata should be confirmed from the page image, not from OCR.",
+      "what_would_settle_it": "A direct count from raw/photos/commons-minivac601-main.jpg at full resolution."
+    },
+    {
+      "question": "Whether a filter capacitor exists on the 12 V rail.",
+      "status_after_this_pass": "Unchanged. None drawn; a schematic omission is not proof of absence.",
+      "what_would_settle_it": "An under-chassis photograph of a surviving unit's power panel."
+    },
+    {
+      "question": "Whether Book VII was shipped with the 601, with the 6010, or sold separately with the capacitor/resistor accessory kit.",
+      "status_after_this_pass": "NEW open question, created by this pass. Its title covers both machines and its copyright is 1962, a year after Books I-VI. The 1961/62 errata sheet describes the manual as a 'six-book set', which suggests Book VII postdates it.",
+      "what_would_settle_it": "A period advertisement or price list for the capacitor/resistor kit; or a museum lot that records whether Book VII accompanied a 601 or a 6010."
+    }
+  ],
+
+  "sources_read_this_pass": [
+    "LOCAL PRIMARY - raw/pdf/book1.txt, book2-3-4.txt, book5-6.txt, errata.txt, maintenance-manual.txt, book7-capacitor-resistor.txt (targeted and whitespace-insensitive greps; per-page pdftotext sweeps)",
+    "LOCAL PRIMARY (page images) - maintenance p-05, p-10, p-11, p-13; book1 p-20; errata pages 1, 2 and 3 rendered fresh from errata.pdf",
+    "LOCAL PRIMARY (photographs) - raw/prebrief/images/image_3.jpg; raw/photos/commons-minivac601-main.jpg (whole panel + full-res logo crop); raw/photos/commons-minivac601-DSCF1392.jpg; raw/photos/commons-minivac6010-mit-museum.jpg (whole panel + full-res logo crop)",
+    "LOCAL PRIMARY (newly recognised) - raw/pdf/book7-capacitor-resistor.pdf, MINIVAC 601/6010 Capacitor/Resistor Manual, 1962",
+    "https://archive.org/metadata/1961Minivac601Book234 (full file manifest with md5s)",
+    "https://archive.org/metadata/book-vii_202512 (full file manifest with md5s, description, uploader, date)",
+    "https://archive.org/advancedsearch.php?q=minivac (complete result set, to test the 'only Minivac item' claim)",
+    "https://www.ccapitalia.net/descarga/docs/1961-minivac601-book1.pdf , -erratas.pdf , -maintenance-manual.pdf (HTTP status and byte counts with a full browser UA; book1 downloaded and md5'd)",
+    "https://www.computerhistory.org/collections/catalog/102622941 (live catalog record)",
+    "https://en.wikipedia.org/w/index.php?title=Minivac_601&action=raw (infobox reference structure)",
+    "https://hn.algolia.com/api/v1/items/45950396 (full comment tree, for the Sadetsky quotations)"
+  ],
+
+  "oracle_only_compliance": {
+    "statement": "No emulator source code was opened, fetched, cloned, read or quoted in this verification pass. No file from github.com/gregsadetsky/minivac, no asset or bundle from minivac.greg.technology, no file from github.com/jkoets/Minivac-601-Emulator, and nothing from Willy McAllister's circuit-sandbox. The only Sadetsky material read was the public Hacker News comment tree, retrieved as JSON from the Algolia API.",
+    "tag": "[verified]"
+  }
+}

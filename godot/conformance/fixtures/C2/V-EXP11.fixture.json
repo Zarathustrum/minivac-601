@@ -1,0 +1,1258 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP11",
+  "source": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1C/1-",
+    "1C/1H",
+    "1F/D0",
+    "1G/4B",
+    "2C/3C",
+    "2E/3E",
+    "2F/3F",
+    "2F/3G",
+    "2G/2N",
+    "2H/5G",
+    "2J/2K",
+    "2J/6E",
+    "2L/5J",
+    "2N/6G",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4J",
+    "3F/4G",
+    "3G/4A",
+    "3H/3+",
+    "3K/4E",
+    "3L/6K",
+    "3N/4F",
+    "4B/5B",
+    "4C/5C",
+    "4E/5E",
+    "4F/5F",
+    "4H/6N",
+    "5A/5K",
+    "5B/6B",
+    "5C/6C",
+    "5F/5K",
+    "5H/6T",
+    "5L/6H",
+    "6A/6F",
+    "6C/6-",
+    "6F/6G",
+    "6H/6+",
+    "6L/6W",
+    "6R/6U",
+    "6S/D1",
+    "6U/D18",
+    "6V/D2",
+    "D1/D3",
+    "D2/D4",
+    "D3/D5",
+    "D4/D6",
+    "D5/D7",
+    "D6/D8",
+    "D16/M+",
+    "D17/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1C/1-",
+    "1C/1H",
+    "1F/D0",
+    "1G/4B",
+    "2C/3C",
+    "2E/3E",
+    "2F/3F",
+    "2F/3G",
+    "2G/2N",
+    "2H/5G",
+    "2J/2K",
+    "2J/6E",
+    "2L/5J",
+    "2N/6G",
+    "3A/6E",
+    "3B/3-",
+    "3C/4C",
+    "3E/4J",
+    "3F/4G",
+    "3G/4A",
+    "3H/3+",
+    "3K/4E",
+    "3L/6K",
+    "3N/4F",
+    "4B/5B",
+    "4C/5C",
+    "4E/5E",
+    "4F/5F",
+    "4H/6N",
+    "5A/5K",
+    "5B/6B",
+    "5C/6C",
+    "5F/5K",
+    "5H/6T",
+    "5L/6H",
+    "6A/6F",
+    "6C/6-",
+    "6F/6G",
+    "6H/6+",
+    "6L/6W",
+    "6R/6U",
+    "6S/D1",
+    "6U/D18",
+    "6V/D2",
+    "D1/D3",
+    "D2/D4",
+    "D3/D5",
+    "D4/D6",
+    "D5/D7",
+    "D6/D8",
+    "D16/M+",
+    "D17/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 1 / Three-Bit Gray Code 001"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 2 / Three-Bit Gray Code 011"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 3 / Three-Bit Gray Code 010"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 4 / Three-Bit Gray Code 110"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 5 / Three-Bit Gray Code 111"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 6 / Three-Bit Gray Code 101"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 7 / Three-Bit Gray Code 100"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "BK5-6 printed p.14 = book5-6.pdf PDF p.20",
+      "quote": "Set slide switch 6 LEFT. The rotary switch will return to 0"
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.13-14 = book5-6.pdf PDF pp.19-20",
+      "quote": "[p.14:] Set slide switch 6 LEFT. The rotary switch will return to 0 and the number \"dialed\" will appear in Gray Code on output lights 4, 5, and 6. [p.13:] Decimal Number 8 / Three-Bit Gray Code 000"
+    }
+  ],
+  "digest": {
+    "eventCount": 937,
+    "moverTransitions": [
+      62,
+      20,
+      20,
+      28,
+      28,
+      48,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      32,
+      144
+    ]
+  },
+  "note": "Printed claims only (Phase 5 Step 6). Wire table image-read at 300 dpi from book5-6.pdf PDF p.19: all 52 lines match wiresPrinted. The errata sheet has no Book V page 13 or 14 entry, so wires = as_printed and errata_applied is empty. Script follows the printed procedure for each of the eight tabled numbers: with power off, slide switch 6 RIGHT, power on; turn the dial by hand to the number (one pad at a time, 1 s per pad, each target pointing directly at the pad, for \"slowly\"; dwell is a script choice), release the knob, set slide switch 6 LEFT; then the printed re-set (slide switch 6 RIGHT, power off and on) before the next number. Asserted, printed text only: the dial returns to 0 (until c0, then c0 again after a further 5 s, so the rest position is asserted, not a pass-through), and output lights 4, 5 and 6 show the tabled Gray code for the number dialed. The code digits are read onto lights 4, 5, 6 in the order the page lists them (\"on output lights 4, 5, and 6\"), 1 = ON and 0 = OFF. That is the manual's own printed display convention, Book IV printed p.72 = book2-3-4.pdf PDF p.78: \"Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001.\" All eight lamp expects rest on it: digit order matters for 1, 2, 4 and 7, and 1 = ON matters for all eight, palindromes included. The reading comes from printed text, not from the wiring (Step 7). Not asserted: output light 3 (\"should be ignored\"; it is lit after dialing 1 here); every lamp or relay state while dialing, after the re-set, and at power on (not printed); dial positions other than the tabled 1-8 (not printed). Start dial position c0 is the construction state, matching \"Set the rotary switch dial at 0\". Simulator dependency: the motor is fed only through pads D1..D8 (sw6 LEFT ties 6S and 6V to D18), so the drive is removed in every gap between pads on the return. The one-shot drive-removed coast (9.54 deg since 2026-10-14, set from printed bounds with this rest as the lower one; O-R5) carries the wiper across each gap (D8 down to D1, one tick each) and finally from D1 onto D0, where 1F/D0 pulls relay 1 and 1G grounds the common 4B/5B/6B so that lights 4-6 show the code. The printed rest on 0 holds only for coast_udeg_drive_removed strictly between the dead gap (5.625 deg at the shipped contact arc) and one pitch (22.5 deg): diagnosis-only sweep, 0/5/5.6/22.6 deg fail, 5.7-22.4 deg pass (O-R1, O-R5; consistent with the O-R14 bound of 13 deg or less). Trips the knife-edge trigger (minDecisionUa 9 / minTickGap 1); blessed under BLESS-ROBUSTNESS, all six perturbations held. minTickGap 1 is that one-shot coast jump, one tick in every gap on every return (first at c1 to gap to c0 after dialing 1, tick 17646; O-R13/O-R14); minDecisionUa 9 is relay 1 pull-in on the D0 arrival after dialing 1 (coil 1 in series with indicator lamp 1, 1F/D0 and 1C/1-, with relay 6 and lights 3 and 6 loading the supply); every other relay 1 pull-in has 180 uA or more. Rotary geometry, run rate and coast remain profile fallbacks O-R1, O-R3, O-R5."
+}

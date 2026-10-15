@@ -1,0 +1,96 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP14",
+  "source": "BK1 printed p.24 = book1.pdf PDF p.26; ERRATA sheet p.1 diagram-only 6Y-to-6V correction",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "6+/6R",
+    "6+/6W",
+    "6-/6T",
+    "6T/6U",
+    "6S/D18",
+    "6V/D17"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "6+/6R",
+    "6+/6W",
+    "6-/6T",
+    "6T/6U",
+    "6S/D18",
+    "6V/D17"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26",
+      "quote": "Turn power ON and notice the direction of rotation."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 8000,
+      "cite": "BK1 printed p.24 = book1.pdf PDF p.26",
+      "quote": "Change the position of switch 6. The motor reverses direction and the pointer knob turns in the opposite direction."
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    }
+  ],
+  "digest": {
+    "eventCount": 61,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      56
+    ]
+  },
+  "note": "Printed partial. The printed program already says 6V/D17, so ER-02 corrects only the circuit-diagram label and changes no wire. Script follows printed steps 4-5: power ON, then change the position of switch 6 once. The two until steps assert only that the pointer knob turns (step 4 'notice the direction of rotation'; step 5 'the pointer knob turns'): c8 after power-on and c0 after the switch are the positions half a revolution from the D0 construction start (not printed) and from the switch point, reached in either direction, so neither assert encodes a direction. The step-5 until checks only that the knob still turns after the switch: the same script with the switch command removed still passes it, so the printed reversal has no coverage here. Neither the direction for each switch position (not printed) nor the reversal itself is asserted: the fixture observables have no motor-direction field, and ordering dial positions inside a window would need the unprinted run rate. maxMs allows a 25 rpm run rate. Rotary geometry, run rate, coast, and fitted motor resistances remain profile fallbacks O-R1, O-R3, and O-R5."
+}

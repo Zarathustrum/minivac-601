@@ -1,0 +1,458 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP21",
+  "source": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E",
+    "1B/1-",
+    "2A/3E",
+    "2B/2-",
+    "2C/3C",
+    "2E/3G",
+    "2F/3F",
+    "2F/2H",
+    "2G/2+",
+    "2J/3H",
+    "2K/3N",
+    "2K/2-",
+    "2L/D17",
+    "2N/3K",
+    "3A/5E",
+    "3H/4F",
+    "3B/3-",
+    "3C/4C",
+    "3E/3J",
+    "3K/3+",
+    "3L/D18",
+    "4C/5C",
+    "4F/5K",
+    "4G/5E",
+    "4H/5H",
+    "5C/6E",
+    "5F/5G",
+    "5F/6G",
+    "5H/6H",
+    "5L/6J",
+    "6A/6V",
+    "6B/6-",
+    "6E/6-",
+    "6F/6U",
+    "6H/6+",
+    "6V/D16",
+    "M+/D1"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/2E",
+    "1B/1-",
+    "2A/3E",
+    "2B/2-",
+    "2C/3C",
+    "2E/3G",
+    "2F/3F",
+    "2F/2H",
+    "2G/2+",
+    "2J/3H",
+    "2K/3N",
+    "2K/2-",
+    "2L/D17",
+    "2N/3K",
+    "3A/5E",
+    "3H/4F",
+    "3B/3-",
+    "3C/4C",
+    "3E/3J",
+    "3K/3+",
+    "3L/D18",
+    "4C/5C",
+    "4F/5K",
+    "4G/5E",
+    "4H/5H",
+    "5C/6E",
+    "5F/5G",
+    "5F/6G",
+    "5H/6H",
+    "5L/6J",
+    "6A/6V",
+    "6B/6-",
+    "6E/6-",
+    "6F/6U",
+    "6H/6+",
+    "6V/D16",
+    "M+/D1"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41 (program list M+/D1 and its footnote); ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39",
+      "quote": "[p.35 program:] M+/D1, 2, etc.* [footnote:] * Connection can be made between M+ and any point on the rotary switch dial. [p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\""
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39",
+      "quote": "[p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.35:] When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan. [p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41 (program list M+/D1 and its footnote); ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39",
+      "quote": "[p.35 program:] M+/D1, 2, etc.* [footnote:] * Connection can be made between M+ and any point on the rotary switch dial. [p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\""
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39",
+      "quote": "[p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 36
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 37,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D5#1"
+        }
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). You may move the object signal by changing the connection on the rotary switch dial. [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed p.35 = book5-6.pdf PDF p.41; ERRATA sheet (errata.pdf p.4) Book V 'page 35' entry ER-39",
+      "quote": "[p.35:] Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). You may move the object signal by changing the connection on the rotary switch dial. [ER-39:] page 35: Last paragraph on page — third sentence should read: \"Light 6 will flash on whenever . . .\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal."
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 37
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 38,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "D9#1"
+        }
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial."
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5-6 printed pp.35-36 = book5-6.pdf PDF pp.41-42",
+      "quote": "[p.36:] Notice that the rotary switch oscillates about the object signal. If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal. It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+    }
+  ],
+  "digest": {
+    "eventCount": 2293,
+    "moverTransitions": [
+      0,
+      80,
+      80,
+      160,
+      160,
+      160,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      242
+    ]
+  },
+  "note": "Printed claims only (Step 6). Wires are the printed 37 (image-read against PDF p.41; the list matches programs.json), no wire erratum. ER-39 (ERRATA sheet errata.pdf p.4, Book V 'page 35') is prose only: the p.35 procedure's 'Light 3 will flash on whenever...' becomes 'Light 6 will flash on whenever...', so errata_applied is empty and the search-mode lamp asserted is output light 6; the uncorrected 'light 3' claim is superseded and not asserted (output light 3 stays dark in search mode in this simulator and lights only in track mode, consistent with ER-39). Script: slide switch 6 RIGHT, power on (search mode); two light-6 flashes, each asserted as light 6 ON while the dial is on the object-signal contact c1 (printed M+/D1) and then OFF, and between them the dial reaches c9 (p.35 \"constantly scans its environment\"; c9 is a script choice of a contact far from the object signal, which a dial tracking c1 never reaches); still in search mode the object signal is moved (p.35 \"You may move the object signal...\") by removing cord 36 (M+/D1) and plugging cord 37 M+#1/D5#1, and light 6 is asserted ON with the dial on c5 and then OFF; slide switch 6 LEFT (track mode); oscillation about c5; the object signal moved again by removing cord 37 and plugging cord 38 M+#1/D9#1 (D5 and D9 are script choices; the footnote allows any dial point); until c9 (finds the new location); oscillation about c9. 'Oscillates about the object signal' is asserted as three times leaving the contact (until gap) and returning to it within 1000 ms; 1000 ms is a script choice below one revolution at the profile run rate (1333 ms at 45 rpm, longer at any slower rate) and well above the reversal round trip at 25 rpm, so a dial that merely keeps rotating fails it. How far the dial overshoots before reversing (to c4/c6 about c5 and to c8/c10 about c9 here), the reversal direction, the track-mode lamp and relay states, and the search direction after the move are not printed and are not asserted. The 3000 ms advances before each oscillation check are settling windows, not source timing. Trips the knife-edge trigger (minDecisionUa 0 below the profile minimum 14); the bless gate's robustness check held all six perturbations. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5."
+}

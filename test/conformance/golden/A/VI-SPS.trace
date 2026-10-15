@@ -1,0 +1,252 @@
+#!mv601-trace 1
+# id=VI-SPS contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=41
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=19 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    60.1 > button1 target=1000
+    71.3 * pb1 nc->mid
+    73.8 * pb1 mid->no
+   205.0 > button5 target=1000
+   216.2 * pb5 nc->mid
+   218.7 * pb5 mid->no
+   228.6 * indLamp3 off->dim  indLamp4 off->dim
+   230.0 * relay3 nc->mid
+   230.2 * relay4 nc->mid
+   231.3 * relay3 mid->no
+   231.5 * relay4 mid->no
+   234.6 * outLamp1 off->dim
+   253.5 * outLamp1 dim->on
+   268.8 * indLamp3 dim->on  indLamp4 dim->on
+   328.9 ? outLamp1=on  "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Paper pushbutton 2 pushbutton 5 ... Scissors cut paper (scissors will win over paper) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 1 wins: light 1 comes on"
+   328.9 > button5 target=0
+   340.1 * pb5 no->mid
+   342.6 * pb5 mid->nc
+   344.8 * relay3 no->mid  relay4 no->mid
+   345.7 * relay3 mid->nc  relay4 mid->nc
+   350.1 * indLamp3 on->dim  indLamp4 on->dim
+   364.6 * outLamp1 on->dim
+   384.7 > button1 target=0
+   395.9 * pb1 no->mid
+   398.4 * pb1 mid->nc
+   405.7 * indLamp3 dim->off  indLamp4 dim->off
+   420.2 * outLamp1 dim->off
+   480.3 > button1 target=1000
+   491.5 * pb1 nc->mid
+   494.0 * pb1 mid->no
+   625.2 > button6 target=1000
+   636.4 * pb6 nc->mid
+   638.9 * pb6 mid->no
+   648.8 * indLamp5 off->dim  indLamp6 off->dim
+   650.6 * relay5 nc->mid
+   650.8 * relay6 nc->mid
+   651.9 * relay5 mid->no
+   652.1 * relay6 mid->no
+   655.4 * outLamp6 off->dim
+   674.3 * outLamp6 dim->on
+   689.0 * indLamp5 dim->on  indLamp6 dim->on
+   749.1 ? outLamp6=on  "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Stone pushbutton 3 pushbutton 6 ... Stone breaks scissors (stone will win over scissors) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 2 wins: light 6 comes on"
+   749.1 > button6 target=0
+   760.3 * pb6 no->mid
+   762.8 * pb6 mid->nc
+   764.9 * relay5 no->mid  relay6 no->mid
+   765.8 * relay5 mid->nc  relay6 mid->nc
+   770.3 * indLamp5 on->dim  indLamp6 on->dim
+   784.6 * outLamp6 on->dim
+   804.7 > button1 target=0
+   815.9 * pb1 no->mid
+   818.4 * pb1 mid->nc
+   825.9 * indLamp5 dim->off  indLamp6 dim->off
+   840.3 * outLamp6 dim->off
+   900.4 > button2 target=1000
+   911.6 * pb2 nc->mid
+   914.1 * pb2 mid->no
+  1045.3 > button6 target=1000
+  1056.5 * pb6 nc->mid
+  1059.0 * pb6 mid->no
+  1068.9 * indLamp5 off->dim  indLamp6 off->dim
+  1070.7 * relay5 nc->mid
+  1070.9 * relay6 nc->mid
+  1072.0 * relay5 mid->no
+  1072.2 * relay6 mid->no
+  1075.3 * outLamp1 off->dim
+  1094.2 * outLamp1 dim->on
+  1109.1 * indLamp5 dim->on  indLamp6 dim->on
+  1169.2 ? outLamp1=on  "Player 1 Player 2 ... Paper pushbutton 2 pushbutton 5 ... Stone pushbutton 3 pushbutton 6 ... Paper covers stone (paper will win over stone) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 1 wins: light 1 comes on"
+  1169.2 > button6 target=0
+  1180.4 * pb6 no->mid
+  1182.9 * pb6 mid->nc
+  1185.0 * relay5 no->mid  relay6 no->mid
+  1185.9 * relay5 mid->nc  relay6 mid->nc
+  1190.4 * indLamp5 on->dim  indLamp6 on->dim
+  1204.7 * outLamp1 on->dim
+  1224.8 > button2 target=0
+  1236.0 * pb2 no->mid
+  1238.5 * pb2 mid->nc
+  1246.0 * indLamp5 dim->off  indLamp6 dim->off
+  1260.4 * outLamp1 dim->off
+  1320.5 > button2 target=1000
+  1331.7 * pb2 nc->mid
+  1334.2 * pb2 mid->no
+  1465.4 > button4 target=1000
+  1476.6 * pb4 nc->mid
+  1479.1 * pb4 mid->no
+  1489.0 * indLamp1 off->dim  indLamp2 off->dim
+  1490.1 * relay1 nc->mid
+  1490.3 * relay2 nc->mid
+  1491.4 * relay1 mid->no
+  1491.6 * relay2 mid->no
+  1494.9 * outLamp6 off->dim
+  1513.8 * outLamp6 dim->on
+  1529.2 * indLamp1 dim->on  indLamp2 dim->on
+  1589.3 ? outLamp6=on  "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Paper pushbutton 2 pushbutton 5 ... Scissors cut paper (scissors will win over paper) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 2 wins: light 6 comes on"
+  1589.3 > button4 target=0
+  1600.5 * pb4 no->mid
+  1603.0 * pb4 mid->nc
+  1605.2 * relay2 no->mid
+  1605.3 * relay1 no->mid
+  1606.1 * relay2 mid->nc
+  1606.2 * relay1 mid->nc
+  1610.5 * indLamp1 on->dim  indLamp2 on->dim
+  1625.0 * outLamp6 on->dim
+  1645.1 > button2 target=0
+  1656.3 * pb2 no->mid
+  1658.8 * pb2 mid->nc
+  1666.1 * indLamp1 dim->off  indLamp2 dim->off
+  1680.6 * outLamp6 dim->off
+  1740.7 > button3 target=1000
+  1751.9 * pb3 nc->mid
+  1754.4 * pb3 mid->no
+  1885.6 > button4 target=1000
+  1896.8 * pb4 nc->mid
+  1899.3 * pb4 mid->no
+  1909.2 * indLamp1 off->dim  indLamp2 off->dim
+  1910.3 * relay1 nc->mid
+  1910.5 * relay2 nc->mid
+  1911.6 * relay1 mid->no
+  1911.8 * relay2 mid->no
+  1914.9 * outLamp1 off->dim
+  1933.8 * outLamp1 dim->on
+  1949.4 * indLamp1 dim->on  indLamp2 dim->on
+  2009.5 ? outLamp1=on  "Player 1 Player 2 ... Scissors pushbutton 1 pushbutton 4 ... Stone pushbutton 3 pushbutton 6 ... Stone breaks scissors (stone will win over scissors) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 1 wins: light 1 comes on"
+  2009.5 > button4 target=0
+  2020.7 * pb4 no->mid
+  2023.2 * pb4 mid->nc
+  2025.4 * relay2 no->mid
+  2025.5 * relay1 no->mid
+  2026.3 * relay2 mid->nc
+  2026.4 * relay1 mid->nc
+  2030.7 * indLamp1 on->dim  indLamp2 on->dim
+  2045.3 * outLamp1 on->dim
+  2065.4 > button3 target=0
+  2076.6 * pb3 no->mid
+  2079.1 * pb3 mid->nc
+  2086.3 * indLamp1 dim->off  indLamp2 dim->off
+  2100.9 * outLamp1 dim->off
+  2161.0 > button3 target=1000
+  2172.2 * pb3 nc->mid
+  2174.7 * pb3 mid->no
+  2305.9 > button5 target=1000
+  2317.1 * pb5 nc->mid
+  2319.6 * pb5 mid->no
+  2329.5 * indLamp3 off->dim  indLamp4 off->dim
+  2330.9 * relay3 nc->mid
+  2331.1 * relay4 nc->mid
+  2332.2 * relay3 mid->no
+  2332.4 * relay4 mid->no
+  2335.7 * outLamp6 off->dim
+  2354.6 * outLamp6 dim->on
+  2369.7 * indLamp3 dim->on  indLamp4 dim->on
+  2429.8 ? outLamp6=on  "Player 1 Player 2 ... Paper pushbutton 2 pushbutton 5 ... Stone pushbutton 3 pushbutton 6 ... Paper covers stone (paper will win over stone) ... After both players have indicated their moves, MINIVAC will indicate that: ... Player 2 wins: light 6 comes on"
+  2429.8 > button5 target=0
+  2441.0 * pb5 no->mid
+  2443.5 * pb5 mid->nc
+  2445.7 * relay3 no->mid  relay4 no->mid
+  2446.6 * relay3 mid->nc  relay4 mid->nc
+  2451.0 * indLamp3 on->dim  indLamp4 on->dim
+  2465.5 * outLamp6 on->dim
+  2485.6 > button3 target=0
+  2496.8 * pb3 no->mid
+  2499.3 * pb3 mid->nc
+  2506.6 * indLamp3 dim->off  indLamp4 dim->off
+  2521.1 * outLamp6 dim->off
+  2581.2 > button1 target=1000
+  2592.4 * pb1 nc->mid
+  2594.9 * pb1 mid->no
+  2726.1 > button4 target=1000
+  2737.3 * pb4 nc->mid
+  2739.8 * pb4 mid->no
+  2749.7 * indLamp1 off->dim  indLamp2 off->dim
+  2750.8 * relay1 nc->mid
+  2751.0 * relay2 nc->mid
+  2752.1 * relay1 mid->no
+  2752.3 * relay2 mid->no
+  2755.4 * outLamp3 off->dim  outLamp4 off->dim
+  2774.5 * outLamp3 dim->on  outLamp4 dim->on
+  2790.2 * indLamp1 dim->on  indLamp2 dim->on
+  2850.3 > button4 target=0
+  2861.5 * pb4 no->mid
+  2864.0 * pb4 mid->nc
+  2866.2 * relay2 no->mid
+  2866.3 * relay1 no->mid
+  2867.1 * relay2 mid->nc
+  2867.2 * relay1 mid->nc
+  2871.5 * indLamp1 on->dim  indLamp2 on->dim
+  2886.0 * outLamp3 on->dim  outLamp4 on->dim
+  2906.1 > button1 target=0
+  2917.3 * pb1 no->mid
+  2919.8 * pb1 mid->nc
+  2927.1 * indLamp1 dim->off  indLamp2 dim->off
+  2941.6 * outLamp3 dim->off  outLamp4 dim->off
+  3001.7 > button2 target=1000
+  3012.9 * pb2 nc->mid
+  3015.4 * pb2 mid->no
+  3146.6 > button5 target=1000
+  3157.8 * pb5 nc->mid
+  3160.3 * pb5 mid->no
+  3170.2 * indLamp3 off->dim  indLamp4 off->dim
+  3171.6 * relay3 nc->mid
+  3171.8 * relay4 nc->mid
+  3172.9 * relay3 mid->no
+  3173.1 * relay4 mid->no
+  3176.2 * outLamp3 off->dim  outLamp4 off->dim
+  3195.2 * outLamp3 dim->on  outLamp4 dim->on
+  3210.7 * indLamp3 dim->on  indLamp4 dim->on
+  3270.8 > button5 target=0
+  3282.0 * pb5 no->mid
+  3284.5 * pb5 mid->nc
+  3286.7 * relay3 no->mid  relay4 no->mid
+  3287.6 * relay3 mid->nc  relay4 mid->nc
+  3292.0 * indLamp3 on->dim  indLamp4 on->dim
+  3306.4 * outLamp3 on->dim  outLamp4 on->dim
+  3326.5 > button2 target=0
+  3337.7 * pb2 no->mid
+  3340.2 * pb2 mid->nc
+  3347.6 * indLamp3 dim->off  indLamp4 dim->off
+  3362.0 * outLamp3 dim->off  outLamp4 dim->off
+  3422.1 > button3 target=1000
+  3433.3 * pb3 nc->mid
+  3435.8 * pb3 mid->no
+  3567.0 > button6 target=1000
+  3578.2 * pb6 nc->mid
+  3580.7 * pb6 mid->no
+  3590.6 * indLamp5 off->dim  indLamp6 off->dim
+  3592.4 * relay5 nc->mid
+  3592.6 * relay6 nc->mid
+  3593.7 * relay5 mid->no
+  3593.9 * relay6 mid->no
+  3597.0 * outLamp3 off->dim  outLamp4 off->dim
+  3616.0 * outLamp3 dim->on  outLamp4 dim->on
+  3631.0 * indLamp5 dim->on  indLamp6 dim->on
+  3691.1 > button6 target=0
+  3702.3 * pb6 no->mid
+  3704.8 * pb6 mid->nc
+  3706.9 * relay5 no->mid  relay6 no->mid
+  3707.8 * relay5 mid->nc  relay6 mid->nc
+  3712.2 * indLamp5 on->dim  indLamp6 on->dim
+  3726.6 * outLamp3 on->dim  outLamp4 on->dim
+  3746.7 > button3 target=0
+  3757.9 * pb3 no->mid
+  3760.4 * pb3 mid->nc
+  3767.9 * indLamp5 dim->off  indLamp6 dim->off
+  3782.2 * outLamp3 dim->off  outLamp4 dim->off

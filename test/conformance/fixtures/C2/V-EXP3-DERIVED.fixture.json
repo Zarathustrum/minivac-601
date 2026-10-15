@@ -1,0 +1,489 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP3-DERIVED",
+  "source": "Books V-VI printed pp.3-4 = book5-6.pdf PDF pp.9-10 (Experiment 3: The Metronome; rule p.3 = PDF p.9, program and procedure p.4 = PDF p.10); no erratum; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4R/D3",
+    "4S/5R",
+    "4T/D5",
+    "4U/D7",
+    "4V/5T",
+    "4W/D9",
+    "5S/6K",
+    "6C/6L",
+    "6E/D16",
+    "6F/6-",
+    "6G/D1",
+    "6G/6N",
+    "6H/D17",
+    "6J/6K",
+    "6J/6+",
+    "6L/D18",
+    "6N/6-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4R/D3",
+    "4S/5R",
+    "4T/D5",
+    "4U/D7",
+    "4V/5T",
+    "4W/D9",
+    "5S/6K",
+    "6C/6L",
+    "6E/D16",
+    "6F/6-",
+    "6G/D1",
+    "6G/6N",
+    "6H/D17",
+    "6J/6K",
+    "6J/6+",
+    "6L/D18",
+    "6N/6-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"the turning of the rotary switch dial between two points\", p.4 \"Turn power on. The rotary switch dial will begin to turn back and forth\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); from the D0 construction start relay 6 is released and the dial turns up through D1 to D2; under the opposite drive sense it would reach D3 the long way and oscillate D3..D15..D1, never visiting D2",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"the turning of the rotary switch dial between two points\", p.4 \"Turn power on. The rotary switch dial will begin to turn back and forth\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); the wiper reaches D3 heading up with relay 6 still released, one pitch on",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"the turning of the rotary switch dial between two points\", p.4 \"Turn power on. The rotary switch dial will begin to turn back and forth\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); on D3 the coil sees + through 6E and relay 6 operates, reversing the motor; once operated, relay 6 holds off the pad through + 6K-6L, 6C, lamp 6, 6E, coil, 6F, minus, until the wiper lands on D1 and shorts 6E to minus; the wiper comes back to D2 heading down; window at the 45 rpm run-rate fallback (O-R3, 83 ms per pitch): the hand path is the pull-in, the overrun (O-R5) and the gap back, about 50 to 180 ms; a live contact two positions higher would need four more pitches, at least 333 ms more",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 500,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"the turning of the rotary switch dial between two points\", p.4 \"Turn power on. The rotary switch dial will begin to turn back and forth\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); once operated, relay 6 holds off the pad through + 6K-6L, 6C, lamp 6, 6E, coil, 6F, minus, until the wiper lands on D1 and shorts 6E to minus; on D1 the coil is shorted, relay 6 releases, the motor turns up again and the wiper recrosses D2 with relay 6 released; with no release at D1 the wiper would run on round and never meet D2 released",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 400,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D5 (5S-5R to 4S, 4S-4T to D5, slide 4 RIGHT, slide 5 LEFT); slide 4 is moved while the wiper has just reached D2 heading up; set 1 breaks 4S-4R at 45% of the 60 ms stroke (27 ms), before the wiper reaches D3 (83 ms), so D3 is dead when it passes and the wiper runs on to D4 with relay 6 released",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D5 (5S-5R to 4S, 4S-4T to D5, slide 4 RIGHT, slide 5 LEFT); one pitch on the wiper reaches D5 heading up, still released",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D5 (5S-5R to 4S, 4S-4T to D5, slide 4 RIGHT, slide 5 LEFT); on D5 relay 6 operates and reverses the motor; once operated, relay 6 holds off the pad through + 6K-6L, 6C, lamp 6, 6E, coil, 6F, minus, until the wiper lands on D1 and shorts 6E to minus; the wiper comes back to D4 heading down; window at the 45 rpm run-rate fallback (O-R3, 83 ms per pitch): the hand path is the pull-in, the overrun (O-R5) and the gap back, about 50 to 180 ms; a live contact two positions higher would need four more pitches, at least 333 ms more",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D9 (5S-5T to 4V, 4V-4W to D9, both slides RIGHT); slide 5 is moved while the wiper heads down from D4 with relay 6 held; it reaches D1, relay 6 releases, and the wiper turns up past D5 (now dead: 5R is open) to D8",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D9 (5S-5T to 4V, 4V-4W to D9, both slides RIGHT); one pitch on the wiper reaches D9 heading up, still released",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D9 (5S-5T to 4V, 4V-4W to D9, both slides RIGHT); on D9 relay 6 operates and reverses the motor; once operated, relay 6 holds off the pad through + 6K-6L, 6C, lamp 6, 6E, coil, 6F, minus, until the wiper lands on D1 and shorts 6E to minus; the wiper comes back to D8 heading down; window at the 45 rpm run-rate fallback (O-R3, 83 ms per pitch): the hand path is the pull-in, the overrun (O-R5) and the gap back, about 50 to 180 ms; a live contact two positions higher would need four more pitches, at least 333 ms more",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D9 (5S-5T to 4V, 4V-4W to D9, both slides RIGHT); heading down from D9 the hold current runs through lamp 6 in series with the coil (13 V across about 150 ohm coil plus about 130 ohm hot filament, about 46 mA, about 790 milli on the lamp_pwl law, at or above lamp_on_milli 600) for more than 150 ms, several lamp_thermal_tau, by the time the wiper reaches D6 (D6 is unwired)",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D9 (5S-5T to 4V, 4V-4W to D9, both slides RIGHT); the wiper reaches D1, relay 6 releases and turns the motor up; with relay 6 released 6C-6L-6N is on minus and 6E goes to minus through the coil, so lamp 6 carries no current and has cooled for about 600 ms when the wiper next reaches D8 heading up",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c12"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1000,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D7 (5S-5T to 4V, 4V-4U to D7, slide 4 LEFT, slide 5 RIGHT); slide 4 is moved back while the wiper has just reached D8 heading up with relay 6 released; set 2 breaks 4V-4W at 27 ms, before the wiper reaches D9 (83 ms), and the new live contact D7 is behind the wiper, so the wiper passes the dead D9 and runs the long way round through D12, which no oscillation in this program visits (the phase-dependent wraparound of the Step 7 notes)",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D7 (5S-5T to 4V, 4V-4U to D7, slide 4 LEFT, slide 5 RIGHT); the wiper continues D13..D15, D0, D1 (D1 on minus shorts nothing: relay 6 is already released), D2..D6 heading up, all dead",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D7 (5S-5T to 4V, 4V-4U to D7, slide 4 LEFT, slide 5 RIGHT); one pitch on the wiper reaches D7 heading up, still released",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D7 (5S-5T to 4V, 4V-4U to D7, slide 4 LEFT, slide 5 RIGHT); on D7 relay 6 operates and reverses the motor; once operated, relay 6 holds off the pad through + 6K-6L, 6C, lamp 6, 6E, coil, 6F, minus, until the wiper lands on D1 and shorts 6E to minus; the wiper comes back to D6 heading down; window at the 45 rpm run-rate fallback (O-R3, 83 ms per pitch): the hand path is the pull-in, the overrun (O-R5) and the gap back, about 50 to 180 ms; a live contact two positions higher would need four more pitches, at least 333 ms more",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 1500,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); slide 5 is moved back while the wiper heads down from D6 with relay 6 held, so no wraparound: it reaches D1, relay 6 releases, and the wiper turns up to D2",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); one pitch on the wiper reaches D3 heading up, still released",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        }
+      ],
+      "maxMs": 300,
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.3 \"only four periods can be produced using the positions of slide switches 4 and 5 to determine the period\", p.4 \"To change the period of the signal, move slide switches 4 and 5.\"; derived from topology: 6G/D1, 6G/6N, 6N/6- put D1 on minus; 6J/6+, 6J/6K, 5S/6K put 5S on plus; relay 6 released: 6H-6J puts D17 on +, 6L-6N puts D18 on -, so the dial turns toward increasing numbers (open-questions.md O-R11, D17 + / D18 - increasing, [likely]); relay 6 operated: 6H-6G puts D17 on -, 6L-6K puts D18 on +, reversed; wiper D16 = 6E, coil 6E-6F to minus; the live (+) contact is D3 (5S-5R to 4S, 4S-4R to D3, both slides LEFT); on D3 relay 6 operates and reverses the motor; once operated, relay 6 holds off the pad through + 6K-6L, 6C, lamp 6, 6E, coil, 6F, minus, until the wiper lands on D1 and shorts 6E to minus; the wiper comes back to D2 heading down; window at the 45 rpm run-rate fallback (O-R3, 83 ms per pitch): the hand path is the pull-in, the overrun (O-R5) and the gap back, about 50 to 180 ms; a live contact two positions higher would need four more pitches, at least 333 ms more",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "power",
+          "v": "on"
+        },
+        {
+          "dev": "breaker",
+          "v": "ok"
+        },
+        {
+          "dev": "sw4",
+          "v": "nc"
+        },
+        {
+          "dev": "sw5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10 p.4 program; derived from topology: the only plus and minus contacts on one moving part are D1 (minus) and the selected live contact (plus) on the break-before-make rotary wiper (Book I p.21), and on relay 6 the set 1 arm 6H between 6J (+) and 6G (-) and the set 2 arm 6L between 6N (-) and 6K (+); with break-before-make transfer (the profile's break_milli 450 < make_milli 550, relay transfer order itself open, programs.md C-18) no position joins + to -, so after the whole run the breaker holds and both slides are back LEFT",
+      "quote": "The program which follows demonstrates a basic timing circuit using the turning of the rotary switch dial between two points to generate a periodic signal.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "digest": {
+    "eventCount": 192,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      18,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      4,
+      0,
+      120
+    ]
+  },
+  "note": "Step 7 speculative fixture (derivation A). Every assert is derived by hand from the 17-wire topology and the p.3 rule (the dial turns between two points; slide switches 4 and 5 choose among four periods), not from printed dial positions or periods; the page prints neither. Topology: D1 is on minus (6G/D1, 6G/6N, 6N/6-); 5S is on plus (5S/6K, 6J/6K, 6J/6+); the slides route 5S to one live contact: both LEFT D3, 4 RIGHT D5, 5 RIGHT D7, both RIGHT D9. The wiper D16 feeds the coil at 6E. Relay 6 released: D17 +, D18 -, dial turns up; on the live contact the coil pulls in, the transfer puts D17 -, D18 +, dial turns down, and the coil holds through 6K-6L-6C, lamp 6 and 6E; on D1 the coil is shorted, relay 6 releases and the dial turns up again. So relay 6 encodes direction (nc up, no down) and the dial runs D1 to the live contact and back: arcs of 2, 4, 6 and 8 pitches. The absolute sense (D17 + / D18 - toward increasing numbers) is the O-R11 ruling, [likely]; the first until fails under the opposite sense, which would oscillate the long way D3..D15..D1 and never visit D2. Encoding (O-C14, no direction observable): each until pairs a dial contact with relay 6, so (cN, nc) is the wiper heading up and (cN, no) heading down. Reaching the live contact is shown by (top, nc); turning there by (top-1, no) within 300 ms of it, which a live contact two positions higher (the next possible top) cannot meet: four more pitches is 333 ms at the 45 rpm run-rate fallback (O-R3). The correct path is 50-180 ms depending on the overrun model (O-R5, coast_udeg_drive_removed 20 deg as a worst case); it is a timing window resting on those fallbacks, not a printed timing. Every slide move is made at a stated phase (right after an until match) so its outcome is fixed by hand: slide break at 27 ms of the 60 ms stroke lands before the wiper's next contact (83 ms). The move 4 LEFT at D8 heading up (top D9 to D7) produces the long-way wraparound the Step 7 notes record, asserted through D12; the move 5 LEFT is made heading down so no wraparound follows. Lamp 6: on in series with the held coil (about 46 mA, about 790 milli by the lamp_pwl law), off when relay 6 is released between contacts. Not asserted: the period values themselves, lamp 6 on the live contact before pull-in (a pull-in of about 12 ms against a 40 ms filament), and the D1 dwell. Start position D0 and slides LEFT are construction defaults, not printed. Rotary geometry, run rate and coast remain profile fallbacks O-R1, O-R3 and O-R5."
+}

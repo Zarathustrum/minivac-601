@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "minivac.probe/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "source", "profile", "cases"],
+  "properties": {
+    "schema": { "const": "minivac.probe/1" },
+    "id": { "enum": ["AT-01", "AT-04", "AT-05", "AT-06", "AT-07", "AT-09", "AT-10", "AT-11"] },
+    "source": { "type": "string", "minLength": 1, "pattern": "^[^\\u0000-\\u001f]*$" },
+    "profile": { "enum": ["MV601-REF-A", "MV601-IDEAL"] },
+    "cases": { "type": "array", "minItems": 1, "items": { "oneOf": [
+      { "$ref": "#/$defs/machineCase" }, { "$ref": "#/$defs/profileLoadCase" }
+    ] }, "maxItems": 64 },
+    "modeledSubstitutions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/substitution" } }
+  },
+  "$defs": {
+    "int32": { "type": "integer", "minimum": -2147483648, "maximum": 2147483647 },
+    "nonnegativeInt32": { "type": "integer", "minimum": 0, "maximum": 2147483647 },
+    "positiveInt32": { "type": "integer", "minimum": 1, "maximum": 2147483647 },
+    "sect": { "type": "integer", "minimum": 1, "maximum": 6 },
+    "name": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9-]*$" },
+    "substitution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["k", "claim", "model", "status", "sourceEquivalent"],
+      "properties": {
+        "k": { "const": "modeledObservableSubstitution" },
+        "claim": { "type": "string", "minLength": 1, "pattern": "^[^\\u0000-\\u001f]*$" },
+        "model": { "type": "string", "minLength": 1, "pattern": "^[^\\u0000-\\u001f]*$" },
+        "status": { "const": "unverified" },
+        "sourceEquivalent": { "const": false }
+      }
+    },
+    "machineCase": {
+      "type": "object", "additionalProperties": false,
+      "required": ["k", "name", "source", "checkpoints"],
+      "properties": {
+        "k": { "const": "machine" }, "name": { "$ref": "#/$defs/name" },
+        "source": { "oneOf": [{ "$ref": "#/$defs/fixtureSource" }, { "$ref": "#/$defs/scenarioSource" }] },
+        "checkpoints": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/checkpoint" } }
+      }
+    },
+    "fixtureSource": {
+      "type": "object", "additionalProperties": false, "required": ["k", "fixture"],
+      "properties": { "k": { "const": "fixture" }, "fixture": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" } }
+    },
+    "scenarioSource": {
+      "type": "object", "additionalProperties": false, "required": ["k", "wires", "actions"],
+      "properties": {
+        "k": { "const": "scenario" },
+        "wires": { "type": "array", "minItems": 1, "maxItems": 256, "items": { "type": "string", "minLength": 1 } },
+        "actions": { "type": "array", "minItems": 1, "items": { "oneOf": [
+          { "$ref": "#/$defs/doAction" }, { "$ref": "#/$defs/advanceAction" }, { "$ref": "#/$defs/settleAction" }
+        ] } }
+      }
+    },
+    "doAction": {
+      "type": "object", "additionalProperties": false, "required": ["k", "cmd"],
+      "properties": { "k": { "const": "do" }, "cmd": { "$ref": "minivac.fixture/1#/$defs/command" } }
+    },
+    "advanceAction": {
+      "type": "object", "additionalProperties": false, "required": ["k", "ticks"],
+      "properties": { "k": { "const": "advance" }, "ticks": { "$ref": "#/$defs/positiveInt32" } }
+    },
+    "settleAction": {
+      "type": "object", "additionalProperties": false, "required": ["k", "maxTicks"],
+      "properties": { "k": { "const": "settle" }, "maxTicks": { "$ref": "#/$defs/positiveInt32" } }
+    },
+    "checkpoint": {
+      "type": "object", "additionalProperties": false, "required": ["name", "at", "checks"],
+      "properties": {
+        "name": { "$ref": "#/$defs/name" },
+        "at": { "oneOf": [{ "$ref": "#/$defs/fixtureAddress" }, { "$ref": "#/$defs/actionAddress" }] },
+        "checks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/check" } }
+      }
+    },
+    "fixtureAddress": {
+      "type": "object", "additionalProperties": false, "required": ["k", "scriptIndex", "stepKind"],
+      "properties": {
+        "k": { "const": "fixtureStep" }, "scriptIndex": { "$ref": "#/$defs/nonnegativeInt32" },
+        "stepKind": { "enum": ["do", "advance", "settle", "expect"] }
+      }
+    },
+    "actionAddress": {
+      "type": "object", "additionalProperties": false, "required": ["k", "actionIndex", "actionKind"],
+      "properties": {
+        "k": { "const": "action" }, "actionIndex": { "$ref": "#/$defs/nonnegativeInt32" },
+        "actionKind": { "enum": ["do", "advance", "settle"] }
+      }
+    },
+    "profileLoadCase": {
+      "type": "object", "additionalProperties": false, "required": ["k", "name", "load", "checks"],
+      "properties": {
+        "k": { "const": "profileLoad" }, "name": { "$ref": "#/$defs/name" },
+        "load": { "$ref": "#/$defs/profileLoad" },
+        "checks": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/check" } },
+        "diagnostic": { "const": true }
+      }
+    },
+    "profileLoad": {
+      "type": "object", "additionalProperties": false,
+      "required": ["coils", "feed", "outputLamps", "indicatorLamps", "powerLamp"],
+      "properties": {
+        "coils": { "const": 6 }, "feed": { "enum": ["C", "E"] },
+        "outputLamps": { "type": "integer", "minimum": 0, "maximum": 6 },
+        "indicatorLamps": { "enum": ["series-with-coils", "across-rail"] },
+        "powerLamp": { "type": "object", "additionalProperties": false,
+          "required": ["k", "count", "status"], "properties": {
+            "k": { "const": "panelLampModelSubstitute" }, "count": { "const": 1 }, "status": { "const": "unverified" }
+          } }
+      }
+    },
+    "machineNumericRead": { "oneOf": [
+      { "type": "object", "additionalProperties": false, "required": ["k", "field"], "properties": { "k": { "const": "state" }, "field": { "enum": ["railMv", "supplyUa"] } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "n", "field"], "properties": { "k": { "const": "relay" }, "n": { "$ref": "#/$defs/sect" }, "field": { "enum": ["travel", "coilMv", "coilUa", "pullInUa", "dropOutUa", "indicatorUa"] } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "kind", "n", "field"], "properties": { "k": { "const": "lamp" }, "kind": { "enum": ["out", "ind"] }, "n": { "$ref": "#/$defs/sect" }, "field": { "enum": ["ua", "milli"] } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "a", "b"], "properties": { "k": { "const": "terminalPairMv" }, "a": { "type": "string", "minLength": 1 }, "b": { "type": "string", "minLength": 1 } } }
+    ] },
+    "profileNumericRead": { "oneOf": [
+      { "type": "object", "additionalProperties": false, "required": ["k", "field"], "properties": { "k": { "const": "load" }, "field": { "enum": ["settledSupplyUa", "peakSupplyUa", "ticksOverTrip"] } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "field"], "properties": { "k": { "const": "profile" }, "field": { "enum": ["ITripUa", "tripDelayTicks", "pullInUa", "dropOutUa"] } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "n", "field"], "properties": { "k": { "const": "relayThreshold" }, "n": { "$ref": "#/$defs/sect" }, "field": { "enum": ["pullInUa", "dropOutUa"] } } }
+    ] },
+    "numericRead": { "oneOf": [{ "$ref": "#/$defs/machineNumericRead" }, { "$ref": "#/$defs/profileNumericRead" }] },
+    "numericOperand": { "oneOf": [
+      { "$ref": "#/$defs/numericRead" },
+      { "type": "object", "additionalProperties": false, "required": ["k", "value"], "properties": { "k": { "const": "literal" }, "value": { "$ref": "#/$defs/int32" } } }
+    ] },
+    "boolRead": { "oneOf": [
+      { "type": "object", "additionalProperties": false, "required": ["k", "field"], "properties": { "k": { "const": "stateBool" }, "field": { "const": "breakerTripped" } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "n", "field"], "properties": { "k": { "const": "relayBool" }, "n": { "$ref": "#/$defs/sect" }, "field": { "const": "held" } } }
+    ] },
+    "eventSelector": { "oneOf": [
+      { "type": "object", "additionalProperties": false, "required": ["k", "n"], "properties": { "k": { "enum": ["relay.pullIn", "relay.dropOut"] }, "n": { "$ref": "#/$defs/sect" } } },
+      { "type": "object", "additionalProperties": false, "required": ["k"], "properties": { "k": { "enum": ["power.on", "power.off", "breaker.trip", "breaker.reset"] } } }
+    ] },
+    "check": { "oneOf": [
+      { "type": "object", "additionalProperties": false, "required": ["k", "name", "read", "expected", "tolerance"], "properties": { "k": { "const": "near" }, "name": { "$ref": "#/$defs/name" }, "read": { "$ref": "#/$defs/numericRead" }, "expected": { "$ref": "#/$defs/int32" }, "tolerance": { "$ref": "#/$defs/nonnegativeInt32" } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "name", "left", "op", "right"], "properties": { "k": { "const": "compare" }, "name": { "$ref": "#/$defs/name" }, "left": { "$ref": "#/$defs/numericRead" }, "op": { "enum": ["lt", "le", "eq", "ge", "gt"] }, "right": { "$ref": "#/$defs/numericOperand" } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "name", "read", "expected"], "properties": { "k": { "const": "bool" }, "name": { "$ref": "#/$defs/name" }, "read": { "$ref": "#/$defs/boolRead" }, "expected": { "type": "boolean" } } },
+      { "type": "object", "additionalProperties": false, "required": ["k", "name", "event", "expected"], "properties": { "k": { "const": "eventSeen" }, "name": { "$ref": "#/$defs/name" }, "event": { "$ref": "#/$defs/eventSelector" }, "expected": { "type": "boolean" } } }
+    ] }
+  }
+}

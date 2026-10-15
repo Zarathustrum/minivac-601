@@ -1,0 +1,297 @@
+#!mv601-trace 1
+# id=IV-EXP9-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=67
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=3 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.3 * outLamp1 off->dim  outLamp2 off->dim  outLamp3 off->dim  outLamp4 off->dim  outLamp6 off->dim
+    11.7 * relay4 nc->mid
+    13.0 * relay4 mid->no
+    16.3 * outLamp5 off->dim
+    22.7 * outLamp1 dim->on  outLamp2 dim->on  outLamp3 dim->on  outLamp4 dim->on  outLamp6 dim->on
+    35.6 * outLamp5 dim->on
+    55.7 > switch1 target=1000
+    55.7 > switch2 target=1000
+    55.7 > switch3 target=1000
+    55.7 > switch4 target=1000
+    55.7 > switch5 target=1000
+    55.7 > switch6 target=1000
+    82.6 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    88.4 * relay4 no->mid
+    88.7 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+    89.3 * relay4 mid->nc
+   100.8 * outLamp1 on->dim  outLamp2 on->dim  outLamp3 on->dim  outLamp4 on->dim  outLamp6 on->dim
+   106.1 * outLamp5 on->dim
+   135.6 > button4 target=1000
+   135.6 > button5 target=1000
+   146.8 * pb4 nc->mid  pb5 nc->mid
+   149.3 * pb4 mid->no  pb5 mid->no
+   156.4 * outLamp1 dim->off  outLamp2 dim->off  outLamp3 dim->off  outLamp4 dim->off  outLamp6 dim->off
+   159.2 * indLamp2 off->dim
+   160.6 * relay2 nc->mid
+   161.9 * relay2 mid->no
+   162.4 * outLamp4 off->dim
+   166.9 * outLamp5 dim->on
+   181.4 * outLamp4 dim->on
+   199.5 * indLamp2 dim->on
+   219.6 > button4 target=0
+   219.6 > button5 target=0
+   230.8 * pb4 no->mid  pb5 no->mid
+   233.3 * pb4 mid->nc  pb5 mid->nc
+   235.6 * relay2 no->mid
+   236.5 * relay2 mid->nc
+   238.0 * indLamp2 on->dim
+   249.5 * outLamp5 on->dim
+   253.6 * outLamp4 on->dim
+   273.7 > switch1 target=1000
+   273.7 > switch2 target=1000
+   273.7 > switch3 target=1000
+   273.7 > switch4 target=0
+   273.7 > switch5 target=0
+   273.7 > switch6 target=1000
+   293.6 * indLamp2 dim->off
+   300.6 * sw4 no->mid  sw5 no->mid
+   305.1 * outLamp5 dim->off
+   306.7 * sw4 mid->nc  sw5 mid->nc
+   317.8 * relay4 nc->mid
+   319.1 * relay4 mid->no
+   320.2 * outLamp5 off->dim
+   325.5 * outLamp4 dim->on
+   339.2 * outLamp5 dim->on
+  1359.3 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Record this number on a piece of paper and release the pushbuttons. Enter the number which you recorded in the slide switches and perform a left shift one bit as described in experiment 8. | Enter a binary number by setting the slide switches appropriately. (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) The number is now displayed in the binary output lights."
+  1359.3 > switch1 target=1000
+  1379.3 > switch2 target=1000
+  1399.3 > switch3 target=0
+  1426.2 * sw3 no->mid
+  1432.3 * sw3 mid->nc
+  1435.6 * outLamp3 off->dim
+  1454.6 * outLamp3 dim->on
+  1479.2 > switch4 target=0
+  1499.2 > switch5 target=1000
+  1526.1 * sw5 nc->mid
+  1532.0 * relay4 no->mid
+  1532.2 * sw5 mid->no
+  1532.9 * relay4 mid->nc
+  1552.3 * outLamp5 on->dim
+  1579.1 > switch6 target=1000
+  1599.1 > switch1 target=1000
+  1608.0 * outLamp5 dim->off
+  1628.1 > switch2 target=0
+  1655.0 * sw2 no->mid
+  1661.1 * sw2 mid->nc
+  1664.4 * outLamp2 off->dim
+  1683.4 * outLamp2 dim->on
+  1708.0 > switch3 target=0
+  1728.0 > switch4 target=1000
+  1754.9 * sw4 nc->mid
+  1761.0 * sw4 mid->no
+  1775.3 * outLamp4 on->dim
+  1807.9 > switch5 target=1000
+  1827.9 > switch6 target=1000
+  1830.9 * outLamp4 dim->off
+  1851.0 > button4 target=1000
+  1851.0 > button5 target=1000
+  1862.2 * pb4 nc->mid  pb5 nc->mid
+  1864.7 * pb4 mid->no  pb5 mid->no
+  1868.0 * outLamp5 off->dim
+  1874.7 * indLamp2 off->dim
+  1876.1 * relay2 nc->mid
+  1877.4 * relay2 mid->no
+  1879.8 * outLamp4 off->dim
+  1887.1 * outLamp5 dim->on
+  1898.9 * outLamp4 dim->on
+  1915.3 * indLamp2 dim->on
+  1935.4 > button4 target=0
+  1935.4 > button5 target=0
+  1946.6 * pb4 no->mid  pb5 no->mid
+  1949.1 * pb4 mid->nc  pb5 mid->nc
+  1951.4 * relay2 no->mid
+  1952.3 * relay2 mid->nc
+  1953.7 * indLamp2 on->dim
+  1964.9 * outLamp5 on->dim
+  1969.1 * outLamp4 on->dim
+  1989.2 > switch1 target=1000
+  1989.2 > switch2 target=0
+  1989.2 > switch3 target=0
+  1989.2 > switch4 target=0
+  1989.2 > switch5 target=0
+  1989.2 > switch6 target=1000
+  2009.3 * indLamp2 dim->off
+  2016.1 * sw4 no->mid  sw5 no->mid
+  2020.5 * outLamp5 dim->off
+  2022.2 * sw4 mid->nc  sw5 mid->nc
+  2033.4 * relay4 nc->mid
+  2034.7 * relay4 mid->no
+  2035.8 * outLamp5 off->dim
+  2041.1 * outLamp4 dim->on
+  2054.9 * outLamp5 dim->on
+  3075.0 ? relay1=nc relay2=nc relay3=nc relay4=no relay5=nc relay6=nc outLamp1=off outLamp2=on outLamp3=on outLamp4=on outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "The output lights now show 011110. Record this number on a piece of paper and release the pushbuttons. Enter the number which you just recorded in the slide switches and shift left one bit. | Enter a binary number by setting the slide switches appropriately. (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) The number is now displayed in the binary output lights."
+  3075.0 > switch1 target=0
+  3101.9 * sw1 no->mid
+  3108.0 * sw1 mid->nc
+  3111.3 * outLamp1 off->dim
+  3130.4 * outLamp1 dim->on
+  3154.9 > switch2 target=0
+  3174.9 > switch3 target=0
+  3194.9 > switch4 target=0
+  3214.9 > switch5 target=1000
+  3241.8 * sw5 nc->mid
+  3247.7 * relay4 no->mid
+  3247.9 * sw5 mid->no
+  3248.6 * relay4 mid->nc
+  3267.9 * outLamp5 on->dim
+  3294.8 > switch6 target=1000
+  3314.8 > button4 target=1000
+  3323.6 * outLamp5 dim->off
+  3326.0 * pb4 nc->mid
+  3328.5 * pb4 mid->no
+  3338.5 * indLamp2 off->dim
+  3339.8 * relay2 nc->mid
+  3341.1 * relay2 mid->no
+  3346.3 * outLamp3 on->dim
+  3351.1 * indLamp1 off->dim
+  3352.2 * relay1 nc->mid
+  3353.5 * relay1 mid->no
+  3356.8 * indLamp6 off->dim
+  3360.1 * outLamp4 on->dim
+  3372.5 * outLamp1 on->dim
+  3372.6 * outLamp2 on->dim
+  3375.7 * indLamp6 dim->on
+  3378.7 * indLamp2 dim->on
+  3391.2 * indLamp1 dim->on
+  3402.0 * outLamp3 dim->off
+  3415.8 * outLamp4 dim->off
+  3428.2 * outLamp1 dim->off  outLamp2 dim->off
+  4448.3 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp3=off indLamp4=off indLamp5=off indLamp6=on  "The accumulator, which is wired on the console from experiment 8, is a device which is capable of performing both additions and shifts. | Select other numbers and multiply them on the accumulator. The limit of this accumulator is 111111 (63)."
+  4448.3 > button4 target=0
+  4459.5 * pb4 no->mid
+  4462.0 * pb4 mid->nc
+  4464.2 * relay2 no->mid
+  4465.1 * relay2 mid->nc
+  4465.3 * outLamp3 off->dim
+  4468.4 * outLamp4 off->dim
+  4468.9 * relay1 no->mid
+  4469.8 * relay1 mid->nc
+  4470.7 * indLamp2 on->dim
+  4473.1 * outLamp1 off->dim  outLamp2 off->dim
+  4475.4 * indLamp1 on->dim
+  4484.5 * outLamp3 dim->on
+  4487.6 * outLamp4 dim->on
+  4489.3 * indLamp6 on->dim
+  4492.3 * outLamp1 dim->on  outLamp2 dim->on
+  4512.4 > switch1 target=1000
+  4512.4 > switch2 target=1000
+  4512.4 > switch3 target=1000
+  4512.4 > switch4 target=1000
+  4512.4 > switch5 target=0
+  4512.4 > switch6 target=0
+  4526.3 * indLamp2 dim->off
+  4531.0 * indLamp1 dim->off
+  4539.3 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 no->mid  sw6 no->mid
+  4544.9 * indLamp6 dim->off
+  4545.4 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->nc  sw6 mid->nc
+  4548.7 * outLamp6 off->dim
+  4556.5 * outLamp1 on->dim  outLamp2 on->dim
+  4556.6 * relay4 nc->mid
+  4557.0 * outLamp4 on->dim
+  4557.2 * outLamp3 on->dim
+  4557.9 * relay4 mid->no
+  4561.2 * outLamp5 off->dim
+  4567.7 * outLamp6 dim->on
+  4580.2 * outLamp5 dim->on
+  4600.3 > button4 target=1000
+  4600.3 > button5 target=1000
+  4600.3 > button6 target=1000
+  4611.5 * pb4 nc->mid  pb5 nc->mid  pb6 nc->mid
+  4612.1 * outLamp1 dim->off  outLamp2 dim->off
+  4612.6 * outLamp4 dim->off
+  4612.8 * outLamp3 dim->off
+  4614.0 * pb4 mid->no  pb5 mid->no  pb6 mid->no
+  4617.4 * relay4 no->mid
+  4618.3 * relay4 mid->nc
+  4623.2 * indLamp2 off->dim
+  4623.9 * indLamp5 off->dim
+  4625.3 * relay2 nc->mid
+  4625.8 * relay5 nc->mid
+  4626.6 * relay2 mid->no
+  4627.1 * relay5 mid->no
+  4627.7 * outLamp4 off->dim
+  4635.7 * indLamp3 off->dim
+  4638.8 * relay3 nc->mid
+  4640.1 * relay3 mid->no
+  4641.9 * outLamp3 off->dim
+  4643.9 * relay2 no->mid
+  4644.1 * outLamp6 on->dim
+  4644.8 * relay2 mid->nc
+  4660.9 * outLamp3 dim->on
+  4664.4 * indLamp5 dim->on
+  4676.3 * indLamp3 dim->on
+  4676.8 * indLamp2 dim->off
+  4696.5 * outLamp4 dim->off
+  4699.7 * outLamp6 dim->off
+  5719.8 ? relay1=nc relay2=nc relay3=no relay4=nc relay5=no relay6=nc outLamp1=off outLamp2=off outLamp3=on outLamp4=off outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp4=off indLamp6=off  "The accumulator, which is wired on the console from experiment 8, is a device which is capable of performing both additions and shifts."
+  5719.8 > button4 target=0
+  5719.8 > button5 target=0
+  5719.8 > button6 target=0
+  5731.0 * pb4 no->mid  pb5 no->mid  pb6 no->mid
+  5733.5 * pb4 mid->nc  pb5 mid->nc  pb6 mid->nc
+  5735.6 * relay5 no->mid
+  5736.5 * relay5 mid->nc
+  5739.8 * outLamp6 off->dim
+  5740.3 * relay3 no->mid
+  5741.2 * relay3 mid->nc
+  5742.1 * indLamp5 on->dim
+  5744.6 * relay4 nc->mid
+  5745.9 * relay4 mid->no
+  5746.7 * indLamp3 on->dim
+  5751.4 * outLamp3 on->dim
+  5758.7 * outLamp6 dim->on
+  5778.8 > switch1 target=1000
+  5778.8 > switch2 target=0
+  5778.8 > switch3 target=0
+  5778.8 > switch4 target=0
+  5778.8 > switch5 target=0
+  5778.8 > switch6 target=0
+  5797.7 * indLamp5 dim->off
+  5802.3 * indLamp3 dim->off
+  5805.7 * sw2 no->mid  sw3 no->mid  sw4 no->mid
+  5807.0 * outLamp3 dim->off
+  5811.8 * sw2 mid->nc  sw3 mid->nc  sw4 mid->nc
+  5812.3 * outLamp3 off->dim
+  5815.1 * outLamp2 off->dim  outLamp4 off->dim
+  5831.6 * outLamp3 dim->on
+  5834.3 * outLamp2 dim->on  outLamp4 dim->on
+  5858.7 > button6 target=1000
+  5869.9 * pb6 nc->mid
+  5872.4 * pb6 mid->no
+  5875.8 * relay4 no->mid
+  5876.7 * relay4 mid->nc
+  5881.3 * indLamp5 off->dim
+  5884.4 * relay5 nc->mid
+  5885.7 * relay5 mid->no
+  5894.8 * indLamp3 off->dim
+  5895.9 * outLamp5 on->dim
+  5897.2 * relay3 nc->mid
+  5898.5 * relay3 mid->no
+  5904.4 * outLamp6 on->dim
+  5908.4 * indLamp2 off->dim
+  5909.8 * relay2 nc->mid
+  5911.1 * relay2 mid->no
+  5915.8 * outLamp3 on->dim
+  5921.1 * indLamp1 off->dim
+  5921.8 * indLamp5 dim->on
+  5922.2 * relay1 nc->mid
+  5923.5 * relay1 mid->no
+  5926.8 * outLamp1 off->dim
+  5928.9 * outLamp4 on->dim
+  5935.3 * indLamp3 dim->on
+  5941.8 * outLamp2 on->dim
+  5945.8 * outLamp1 dim->on
+  5948.8 * indLamp2 dim->on
+  5951.5 * outLamp5 dim->off
+  5960.0 * outLamp6 dim->off
+  5961.4 * indLamp1 dim->on
+  5971.5 * outLamp3 dim->off
+  5984.6 * outLamp4 dim->off
+  5997.4 * outLamp2 dim->off
+  7017.5 ? relay1=no relay2=no relay3=no relay4=nc relay5=no relay6=nc outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp4=off indLamp6=off  "The accumulator, which is wired on the console from experiment 8, is a device which is capable of performing both additions and shifts."

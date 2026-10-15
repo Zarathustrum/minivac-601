@@ -1,0 +1,700 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP7-DERIVED",
+  "source": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85; builds on IV-EXP6 (BK4 printed p.77 = PDF p.83); ERRATA ER-24 (conditional, not applied); Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2N/4U",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3J/4T",
+    "3K/4R",
+    "3K/M10",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4L/5A",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6E/6-",
+    "6G/6R",
+    "6J/6K",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+",
+    "6F/M10",
+    "3L/4Z",
+    "3H/4X",
+    "4N/5Z",
+    "4K/5X",
+    "6C/6F",
+    "6H/6Z",
+    "6L/6X"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the wiring and the p.78 stated method (the subtractor on pushbuttons 4, 5, 6 is complemented by the contact swaps, added to the subtrahend on slide switches 4, 5, 6, and the high order carry is fed back to the low order carry in), with the p.79 encoding (slide switch LEFT = 1, pushbutton DOWN = 1; 4, 5, 6 carry the 4, 2, 1 bits; lights 4, 5, 6 read 4, 2, 1). Wires = the 49-wire resolved delta of A/IV-EXP7 (IV-EXP6's printed 48 with the p.79 REMOVE and ADD lists applied; ER-24 is the alternate-counter variant and is not applied, O-C25). Only the 5 - 2 lamp reading and relay 6 out for 5 - 7 are printed (A/IV-EXP7). Topology, b = pushbutton UP (the complemented subtractor bit), a = switch LEFT: relay 6 coil 6F/M10 with 6E on minus and 6C/6F (indicator lit with the coil). Bit 1: relay 5 (5C/6K/6J) = relay 6 ? 6L-6K/6X (pushbutton 6 down) : 6H-6J/6Z (pushbutton 6 up), i.e. r6 XOR b1; light 6 (6A/5L) = r5 ? switch 6 RIGHT (5K/6W) : switch 6 LEFT (5N/6U); carry C1 (5T/6R/5V/6G) = switch 6 LEFT and relay 5 (6R-6S/5G-5H) or relay 6 and pushbutton 6 up (6G-6H/6Z); its complement Q (5R/6T/6N) = switch 6 RIGHT and relay 5 (6T-6S/5G) or relay 6 out and pushbutton 6 down (6N-6L/6X). Bit 2: relay 4 (4F/5S, E-F drive, indicator dark) = switch 5 LEFT ? Q : C1; light 5 (5A/4L) = relay 4 ? pushbutton 5 down (4K/5X) : pushbutton 5 up (4N/5Z); relay 3 (3C/4G/5U) = relay 4 and pushbutton 5 up (4G-4H/5Z) or switch 5 LEFT and C1 (5U-5V). Bit 4: relay 2 (2C/3G/3N) = relay 3 ? pushbutton 4 down (3G-3H/4X) : pushbutton 4 up (3N-3L/4Z); light 4 (4A/4V) = switch 4 LEFT ? relay 2 out (4U/2N) : relay 2 in (4W/2K); carry out M10 (3K/4R/6F/6C) = relay 3 and pushbutton 4 up (3K-3L/4Z) or switch 4 LEFT and relay 2 (4R-4S/2G-2H). Light 3 is unwired (3A/M10 removed), so it stays off. The loop is end-around carry: subtrahend > subtractor has one settled state, relay 6 in, showing the difference; subtrahend < subtractor has one settled state, relay 6 out, showing 7 minus (subtractor - subtrahend); subtrahend = subtractor is bistable (sum 111 holds either way, relay 6 in gives 000 with a carry), so no expect sits on an equal pair reached from a carry state; the power-on 0 - 0 expect is reached from rest, where every path to M10 runs back through relay 6. The 5 - 7 entry follows the Step 7 notes: pushbutton 5 is released and settled, then pushbuttons 4, 5 and 6 are pushed. Switches are put RIGHT before power-on. The 500 ms advance before each expect lets the lamps finish their thermal transients; the page states no timing.",
+  "wires": [
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2N/4U",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3J/4T",
+    "3K/4R",
+    "3K/M10",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4L/5A",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6E/6-",
+    "6G/6R",
+    "6J/6K",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+",
+    "6F/M10",
+    "3L/4Z",
+    "3H/4X",
+    "4N/5Z",
+    "4K/5X",
+    "6C/6F",
+    "6H/6Z",
+    "6L/6X"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85, p.78 stated method (complement the subtractor, add, carry out of the high order stage added to the low order stage) at power-on before procedure step 1; derived from topology: 0 - 0 with no pushbutton down, so the adder sees 000 + 111. All switches RIGHT, relays de-energised at power-on: relay 5 in via 6Y-6Z/6H-6J/6K-5C (relay 6 out, pushbutton 6 up; lamp 5 lit, C drive); C1 (5T/6R/5V/6G) dead (6R off 6S with switch 6 RIGHT, 6G open); relay 4 on 5S-5T = C1, out (4C unwired, indicator dark); relay 3 drive 3C/4G/5U dead (4G open, 5U off 5V); relay 2 in via 4Y-4Z/3L-3N/3G-2C (relay 3 out, pushbutton 4 up; lamp 2 lit); light 6 via 6B, 6A/5L-5K/6W-6V/6Y (relay 5 in, switch 6 RIGHT); light 5 via 5A/4L-4N/5Z-5Y (relay 4 out, pushbutton 5 up); light 4 via 4A/4V-4W/2K-2L/2+ (switch 4 RIGHT, relay 2 in); M10 (3K/4R/6F/6C) dead: 4R off 4S (switch 4 RIGHT), 3K open (relay 3 out); so relay 6 coil 6F-6E and its indicator (6C/6F) dead. Every path to M10 runs back through relay 6 itself, so this 7-sum (A = B) state cannot carry from rest. Light 3 has no wire on 3A (3A/M10 removed)",
+      "quote": "In this experiment we will program the MINIVAC to perform subtraction by the two's complement method. ... The carry out from the high order stage (represented by the wire connected to light 3) will be connected to the carry in of the low order stage. In this way, if a high order carry occurs it will be read into the low order stage, just as was illustrated above. ... If a carry occurs out of the high order position, the subtraction has resulted in a positive number. On the other hand, if the carry does not occur, the result is a negative number.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85, procedure step 1 (enter the subtrahend 101: slide switches 4 and 6 LEFT, 5 RIGHT) before step 2, with the stated method; derived from topology: 5 - 0 = 101 with the end-around carry in. Settled state: relay 6 in via M10/6F (6C/6F lights its indicator); 6H-6G puts pushbutton 6 up (6Z) on C1; 6L-6K takes R5 to 6X (pushbutton 6 up, open), relay 5 out; light 6 via 5L-5N/6U-6V (switch 6 LEFT); relay 4 in on 5S-5T = C1; light 5 on 4L-4K/5X, pushbutton 5 up, off; relay 3 in via 4G-4H/5Z (pushbutton 5 up); relay 2 on 3G-3H/4X, pushbutton 4 up, out; light 4 via 4V-4U/2N-2L (switch 4 LEFT, relay 2 out); M10 live via 3K-3L/4Z (relay 3 in, pushbutton 4 up). With relay 6 out instead, relay 5 pulls in, C1 goes live via 6R-6S/5G-5H and M10 is still fed by 3K-3L, so relay 6 out is not a settled state",
+      "quote": "In this experiment we will program the MINIVAC to perform subtraction by the two's complement method. ... The carry out from the high order stage (represented by the wire connected to light 3) will be connected to the carry in of the low order stage. In this way, if a high order carry occurs it will be read into the low order stage, just as was illustrated above. ... If we attempt to subtract a larger number from a smaller number, we will have an incorrect answer. This condition can be detected by observing the carry in relay of the low order stage. If this relay fails to pull in when the subtraction takes place, we have attempted an incorrect subtraction.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85, procedure steps 1-3, the printed 5 - 2 = 011 example (lamps 4, 5, 6 printed; light 3, relays and indicators derived); derived from topology: relay 6 in via M10/6F; C1 live via 6H-6G/6Z (pushbutton 6 up); relay 5 out (6L-6K/6X open); light 6 via 5L-5N/6U (switch 6 LEFT); relay 4 in on 5S-5T = C1; light 5 via 4L-4K/5X-5Y (pushbutton 5 down); relay 3 out (4G-4H/5Z open with pushbutton 5 down, 5U off 5V with switch 5 RIGHT); relay 2 in via 3L-3N/4Z (pushbutton 4 up); light 4 on 4V-4U/2N, relay 2 in, off; M10 live via 4R-4S/2G-2H (switch 4 LEFT, relay 2 in). With relay 6 out instead, relay 5 pulls in via 6H-6J, C1 stays live via 6R-6S/5G-5H, relay 2 stays in and M10 stays fed, so relay 6 is in: a proper subtraction pulls the carry in relay in",
+      "quote": "3. The answer appears in the binary output lights: light 4 is OFF, and lights 5 and 6 are ON. This is read as 011, which is binary 3 : 5 - 2 = 3. ... If we attempt to subtract a larger number from a smaller number, we will have an incorrect answer. This condition can be detected by observing the carry in relay of the low order stage. If this relay fails to pull in when the subtraction takes place, we have attempted an incorrect subtraction.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85, the printed hypothetical (subtractor 7 = 111 in place of step 2, against the 101 subtrahend; relay 6 out is printed, the lamps and the other relays are derived); derived from topology: 5 + 000 = 101 with no carry. Pushbuttons 4, 5, 6 down: relay 5 dead (6H-6J/6Z open); Q (5R/6T/6N) live via 6N-6L/6X; light 6 via 5L-5N/6U (switch 6 LEFT); C1 dead (6R-6S/5G open, relay 5 out; 6G open); relay 4 on 5S-5T = C1, out; light 5 on 4L-4N/5Z, pushbutton 5 down, off; relay 3 out (4G open, 5U off 5V); relay 2 on 3L-3N/4Z, pushbutton 4 down, out; light 4 via 4V-4U/2N-2L (switch 4 LEFT, relay 2 out); M10 dead (4R-4S/2G open with relay 2 out, 3K open). With relay 6 in instead, relay 5 pulls in via 6L-6K/6X and C1 and relay 4 go live, but relay 3 and relay 2 stay out and M10 stays dead, so relay 6 drops: the only settled state. The display 101 is the uncorrected sum, so the incorrect answer is visible",
+      "quote": "Had we attempted to enter binary 7 (111) in the pushbuttons, relay 6—the carry in relay for the low order stage— would not have pulled in and the answer displayed in the output lights would be incorrect. ... If we attempt to subtract a larger number from a smaller number, we will have an incorrect answer. This condition can be detected by observing the carry in relay of the low order stage. If this relay fails to pull in when the subtraction takes place, we have attempted an incorrect subtraction.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85, stated method with the procedure encoding (slide switch LEFT = 1, pushbutton DOWN = 1; switches and pushbuttons 4, 5, 6 carry the 4, 2, 1 bits; lights 4, 5, 6 read the difference), an obvious case of the rule; derived from topology: 7 - 1 = 110 with the end-around carry in. All switches LEFT, pushbutton 6 down only: relay 6 in via M10/6F; relay 5 in via 6X/6L-6K (lamp 5 lit); light 6 on 5L-5K/6W, switch 6 LEFT, off; C1 live via 6R-6S/5G-5H; Q dead (6T off 6S, 6N off 6L); relay 4 on 5S-5R = Q, out; light 5 via 4L-4N/5Z-5Y (pushbutton 5 up); relay 3 in via 5U-5V = C1 (switch 5 LEFT); relay 2 on 3G-3H/4X, pushbutton 4 up, out; light 4 via 4V-4U/2N-2L; M10 live via 3K-3L/4Z (relay 3 in, pushbutton 4 up). With relay 6 out instead, Q goes live via 6N-6L/6X, relay 4 and then relay 3 (4G-4H/5Z) pull in and M10 is fed by 3K-3L, so relay 6 out is not a settled state",
+      "quote": "In this experiment we will program the MINIVAC to perform subtraction by the two's complement method. ... The carry out from the high order stage (represented by the wire connected to light 3) will be connected to the carry in of the low order stage. In this way, if a high order carry occurs it will be read into the low order stage, just as was illustrated above. ... If we attempt to subtract a larger number from a smaller number, we will have an incorrect answer. This condition can be detected by observing the carry in relay of the low order stage. If this relay fails to pull in when the subtraction takes place, we have attempted an incorrect subtraction.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85, stated rule for a larger number subtracted from a smaller one (relay 6 not in is the contrapositive-derived candidate the Step 7 notes name; the lamps are derived); derived from topology: 2 - 5 shows 010 + 010 = 100 with no carry. Switch 5 LEFT, 4 and 6 RIGHT, pushbuttons 4 and 6 down: relay 5 dead (6H-6J/6Z open); Q live via 6N-6L/6X; light 6 on 5L-5N/6U, switch 6 RIGHT, off; relay 4 in on 5S-5R = Q; light 5 on 4L-4K/5X, pushbutton 5 up, off; relay 3 in via 4G-4H/5Z (pushbutton 5 up; the same contact also back-feeds C1 through 5U-5V, which reaches only open contacts); relay 2 in via 3G-3H/4X (pushbutton 4 down); light 4 via 4V-4W/2K-2L (switch 4 RIGHT, relay 2 in); M10 dead (4R off 4S with switch 4 RIGHT, 3K-3L/4Z open with pushbutton 4 down). With relay 6 in instead, relay 5 pulls in and feeds Q via 6T-6S/5G, relay 4 stays in and M10 stays dead, so relay 6 drops: the only settled state",
+      "quote": "If we attempt to subtract a larger number from a smaller number, we will have an incorrect answer. This condition can be detected by observing the carry in relay of the low order stage. If this relay fails to pull in when the subtraction takes place, we have attempted an incorrect subtraction. ... If a carry occurs out of the high order position, the subtraction has resulted in a positive number. On the other hand, if the carry does not occur, the result is a negative number.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

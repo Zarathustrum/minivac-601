@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+test-results/
+.DS_Store
+*.log
+dotnet/**/bin/
+dotnet/**/obj/
+godot/.godot/
+godot/bin/
+godot/obj/
+godot/export/
+godot/**/*.import
+docs/research/raw/pdf/pages/

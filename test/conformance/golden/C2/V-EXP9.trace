@@ -1,0 +1,109 @@
+#!mv601-trace 1
+# id=V-EXP9 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=48
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=4 minTickGap=9 marginal=false
+     0.0 > dialGrab targetUdeg=0
+   200.0 > dialRelease
+   400.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp1 off->dim  indLamp1 off->dim  indLamp4 off->dim
+    22.3 * outLamp1 dim->on  indLamp1 dim->on  indLamp4 dim->on
+   500.0 ? outLamp1=on  "Set the \"elevator\" at the first floor by setting the pointer knob at D0. Turn power on. Output light 1 will come on indicating the location of the \"elevator\"."
+   500.0 > button3 target=1000
+   511.2 * pb3 nc->mid
+   513.7 * pb3 mid->no
+   524.9 * relay3 nc->mid
+   526.2 * relay3 mid->no
+   526.6 * outLamp3 off->dim  indLamp3 off->dim
+   545.0 * indLamp6 off->dim
+   555.4 * relay4 nc->mid
+   556.7 * relay4 mid->no
+   588.4 * dial c0->gap
+   608.6 * outLamp1 on->dim  indLamp1 on->dim
+   609.4 * dial gap->c1
+   610.3 * outLamp1 dim->on  indLamp1 dim->on
+   629.7 * outLamp3 dim->on  indLamp3 dim->on
+   672.9 * dial c1->gap
+   691.2 * outLamp1 on->dim  indLamp1 on->dim
+   693.8 * dial gap->c2
+   746.8 * outLamp1 dim->off  indLamp1 dim->off
+   756.7 * dial c2->gap
+   777.7 * dial gap->c3
+   800.0 > button3 target=0
+   811.2 * pb3 no->mid
+   813.7 * pb3 mid->nc
+   840.5 * dial c3->gap
+   861.5 * dial gap->c4
+   924.4 * dial c4->gap
+   945.3 * dial gap->c5
+  1008.2 * dial c5->gap
+  1029.1 * dial gap->c6
+  1032.4 * outLamp2 off->dim  indLamp2 off->dim
+  1051.7 * outLamp2 dim->on  indLamp2 dim->on
+  1092.9 * dial c6->gap
+  1109.2 * outLamp2 on->dim  indLamp2 on->dim
+  1113.9 * dial gap->c7
+  1118.2 * outLamp2 dim->on  indLamp2 dim->on
+  1177.4 * dial c7->gap
+  1195.5 * outLamp2 on->dim  indLamp2 on->dim
+  1198.3 * dial gap->c8
+  1251.1 * outLamp2 dim->off  indLamp2 dim->off
+  1261.2 * dial c8->gap
+  1282.2 * dial gap->c9
+  1345.0 * dial c9->gap
+  1366.0 * dial gap->c10
+  1428.9 * dial c10->gap
+  1449.8 * dial gap->c11
+  1512.7 * dial c11->gap
+  1533.6 * dial gap->c12
+  1547.3 * relay6 nc->mid
+  1548.3 * relay3 no->mid
+  1548.6 * relay6 mid->no
+  1549.2 * relay3 mid->nc
+  1558.3 * indLamp6 dim->on
+  1560.5 * relay4 no->mid
+  1561.4 * relay4 mid->nc
+  6800.0 ? outLamp3=on  "Output light 1 will come on indicating the location of the \"elevator\". To call the \"elevator\" to the third floor, push pushbutton 3. / Whenever a pushbutton is pushed, the system will go through the following steps: / 8. When it reaches the stored destination, the \"elevator\" will stop and clear the destination from its memory. / call button | indicator light | elevator location points / Floor 3 | pushbutton 3 | output light 3 | D12-D13"
+  6800.0 > button2 target=1000
+  6811.2 * pb2 nc->mid
+  6813.7 * pb2 mid->no
+  6817.0 * indLamp5 off->dim
+  6824.9 * relay2 nc->mid
+  6825.2 * relay5 nc->mid
+  6826.2 * relay2 mid->no
+  6826.5 * relay5 mid->no
+  6826.6 * outLamp2 off->dim  indLamp2 off->dim
+  6839.8 * indLamp5 dim->on
+  6862.5 * relay4 nc->mid
+  6863.8 * relay4 mid->no
+  6875.2 * indLamp5 on->dim
+  6900.8 * outLamp2 dim->on  indLamp2 dim->on
+  6909.2 * dial c12->gap
+  6915.8 * relay6 no->mid
+  6916.7 * relay6 mid->nc
+  6926.8 * indLamp6 on->dim
+  6930.2 * dial gap->c11
+  6933.2 * outLamp3 on->dim  indLamp3 on->dim
+  6951.2 * indLamp5 dim->on
+  6982.7 * indLamp6 dim->off
+  6988.9 * outLamp3 dim->off  indLamp3 dim->off
+  6993.2 * dial c11->gap
+  7014.2 * dial gap->c10
+  7077.2 * dial c10->gap
+  7098.2 * dial gap->c9
+  7100.0 > button2 target=0
+  7111.2 * pb2 no->mid
+  7113.7 * pb2 mid->nc
+  7161.2 * dial c9->gap
+  7182.2 * dial gap->c8
+  7245.2 * dial c8->gap
+  7266.2 * dial gap->c7
+  7280.8 * relay2 no->mid
+  7281.7 * relay2 mid->nc
+  7293.1 * relay4 no->mid
+  7294.0 * relay4 mid->nc
+  7300.4 * relay5 no->mid
+  7301.3 * relay5 mid->nc
+  7309.0 * indLamp5 on->dim
+  7364.6 * indLamp5 dim->off
+ 13100.0 ? outLamp2=on  "Output light 1 will come on indicating the location of the \"elevator\". / To direct the \"elevator\" to the second floor, push pushbutton 2. / Whenever a pushbutton is pushed, the system will go through the following steps: / 8. When it reaches the stored destination, the \"elevator\" will stop and clear the destination from its memory. / call button | indicator light | elevator location points / Floor 2 | pushbutton 2 | output light 2 | D6-D7"

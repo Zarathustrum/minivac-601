@@ -1,0 +1,90 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "MM-RLY-CHECK",
+  "source": "MAINT printed p.7 = maintenance-manual.pdf PDF p.9",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "+/H",
+    "+/L",
+    "+/Y",
+    "X/E",
+    "F/-",
+    "J/1A",
+    "1B/1-",
+    "G/2A",
+    "2B/2-",
+    "N/3A",
+    "3B/3-",
+    "K/4A",
+    "4B/4-"
+  ],
+  "errata_applied": [],
+  "note": "C and Z are deliberately unconnected. Section prefixes implied 1 on the page; the coil is driven at E, bypassing its indicator lamp.",
+  "wires": [
+    "1+/1H",
+    "1+/1L",
+    "2+/1Y",
+    "1X/1E",
+    "1F/1-",
+    "1J/1A",
+    "1B/1-",
+    "1G/2A",
+    "2B/2-",
+    "1N/3A",
+    "3B/3-",
+    "1K/4A",
+    "4B/4-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" },
+        { "dev": "outLamp3", "v": "on" }
+      ],
+      "cite": "MAINT printed p.7 = maintenance-manual.pdf PDF p.9",
+      "quote": "Turn power on. Lights 1 and 3 should come on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 200
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "off" },
+        { "dev": "outLamp2", "v": "on" },
+        { "dev": "outLamp3", "v": "off" },
+        { "dev": "outLamp4", "v": "on" }
+      ],
+      "cite": "MAINT printed p.7 = maintenance-manual.pdf PDF p.9",
+      "quote": "Push the pushbutton. Lights 1 and 3 should go off and lights 2 and 4 should come on."
+    }
+  ]
+}

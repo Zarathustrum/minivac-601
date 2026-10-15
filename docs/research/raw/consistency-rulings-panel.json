@@ -1,0 +1,203 @@
+{
+ "agent": "consistency-panel",
+ "scope": "panel.md re-judged against the three late-arriving primary PDFs (maintenance manual, errata, Book VII) and the high-resolution Wikimedia photographs",
+ "generated_utc": "2026-08-30",
+ "target_file": "docs/research/panel.md",
+ "oracle_only_compliance": "No emulator source was opened, fetched, cloned, read or quoted.",
+ "page_offsets_established": {
+  "maintenance-manual.pdf": "printed page = PDF page - 2 (PDF p.4 carries printed footer '2')",
+  "book1.pdf": "printed page = PDF page - 2",
+  "book2-3-4.pdf": "printed page 59 = PDF page 65 (continuous pagination across Books II-IV)",
+  "book7-capacitor-resistor.pdf": "printed page = PDF page - 5 (PDF p.23 carries printed footer '18')"
+ },
+ "rulings": [
+  {
+   "id": "P-R01",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§7.4 item 1; §11 row 'What component the factory fitted at the top of the POWER strip'; §12 bullet 'The dark round component at the top of the POWER strip is the power indicator lamp'",
+   "currentText": "\"1. **A dark round component - identity not settled and it varies between units.** ... No manual mentions a fuse anywhere and MM's spare-parts list (6431-6491) contains no fuse, which argues the fuseholder is a later owner repair - **not proven either way.** [verified as two observations / unverified as to the stock part]\"  and the §11 row whose 'what would settle it' column reads \"MM p.3 carries a Power Supply circuit diagram **as an image the text layer does not include** - render that page and read it.\"",
+   "ruling": "CLOSE THIS OPEN ITEM. The page was rendered and read. Replace the §7.4 item-1 body with: 'A dark round component. **The factory part here is the red power light**; the black FUSE holder on PH2 is a later owner modification. MM p.3's Power Supply Circuit Diagram enumerates the whole power-panel circuit - POWER CORD, POWER SWITCH, BLACK WIRE, TRANSFORMER, YELLOW/BLACK WIRE, RECTIFIER, CIRCUIT BREAKER, POWER LIGHT and the + / - outputs - and contains no fuse. MM p.4 step 8 treats the power light as a replaceable panel item (\"Remove the burned-out power light and replace it with a new light assembly\"), and the spare-parts list carries 6435 Light Assembly at $1.00 and no fuse anywhere in 6431-6491. On PH2 the fuseholder cap is oversize and physically overhangs the top line of the CIRCUIT BREAKER legend, hiding \"CIRCUIT\" - a factory fit would not obscure its neighbour\\'s legend; on PH3 a red domed jewel on a knurled threaded barrel sits in the same position with CIRCUIT BREAKER fully legible. [verified] that the factory power panel carried a power light and no fuse - MM pp.3, 4, 11; [likely] that this position is where it is mounted - PH3, B1 p.3.'  In §11, replace the whole row with a much narrower residual: 'Whether the stock pilot lamp\\'s lens/bezel matches the twelve panel lamps or is a separate jewel type. Fallback: draw the red jewel on a knurled barrel as seen on PH3.'  In §12, change the struck bullet\\'s correction from 'Identity not settled and it varies between units' to 'Identity settled: stock = red power light, PH2\\'s fuseholder is a non-factory addition.'",
+   "evidence": "raw/pdf/maintenance-manual.pdf rendered at 300 dpi, PDF p.5 = printed p.3 (PDF p.4 carries the printed footer '2', so MM printed page = PDF page - 2): the 'Power Supply Circuit Diagram' is read directly off the image; every component is labelled and there is no fuse symbol. MM printed p.4 step 8 and the printed p.11 spare-parts list read from the OCR text, which matches the images. PH2 crop native x=3760 y=620 w=460 h=420 at 3x (fuseholder overhanging 'CIRCUIT'); PH2 crop x=3900 y=645 w=110 h=110 at 8x (cap face). PH3 crop x=3200 y=1500 w=240 h=260 at 4x (red jewel, CIRCUIT BREAKER legible)."
+  },
+  {
+   "id": "P-R02",
+   "file": "docs/research/panel.md",
+   "severity": "cosmetic",
+   "section": "§7.4 item 1",
+   "currentText": "\"On PH2 it is a black knurled bayonet **fuseholder cap**, engraved `FUSE` three times radially around a curved rotation arrow.\"",
+   "ruling": "Change 'three times radially around a curved rotation arrow' to 'four times radially around two curved rotation arrows'. Read at 8x the cap face carries FUSE at roughly 12, 3, 6 and 9 o'clock (the 6 o'clock instance inverted) with two short curved arrows inside the ring of text.",
+   "evidence": "PH2 crop native x=3900 y=645 w=110 h=110 upscaled 8x; all four FUSE instances and both arrows are separately legible."
+  },
+  {
+   "id": "P-R03",
+   "file": "docs/research/panel.md",
+   "severity": "missing",
+   "section": "§5 bullet 'Every jack hole is encircled by a thin light ring'; §11 row 'Whether the light ring around each jack hole is printed ink or exposed substrate'",
+   "currentText": "\"**Every jack hole is encircled by a thin light ring**, on the dark field and on the blue stripes alike. Whether it is printed ink or the drilled edge exposing a light substrate is not settled. A redraw that omits it looks wrong. [verified as appearance / unverified as cause] - PH2\"  and the matching §11 row.",
+   "ruling": "SETTLE IT: the ring is **printed ink**. In the MATRIX the ring is demonstrably part of the printed artwork - each M10/M11 hole's cream ring is continuous with the cream bar that joins it to its neighbour, one stroke of the same weight and colour, and the drilled hole sits visibly off-centre inside its own ring (drilling tolerance against printed artwork). The rings on ordinary section jacks are the same colour and stroke weight. Retag: '[verified] printed, in the MATRIX; [likely] as a whole-panel rule - PH2'. Delete the §11 row, or reduce it to the residual '[likely] that the section jacks' rings are the same printed element as the matrix's, rather than a coincidentally similar drilled halo'.",
+   "evidence": "PH2 crop native x=3050 y=780 w=210 h=200 upscaled 5x, and x=3060 y=790 w=130 h=130 upscaled 7x: the M10 loop's top bar, bottom bar and both verticals terminate in - and are continuous with - the hole rings. Compare PH2 crop x=745 y=1590 w=110 h=40 at 11x (an ordinary R-terminal pair): same cream, same ~3-4 px stroke, same per-hole eccentricity."
+  },
+  {
+   "id": "P-R04",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§7.5 last bullet; §11 row 'Whether the two pale marks at the upper left of the DECIMAL block are fasteners or finish damage'",
+   "currentText": "\"Two small pale marks on the dark field at the upper left of the block, above the `16 ARM` terminal. At 4208 px these read less like rivet heads and more like **chips in the dark finish exposing a light-coloured substrate underneath** - weak evidence bearing on the unresolved panel-material question, not a fastener claim. [unverified] - PH2\"",
+   "ruling": "SETTLE IT: they are finish damage, not fasteners. At 4x the two marks are irregular and ragged-edged, flat, matte and chalky-white, flush with the panel and casting no shadow - unlike the slide-switch discs, which are perfectly circular, slightly domed and cast a shadow to the lower right under the same lighting. Retag the bullet '[verified] that they are not fasteners; [likely] that they are chips exposing a lighter substrate or primer - PH2'. Delete the §11 'fasteners or finish damage' row. Then strengthen the §9/§11 substrate entries: the dark field is a **coating over a distinctly lighter, chalky off-white core** - the field is not a self-coloured dark material - which narrows the candidate list even though no source names the material.",
+   "evidence": "PH2 crop native x=3100 y=1290 w=400 h=240 upscaled 4x (the two marks at approx. native (3230,1395) and (3190,1425)); compare PH2 crop x=760 y=1725 w=200 h=70 upscaled 8x (the slide-switch disc, round, domed, with a lower-right shadow)."
+  },
+  {
+   "id": "P-R05",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§6 Band 5, bullet beginning 'Flanking each slide switch'",
+   "currentText": "\"Flanking each slide switch, one under the R/U column and one under the T/W column: **two round pale discs**, most likely the switch's panel-mounting rivet heads. ... [likely] - MM p.9; PH2. No source states that the visible discs *are* those rivet heads.\"",
+   "ruling": "Correct the position and strengthen the evidence, keep the tag at [likely]. The discs are NOT under the R/U and T/W columns - they sit inboard of them, about three-quarters of a column pitch either side of the switch centre. Measured on PH2 section 2: left disc centre native x=805 against an R/U column centre of 774; right disc x=994 against a T/W column centre of 1029; column pitch 127 px, disc separation 189 px. Add two supports the file does not have: (a) at 8x the discs are slightly domed and cast a shadow to the lower right, so they are physical fasteners, not printing; (b) MM p.5 says the POWER switch is likewise rivet-mounted - 'To replace the power switch, remove the leads from the terminals and drill out the rivets which hold the switch. Insert a new power switch, fastening it with machine screws and nuts' - which is a second, independent switch that MM calls rivet-held and that shows the same two pale discs (above ON and below OFF) on the panel face.",
+   "evidence": "PH2 crop native x=690 y=1540 w=480 h=250 at 3x (positions measured against the R/S/T and U/V/W hole centres in the same crop); PH2 crop x=760 y=1725 w=200 h=70 at 8x (relief and shadow). MM printed p.5 = PDF p.7."
+  },
+  {
+   "id": "P-R06",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "Implementer summary item 1; §1 bullets 2, 3 and 4; §7.4 item 3; §12 bullet 'The panel is divided by a full-height printed vertical stripe'",
+   "currentText": "\"...MM pp.2, 4\" (Implementer summary 1 and the §12 bullet); \"'Push the power panel out of the computer console through the holes in the dividing section.' [verified] - MM p.4\"; \"...reached 'through the three-inch hole in the bottom of the computer.' [verified] - MM pp.2, 4\"; \"The bottom panel comes off 'by unscrewing the screws from the rubber feet.' [verified] - MM p.3\"; \"[verified] - B1 p.3; MM pp.4-5\" (circuit breaker).",
+   "ruling": "Every MM page number in §1 is one or two too high. MM printed page = PDF page - 2 (PDF p.4 carries the printed footer '2'). Correct to: 'unscrewing the screws from the rubber feet' -> **MM p.1** (Routine Maintenance / Oiling, PDF p.3); 'store the power cord in the compartment under the power panel ... through the three-inch hole in the bottom' -> **MM p.1** (Storage, PDF p.3); 'Push the power panel out of the computer console through the holes in the dividing section' -> **MM p.3** (Power Supply step 5, PDF p.5). So 'MM pp.2, 4' becomes **'MM pp.1, 3'** in both the Implementer summary and §12, and 'MM p.4' becomes 'MM p.3'. For the circuit breaker, 'MM pp.4-5' becomes **'MM pp.3-4'** (reset instruction is step 2 on printed p.3; the check-and-replace procedure is step 9 on printed p.4; printed p.5 is the power switch, transformer and rectifier and says nothing about the breaker). The §9 'Ratings behind the panel - MM pp.2-3' citation is CORRECT and must not be touched.",
+   "evidence": "pdftotext page by page over raw/pdf/maintenance-manual.pdf: PDF p.4 ends '...remove all pro' + footer '2'; PDF p.5 ends with the Power Supply Circuit Diagram caption + footer '3'; PDF p.6 ends '...a new circuit breaker and replace the leads.' + footer '4'. PDF p.3 therefore carries printed p.1 (Cleaning / Storage / Relay Contacts / Oiling) and holds both the rubber-feet and three-inch-hole sentences."
+  },
+  {
+   "id": "P-R07",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§6 Band 4 last bullet; §12 final bullet",
+   "currentText": "\"[verified] - B234 p.58 \\\"(The notation for a connection to a common terminal is '1com', '2com,' etc.)\\\"; B7 p.11\"  and  \"...B234 p.58's notation statement and its line `3T/3com`, and `1com`..`6com` throughout Book VI.\"",
+   "ruling": "Change **B234 p.58 -> B234 p.59** in both places. The sentence and the program containing `3T/3com` are both on printed page 59 (PDF p.65, whose footer is '59'); PDF p.64 carries the footer '58'. Independently corroborated by the errata's own Book III entry, 'page 59: circuit diagram for \"Boolean Solution\" is incorrectly labeled'. While correcting it, drop the word 'its line 3T/3com' as if it were the book's only such line - B234 also prints `1T/3com`, `2W/3com`, `3A/3com` on the same page and `1G/3com`, `4K/4com` later, so the verifier's 'single com-terminal usage' remark is itself wrong and should not be carried forward.",
+   "evidence": "pdftotext -f 65 -l 65 book2-3-4.pdf shows the notation sentence at line 6 and the footer '59' at line 47; -f 64 shows footer '58'. Program lines re-read at book2-3-4.txt lines 2861-2868 and 4147; errata.txt Book III entry."
+  },
+  {
+   "id": "P-R08",
+   "file": "docs/research/panel.md",
+   "severity": "missing",
+   "section": "§ Sources table",
+   "currentText": "The table lists PH2, PH3 and PH1 only. `raw/photos/commons-minivac6010-mit-museum.jpg` (5161x2759) is not mentioned anywhere in the file.",
+   "ruling": "Add a fourth row, explicitly labelled 6010, with a do-not-use warning: 'PH4 | `photos/commons-minivac6010-mit-museum.jpg`, 5161x2759 | **A MINIVAC 6010, not a 601** (MIT Museum, behind glass). Present in `photos/` and easily mistaken for a 601. Its panel is materially different and must not be used for 601 layout: it is a **single large dark plate** - the blue stripes run the full panel width including through the right-hand column, and MATRIX and DECIMAL INPUT-OUTPUT share one plate with sections 1-6, so the 601's three-sub-panel construction does not carry over; the **section numerals 1-6 are printed along the bottom edge below the pushbuttons**, not in the BINARY OUTPUT band; the relays carry **clear plastic dust covers**; the blue stripes are wider. Useful only as explicitly-flagged 6010 contrast.'",
+   "evidence": "raw/photos/commons-minivac6010-mit-museum.jpg viewed whole at 1400 px and the logo plate at 10x; logotype reads 'Minivac 6010'."
+  },
+  {
+   "id": "P-R09",
+   "file": "docs/research/panel.md",
+   "severity": "missing",
+   "section": "§10 rows D1 and D1b; §11 final row (which address is chronologically earlier)",
+   "currentText": "D1: \"Four printed Watertown attestations against one photographed Cambridge plate.\"  D1b: \"At least three distinct address strings are now in evidence.\"",
+   "ruling": "Add a fourth observation, and add it as an observation ONLY. The MINIVAC **6010** plate on PH4 reads 'Scientific Development Corporation, Watertow[n], Massachusetts' - read at 10x, the city is unambiguously Watertown. Record in D1b: 'A 6010 (PH4) carries a fourth plate reading Watertown, matching every printed SDC document. **6010 evidence, recorded for completeness only.**' In §11's address row, add to the 'what would settle it' column: 'Note that the 6010 plate reading does NOT date the 601 plates and must not be used to order Cambridge, Waltham and Watertown - the question stays open per the project ruling.' Do not change D1's status, which is correctly 'Reported, not resolved.'",
+   "evidence": "PH4 crop native x=3430 y=515 w=420 h=50 upscaled 10x; letterforms W-a-t-e-r-t-o-w legible before the crop edge."
+  },
+  {
+   "id": "P-R10",
+   "file": "docs/research/panel.md",
+   "severity": "tag-too-strong",
+   "section": "§5 bullet 'Label placement is not uniform'",
+   "currentText": "\"Letter designators (`A B C E F G H J K L N R S T U V W X Y Z`) print **below** their hole pair, centred on it to within a pixel at PH2 resolution.\"",
+   "ruling": "'Centred to within a pixel' is measurably wrong and should be replaced with the measured bias. Every silkscreen label on the panel - terminal letters, group legends and the section numerals alike - is set a consistent **4-7 px left of the centre of the thing it labels** at PH2's 4208 px width, roughly a fifth of a letter width. Measured, section 2 BINARY OUTPUT: A-pair holes at x=747.1 / 790.9 (centre 769.0), the letter A's brightness centroid at 763.3; B-pair 1002.5 / 1047.1 (centre 1024.8), letter B at 1017.8. The sign does NOT flip on the right-hand half of the panel (section 6: letter H 3 px left of its pair centre, letter J 7 px left; ARM 2-3 px left; N.C. 4 px left), so it is artwork, not perspective. Same bias on the group legends: COMMON's centre is 810 against its four holes' centre of 817; CAPACITOR 1022 against 1028; the section numeral 6 at 880 against its lamp's panel-level bezel centre of 898. Replace the clause with: 'set very slightly left of centre - a consistent 4-7 px at PH2 resolution, about a fifth of a letter width. Centring them in a redraw is acceptable; claiming they are centred is not.' The substantive rule (letters below, `+`/`-` above, decimal numerals to the left) is unaffected and stays [verified].",
+   "evidence": "Numeric measurement on PH2: hole centroids by dark-blob column analysis and letter centroids by brightness-weighted centroid over the letter band, on the BMP conversion of PH2 crops at native x=690 y=320 w=460 h=130 (section 2) and x=2520 y=1150 w=470 h=130 (section 6); PH2 crop x=690 y=1345 w=500 h=120 at 4x for COMMON / CAPACITOR; x=2350 y=250 w=560 h=200 at 3x for the numeral 6."
+  },
+  {
+   "id": "P-R11",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§7.3, the ASCII diagram",
+   "currentText": "The ASCII draws the matrix inside a closed grid - `+--------+--------+--------+` above the top row, between every row, and below the bottom row, with `|` down both outer sides of every cell.",
+   "ruling": "Redraw it as a bare tic-tac-toe hash. There is **no outer border rule and no rule below the bottom row or above the top row**; only two long verticals and two shorter horizontals, crossing. On PH2 the two verticals are the longer pair (they run from above the top row of holes to below the bottom row) and the two horizontals are the shorter pair (they stop short of the outer cells' holes at both ends). The section's own prose already says this correctly ('two long vertical and two long horizontal cream rules drawn between the cells, not touching any hole') - it is the diagram that contradicts the prose and the photograph, and a renderer following the diagram will draw a boxed grid. Suggested replacement form:\n\n```\n            |        |\n     o-o    |  o-o   |  o-o        o-o\n       1    |    2   |    3        | |\n     o-o    |  o-o   |  o-o        o o\n  ----------+--------+----------   | |\n     o-o    |  o-o   |  o-o        o-o\n       8    |    9   |    4         11\n     o-o    |  o-o   |  o-o\n  ----------+--------+----------\n     o-o    |  o-o   |  o-o\n       7    |    6   |    5\n     o-o    |  o-o   |  o-o\n            |        |\n```\n(with M10 drawn to the left of the board on the middle row's height, as now).",
+   "evidence": "PH2 crop native x=3000 y=540 w=1120 h=700 at 2x: the two vertical rules overrun the top and bottom rows of cells; the two horizontal rules are inset at both ends; no rule runs round the outside of the 3x3 board."
+  },
+  {
+   "id": "P-R12",
+   "file": "docs/research/panel.md",
+   "severity": "cosmetic",
+   "section": "§7.3 last bullet; §8 right-column table, MATRIX row",
+   "currentText": "\"Legend `MATRIX` printed in the **bottom-left corner** of the matrix block, left-aligned against the divider.\"",
+   "ruling": "Drop 'against the divider' - it reads as the MATRIX/POWER vertical rule, which is at the far RIGHT of the plate, a full matrix-width away. Replace with 'left-aligned against the plate's left edge (the blue console frame)'. Same wording in the §8 table row.",
+   "evidence": "PH2 crop native x=3000 y=540 w=1120 h=700 at 2x: MATRIX sits hard against the plate's left edge at the bottom; the MATRIX/POWER rule is at native x~3778."
+  },
+  {
+   "id": "P-R13",
+   "file": "docs/research/panel.md",
+   "severity": "cosmetic",
+   "section": "§9 Typography",
+   "currentText": "\"All block and group legends: heavy, wide, sans-serif grotesque, all caps. Generous letterspacing on the long band titles ...; tighter on `STORAGE/PROCESSING` and the small labels.\"",
+   "ruling": "Add one clause a redraw needs: the small group legends are letterspaced too, so `N.O.` and `N.C.` read on the panel as **`N. O.`** and **`N. C.`** - a clear gap follows each period. It is tracking, not a typed space; a redraw should track the group legends out rather than set them tight, or the labels will not match the photograph. Also drop the claim that `STORAGE/PROCESSING` is tracked tighter than the band titles - at 8x its letterspacing is comparable to `BINARY OUTPUT`; the file gives no measurement behind 'tighter' and should not assert it.",
+   "evidence": "PH2 crop native x=1170 y=1120 w=420 h=70 upscaled 8x, showing `N. O.` / `ARM` / `N. C.` and the bottom of `STORAGE/PR...` in one frame; PH2 crop x=2520 y=1150 w=470 h=130 at 4x for a second instance."
+  },
+  {
+   "id": "P-R14",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§3, final paragraph",
+   "currentText": "\"Independently confirmed as a *pattern* on PH2: section 2 reads left 790/850, middle 975/1035, right 1155/1215, and the same x positions repeat in every band. [verified] - PH2\"",
+   "ruling": "The PH2 x-triple is wrong and should be replaced with the measured values. Section 2's columns on PH2 are **left 747/791, middle 883/922, right 1008/1051**: hole-pair spacing 44 px and column spacing 127 px, not the 60 px and 185 px the published triple implies. The qualitative claim - that the same x positions repeat in every band - survives and stays [verified]; only the numbers change. Derived pitches to carry into §3's horizontal table: channel pitch 453 px, column spacing 127 px (0.28 of channel pitch, which matches the existing table), hole-pair spacing 44 px (0.35 of column spacing, against the table's 0.36), hole diameter ~16 px, printed ring OD ~24 px.",
+   "evidence": "Numeric dark-blob column analysis over the BMP conversion of PH2 crop native x=690 y=320 w=460 h=130 (section 2 BINARY OUTPUT); COMMON/CAPACITOR row of the same section cross-checks the column centres at 774 / 902 / 1029 (PH2 crop x=690 y=1345 w=500 h=120 at 4x)."
+  },
+  {
+   "id": "P-R15",
+   "file": "docs/research/panel.md",
+   "severity": "missing",
+   "section": "§3, preamble and band tables",
+   "currentText": "\"Any serious redraw should re-measure off PH2 (4208 px, ~2.7x the linear resolution).\"",
+   "ruling": "The re-measurement was done; record it so the next pass does not repeat it. Add a PH2 column to the band table, keeping the section [unverified] (PH2 still carries residual perspective - the left plate's top edge is not level in frame). Measured off PH2 by blue-minus-red row profiling through a component-free strip at x=1230-1350, with the panel top edge at y=115 and the bottom edge at y=2345 (height 2230): power stripe **0.184-0.229**; COMMON/CAPACITOR stripe **0.549-0.598**; blank stripe **0.757-0.776**; bottom blue border from **0.985**. Add the finding that matters: PH1 and PH2 agree within the +/-2 % the section already claims for every band except BINARY INPUT (PH1 0.176 of panel height, PH2 0.209), so the existing PH1 table is sound as a proportional guide and does not need replacing - the warning in the preamble can be softened to name BINARY INPUT as the one band where the two photographs disagree.",
+   "evidence": "Row-wise (B-R) colour profiling of PH2 at x=1230-1350 over the full image height: teal bands detected at y 528-630, 1342-1446 and 1804-1844, blue borders at y 115-158 and from 2310. Cross-checked in the right-hand plates at x=3030, where the power stripe reads y 530-634 - the same height as the left plate's 526-636."
+  },
+  {
+   "id": "P-R16",
+   "file": "docs/research/panel.md",
+   "severity": "wrong-fact",
+   "section": "§1, Case bullet",
+   "currentText": "\"Case: 5-1/8 x 24 x 13-1/4 inches, 9 kg (20 lb), blue-painted **wooden** case, 110 VAC input. [likely] - WP (not stated in B1-B7, MM or ER).\"",
+   "ruling": "The parenthetical is wrong for one of the four facts it covers. 110 VAC IS stated in the primary sources: B1 p.3, 'The power supply converts the 110-volt AC power obtained from a standard electric outlet', and MM p.3 step 4, 'Check the 110 volt outlet with a lamp or other appliance'. Split the bullet: '110 VAC input. [verified] - B1 p.3; MM p.3' and 'Case 5-1/8 x 24 x 13-1/4 in, 9 kg (20 lb), blue-painted wooden case. [likely] - WP (dimensions, weight and the wooden construction are not stated in B1-B7, MM or ER).'",
+   "evidence": "book1.pdf PDF p.5 = printed p.3, read from the page text; maintenance-manual.pdf PDF p.5 = printed p.3, step 4."
+  },
+  {
+   "id": "P-R17",
+   "file": "docs/research/panel.md",
+   "severity": "missing",
+   "section": "§6 Band 4 last bullet ('Addressed in programs as `<n>com` and `<n>cap`'); §5.1 `ncap` paragraph",
+   "currentText": "\"Addressed in programs as `<n>com` and `<n>cap`.\"",
+   "ruling": "Add the bare form a parser will otherwise choke on: B7 also writes the capacitor terminal **without a section number** in section-agnostic circuit listings - B7 p.18 prints `F/cap`, `E/cap` and the instruction 'change E/cap to C/cap' - and writes it with a space in prose on p.11 ('use a 220 ohm resistor to make the connection between 1 cap and 1+'). A program parser must accept `<n>cap`, bare `cap`, and `1 cap`. [verified] - B7 pp.11, 18 (read from page images; the OCR of B7 is unreliable). Flag as B7, i.e. joint 601/6010 scope, like every other B7 citation in the file.",
+   "evidence": "book7-capacitor-resistor.pdf rendered at 150 dpi: PDF p.23 = printed p.18 (footer '18'), carrying `F/cap` in the delay-flop circuit and the 'change E/cap to C/cap' substitution table; PDF p.16 = printed p.11 (footer '11'), carrying the 220-ohm sentence. B7 printed page = PDF page - 5."
+  },
+  {
+   "id": "P-R18",
+   "file": "docs/research/panel.md",
+   "severity": "cosmetic",
+   "section": "§7.3 or §11 (incidental-artefact note, wherever the DECIMAL block's pale marks are recorded)",
+   "currentText": "No mention. The file catalogues the DECIMAL block's two pale marks but not this one.",
+   "ruling": "Record, so a redraw does not copy it: on PH2 a small pale object about 15 x 30 px stands proud of the upper-right plate at native (3663, 708) - between matrix cell 3 and the M11 cluster - casting a hard shadow to its right. It is not a hole, not printing, and has no counterpart in the same position on PH3. Incidental debris or damage on the PH2 unit; omit from a clean redraw. [unverified] - PH2.",
+   "evidence": "PH2 crop native x=3615 y=660 w=100 h=100 upscaled 8x: a pale flake standing proud with a hard cast shadow; PH3's matrix plate shows nothing at the corresponding position."
+  }
+ ],
+ "confirmed_correct": [
+  "§7.1 logo second line: re-read on PH2 at 8x in two overlapping crops (native x=3060 and x=3560, y=400, h=60). Character for character exact, including the full stop after Massachusetts and the spaced 'U. S. A.': 'Scientific Development Corporation, Cambridge, Massachusetts. Made in U. S. A. Patents applied for.' Cambridge is unambiguous.",
+  "§7.1 / D1b PH3 plate: re-read at 16x (native x=2935 y=1472 w=130 h=40). A short word of about seven glyphs ending -tham, ascenders at l/t/h, no descender. Cambridge and Watertown are both excluded; 'Waltham' remains the plausible reading and correctly stays [unverified]. The file's handling of D1 as 'Reported, not resolved' is right and must not be changed.",
+  "§2 / §3: band order and the three blue stripes confirmed on PH2, including that the third stripe between SECONDARY STORAGE and BINARY INPUT is narrower than the other two (about 42 px against 108-110) and carries no jacks and no legend.",
+  "§2: the power stripe crosses the left plate and the right-hand plates at the same height - measured teal band y 526-636 at x=1230 and y 530-634 at x=3030.",
+  "§5 / §6 Band 4: COMMON is four holes evenly pitched at the hole-pair pitch, spanning from the left column's left hole to the middle column's left hole, and is not two column-aligned pairs. Measured holes at native x 754 / 796 / 838 / 880 against left-column holes at 753 / 796 and the middle column's left hole at 883. CAPACITOR is two holes exactly on the right column (1006 / 1050 against 1008 / 1051).",
+  "§6 Band 2 and §12: no dark oval or escutcheon under the blue-stripe jacks - at 4x the holes sit on flat teal carrying only their light ring. The dark blobs are the grey taper pins of inserted wires.",
+  "§6 Band 3 and §12: relay order left to right is white cylindrical coil bobbin, white plastic crossbar block with a vertical slot, then the contact stacks plainly visible to the RIGHT of the crossbar as two vertically separated brown/copper spring assemblies. Confirmed at 3x on section 1.",
+  "§6 Band 3: the LIGHT bracket spans C->E and COIL spans E->F, each a horizontal cream rule with down-turned end ticks, broken for the word. Tick positions land on the C, E and F column centres.",
+  "§7.3: M10 and M11 are six holes in a 2-wide x 3-tall array inside a closed printed rectangular loop - top bar, bottom bar, verticals down both columns through the middle holes - with the numeral printed below the cluster. Exactly as described; confirmed at 5x and 7x.",
+  "§7.3: matrix numbering top row 1 2 3, middle 8 9 4, bottom 7 6 5; each cell a 2x2 cluster with a short bar joining the top pair and another joining the bottom pair, no bar between them, numeral in the gap. Confirmed at 2x.",
+  "§7.5: the dial has sixteen sectors between three concentric cream circles, numerals in the inner annulus, a two-hole terminal per sector in the outer annulus laid tangentially, 0 at 12 o'clock increasing clockwise, 4 at 3, 8 at 6, 12 at 9. Confirmed at 2x.",
+  "§7.5 / D8: the pointer knob is a dark brown/maroon cylinder whose white pointer is a wedge on the top face terminating at the knob's own rim, not reaching the number ring. Confirmed; the file is right to leave the stock form unsettled.",
+  "§4 and §8: the section numeral is above and slightly LEFT of its channel's lamp. Confirmed against the lamp's panel-level cream bezel rather than the parallax-shifted red cap - numeral 6 at native x=880 against a bezel centre of 898.",
+  "§7.4: the POWER sub-block object order top to bottom (round component, two-line CIRCUIT BREAKER, large red button with chrome bezel, cream disc, ON, red vertical slide actuator, OFF, second cream disc) and the vertical cream rule that starts inside the blue stripe and runs to the bottom of the plate. Confirmed on both PH2 and PH3. No jacks in the block.",
+  "All B1 quotations check out verbatim against the page text: p.3 (power light; circuit breaker; 'connected to all terminals + and - on the power panel'), p.4 ('Programming wires may be plugged into either (or both) holes'; 'Each terminal is identified by a letter printed below it...'), p.5 (Experiment 1's 'just below the +' / 'just above the letter A'; the shorthand 1+/1A), p.12 (six terminals below; G H J K L N; the OFF/ON contact rule; 'The set of contacts closer to the operator...'; 'The two relay arms are connected together mechanically with a plastic crossbar'), p.14 ('round white coil, located to the left of the arms'; 'Three terminals are located directly above each relay'), p.18 (six terminals R S T U V W; two sets opening and closing together), p.20 ('D = Decimal Input-Output / 8 = terminal number (1 to 19) ... The contact on the wiper arm is referred to as \"D16\"'; VIEW UNDER PANEL), p.25 (matrix designation rule 1 to 11 with t/b; 'The lines between the terminals indicate terminals which are connected together'; the full §9 AUXILIARY TERMINALS text).",
+  "All errata quotations check out verbatim: the +/- global rule with its 1+/3+/6+/M+ and 2-/4-/5-/M- examples; 'the two terminals at 6R, the six at M10, or the four at 3com'; the 1X/4R + 4R/6A short-wire example; the Book V pp.21-22 note that character-recognition connections from M10 go to the TOP terminals; the Watertown footer.",
+  "B7 citations check out on the page images (the OCR is unreliable, the images are not): p.10 gives 'the capacitors for sections 1 through 5 of the MINIVAC are 500 micro-farad capacitors. The capacitor for section 6 is a 1000 micro-farad capacitor'; p.11 gives both quoted sentences - the permanently-connected negative end, and 'As indicated in Book I (page 25) ... 1cap, 2cap, 3cap, etc.'; the omega-subscript-B notation for a relay's bias resistance is real, so §5's 'there is no Q terminal class' stands.",
+  "B56 citations check out: the explicit M10/M11 wire is in the Arabic-numeral-recognition program on printed p.22 (footer confirmed); printed p.51's sequence-recognition program carries 1com/2L ... 5com/6L plus 6F/6com and six starred <n>com connections, and printed p.53 says 'you must make connections to each of the six common terminals in order', so 'B56 pp.51, 53' is correct evidence for six independent COMMON blocks; the tic-tac-toe material is on pp.55-56.",
+  "MM citations at pp.7 (pushbutton mounting screw under the cap), 8 (eight relay connections), 9 (six slide-switch connections; drill out the rivets; RUN = D17/D18, STOP = D18/D19), 10 (D0 through D15) and the ratings paragraph cited as pp.2-3 are all correct.",
+  "§5.1 / §5.2 / §5.3 arithmetic re-checked and correct: 24 terminals and 50 holes per section (23 two-hole + one four-hole) -> 144 / 300; right column 2+18+2+16+4 = 42 terminals and 4+36+12+32+8 = 92 holes; matrix 9x4+6+6 = 48; panel totals 186 terminals and 392 holes."
+ ],
+ "counts": {
+  "rulings": 18,
+  "confirmed": 20
+ }
+}

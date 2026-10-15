@@ -1,0 +1,27 @@
+#!mv601-trace 1
+# id=II-SELFLOCK contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=7
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=383 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+    20.1 > button1 target=1000
+    31.3 * pb1 nc->mid
+    33.8 * pb1 mid->no
+    37.1 * outLamp1 off->dim
+    43.8 * indLamp1 off->dim
+    45.0 * relay1 nc->mid
+    46.3 * relay1 mid->no
+    56.0 * outLamp1 dim->on
+    76.1 > button1 target=0
+    83.8 * indLamp1 dim->on
+    87.3 * pb1 no->mid
+    89.8 * pb1 mid->nc
+   151.0 ? relay1=no pb1=nc  "The manual memory relay circuit above can be easily modified to achieve this by using one of the switches of the relay to continue to supply current to the coil of the relay after the pushbutton has been released."
+   151.0 > power off
+   151.0 * power on->off
+   154.5 * relay1 no->mid
+   155.4 * relay1 mid->nc
+   160.8 * indLamp1 on->dim
+   170.8 * outLamp1 on->dim
+   216.4 * indLamp1 dim->off
+   220.9 ? relay1=nc  "The evident difficulty with this self-locking relay memory circuit is that, although the relay will now remember a 1 once it is told to remember 1, it cannot forget 1 unless the current to the computer is turned off."

@@ -1,0 +1,43 @@
+#!mv601-trace 1
+# id=IV-FF1 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=15
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=58 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp5 off->dim
+    11.6 * relay5 nc->mid
+    12.9 * relay5 mid->no
+    38.2 ? outLamp6=off  "Light 6 will go off and on, indicating the state of the whole flip-flop."
+    38.2 > button6 target=1000
+    49.4 * pb6 nc->mid
+    49.6 * indLamp5 dim->on
+    51.9 * pb6 mid->no
+    55.2 * outLamp6 off->dim
+    61.9 * indLamp6 off->dim
+    64.0 * relay6 nc->mid
+    65.3 * relay6 mid->no
+    74.1 * outLamp6 dim->on
+    98.2 > button6 target=0
+   102.0 * indLamp6 dim->on
+   109.4 * pb6 no->mid
+   111.9 * pb6 mid->nc
+   123.2 * relay5 no->mid
+   124.1 * relay5 mid->nc
+   177.6 ? outLamp6=on  "push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop."
+   177.6 > button6 target=1000
+   188.8 * pb6 nc->mid
+   191.3 * pb6 mid->no
+   202.2 * relay6 no->mid
+   203.1 * relay6 mid->nc
+   208.5 * indLamp5 on->dim
+   237.6 > button6 target=0
+   248.8 * pb6 no->mid
+   251.3 * pb6 mid->nc
+   263.7 * relay5 nc->mid
+   265.0 * relay5 mid->no
+   267.1 * outLamp6 on->dim
+   272.7 * indLamp6 on->dim
+   292.1 * indLamp5 dim->on
+   322.8 * outLamp6 dim->off
+   328.3 * indLamp6 dim->off
+   342.2 ? outLamp6=off  "push pushbutton 6 slowly when operating the single-input flip-flop. Light 6 will go off and on, indicating the state of the whole flip-flop."

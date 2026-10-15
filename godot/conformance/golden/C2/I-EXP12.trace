@@ -1,0 +1,87 @@
+#!mv601-trace 1
+# id=I-EXP12 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=5
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=na minTickGap=25 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   100.0 > button5 target=1000
+   111.2 * pb5 nc->mid
+   113.7 * pb5 mid->no
+   145.0 * dial c0->gap
+   165.8 * dial gap->c1
+   228.3 * dial c1->gap
+   249.2 * dial gap->c2
+   311.7 * dial c2->gap
+   332.5 * dial gap->c3
+   395.0 * dial c3->gap
+   415.8 * dial gap->c4
+   478.3 * dial c4->gap
+   499.2 * dial gap->c5
+   561.7 * dial c5->gap
+   582.5 * dial gap->c6
+   645.0 * dial c6->gap
+   665.8 * dial gap->c7
+   728.3 * dial c7->gap
+   749.2 * dial gap->c8
+   749.3 ? dial=c8  "Turn the power ON. Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate."
+   811.7 * dial c8->gap
+   832.5 * dial gap->c9
+   895.0 * dial c9->gap
+   915.8 * dial gap->c10
+   978.3 * dial c10->gap
+   999.2 * dial gap->c11
+  1061.7 * dial c11->gap
+  1082.5 * dial gap->c12
+  1145.0 * dial c12->gap
+  1165.8 * dial gap->c13
+  1228.3 * dial c13->gap
+  1249.2 * dial gap->c14
+  1311.7 * dial c14->gap
+  1332.5 * dial gap->c15
+  1395.0 * dial c15->gap
+  1415.8 * dial gap->c0
+  1415.9 ? dial=c0  "Turn the power ON. Push pushbutton 5. This supplies power to the RUN terminals (D17 and D18) and causes the pointer of the rotary switch to rotate."
+  1415.9 > button6 target=1000
+  1427.1 * pb6 nc->mid
+  1429.6 * pb6 mid->no
+  4415.9 ? breaker=ok  "[p.23:] While holding pushbutton 5 down, push pushbutton 6. The motor stops when pushbutton 6 is pushed because a short circuit is created across the STOP terminals (D18 and D19). [p.22:] The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply. [p.3:] The red button above the power switch labeled CIRCUIT BREAKER is a safety switch which automatically turns off the power supply when it is overloaded."
+  4415.9 > button6 target=0
+  4427.1 * pb6 no->mid
+  4429.6 * pb6 mid->nc
+  4457.3 * dial c0->gap
+  4478.1 * dial gap->c1
+  4540.6 * dial c1->gap
+  4561.5 * dial gap->c2
+  4624.0 * dial c2->gap
+  4644.8 * dial gap->c3
+  4707.3 * dial c3->gap
+  4728.1 * dial gap->c4
+  4790.6 * dial c4->gap
+  4811.5 * dial gap->c5
+  4874.0 * dial c5->gap
+  4894.8 * dial gap->c6
+  4957.3 * dial c6->gap
+  4978.1 * dial gap->c7
+  5040.6 * dial c7->gap
+  5061.5 * dial gap->c8
+  5061.6 ? dial=c8  "[p.23:] While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed. [p.22:] The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive."
+  5124.0 * dial c8->gap
+  5144.8 * dial gap->c9
+  5207.3 * dial c9->gap
+  5228.1 * dial gap->c10
+  5290.6 * dial c10->gap
+  5311.5 * dial gap->c11
+  5374.0 * dial c11->gap
+  5394.8 * dial gap->c12
+  5457.3 * dial c12->gap
+  5478.1 * dial gap->c13
+  5540.6 * dial c13->gap
+  5561.5 * dial gap->c14
+  5624.0 * dial c14->gap
+  5644.8 * dial gap->c15
+  5707.3 * dial c15->gap
+  5728.1 * dial gap->c0
+  5728.2 ? dial=c0  "[p.23:] While holding pushbutton 5 down, release pushbutton 6. The motor drive operates again because the short circuit has been removed. [p.22:] The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive."
+  5728.2 > button5 target=0
+  5739.4 * pb5 no->mid
+  5741.9 * pb5 mid->nc

@@ -1,0 +1,146 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP3",
+  "source": "BK5 printed pp.3-4 = book5-6.pdf PDF pp.9-10",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "4R/D3",
+    "4S/5R",
+    "4T/D5",
+    "4U/D7",
+    "4V/5T",
+    "4W/D9",
+    "5S/6K",
+    "6C/6L",
+    "6E/D16",
+    "6F/6-",
+    "6G/D1",
+    "6G/6N",
+    "6H/D17",
+    "6J/6K",
+    "6J/6+",
+    "6L/D18",
+    "6N/6-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "4R/D3",
+    "4S/5R",
+    "4T/D5",
+    "4U/D7",
+    "4V/5T",
+    "4W/D9",
+    "5S/6K",
+    "6C/6L",
+    "6E/D16",
+    "6F/6-",
+    "6G/D1",
+    "6G/6N",
+    "6H/D17",
+    "6J/6K",
+    "6J/6+",
+    "6L/D18",
+    "6N/6-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 10000,
+      "cite": "BK5 printed p.4 = book5-6.pdf PDF p.10",
+      "quote": "Turn power on. The rotary switch dial will begin to turn back and forth, generating a periodic signal."
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 6000
+    }
+  ],
+  "note": "Printed claims only (Step 6). No erratum touches Book V pp.3-4 (the errata sheet's Book V entries are pages 2, 10, 11, 12, 21-22, 24 and 25 on sheet p.3, and pages 30, 31, 33 and 35 on errata.pdf PDF p.4); wires are the printed 17, image-read from PDF p.10, and match programs.json. The printed circuit diagram on the same page draws the 6K feed to 4S rather than 5S and leaves 5S unconnected. The program table's 5S/6K is followed: with the diagram's wiring switch 5 would be inert, which contradicts p.3's 'only four periods can be produced using the positions of slide switches 4 and 5'. Script: power on, then slide switches 4 and 5 are moved through all four combinations (4 RIGHT; 5 RIGHT; 4 LEFT; 5 LEFT), 6000 ms each, per 'To change the period of the signal, move slide switches 4 and 5.' The order, the 6000 ms windows and the LEFT start position are script choices; the page prints none of them. Asserted: the dial turns after power on (an until on dial=gap; the dial starts on c0, the construction state, so the wiper must leave its contact to turn). Not asserted: 'back and forth' and 'between two points' (the two dial points are not printed, so no reversal can be stated as an observable), and the four periods and which switch setting gives which (not printed). A dial=gap until after each switch move was considered and left out: the dial is already turning then, so gap would pass on a stalled wiper and proves nothing. These are left to Step 7. Observed, for Step 7: the dial oscillates c1<->c3 with both switches LEFT (relay 6 latch period about 256 ms), c1<->c5 with 4 RIGHT (about 589 ms), c1<->c9 with 4 and 5 RIGHT (about 1257 ms), c1<->c7 with 5 RIGHT only (about 923 ms). When a move drops the far contact while the wiper is beyond the new one and heading out (here the last move, 5 back to LEFT, from c1<->c7), the dial runs on the long way through c8..c15 and c0 to c1 once before it settles; whether this happens depends on the phase at the move. Rotary run rate, coast and geometry are profile fallbacks. Knife-edge: relay 6's pull-in decides at marginUa 0 (first at 225.0 ms, coilUa 45213); it trips the knife-edge trigger (minDecisionUa 0 < 14) and the bless gate's robustness check held all six perturbations. The only assert (script[1], 31.3 ms) comes before the first relay 6 decision (225.0 ms), so that hold says nothing about the knife-edge. A reviewer rerun of the six perturbed profiles kept the oscillation (relay 6 transitions 252-254 against 254, dial transitions 835-841 against 838, perturbed minDecisionUa 25-198).",
+  "digest": {
+    "eventCount": 1618,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      254,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      4,
+      0,
+      838
+    ]
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-XOR-PB-DERIVED",
+  "source": "BK3 printed p.41 = book2-3-4.pdf PDF p.47; Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1Y",
+    "1Z/2X",
+    "1X/2Z",
+    "2Y/3A",
+    "3B/3-"
+  ],
+  "errata_applied": [],
+  "note": "Speculative (Step 7): every expect is derived by hand from the five wires and the p.41 rule (either pushbutton pushed -> light 3 ON; both pushed -> light 3 not ON). The page prints the either-pushed and both-pushed cases only; the neither-pushed case is derived (C-17) and is checked here at the start and at the end, and the pushbutton-2-only case is checked by releasing pushbutton 1 while 2 is held. Topology: 1+ feeds arm 1Y only; pushbutton 1 steers that feed to 1Z (up, to 2X) or 1X (down, to 2Z); pushbutton 2's arm 2Y picks 2Z (up) or 2X (down) and feeds light 3 (2Y/3A, 3B/3-). Light 3 is lit exactly when the two buttons differ. No relay, switch or motor is used and nothing loops back, so each input set has one settled state. The 500 ms advance before each expect lets the lamp finish its thermal transient; the page states no timing.",
+  "wires": [
+    "1+/1Y",
+    "1Z/2X",
+    "1X/2Z",
+    "2Y/3A",
+    "3B/3-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47, stated rule EITHER BUT NOT BOTH (pushbutton 1 = A, pushbutton 2 = B, light 3 = C; either pushed -> light 3 ON, both pushed -> light 3 NOT ON); ER-10 names it EXCLUSIVE OR; derived from topology: neither pushed (C-17, not printed). 1+/1Y feeds arm 1Y, which rests on 1Z, so 1Z/2X makes 2X live; arm 2Y rests on 2Z, and 2Z is wired only to 1X, which pushbutton 1 (up) leaves dead; 2Y/3A dead, light 3 (3A-3B-3-) dark",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47, stated rule EITHER BUT NOT BOTH (pushbutton 1 = A, pushbutton 2 = B, light 3 = C; either pushed -> light 3 ON, both pushed -> light 3 NOT ON); ER-10 names it EXCLUSIVE OR; derived from topology: pushbutton 1 only. Arm 1Y moves to 1X, so 1X/2Z makes 2Z live; arm 2Y still rests on 2Z, so 2Y/3A is live and light 3 lights through 3B/3-",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47, stated rule EITHER BUT NOT BOTH (pushbutton 1 = A, pushbutton 2 = B, light 3 = C; either pushed -> light 3 ON, both pushed -> light 3 NOT ON); ER-10 names it EXCLUSIVE OR; derived from topology: both pushed. 1Y on 1X keeps 2Z live, but arm 2Y has left 2Z for 2X, and 2X is fed only through 1Z, which arm 1Y has left; 3A dead, light 3 dark",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        }
+      ],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47, stated rule EITHER BUT NOT BOTH (pushbutton 1 = A, pushbutton 2 = B, light 3 = C; either pushed -> light 3 ON, both pushed -> light 3 NOT ON); ER-10 names it EXCLUSIVE OR; derived from topology: pushbutton 2 only, reached by releasing pushbutton 1 with pushbutton 2 held (the printed fixture reaches it the same way but this is the PB2-only case of the rule). Arm 1Y back on 1Z makes 2X live through 1Z/2X; arm 2Y on 2X, so 2Y/3A live and light 3 lights",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47, stated rule EITHER BUT NOT BOTH (pushbutton 1 = A, pushbutton 2 = B, light 3 = C; either pushed -> light 3 ON, both pushed -> light 3 NOT ON); ER-10 names it EXCLUSIVE OR; derived from topology: neither pushed again at the end of the sequence (C-17, not printed). Arm 2Y returns to 2Z, which is dead with arm 1Y on 1Z; 3A dead, light 3 dark",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

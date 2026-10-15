@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "minivac.demo-library/1",
+  "title": "MINIVAC 601 public demo library",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "demos"],
+  "properties": {
+    "schema": { "const": "minivac.demo-library/1" },
+    "demos": {
+      "type": "array",
+      "minItems": 17,
+      "maxItems": 17,
+      "items": { "$ref": "#/$defs/demo" }
+    }
+  },
+  "$defs": {
+    "demo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "title", "category", "source", "connections", "initial", "instructions",
+        "controlLabels"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "category": {
+          "enum": [
+            "counter", "game", "comparison", "random", "logic", "alarm", "memory", "control",
+            "lock", "code", "arithmetic"
+          ]
+        },
+        "source": { "$ref": "#/$defs/source" },
+        "connections": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/connection" }
+        },
+        "initial": { "$ref": "#/$defs/initial" },
+        "instructions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "controlLabels": {
+          "type": "object",
+          "additionalProperties": false,
+          "patternProperties": {
+            "^(button|switch|relay)[1-6]$|^(dial|power)$": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "notice": { "type": "string", "minLength": 1 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["program", "locator", "confidence", "errata", "fallbacks"],
+      "properties": {
+        "program": { "type": "string", "minLength": 1 },
+        "locator": { "type": "string", "minLength": 1 },
+        "confidence": { "enum": ["verified", "likely", "unverified"] },
+        "errata": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "fallbacks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^FALLBACK-[A-Z0-9]+(?:-[A-Z0-9]+)*$"
+          }
+        }
+      }
+    },
+    "connection": {
+      "oneOf": [
+        { "$ref": "#/$defs/wire" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["wire", "r_uohm"],
+          "properties": {
+            "wire": { "$ref": "#/$defs/wire" },
+            "r_uohm": { "type": "integer", "minimum": 0, "maximum": 2147483647 }
+          }
+        }
+      ]
+    },
+    "wire": {
+      "type": "string",
+      "pattern": "^(?!free/free$)(?:free|(?:[1-6](?:A|B|\\+|-|C|E|F|G|H|J|K|L|N|com|cap|R|S|T|U|V|W|X|Y|Z)|M(?:\\+|-|[1-9][tb]|10|11)|D(?:[0-9]|1[0-9]))(?:#[1-6])?)/(?:free|(?:[1-6](?:A|B|\\+|-|C|E|F|G|H|J|K|L|N|com|cap|R|S|T|U|V|W|X|Y|Z)|M(?:\\+|-|[1-9][tb]|10|11)|D(?:[0-9]|1[0-9]))(?:#[1-6])?)$"
+    },
+    "initial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["power", "switches", "buttons", "relayHands", "dialHand"],
+      "properties": {
+        "power": { "type": "boolean" },
+        "switches": { "$ref": "#/$defs/sixTargets" },
+        "buttons": { "$ref": "#/$defs/sixTargets" },
+        "relayHands": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "items": {
+            "oneOf": [
+              { "type": "null" },
+              { "type": "integer", "minimum": 0, "maximum": 1000 }
+            ]
+          }
+        },
+        "dialHand": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "integer", "minimum": 0, "maximum": 359999999 }
+          ]
+        }
+      }
+    },
+    "sixTargets": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "type": "integer", "minimum": 0, "maximum": 1000 }
+    }
+  }
+}

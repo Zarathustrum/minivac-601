@@ -1,0 +1,41 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-XOR-PB",
+  "source": "BK3 printed p.41 = book2-3-4.pdf PDF p.47",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1Z/2X", "1X/2Z", "2Y/3A", "3B/3-"],
+  "errata_applied": [],
+  "note": "The page does not print the neither-pushed result, so this fixture intentionally has no expectation for that input.",
+  "wires": ["1+/1Y", "1Z/2X", "1X/2Z", "2Y/3A", "3B/3-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "off" }],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47",
+      "quote": "Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON."
+    }
+  ]
+}

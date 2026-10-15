@@ -1,0 +1,515 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "minivac.fixture/1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "source",
+    "tier",
+    "confidence",
+    "profile",
+    "contract",
+    "as_printed",
+    "errata_applied",
+    "wires",
+    "script"
+  ],
+  "properties": {
+    "schema": { "const": "minivac.fixture/1" },
+    "id": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+    "source": { "type": "string", "minLength": 1 },
+    "tier": { "enum": ["A", "B", "C1", "C2"] },
+    "confidence": { "enum": ["verified", "likely", "unverified"] },
+    "profile": { "enum": ["MV601-REF-A", "MV601-IDEAL"] },
+    "contract": { "const": "1.1.0" },
+    "as_printed": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "errata_applied": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/erratum" }
+    },
+    "wires": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "script": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          { "$ref": "#/$defs/doStep" },
+          { "$ref": "#/$defs/advanceStep" },
+          { "$ref": "#/$defs/settleStep" },
+          { "$ref": "#/$defs/expectStep" },
+          { "$ref": "#/$defs/untilStep" }
+        ]
+      }
+    },
+    "note": { "type": "string", "minLength": 1 },
+    "marginal": { "const": true },
+    "mechanism": { "$ref": "#/$defs/mechanism" },
+    "digest": { "$ref": "#/$defs/digest" }
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": { "marginal": {}, "mechanism": {} },
+          "required": ["marginal", "mechanism"]
+        },
+        {
+          "not": {
+            "anyOf": [
+              { "properties": { "marginal": {} }, "required": ["marginal"] },
+              { "properties": { "mechanism": {} }, "required": ["mechanism"] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": { "tier": { "const": "C2" } },
+        "required": ["tier"]
+      },
+      "then": {
+        "required": ["digest"],
+        "properties": { "digest": {} }
+      },
+      "else": {
+        "not": {
+          "properties": { "digest": {} },
+          "required": ["digest"]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "positiveInt32": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2147483647
+    },
+    "erratum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 }
+      }
+    },
+    "mechanism": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profileKey", "decision"],
+      "properties": {
+        "profileKey": { "type": "string", "minLength": 1 },
+        "decision": { "type": "string", "minLength": 1 }
+      }
+    },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eventCount", "moverTransitions"],
+      "properties": {
+        "eventCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "moverTransitions": {
+          "type": "array",
+          "minItems": 19,
+          "maxItems": 19,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          }
+        }
+      }
+    },
+    "cordEnd": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "hole"],
+          "properties": {
+            "k": { "const": "hole" },
+            "hole": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "term"],
+          "properties": {
+            "k": { "const": "touch" },
+            "term": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k"],
+          "properties": { "k": { "const": "free" } }
+        }
+      ]
+    },
+    "command": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "on"],
+          "properties": {
+            "k": { "const": "power" },
+            "on": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "reset"],
+          "properties": {
+            "k": { "const": "breaker" },
+            "reset": { "const": true }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "cord", "a", "b"],
+          "properties": {
+            "k": { "const": "connect" },
+            "cord": { "type": "integer", "minimum": 0, "maximum": 255 },
+            "a": { "$ref": "#/$defs/cordEnd" },
+            "b": { "$ref": "#/$defs/cordEnd" },
+            "r_uohm": { "type": "integer", "minimum": 0, "maximum": 2147483647 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "cord"],
+          "properties": {
+            "k": { "const": "disconnect" },
+            "cord": { "type": "integer", "minimum": 0, "maximum": 255 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "n", "target"],
+          "properties": {
+            "k": { "const": "button" },
+            "n": { "type": "integer", "minimum": 1, "maximum": 6 },
+            "target": { "type": "integer", "minimum": 0, "maximum": 1000 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "n", "target"],
+          "properties": {
+            "k": { "const": "switch" },
+            "n": { "type": "integer", "minimum": 1, "maximum": 6 },
+            "target": { "type": "integer", "minimum": 0, "maximum": 1000 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "n", "target"],
+          "properties": {
+            "k": { "const": "relayGrab" },
+            "n": { "type": "integer", "minimum": 1, "maximum": 6 },
+            "target": { "type": "integer", "minimum": 0, "maximum": 1000 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "n"],
+          "properties": {
+            "k": { "const": "relayRelease" },
+            "n": { "type": "integer", "minimum": 1, "maximum": 6 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k", "targetUdeg"],
+          "properties": {
+            "k": { "const": "dialGrab" },
+            "targetUdeg": { "type": "integer", "minimum": 0, "maximum": 359999999 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["k"],
+          "properties": { "k": { "const": "dialRelease" } }
+        }
+      ]
+    },
+    "doStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["k", "cmd"],
+      "properties": {
+        "k": { "const": "do" },
+        "cmd": { "$ref": "#/$defs/command" },
+        "collapse": { "const": true }
+      }
+    },
+    "advanceStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["k", "ms"],
+      "properties": {
+        "k": { "const": "advance" },
+        "ms": { "$ref": "#/$defs/positiveInt32" }
+      }
+    },
+    "settleStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["k", "maxMs"],
+      "properties": {
+        "k": { "const": "settle" },
+        "maxMs": { "$ref": "#/$defs/positiveInt32" }
+      }
+    },
+    "observable": {
+      "oneOf": [
+        { "$ref": "#/$defs/obsPower" },
+        { "$ref": "#/$defs/obsBreaker" },
+        { "$ref": "#/$defs/obsRelay1" },
+        { "$ref": "#/$defs/obsRelay2" },
+        { "$ref": "#/$defs/obsRelay3" },
+        { "$ref": "#/$defs/obsRelay4" },
+        { "$ref": "#/$defs/obsRelay5" },
+        { "$ref": "#/$defs/obsRelay6" },
+        { "$ref": "#/$defs/obsPb1" },
+        { "$ref": "#/$defs/obsPb2" },
+        { "$ref": "#/$defs/obsPb3" },
+        { "$ref": "#/$defs/obsPb4" },
+        { "$ref": "#/$defs/obsPb5" },
+        { "$ref": "#/$defs/obsPb6" },
+        { "$ref": "#/$defs/obsSw1" },
+        { "$ref": "#/$defs/obsSw2" },
+        { "$ref": "#/$defs/obsSw3" },
+        { "$ref": "#/$defs/obsSw4" },
+        { "$ref": "#/$defs/obsSw5" },
+        { "$ref": "#/$defs/obsSw6" },
+        { "$ref": "#/$defs/obsDial" },
+        { "$ref": "#/$defs/obsOutLamp1" },
+        { "$ref": "#/$defs/obsOutLamp2" },
+        { "$ref": "#/$defs/obsOutLamp3" },
+        { "$ref": "#/$defs/obsOutLamp4" },
+        { "$ref": "#/$defs/obsOutLamp5" },
+        { "$ref": "#/$defs/obsOutLamp6" },
+        { "$ref": "#/$defs/obsIndLamp1" },
+        { "$ref": "#/$defs/obsIndLamp2" },
+        { "$ref": "#/$defs/obsIndLamp3" },
+        { "$ref": "#/$defs/obsIndLamp4" },
+        { "$ref": "#/$defs/obsIndLamp5" },
+        { "$ref": "#/$defs/obsIndLamp6" }
+      ]
+    },
+    "obsPower": { "$ref": "#/$defs/obsPowerValue" },
+    "obsBreaker": { "$ref": "#/$defs/obsBreakerValue" },
+    "obsRelay1": { "$ref": "#/$defs/obsRelayValue1" },
+    "obsRelay2": { "$ref": "#/$defs/obsRelayValue2" },
+    "obsRelay3": { "$ref": "#/$defs/obsRelayValue3" },
+    "obsRelay4": { "$ref": "#/$defs/obsRelayValue4" },
+    "obsRelay5": { "$ref": "#/$defs/obsRelayValue5" },
+    "obsRelay6": { "$ref": "#/$defs/obsRelayValue6" },
+    "obsPb1": { "$ref": "#/$defs/obsPbValue1" },
+    "obsPb2": { "$ref": "#/$defs/obsPbValue2" },
+    "obsPb3": { "$ref": "#/$defs/obsPbValue3" },
+    "obsPb4": { "$ref": "#/$defs/obsPbValue4" },
+    "obsPb5": { "$ref": "#/$defs/obsPbValue5" },
+    "obsPb6": { "$ref": "#/$defs/obsPbValue6" },
+    "obsSw1": { "$ref": "#/$defs/obsSwValue1" },
+    "obsSw2": { "$ref": "#/$defs/obsSwValue2" },
+    "obsSw3": { "$ref": "#/$defs/obsSwValue3" },
+    "obsSw4": { "$ref": "#/$defs/obsSwValue4" },
+    "obsSw5": { "$ref": "#/$defs/obsSwValue5" },
+    "obsSw6": { "$ref": "#/$defs/obsSwValue6" },
+    "obsDial": { "$ref": "#/$defs/obsDialValue" },
+    "obsOutLamp1": { "$ref": "#/$defs/obsOutLampValue1" },
+    "obsOutLamp2": { "$ref": "#/$defs/obsOutLampValue2" },
+    "obsOutLamp3": { "$ref": "#/$defs/obsOutLampValue3" },
+    "obsOutLamp4": { "$ref": "#/$defs/obsOutLampValue4" },
+    "obsOutLamp5": { "$ref": "#/$defs/obsOutLampValue5" },
+    "obsOutLamp6": { "$ref": "#/$defs/obsOutLampValue6" },
+    "obsIndLamp1": { "$ref": "#/$defs/obsIndLampValue1" },
+    "obsIndLamp2": { "$ref": "#/$defs/obsIndLampValue2" },
+    "obsIndLamp3": { "$ref": "#/$defs/obsIndLampValue3" },
+    "obsIndLamp4": { "$ref": "#/$defs/obsIndLampValue4" },
+    "obsIndLamp5": { "$ref": "#/$defs/obsIndLampValue5" },
+    "obsIndLamp6": { "$ref": "#/$defs/obsIndLampValue6" },
+    "obsPowerValue": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "power" }, "v": { "enum": ["off", "on"] } } },
+    "obsBreakerValue": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "breaker" }, "v": { "enum": ["ok", "tripped"] } } },
+    "obsRelayValue1": { "$ref": "#/$defs/relay1Pair" },
+    "obsRelayValue2": { "$ref": "#/$defs/relay2Pair" },
+    "obsRelayValue3": { "$ref": "#/$defs/relay3Pair" },
+    "obsRelayValue4": { "$ref": "#/$defs/relay4Pair" },
+    "obsRelayValue5": { "$ref": "#/$defs/relay5Pair" },
+    "obsRelayValue6": { "$ref": "#/$defs/relay6Pair" },
+    "obsPbValue1": { "$ref": "#/$defs/pb1Pair" },
+    "obsPbValue2": { "$ref": "#/$defs/pb2Pair" },
+    "obsPbValue3": { "$ref": "#/$defs/pb3Pair" },
+    "obsPbValue4": { "$ref": "#/$defs/pb4Pair" },
+    "obsPbValue5": { "$ref": "#/$defs/pb5Pair" },
+    "obsPbValue6": { "$ref": "#/$defs/pb6Pair" },
+    "obsSwValue1": { "$ref": "#/$defs/sw1Pair" },
+    "obsSwValue2": { "$ref": "#/$defs/sw2Pair" },
+    "obsSwValue3": { "$ref": "#/$defs/sw3Pair" },
+    "obsSwValue4": { "$ref": "#/$defs/sw4Pair" },
+    "obsSwValue5": { "$ref": "#/$defs/sw5Pair" },
+    "obsSwValue6": { "$ref": "#/$defs/sw6Pair" },
+    "obsDialValue": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "dial" }, "v": { "enum": ["c0", "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10", "c11", "c12", "c13", "c14", "c15", "gap"] } } },
+    "obsOutLampValue1": { "$ref": "#/$defs/outLamp1Pair" },
+    "obsOutLampValue2": { "$ref": "#/$defs/outLamp2Pair" },
+    "obsOutLampValue3": { "$ref": "#/$defs/outLamp3Pair" },
+    "obsOutLampValue4": { "$ref": "#/$defs/outLamp4Pair" },
+    "obsOutLampValue5": { "$ref": "#/$defs/outLamp5Pair" },
+    "obsOutLampValue6": { "$ref": "#/$defs/outLamp6Pair" },
+    "obsIndLampValue1": { "$ref": "#/$defs/indLamp1Pair" },
+    "obsIndLampValue2": { "$ref": "#/$defs/indLamp2Pair" },
+    "obsIndLampValue3": { "$ref": "#/$defs/indLamp3Pair" },
+    "obsIndLampValue4": { "$ref": "#/$defs/indLamp4Pair" },
+    "obsIndLampValue5": { "$ref": "#/$defs/indLamp5Pair" },
+    "obsIndLampValue6": { "$ref": "#/$defs/indLamp6Pair" },
+    "relay1Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "relay1" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "relay2Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "relay2" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "relay3Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "relay3" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "relay4Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "relay4" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "relay5Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "relay5" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "relay6Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "relay6" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "pb1Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "pb1" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "pb2Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "pb2" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "pb3Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "pb3" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "pb4Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "pb4" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "pb5Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "pb5" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "pb6Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "pb6" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "sw1Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "sw1" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "sw2Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "sw2" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "sw3Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "sw3" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "sw4Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "sw4" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "sw5Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "sw5" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "sw6Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "sw6" }, "v": { "enum": ["nc", "mid", "no"] } } },
+    "outLamp1Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "outLamp1" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "outLamp2Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "outLamp2" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "outLamp3Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "outLamp3" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "outLamp4Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "outLamp4" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "outLamp5Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "outLamp5" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "outLamp6Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "outLamp6" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "indLamp1Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "indLamp1" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "indLamp2Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "indLamp2" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "indLamp3Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "indLamp3" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "indLamp4Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "indLamp4" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "indLamp5Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "indLamp5" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "indLamp6Pair": { "type": "object", "additionalProperties": false, "required": ["dev", "v"], "properties": { "dev": { "const": "indLamp6" }, "v": { "enum": ["off", "dim", "on"] } } },
+    "observableList": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/observable" },
+      "allOf": [
+        { "contains": { "$ref": "#/$defs/obsPower" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsBreaker" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsRelay1" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsRelay2" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsRelay3" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsRelay4" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsRelay5" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsRelay6" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsPb1" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsPb2" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsPb3" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsPb4" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsPb5" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsPb6" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsSw1" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsSw2" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsSw3" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsSw4" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsSw5" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsSw6" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsDial" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsOutLamp1" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsOutLamp2" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsOutLamp3" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsOutLamp4" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsOutLamp5" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsOutLamp6" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsIndLamp1" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsIndLamp2" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsIndLamp3" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsIndLamp4" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsIndLamp5" }, "minContains": 0, "maxContains": 1 },
+        { "contains": { "$ref": "#/$defs/obsIndLamp6" }, "minContains": 0, "maxContains": 1 }
+      ]
+    },
+    "sourceText": { "type": "string", "minLength": 1, "pattern": "^[^\\u0000-\\u001f]*$" },
+    "fallbackSource": { "type": "string", "pattern": "^FALLBACK-[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+    "fallbackProvenance": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": { "tag": {}, "source": {} },
+          "required": ["tag", "source"]
+        },
+        {
+          "not": {
+            "anyOf": [
+              { "properties": { "tag": {} }, "required": ["tag"] },
+              { "properties": { "source": {} }, "required": ["source"] }
+            ]
+          }
+        }
+      ]
+    },
+    "untilStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["k", "obs", "maxMs", "cite", "quote"],
+      "properties": {
+        "k": { "const": "until" },
+        "obs": { "$ref": "#/$defs/observableList" },
+        "maxMs": { "$ref": "#/$defs/positiveInt32" },
+        "cite": { "$ref": "#/$defs/sourceText" },
+        "quote": { "$ref": "#/$defs/sourceText" },
+        "tag": { "const": "unverified" },
+        "source": { "$ref": "#/$defs/fallbackSource" }
+      },
+      "allOf": [{ "$ref": "#/$defs/fallbackProvenance" }]
+    },
+    "expectStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["k", "obs", "cite", "quote"],
+      "properties": {
+        "k": { "const": "expect" },
+        "obs": { "$ref": "#/$defs/observableList" },
+        "cite": { "$ref": "#/$defs/sourceText" },
+        "quote": { "$ref": "#/$defs/sourceText" },
+        "tag": { "const": "unverified" },
+        "source": { "$ref": "#/$defs/fallbackSource" }
+      },
+      "allOf": [{ "$ref": "#/$defs/fallbackProvenance" }]
+    }
+  }
+}

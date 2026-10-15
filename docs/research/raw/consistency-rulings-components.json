@@ -1,0 +1,163 @@
+{
+  "topic": "components",
+  "file_under_review": "docs/research/components.md",
+  "agent": "consistency pass — components re-judged against the Maintenance Manual, Book VII, the errata and the three Wikimedia Commons photographs",
+  "date_generated": "2026-08-30",
+  "oracle_only_compliance": "No emulator source was opened, fetched or read. All evidence is from raw/pdf/*, raw/photos/* and raw/*.json on disk.",
+  "raw_files_touched": "none — this file is a new artifact; nothing under raw/ was edited",
+  "method": {
+    "page_offsets_confirmed": {
+      "maintenance-manual.pdf": "printed p.N = PDF p.N+2, re-derived folio by folio via per-page pdftotext: folio 2 on PDF 4, folio 5 on PDF 7, folio 7 on PDF 9, folio 8 on PDF 10, folio 11 on PDF 13. The file's offset and every MAINT citation in it are correct.",
+      "book7-capacitor-resistor.pdf": "printed p.N = PDF p.N+5, confirmed off rendered folios: folio 6 on PDF 11, 7 on PDF 12, 8 on PDF 13, 9 on PDF 14, 10 on PDF 15, 11 on PDF 16.",
+      "book1.pdf": "printed p.N = PDF p.N+2, confirmed at printed pp.3, 12, 13, 14, 17."
+    },
+    "renders": [
+      "maintenance-manual PDF p.5 and p.9 at 300 and 600 dpi (power-supply schematic; Relay Check figure traced wire by wire)",
+      "book7 PDF pp.11-16 at 150 dpi (hysteresis graphs, bias procedure, blank per-relay chart, capacitor values, capacitor notation)",
+      "commons-minivac601-main.jpg POWER strip and relay-1 LIGHT/COIL silkscreen at native 4208px",
+      "commons-minivac601-DSCF1392.jpg POWER strip at native 4288px"
+    ]
+  },
+
+  "rulings": [
+    {
+      "id": "CMP-R01",
+      "severity": "blocks-build",
+      "section": "§9.3, parameter table",
+      "currentText": "| `relay_pull_in_v` / `drop_out_v` | 7.5 / 3.0 (or MV601-REF-A's 6.5 / 2.5 — pick one and use it everywhere) |",
+      "ruling": "Delete the 7.5 / 3.0 option. The row must read `relay_pull_in_v` / `drop_out_v` = 6.5 / 2.5, matching MV601-REF-A, and carry the note: 7.5 V is refuted by this file's own AT-01 — SDC's simplest published latch would not pull in. Replace the parenthetical '(pick one and use it everywhere)' with 'MV601-REF-A is the single source of these two constants; §9.3 must not restate them at a different value.'",
+      "evidence": "Internal, and decisive. §8.2 AT-01: the Book I Experiment 9 latch drives the coil through its own indicator lamp, giving V_coil = 6.92 V, and the row itself says 'Fails first if pull-in is raised above ~6.9 V'. 6.92 V < 7.5 V, so under §9.3's shipped default the canonical self-holding relay of BK1 printed p.17 (program 1F/1-, 1C/1X, 1Y/2Y, 2Y/2+, 2Z/1L, 1K/1C — re-read on the page image) never latches. The two named profiles ship mutually exclusive defaults for the same constant.",
+      "tag_change": "none (both figures already [unverified]); this is a contradiction, not a tag error"
+    },
+    {
+      "id": "CMP-R02",
+      "severity": "wrong-fact",
+      "section": "§9.3, third bullet under 'Structure first'",
+      "currentText": "**Armature as a continuous travel scalar** `t ∈ [0,1]`, moving toward 1 at `1/t_operate` above pull-in, toward 0 at `1/t_release` below drop-out, and **not moving** inside the bi-stable band.",
+      "ruling": "Qualify the freeze. Replace '**not moving** inside the bi-stable band' with: 'inside the bi-stable band, an armature already at a stop stays there (t = 0 holds at 0, t = 1 holds at 1); an armature strictly between the stops is *not* in equilibrium and continues in its current direction of travel until it reaches a stop.' Cite BK7 printed p.6 for the reason.",
+      "evidence": "BK7 printed p.6 (PDF 11), read on the page image, gives SDC's own mechanism: 'the greater the magnetic force the more likely that the arm will pull in… For a given gap, the greater the voltage the greater the magnetic force; for a given voltage, the smaller the gap, the greater the magnetic force. Since the gap on a closed relay is very small, less voltage is required to hold it in than is required to pull it in.' The band exists *because* force varies with gap — which means it is a property of the two end positions, not of intermediate ones. A literal freeze at, say, t = 0.4 parks the arm inside the both-open window indefinitely, an outcome the mechanism cannot produce and which would deadlock any circuit whose coil voltage lands in the band mid-stroke (exactly the Book VII bias case the model exists to express).",
+      "tag_change": "none — the bullet is already [unverified]; the correction is to the physics, not the tag"
+    },
+    {
+      "id": "CMP-R03",
+      "severity": "wrong-fact",
+      "section": "§7.3, 'Power light' bullet; and §12, last row",
+      "currentText": "§7.3: 'Note: the component at the top of the POWER strip **varies between surviving units** — one photographed unit carries a red pilot jewel there, another carries a black bayonet FUSEHOLDER cap engraved FUSE. No manual mentions a fuse and the parts list has none. Record as a per-unit variant. `[verified]`'  §12: '| What the factory fitted at the top of the POWER strip (pilot jewel vs fuseholder) | Model the red power light per BK1 p.3; record the fuseholder as a per-unit variant | Panel photographs of several units with known dates |'",
+      "ruling": "Close the question against 'per-unit variant'. Rewrite the §7.3 note as: 'The POWER strip runs, top to bottom: power light, the silkscreen legend CIRCUIT BREAKER, the red circuit-breaker pushbutton, then the ON/OFF power switch. Both photographed 601s carry an identical red breaker button under that legend. The top position is the power-light position: the Centre for Computing History unit has a red pilot jewel there, the Commons unit has a black bayonet cap engraved FUSE in the same hole. Factory fit is the light assembly; the fuseholder is an owner replacement of a burnt-out power light. `[verified]`' Delete the §12 row, or restate it as closed.",
+      "evidence": "Three independent legs, all read this pass. (1) commons-minivac601-DSCF1392.jpg at native resolution: the POWER strip shows a small red translucent pilot jewel at the top, the two-line silkscreen CIRCUIT BREAKER below it, then a large red pushbutton, then the ON/OFF slide — the exact layout BK1 printed p.3 describes ('The red button above the power switch labeled CIRCUIT BREAKER is a safety switch… The red power light shows when the power is ON'). (2) commons-minivac601-main.jpg at native resolution: the same CIRCUIT BREAKER legend and the same red breaker button are present; only the top item differs, a black cap engraved FUSE / FUSE / FUSE with turn arrows. So the breaker is not the varying part. (3) MAINT printed p.3 (PDF 5) at 600 dpi draws a POWER LIGHT across the + and - output and no fuse anywhere; MAINT printed p.11 lists 6435 Light Assembly and no fuse; a grep for 'fuse' across all six OCR extracts returns only BK1 p.3's simile 'blow just like a household fuse'. This is also the disposition raw/critic-completeness.json C6 prescribes and which components.md did not apply.",
+      "tag_change": "the observation stays [verified]; the interpretation moves from 'per-unit variant' to 'owner retrofit into the power-light position'"
+    },
+    {
+      "id": "CMP-R04",
+      "severity": "wrong-fact",
+      "section": "§8.1, 'Degenerate cases' paragraph; and §1.6, 'Global reset is a power cycle'",
+      "currentText": "§8.1: 'Power-on state is every relay OFF (justified by the errata's power-cycle reset).'  §1.6: 'The machine has no reset line; power-on state is every relay de-energised. `[verified]`'",
+      "ruling": "Restate as an initial condition, not a settled state. §8.1: 'At power-on every armature *initialises* de-energised (t = 0); the first network solve then runs normally and may immediately pull some relays in. Do not clamp relays OFF after the solve.' §1.6: keep the errata power-cycle sentence, and add 'i.e. the armatures start de-energised — with a Book VII bias resistor fitted, whether a relay is still off after the first solve is exactly what BK7 p.9 step 1 makes the owner test.'",
+      "evidence": "The file contradicts itself. §8.2 AT-04 states '120 Ω and below pull in at power-on'. BK7 printed p.9 (PDF 14), read on the page image, makes the whole acceptance criterion for a bias resistor 'Turn power on. If the relay remains OFF (the light will remain off), place a check in the RELAY OFF column' — a test that is only meaningful because a too-small bias resistor makes the relay come on at power-on. An implementer who reads §8.1 literally and forces every relay OFF after the first solve silently destroys the Book VII bias search and AT-04 with it.",
+      "tag_change": "§1.6's `[verified]` should attach to the errata power-cycle instruction only, not to the modelling rule"
+    },
+    {
+      "id": "CMP-R05",
+      "severity": "missing",
+      "section": "§8.2, MV601-REF-A parameter table",
+      "currentText": "The table runs `V_oc`, `R_src`, `R_coil`, `R_lamp(I)`, `V_pullin`, `V_dropout`, `R_contact`, `R_wire`, `I_trip`. There is no per-relay spread parameter. §12 row 1 offers only 'MV601-REF-A (§8.2), per-relay tunable'.",
+      "ruling": "Add a row: '| `dV_relay` per-relay threshold offset | ±0.30 V, drawn once per relay instance from a fixed seed and applied to both `V_pullin` and `V_dropout` together | `[unverified]` | Book VII makes the owner measure a bias resistor for each individual relay into a blank six-row chart, which is primary evidence that the six relays differ; the magnitude is bounded above by AT-01 (6.5 + spread must stay below the 6.92 V the lamp-fed Book I Experiment 9 latch delivers, i.e. spread ≤ +0.42 V) and below by the requirement that BK7's per-relay procedure be necessary at all |'. Update §12 row 1's fallback cell to name `dV_relay` explicitly. 'Per-relay tunable' is not a named default and the standing rule requires one.",
+      "evidence": "BK7 printed p.8 (PDF 13), page image: 'THE FOLLOWING INSTRUCTIONS ARE FOR A SINGLE RELAY. THIS PROCEDURE MUST BE CARRIED OUT FOR EACH INDIVIDUAL RELAY.' BK7 printed p.9 (PDF 14), page image: a six-row chart 'relay 1..6 / value of bias resistance (in ohms), Ω_B1 = … Ω_B6 =' printed blank, plus 'You may find that more than one value of resistance will meet the requirements of the bias resistor for a relay.' §1.5 of the file already draws the right conclusion ('Expose pull-in and drop-out per relay instance') and §9.3 says 'Per-relay variation is therefore **not** an optional fidelity flourish' — but the profile that is supposed to carry the numbers has no such number, and §8.3 refuted the only figure ever proposed (±0.7 V) without replacing it.",
+      "tag_change": "new row, `[unverified]`"
+    },
+    {
+      "id": "CMP-R06",
+      "severity": "missing",
+      "section": "§12, row 'Which physical contact set (front vs rear) is G/H/J and which K/L/N'",
+      "currentText": "| Which physical contact set (front vs rear) is G/H/J and which K/L/N | Do not make front-vs-rear identity load-bearing | Close photo of a relay against its terminal rows |",
+      "ruling": "The rule is stated in a primary source and the row should be closed. Add to §1.1, under the terminal table: 'SDC states the mapping rule: *\"The set of contacts closer to the operator is connected to the set of terminals closer to the operator.\"* `[verified]` BK1 printed p.12. On the panel G/H/J is the upper terminal row and K/L/N the lower (operator-side) row, so K/L/N is the contact set nearest the operator. `[likely]` — the rule is verified, the row-to-operator mapping is read off the photograph.' In §12 either strike the row or restate it as 'closed by BK1 p.12; retained only as a caution not to make front-vs-rear load-bearing.'",
+      "evidence": "BK1 printed p.12 (PDF 14), text extracted this pass, right column under RELAY ON: 'The relay switch contacts are connected to terminals in the same pattern used with the pushbutton contacts. The normally-open (N.O.) contact is connected to the left terminal, the relay arm (common contact) is connected to the center terminal, and the normally-closed (N.C.) contact is connected to the right terminal. The set of contacts closer to the operator is connected to the set of terminals closer to the operator.' The file already quotes the first half of that passage and stops one sentence short of the half that settles §12's row. Panel row order (G/H/J above K/L/N) confirmed on commons-minivac601-main.jpg at native resolution.",
+      "tag_change": "open question → closed; new claim `[verified]` for the rule, `[likely]` for the row mapping"
+    },
+    {
+      "id": "CMP-R07",
+      "severity": "tag-too-strong",
+      "section": "§6, final paragraph on factory-fitted vs kit",
+      "currentText": "\"Book VII's own footnote 'the highest valued resistor in the kit' proves a resistor kit shipped as a separate article, which weakens the argument-from-symmetry for factory-fitted capacitors; the balance has moved toward 'kit'. `[unverified]`\"",
+      "ruling": "Delete 'the balance has moved toward \"kit\"' and state the counter-evidence. Replace with: 'Book VII's footnote proves a *resistor* kit shipped separately, which removes the argument-from-symmetry for factory-fitted capacitors. Pulling the other way, BK7 printed p.11 says the capacitors are already in the machine: *\"Since one end of the capacitor is permanently connected to the negative power source, we will always show negative power on one end of the capacitor. No connection need be made between the capacitor and negative power\"*, and p.10 speaks of them in the present tense — *\"the capacitors for sections 1 through 5 of the MINIVAC are 500 micro-farad capacitors\"* — with no purchase or installation instruction anywhere in Book VII. The 601/6010 scope flag bites hard here: the machine those sentences describe may be the 6010. Not settled by the sources; do not lean either way.'",
+      "evidence": "BK7 printed p.11 (PDF 16) and p.10 (PDF 15), both read on the page image this pass. The 'permanently connected' sentence is the single strongest statement either way and the file omits it from this paragraph (it appears in the §6 table under 'Wiring' but is not brought to bear on the open question). raw/critic-completeness.json C3's action is explicit: 'Whether a 1961 601 shipped with them is a separate, still-open question — make it a flag, do not resolve it.' The current wording resolves it by degrees.",
+      "tag_change": "stays `[unverified]`; the directional lean is withdrawn"
+    },
+    {
+      "id": "CMP-R08",
+      "severity": "missing",
+      "section": "§1.1, paragraph beginning 'The relay unit itself has **eight** solder connections'",
+      "currentText": "\"That C is *not* one of the relay's eight lugs — i.e. the lamp is a separate part — is a two-source inference: BK1 p.12 says the relay's panel terminals are \\\"G, H, J, & K, L, N\\\", and the parts list carries Light Assembly (6435) separately from Relay (6437). `[likely]`\"",
+      "ruling": "Add the sentence that states it nearly outright and upgrade the tag. Replace the sentence with: 'C is *not* one of the relay's eight lugs — the lamp is a separate part. BK1 printed p.14: *\"Three terminals are located directly above each relay on the computer panel. These terminals are connected under the panel to the relay coil. Two terminals are connected directly to the relay coil, and the third terminal is connected to a light wired in series with the relay coil as shown.\"* Two of C/E/F go to the coil and one goes to the lamp; the Relay Check figure draws exactly six contact terminals plus a two-ended coil, which is MAINT p.8's eight, leaving no lug for C. The parts list carries Light Assembly (6435) separately from Relay (6437) and replaces a lamp by cutting its leads ¾ inch from the terminal, not by unsoldering a relay lug. `[verified]` by deduction.'",
+      "evidence": "BK1 printed p.14 (PDF 16), text extracted this pass — the file already quotes the *next* paragraph of that page (the C-and-F vs E-and-F lesson) but not this one. MAINT printed p.8 (PDF 10): 'disconnect the eight connections to the relay'. MAINT printed p.7 (PDF 9), Relay Check figure traced at 600 dpi: H, J, G, L, N, K plus a coil drawn with exactly two ends E and F = eight. MAINT printed p.6 (PDF 8): lamp replacement is 'cut the leads ¾ inch from the terminal'.",
+      "tag_change": "`[likely]` → `[verified]` (by deduction, in the same style §1.3 already uses)"
+    },
+    {
+      "id": "CMP-R09",
+      "severity": "missing",
+      "section": "§7.3, first bullet (global rails)",
+      "currentText": "\"**All + terminals are one node and all − terminals are one node, including M+ and M−.** … `[verified]` ERRATA, opening notes. Two global nodes; do not model per-section rails.\"",
+      "ruling": "Add the Book I corroboration and keep the errata as the only source that reaches M+/M−. Append: 'Book I corroborates for the six section pairs: *\"This low voltage DC is used to power MINIVAC and is connected to all terminals + and − on the power panel.\"* `[verified]` BK1 printed p.3. The errata is the only source that extends the identity to M+ and M−, which is why it is load-bearing.'",
+      "evidence": "BK1 printed p.3 (PDF 5), text extracted this pass. The errata quote in the file is verbatim-correct (errata.txt lines 16-19, checked raw). Worth adding because the file elsewhere treats the global-rail rule as errata-only, and a reader descoping the errata would otherwise lose it entirely.",
+      "tag_change": "none — adds a second source under an existing `[verified]`"
+    },
+    {
+      "id": "CMP-R10",
+      "severity": "cosmetic",
+      "section": "§1.7, third bullet",
+      "currentText": "\"Programming wires can physically foul the arms: *\\\"replace short programming wires with longer ones so that the wires do not interfere with the movement of the relay arms.\\\"* `[verified]` ERRATA, first column.\"",
+      "ruling": "Change the locator to 'ERRATA, opening notes, troubleshooting step 4 (right-hand column)'.",
+      "evidence": "errata.txt, opening two-column block: the left column carries the power-OFF-while-wiring note, the 'All + and − terminals are connected together' rule and the common-terminal/1X-6A routing note; the right column carries the numbered troubleshooting list, and the programming-wire sentence is step 4 of that list. §5's 'common terminals are any set of terminals which are interconnected' citation to 'ERRATA, first column' is correct; this one is not.",
+      "tag_change": "none"
+    },
+    {
+      "id": "CMP-R11",
+      "severity": "cosmetic",
+      "section": "§9.3, line introducing the parameter table",
+      "currentText": "\"**Parameters** — every one a tunable constant in one place, none source-derived:\"",
+      "ruling": "Replace with: '**Parameters** — every one a tunable constant in one place. No relay, contact or lamp figure here is source-derived; the two exceptions in the table are `rotary_default_rpm` (BK56 Book V printed p.6, and see §9.1 for the conflicting Book II figure) and the 120 Hz ripple frequency, which follows from the 110 V AC mains and the full-wave rectifier.'",
+      "evidence": "§9.1 of the same file states 45 rpm is BK56 Book V printed p.6's own figure, and §7.2 derives 120 Hz from the centre-tapped two-diode rectifier read off MAINT printed p.3. The blanket 'none source-derived' is false for those two rows and invites an implementer to retune the one dial-speed number SDC actually printed.",
+      "tag_change": "none"
+    },
+    {
+      "id": "CMP-R12",
+      "severity": "cosmetic",
+      "section": "§1.4, 'Non-obvious consequence' paragraph",
+      "currentText": "\"In the Maintenance Manual's own Relay Check the coil is driven at E and C is left unconnected, so the lamp stays **dark** the whole time the relay is operating. In the errata's alternate counter the lamp is short-circuited by a contact and also goes dark. An implementation that lights the indicator whenever the coil is energised fails both.\"",
+      "ruling": "Add Book VII's bias circuit as a third instance and make it 'fails all three': '…and Book VII's bias-resistor circuit drives the coil through a resistor into E with C unconnected, reading the relay's state off binary light 1 through its G/H contacts while the indicator lamp is dangling and dark. `[verified]` BK7 printed p.8. An implementation that lights the indicator whenever the coil is energised fails all three.'",
+      "evidence": "BK7 printed p.8 (PDF 13), diagram read on the page image: the drawn nodes are '+ — RESISTOR — E — RELAY COIL — F — −', with a separate binary light 'A ◎ B' fed from the G/H contact pair; C and the indicator lamp appear nowhere in the figure, and the program list is A/G, B/−, E/X, F/−, H/+, Y/+ with the braced (+/Ω, Ω/E). §1.5 already records this; §1.4's fixture list — the part an implementer reads when writing the lamp code — does not.",
+      "tag_change": "none"
+    }
+  ],
+
+  "confirmedCorrect": [
+    "MAINT printed→PDF offset (+2) and every single MAINT citation in the file: pp.1, 2, 3, 4, 6, 7, 8, 9, 10, 11 all re-derived folio by folio and all correct.",
+    "§7.1 published-numbers table is complete and exact against MAINT printed p.2/p.3: 110 V AC in, nominal 12 V DC, ~13 V unloaded (p.3 step 3), 1.5 A continuous, all switches 3 A, relay contacts 'in excess of 3 amps', 'lights are operated at less than their rated voltage', 'drive motor is operated at less than one-third rated voltage'. No published electrical figure was missed.",
+    "§7.2 power-supply topology, re-traced on a 600 dpi render of MAINT printed p.3: cord → power switch in one black primary leg → transformer primary; centre-tapped secondary with two yellow/black ends into two diodes inside one RECTIFIER block to +; yellow centre tap → CIRCUIT BREAKER → −; POWER LIGHT across + and − downstream of the breaker. Drawn exactly as the file describes.",
+    "No filter capacitor and no fuse appear anywhere in the power-supply schematic; the file's [likely] on 'no filter in the chassis' and its explicit refusal to treat absence-from-a-troubleshooting-drawing as conclusive are both the right call.",
+    "The two topology consequences: breaker in the DC return carrying total current, and a trip extinguishing the POWER light. MAINT printed p.4 step 9 does name the breaker's terminals as 'the terminal which leads to the transformer' and 'the terminal which leads to the power light'.",
+    "§1.4 lamp-in-series topology C–[LAMP]–E–[COIL]–F. BK1 printed p.14's C-and-F vs E-and-F quotation is verbatim-correct, and the panel silkscreen brackets ⌐LIGHT¬ spanning C–E and ⌐COIL¬ spanning E–F are legible at native resolution on commons-minivac601-main.jpg.",
+    "MM-RELAY-CHECK fixture: every wire traced on a 600 dpi render of MAINT printed p.7. +/H, +/L, +/Y, X/E, F/−, J/1A, 1B/1−, G/2A, 2B/2−, N/3A, 3B/3−, K/4A, 4B/4− is correct, and C and Z really are drawn as unconnected terminal dots. The relay is drawn OFF with both arms on the N.C. contacts, which is why lights 1 and 3 come on.",
+    "The 'eight solder connections = six contact terminals + a two-ended coil' reading, and 'solid = conductor, dashed = mechanical linkage' — the dashed vertical through J/G/N/K is unmistakable at 600 dpi.",
+    "§1.5 hysteresis, every element checked against the page images: the pull-in/drop-out definitions and the 'deliberately designed so that there is a great difference' sentence are on BK7 printed p.6 (not p.7, as the §11 correction already records); the two graphs, the shaded region and its 'RELAY WILL REMAIN EITHER ON OR OFF IN THIS REGION' callout are on p.7; both graphs' axes are entirely unnumbered; the second graph adds BIAS VOLTAGE strictly between drop-out and pull-in; and pull-in is drawn strictly inside the span to full supply voltage, so 0 < drop-out < bias < pull-in < full supply holds.",
+    "SDC's gap-based physical explanation is quoted correctly from BK7 p.6, and the file is right that it is a better modelling basis than any invented number.",
+    "§1.5 bias procedure: 'THE FOLLOWING INSTRUCTIONS ARE FOR A SINGLE RELAY. THIS PROCEDURE MUST BE CARRIED OUT FOR EACH INDIVIDUAL RELAY.' (p.8), the blank Ω_B1…Ω_B6 chart and the 'more than one value' note (p.9), and the descending search for the lowest resistance at which the relay is both off at power-on and on after a momentary press — all confirmed. The file's characterisation of this as primary evidence of unit-to-unit variation is correct and is the right justification for a per-relay spread.",
+    "The bias program A/G, B/−, E/X, F/−, H/+, Y/+ plus the braced (+/Ω, Ω/E) is verbatim, and the footnote 'Decreasing values of resistance will be tried here. Start with the highest valued resistor in the kit' is legible on the page image while a grep for 'kit' over book7-capacitor-resistor.txt returns nothing — the file's claim about the OCR layer is exactly right.",
+    "The Book VII 601/6010 scope flag is applied uniformly to every BK7 claim, which is the ruling raw/critic-completeness.json C10 demanded and which no other file in the package makes as cleanly.",
+    "§6 capacitor facts against BK7 printed pp.10–11: 500 µF for sections 1–5 and 1000 µF for section 6; the 'permanently connected to the negative power source' wiring note; the Ω220 notation example meaning a 220 Ω resistor between 1cap and 1+; the pull-in/drop-out-by-capacitor purpose paragraph; and 'voltage rating not given, only the warning that exceeding it destroys the capacitor'. All quotations accurate.",
+    "§5 and §7.3 errata quotations are verbatim against errata.txt: the global 'All + and − terminals are connected together' rule with its 1+/3+/6+/M+ example, the common-terminal definition naming 'the two terminals at 6R, the six at M10, or the four at 3com', the 1X/4R + 4R/6A routing example, and 'try carrying out the procedure slowly; some programs are not designed for high-speed operation'.",
+    "§1.4's two published lamp-bypass fixes are both real and quoted correctly: ERRATA Book IV p.72 ('the capabilities of the relays are somewhat strained… by-passes the relay indicator lights so that full voltage is supplied to the relay coils') and ERRATA Book V p.11 (remove 5F/6C, 6C/6−; add 5F/6E, 6E/6−, 4E/6C).",
+    "§11's errata correction list (BK1 p.13 delete the 1B–2B line; BK1 p.24 diagram label 6Y→6V with the program unaffected; BK2 p.10 DOWN→ON; BK2 p.11 1A/1C→1A/1G; BK2 p.14 2Z/2C→2X/2C; BK4 p.43 2+/2H→1G/2H) matches the errata sheet item for item.",
+    "§1.6's Book I Experiment 9 program and BK1 printed p.12's relay text — including the RELAY ON trap sentence 'The two arms (H & L) are connected together. Both contacts always close together.' and the N.O./ARM/N.C. mapping — are verbatim off the page. BK1 printed p.13 is indeed Experiment 6, MANUAL RELAY OPERATION.",
+    "§7.5 spare-parts table matches MAINT printed p.11 exactly, including 6431 Circuit Breaker at $1.00 (the OCR's 'T.00') and 6434 Transformer at $10.00.",
+    "§8.2's arithmetic is internally consistent and reproduces: AT-01's 281 Ω / 46.2 mA / 6.92 V, α ≈ 0.53, β = 0.50, γ ≈ 0.19, AT-04's E12 landings, AT-05's 0.844 A (six lamp-fed coils plus seven lamps) and 1.57 A (six coils at E plus thirteen lamps), and AT-06's 19.4 A. Source impedance is correctly presented as derived and `[unverified]`, never as published.",
+    "Of the components-relevant cross-file contradictions in raw/critic-completeness.json — C1 (1X/1C), C3 (ncap terminals), C4 (two global rails), C7 (Relay Check at MAINT printed p.7 = PDF p.9), C10 (Book VII scope), C11 (Book II flip-flop on printed p.12) — all six are correctly applied. C6 is the one that is not; see CMP-R03."
+  ],
+
+  "still_open_after_this_pass": [
+    "Why the Book IV counter's lamp-fed relays are marginal when Book I Experiment 9's is not (§8.3). Nothing in the Maintenance Manual, Book VII or the errata touches it; the timing hypothesis remains the best-supported and remains [unverified].",
+    "Every quantity in MV601-REF-A except V_oc. Book VII deliberately publishes no numbers — its graphs' axes are blank and its per-relay chart is blank — so the profile stays an engineering decision.",
+    "Whether the six capacitors are factory-fitted in a 1961 601. Book VII's 'permanently connected' language and the resistor-kit footnote point opposite ways, and the 601/6010 flag prevents either from settling it. See CMP-R07.",
+    "Relay operate/release times and contact bounce. Confirmed absent from MAINT and BK7 as well as Books I–VI."
+  ]
+}

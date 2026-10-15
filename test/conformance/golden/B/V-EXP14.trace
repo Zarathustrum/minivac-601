@@ -1,0 +1,118 @@
+#!mv601-trace 1
+# id=V-EXP14 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=60
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=113 minTickGap=9 marginal=false
+     0.0 > switch1 target=1000
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+    26.9 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    33.0 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+    79.9 > power on
+     0.0 * power off->on
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on
+    42.2 > switch1 target=0
+    69.1 * sw1 no->mid
+    75.2 * sw1 mid->nc
+   122.1 > button1 target=1000
+   133.3 * pb1 nc->mid
+   135.8 * pb1 mid->no
+   145.7 * indLamp6 off->dim
+   147.7 * relay6 nc->mid
+   149.0 * relay6 mid->no
+   168.0 * outLamp6 on->dim
+   185.5 * indLamp6 dim->on
+   205.6 > button1 target=0
+   216.8 * pb1 no->mid
+   219.3 * pb1 mid->nc
+   223.6 * outLamp6 dim->off
+   250.5 > switch2 target=0
+   277.4 * sw2 no->mid
+   283.5 * sw2 mid->nc
+   330.4 > button2 target=1000
+   341.6 * pb2 nc->mid
+   344.1 * pb2 mid->no
+   354.0 * indLamp5 off->dim
+   355.8 * relay5 nc->mid
+   357.1 * relay5 mid->no
+   382.4 > button2 target=0
+   393.6 * pb2 no->mid
+   393.9 * indLamp5 dim->on
+   396.1 * pb2 mid->nc
+   427.3 > switch3 target=0
+   454.2 * sw3 no->mid
+   460.3 * sw3 mid->nc
+   507.2 > button3 target=1000
+   518.4 * pb3 nc->mid
+   520.9 * pb3 mid->no
+   530.8 * indLamp4 off->dim
+   532.5 * relay4 nc->mid
+   533.8 * relay4 mid->no
+   559.1 > button3 target=0
+   570.3 * pb3 no->mid
+   570.8 * indLamp4 dim->on
+   572.8 * pb3 mid->nc
+   604.0 > switch4 target=0
+   630.9 * sw4 no->mid
+   637.0 * sw4 mid->nc
+   683.9 > button4 target=1000
+   695.1 * pb4 nc->mid
+   697.6 * pb4 mid->no
+   707.5 * indLamp3 off->dim
+   709.0 * relay3 nc->mid
+   710.3 * relay3 mid->no
+   735.6 > button4 target=0
+   746.8 * pb4 no->mid
+   747.6 * indLamp3 dim->on
+   749.3 * pb4 mid->nc
+   780.5 > switch5 target=0
+   807.4 * sw5 no->mid
+   813.5 * sw5 mid->nc
+   860.4 > button5 target=1000
+   871.6 * pb5 nc->mid
+   874.1 * pb5 mid->no
+   884.0 * indLamp2 off->dim
+   885.4 * relay2 nc->mid
+   886.7 * relay2 mid->no
+   912.0 > button5 target=0
+   923.2 * pb5 no->mid
+   924.2 * indLamp2 dim->on
+   925.7 * pb5 mid->nc
+   956.9 > switch6 target=0
+   983.8 * sw6 no->mid
+   989.9 * sw6 mid->nc
+  1036.8 ? outLamp1=off  "When you have completed all twelve steps, light 1 will come on indicating \"operation complete.\""
+  1036.8 > button6 target=1000
+  1048.0 * pb6 nc->mid
+  1050.5 * pb6 mid->no
+  1053.8 * outLamp1 off->dim
+  1060.5 * indLamp1 off->dim
+  1061.8 * relay1 nc->mid
+  1063.1 * relay1 mid->no
+  1072.8 * outLamp1 dim->on
+  1092.9 > button6 target=0
+  1101.0 * indLamp1 dim->on
+  1104.1 * pb6 no->mid
+  1106.6 * pb6 mid->nc
+  1337.8 ? outLamp1=on  "When you have completed all twelve steps, light 1 will come on indicating \"operation complete.\""
+  1337.8 > switch1 target=1000
+  1337.8 > switch2 target=1000
+  1337.8 > switch3 target=1000
+  1337.8 > switch4 target=1000
+  1337.8 > switch5 target=1000
+  1337.8 > switch6 target=1000
+  1364.7 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid  sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+  1370.8 * sw1 mid->no  sw2 mid->no  sw3 mid->no  sw4 mid->no  sw5 mid->no  sw6 mid->no
+  1417.7 > power off
+  1417.7 * power on->off
+  1421.2 * relay1 no->mid  relay2 no->mid  relay3 no->mid  relay4 no->mid  relay5 no->mid  relay6 no->mid
+  1422.1 * relay1 mid->nc  relay2 mid->nc  relay3 mid->nc  relay4 mid->nc  relay5 mid->nc  relay6 mid->nc
+  1428.6 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  1437.9 * outLamp1 on->dim
+  1458.0 > power on
+     0.0 * power off->on  outLamp1 dim->off  indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+     3.2 * outLamp6 off->dim
+    22.1 * outLamp6 dim->on

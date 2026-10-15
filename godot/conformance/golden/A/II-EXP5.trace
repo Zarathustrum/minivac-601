@@ -1,0 +1,43 @@
+#!mv601-trace 1
+# id=II-EXP5 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=13
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=14 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     9.8 * indLamp3 off->dim
+    11.2 * relay3 nc->mid
+    12.5 * relay3 mid->no
+    37.8 ? relay3=no  "Turn power ON. Relay 3 comes ON because both numbers are zero."
+    37.8 > button1 target=1000
+    49.0 * pb1 nc->mid
+    49.6 * indLamp3 dim->on
+    51.5 * pb1 mid->no
+    61.4 * indLamp1 off->dim
+    62.5 * relay1 nc->mid
+    63.8 * relay1 mid->no
+    66.5 * indLamp3 on->dim
+    67.3 * relay3 no->mid
+    68.2 * relay3 mid->nc
+    91.7 ? relay3=nc  "Push pushbutton 1. Relay 3 goes OFF because the numbers are no longer equal."
+    91.7 > button2 target=1000
+   101.2 * indLamp1 dim->on
+   102.9 * pb2 nc->mid
+   105.4 * pb2 mid->no
+   115.3 * indLamp2 off->dim
+   116.6 * relay2 nc->mid
+   117.9 * relay2 mid->no
+   129.8 * relay3 nc->mid
+   131.1 * relay3 mid->no
+   155.3 * indLamp2 dim->on
+   160.9 * indLamp3 dim->on
+   181.0 ? relay3=no  "Push pushbutton 2 while holding down pushbutton 1. Once again the numbers are equal (both are 1) and relay 3 comes ON."
+   181.0 > button1 target=0
+   192.2 * pb1 no->mid
+   194.7 * pb1 mid->nc
+   196.9 * relay1 no->mid
+   197.8 * relay1 mid->nc
+   201.6 * relay3 no->mid
+   202.5 * relay3 mid->nc
+   202.7 * indLamp1 on->dim
+   204.7 * indLamp3 on->dim
+   226.0 ? relay3=nc  "Release pushbutton 1 while holding down pushbutton 2. Relay 3 goes OFF because the numbers are not equal."

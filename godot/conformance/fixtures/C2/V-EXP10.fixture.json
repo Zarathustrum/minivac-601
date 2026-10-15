@@ -1,0 +1,549 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP10",
+  "source": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4X",
+    "3L/3Y",
+    "3N/6Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4H/5N",
+    "4K/5N",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5L/6G",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-32",
+      "from": "3J/4X",
+      "to": "3J/4K"
+    },
+    {
+      "id": "ER-32",
+      "from": "3N/6Y",
+      "to": "3Y/4Y"
+    },
+    {
+      "id": "ER-32",
+      "from": "4H/5N",
+      "to": "4J/4X"
+    },
+    {
+      "id": "ER-32",
+      "from": "4K/5N",
+      "to": "4X/6L"
+    },
+    {
+      "id": "ER-32",
+      "from": "5L/6G",
+      "to": "5N/6K"
+    }
+  ],
+  "wires": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4K",
+    "3L/3Y",
+    "3Y/4Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4J/4X",
+    "4X/6L",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5N/6K",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.12 = book5-6.pdf PDF p.18",
+      "quote": "Turn power on. Output light 2 comes on indicating \"Stop—Pay Toll 10¢.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.13 = book5-6.pdf PDF p.19",
+      "quote": "When 10¢ has been deposited, output light 1 will come on indicating \"Thank You—Go Ahead.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+      "quote": "[p.13:] If you try to drive away without depositing enough money, the alarm will sound. [p.12:] Relay 1 and relay indicator light 1 ON represents \"Alarm\""
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+      "quote": "[p.13:] If you try to drive away without depositing enough money, the alarm will sound. To turn off the alarm, deposit 10¢. [p.12:] Relay 1 and relay indicator light 1 ON represents \"Alarm\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+      "quote": "[p.13:] To turn off the alarm, deposit 10¢. [p.12:] Relay 1 and relay indicator light 1 ON represents \"Alarm\" [p.13:] When 10¢ has been deposited, output light 1 will come on indicating \"Thank You—Go Ahead.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 8000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+      "quote": "[p.13:] If you try to drive away without depositing enough money, the alarm will sound. [p.12:] Relay 1 and relay indicator light 1 ON represents \"Alarm\""
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+      "quote": "[p.13:] If you try to drive away without depositing enough money, the alarm will sound. To turn off the alarm, deposit 10¢. [p.12:] Relay 1 and relay indicator light 1 ON represents \"Alarm\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19",
+      "quote": "[p.13:] To turn off the alarm, deposit 10¢. [p.12:] Relay 1 and relay indicator light 1 ON represents \"Alarm\" [p.13:] When 10¢ has been deposited, output light 1 will come on indicating \"Thank You—Go Ahead.\""
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    }
+  ],
+  "digest": {
+    "eventCount": 1200,
+    "moverTransitions": [
+      400,
+      8,
+      12,
+      12,
+      2,
+      2,
+      0,
+      0,
+      20,
+      12,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      20
+    ]
+  },
+  "note": "Printed claims only (Step 6). ER-32 (ERRATA sheet p.3, Book V page 12) applied: five removals, five additions, 55 wires; pairs recorded row by row as printed on the sheet (remove column -> add column). MANUAL DEFECT (stop rule; open-questions.md O-C8): with ER-32 as printed, 5L loses its only wire (5L/6G), so relay 5 set 2 has one wired terminal (5N) and carries nothing, and the added 4X/6L and 5N/6K form a dead stub. No nickel or penny input can then reach relay 3, so the printed \"two nickels\", \"one nickel and five pennies\" and \"ten pennies\" payments never light output light 1; those steps are dropped from this printed fixture. The uncorrected printed list, and ER-32 without its 5L/6G removal, both pay on two nickels and on ten pennies. Neither pays on one nickel and five pennies in this simulator: with relays 5 and 6 set and the dial resting on D5, the carry to 4E lasts only while the wiper is still on the D5 pad after pb6 makes (19 ms here; relay 6 then drops), which rests on fallbacks O-R1, O-R3, O-R5, so a ruling on ER-32 alone does not restore that step. Script: one dime from power on (the printed procedure), Drive Away; an unpaid Drive Away (alarm, still on after pb3 is released) cleared by a dime, Drive Away; five pennies (not enough money) then Drive Away (alarm) cleared by a dime, Drive Away. Lamp states after the Drive Away re-set, between coins, after a partial deposit, and after an over-deposit are not printed and are not asserted. Output light 1 also lights through coil 2 (2E=1A) while the alarm latch holds, so out1=on is the payment observable only from the re-set state. Relay 1 is wired as a self-interrupting buzzer (coil end 1F fed through its own NC contact 1H/1J), so \"Relay 1 ON\" is an until on relay1=no, not a steady expect. pb6 is held until the dial has run down to the D0/D19 stop because pb6 (6X/D18) is the motor's only feed; the hold length is a script choice. The relay 5/6 penny count is not cleared by the re-set and is left set at the end. Rotary run rate, coast and geometry are profile fallbacks O-R1, O-R3, O-R5; dwell windows are sized for a run rate as slow as 25 rpm."
+}

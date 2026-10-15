@@ -1,0 +1,54 @@
+#!mv601-trace 1
+# id=II-FF1-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=14
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=1 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc relay2=nc pb1=nc outLamp1=off outLamp2=off indLamp1=off indLamp2=off  "Light 1 will be ON when the flip-flop is remembering a 1, and will be OFF when the flip-flop is remembering a 0."
+   220.1 > button1 target=1000
+   231.3 * pb1 nc->mid
+   233.8 * pb1 mid->no
+   237.1 * outLamp2 off->dim  indLamp2 off->dim
+   244.9 * relay1 nc->mid
+   246.2 * relay1 mid->no
+   247.5 * outLamp1 off->dim  indLamp1 off->dim
+   256.1 * outLamp2 dim->on  indLamp2 dim->on
+   320.4 * outLamp1 dim->on  indLamp1 dim->on
+   476.2 ? relay1=no relay2=nc pb1=no outLamp1=on outLamp2=on indLamp1=on indLamp2=on  "Once this circuit has been programmed on MINIVAC 601, pushing one pushbutton will signal the computer to remember a 1 or a 0."
+   476.2 > button1 target=0
+   487.4 * pb1 no->mid
+   489.9 * pb1 mid->nc
+   499.9 * relay2 nc->mid
+   501.2 * relay2 mid->no
+   726.5 ? relay1=no relay2=no pb1=nc outLamp1=on outLamp2=on indLamp1=on indLamp2=on  "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\"."
+   726.5 > button1 target=1000
+   737.7 * pb1 nc->mid
+   740.2 * pb1 mid->no
+   755.3 * relay1 no->mid
+   756.2 * relay1 mid->nc
+   979.7 ? relay1=nc relay2=no pb1=no outLamp1=on outLamp2=on indLamp1=on indLamp2=on  "Once this circuit has been programmed on MINIVAC 601, pushing one pushbutton will signal the computer to remember a 1 or a 0."
+   979.7 > button1 target=0
+   990.9 * pb1 no->mid
+   993.4 * pb1 mid->nc
+  1000.4 * relay2 no->mid
+  1001.3 * relay2 mid->nc
+  1001.9 * outLamp2 on->dim  indLamp2 on->dim
+  1016.5 * outLamp1 on->dim  indLamp1 on->dim
+  1058.7 * outLamp2 dim->off  indLamp2 dim->off
+  1072.2 * outLamp1 dim->off  indLamp1 dim->off
+  1236.6 ? relay1=nc relay2=nc pb1=nc outLamp1=off outLamp2=off indLamp1=off indLamp2=off  "If the relays are remembering a 1, pushing pushbutton 1 will signal them to \"forget 1 and start remembering 0\"."
+  1236.6 > button1 target=1000
+  1247.8 * pb1 nc->mid
+  1250.3 * pb1 mid->no
+  1253.6 * outLamp2 off->dim  indLamp2 off->dim
+  1261.4 * relay1 nc->mid
+  1262.7 * relay1 mid->no
+  1263.9 * outLamp1 off->dim  indLamp1 off->dim
+  1272.6 * outLamp2 dim->on  indLamp2 dim->on
+  1336.8 * outLamp1 dim->on  indLamp1 dim->on
+  1492.7 > button1 target=0
+  1503.9 * pb1 no->mid
+  1506.4 * pb1 mid->nc
+  1516.4 * relay2 nc->mid
+  1517.7 * relay2 mid->no
+  1743.0 ? relay1=no relay2=no pb1=nc outLamp1=on outLamp2=on indLamp1=on indLamp2=on  "If the relays are remembering a 0, pushing pushbutton 1 will signal them to \"stop remembering 0 and start remembering 1\"."

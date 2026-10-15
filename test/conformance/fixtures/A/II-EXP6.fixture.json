@@ -1,0 +1,65 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP6",
+  "source": "BK2 printed p.14 = book2-3-4.pdf PDF p.20; ERRATA sheet p.1",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1+/1H", "1H/1L", "1L/1Y", "1Y/2Y", "2Z/2C", "2F/2-", "1X/1C", "1F/1-",
+    "1G/2G", "2H/2A", "2B/2-", "1N/2K", "1K/2N", "2L/1A", "1B/1-"
+  ],
+  "errata_applied": [
+    { "id": "ER-06", "from": "2Z/2C", "to": "2X/2C" }
+  ],
+  "wires": [
+    "1+/1H", "1H/1L", "1L/1Y", "1Y/2Y", "2X/2C", "2F/2-", "1X/1C", "1F/1-",
+    "1G/2G", "2H/2A", "2B/2-", "1N/2K", "1K/2N", "2L/1A", "1B/1-"
+  ],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "off" },
+        { "dev": "outLamp2", "v": "off" }
+      ],
+      "cite": "BK2 printed p.14 step 2 = book2-3-4.pdf PDF p.20",
+      "quote": "Turn power ON. No lights come on because the input numbers are both zero: 0 + 0 = 0"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" }
+      ],
+      "cite": "BK2 printed p.14 step 3 = book2-3-4.pdf PDF p.20",
+      "quote": "Push pushbutton 1. Light 1 comes ON: 1 + 0 = 1"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp2", "v": "on" }
+      ],
+      "cite": "BK2 printed p.14 step 4 = book2-3-4.pdf PDF p.20",
+      "quote": "Push pushbutton 2 while holding pushbutton 1 down. Light 2 comes ON: 1 + 1 = 2"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 40 },
+    {
+      "k": "expect",
+      "obs": [
+        { "dev": "outLamp1", "v": "on" }
+      ],
+      "cite": "BK2 printed p.14 step 5 = book2-3-4.pdf PDF p.20",
+      "quote": "Release pushbutton 1 while holding pushbutton 2 down. Light 1 comes ON: 0 + 1 = 1."
+    }
+  ]
+}

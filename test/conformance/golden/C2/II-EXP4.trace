@@ -1,0 +1,65 @@
+#!mv601-trace 1
+# id=II-EXP4 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=9
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=159 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 > button5 target=1000
+   511.2 * pb5 nc->mid
+   513.7 * pb5 mid->no
+   523.6 * indLamp5 off->dim
+   525.4 * relay5 nc->mid
+   526.7 * relay5 mid->no
+   526.8 ? relay5=no  "Turn power ON. Push pushbutton 5. This energizes relay 5 (turns it ON)"
+   536.6 * indLamp6 off->dim
+   538.6 * relay6 nc->mid
+   539.9 * relay6 mid->no
+   540.0 ? relay6=no  "This energizes relay 5 (turns it ON) and causes current to flow through the switch contacts of relay 5 to relay 6. [...] If relay 5 is ON, turn relay 6 ON."
+   563.9 * indLamp5 dim->on
+   571.4 * dial c0->gap
+   577.2 * indLamp6 dim->on
+   592.3 * dial gap->c1
+   655.1 * dial c1->gap
+   676.1 * dial gap->c2
+   738.9 * dial c2->gap
+   759.8 * dial gap->c3
+   822.6 * dial c3->gap
+   843.5 * dial gap->c4
+   906.3 * dial c4->gap
+   927.2 * dial gap->c5
+   990.0 * dial c5->gap
+  1011.0 * dial gap->c6
+  1073.8 * dial c6->gap
+  1094.7 * dial gap->c7
+  1157.5 * dial c7->gap
+  1178.4 * dial gap->c8
+  1178.5 ? dial=c8  "[p.13:] The rotary switch is controlled by the Processing Unit. [...] Relay 6 controls the operation of the motor. [...] If relay 6 is ON, turn motor ON. [BK1 p.22:] Current must flow through the motor to make it run and turn the rotary switch."
+  1241.2 * dial c8->gap
+  1262.1 * dial gap->c9
+  1324.9 * dial c9->gap
+  1345.9 * dial gap->c10
+  1408.6 * dial c10->gap
+  1429.6 * dial gap->c11
+  1492.4 * dial c11->gap
+  1513.3 * dial gap->c12
+  1576.1 * dial c12->gap
+  1597.0 * dial gap->c13
+  1659.8 * dial c13->gap
+  1680.8 * dial gap->c14
+  1743.5 * dial c14->gap
+  1764.5 * dial gap->c15
+  1827.3 * dial c15->gap
+  1848.2 * dial gap->c0
+  1848.3 ? dial=c0  "[p.13:] The rotary switch is controlled by the Processing Unit. [...] Relay 6 controls the operation of the motor. [...] If relay 6 is ON, turn motor ON. [BK1 p.22:] Current must flow through the motor to make it run and turn the rotary switch."
+  1848.3 ? relay5=no relay6=no  "If pushbutton 5 is DOWN, turn relay 5 ON. If relay 5 is ON, turn relay 6 ON."
+  1848.3 > button5 target=0
+  1859.5 * pb5 no->mid
+  1862.0 * pb5 mid->nc
+  1864.1 * relay5 no->mid
+  1865.0 * relay5 mid->nc
+  1868.7 * relay6 no->mid
+  1869.6 * relay6 mid->nc
+  1870.4 * indLamp5 on->dim
+  1875.0 * indLamp6 on->dim
+  1926.0 * indLamp5 dim->off
+  1930.6 * indLamp6 dim->off

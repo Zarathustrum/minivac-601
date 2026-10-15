@@ -1,0 +1,17 @@
+{
+  // The core boundary, enforced by the compiler (architecture §1.1): no DOM lib and no ambient type
+  // packages, so a stray `document`, `window`, `performance` or `process` is a type error rather
+  // than a review finding.
+  //
+  // `"types": []` is load-bearing, not decorative. `tsconfig.json` now carries `"types": ["node"]`
+  // — `test/encoding.spec.ts` needs `node:fs` to check determinism rule 17's bytes — and that pass
+  // covers `src/**` too, so under it a `process.exit(0)` dropped into `src/core/` typechecks
+  // clean. Verified: with the empty list here the same line is TS2591 under this pass, which is why
+  // `npm run typecheck` runs both with `&&` and neither pass may be dropped.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "types": []
+  },
+  "include": ["src/core/**/*.ts"]
+}

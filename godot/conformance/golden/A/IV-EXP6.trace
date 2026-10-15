@@ -1,0 +1,40 @@
+#!mv601-trace 1
+# id=IV-EXP6 contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=48
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=5 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp4 off->dim  outLamp6 off->dim
+    11.2 * relay4 nc->mid
+    12.5 * relay4 mid->no
+    15.8 * outLamp5 off->dim
+    22.3 * outLamp4 dim->on  outLamp6 dim->on
+    34.9 * outLamp5 dim->on
+    55.0 > switch4 target=0
+    55.0 > switch5 target=1000
+    55.0 > switch6 target=1000
+    81.9 * sw5 nc->mid  sw6 nc->mid
+    87.8 * relay4 no->mid
+    88.0 * sw5 mid->no  sw6 mid->no
+    88.7 * relay4 mid->nc
+   100.2 * outLamp6 on->dim
+   105.6 * outLamp5 on->dim
+   134.9 > button4 target=1000
+   134.9 > button6 target=1000
+   146.1 * pb4 nc->mid  pb6 nc->mid
+   148.6 * pb4 mid->no  pb6 mid->no
+   155.8 * outLamp6 dim->off
+   158.5 * indLamp2 off->dim  indLamp5 off->dim
+   159.8 * relay2 nc->mid
+   160.3 * relay5 nc->mid
+   161.1 * relay2 mid->no
+   161.2 * outLamp5 dim->off
+   161.6 * relay5 mid->no
+   162.2 * outLamp6 off->dim
+   164.4 * outLamp3 off->dim
+   180.1 * outLamp4 on->dim
+   181.2 * outLamp6 dim->on
+   183.4 * outLamp3 dim->on
+   198.9 * indLamp2 dim->on  indLamp5 dim->on
+   235.7 * outLamp4 dim->off
+   719.0 ? outLamp3=on outLamp4=off outLamp5=off outLamp6=on  "to enter binary 4 (100) set slide switch 4 LEFT, slide switch 5 RIGHT and slide switch 6 RIGHT. ... to enter binary 5 (101) push button 4 and 6; do not push pushbutton 5. ... The answer will be displayed in binary output lights 3, 4, 5 and 6. For example, if lights 3 and 6 are ON and lights 4 and 5 are OFF, the answer is 1001 (9)."

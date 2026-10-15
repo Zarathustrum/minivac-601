@@ -1,0 +1,22 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "I-EXP2",
+  "source": "BK1 printed p.7 = book1.pdf PDF p.9",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1A", "1-/1B"],
+  "errata_applied": [],
+  "wires": ["1+/1A", "1-/1B"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK1 printed p.7 = book1.pdf PDF p.9",
+      "quote": "Light 1 comes ON because current flows through the light."
+    }
+  ]
+}

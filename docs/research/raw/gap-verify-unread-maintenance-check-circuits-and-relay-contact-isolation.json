@@ -1,0 +1,342 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION: relay contact-set electrical isolation (G/H/J vs K/L/N) and the three Maintenance Manual check-circuit figures",
+  "agent": "gap-verify-unread-maintenance-check-circuits-and-relay-contact-isolation",
+  "date": "2026-08-30",
+  "targetFile": "docs/research/raw/gap-unread-maintenance-check-circuits-and-relay-contact-isolation.json",
+  "outputFile": "docs/research/raw/gap-verify-unread-maintenance-check-circuits-and-relay-contact-isolation.json",
+
+  "verdict": "The gap file's central conclusion SURVIVES adversarial attack and is now stronger than the finder left it. The two relay contact sets ARE electrically isolated; I independently re-derived all three check-circuit netlists from my own high-resolution renders and they match the finder's transcriptions terminal-for-terminal, and I found a SECOND independent published proof of isolation (Book II Experiment 6) that the finder missed, plus a third corroborating instance in Book V. The defects are citation-level and tag-level, not substantive: two page citations are off by one page, one 'DECISIVE' weight is an inference wearing a [verified] tag, one errata quote is attached to the wrong proposition, and one fixture silently adds section numbers that are not printed on the page.",
+
+  "methodStatement": "I did not reuse the finder's crops. I re-rendered maintenance-manual.pdf pages 8/9/10 at 600 dpi and page 9 again at 1200 dpi, book2-3-4.pdf page 19 at 400 dpi and again at 1000 dpi, and book5-6.pdf page 19 at 500 dpi, cropping and reading each figure myself. I re-derived the PDF-to-printed page map by running pdftotext page-by-page and reading the folio at the foot of each page. Seven page images spent.",
+
+  "oracleRuleCompliance": "No emulator source was opened, fetched, cloned, or quoted. minivac.greg.technology and any associated repository were not visited. No web access of any kind was used; every finding below comes from the local primary scans.",
+
+  "independentlyConfirmed": [
+    {
+      "id": "CONF-1",
+      "claim": "Maintenance Manual page map: PDF page = printed page + 2, exactly as the finder states.",
+      "tag": "verified",
+      "how": "pdftotext -layout -f N -l N maintenance-manual.pdf for N = 1..13, reading the printed folio at the foot of each page. PDF 4 -> folio 2; PDF 7 -> 5; PDF 8 -> 6; PDF 9 -> 7; PDF 10 -> 8; PDF 11 -> 9; PDF 12 -> 10; PDF 13 -> 11. Offset constant across the whole book.",
+      "consequence": "The finder's correction to verify-jackmap.json stands: p-09.png is the Relay Check, p-10.png is the Slide Switch Check. verify-jackmap's pointer to p-10.png for the Relay Check was wrong."
+    },
+    {
+      "id": "CONF-2",
+      "claim": "FIG-PB (Circuit Diagram - Pushbutton Check, MAINT printed p.6 = PDF p.8) netlist is transcribed correctly.",
+      "tag": "verified",
+      "how": "Own 600 dpi render, two crops (upper lamp row, lower switch row).",
+      "whatIRead": [
+        "Left lamp row: '1A (lamp) 1B' then a large filled dot labelled with a bare minus sign.",
+        "Right lamp row: '2B (lamp) 2B' then a large filled dot labelled with a bare minus sign.",
+        "Switch row: a large filled dot labelled '+', horizontal to a small dot labelled 'Y', arm slanting up-right touching the descender from 'Z', and a small dot labelled 'X' below-right of the arm tip with a visible gap.",
+        "Z's descender rises and joins the vertical under 1A. X's line runs right then rises to the vertical under the left-hand terminal of lamp 2."
+      ],
+      "printingErrorConfirmed": "Both terminals of light 2 are printed '2B'. This is on the page, not an OCR or rendering artefact. The intended left-hand label is 2A. The finder's call is correct and correctly flagged as do-not-silently-correct."
+    },
+    {
+      "id": "CONF-3",
+      "claim": "FIG-RLY (Circuit Diagram - Relay Check, MAINT printed p.7 = PDF p.9) netlist is transcribed correctly, terminal for terminal.",
+      "tag": "verified",
+      "how": "Own 600 dpi figure crop plus a 1200 dpi crop of the relay symbol itself.",
+      "netlistAsIRead": [
+        "+ (large filled dot) -> H",
+        "+ (a second, separate large filled dot) -> L",
+        "+ (a third, separate large filled dot) -> Y",
+        "X -> E (the pushbutton N.O. line runs left, down, right and up into the E node)",
+        "F -> a large filled dot labelled with a bare minus sign",
+        "C -> small terminal dot, NO external wire (the C-lamp-E branch is drawn as part of the relay assembly)",
+        "J -> 1A ; 1B -> 1-",
+        "G -> 2A ; 2B -> 2-",
+        "N -> 3A ; 3B -> 3-",
+        "K -> 4A ; 4B -> 4-"
+      ],
+      "notes": [
+        "The four lamp return dots ARE section-numbered on this page: 1-, 2-, 3-, 4-. (Contrast FIG-PB, where the returns are bare minus signs.)",
+        "The coil is drawn as a two-ended winding symbol between E and F. The relay indicator lamp is drawn as a circle between C and E.",
+        "Drawn state is relay OFF: the H arm touches J, the L arm touches N, the Y arm touches Z. Matches Book I printed p.12's stated convention that relay contacts are ALWAYS drawn with the relay OFF.",
+        "At 1200 dpi the vertical between the two contact sets is unambiguously DASHED, with clean gaps, and runs from just under the coil down through both arm pivots to below K. Every conductor in the figure is a continuous solid line. The finder's ISO-3 and COL-2 are confirmed."
+      ]
+    },
+    {
+      "id": "CONF-4",
+      "claim": "FIG-SW (Circuit Diagram - Slide Switch Check, MAINT printed p.8 = PDF p.10) netlist is transcribed correctly.",
+      "tag": "verified",
+      "how": "Own 600 dpi figure crop.",
+      "netlistAsIRead": [
+        "+ (large filled dot) -> S",
+        "+ (a second, separate large filled dot) -> V",
+        "T -> 1A ; 1B -> 1-",
+        "R -> 2A ; 2B -> 2-",
+        "W -> 3A ; 3B -> 3-",
+        "U -> 4A ; 4B -> 4-"
+      ],
+      "notes": [
+        "Drawn state: the S arm slants up-right touching the descender from T; the V arm slants up-right touching the descender from W. R sits on the baseline right of the S pivot, U on the baseline right of the V pivot.",
+        "Combined with the printed text 'Set the slide switch RIGHT ... Lights 1 and 3 should come on', this fixes S-T and V-W as the RIGHT pair and S-R and V-U as the LEFT pair. Confirmed."
+      ]
+    },
+    {
+      "id": "CONF-5",
+      "claim": "All three figures' expected-state sentences are quoted correctly.",
+      "tag": "verified",
+      "cite": "Pushbutton: MAINT printed p.7 = PDF p.9, first two lines (run-over). Relay: MAINT printed p.7 = PDF p.9, below the caption. Slide switch: MAINT printed p.8 = PDF p.10, below the caption.",
+      "how": "pdftotext -layout per page; the wording matches the finder's transcription exactly."
+    },
+    {
+      "id": "CONF-6",
+      "claim": "The Book II Experiment 5 wiring list is transcribed correctly, in order, all thirteen wires.",
+      "tag": "verified",
+      "cite": "BK2 Book II printed p.13 = PDF p.19; read both in book2-3-4.txt and on my own 400 dpi render of the page.",
+      "list": ["1+/1H","1H/1L","1L/1X","1Y/1C","1F/1-","1X/2X","2Y/2C","2F/2-","1J/2H","2J/2K","1K/2L","2K/3C","3F/3-"]
+    },
+    {
+      "id": "CONF-7",
+      "claim": "The Experiment 5 SCHEMATIC does draw 1H/1L as a solid conductor and the coil-to-contacts link as a dashed vertical, exactly as the finder's ISO-1 note says.",
+      "tag": "verified",
+      "how": "Own 1000 dpi crop of the relay-1 region of BK2 PDF p.19.",
+      "whatIRead": "The 1+ terminal is a large filled dot; a short horizontal carries the label 1H and runs to the arm pivot. A SOLID vertical drops from that horizontal down to the 1L stub and continues down and right to 1X - i.e. the printed wires 1H/1L and 1L/1X drawn as one continuous solid run. A separate DASHED vertical, clearly broken into dashes, runs from the coil down past 1J/1G and 1N/1K. Two different line styles in one figure, confirming SDC's convention."
+    },
+    {
+      "id": "CONF-8",
+      "claim": "The errata sheet issues NO correction to Book II page 13 / Experiment 5. The finder's errataCheck is right.",
+      "tag": "verified",
+      "cite": "errata.txt, 'Notes and Corrections by page'",
+      "trap": "errata.txt DOES carry a line reading 'page 13: circuit diagram incorrect - delete line connecting 1B and 2B.' That line sits under the heading BOOK I, not BOOK II. The BOOK II block runs 'page 10 ... page 11 ... page 14'. A future agent grepping for 'page 13' in the errata will hit the Book I entry and may wrongly conclude Experiment 5 is errata'd. It is not.",
+      "bookIIErrata": ["page 10: third complete paragraph, second line - change DOWN to ON.", "page 11: program correction for 'TWO-BUTTON RELAY MEMORY CIRCUIT' - change 1A/1C to 1A/1G ; delete 1A/1C connection on circuit diagram.", "page 14: program correction for Experiment 6 - change 2Z/2C to 2X/2C."]
+    },
+    {
+      "id": "CONF-9",
+      "claim": "The Book I printed p.12 trap sentence and its resolution are quoted verbatim and correctly.",
+      "tag": "verified",
+      "cite": "BK1 printed p.12 = PDF p.14",
+      "verbatimRight": "The two arms (H & L) are connected together.  Both contacts always close together.",
+      "verbatimLeft": "When the relay is OFF, separate electrical connections are made between terminals H and J and terminals L and N. When the relay is ON, separate electrical connections are made between terminals H and G and terminals L and K.",
+      "verbatimResolution": "The two relay arms are connected together mechanically with a plastic crossbar. Both arms move together and make or break contact at the same time.",
+      "note": "The finder's ISO-TRAP entry is accurate in wording, placement and resolution. Keep it."
+    },
+    {
+      "id": "CONF-10",
+      "claim": "The ISO-2 proof-by-contradiction is logically sound. I re-derived it independently and got the same result.",
+      "tag": "verified",
+      "myTrace": [
+        "Isolated case, both PBs up: relay1 OFF -> 1H-1J closed -> 1J=+ -> 2H=+; relay2 OFF -> 2H-2J closed -> 2J=+ -> (wire 2J/2K) 2K=+ -> 3C=+ -> relay 3 ON. Matches SDC step 2.",
+        "Isolated case, PB1 only: relay1 ON -> 1J dead, 1K=+ -> 2L=+; relay2 OFF -> 2L-2N closed (2N dangling), 2L-2K open; 2K's only other feed is 2J, fed from the dead 2H. 2K dead -> relay 3 OFF. Matches SDC step 3.",
+        "Isolated case, both down: 1K=+ -> 2L=+; relay2 ON -> 2L-2K closed -> 2K=+ -> relay 3 ON. Matches SDC step 4.",
+        "Isolated case, PB2 only: 1J=+ -> 2H=+; relay2 ON -> 2H-2J open -> 2J dead; 1K dead -> 2L dead -> 2K dead -> relay 3 OFF. Matches SDC step 5.",
+        "Counterfactual with 2H identified with 2L, PB1 only: 1K=+ -> 2L=+ = 2H=+; relay2 OFF closes 2H-2J -> 2J=+ -> 2K=+ -> relay 3 ON. Contradicts SDC's printed step 3. Therefore H and L are not internally common."
+      ]
+    }
+  ],
+
+  "refuted": [
+    {
+      "id": "REF-1",
+      "severity": "medium",
+      "claim": "ISO-2 and acceptanceSuite BK2-EXP5-DECISION-MAKING cite the Experiment 5 operating steps as 'BK2 Book II printed p.13 = PDF p.19'.",
+      "correction": "The wiring list and schematic are on printed p.13 = PDF p.19. The operating steps that the whole proof rests on ('2. Turn power ON. Relay 3 comes ON because both numbers are zero. 3. Push pushbutton 1. Relay 3 goes OFF ...') are on printed p.14 = PDF p.20. Every citation of that quote must be split across two pages.",
+      "evidence": "pdftotext -layout -f 19 -l 19 book2-3-4.pdf ends with the thirteen-wire list and the folio 13, no results text. pdftotext -layout -f 20 -l 20 book2-3-4.pdf opens with '1. Transfer the decision rule to the computer ...' through '5. Release pushbutton 1 ...' and ends with the folio 14.",
+      "affects": ["theIsolationQuestion.evidenceChain ISO-2.cite", "acceptanceSuite.tests[BK2-EXP5-DECISION-MAKING].source"],
+      "impactOnConclusion": "None. Both pages are primary and both were read. This is a citation defect under project rule 1, not a substantive error."
+    },
+    {
+      "id": "REF-2",
+      "severity": "medium",
+      "claim": "COL-1 cites the design-rationale quote ('Since the relays have twice as many contacts as the pushbuttons and can be electrically operated, they are considerably more versatile ...') as 'BK2 Book II printed p.13 = PDF p.19'.",
+      "correction": "That sentence is on printed p.14 = PDF p.20, in the paragraph that closes Experiment 5.",
+      "evidence": "It appears in pdftotext output for PDF p.20 only.",
+      "impactOnConclusion": "None substantive. Same class of defect as REF-1."
+    },
+    {
+      "id": "REF-3",
+      "severity": "medium",
+      "claim": "ISO-1 is tagged [verified] with weight 'DECISIVE', on the argument that 'SDC would not print a jumper between two terminals that are already one node in a thirteen-wire minimal program.'",
+      "correction": "The existence of the printed wire 1H/1L is [verified] - I read it on the page and in the schematic. The argument built on it is an inference about SDC's drafting habits and it is NOT decisive. 1+/1H, 1H/1L, 1L/1X is a daisy chain that reaches 1X either way; if H and L were internally common the chain would still work, it would just be one wire longer than necessary. That is evidence of distinctness, not proof of it. The finder's own ISO-2 is the proof; ISO-1 should be re-weighted to 'corroboration'.",
+      "evidence": "BK2 printed p.13 = PDF p.19, wiring list and schematic, both read directly.",
+      "impactOnConclusion": "None. ISO-2 carries the conclusion unaided, and I have added two further independent proofs below."
+    },
+    {
+      "id": "REF-4",
+      "severity": "low",
+      "claim": "acceptanceSuite MM-PUSHBUTTON-CHECK gives the wiring as '1B/1-' and '2B/2-'.",
+      "correction": "The Pushbutton Check figure prints BARE minus signs on both lamp returns - no section number. (The Relay Check and Slide Switch Check figures DO print 1-, 2-, 3-, 4-.) The fixture silently adds section numbers that are not on the page. The finder's own FIG-PB.netlist correctly writes them bare, so the file contradicts itself.",
+      "evidence": "Own 600 dpi crop of MAINT printed p.6 = PDF p.8, upper lamp row.",
+      "impactOnConclusion": "Nil electrically - the errata sheet states all minus terminals are one node - but it is an undeclared edit to a transcription in a file that elsewhere insists on not silently correcting the page."
+    },
+    {
+      "id": "REF-5",
+      "severity": "low",
+      "claim": "FIG-RLY.coilDriveNote says 'the errata explicitly warn that driving through C (lamp in series) can leave a relay under-driven: \"the relay may not perform adequately in this circuit.\"' No page citation is given.",
+      "correction": "That quoted fragment is from the BOOK IV page 72 note about the three-bit binary counter, and its subject is relays in that specific counter circuit, not driving through C in general. The sentence that actually supports the finder's proposition is the next one: 'The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.' Re-attribute the quote and cite errata.txt, BOOK IV page 72 note.",
+      "evidence": "errata.txt, BOOK IV block, 'page 72: Note on \"Three-Bit Binary Counter\" - the design of this counter is such that the capabilities of the relays are somewhat strained. Relays which perform to satisfaction in every other case may not perform adequately in this circuit. ... The circuit below by-passes the relay indicator lights so that full voltage is supplied to the relay coils, causing them to pull in more reliably.'",
+      "impactOnConclusion": "The substance of coilDriveNote survives: driving the coil at E bypasses the indicator lamp, the lamp stays dark in this fixture, and SDC elsewhere confirms that bypassing the indicator lamp raises coil voltage. Only the quote's attribution was wrong."
+    }
+  ],
+
+  "downgraded": [
+    {
+      "id": "DG-1",
+      "target": "FIG-SW.derivedFacts[1], tagged [verified]: 'confirms the panel legend arrow/ARM/arrow over R/S/T ... AND - new - fixes the previously-inferred lower row by the same column rule: U sits in the R column (LEFT), V in the S column (ARM), W in the T column (RIGHT).'",
+      "from": "verified",
+      "to": "split: [verified] for the electrical roles, [likely] for the panel-column mapping",
+      "reason": "The Slide Switch Check figure is a schematic. It fixes the ELECTRICAL roles - S and V are the arms, T and W close RIGHT, R and U close LEFT - and that part is [verified]. It shows no panel geometry at all, so 'U sits in the R column' is the figure combined with a separately-read panel legend, i.e. a two-source inference. Tag it [likely] and name both sources."
+    },
+    {
+      "id": "DG-2",
+      "target": "ISO-5, tagged [verified]: 'the Relay Check figure accounts for exactly eight distinct relay nodes: six contact terminals (G H J K L N) plus a two-ended coil (E and F).'",
+      "from": "verified",
+      "to": "verified for the lug count and the figure's six-plus-two drawing; [likely] for the assertion that C is not one of the relay unit's eight lugs",
+      "reason": "The figure draws NINE labelled nodes on the relay assembly: C, E, F, G, H, J, K, L, N. The 6+2=8 split requires C to belong to the light assembly rather than the relay. That is well supported - Book I printed p.12 says the relay's PANEL terminals are exactly six (G, H, J, K, L, N), and the spare parts list carries 'Light Assembly' (6435) as a part separate from 'Relay' (6437) - but it is a two-source inference, not something read off one page. The finder already flags the residual; the tag should match.",
+      "supportingCitesTheFinderDidNotGive": ["BK1 printed p.12 = PDF p.14: 'Each of the six relays has six terminals located directly below it on the computer panel. These terminals are connected under the computer panel to contacts of the relay switch. The terminals are labeled: G, H, J, & K, L, N.'", "MAINT printed p.11 = PDF p.13, spare parts list: 6435 Light Assembly $1.00; 6437 Relay $6.00."]
+    },
+    {
+      "id": "DG-3",
+      "target": "simulatorSpec.relayModel.elements: 'indicator lamp between C and E (a Light Assembly, part 6435 - the same part as a binary output lamp; NOT part of the relay unit)', inside a block tagged [verified].",
+      "from": "verified",
+      "to": "likely",
+      "reason": "That the relay indicator lamp and the binary output lamp are the SAME part number is inferred from the parts list carrying exactly one 'Light Assembly' entry plus MAINT printed p.6's sentence 'Check the binary lights and the relay indicator lights by connecting them to the + and - power supply terminals.' No source says they are the same part in words. The topology (lamp between C and E) IS [verified] from the Relay Check figure."
+    },
+    {
+      "id": "DG-4",
+      "target": "theIsolationQuestion.answer, tagged [verified].",
+      "from": "verified",
+      "to": "verified-by-deduction (keep the tag, add the qualifier)",
+      "reason": "No source states 'the two contact sets are electrically isolated' in words. The conclusion is a mechanical deduction from verified premises: a printed wiring list plus SDC's own printed results. The deduction is airtight and I re-derived it independently, so [verified] is defensible - but the file should say the word 'deduction' so a downstream reader does not go hunting for a sentence that does not exist. Book I p.12's 'separate electrical connections' is the closest thing to a verbal statement, and it is about the two closures within a state, not about set-to-set isolation."
+    }
+  ],
+
+  "upgraded": [
+    {
+      "id": "UP-1",
+      "target": "FIG-RLY.derivedFacts[3], tagged [unverified]: 'The four lamp return labels 1-, 2-, 3-, 4- imply the four binary output lights used are those of sections 1 through 4, each returned to its own section's minus terminal ... Reading of intent, not a stated fact.'",
+      "from": "unverified",
+      "to": "verified",
+      "reason": "The errata sheet states it outright, in its opening general notes: 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.' The finder called it 'the standing assumption elsewhere in the corpus'; it is a printed SDC statement.",
+      "cite": "errata.txt / errata.pdf, 'Notes and Corrections to the Minivac Manual', opening notes column, before the 'Notes and Corrections by page' heading.",
+      "simulatorConsequence": "All + terminals are one node and all - terminals are one node, panel-wide, including M+ and M-. Any minus terminal satisfies any of the three check fixtures."
+    },
+    {
+      "id": "UP-2",
+      "target": "notSettled[0]: 'Whether the slide switch's two transfer sets are electrically isolated from each other ... To settle: grep Books II-VI for a published program that wires S and V to different sources, in the way Experiment 5 does for H and L.'",
+      "from": "notSettled",
+      "to": "likely (strongly supported; one published program does exactly this)",
+      "reason": "I ran the grep the finder specified. Book V printed p.13 = PDF p.19 (the telephone-dialling / decimal-to-Gray-Code conversion program) wires slide switch 6's two arms to two DIFFERENT and deliberately-separated rotary-switch chains.",
+      "cite": "BK5 (book5-6.pdf) Book V printed p.13 = PDF p.19; wiring list read on my own 500 dpi page render, not only in OCR.",
+      "relevantWires": ["6S/D1", "6V/D2", "D1/D3", "D2/D4", "D3/D5", "D4/D6", "D5/D7", "D6/D8", "6R/6U", "6U/D18", "5H/6T", "6L/6W", "D16/M+", "D17/M-"],
+      "argument": [
+        "D1/D3, D3/D5, D5/D7 chain the ODD rotary contacts into one node; D2/D4, D4/D6, D6/D8 chain the EVEN rotary contacts into a second node.",
+        "6S feeds the odd chain; 6V feeds the even chain. With the slide switch RIGHT (the dialling position SDC instructs the operator to use), S-T and V-W are closed, so the odd chain reaches 5H and the even chain reaches 6L - two different relay arms.",
+        "If S and V were internally common, the odd and even chains would be one node and 5H would be commoned with 6L. The rotary arm D16 (wired to M+) sweeping back to zero would then present an identical stimulus at every contact, and the stated behaviour - 'the number dialed will appear in Gray Code on output lights 4, 5, and 6', with a DIFFERENT code for each of 1 through 8 - would be impossible.",
+        "No erratum touches Book V page 13. The Book V errata block corrects pages 10, 11, 11, 12 ('automatic toll collector', a different program), 21-22, 24, 25."
+      ],
+      "whyLikelyAndNotVerified": "I read the wiring list off the page image and the odd/even chaining is unambiguous, but I did not trace all fifty-two wires of this program to a full truth table. The premise 'the program distinguishes odd from even rotary contacts' is a strong reading of a Gray-code pulse converter, not a line-by-line proof. Tag [likely]. To reach [verified], trace the whole program.",
+      "note": "Structural identity with the relay contacts (MAINT printed p.9's 'Cut all six connections to the slide switch' against terminals R S T U V W) remains the background argument, unchanged."
+    },
+    {
+      "id": "UP-3",
+      "target": "theIsolationQuestion - additional independent corroboration for the RELAY, from a different book than Book II.",
+      "from": "not present in the gap file",
+      "to": "likely",
+      "reason": "The same Book V p.13 program wires relay 6's two arms to two different nodes: '6H/6+' puts arm H on the plus rail, while '6L/6W' puts arm L on slide-switch terminal 6W. If 6H and 6L were internally common, 6W would sit permanently at + ; with slide switch 6 RIGHT (V-W closed) and 6V/D2, the entire even rotary chain D2/D4/D6/D8 would be permanently hot before the operator dials anything, and the decode would be destroyed.",
+      "cite": "BK5 Book V printed p.13 = PDF p.19",
+      "value": "Puts a relay H/L isolation instance in a second book, four books away from Experiment 5. Cheap insurance against a single-source failure."
+    }
+  ],
+
+  "missed": [
+    {
+      "id": "MISS-1",
+      "severity": "HIGH - this is a second, cleaner proof the gap file does not mention at all",
+      "what": "Book II EXPERIMENT 6: ARITHMETIC, printed p.14 = PDF p.20, is an independent proof of relay contact-set isolation, and it is arguably stronger than Experiment 5 because the two arms of one relay drive two SEPARATE observable outputs rather than one.",
+      "tag": "verified",
+      "cite": "BK2 Book II printed p.14 = PDF p.20 (wiring list, and steps 1-5 on the same page). Erratum applies: errata.txt, BOOK II, 'page 14: program correction for Experiment 6 - change 2Z/2C to 2X/2C.'",
+      "wiringAsPrinted": ["1+/1H","1H/1L","1L/1Y","1Y/2Y","2Z/2C","2F/2-","1X/1C","1F/1-","1G/2G","2H/2A","2B/2-","1N/2K","1K/2N","2L/1A","1B/1-"],
+      "wiringAsCorrected": "Replace 2Z/2C with 2X/2C per the errata sheet. All other wires stand.",
+      "statedResults": [
+        "Turn power ON. No lights come on because the input numbers are both zero: 0 + 0 = 0",
+        "Push pushbutton 1. Light 1 comes ON: 1 + 0 = 1",
+        "Push pushbutton 2 while holding pushbutton 1 down. Light 2 comes ON: 1 + 1 = 2",
+        "Release pushbutton 1 while holding pushbutton 2 down. Light 1 comes ON: 0 + 1 = 1"
+      ],
+      "myTraceIsolated": [
+        "1H = 1L = + (via 1+/1H and 1H/1L). PB1 pressed -> 1X live -> 1C -> relay 1 coil -> 1F -> 1- : relay 1 ON. PB2 pressed (corrected 2X/2C) -> relay 2 ON.",
+        "Relay 2's arms are OUTPUTS here: 2H drives lamp 2 (2H/2A, 2B/2-) and 2L drives lamp 1 (2L/1A, 1B/1-). Relay 2's contacts are the INPUTS: 2G is fed from 1G, 2K from 1N, 2N from 1K.",
+        "Both up: relay2 OFF -> 2H-2J (2J unwired, dead) so lamp 2 off; 2L-2N -> 1K, and relay1 OFF leaves 1K (N.O.) open, so lamp 1 off. 0+0=0. Matches.",
+        "PB1 only: relay1 ON -> 1K live; relay2 OFF -> 2L-2N -> 1K -> lamp 1 ON. 2H-2J dead -> lamp 2 off. 1+0=1. Matches.",
+        "Both: relay1 ON -> 1G live; relay2 ON -> 2H-2G -> lamp 2 ON. 2L-2K -> 1N, and relay1 ON opens 1N (N.C.) -> lamp 1 off. 1+1=2. Matches.",
+        "PB2 only: relay1 OFF -> 1N live; relay2 ON -> 2L-2K -> 1N -> lamp 1 ON. 2H-2G -> 1G open -> lamp 2 off. 0+1=1. Matches."
+      ],
+      "myTraceCounterfactual": "If 2H and 2L were internally common: PB1 only gives 2L live (via 2N from 1K), hence 2H live, hence lamp 2 ON as well as lamp 1. SDC's printed step 3 says 'Push pushbutton 1. Light 1 comes ON: 1 + 0 = 1' - one light, and the whole point of the experiment is that light 2 means a carry. The counterfactual makes the adder read 1+0=3. Contradiction. Therefore the arms are not common.",
+      "whyItIsBetterThanExperiment5": "In Experiment 5 the contradiction shows up at one relay-3 coil, one bit of evidence. In Experiment 6 the two arms of relay 2 feed two physically different lamps whose independent behaviour SDC prints for all four input combinations. The failure under a common-arm relay is visible in two of the four rows and is directly observable on the panel.",
+      "simulatorConsequence": "Add BK2-EXP6-ARITHMETIC (in its errata-corrected form) to the acceptance suite alongside BK2-EXP5-DECISION-MAKING. A simulator that ties H to L fails both."
+    },
+    {
+      "id": "MISS-2",
+      "severity": "medium",
+      "what": "A drawing-convention trap in the Experiment 5 schematic that will bite the next transcriber.",
+      "tag": "verified",
+      "cite": "BK2 Book II printed p.13 = PDF p.19; read at 1000 dpi.",
+      "detail": "The program wire 2Y/2C is drawn as a long solid vertical from the 2C node at the top of the figure down to the 2Y pushbutton arm at the bottom. Because 2H and 2L are fed from the LEFT (from 1J and 1K), that vertical CROSSES both the 2H feed line and the 2L feed line. At 1000 dpi the crossings show ink thickening that can be misread as junction dots.",
+      "resolution": "They are crossings, not junctions. 2C is the relay-2 coil node; joining it to 2H or 2L would energise relay 2 whenever 1J or 1K went live and would destroy the experiment. The mirror-image wire at relay 1 (1Y/1C) runs clear to the left of the whole relay-1 symbol and crosses nothing, which is why the ambiguity appears only at relay 2.",
+      "instruction": "Record SDC's convention as: crossing solid lines are NOT connected unless a junction dot is unmistakably larger than the line width. Do not read the 2Y/2C crossings as nodes."
+    },
+    {
+      "id": "MISS-3",
+      "severity": "low",
+      "what": "The Relay Check figure carries a small isolation datum the gap file does not note.",
+      "tag": "verified",
+      "cite": "MAINT printed p.7 = PDF p.9",
+      "detail": "SDC draws THREE separate large-dot '+' terminals and spends two separate program wires, +/H and +/L. One wire would do if H and L were internally common. This is weak evidence of the same family as ISO-1, and it sits inside the very figure the finder correctly says 'does not prove isolation'. Worth recording so the figure is not written off as contributing nothing to the question."
+    },
+    {
+      "id": "MISS-4",
+      "severity": "low",
+      "what": "The primary citation that ISO-5's eight-lug accounting silently depends on.",
+      "tag": "verified",
+      "cite": "BK1 printed p.12 = PDF p.14",
+      "quote": "Each of the six relays has six terminals located directly below it on the computer panel. These terminals are connected under the computer panel to contacts of the relay switch. The terminals are labeled: G, H, J, & K, L, N.",
+      "detail": "This is the direct primary support for treating C, E and F as NOT relay-switch panel terminals, which is what lets 'eight connections' resolve to six contacts plus two coil ends. The gap file uses the conclusion without citing this sentence."
+    },
+    {
+      "id": "MISS-5",
+      "severity": "low",
+      "what": "A second stated relay fact on Book I p.12 that belongs in the relay model and is not in the gap file.",
+      "tag": "verified",
+      "cite": "BK1 printed p.12 = PDF p.14",
+      "quote": "Each relay has two sets of contacts, similar to the pushbutton contacts, which open and close together.",
+      "detail": "SDC states in words that a relay contact set is the SAME kind of thing as a pushbutton contact set. Together with COL-1's 'twice as many contacts as the pushbuttons' this is the plainest primary statement that the relay is two independent SPDT sets ganged mechanically - and unlike COL-1 it is on printed p.12, not p.14."
+    }
+  ],
+
+  "fallbackJudgement": {
+    "finderClaimedNoFallbackNeeded": true,
+    "myAssessment": "Correct and honestly labelled. The gap file declares namedFallback.needed = false for the isolation question and the three figures, and that is right - those are closed on primary evidence. It then names one fallback, IDEAL-ISOLATED-COIL, for the one thing that genuinely is not settled: whether the coil pair (E, F) is galvanically distinct from the six contact nodes.",
+    "isTheFallbackDefensible": "Yes. Modelling the coil as an independent two-terminal element between E and F, with the indicator lamp between C and E, is the only model consistent with every published circuit, it is how the Relay Check figure draws it, and the finder's overturn condition (an ohmmeter reading, or an under-panel photograph showing a strap between a coil lug and a contact lug) is concrete and falsifiable.",
+    "isItHonestlyLabelledAsAFallback": "Yes, and cleanly. It sits in a block named namedFallback, its target residual is repeated in residualUnknowns tagged [likely], and it is repeated a third time in notSettled. simulatorSpec.relayModel.isolation cross-references the residual rather than asserting coil isolation flatly. This is the correct pattern: no fallback is dressed as a finding anywhere in the file.",
+    "oneAdditionalArgumentTheFinderCouldHaveUsed": "Experiment 6's wire 1X/1C and Experiment 5's 1Y/1C put the coil node C at the pushbutton output while H and L sit on the plus rail. If the coil pair were common with an arm, relay 1 would be energised at power-up in both experiments and neither program's stated step 2 ('No lights come on' / 'Relay 3 comes ON because both numbers are zero', which requires relay 1 OFF) could hold. That raises IDEAL-ISOLATED-COIL from an assumption to something close to the Experiment-5 style argument. I have not traced it far enough to claim it settles the question - it argues against a coil-to-ARM bond specifically, and says nothing about a coil-to-G/J/K/N bond - so the fallback should stay a fallback, but this belongs in its reasoning field. Tag: likely."
+  },
+
+  "verificationOfTheThreeFixtures": {
+    "note": "I re-derived each fixture from my own reads. All three reproduce the finder's expectations exactly.",
+    "MM-PUSHBUTTON-CHECK": "Wiring +/Y, Z/1A, 1B/-, X/2A [page prints 2B], 2B/-. Power ON -> light 1 ON, light 2 OFF. Press -> light 1 OFF, light 2 ON. Correct. The only change is REF-4: the returns are bare '-' on the page.",
+    "MM-RELAY-CHECK": "Wiring +/H, +/L, +/Y, X/E, F/-, J/1A, 1B/1-, G/2A, 2B/2-, N/3A, 3B/3-, K/4A, 4B/4-, with C and Z deliberately unconnected. Power ON -> lights 1 and 3 ON, 2 and 4 OFF, relay indicator lamp DARK. Press -> lights 2 and 4 ON, 1 and 3 OFF, indicator still DARK. Correct as written, including the indicator-lamp-stays-dark trap.",
+    "MM-SLIDE-SWITCH-CHECK": "Wiring +/S, +/V, T/1A, 1B/1-, R/2A, 2B/2-, W/3A, 3B/3-, U/4A, 4B/4-. RIGHT -> lights 1 and 3 ON. LEFT -> lights 2 and 4 ON. Correct.",
+    "BK2-EXP5-DECISION-MAKING": "Wiring list correct and complete; results correct; only the page citation needs splitting (REF-1). Keep it as the isolation regression test.",
+    "BK2-EXP6-ARITHMETIC": "NEW - see MISS-1. Add it, in errata-corrected form (2X/2C, not 2Z/2C), as a second isolation regression test."
+  },
+
+  "stillNotSettled": [
+    "Whether the relay coil node pair (E, F) is galvanically distinct from all six contact nodes. Unchanged from the gap file. The IDEAL-ISOLATED-COIL fallback stands and is correctly labelled. Would be settled by an ohmmeter on a surviving unit or an under-panel photograph of the relay's eight lugs.",
+    "Whether the relay has any internal frame or common return bonding the two arms at high impedance. Nothing in the corpus addresses it; Experiment 5 and Experiment 6 rule out a low-impedance bond, which is what the simulator needs. Unchanged.",
+    "Whether the slide switch's two transfer sets are isolated is no longer open in practice - see UP-2, tagged [likely] on a published program - but it is not [verified] until someone traces the whole Book V p.13 program to a truth table.",
+    "Which physical contact set (front vs rear of the relay body) is G/H/J and which is K/L/N. Nothing read in this verification bears on it. The two-step inference in find-relays RLY-08 stands; do not make front-vs-rear identity load-bearing.",
+    "The Power Supply Circuit Diagram (MAINT printed p.3 = PDF p.5 = pages/maintenance/p-05.png) is still unopened by anyone. Out of scope here as it was there, but it remains the last unread schematic in the Maintenance Manual."
+  ],
+
+  "counts": {
+    "independentlyConfirmed": 10,
+    "refuted": 5,
+    "downgraded": 4,
+    "upgraded": 3,
+    "missed": 5,
+    "pageImagesSpent": 7
+  }
+}

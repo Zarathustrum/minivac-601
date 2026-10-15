@@ -1,0 +1,1233 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP10-DERIVED",
+  "source": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19 (purpose p.12, program and control assignment p.12, procedure p.13); errata.pdf p.3 ER-32 applied; Step 7 speculative derivation from topology",
+  "tier": "C2",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4X",
+    "3L/3Y",
+    "3N/6Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4H/5N",
+    "4K/5N",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5L/6G",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-32",
+      "from": "3J/4X",
+      "to": "3J/4K"
+    },
+    {
+      "id": "ER-32",
+      "from": "3N/6Y",
+      "to": "3Y/4Y"
+    },
+    {
+      "id": "ER-32",
+      "from": "4H/5N",
+      "to": "4J/4X"
+    },
+    {
+      "id": "ER-32",
+      "from": "4K/5N",
+      "to": "4X/6L"
+    },
+    {
+      "id": "ER-32",
+      "from": "5L/6G",
+      "to": "5N/6K"
+    }
+  ],
+  "wires": [
+    "1A/3K",
+    "1A/2E",
+    "1B/1E",
+    "1B/2B",
+    "1C/1J",
+    "1E/2C",
+    "1F/1H",
+    "1J/2K",
+    "2A/3N",
+    "2B/3B",
+    "2C/3C",
+    "2F/2G",
+    "2F/4N",
+    "2H/2L",
+    "2H/2+",
+    "3A/3E",
+    "3B/4B",
+    "3C/4C",
+    "3E/4G",
+    "3F/3H",
+    "3F/4F",
+    "3G/3L",
+    "3G/3+",
+    "3J/4H",
+    "3J/4K",
+    "3L/3Y",
+    "3Y/4Y",
+    "3X/4L",
+    "4A/4E",
+    "4B/5B",
+    "4C/5C",
+    "4E/4J",
+    "4J/4X",
+    "4X/6L",
+    "4Y/5Y",
+    "5A/5E",
+    "5B/6B",
+    "5C/6C",
+    "5E/6G",
+    "5F/5H",
+    "5F/6F",
+    "5G/5+",
+    "5J/5X",
+    "5J/6H",
+    "5N/6K",
+    "5X/D5",
+    "5Y/6Y",
+    "6A/6E",
+    "6C/6-",
+    "6E/6J",
+    "6X/D16",
+    "6X/D18",
+    "D0/D19",
+    "D5/D10",
+    "D17/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): p.12 \"Turn power on. Output light 2 comes on\"; light 2 is + 3L-3N(relay 3 N.C.)-2A; every coil and lamp other than output light 2 has no + feed with pb3-pb6 up and the wiper on D0",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb4 held (dime): 4Y(+)-4X puts + on 4E/4A/4J; 4J-4H(relay 4 N.C.)-3J-3H(relay 3 N.C.)-3F feeds coil 3 to 3E-lamps-minus, relay 3 pulls in and latches through 3G(+)-3H; 3L-3K puts + on 1A (light 1 on), 3N opens (light 2 off); coil 4 has + on both ends (4E and 4F) so relay 4 stays out",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb4 released: 4E loses its pushbutton feed, so coil 4 now runs from 4F (+ via the relay 3 latch 3G-3H-3F) through 4E to the indicator and output 4 lamps, the same lamp-limited path relay 3 pulled in on, and relay 4 pulls in; relay 2 coil has + at 2E only (2F reaches 4N, open), so no alarm",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb3 held (Drive Away) after a dime: 3Y(+)-3X-4L-4K(relay 4 N.O.)-4H-4G puts + on 3E/3A, so coil 3 has + on both ends and relay 3 drops (light 2 back on, light 1 off, lights 3 and indicator 3 lit directly); relay 3 N.C. 3H-3J then feeds 4F from the same + so relay 4 holds (assumes it holds through relay 3 transfer gap); 4N is open so 2F gets no + and the alarm stays off",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): p.13 \"The toll collector will re-set\": with pb3 up the net 3E/4G/4H/3J/3H/3F/4F/4K/4L/3X has no + source, so relays 3 and 4 drop and every lamp but light 2 goes dark",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb3 with nothing paid: 3Y(+)-3X-4L-4N(relay 4 N.C.)-2F feeds coil 2 to 2E-lamps-minus, relay 2 pulls in; 2L(+)-2K puts + on 1J/1C, indicator 1 lit directly and relay 1 buzzes through its own N.C. 1J-1H-1F",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb3 released: relay 2 latches through 2H(+)-2G-2F, so the alarm (2L-2K feed to indicator 1 and relay 1) persists",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): p.13 \"To turn off the alarm, deposit 10c\": the dime latches relay 3 as before; 3L-3K puts + on 2E, so coil 2 has + on both ends and relay 2 drops, 2L-2K opens and relay 1 and indicator 1 lose their feed; relay 4 pulls in on the pb4 release",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): p.13 \"If you deposit more than 10c, the automatic toll collector will accept the extra money and do nothing about it\": a second pb4 puts + on 4E while 4F is + from the relay 3 latch, so relay 4 drops while pb4 is held; relay 3 stays latched through 3G-3H; 4N now meets 4L/3X, which has no + with pb3 up, so relay 2 stays out",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb4 released: coil 4 is again fed from 4F through 4E to the lamps and relay 4 pulls back in; the paid state is unchanged",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): Drive Away after the over-deposit re-sets with no alarm, as after a single dime",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): first nickel, pb5 held: 5Y(+)-5X-5J-5H(relay 5 N.C.)-5F feeds coil 5 to 5E-lamps-minus, relay 5 pulls in and latches through 5G(+)-5H; coil 6 has + at 6F and + at 6E through 6J-6H(relay 6 N.C.)-5X, so relay 6 stays out while lights 6 and indicator 6 are lit directly",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb5 released: 6E loses its + and coil 6 runs from 6F (+ via the relay 5 latch) to the lamps, relay 6 pulls in; one nickel does not pay",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): second nickel, pb5 held: 5X-6H-6G(relay 6 N.O.) puts + on 5E/5A, so coil 5 has + on both ends and relay 5 drops; 5H-5J then feeds 6F from pb5 so relay 6 holds (assumes it holds through relay 5 transfer gap)",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb5 released: the net 5X/5J/5H/5F/6F/6H/6G/5E has no + source (relay 5 out, wiper on D0), relay 6 drops; the only route from relays 5-6 into the toll circuit is 6L(4E)-6K-5N, and 5N is the N.C. of relay 5 set 2 whose arm 5L ER-32 leaves unwired, so two nickels never reach relay 3 (manual defect, open-questions.md O-C8)",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): Drive Away after two nickels: relay 4 is out, so 3X-4L-4N-2F pulls relay 2 in and the alarm sounds, as for an unpaid car",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): pb3 released: the relay 2 latch holds the alarm",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): power off drops every relay; at power-on nothing re-feeds the relay 2 or relay 5 latches (errata.pdf: a power cycle is the published re-set)",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialRelease"
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 6000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): p.13 \"set the rotary switch dial to 10 and push pushbutton 6\": 6Y(+)-6X puts + on D18 with D17 on minus, which turns the dial toward decreasing numbers (rotary.md section 4, O-R11), past D5 to D0, where the wiper shorts D18 to D19 (D0/D19, STOP)",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): the penny contacts D10 and D5 feed only 5X/5J/6H, the same node as pb5, so pennies move relays 5/6 and nothing else; 6L-6K-5N is a dead stub (5L unwired), so ten pennies never reach relay 3 (O-C8)",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "maxMs": 2000,
+      "cite": "BK5-6 printed pp.12-13 = book5-6.pdf PDF pp.18-19; derived from topology (ER-32 list): Drive Away after ten pennies: relay 4 is out, so 3X-4L-4N-2F pulls relay 2 in and the alarm sounds",
+      "quote": "The automatic toll collector must examine the input (the coins) and decide if it is adequate. If the payment is sufficient, the system must indicate to the driver that he may proceed. However, if a car passes through the toll gate without paying sufficient toll, the system must sound an alarm so that the guards will be notified immediately.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect and until is derived by hand from the 55-wire ER-32 list and the p.12 purpose, not printed. Topology: relay 3 is the paid latch (3G(+)-3H-3F), fed by pb4 through 4J-4H-3J-3H; 3L-3K lights output 1, 3L-3N lights output 2. Relay 4 pulls in from the relay 3 latch when pb4 is released and arms Drive Away: pb3 via 4L-4K-4H-4G drops relay 3 (re-set), while with relay 4 out pb3 via 4L-4N-2F latches relay 2 (2H-2G), whose 2L-2K feeds indicator 1 and the self-interrupting relay 1 (alarm). Relays 5/6 form a nickel toggle on the pb5 / D5 / D10 node; with ER-32 as printed their only exit, 6L-6K-5N, ends at relay 5 set 2 whose arm 5L is unwired, so two nickels and ten pennies do not pay and Drive Away then sounds the alarm. That contradicts p.13 and is the O-C8 manual defect; the 5L/6G-kept variant (step7-notes) is a different wiring and is not this fixture. Assumptions: a lamp-limited coil (nF fed, nE to its indicator and output lamps) pulls in, as relay 3 must for the printed payment; relay 4 holds through relay 3 transfer gap on Drive Away and relay 6 through relay 5 transfer gap on the second nickel. Not asserted: lamps lit only through a coil in series, relay 1 between buzz strokes, relays 5/6 after the penny run (depends on the D5 dwell against relay 5 drop-out, O-R1/O-R3/O-R5), the dial rest after the D0 stop (coast O-R5), and one nickel plus five pennies (with relays 5/6 set, the wiper on D5 feeds the motor through coil 5, 5E-6G-6H-D5-D16-D18, a creep path the topology does not settle). Script choices: dial set to 0 before power-on; a power cycle before the penny case; 300 ms dwells; pb6 released as the dial reaches c0. Digest is a placeholder for the runner.",
+  "digest": {
+    "eventCount": 1665,
+    "moverTransitions": [
+      564,
+      10,
+      8,
+      12,
+      8,
+      8,
+      0,
+      0,
+      20,
+      12,
+      8,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      32
+    ]
+  }
+}

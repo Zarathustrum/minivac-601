@@ -1,0 +1,398 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of gap-rotary-contact-geometry-and-motor-law.json",
+  "agent": "gap-verify-rotary-contact-geometry-and-motor-law",
+  "date": "2026-08-30",
+  "file_under_review": "docs/research/raw/gap-rotary-contact-geometry-and-motor-law.json",
+  "gap_question": "What is the angular width of a rotary contact versus the dead gap between contacts, and what angular-velocity law does the motor obey under the four documented drive conditions?",
+
+  "oracle_rule_compliance": "No emulator source code was opened, fetched, cloned, read or quoted. minivac.greg.technology and any associated repository were not visited. No web work at all was performed in this pass; every check was made against the local primary PDFs.",
+
+  "headline": "The motor half of the finding survives intact and is now independently re-verified at high resolution: the R1/R2/motor topology is correct, and both primary schematics agree exactly. The geometry half does not. The finder's central quantitative argument - GF01, 'gap fraction is bounded well below 0.5 by a primary text' - rests on a misreading of the Book V Experiment 18 SOS program, which I image-verified. The program does NOT strap separate runs of adjacent contacts; D3/D6 and D8/D11 bridge across the intervening positions and merge all nine mark contacts into ONE net. The dot/dash length difference is produced by relay logic, not by run length, so the SOS program yields no bound on the gap fraction. The two supporting arguments fail independently as well. Net effect: NO primary source bounds the gap fraction at all, and the finder's own headline claim to have narrowed it must be withdrawn. The QUARTER-GAP number itself survives as an engineering default - the fallback is honestly labelled and correctly parameterised - but its stated justification does not.",
+
+  "method": [
+    "Re-read Book I printed pp.20-24 (book1.pdf PDF pp.22-26) as raw pdftotext -layout, not from the finder's quotes.",
+    "Re-read the complete Maintenance Manual text and the complete errata text.",
+    "Re-read Book V printed pp.3-14 (PDF pp.9-20) and pp.29-33 (PDF pp.35-39) as raw text, transcribing the Metronome, Traffic Light, Speed Timer, Two-Floor Elevator, Three-Floor Elevator, CQ, JOHN and SOS programs myself.",
+    "Re-read Book VI printed pp.52-53 (Combination Lock, Electronic Maze).",
+    "Re-rendered five decisive figures at 400-600 dpi with pdftoppm crop windows and read them as images.",
+    "Attacked each claim by trying to construct a topology or a reading that satisfies every primary sentence but contradicts the finder."
+  ],
+
+  "images_spent": [
+    "maintenance-manual.pdf PDF p.11 (printed p.9), 600 dpi crop x300 y1500 W2900 H1500 - 'Circuit Diagram - Rotary Switch Motor Drive'. DECISIVE for M01.",
+    "book1.pdf PDF p.24 (printed p.22), 500 dpi crop x2350 y650 W2100 H1500 - the unlabelled MOTOR DRIVE figure. Second, independent schematic. DECISIVE for M01.",
+    "book1.pdf PDF p.22 (printed p.20), 400 dpi crop x200 y2300 W1900 H2000 - the 'VIEW UNDER PANEL' figure. DECISIVE for G06 and G07.",
+    "book5-6.pdf PDF p.37 (printed p.31), 450 dpi crop x1000 y2550 W2400 H900 - the Experiment 18 SOS program table. DECISIVE: refutes GF01(i).",
+    "book7-capacitor-resistor.pdf PDF p.26 (printed p.21), 400 dpi crop x400 y900 W2400 H1400 - the (D18/Omega)(Omega/D19) pair and its footnote. Confirms M06."
+  ],
+
+  "confirmed": [
+    {
+      "id": "G01",
+      "verdict": "UPHELD [verified]",
+      "note": "16 positions at equal 22.5-degree pitch. The Speed Timer's arithmetic ('the dial has completed 15/16 of a revolution', '45 x 16/15 = 48') is the real evidence and it does require equal pitch. Book V printed p.7, book5-6.pdf PDF p.13, read raw.",
+      "minor_imprecision": "The finder's corroborating citation says the Book I printed p.20 figure 'draws 16 equal radial sectors numbered 0-15'. There are TWO circles on that page. The upper one (the top-panel dial, drawn in perspective) has radial sector lines with a dot pair in each sector. The lower one, the 'VIEW UNDER PANEL' figure the finder cites elsewhere as G06, has NO radial lines at all - just 16 dot pairs around a plain circle. The finder conflated them. Harmless, but the citation should name the upper figure."
+    },
+    {
+      "id": "G02",
+      "verdict": "UPHELD [verified]",
+      "note": "Break-before-make stated outright. Book I printed p.21 (book1.pdf PDF p.23), Experiment 11 step 3, quoted verbatim and confirmed against raw pdftotext: 'Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as \"break-before-make,\" and thus is similar to the pushbutton switches.'"
+    },
+    {
+      "id": "G03",
+      "verdict": "UPHELD [verified]",
+      "note": "'the wiper arm momentarily connects with each set of contacts on the rotary switch dial in turn.' Book I printed p.20, confirmed against raw text."
+    },
+    {
+      "id": "G04",
+      "verdict": "UPHELD [verified]",
+      "note": "The errata's elevator-hang note is verbatim as the finder gives it, confirmed in errata.txt: 'Note: It is possible for the \"elevator\" to get stuck at a floor. This happens when the pointer knob stops between adjacent terminals - for example, between D6 and D7 - and is not making proper connection with either. In such case, move the pointer knob so that it is pointing directly at one of the terminals.' Filed under the errata heading 'page 11: Experiment 9 program corrections'. The Experiment 9 program does contain D6/D7 (image-checked in the raw program table on Book V printed p.11), so D6 and D7 are indeed the same net and the hang is a physical-gap hang, not a logical one."
+    },
+    {
+      "id": "G05",
+      "verdict": "UPHELD [verified]",
+      "note": "Book V printed p.14 (PDF p.20), Gray-code dialer: 'Slowly turn the rotary switch dial to the number you wish to \"dial\". (Be sure that the pointer knob is pointing directly at the number.)' Confirmed raw."
+    },
+    {
+      "id": "G06",
+      "verdict": "UPHELD [verified] - I read the figure myself",
+      "note": "The 'VIEW UNDER PANEL' figure on Book I printed p.20 is schematic. It draws a plain circle, 16 positions each rendered as a PAIR OF SMALL DOTS, a hatched rectangular wiper arm from centre to rim labelled 'Wiper Arm Connected to D16', and a double-headed arc arrow for rotation. There are no contact arcs, no pad outlines, no gap. It cannot settle pad geometry. Confirmed exactly as the finder describes.",
+      "one_detail_the_finder_omitted": "The wiper arm's OUTER end is drawn as a small open rectangle at the rim, visibly wider than the spacing of a terminal's dot pair. That is a finite-width tip, not a point. It is a hand drawing and carries no dimension, but it is worth recording because the fallback models the wiper as a point. GF03 already shows that is an equivalent formulation, so no harm - but nobody should later cite this figure as evidence that the real wiper is a point."
+    },
+    {
+      "id": "G07",
+      "verdict": "UPHELD [verified] - I read the figure myself",
+      "note": "In the 'VIEW UNDER PANEL' figure the numbers run counter-clockwise: 0 at 12 o'clock, 1 at about 11 o'clock, 2 and 3 down the upper left, 4 at 9 o'clock, 8 at 6 o'clock, 12 at 3 o'clock, 15 at about 1 o'clock. Mirrored relative to the top-panel dial. The finder's coordinate-frame caution is correct and should be kept."
+    },
+    {
+      "id": "M01",
+      "verdict": "UPHELD [verified] - I re-read BOTH schematics at high resolution and they agree exactly",
+      "topology_as_I_read_it": "Maintenance Manual printed p.9 (PDF p.11), 'Circuit Diagram - Rotary Switch Motor Drive': the D17 terminal's rail runs right and turns down through the RIGHT-HAND resistor to the bottom rail. The bottom rail carries the D19 terminal. The D18 terminal's rail runs right; a vertical stub drops from it through the motor symbol (a circle with brush bars top and bottom) to the bottom rail; the D18 rail continues right and drops through the MIDDLE resistor to the same bottom rail. Both zigzags are arrowed and labelled RESISTORS; the circle is arrowed and labelled MOTOR. Book I printed p.22 (PDF p.24) draws the identical network with terminals labelled 17 / 18 / 19, RUN bracketing 17-18, STOP bracketing 18-19, 'Motor' and 'Resistors' in hand lettering.",
+      "therefore": "R1 between D17 and D19. Motor between D18 and D19. R2 between D18 and D19, in PARALLEL with the motor. D19 is the mid-node. Exactly the finder's claim.",
+      "adversarial_alternatives_I_tried_and_eliminated": [
+        "R2 in SERIES with the motor between D18 and D19 - this would satisfy every prose sentence in Book I and the Maintenance Manual equally well, and it would INVERT the finder's C02 (with RUN de-energised the armature would be open, giving a free coast rather than an R2-braked one). Both drawings show the motor stub and the middle resistor descending SEPARATELY from the D18 rail to the D19 rail. Series is refuted.",
+        "Motor between D17 and D18 with the resistors elsewhere - refuted, because shorting D18-D19 must stop the motor and does.",
+        "R2 across the whole supply (D17 to D18) - refuted by both drawings, and it would ADD load during a STOP short rather than limit it."
+      ],
+      "note_on_a_looseness_the_finder_repeated": "Book I printed p.22 says 'The resistorS make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.' On the image-verified topology only R1 does that; R2 is shorted out by the very short it is supposed to survive and contributes nothing. The finder's M01 consequences bullet asserts this sentence is 'exactly why' the topology is what it is. It is not - the manual's plural is loose prose. Keep the topology, drop the claim that the sentence corroborates it."
+    },
+    {
+      "id": "M02",
+      "verdict": "UPHELD [verified]",
+      "note": "'A DC motor turns the rotary switch through a friction drive.' Book I printed p.22, confirmed raw. Maintenance Manual printed p.10 step 5, spare-parts 6471/6472/6473 all confirmed raw."
+    },
+    {
+      "id": "M03",
+      "verdict": "UPHELD [verified]",
+      "note": "Errata, notes to Book V page 31, confirmed verbatim in errata.txt: '...To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.'"
+    },
+    { "id": "M04", "verdict": "UPHELD [verified]", "note": "Maintenance Manual printed p.9 and Book I Experiment 14 both confirmed raw." },
+    { "id": "M05", "verdict": "UPHELD [verified]", "note": "'The drive motor is operated at less than one-third rated voltage.' Maintenance Manual printed p.2, confirmed raw. Same paragraph gives the 1.5 A / nominal 12 V supply rating; printed p.3 step 3 gives the ~13 V unloaded figure." },
+    {
+      "id": "M06",
+      "verdict": "UPHELD [verified] - I read the page myself",
+      "note": "Book VII printed p.21 (book7-capacitor-resistor.pdf PDF p.26). The optional pair is drawn braced as (D18/Omega) over (Omega/D19) with an asterisk, and the footnote in bold italic reads: '* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.' The Omega glyph is the resistor terminal. The resistor therefore hangs directly across D18-D19, in parallel with the motor, exactly as M01 predicts."
+    },
+    { "id": "M07", "verdict": "UPHELD [verified]", "note": "Maintenance Manual printed p.10 step 3, confirmed raw." },
+    { "id": "M08", "verdict": "UPHELD [verified]", "note": "Maintenance Manual printed p.2 (oiling/realignment) and p.10 (knob alignment check), confirmed raw. The wiper_offset_deg parameter recommendation is sound." },
+    { "id": "M09", "verdict": "UPHELD [verified]", "note": "Maintenance Manual printed p.10 'D16 (the switch arm) ... D0 through D15'; Book I printed p.20 'The contact on the wiper arm is referred to as \"D16.\"' Both confirmed raw." },
+    {
+      "id": "S01",
+      "verdict": "UPHELD [verified]",
+      "note": "'The rotary switch connections are made sequentially whether the pointer is turned by hand or driven by the motor.' Book I printed p.22, confirmed raw. The Combination Lock corroboration is also confirmed: Book VI printed p.52 carries 'D8/6E*' with '* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point,' and printed p.53 carries 'When you are designing a combination, you must not include any connection which will touch off a connection further along.' I also confirmed the Combination Lock program contains only D16/M+ and D-to-common connections - no D17, D18 or D19 - so it is entirely hand-driven and the sequential rule does bind hand motion."
+    },
+    {
+      "id": "S02",
+      "verdict": "UPHELD [verified], and the 45-vs-48 trap is correctly stated",
+      "note": "Book V printed p.7 (PDF p.13), read raw: step 3 'Count the number of complete revolutions which your rotary switch makes in one minute...' and the worked example 'assume that the checkpoints are 50 yards apart, and that the rotary switch turns 45 full revolutions per minute.' followed by '45 X 16/15 = 48 revolutions per minute'. 45 is the assumed PHYSICAL dial speed; 48 is the dial-plate figure the program's 15/16 registration produces. The finder's warning not to import 48 as an rpm is correct and should be preserved."
+    },
+    {
+      "id": "S03",
+      "verdict": "UPHELD [verified]",
+      "note": "Book II printed p.8 confirmed raw. It is a human-operation contrast, not a motor speed. The finder is right to record it defensively."
+    },
+    { "id": "S05", "verdict": "UPHELD [verified]", "note": "Book V printed p.3 Metronome and Book I printed p.23 Experiment 13 both confirmed raw." },
+    {
+      "id": "S06",
+      "verdict": "UPHELD [verified]",
+      "note": "The Experiment 9 floor table (Floor 1 / D0-D1, Floor 2 / D6-D7, Floor 3 / D12-D13) and the matching program lines D0/D1, D6/D7, D12/D13 are all present, confirmed raw on Book V printed p.11."
+    },
+    {
+      "id": "GF03",
+      "verdict": "UPHELD [verified]",
+      "note": "Pure arithmetic on top of G01 and G02. Break-before-make with a finite wiper face of width w and pads of width c at pitch 22.5 requires w < g, and the ON window is c + w. The point-wiper reformulation is exactly equivalent and is the right recommendation."
+    }
+  ],
+
+  "refuted": [
+    {
+      "id": "R1",
+      "target": "GF01 argument (i) - 'the SOS program straps runs of adjacent contacts ... A dash is a run of adjacent strapped contacts read as ONE longer mark. If the gap were a large fraction of the pitch, a dash would be seen as a stutter of separate flashes, not as one longer mark.'",
+      "verdict": "REFUTED",
+      "evidence": "Book V printed p.31 (book5-6.pdf PDF p.37), Experiment 18 program table, image-read at 450 dpi. The rotary connections are: D1/D2, D2/D3, D3/D6, D6/D7, D7/D8, D8/D11, D11/D12, D12/D13, plus 6A/D1, 6E/D9, 6G/D4, 6H/D16, 6L/D18, 5E/D19, D16/D17, D17/M+, D18/M-.",
+      "why_it_fails": "D3/D6 and D8/D11 are not adjacent-contact straps; they BRIDGE ACROSS the intervening positions D4/D5 and D9/D10. The whole set D1,D2,D3,D6,D7,D8,D11,D12,D13 is therefore ONE electrical net, tied to 6A. D4 and D9 are separately wired to 6G and 6E and are not on that net at all; D0, D5, D10, D14, D15 are unconnected. There are exactly nine contacts on the mark net and exactly nine Morse elements in SOS (dot dot dot / dash dash dash / dot dot dot), so EVERY element - dot and dash alike - comes from ONE single contact. Nothing in the program distinguishes a dash by run length. The dot/dash length difference must be produced by the relay circuit (relays 3,4,5,6), toggled between dot mode and dash mode by the two off-net contacts D4 and D9 sitting exactly at the S/O and O/S boundaries.",
+      "consequence": "GF01(i) supplies no bound on the gap fraction whatsoever. The finder's own to-do list admits the SOS relay logic was never analysed; the quantitative bound was nonetheless built on the unanalysed reading.",
+      "sting_in_the_tail": "[unverified] If the plausible differential-spacing mechanism is 'in dash mode the mark is latched at one contact's make and held until the next contact's make, spanning the dead gap; in dot mode the light follows the contact only', then dash/dot duration ratio = pitch / pad_arc = 1/(1 - gap_fraction). A gap fraction of 0.25 gives a ratio of only 1.33, which is a feeble 'differential spacing'; 0.5 gives 2.0, which is a usable one. On that reading the SOS program argues for a LARGER gap, not a smaller one. I have NOT resolved the relay circuit and am not asserting this - I record it only to show that the SOS program cannot be leaned on in either direction until someone works out relays 3-6."
+    },
+    {
+      "id": "R2",
+      "target": "GF01 argument (ii) - the errata's 'the three successive dots may be so rapid and so close together that they are almost indistinguishable' is offered as evidence that 'the dark interval is short relative to the lit interval'.",
+      "verdict": "REFUTED as a bound on the gap FRACTION",
+      "evidence": "The same errata note, read in full (errata.txt, notes to BOOK V page 31): 'Note - Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.'",
+      "why_it_fails": "SDC's own prescribed remedy is to slow the switch by hand. Hand-slowing scales the lit interval and the dark interval by the SAME factor and leaves the duty cycle exactly unchanged - yet SDC says it cures the symptom. Therefore the thing that makes the dots indistinguishable is the ABSOLUTE rate, not the on/off ratio. The note constrains absolute dark time loosely (short enough to blur at ~45 rpm, long enough to resolve when hand-slowed) and constrains the gap fraction not at all."
+    },
+    {
+      "id": "R3",
+      "target": "GF01 argument (iii) and its 'quantitative_check_of_the_proposed_default' - 'A 0.5 gap fraction at the Book V example speed would give 42 ms on, 42 ms off - a clean 12 Hz square wave that no one would describe as almost indistinguishable' and 'The proposed default reproduces the errata's described perception; 0.5 does not.'",
+      "verdict": "REFUTED as a discriminator",
+      "why_it_fails": "The observation is made through a 12 V incandescent pilot lamp, not an LED. A small incandescent filament has a thermal time constant of tens of milliseconds, so a 42 ms dark interval is substantially smeared by the filament's cooling curve; a 12 Hz interruption of such a lamp is genuinely hard to resolve. The finder's own C-01-adjacent prose elsewhere concedes this ('a warm lamp filament partly fills in'), but only for the 0.25 case. The physics does not discriminate 0.25 from 0.5 here. The claim that 0.25 reproduces the errata's perception and 0.5 does not is not supportable.",
+      "note": "Nothing in the corpus states the lamp type numerically. That the output lights are incandescent is [verified] from the Maintenance Manual printed p.2 ('The lights are operated at less than their rated voltage to extend their operating life') and p.5-6 ('Remove the burned-out power light and replace it with a new light assembly'), i.e. filament lamps that burn out."
+    },
+    {
+      "id": "R4",
+      "target": "The finder's own headline sentence: 'A named fallback, the QUARTER-GAP CONTACT MODEL, is proposed with a primary-text argument that narrows the gap fraction to well under 0.5.'",
+      "verdict": "REFUTED",
+      "correction": "With R1, R2 and R3 all failing, no primary-text argument narrowing the gap fraction survives. The corpus bounds the gap only as 0 < gap < pitch: greater than zero because break-before-make is stated outright (G02) and a rest position in the gap is documented (G04); less than the pitch trivially. The headline overstates the finding and must be rewritten before this file is used as a spec."
+    },
+    {
+      "id": "R5",
+      "target": "M01 consequences, second bullet: shorting D18-D19 'is exactly why Book I says the resistors let you short the STOP terminals without over-loading the power supply.'",
+      "verdict": "REFUTED (minor)",
+      "why": "On the image-verified topology R2 sits across D18-D19 and is therefore shorted out by the very short it is claimed to survive. Only R1 limits the short-circuit current. Book I's plural 'resistors' is loose prose, not a corroboration of the schematic. The topology stands; the corroboration does not."
+    }
+  ],
+
+  "downgraded": [
+    {
+      "id": "D1",
+      "target": "GF02 argument (ii) - the knob-realignment procedure 'only has resolution if the ON window is meaningfully narrower than the full pitch; with a near-zero gap, almost any knob position would pass.'",
+      "from": "[unverified] engineering inference presented as a floor on the gap",
+      "to": "[unverified] and weak",
+      "why": "The procedure (Maintenance Manual printed p.2) is 'Adjust the position of the knob on the shaft so the light comes on when the knob is pointing at the connected switch position.' Any gap greater than zero produces two detectable edges per pitch, and the operator can set the knob anywhere inside the ON window. The procedure's resolution is bounded by human eyeballing of the knob against a printed number, not by the width of the ON window. It works with a 2-degree gap as well as a 6-degree one.",
+      "replacement_argument_that_is_better": "GF02(i) survives - SDC printed an erratum about landing in the gap, which implies it is common enough to complain about. And there is a stronger primary observation the finder did not use: see U4 below."
+    },
+    {
+      "id": "D2",
+      "target": "S04's tag_reason - 'This is an inference from two program descriptions, so it is tagged down.'",
+      "from": "the Metronome and Traffic Light arguments as offered",
+      "to": "those two arguments are weaker than presented; a much better citation exists (see U3)",
+      "why": "Both cited sentences only require MONOTONICITY, not constant angular velocity. 'The length of time any given light remains on may be varied by changing the connections on the rotary switch' (Traffic Light) is true for any monotone speed profile. 'Only four periods can be produced' (Metronome) says nothing about their ratios - the manual never states 2:4:6:8. Worse, the metronome REVERSES direction at each end of its arc, so its half-period necessarily includes acceleration and deceleration and cannot be strictly proportional to arc length. The finder's proposed regression test 'assert the four slide-switch settings give periods in the ratio 2:4:6:8 arcs' asserts something no source states and that the physics of a reversing drive contradicts. Soften it to a monotonicity assertion, or re-anchor it on U3."
+    },
+    {
+      "id": "D3",
+      "target": "C03 - 'applying power directly across the STOP terminals should give roughly 3x the normal RUN speed'",
+      "from": "[unverified] with a stated caveat",
+      "to": "[unverified], keep the caveat, and note it cuts deeper than the finder allows",
+      "why": "'Less than one-third RATED voltage' (Maintenance Manual printed p.2) is a statement about the MOTOR's rating, which is nowhere given. If the motor were rated 24 V, normal running would be under 8 V and the direct-drive ratio would be about 1.6x, not 3x. The finder flags this but then ships 135.0 rpm as a default derived from the 3x. Keep it tunable and label it a guess.",
+      "one_point_that_mildly_supports_the_finder_and_was_missed": "[unverified] The Maintenance Manual says to 'connect power MOMENTARILY across the STOP terminals'. That word choice is consistent with the direct-drive condition being at or slightly above the motor's rating - i.e. with a rating near the 12-13 V supply - which is what the 3x estimate needs. It is a hint, not a measurement."
+    },
+    {
+      "id": "D4",
+      "target": "C04 estimate (2) - 'a sustained short must not exceed [1.5 A], so R1 >= 13/1.5 ~ 8.7 ohms'",
+      "from": "[unverified] bracket",
+      "to": "[unverified], and the floor is softer than stated",
+      "why": "The 1.5 A continuous rating is for the WHOLE power supply, shared with every lit lamp and energised relay in the program. A STOP short is additive to that load, so the real design floor on R1 is higher than 8.7 ohms - by how much is unknowable. Also there is a circuit breaker (Maintenance Manual printed p.4 step 2), so a transient overload is survivable and the manual's concern is 'over-loading', not destruction. The 15-50 ohm bracket is a reasonable guess and is correctly tagged; do not let it harden."
+    },
+    {
+      "id": "D5",
+      "target": "The QUARTER-GAP CONTACT MODEL's 'why_this_and_not_something_else' list, bullets 3 and 4 ('Gap must be well under 0.5' and 'Gap must not be tiny') and bullet 6 ('It reproduces the errata's own perceptual description').",
+      "from": "presented as primary-text narrowing",
+      "to": "withdrawn; 0.25 survives only as bullet 5, an unsourced mid-century-wafer-switch convention, tagged [unverified] with no citation available in the corpus",
+      "why": "Bullets 3 and 6 fall with R1/R2/R3. Bullet 4 falls to D1. Bullet 5 - '0.25 is also the classic proportion for a mid-century 16-position non-shorting rotary wafer switch' - carries no citation anywhere in the finder's file and I found none in the corpus. It may well be true; it is not sourced."
+    }
+  ],
+
+  "upgraded": [
+    {
+      "id": "U1",
+      "target": "M01 topology",
+      "change": "Re-verified independently at 600 dpi (Maintenance Manual printed p.9) and 500 dpi (Book I printed p.22). Both drawings read identically and unambiguously. I actively tried to construct alternative topologies consistent with every prose sentence and eliminated them against the drawings. This should now be treated as settled for the simulator."
+    },
+    {
+      "id": "U2",
+      "target": "C02's electrical premise",
+      "from": "[unverified] in the finder's file",
+      "to": "the PREMISE is [verified]; only the braking magnitudes remain [unverified]",
+      "why": "That R2 sits permanently across the motor armature between D18 and D19 is now image-verified from two drawings. Therefore, with RUN de-energised and nothing across STOP, the armature is NOT open - it is loaded by R2. The finder's distinction between two braking regimes (dead-short at D3, R2-loaded at D4) follows from verified topology plus textbook PMDC behaviour. Only the coast DISTANCES are invention, and the finder is right to expose them as parameters. Split the tag: topology [verified], magnitudes [unverified]."
+    },
+    {
+      "id": "U3",
+      "target": "S04, constant angular velocity",
+      "from": "[likely], argued from the Metronome and the Traffic Light",
+      "to": "[verified] as an assumption SDC itself makes and computes with",
+      "better_citation": "Book V printed p.7 (book5-6.pdf PDF p.13), the Automobile Speed Timer. SDC computes 83.52 mph for the car if the dial turns one revolution during the run, then writes '83.52 / 2 = 41.76 miles per hour' for two revolutions and '83.52 / 3 = 27.64' for three. Dividing by the revolution count is only valid if every revolution takes the same time - i.e. if the dial turns at a fixed angular velocity from a standing start (pushbutton 6 starts the motor, pushbutton 5 stops it) through however many revolutions the car takes. The entire dial-plate procedure is built on it, and step 3 tells the owner to establish that fixed rpm by counting revolutions in a minute.",
+      "caveat_to_keep": "This is SDC treating the speed as constant for engineering purposes, which is the right thing for the simulator to reproduce. It is still not a statement that spin-up is instantaneous - the speed timer simply ignores spin-up. Model spin-up as a small parameter as the finder proposes."
+    },
+    {
+      "id": "U4",
+      "target": "The gap-is-not-zero argument (GF02)",
+      "change": "A far stronger primary observation is available and was not used. Book I printed p.21 (book1.pdf PDF p.23), Experiment 11 steps 3 and 4: the reader is told to rotate the pointer by hand from 1 to 2 and to NOTICE that light 5 goes off before light 6 comes on, then in step 4 to 'Rotate the pointer knob back and forth a few times between numbers 1 and 2.' This is an instruction to a child to OBSERVE the both-off interval with the naked eye during a hand sweep, repeatedly. It is a primary, observational demonstration that the dead gap is perceptible. That is a much better floor argument than the realignment procedure. It still yields no number.",
+      "tag": "[verified] that the observation is prescribed; [unverified] any inference from it to a numeric fraction."
+    },
+    {
+      "id": "U5",
+      "target": "GF01's intended conclusion, rescued with the correct program",
+      "change": "The finder wanted an 'adjacent strapped run reads as one mark' argument. Experiment 18 does not provide one (R1). Experiment 4, the Traffic Light, does. Book V printed p.4 (PDF p.10), program read raw: 6B/D1 with D1/D2, D2/D3, D3/D4, D4/D5, D5/D6 makes a GREEN net of six genuinely adjacent contacts D1-D6; 5B/D7 with D7/D8, D8/D9, D9/D10 makes an AMBER net of four, D7-D10; 4B/D11 with D11/D12, D12/D13, D13/D14, D14/D15, D15/D0 makes a RED net of six, D11-D15 plus D0. All sixteen positions are covered, 6 + 4 + 6. SDC describes the result as 'turning lights 4, 5 and 6 on and off in succession' and calls them red, amber and green - a traffic-light phase, not a flicker.",
+      "honest_strength": "[unverified] inference. It is the right shape of argument and it uses real adjacent runs, but it still yields no number, and incandescent thermal lag would soften a 0.5-gap flicker too. Use it as the qualifying observation, never as a bound.",
+      "bonus": "It also validates the finder's traffic_light_duty regression test counts: 6 pitches green, 4 amber, 6 red. Those are correct."
+    },
+    {
+      "id": "U6",
+      "target": "C01 (coast is real) - two new discriminators the finder missed",
+      "change": "The finder's elevator argument is sound but it under-weights its own strongest detail and misses a second, independent line.",
+      "discriminator_1": "[unverified] The errata's example is 'between D6 and D7' - floor 2. Floor 1 (D0-D1) is the ONLY landing an operator ever sets by hand: Book V printed p.11, Experiment 9, 'Set the \"elevator\" at the first floor by setting the pointer knob at DO.' Floor 2 is reachable only under motor drive. If the hang were an operator-setup artefact, D0/D1 would have been the natural example to give. SDC chose the one landing a human never parks on. That is a real discriminator in favour of machine coast, and it is stronger than the 'filed under get-stuck rather than under setup' argument the finder actually made.",
+      "discriminator_2": "[unverified] Book VII printed p.21 (PDF p.26), the automatic counter with rotary switch control: 'When the counter reaches 10000 (16), the counter stops and the rotary switch makes a full revolution. When the rotary switch has returned to 0 it stops and the counter begins counting again from zero.' That program's correctness depends on the switch HALTING ON one specific contact - and SDC ships it with an optional (D18/Omega)(Omega/D19) shunt whose stated purpose is 'to decrease the speed of the motor.' A program that must stop on a single pad, shipped with an optional speed reducer, is consistent with overshoot being a live problem. Independent of the elevator. Still inference - the footnote never says why.",
+      "net": "C01 stays [unverified] as the project rules require, but its support is now two independent lines rather than one."
+    },
+    {
+      "id": "U7",
+      "target": "The errata record for Experiment 9, which the finder transcribed incompletely",
+      "change": "The finder cites the two Experiment 9 corrections (4G/4H -> 4G/5H and D16/M- -> D16/M+) and the hang note. The errata block for Book V page 11 contains MORE, and it matters for the regression test the finder proposes. Full block, from errata.txt: (a) a SEPARATE page-11 entry, 'First sentence under \"To use the program\" (experiment 8) should read: \"Set the \\'elevator\\' at the first floor by pushing pushbutton 5.\"' - which replaces Experiment 8's hand-park setup with a motor-driven one; (b) 'page 11: Experiment 9 program corrections: change 4G/4H to 4G/5H; change D16/M- to D16/M+'; (c) the hang Note; (d) a SECOND note the finder omitted entirely: 'Note: If the performance of the circuit is unsatisfactory, make the following changes to the program: remove 5F/6C, 6C/6- ; add 5F/6E, 6E/6-, 4E/6C.'",
+      "why_it_matters": "Any regression test that claims to run 'the Book V Experiment 9 program with the errata applied' must decide which of the two errata variants it is running. The finder's proposed test specifies only (b). Also worth recording: SDC fixed the hand-park setup instruction for Experiment 8 but NOT for Experiment 9 - which is a small point AGAINST the coast reading (it shows SDC knew hand-parking was error-prone) and should be held alongside U6 discriminator 1, which points the other way."
+    }
+  ],
+
+  "missed": [
+    "The Book V Traffic Light program is the corpus's only genuine 'strapped run of adjacent contacts' and the finder used it only as a regression test, while building its gap argument on the SOS program that does not contain one. See U5.",
+    "The Automobile Speed Timer's division by revolution count is a direct primary use of constant angular velocity and is far stronger than the Metronome/Traffic Light inferences the finder offered for S04. See U3.",
+    "Book I Experiment 11 step 4 ('Rotate the pointer knob back and forth a few times between numbers 1 and 2') - the prescribed repeated naked-eye observation of the both-off interval. See U4.",
+    "The second Experiment 9 erratum (the alternate program) was omitted entirely. See U7.",
+    "The errata's separate Experiment 8 setup correction (hand-park replaced by pushbutton 5) is directly relevant to the coast-versus-operator-parking question and appears nowhere in the finder's file. See U7.",
+    "The Book VII automatic-counter program is a documented drive condition in its own right: the motor is started and stopped under PROGRAM control and must halt on a named contact (position 0). It belongs in the drive-condition table alongside the finder's D1-D7, and it is a better coast test case than the elevator because its success criterion is stated ('When the rotary switch has returned to 0 it stops').",
+    "The SOS program also wires 5E/D19 - a relay-controlled short across STOP - while D17/M+ and D18/M- keep RUN permanently energised and D16/D17 puts the wiper at M+. That is a documented instance of program-controlled dynamic braking (condition D3) inside a shipped program, which the finder's table treats as a Book I Experiment 12 phenomenon only.",
+    "Address datum for the known SDC discrepancy: the Maintenance Manual's cover reads 'SCIENTIFIC DEVELOPMENT CORP., 372 Main Street, Watertown, Massachusetts' and its printed p.11 spare-parts page reads 'Scientific Development Corporation, 372 Main Street, Watertown 72, Massachusetts'. That is a third and fourth primary occurrence of Watertown against the panel legend's Cambridge. Recorded, NOT resolved - per the project rule."
+  ],
+
+  "judgement_on_the_named_fallback": {
+    "is_it_honestly_labelled": "YES, structurally. It is called 'named_fallback', not a finding. contact_arc_deg is marked TUNABLE and identified as 'the one free parameter'. G06 says outright 'NOT SETTLED BY THE SOURCES'. The not_settled_by_the_sources list leads with the pad-versus-gap width. There is a 'what_would_overturn_this_fallback' list. The coast defaults are explicitly labelled 'unresolved_by_design'. That is the right architecture and it should be kept.",
+    "is_it_honestly_labelled_in_the_prose": "NO, in two places. (1) The file's own headline advertises 'a primary-text argument that narrows the gap fraction to well under 0.5' - that argument does not survive (R1-R4), so the headline reads as a finding when it is a guess. (2) GF01 and GF02 are written as bounding arguments with primary citations attached, which lends the 0.25 an evidentiary weight it does not have. A downstream implementer skimming the claims list would reasonably conclude the sources constrain the number. They do not.",
+    "is_the_number_defensible": "YES as a default, NO as a derivation. 0.25 is a sane engineering choice for a 16-position non-shorting wafer switch and it produces a model with the right qualitative behaviours: break-before-make is structural, a rest-in-gap state exists, and the errata hang is reproducible by dialling the coast. Keep 0.25. Delete the claim that the manuals point at it.",
+    "recommended_rewrite": [
+      "Headline: replace 'a primary-text argument that narrows the gap fraction to well under 0.5' with 'no primary source bounds the gap fraction; 0.25 is an unsourced engineering default, exposed as the model's one free parameter.'",
+      "Delete GF01 in its entirety. Replace it with the Traffic Light observation (U5) tagged [unverified] and explicitly labelled as qualitative, not bounding.",
+      "Rewrite GF02: keep (i) the erratum-was-printed argument; delete (ii) the realignment-resolution argument; add U4 (Book I Experiment 11 step 4) as the primary observational demonstration that the gap is visible to the naked eye.",
+      "In named_fallback.why_this_and_not_something_else, delete bullets 3, 4 and 6; retain 1, 2 and 5; mark 5 as uncited.",
+      "Keep GF03, the exact_interface, the algorithm, the invariants, and every TUNABLE marking exactly as written. Those are correct.",
+      "Keep the errata_elevator_hangs_between_D6_and_D7 regression test - it is the best idea in the file - but specify which errata variant of the Experiment 9 program it runs (U7).",
+      "Soften metronome_reversal from 'periods in the ratio 2:4:6:8' to 'periods strictly increasing with arc length' (D2)."
+    ]
+  },
+
+  "answer_to_the_gap_question_as_it_now_stands": {
+    "angular_width_of_contact_versus_dead_gap": {
+      "settled": [
+        "Pitch is 22.5 degrees, 16 equal positions. [verified] Book V printed p.7 arithmetic; Book I printed p.20 dial figure.",
+        "A dead gap exists and is greater than zero. [verified] Book I printed p.21, break-before-make stated outright.",
+        "The wiper can come to rest in the gap and connect to neither neighbour. [verified] Errata, notes to Book V page 11.",
+        "The gap is perceptible to the naked eye during a slow hand sweep. [verified] that the observation is prescribed - Book I printed p.21, Experiment 11 steps 3-4.",
+        "Break-before-make requires wiper face width < gap width; a point wiper with pad arcs is the equivalent formulation. [verified] arithmetic."
+      ],
+      "not_settled_by_the_sources": "The numeric ratio of pad arc to dead gap. NOTHING in Book I, Books II-IV, Books V-VI, Book VII, the Maintenance Manual or the errata gives it, states it, or constrains it beyond 0 < gap < 22.5 degrees. The one figure that purports to show the under-panel assembly is schematic and draws only terminal holes. The finder's attempt to narrow it from the Morse programs does not survive. Anyone who wants this number needs an under-panel photograph of an original 6473 rotary switch assembly, a physical measurement of a surviving unit, or frame-counted video of an original running the Traffic Light program.",
+      "recommended_default": "contact_arc_deg = 16.875 (gap fraction 0.25), TUNABLE, commented as an unsourced engineering default and NOT as a finding."
+    },
+    "angular_velocity_law": {
+      "settled": [
+        "Circuit: R1 between D17 and D19; motor between D18 and D19; R2 between D18 and D19 in parallel with the motor; D19 the mid-node. [verified] from two independent primary schematics, both re-read in this pass.",
+        "RUN across D17-D18 turns the motor; reversing that polarity reverses rotation. [verified]",
+        "A short across D18-D19 stops it, with the supply current then limited by R1 alone. [verified]",
+        "Power directly across D18-D19 drives the motor at full supply and 'very rapidly'. [verified] qualitatively.",
+        "An external 15, 22 or 33 ohm resistor across D18-D19 slows it. [verified]",
+        "Hand operation coexists with the motor via a friction drive; the operator may hold the knob back while the motor runs. [verified]",
+        "Under a steady applied voltage SDC treats the speed as constant and computes with it. [verified] as SDC's own working assumption - Book V printed p.7 Speed Timer.",
+        "Contacts fire sequentially in both hand and motor mode; no jump-to-destination. [verified]"
+      ],
+      "not_settled_by_the_sources": [
+        "Ohmic values of R1 and R2. Never stated. The finder's 15-50 ohm bracket for R1 is a guess and the floor argument is softer than presented (D4).",
+        "Motor make, rating, no-load rpm; drive-wheel and shaft diameters, hence the friction ratio.",
+        "The as-built rpm of any real unit. 45 rpm is an ASSUMED example in a worked problem, and SDC's own procedure tells the owner to measure his own unit - which is itself evidence that units varied.",
+        "The direct-across-STOP speed ratio. 3x is an estimate resting on an unknown motor rating (D3).",
+        "Coast angle, spin-up time, reversal time. The words coast, overrun, momentum and inertia appear nowhere in any of the seven documents. Whether the errata's elevator hang is machine coast or operator setup is genuinely undecided; U6 gives two arguments for coast, U7 gives one for setup."
+      ],
+      "recommended_model": "Keep the finder's first-order law with the drive-condition table, run_rpm = 45 labelled as an assumption, fast_rpm and both coast parameters exposed and labelled unsourced. Split C02's tag: the R2-across-the-armature premise is [verified]; the braking magnitudes are [unverified]."
+    }
+  },
+
+  "verbatim_quotes_i_confirmed_myself": {
+    "book1_p21_break_before_make": "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON. Notice that light 5 goes OFF before light 6 comes ON. This shows that the rotary switch is designed to disconnect the arm from one contact before making connection with the next contact. The switch operation is described as \"break-before-make,\" and thus is similar to the pushbutton switches.",
+    "book1_p21_exp11_step4": "Rotate the pointer knob back and forth a few times between numbers 1 and 2.",
+    "book1_p22_motor_drive": "The rotary switch may be positioned either by hand or by the motor drive. A DC motor turns the rotary switch through a friction drive. The rotary switch connections are made sequentially whether the pointer is turned by hand or driven by the motor.",
+    "book1_p22_terminals": "Terminals 17, 18 and 19 are located on the panel just to the left of the pointer knob and rotary switch terminals. Power must be supplied to terminals 17 and 18 (run) to operate the motor drive. A short circuit may be connected across terminals 18 and 19 (stop) to halt the motor drive.",
+    "book1_p22_resistors": "The electrical resistors used with the motor drive limit the current which flows through the circuit in the same way that the lights limit the amount of current which flows through a relay coil. The resistors make it possible to connect a short circuit across the STOP terminals to stop the motor without over-loading the power supply.",
+    "book5_p4_traffic_light_program_rotary_lines": "4B/D11 ; 5B/D7 ; 6B/D1 ; D1/D2 ; D2/D3 ; D3/D4 ; D4/D5 ; D5/D6 ; D7/D8 ; D8/D9 ; D9/D10 ; D11/D12 ; D12/D13 ; D13/D14 ; D14/D15 ; D15/D0 ; D16/M- ; D17/M- ; D18/M+",
+    "book5_p4_traffic_light_text": "Turn power on. The rotary switch will turn, turning lights 4, 5 and 6 on and off in succession. Light 4 represents \"red\", light 5 represents \"amber\", and light 6 represents \"green\". The length of time any given light remains on may be varied by changing the connections on the rotary switch.",
+    "book5_p3_metronome_rotary_lines": "4R/D3 ; 4T/D5 ; 4U/D7 ; 4W/D9 ; 6E/D16 ; 6G/D1 ; 6H/D17 ; 6L/D18",
+    "book5_p7_speed_timer_step3": "Count the number of complete revolutions which your rotary switch makes in one minute and note this number. Since the program above indicates a revolution of the rotary switch when the dial has completed 15/16 of a revolution, we must multiply the number of complete revolutions in a minute by 16/15 to obtain a \"revolutions per minute\" figure for the dial plate.",
+    "book5_p7_speed_timer_division": "For example: assume that the checkpoints are 50 yards apart, and that the rotary switch turns 45 full revolutions per minute. ... 45 X 16/15 = 48 revolutions per minute ... revolutions per hour = 48 X 60 = 2880 ... .029 X 2880 = 83.52 miles per hour ... To find the car's speed if the dial turned through two revolutions - from 0 to 15 and then from 15 to 14 - we will divide the last figure by 2: 83.52 / 2 = 41.76 miles per hour.",
+    "book5_p10_exp8_setup_as_printed": "Set the \"elevator\" at the first floor by setting the pointer knob of the rotary switch at 1.",
+    "book5_p11_exp9_setup_as_printed": "Set the \"elevator\" at the first floor by setting the pointer knob at DO. Turn power on. Output light 1 will come on indicating the location of the \"elevator\".",
+    "book5_p11_exp9_rotary_lines": "4L/D19 ; 4N/D18 ; 5J/D17 ; 5N/D18 ; 6F/D12 ; 1E/D1 ; 2E/D7 ; 3E/D13 ; D0/D1 ; D6/D7 ; D12/D13 ; D16/M-",
+    "book5_p31_sos_full_rotary_lines_image_verified": "5E/D19 ; 6A/D1 ; 6E/D9 ; 6G/D4 ; 6H/D16 ; 6L/D18 ; D1/D2 ; D2/D3 ; D3/D6 ; D6/D7 ; D7/D8 ; D8/D11 ; D11/D12 ; D12/D13 ; D16/D17 ; D17/M+ ; D18/M-",
+    "book5_p31_sos_text": "Turn power on. The system will immediately begin transmitting \"SOS\". Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off.",
+    "book5_p31_sos_intro": "The preceding experiments used different lights to indicate dots and dashes. It is possible, however, to produce \"differential spacing\" so that dots and dashes may be distinguished by the length of time a single light is on.",
+    "book7_p21_slow_resistor": "* This is an optional connection. Use a 15, 22 or 33 ohm resistor to decrease the speed of the motor.",
+    "book7_p21_counter_stop_behaviour": "Set the rotary switch at 0 and turn power on. When the counter reaches 10000 (16), the counter stops and the rotary switch makes a full revolution. When the rotary switch has returned to 0 it stops and the counter begins counting again from zero.",
+    "mm_p2_ratings": "The power supply is rated at 1.5 amps continuous with a nominal 12 volts output. All switches are rated at 3 amps; relay contacts are rated in excess of 3 amps. To provide low contact resistance, the rotary switch uses silver-plated circuits. The rotary switch contact fingers are made of berryllium copper; the drive shaft is made of stainless steel running in an oil-impregnated bronze bearing. The drive motor is operated at less than one-third rated voltage.",
+    "mm_p2_lights_are_incandescent": "All MINIVAC parts are conservatively designed to give lasting service. The lights are operated at less than their rated voltage to extend their operating life.",
+    "mm_p9_motor_check": "Check the motor drive by connecting power to the RUN terminals (D17 and D18). Turn power on. The rotary switch pointer knob should turn. Reverse the power connections: the pointer knob should turn in the opposite direction. Connect a short circuit across the STOP terminals (D18 and D19): the pointer knob should stop turning. If the pointer knob does not rotate, connect power momentarily across the STOP terminals: the knob should turn very rapidly.",
+    "errata_book5_p11_exp8_setup_correction": "page 11: First sentence under \"To use the program\" (experiment 8) should read: \"Set the 'elevator' at the first floor by pushing pushbutton 5.\"",
+    "errata_book5_p11_exp9_block": "page 11: Experiment 9 program corrections: change 4G/4H to 4G/5H ; change D16/M- to D16/M+ . Note: It is possible for the \"elevator\" to get stuck at a floor. This happens when the pointer knob stops between adjacent terminals - for example, between D6 and D7 - and is not making proper connection with either. In such case, move the pointer knob so that it is pointing directly at one of the terminals. Note: If the performance of the circuit is unsatisfactory, make the following changes to the program: remove 5F/6C, 6C/6- ; add 5F/6E, 6E/6-, 4E/6C.",
+    "errata_book5_p31": "page 31: Note - Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable. To see them more clearly, slow the rotary switch down by holding the pointer knob back during one revolution.",
+    "errata_book5_p33": "page 33: Note to Experiment 19 - always turn the pointer knob clockwise when indicating a letter for coding.",
+    "errata_general_slow": "Also, try carrying out the procedure slowly; some programs are not designed for high-speed operation.",
+    "book6_p52_lock_trap": "* This last connection is optional; it will cause the machine to indicate an error if 8 is passed at any point.",
+    "book6_p53_lock_design_rule": "When you are designing a combination, you must not include any connection which will touch off a connection further along. Also, you must make connections to each of the six common terminals in order."
+  },
+
+  "figures_i_read_transcribed": {
+    "maintenance_manual_p9_motor_drive": {
+      "caption": "Circuit Diagram - Rotary Switch Motor Drive",
+      "elements": [
+        "Terminal D17, left edge, with a horizontal rail running right to the far right of the figure, then turning down.",
+        "That right-hand vertical branch carries a zigzag resistor symbol and lands on the bottom rail.",
+        "Terminal D18, left edge, with a horizontal rail running right.",
+        "A vertical stub drops from the D18 rail through a circle with brush bars top and bottom (labelled MOTOR by a curved arrow) to the bottom rail.",
+        "The D18 rail continues right past the motor stub and drops through a second zigzag resistor to the bottom rail.",
+        "Terminal D19, left edge, on the bottom rail.",
+        "The bracket label RUN sits between the D17 and D18 rails; STOP sits between the D18 and D19 rails.",
+        "A single label RESISTORS with two curved arrows points at both zigzags."
+      ],
+      "netlist": "R1 : D17 - D19 . R2 : D18 - D19 . MOTOR : D18 - D19 (parallel with R2)."
+    },
+    "book1_p22_motor_drive": {
+      "caption": "unlabelled figure at the head of section 7 MOTOR DRIVE",
+      "elements": [
+        "Terminals 17, 18, 19 at the left edge; hand lettering RUN between 17 and 18, STOP between 18 and 19.",
+        "17's rail runs right and turns down through a zigzag to the bottom rail.",
+        "18's rail runs right; a vertical stub drops through a circle with brush bars, hand-labelled 'Motor' with a curved arrow.",
+        "18's rail continues right and drops through a second zigzag to the bottom rail.",
+        "19 sits on the bottom rail.",
+        "A single hand-lettered 'Resistors' with an arrow points at the right-hand zigzag; a second arrow from the same label points at the middle zigzag."
+      ],
+      "netlist": "Identical to the Maintenance Manual figure. R1 : 17 - 19 . R2 : 18 - 19 . MOTOR : 18 - 19."
+    },
+    "book1_p20_view_under_panel": {
+      "caption": "VIEW UNDER PANEL",
+      "elements": [
+        "A single plain circle. No radial sector lines.",
+        "16 positions marked as PAIRS of small filled dots on the circumference, numbered outside the circle.",
+        "Numbering runs COUNTER-CLOCKWISE from 0 at 12 o'clock: 1 at ~11 o'clock, 2, 3, 4 at 9 o'clock, 5, 6, 7, 8 at 6 o'clock, 9, 10, 11, 12 at 3 o'clock, 13, 14, 15 at ~1 o'clock.",
+        "A hatched rectangular bar from the centre (drawn as a solid dot, the shaft) out to the rim at position 0, labelled 'Wiper Arm Connected to D16'.",
+        "The bar's outer end terminates in a small OPEN RECTANGLE at the rim - a finite-width tip, wider than a terminal's dot spacing.",
+        "A double-headed arc arrow across the bar indicating rotation in both directions."
+      ],
+      "what_it_does_not_show": "No contact arcs. No pad outlines. No gap. No dimensions of any kind. It cannot settle contact geometry and no future pass should ask it to."
+    }
+  },
+
+  "what_would_settle_the_open_parameter": [
+    "An under-panel photograph of an original SDC part 6473 Complete Rotary Switch Assembly showing the fixed contact ring, at high enough resolution to measure pad arc against gap arc. This is the single highest-value acquisition for the whole rotary model.",
+    "A physical measurement of a surviving unit: an ohmmeter across D16 and one D terminal, rotating the knob slowly and recording the make and break angles against the dial.",
+    "Frame-counted video of an original running Book V Experiment 4 (Traffic Light) or Experiment 13. Revolutions per second gives the real rpm; dark frames between two adjacent strapped contacts gives the gap fraction directly. The Traffic Light is the better subject because its nets are long adjacent runs.",
+    "Video of an original executing the Three-Floor Elevator, showing how far past the arrival contact the pointer travels. Settles both coast parameters and decides C01 outright.",
+    "An SDC engineering or parts drawing for 6471 (Motor), 6472 (Drive Wheel Assembly) or 6473. Would settle R1, R2, the motor rating and the friction reduction in one document.",
+    "The second edition of the MINIVAC Manual, which the errata says was in preparation ('Scientific Development Corporation is preparing for a second edition of the MINIVAC Manual ... Please address correspondence of this nature to the Editor of the MINIVAC Manual: Linda G. Sprague.'). It might state the speed or fix the elevator properly.",
+    "Working out the Experiment 18 relay circuit (relays 3, 4, 5, 6). Until that is done, nobody can say whether the SOS program's differential spacing argues for a larger gap, a smaller one, or neither."
+  ],
+
+  "verdict": "The motor half of the finder's work is sound and is now doubly verified; the geometry half's central quantitative argument is built on a misread program and does not survive. Keep M01 through M09, S01 through S06, G01 through G07, GF03, the fallback's structure and every TUNABLE marking; withdraw GF01 entirely, weaken GF02, and rewrite the headline so the 0.25 gap fraction reads as the unsourced engineering default it actually is."
+}

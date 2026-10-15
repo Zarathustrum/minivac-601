@@ -1,0 +1,46 @@
+#!mv601-trace 1
+# id=IV-FF2-CARRY-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=18
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=147 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay5=nc relay6=nc outLamp4=off outLamp5=off outLamp6=off indLamp5=off indLamp6=off  "Light 4 will now indicate that a carry is taking place."
+   220.1 > button6 target=1000
+   231.3 * pb6 nc->mid
+   233.8 * pb6 mid->no
+   237.1 * outLamp5 off->dim  outLamp6 off->dim  indLamp6 off->dim
+   243.9 * indLamp5 off->dim
+   246.1 * relay5 nc->mid
+   247.4 * relay5 mid->no
+   256.2 * outLamp6 dim->on  indLamp6 dim->on
+   257.1 * outLamp5 dim->on
+   285.5 * indLamp5 dim->on
+   477.2 ? relay5=no relay6=nc outLamp4=off outLamp5=on outLamp6=on indLamp6=on  "Light 4 will now indicate that a carry is taking place."
+   477.2 > button6 target=0
+   488.4 * pb6 no->mid
+   490.9 * pb6 mid->nc
+   502.1 * relay6 nc->mid
+   503.4 * relay6 mid->no
+   728.7 ? relay5=no relay6=no outLamp4=off outLamp5=on  "Light 4 will now indicate that a carry is taking place."
+   728.7 > button6 target=1000
+   739.9 * pb6 nc->mid
+   742.4 * pb6 mid->no
+   753.6 * relay5 no->mid
+   754.5 * relay5 mid->nc
+   757.8 * outLamp4 off->dim
+   776.8 * outLamp4 dim->on
+   996.9 ? relay5=nc relay6=no outLamp4=on outLamp5=on indLamp5=on  "Light 4 will now indicate that a carry is taking place."
+   996.9 > button6 target=0
+  1008.1 * pb6 no->mid
+  1010.6 * pb6 mid->nc
+  1016.8 * relay6 no->mid
+  1017.7 * relay6 mid->nc
+  1018.8 * outLamp6 on->dim  indLamp6 on->dim
+  1032.8 * indLamp5 on->dim
+  1032.9 * outLamp5 on->dim
+  1037.2 * outLamp4 on->dim
+  1074.5 * outLamp6 dim->off  indLamp6 dim->off
+  1088.4 * indLamp5 dim->off
+  1088.5 * outLamp5 dim->off
+  1092.8 * outLamp4 dim->off
+  1257.3 ? relay5=nc relay6=nc outLamp4=off outLamp5=off outLamp6=off indLamp5=off indLamp6=off  "Light 4 will now indicate that a carry is taking place."

@@ -1,0 +1,266 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP1",
+  "source": "BK2 printed p.6 = book2-3-4.pdf PDF p.12",
+  "tier": "B",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1X/2X",
+    "2X/3X",
+    "3X/4X",
+    "4X/5X",
+    "5X/6Y",
+    "6Z/6+",
+    "6Y/5H",
+    "5H/4H",
+    "4H/3H",
+    "3H/2H",
+    "2H/1H",
+    "1Y/1G",
+    "1G/1C",
+    "1F/1-",
+    "2Y/2G",
+    "2G/2C",
+    "2F/2-",
+    "3Y/3G",
+    "3G/3C",
+    "3F/3-",
+    "4Y/4G",
+    "4G/4C",
+    "4F/4-",
+    "5Y/5G",
+    "5G/5C",
+    "5F/5-"
+  ],
+  "errata_applied": [],
+  "note": "Wire table image-read at 300 dpi from printed p.6 (PDF p.12): the page prints 26 wires, a sixth column holding only 5F/5-, which the circuit drawing also shows (5F to 5-). The pdftotext layer drops that column, so programs.json wiresPrinted (25) is a transcription defect, not a manual defect; this fixture carries the printed 26. No errata entry. Pushbuttons 2 and 3 are not pushed (printed steps 2-3); their light-OFF expects follow step 1. Expects assert only the relay lights the page names, never the relay armatures or the worked 10011 pattern as a whole. Steps 4-5 print 'Push pushbutton N' without 'and release'; the release follows step 1's 'Push pushbutton 1 and release' (the same 'transmit a \"one\"' action), and each light-ON expect is taken after release, where 'is being remembered' applies.",
+  "wires": [
+    "1X/2X",
+    "2X/3X",
+    "3X/4X",
+    "4X/5X",
+    "5X/6Y",
+    "6Z/6+",
+    "6Y/5H",
+    "5H/4H",
+    "4H/3H",
+    "3H/2H",
+    "2H/1H",
+    "1Y/1G",
+    "1G/1C",
+    "1F/1-",
+    "2Y/2G",
+    "2G/2C",
+    "2F/2-",
+    "3Y/3G",
+    "3G/3C",
+    "3F/3-",
+    "4Y/4G",
+    "4G/4C",
+    "4F/4-",
+    "5Y/5G",
+    "5G/5C",
+    "5F/5-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 1",
+      "quote": "Relay light 1 comes ON to indicate that a \"one\" is being remembered (stored)."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 2",
+      "quote": "Relay light 2 remains OFF to indicate that a \"zero\" is being remembered (stored)."
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 3",
+      "quote": "Relay light 3 remains OFF to indicate that a \"zero\" is being remembered."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 4",
+      "quote": "Relay light 4 comes ON to indicate that a \"one\" is being remembered by section 4."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 5",
+      "quote": "Relay light 5 comes ON to indicate that a \"one\" is being remembered by section 5."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "collapse": true
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK2 printed p.6 = book2-3-4.pdf PDF p.12, step 6",
+      "quote": "All relay lights go OFF, and the previous number is forgotten (\"cleared\" from the memory)."
+    }
+  ]
+}

@@ -1,0 +1,244 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP7",
+  "source": "BK4 printed pp.78-79 = book2-3-4.pdf PDF pp.84-85; builds on IV-EXP6 (BK4 printed p.77 = PDF p.83); ERRATA ER-24 (conditional, not applied)",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2N/4U",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3J/4T",
+    "3K/4R",
+    "3K/M10",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4L/5A",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6E/6-",
+    "6G/6R",
+    "6J/6K",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+",
+    "6F/M10",
+    "3L/4Z",
+    "3H/4X",
+    "4N/5Z",
+    "4K/5X",
+    "6C/6F",
+    "6H/6Z",
+    "6L/6X"
+  ],
+  "errata_applied": [],
+  "note": "Delta program: wires = the IV-EXP6 printed 48-wire list (p.77) with the p.79 REMOVE list (3A/M10, 3L/4X, 3H/4Z, 4N/5X, 4K/5Z, 6H/6X, 6L/6Z) taken out and the ADD list (6F/M10, 3L/4Z, 3H/4X, 4N/5Z, 4K/5X, 6C/6F, 6H/6Z, 6L/6X) put in, 49 wires; no erratum changes a wire in either list, so as_printed = wires. ER-24 (errata p.3, 'Note on Experiment 7') applies only 'if you used the alternate circuit for the counter'; this fixture is the book circuit and does not apply it (its remove list names 2C/2G and 3C/3G, which neither IV-EXP6 nor this program wires). Script: the page prints one worked example (5 - 2 = 3) and one hypothetical (subtractor 7 against the same subtrahend: relay 6 does not pull in). Light 3 and relay 6 for the 5 - 2 case are not stated on the page and are not asserted. The 500 ms advances before each expect let lamps finish thermal transients; the page states no timing. The 111 hypothetical is entered fresh: pushbutton 5 is released, then pushbuttons 4, 5 and 6 are pushed.",
+  "wires": [
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2N/4U",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3J/4T",
+    "3K/4R",
+    "3K/M10",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4L/5A",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6E/6-",
+    "6G/6R",
+    "6J/6K",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+",
+    "6F/M10",
+    "3L/4Z",
+    "3H/4X",
+    "4N/5Z",
+    "4K/5X",
+    "6C/6F",
+    "6H/6Z",
+    "6L/6X"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.79 = book2-3-4.pdf PDF p.85 (procedure steps 1-3)",
+      "quote": "1. Enter the subtrahend (101) by moving slide switches 4 and 6 to the LEFT, leaving slide switch 5 RIGHT. 2. Enter the subtractor (010) by pushing pushbutton 5 DOWN and leaving pushbuttons 4 and 6 UP. ... 3. The answer appears in the binary output lights: light 4 is OFF, and lights 5 and 6 are ON. This is read as 011, which is binary 3 : 5 - 2 = 3."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK4 printed p.79 = book2-3-4.pdf PDF p.85",
+      "quote": "Had we attempted to enter binary 7 (111) in the pushbuttons, relay 6—the carry in relay for the low order stage— would not have pulled in and the answer displayed in the output lights would be incorrect."
+    }
+  ]
+}

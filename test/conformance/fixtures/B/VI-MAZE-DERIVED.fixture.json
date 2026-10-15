@@ -1,0 +1,2099 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-MAZE-DERIVED",
+  "source": "BK6 printed pp.53-54 = book5-6.pdf PDF pp.59-60, image-read; errata.pdf p.4 (ER-42); Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "M8t/6com",
+    "M1t/5com",
+    "M2t/4com",
+    "M9t/3com",
+    "M6t/2com",
+    "M5t/1com"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 44-wire topology (the 38-line basic sequence recognition circuit plus the p.53 example path 8-1-2-9-6-5) and the p.53 rule, tagged FALLBACK-DERIVED-TOPOLOGY. The play wire is script cord 44 from M+#1; each move re-ends it as a touch on the square's top terminal (p.54) and lifts it back to free. Derived cases: light 6 on at power-on and off after the start touch (O-C22); light 1 off before the solving touch; the goal touched first does nothing; a square outside the path (7) and a backtrack to a passed square do nothing; an out-of-order path square (6 after 8, 1, 2) drops every relay and lights light 6; after that error the full path succeeds again with no power cycle (O-C21 a, topology reading); the p.54 short path 8-9-4 (cords 45-47, wired with power off after removing path cords 38-43) with relays pushed one at a time: order 4, 5, 6 leaves only relay 6 held, so the start touch is an error; order 6, 5, 4 holds all three and the path succeeds, resumed without a power cycle (O-C21 b; the page gives no order). Indicator lamps are not asserted (a lit indicator lamp is in series with its coil). The p.54 dummy lines are not wired. Script choices, not printed: touch and lift settles of 500 ms, a 200 ms advance before each expect (O-C28), the 30 ms power-off advance, the 50 ms relay-push hold, and the error move.",
+  "wires": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/1G",
+    "1F/2K",
+    "1H/2G",
+    "1com/2L",
+    "2C/3C",
+    "2F/2G",
+    "2F/3K",
+    "2H/3G",
+    "2N/3N",
+    "2com/3L",
+    "3C/4C",
+    "3F/3G",
+    "3F/4K",
+    "3H/4G",
+    "3N/4N",
+    "3com/4L",
+    "4C/5C",
+    "4F/4G",
+    "4F/5K",
+    "4H/5G",
+    "4N/5N",
+    "4com/5L",
+    "5C/6C",
+    "5F/5G",
+    "5F/6K",
+    "5H/6G",
+    "5N/6N",
+    "5com/6L",
+    "6A/6J",
+    "6B/6-",
+    "6C/6-",
+    "6E/6N",
+    "6F/6G",
+    "6F/6com",
+    "6H/6+",
+    "M8t/6com",
+    "M1t/5com",
+    "M2t/4com",
+    "M9t/3com",
+    "M6t/2com",
+    "M5t/1com"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; no + reaches any F (play wire free, every set-1 N.O. open), so every relay out; 6H(+)-6J-6A lights light 6 at full rail; 1A=1F unfed, light 1 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M5t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M8t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; M5t=1com=2L-2N (relay 2 out) puts + only on the error node 6E: coil 6 has no + at 6F, so nothing pulls and nothing holds; M8t=6com=6F feeds coil 6, relay 6 pulls in and holds through 6G-6H(+); 6J opens, light 6 off; 6K-6L now joins M1t to 5F; lower relays unfed",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M1t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M2t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M7t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M1t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; M1t=5com=6L-6K=5F (relay 6 in) feeds coil 5, held 5G-5H=6G(+); M2t=4com=5L-5K=4F (relay 5 in) feeds coil 4, held 4G-4H=5G(+); M7t is wired to nothing; a second touch of M1t puts + on 5F, already at +; relays 3, 2, 1 unfed (their F only via 4K, 3K, 2K from M9t, M6t, M5t); light 6 off (relay 6 in), light 1 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M9t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M6t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; M9t=3com=4L-4K=3F (relay 4 in) feeds coil 3, held 3G-3H=4G(+); M6t=2com=3L-3K=2F feeds coil 2, held 2G-2H=3G(+); 1F (=1A) reached only through 2K-2L from M5t, untouched, so relay 1 out and light 1 off before the solving touch; light 6 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M5t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; M5t=1com=2L-2K=1F (relay 2 in) feeds coil 1, held 1G-1H=2G(+); 1G=1A, light 1 on from the full-rail hold chain; light 6 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M8t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M1t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M2t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M6t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); errata.pdf p.4 (ER-42) for the re-set between games; derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; power off drops every relay; 8, 1, 2 pull relays 6, 5, 4 as before; M6t=2com=3L-3N (relay 3 out) puts + on the error node 6E while 6F is at +, so coil 6 drops, 6G opens, and 5H, 4H lose + in turn: relays 5, 4 drop; nothing re-feeds any F after the lift; 6J closes, light 6 on; light 1 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M8t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M1t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M2t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M9t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M6t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M5t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.53 = book5-6.pdf PDF p.59 (rule and program); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; the error left every relay out, the power-on state, so the path latches relays 6 down to 1 exactly as in game 1; light 1 on, light 6 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 30
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 38
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 39
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 40
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 41
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 42
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 43
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 45,
+        "a": {
+          "k": "hole",
+          "hole": "M8t#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "3com#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 46,
+        "a": {
+          "k": "hole",
+          "hole": "M9t#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "2com#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 47,
+        "a": {
+          "k": "hole",
+          "hole": "M4t#1"
+        },
+        "b": {
+          "k": "hole",
+          "hole": "1com#2"
+        }
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 4
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 5
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 6
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed pp.53-54 = book5-6.pdf PDF pp.59-60 (rule p.53; short path and 'manually push relays 4, 5 and 6 to the left' p.54); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; short path rewired: 3com=M8t, 2com=M9t, 1com=M4t; 4com, 5com, 6com feed nothing but 5L, 6L, 6F; held relay 4 closes 4G-4H but 4H=5G is open (relay 5 out), so 4F gets no + and relay 4 drops on release; relay 5 likewise (5H=6G open, relay 6 out); held relay 6 closes 6G-6H(+), 6F fed, holds after release; light 6 off, light 1 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M8t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed pp.53-54 = book5-6.pdf PDF pp.59-60 (rule p.53; short path and 'manually push relays 4, 5 and 6 to the left' p.54); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; short path rewired: 3com=M8t, 2com=M9t, 1com=M4t; 4com, 5com, 6com feed nothing but 5L, 6L, 6F; M8t=3com=4L-4N (relay 4 out) puts + on the error node 6E with 6F at +, so relay 6 drops; light 6 on; the error drops relays 4-6, as the p.54 'Whenever an error is made, relays 4, 5 and 6 must be pushed to the left' implies",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 6
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 5
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayGrab",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 50
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "relayRelease",
+        "n": 4
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed pp.53-54 = book5-6.pdf PDF pp.59-60 (rule p.53; short path and 'manually push relays 4, 5 and 6 to the left' p.54); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; short path rewired: 3com=M8t, 2com=M9t, 1com=M4t; 4com, 5com, 6com feed nothing but 5L, 6L, 6F; held relay 6 latches through 6G-6H(+); held relay 5 closes 5G-5H=6G(+), 5F fed, holds; held relay 4 closes 4G-4H=5G(+), 4F fed, holds; relays 3, 2, 1 unfed; light 6 off, light 1 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M8t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M9t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "touch",
+          "term": "M4t"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "disconnect",
+        "cord": 44
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "connect",
+        "cord": 44,
+        "a": {
+          "k": "hole",
+          "hole": "M+#1"
+        },
+        "b": {
+          "k": "free"
+        }
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed pp.53-54 = book5-6.pdf PDF pp.59-60 (rule p.53; short path and 'manually push relays 4, 5 and 6 to the left' p.54); derived from topology: 1C..6C on minus (1C/2C..5C/6C, 6C/6-), so relay n's coil runs nF-coil-nE-indicator lamp-minus; hold chain 6H(+)-6G=6F, 5H=6G, 5G=5F, 4H=5G, 4G=4F, 3H=4G, 3G=3F, 2H=3G, 2G=2F, 1H=2G, 1G=1F=1A (light 1, 1B/1-); light 6 = 6H(+)-6J (relay 6 N.C.)-6A, 6B/6-; set 2 of relay k (k=2..6): arm kL = (k-1)com, N.O. kK = (k-1)F, N.C. kN on the error node 2N=3N=4N=5N=6N=6E; path squares 6com=M8t, 5com=M1t, 4com=M2t, 3com=M9t, 2com=M6t, 1com=M5t; the play wire puts + on the touched top terminal; + on 6E puts + on both ends of coil 6 (6F held at +), so relay 6 drops and the hold chain drops every lower relay; short path rewired: 3com=M8t, 2com=M9t, 1com=M4t; 4com, 5com, 6com feed nothing but 5L, 6L, 6F; M8t=3com=4L-4K=3F (relay 4 in), held 3G-3H=4G(+); M9t=2com=3L-3K=2F, held 2G-2H=3G; M4t=1com=2L-2K=1F, held 1G-1H=2G; 1A=1G, light 1 on; light 6 off",
+      "quote": "The object of this game is to find the correct path through the game matrix. Light 1 indicates success; light 6 indicates error and re-set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

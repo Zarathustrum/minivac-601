@@ -1,0 +1,402 @@
+#!mv601-trace 1
+# id=IV-EXP3-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=50
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 > switch6 target=0
+   440.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc pb6=nc sw6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+   440.1 > button6 target=1000
+   451.3 * pb6 nc->mid
+   453.8 * pb6 mid->no
+   457.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+   463.9 * indLamp5 off->dim
+   466.1 * relay5 nc->mid
+   467.4 * relay5 mid->no
+   476.2 * outLamp3 dim->on  indLamp6 dim->on
+   477.1 * outLamp6 dim->on
+   505.5 * indLamp5 dim->on
+   697.2 > button6 target=0
+   708.4 * pb6 no->mid
+   710.9 * pb6 mid->nc
+   722.1 * relay6 nc->mid
+   723.4 * relay6 mid->no
+   948.7 > button6 target=1000
+   959.9 * pb6 nc->mid
+   962.4 * pb6 mid->no
+   973.6 * relay5 no->mid
+   974.5 * relay5 mid->nc
+   977.8 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+   984.7 * indLamp3 off->dim
+   986.5 * relay3 nc->mid
+   987.8 * relay3 mid->no
+   997.1 * outLamp2 dim->on  indLamp4 dim->on
+   997.9 * outLamp5 dim->on
+  1026.6 * indLamp3 dim->on
+  1218.0 > button6 target=0
+  1229.2 * pb6 no->mid
+  1231.7 * pb6 mid->nc
+  1240.0 * relay6 no->mid
+  1240.1 * relay4 nc->mid
+  1240.9 * relay6 mid->nc
+  1241.4 * relay4 mid->no
+  1241.6 * outLamp3 on->dim  indLamp6 on->dim
+  1253.8 * indLamp5 on->dim
+  1253.9 * outLamp6 on->dim
+  1297.4 * outLamp3 dim->off  indLamp6 dim->off
+  1309.5 * outLamp6 dim->off  indLamp5 dim->off
+  1474.0 > button6 target=1000
+  1485.2 * pb6 nc->mid
+  1487.7 * pb6 mid->no
+  1491.0 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  1497.8 * indLamp5 off->dim
+  1500.1 * relay5 nc->mid
+  1501.4 * relay5 mid->no
+  1510.2 * outLamp3 dim->on  indLamp6 dim->on
+  1511.0 * outLamp6 dim->on
+  1539.7 * indLamp5 dim->on
+  1731.1 > button6 target=0
+  1742.3 * pb6 no->mid
+  1744.8 * pb6 mid->nc
+  1756.2 * relay6 nc->mid
+  1757.5 * relay6 mid->no
+  1982.8 > button6 target=1000
+  1994.0 * pb6 nc->mid
+  1996.5 * pb6 mid->no
+  2007.6 * relay5 no->mid
+  2008.5 * relay5 mid->nc
+  2020.3 * relay3 no->mid
+  2021.2 * relay3 mid->nc
+  2024.5 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+  2031.4 * indLamp1 off->dim
+  2032.9 * relay1 nc->mid
+  2034.2 * relay1 mid->no
+  2043.9 * outLamp1 dim->on  indLamp2 dim->on
+  2044.8 * outLamp4 dim->on
+  2073.8 * indLamp1 dim->on
+  2264.9 > button6 target=0
+  2276.1 * pb6 no->mid
+  2278.6 * pb6 mid->nc
+  2285.9 * relay6 no->mid
+  2286.2 * relay2 nc->mid
+  2286.5 * relay4 no->mid
+  2286.8 * relay6 mid->nc
+  2287.4 * relay4 mid->nc
+  2287.5 * relay2 mid->no  outLamp3 on->dim  indLamp6 on->dim
+  2287.8 * outLamp2 on->dim  indLamp4 on->dim
+  2299.7 * outLamp6 on->dim  indLamp5 on->dim
+  2299.9 * indLamp3 on->dim
+  2300.0 * outLamp5 on->dim
+  2343.3 * outLamp3 dim->off  indLamp6 dim->off
+  2343.6 * outLamp2 dim->off  indLamp4 dim->off
+  2355.3 * indLamp5 dim->off
+  2355.4 * outLamp6 dim->off
+  2355.6 * outLamp5 dim->off  indLamp3 dim->off
+  2520.1 > button6 target=1000
+  2531.3 * pb6 nc->mid
+  2533.8 * pb6 mid->no
+  2537.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  2543.9 * indLamp5 off->dim
+  2546.2 * relay5 nc->mid
+  2547.5 * relay5 mid->no
+  2556.3 * outLamp3 dim->on  indLamp6 dim->on
+  2557.1 * outLamp6 dim->on
+  2585.8 * indLamp5 dim->on
+  2777.2 > button6 target=0
+  2788.4 * pb6 no->mid
+  2790.9 * pb6 mid->nc
+  2802.3 * relay6 nc->mid
+  2803.6 * relay6 mid->no
+  3028.9 > button6 target=1000
+  3040.1 * pb6 nc->mid
+  3042.6 * pb6 mid->no
+  3053.7 * relay5 no->mid
+  3054.6 * relay5 mid->nc
+  3057.9 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  3064.8 * indLamp3 off->dim
+  3066.7 * relay3 nc->mid
+  3068.0 * relay3 mid->no
+  3077.3 * outLamp2 dim->on  indLamp4 dim->on
+  3078.1 * outLamp5 dim->on
+  3107.1 * indLamp3 dim->on
+  3298.2 > button6 target=0
+  3309.4 * pb6 no->mid
+  3311.9 * pb6 mid->nc
+  3320.1 * relay6 no->mid
+  3320.4 * relay4 nc->mid
+  3321.0 * relay6 mid->nc
+  3321.6 * outLamp3 on->dim  indLamp6 on->dim
+  3321.7 * relay4 mid->no
+  3333.9 * outLamp6 on->dim  indLamp5 on->dim
+  3377.4 * outLamp3 dim->off  indLamp6 dim->off
+  3389.5 * outLamp6 dim->off  indLamp5 dim->off
+  3554.0 > button6 target=1000
+  3565.2 * pb6 nc->mid
+  3567.7 * pb6 mid->no
+  3571.0 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  3577.8 * indLamp5 off->dim
+  3580.2 * relay5 nc->mid
+  3581.5 * relay5 mid->no
+  3590.3 * outLamp3 dim->on  indLamp6 dim->on
+  3591.2 * outLamp6 dim->on
+  3620.1 * indLamp5 dim->on
+  3811.3 > button6 target=0
+  3822.5 * pb6 no->mid
+  3825.0 * pb6 mid->nc
+  3836.6 * relay6 nc->mid
+  3837.9 * relay6 mid->no
+  4063.2 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp4=on outLamp5=on outLamp6=on  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  4063.2 > switch6 target=1000
+  4090.1 * sw6 nc->mid
+  4096.2 * sw6 mid->no
+  4343.1 > button6 target=1000
+  4354.3 * pb6 nc->mid
+  4356.8 * pb6 mid->no
+  4367.8 * relay5 no->mid
+  4368.7 * relay5 mid->nc
+  4592.2 > button6 target=0
+  4603.4 * pb6 no->mid
+  4605.9 * pb6 mid->nc
+  4612.1 * relay6 no->mid
+  4613.0 * relay6 mid->nc
+  4613.8 * outLamp3 on->dim  indLamp6 on->dim
+  4627.9 * indLamp5 on->dim
+  4628.0 * outLamp6 on->dim
+  4669.6 * outLamp3 dim->off  indLamp6 dim->off
+  4683.5 * indLamp5 dim->off
+  4683.6 * outLamp6 dim->off
+  4848.1 ? relay1=no relay2=no relay3=no relay4=no relay5=nc relay6=nc sw6=no outLamp3=off outLamp4=on outLamp5=on outLamp6=off indLamp5=off indLamp6=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  4848.1 > button6 target=1000
+  4859.3 * pb6 nc->mid
+  4861.8 * pb6 mid->no
+  4865.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  4871.9 * indLamp5 off->dim
+  4874.3 * relay5 nc->mid
+  4875.6 * relay5 mid->no
+  4884.5 * outLamp3 dim->on  indLamp6 dim->on
+  4885.3 * outLamp6 dim->on
+  4887.2 * relay3 no->mid
+  4888.1 * relay3 mid->nc
+  4914.2 * indLamp5 dim->on
+  5111.6 > button6 target=0
+  5122.8 * pb6 no->mid
+  5125.3 * pb6 mid->nc
+  5134.1 * relay6 nc->mid
+  5134.3 * relay4 no->mid
+  5135.2 * relay4 mid->nc
+  5135.4 * relay6 mid->no  outLamp2 on->dim  indLamp4 on->dim
+  5147.6 * indLamp3 on->dim
+  5147.7 * outLamp5 on->dim
+  5191.2 * outLamp2 dim->off  indLamp4 dim->off
+  5203.3 * outLamp5 dim->off  indLamp3 dim->off
+  5367.8 ? relay1=no relay2=no relay3=nc relay4=nc relay5=no relay6=no outLamp2=off outLamp4=on outLamp5=off outLamp6=on indLamp3=off indLamp4=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  5367.8 > button6 target=1000
+  5379.0 * pb6 nc->mid
+  5381.5 * pb6 mid->no
+  5392.6 * relay5 no->mid
+  5393.5 * relay5 mid->nc
+  5617.0 > button6 target=0
+  5628.2 * pb6 no->mid
+  5630.7 * pb6 mid->nc
+  5636.9 * relay6 no->mid
+  5637.8 * relay6 mid->nc
+  5638.8 * outLamp3 on->dim  indLamp6 on->dim
+  5652.8 * indLamp5 on->dim
+  5652.9 * outLamp6 on->dim
+  5694.5 * outLamp3 dim->off  indLamp6 dim->off
+  5708.5 * outLamp6 dim->off  indLamp5 dim->off
+  5873.0 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  5873.0 > button6 target=1000
+  5884.2 * pb6 nc->mid
+  5886.7 * pb6 mid->no
+  5890.0 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  5896.8 * indLamp5 off->dim
+  5899.1 * relay5 nc->mid
+  5900.4 * relay5 mid->no
+  5903.7 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  5909.5 * outLamp3 dim->on  indLamp6 dim->on
+  5910.4 * outLamp6 dim->on
+  5910.6 * indLamp3 off->dim
+  5912.6 * relay3 nc->mid
+  5913.9 * relay3 mid->no
+  5923.2 * outLamp2 dim->on  indLamp4 dim->on
+  5924.1 * outLamp5 dim->on
+  5926.2 * relay1 no->mid
+  5927.1 * relay1 mid->nc
+  5939.6 * indLamp5 dim->on
+  5953.3 * indLamp3 dim->on
+  6173.4 ? relay1=nc relay2=no relay3=no relay4=nc relay5=no relay6=nc pb6=no outLamp4=on outLamp5=on outLamp6=on  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  6173.4 > button6 target=0
+  6184.6 * pb6 no->mid
+  6187.1 * pb6 mid->nc
+  6196.1 * relay4 nc->mid
+  6196.5 * relay6 nc->mid
+  6197.4 * relay4 mid->no
+  6197.8 * relay6 mid->no  outLamp1 on->dim  indLamp2 on->dim
+  6199.4 * relay2 no->mid
+  6200.3 * relay2 mid->nc
+  6211.0 * indLamp1 on->dim
+  6211.1 * outLamp4 on->dim
+  6254.7 * outLamp1 dim->off  indLamp2 dim->off
+  6266.6 * indLamp1 dim->off
+  6266.7 * outLamp4 dim->off
+  6431.2 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no outLamp1=off outLamp4=off outLamp5=on outLamp6=on indLamp1=off indLamp2=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  6431.2 > switch6 target=0
+  6458.1 * sw6 no->mid
+  6464.2 * sw6 mid->nc
+  6711.1 > button6 target=1000
+  6722.3 * pb6 nc->mid
+  6724.8 * pb6 mid->no
+  6735.9 * relay5 no->mid
+  6736.8 * relay5 mid->nc
+  6748.6 * relay3 no->mid
+  6749.5 * relay3 mid->nc
+  6752.8 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+  6759.7 * indLamp1 off->dim
+  6761.2 * relay1 nc->mid
+  6762.5 * relay1 mid->no
+  6772.2 * outLamp1 dim->on  indLamp2 dim->on
+  6773.1 * outLamp4 dim->on
+  6802.1 * indLamp1 dim->on
+  6993.2 > button6 target=0
+  7004.4 * pb6 no->mid
+  7006.9 * pb6 mid->nc
+  7014.2 * relay6 no->mid
+  7014.5 * relay2 nc->mid
+  7014.8 * relay4 no->mid
+  7015.1 * relay6 mid->nc
+  7015.7 * relay4 mid->nc
+  7015.8 * relay2 mid->no  outLamp3 on->dim  indLamp6 on->dim
+  7016.1 * outLamp2 on->dim  indLamp4 on->dim
+  7028.0 * outLamp6 on->dim  indLamp5 on->dim
+  7028.2 * indLamp3 on->dim
+  7028.3 * outLamp5 on->dim
+  7071.6 * outLamp3 dim->off  indLamp6 dim->off
+  7071.9 * outLamp2 dim->off  indLamp4 dim->off
+  7083.6 * indLamp5 dim->off
+  7083.7 * outLamp6 dim->off
+  7083.9 * outLamp5 dim->off  indLamp3 dim->off
+  7248.4 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc sw6=nc outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  7248.4 > switch6 target=1000
+  7275.3 * sw6 nc->mid
+  7281.4 * sw6 mid->no
+  7528.3 > button6 target=1000
+  7539.5 * pb6 nc->mid
+  7542.0 * pb6 mid->no
+  7545.3 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  7552.2 * indLamp5 off->dim
+  7554.4 * relay5 nc->mid
+  7555.7 * relay5 mid->no
+  7559.0 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  7564.8 * outLamp3 dim->on  indLamp6 dim->on
+  7565.7 * outLamp6 dim->on
+  7565.9 * indLamp3 off->dim
+  7567.9 * relay3 nc->mid
+  7569.2 * relay3 mid->no
+  7578.5 * outLamp2 dim->on  indLamp4 dim->on
+  7579.4 * outLamp5 dim->on
+  7581.5 * relay1 no->mid
+  7582.4 * relay1 mid->nc
+  7595.0 * indLamp5 dim->on
+  7608.6 * indLamp3 dim->on
+  7828.7 > button6 target=0
+  7839.9 * pb6 no->mid
+  7842.4 * pb6 mid->nc
+  7851.4 * relay4 nc->mid
+  7851.8 * relay6 nc->mid
+  7852.7 * relay4 mid->no
+  7853.1 * relay6 mid->no  outLamp1 on->dim  indLamp2 on->dim
+  7854.7 * relay2 no->mid
+  7855.6 * relay2 mid->nc
+  7866.3 * indLamp1 on->dim
+  7866.4 * outLamp4 on->dim
+  7910.0 * outLamp1 dim->off  indLamp2 dim->off
+  7921.9 * indLamp1 dim->off
+  7922.0 * outLamp4 dim->off
+  8086.5 > button6 target=1000
+  8097.7 * pb6 nc->mid
+  8100.2 * pb6 mid->no
+  8111.3 * relay5 no->mid
+  8112.2 * relay5 mid->nc
+  8335.7 > button6 target=0
+  8346.9 * pb6 no->mid
+  8349.4 * pb6 mid->nc
+  8355.6 * relay6 no->mid
+  8356.5 * relay6 mid->nc
+  8357.5 * outLamp3 on->dim  indLamp6 on->dim
+  8371.5 * indLamp5 on->dim
+  8371.6 * outLamp6 on->dim
+  8413.2 * outLamp3 dim->off  indLamp6 dim->off
+  8427.2 * outLamp6 dim->off  indLamp5 dim->off
+  8591.7 > button6 target=1000
+  8602.9 * pb6 nc->mid
+  8605.4 * pb6 mid->no
+  8608.7 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  8615.5 * indLamp5 off->dim
+  8617.8 * relay5 nc->mid
+  8619.1 * relay5 mid->no
+  8627.9 * outLamp3 dim->on  indLamp6 dim->on
+  8628.8 * outLamp6 dim->on
+  8630.8 * relay3 no->mid
+  8631.7 * relay3 mid->nc
+  8657.4 * indLamp5 dim->on
+  8855.2 > button6 target=0
+  8866.4 * pb6 no->mid
+  8868.9 * pb6 mid->nc
+  8877.6 * relay6 nc->mid
+  8878.0 * relay4 no->mid
+  8878.9 * relay4 mid->nc  relay6 mid->no
+  8879.2 * outLamp2 on->dim  indLamp4 on->dim
+  8891.3 * indLamp3 on->dim
+  8891.4 * outLamp5 on->dim
+  8935.0 * outLamp2 dim->off  indLamp4 dim->off
+  8947.0 * outLamp5 dim->off  indLamp3 dim->off
+  9111.5 > button6 target=1000
+  9122.7 * pb6 nc->mid
+  9125.2 * pb6 mid->no
+  9136.4 * relay5 no->mid
+  9137.3 * relay5 mid->nc
+  9360.8 > button6 target=0
+  9372.0 * pb6 no->mid
+  9374.5 * pb6 mid->nc
+  9380.7 * relay6 no->mid
+  9381.6 * relay6 mid->nc
+  9382.7 * outLamp3 on->dim  indLamp6 on->dim
+  9396.7 * indLamp5 on->dim
+  9396.8 * outLamp6 on->dim
+  9438.5 * outLamp3 dim->off  indLamp6 dim->off
+  9452.4 * outLamp6 dim->off  indLamp5 dim->off
+  9616.9 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc sw6=no outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."
+  9616.9 > button6 target=1000
+  9628.1 * pb6 nc->mid
+  9630.6 * pb6 mid->no
+  9633.9 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  9640.6 * indLamp5 off->dim
+  9642.9 * relay5 nc->mid
+  9644.2 * relay5 mid->no
+  9647.5 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  9653.3 * outLamp3 dim->on  indLamp6 dim->on
+  9654.1 * outLamp6 dim->on
+  9654.4 * indLamp3 off->dim
+  9656.3 * relay3 nc->mid
+  9657.6 * relay3 mid->no
+  9661.0 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+  9667.2 * outLamp2 dim->on  indLamp4 dim->on
+  9667.9 * indLamp1 off->dim
+  9668.0 * outLamp5 dim->on
+  9669.5 * relay1 nc->mid
+  9670.8 * relay1 mid->no
+  9680.5 * outLamp1 dim->on  indLamp2 dim->on
+  9681.4 * outLamp4 dim->on
+  9683.9 * indLamp5 dim->on
+  9697.5 * indLamp3 dim->on
+  9710.7 * indLamp1 dim->on
+  9930.8 > button6 target=0
+  9942.0 * pb6 no->mid
+  9944.5 * pb6 mid->nc
+  9954.7 * relay2 nc->mid
+  9955.3 * relay4 nc->mid
+  9956.0 * relay2 mid->no  relay6 nc->mid
+  9956.6 * relay4 mid->no
+  9957.3 * relay6 mid->no
+ 10182.6 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no outLamp4=on outLamp5=on outLamp6=on  "It is possible to wire the Binary Counter so that it will count down as well as up. In this way, both additions and subtractions can be performed. | If slide switch 6 is LEFT, the counter will count UP; if slide switch 6 is RIGHT, the counter will count DOWN."

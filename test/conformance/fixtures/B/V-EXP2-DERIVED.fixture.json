@@ -1,0 +1,702 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP2-DERIVED",
+  "source": "BK5-6 printed pp.2-3 = book5-6.pdf PDF pp.8-9 (rule p.2 = PDF p.8, program and procedure p.3 = PDF p.9), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1X/6F",
+    "1Y/2Y",
+    "2Y/2-",
+    "2Z/3Y",
+    "3Z/4Y",
+    "4Z/5Y",
+    "5A/5+",
+    "5B/5J",
+    "5E/5+",
+    "5F/5H",
+    "5J/6J",
+    "5Z/6Y",
+    "6C/6+",
+    "6F/6L",
+    "6H/6-",
+    "6K/6Z"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 16-wire topology and the p.2 rule, not printed. No erratum touches this program. Topology: relay 6 coil runs 6C(+)-indicator lamp 6-6E-coil-6F; 6F reaches minus through pushbutton 1 N.O. (1X/1Y, 1Y/2Y/2-) to set, and through its own set 2 N.O. 6L-6K plus the series N.C. chain of pushbuttons 6, 5, 4, 3, 2 (6Z..2Y on minus) to hold. Relay 6 set 1 (6H on minus, 6J N.C.) puts 5J at minus when relay 6 is out: light 5 (5A at +, 5B/5J) is the alarm, and relay 5's coil (5E at +) feeds through its own N.C. contact 5F-5H-5J and self-interrupts, so relay 5 is asserted only at rest (set state), never while the alarm is on; relay 5's indicator lamp hangs on the unwired 5C and stays dark. Script choices, not printed: pushbutton 3 is the held-and-released case, pushbuttons 2, 4 and 5 are each pushed and released after a re-set, and pushbutton 6 is held while pushbutton 1 is pushed and released (the p.2 'closing the contacts and throwing a re-set switch' case). Powered phases with relay 6 out use fixed advances instead of settle, because relay 5 buzzes; the 200 ms advance after each set lets light 5's filament cool, as in V-EXP2, and is not from the source.",
+  "wires": [
+    "1X/6F",
+    "1Y/2Y",
+    "2Y/2-",
+    "2Z/3Y",
+    "3Z/4Y",
+    "4Z/5Y",
+    "5A/5+",
+    "5B/5J",
+    "5E/5+",
+    "5F/5H",
+    "5J/6J",
+    "5Z/6Y",
+    "6C/6+",
+    "6F/6L",
+    "6H/6-",
+    "6K/6Z"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.3 = book5-6.pdf PDF p.9 procedure; derived from topology: at cold start relay 6 is unoperated and 6F has no path to minus (1X N.O. open, 6K N.O. open), so the coil and its series indicator lamp 6 carry nothing; 6H(-)-6J closed puts 5J at minus and light 5 (5A at +) lights; relay 5's indicator lamp hangs on the unwired 5C, so it stays dark while its coil (fed from 5E at +) runs through 5F-5H-5J",
+      "quote": "Turn power ON. The alarm (light 5) comes ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.3 = book5-6.pdf PDF p.9 procedure, re-set button held; derived from topology: pushbutton 1 N.O. 1X(6F)-1Y(-) pulls relay 6 directly; relay 6 coil 6C(+)-indicator lamp 6-6E-coil-6F, 6F reaching minus through 6L-6K (relay 6 set 2 N.O.) and the series N.C. chain 6Z-6Y-5Z-5Y-4Z-4Y-3Z-3Y-2Z-2Y(-); 6H-6J open, so 5J (light 5 at 5B, relay 5 contact arm path 5F-5H-5J) has no path to minus: light 5 dark, relay 5 coil (5E at +) unfed and at rest",
+      "quote": "Set the system by pushing the re-set button (pushbutton 1). The burglar alarm is now set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.3 = book5-6.pdf PDF p.9 procedure, after pushbutton 1 released; derived from topology: with 1X open relay 6 holds on its own contact; relay 6 coil 6C(+)-indicator lamp 6-6E-coil-6F, 6F reaching minus through 6L-6K (relay 6 set 2 N.O.) and the series N.C. chain 6Z-6Y-5Z-5Y-4Z-4Y-3Z-3Y-2Z-2Y(-); 6H-6J open, so 5J (light 5 at 5B, relay 5 contact arm path 5F-5H-5J) has no path to minus: light 5 dark, relay 5 coil (5E at +) unfed and at rest",
+      "quote": "Set the system by pushing the re-set button (pushbutton 1). The burglar alarm is now set.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, pushbutton 3 held; derived from topology: the pushed button opens its N.C. Y-Z contact, breaking the only hold path from 6F to minus (pushbutton 1 N.O. 1X open), so relay 6 drops and 6H(-)-6J closes; light 5 (5A at +, 5B on 5J) lights through 6J-6H; relay 5's indicator lamp (5C unwired) stays dark",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, after pushbutton 3 released; derived from topology: closing 3Y-3Z restores the N.C. chain but 6L-6K is open with relay 6 out, so 6F still has no path to minus and the alarm stays on until re-set",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, after pushbutton 2 pushed and released; derived from topology: pushbutton 2's N.C. 2Y-2Z is in the series hold chain; the pushed button opens its N.C. Y-Z contact, breaking the only hold path from 6F to minus (pushbutton 1 N.O. 1X open), so relay 6 drops and 6H(-)-6J closes; light 5 (5A at +, 5B on 5J) lights through 6J-6H; on release 6L-6K stays open, so the alarm stays on",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, after pushbutton 4 pushed and released; derived from topology: pushbutton 4's N.C. 4Y-4Z is in the series hold chain; the pushed button opens its N.C. Y-Z contact, breaking the only hold path from 6F to minus (pushbutton 1 N.O. 1X open), so relay 6 drops and 6H(-)-6J closes; light 5 (5A at +, 5B on 5J) lights through 6J-6H; on release 6L-6K stays open, so the alarm stays on",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, after pushbutton 5 pushed and released; derived from topology: pushbutton 5's N.C. 5Y-5Z is in the series hold chain; the pushed button opens its N.C. Y-Z contact, breaking the only hold path from 6F to minus (pushbutton 1 N.O. 1X open), so relay 6 drops and 6H(-)-6J closes; light 5 (5A at +, 5B on 5J) lights through 6J-6H; on release 6L-6K stays open, so the alarm stays on",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.3 = book5-6.pdf PDF p.9 procedure, re-set after an alarm; derived from topology: relay 6 coil 6C(+)-indicator lamp 6-6E-coil-6F, 6F reaching minus through 6L-6K (relay 6 set 2 N.O.) and the series N.C. chain 6Z-6Y-5Z-5Y-4Z-4Y-3Z-3Y-2Z-2Y(-); 6H-6J open, so 5J (light 5 at 5B, relay 5 contact arm path 5F-5H-5J) has no path to minus: light 5 dark, relay 5 coil (5E at +) unfed and at rest",
+      "quote": "After an alarm has been given, the system can be re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, pushbutton 6 held; derived from topology: pushbutton 6's N.C. 6Y-6Z is the first link of the hold chain from 6K; the pushed button opens its N.C. Y-Z contact, breaking the only hold path from 6F to minus (pushbutton 1 N.O. 1X open), so relay 6 drops and 6H(-)-6J closes; light 5 (5A at +, 5B on 5J) lights through 6J-6H",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 re-set rule, pushbutton 1 pushed while pushbutton 6 is still held; derived from topology: pushbutton 1 N.O. 1X(6F)-1Y(-) pulls relay 6 directly, bypassing the broken chain; relay 6 coil 6C(+)-indicator lamp 6-6E-coil-6F, 6F reaching minus through 6L-6K (relay 6 set 2 N.O.) and the series N.C. chain 6Z-6Y-5Z-5Y-4Z-4Y-3Z-3Y-2Z-2Y(-); 6H-6J open, so 5J (light 5 at 5B, relay 5 contact arm path 5F-5H-5J) has no path to minus: light 5 dark, relay 5 coil (5E at +) unfed and at rest",
+      "quote": "Once the alarm sounds, the device can be re-set by closing the contacts and throwing a re-set switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 re-set rule, pushbutton 1 released while pushbutton 6 is still held; derived from topology: the hold path 6L-6K-6Z needs pushbutton 6's N.C. contact, which is open, so relay 6 drops and the alarm returns: re-set needs the contacts closed",
+      "quote": "Once the alarm sounds, the device can be re-set by closing the contacts and throwing a re-set switch.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 300
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "BK5-6 printed p.2 = book5-6.pdf PDF p.8 rule, after pushbutton 6 released; derived from topology: closing 6Y-6Z does not re-pull relay 6, because 6L-6K is open with relay 6 out",
+      "quote": "The program which follows illustrates a simple alarm circuit. If any contact is broken by pushing any of pushbuttons 2 through 6, the alarm (light 5) comes on. The system is re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        }
+      ],
+      "cite": "BK5-6 printed p.3 = book5-6.pdf PDF p.9 procedure, re-set with all contacts closed; derived from topology: relay 6 coil 6C(+)-indicator lamp 6-6E-coil-6F, 6F reaching minus through 6L-6K (relay 6 set 2 N.O.) and the series N.C. chain 6Z-6Y-5Z-5Y-4Z-4Y-3Z-3Y-2Z-2Y(-); 6H-6J open, so 5J (light 5 at 5B, relay 5 contact arm path 5F-5H-5J) has no path to minus: light 5 dark, relay 5 coil (5E at +) unfed and at rest",
+      "quote": "After an alarm has been given, the system can be re-set by pushing pushbutton 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

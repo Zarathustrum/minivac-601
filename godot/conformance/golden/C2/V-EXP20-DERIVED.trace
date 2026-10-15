@@ -1,0 +1,341 @@
+#!mv601-trace 1
+# id=V-EXP20-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=60
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=2 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp3 off->dim
+    22.1 * outLamp3 dim->on
+   500.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 outLamp1=off outLamp2=off outLamp3=on outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+   500.0 > switch1 target=1000
+   526.9 * sw1 nc->mid
+   533.0 * sw1 mid->no
+   536.3 * outLamp1 off->dim
+   547.4 * outLamp3 on->dim
+   555.2 * outLamp1 dim->on
+   603.0 * outLamp3 dim->off
+   800.0 > switch2 target=0
+  1100.0 > switch3 target=1000
+  1126.9 * sw3 nc->mid
+  1133.0 * sw3 mid->no
+  1400.0 > button6 target=1000
+  1411.2 * pb6 nc->mid
+  1413.7 * pb6 mid->no
+  1423.7 * indLamp1 off->dim  indLamp2 off->dim
+  1424.9 * relay1 nc->mid
+  1425.1 * relay2 nc->mid
+  1426.2 * relay1 mid->no
+  1426.4 * relay2 mid->no
+  1445.3 * dial c0->gap
+  1464.5 * indLamp1 dim->on  indLamp2 dim->on
+  1466.3 * dial gap->c1
+  1529.4 * dial c1->gap
+  1550.4 * dial gap->c2
+  1613.5 * dial c2->gap
+  1634.5 * dial gap->c3
+  1697.6 * dial c3->gap
+  1718.6 * dial gap->c4
+  1781.6 * dial c4->gap
+  1802.7 * dial gap->c5
+  1865.7 * dial c5->gap
+  1886.7 * dial gap->c6
+  1949.8 * dial c6->gap
+  1970.8 * dial gap->c7
+  1970.9 ? dial=c7  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+  3970.9 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc dial=c7 outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=on indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+  3970.9 > button6 target=0
+  3982.1 * pb6 no->mid
+  3984.6 * pb6 mid->nc
+  3989.6 * relay2 no->mid
+  3989.8 * relay1 no->mid
+  3990.5 * relay2 mid->nc
+  3990.7 * relay1 mid->nc
+  4000.2 * indLamp1 on->dim  indLamp2 on->dim
+  4056.1 * indLamp1 dim->off  indLamp2 dim->off
+  5970.9 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c7 outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+  5970.9 > switch1 target=0
+  5997.8 * sw1 no->mid
+  6003.9 * sw1 mid->nc
+  6007.2 * outLamp3 off->dim
+  6018.3 * outLamp1 on->dim
+  6026.1 * outLamp3 dim->on
+  6073.9 * outLamp1 dim->off
+  6270.9 > switch2 target=1000
+  6297.8 * sw2 nc->mid
+  6303.9 * sw2 mid->no
+  6307.2 * outLamp2 off->dim
+  6318.3 * outLamp3 on->dim
+  6326.1 * outLamp2 dim->on
+  6373.9 * outLamp3 dim->off
+  6570.9 > switch3 target=0
+  6597.8 * sw3 no->mid
+  6603.9 * sw3 mid->nc
+  6870.9 > switch4 target=1000
+  6897.8 * sw4 nc->mid
+  6903.9 * sw4 mid->no
+  7170.9 > button6 target=1000
+  7182.1 * pb6 nc->mid
+  7184.6 * pb6 mid->no
+  7194.6 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+  7196.2 * relay3 nc->mid
+  7196.4 * relay4 nc->mid
+  7196.6 * relay5 nc->mid
+  7196.8 * relay6 nc->mid
+  7197.5 * relay3 mid->no
+  7197.7 * relay4 mid->no
+  7197.9 * relay5 mid->no
+  7198.1 * relay6 mid->no
+  7229.5 * dial c7->gap
+  7235.6 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+  7250.7 * dial gap->c8
+  7314.1 * dial c8->gap
+  7335.2 * dial gap->c9
+  7398.5 * dial c9->gap
+  7419.6 * dial gap->c10
+  7483.0 * dial c10->gap
+  7504.1 * dial gap->c11
+  7504.2 ? dial=c11  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+  9504.2 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no dial=c11 outLamp1=off outLamp2=on outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+  9504.2 > button6 target=0
+  9515.4 * pb6 no->mid
+  9517.9 * pb6 mid->nc
+  9521.9 * relay6 no->mid
+  9522.0 * relay5 no->mid
+  9522.2 * relay4 no->mid
+  9522.3 * relay3 no->mid
+  9522.8 * relay6 mid->nc
+  9522.9 * relay5 mid->nc
+  9523.1 * relay4 mid->nc
+  9523.2 * relay3 mid->nc
+  9532.5 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+  9588.2 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 11504.2 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c11 outLamp1=off outLamp2=on outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 11504.2 > switch1 target=0
+ 11804.2 > switch2 target=0
+ 11831.1 * sw2 no->mid
+ 11837.2 * sw2 mid->nc
+ 11840.5 * outLamp3 off->dim
+ 11851.6 * outLamp2 on->dim
+ 11859.4 * outLamp3 dim->on
+ 11907.2 * outLamp2 dim->off
+ 12104.2 > switch3 target=1000
+ 12131.1 * sw3 nc->mid
+ 12137.2 * sw3 mid->no
+ 12404.2 > switch4 target=0
+ 12431.1 * sw4 no->mid
+ 12437.2 * sw4 mid->nc
+ 12704.2 > switch5 target=1000
+ 12731.1 * sw5 nc->mid
+ 12737.2 * sw5 mid->no
+ 13004.2 > button6 target=1000
+ 13015.4 * pb6 nc->mid
+ 13017.9 * pb6 mid->no
+ 13027.9 * indLamp1 off->dim  indLamp2 off->dim
+ 13029.1 * relay1 nc->mid
+ 13029.3 * relay2 nc->mid
+ 13030.4 * relay1 mid->no
+ 13030.6 * relay2 mid->no
+ 13062.8 * dial c11->gap
+ 13068.7 * indLamp1 dim->on  indLamp2 dim->on
+ 13083.8 * dial gap->c12
+ 13146.9 * dial c12->gap
+ 13167.9 * dial gap->c13
+ 13231.0 * dial c13->gap
+ 13252.0 * dial gap->c14
+ 13315.0 * dial c14->gap
+ 13336.1 * dial gap->c15
+ 13399.1 * dial c15->gap
+ 13420.1 * dial gap->c0
+ 13483.2 * dial c0->gap
+ 13504.2 * dial gap->c1
+ 13567.3 * dial c1->gap
+ 13588.3 * dial gap->c2
+ 13651.4 * dial c2->gap
+ 13672.4 * dial gap->c3
+ 13735.4 * dial c3->gap
+ 13756.4 * dial gap->c4
+ 13819.5 * dial c4->gap
+ 13840.5 * dial gap->c5
+ 13840.6 ? dial=c5  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 15840.6 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc dial=c5 outLamp1=off outLamp2=off outLamp3=on outLamp4=off outLamp5=off outLamp6=off indLamp1=on indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 15840.6 > button6 target=0
+ 15851.8 * pb6 no->mid
+ 15854.3 * pb6 mid->nc
+ 15859.3 * relay2 no->mid
+ 15859.5 * relay1 no->mid
+ 15860.2 * relay2 mid->nc
+ 15860.4 * relay1 mid->nc
+ 15869.9 * indLamp1 on->dim  indLamp2 on->dim
+ 15925.8 * indLamp1 dim->off  indLamp2 dim->off
+ 17840.6 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c5 outLamp1=off outLamp2=off outLamp3=on outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 17840.6 > switch1 target=1000
+ 17867.5 * sw1 nc->mid
+ 17873.6 * sw1 mid->no
+ 17876.9 * outLamp1 off->dim
+ 17888.0 * outLamp3 on->dim
+ 17895.8 * outLamp1 dim->on
+ 17943.6 * outLamp3 dim->off
+ 18140.6 > switch2 target=1000
+ 18167.5 * sw2 nc->mid
+ 18173.6 * sw2 mid->no
+ 18176.9 * outLamp4 off->dim
+ 18188.0 * outLamp1 on->dim
+ 18195.8 * outLamp4 dim->on
+ 18243.6 * outLamp1 dim->off
+ 18440.6 > switch3 target=0
+ 18467.5 * sw3 no->mid
+ 18473.6 * sw3 mid->nc
+ 18740.6 > switch4 target=0
+ 19040.6 > switch5 target=1000
+ 19340.6 > switch6 target=0
+ 19640.6 > button6 target=1000
+ 19651.8 * pb6 nc->mid
+ 19654.3 * pb6 mid->no
+ 19664.3 * indLamp1 off->dim  indLamp2 off->dim  indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 19665.6 * relay1 nc->mid
+ 19665.8 * relay2 nc->mid
+ 19666.0 * relay3 nc->mid
+ 19666.2 * relay4 nc->mid
+ 19666.4 * relay5 nc->mid
+ 19666.6 * relay6 nc->mid
+ 19666.9 * relay1 mid->no
+ 19667.1 * relay2 mid->no
+ 19667.3 * relay3 mid->no
+ 19667.5 * relay4 mid->no
+ 19667.7 * relay5 mid->no
+ 19667.9 * relay6 mid->no
+ 19699.5 * dial c5->gap
+ 19705.5 * indLamp1 dim->on  indLamp2 dim->on  indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 19720.7 * dial gap->c6
+ 19784.4 * dial c6->gap
+ 19805.6 * dial gap->c7
+ 19869.3 * dial c7->gap
+ 19890.5 * dial gap->c8
+ 19954.1 * dial c8->gap
+ 19975.4 * dial gap->c9
+ 20039.0 * dial c9->gap
+ 20060.2 * dial gap->c10
+ 20123.9 * dial c10->gap
+ 20145.1 * dial gap->c11
+ 20208.7 * dial c11->gap
+ 20229.9 * dial gap->c12
+ 20293.6 * dial c12->gap
+ 20314.8 * dial gap->c13
+ 20314.9 ? dial=c13  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 22314.9 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no dial=c13 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=on indLamp2=on indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 22314.9 > button6 target=0
+ 22326.1 * pb6 no->mid
+ 22328.6 * pb6 mid->nc
+ 22332.2 * relay6 no->mid
+ 22332.4 * relay5 no->mid
+ 22332.5 * relay4 no->mid
+ 22332.6 * relay3 no->mid
+ 22332.8 * relay2 no->mid
+ 22332.9 * relay1 no->mid
+ 22333.1 * relay6 mid->nc
+ 22333.3 * relay5 mid->nc
+ 22333.4 * relay4 mid->nc
+ 22333.5 * relay3 mid->nc
+ 22333.7 * relay2 mid->nc
+ 22333.8 * relay1 mid->nc
+ 22342.4 * indLamp1 on->dim  indLamp2 on->dim  indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 22398.1 * indLamp1 dim->off  indLamp2 dim->off  indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 24314.9 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c13 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 24314.9 > switch1 target=1000
+ 24614.9 > switch2 target=1000
+ 24914.9 > switch3 target=0
+ 25214.9 > switch4 target=1000
+ 25241.8 * sw4 nc->mid
+ 25247.9 * sw4 mid->no
+ 25514.9 > switch5 target=0
+ 25541.8 * sw5 no->mid
+ 25547.9 * sw5 mid->nc
+ 25814.9 > switch6 target=1000
+ 25841.8 * sw6 nc->mid
+ 25847.9 * sw6 mid->no
+ 26114.9 > button6 target=1000
+ 26126.1 * pb6 nc->mid
+ 26128.6 * pb6 mid->no
+ 26138.6 * indLamp3 off->dim  indLamp4 off->dim  indLamp5 off->dim  indLamp6 off->dim
+ 26140.2 * relay3 nc->mid
+ 26140.4 * relay4 nc->mid
+ 26140.6 * relay5 nc->mid
+ 26140.8 * relay6 nc->mid
+ 26141.5 * relay3 mid->no
+ 26141.7 * relay4 mid->no
+ 26141.9 * relay5 mid->no
+ 26142.1 * relay6 mid->no
+ 26173.8 * dial c13->gap
+ 26179.6 * indLamp3 dim->on  indLamp4 dim->on  indLamp5 dim->on  indLamp6 dim->on
+ 26194.9 * dial gap->c14
+ 26258.3 * dial c14->gap
+ 26279.4 * dial gap->c15
+ 26342.8 * dial c15->gap
+ 26363.9 * dial gap->c0
+ 26427.2 * dial c0->gap
+ 26448.4 * dial gap->c1
+ 26511.7 * dial c1->gap
+ 26532.8 * dial gap->c2
+ 26596.2 * dial c2->gap
+ 26617.3 * dial gap->c3
+ 26680.7 * dial c3->gap
+ 26701.8 * dial gap->c4
+ 26765.1 * dial c4->gap
+ 26786.3 * dial gap->c5
+ 26849.6 * dial c5->gap
+ 26870.7 * dial gap->c6
+ 26934.1 * dial c6->gap
+ 26955.2 * dial gap->c7
+ 27018.6 * dial c7->gap
+ 27039.7 * dial gap->c8
+ 27103.1 * dial c8->gap
+ 27124.2 * dial gap->c9
+ 27187.5 * dial c9->gap
+ 27208.6 * dial gap->c10
+ 27208.7 ? dial=c10  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 29208.7 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no dial=c10 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=on indLamp6=on  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 29208.7 > button6 target=0
+ 29219.9 * pb6 no->mid
+ 29222.4 * pb6 mid->nc
+ 29226.4 * relay6 no->mid
+ 29226.5 * relay5 no->mid
+ 29226.7 * relay4 no->mid
+ 29226.8 * relay3 no->mid
+ 29227.3 * relay6 mid->nc
+ 29227.4 * relay5 mid->nc
+ 29227.6 * relay4 mid->nc
+ 29227.7 * relay3 mid->nc
+ 29237.0 * indLamp3 on->dim  indLamp4 on->dim  indLamp5 on->dim  indLamp6 on->dim
+ 29292.7 * indLamp3 dim->off  indLamp4 dim->off  indLamp5 dim->off  indLamp6 dim->off
+ 31208.7 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c10 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 31208.7 > switch1 target=1000
+ 31508.7 > switch2 target=1000
+ 31808.7 > switch3 target=1000
+ 31835.6 * sw3 nc->mid
+ 31841.7 * sw3 mid->no
+ 32108.7 > switch4 target=1000
+ 32408.7 > switch5 target=1000
+ 32435.6 * sw5 nc->mid
+ 32441.7 * sw5 mid->no
+ 32708.7 > switch6 target=1000
+ 33008.7 > button6 target=1000
+ 33019.9 * pb6 nc->mid
+ 33022.4 * pb6 mid->no
+ 33067.1 * dial c10->gap
+ 33088.0 * dial gap->c11
+ 33150.7 * dial c11->gap
+ 33171.7 * dial gap->c12
+ 33234.4 * dial c12->gap
+ 33255.4 * dial gap->c13
+ 33318.1 * dial c13->gap
+ 33339.0 * dial gap->c14
+ 33401.8 * dial c14->gap
+ 33422.7 * dial gap->c15
+ 33485.5 * dial c15->gap
+ 33506.4 * dial gap->c0
+ 33506.5 ? dial=c0  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 35506.5 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."
+ 35506.5 > button6 target=0
+ 35517.7 * pb6 no->mid
+ 35520.2 * pb6 mid->nc
+ 37506.5 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc dial=c0 outLamp1=off outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Letters entered in Morse Code on the slide switches will be indicated on the rotary switch."

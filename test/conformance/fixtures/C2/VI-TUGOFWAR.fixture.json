@@ -1,0 +1,431 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-TUGOFWAR",
+  "source": "Books V-VI printed pp.56-57 = book5-6.pdf PDF pp.62-63",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1X/6X",
+    "1Y/1+",
+    "1Z/6Z",
+    "4Y/D18",
+    "4Z/D9",
+    "6E/6Y",
+    "6F/6-",
+    "6F/6L",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6J/D17",
+    "6N/D18",
+    "D7/D8",
+    "D8/D9",
+    "D16/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1X/6X",
+    "1Y/1+",
+    "1Z/6Z",
+    "4Y/D18",
+    "4Z/D9",
+    "6E/6Y",
+    "6F/6-",
+    "6F/6L",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6J/D17",
+    "6N/D18",
+    "D7/D8",
+    "D8/D9",
+    "D16/D19"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.57 = book5-6.pdf PDF p.63 (To start)",
+      "quote": "Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: [...] clockwise (towards 7) if pushbuttons 1 and 6 are in different positions. / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: [...] clockwise (towards 7) if pushbuttons 1 and 6 are in different positions. / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.57 = book5-6.pdf PDF p.63 (To start; To start another game)",
+      "quote": "To start another game, push the re-set button (pushbutton 4). / Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.57 = book5-6.pdf PDF p.63 (To start; To start another game)",
+      "quote": "To start another game, push the re-set button (pushbutton 4). / Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: [...] clockwise (towards 7) if pushbuttons 1 and 6 are in different positions. / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: [...] clockwise (towards 7) if pushbuttons 1 and 6 are in different positions. / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.57 = book5-6.pdf PDF p.63 (To start; To start another game)",
+      "quote": "To start another game, push the re-set button (pushbutton 4). / Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.56:] The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "gap"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.57 = book5-6.pdf PDF p.63 (To start; To start another game)",
+      "quote": "To start another game, push the re-set button (pushbutton 4). / Push pushbutton 4; this is the re-set button. Release pushbutton 4 as the rotary switch knob starts to turn."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 770
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.57:] As soon as the knob starts to turn, each player tries to control its direction using his pushbutton. / [p.56:] The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        }
+      ],
+      "cite": "Books V-VI printed p.56 = book5-6.pdf PDF p.62 (rules); printed p.57 = PDF p.63 (To start)",
+      "quote": "[p.57:] As soon as the knob starts to turn, each player tries to control its direction using his pushbutton. / [p.56:] The rotary switch knob turns: counterclockwise (towards 9) if pushbuttons 1 and 6 are in the same position (both up or both down.) / [p.57:] The game ends when the pointer knob stops—either at 9 (player 1 wins) or at 7 (player 2 wins). / [p.56:] If the dial stops at 9, player 1 wins; if the dial stops at 7, player 2 wins."
+    }
+  ],
+  "digest": {
+    "eventCount": 234,
+    "moverTransitions": [0, 0, 0, 0, 0, 14, 6, 0, 0, 20, 0, 6, 0, 0, 0, 0, 0, 0, 166]
+  },
+  "note": "Wires are the printed 16 unchanged (PDF p.63 image-read; no erratum for this program), so as_printed = wires and errata_applied is empty. Pushbutton 4 up closes 4Y-4Z, joining D18 to the D7-D8-D9 strap, so with D16/D19 the STOP terminals are shorted whenever the wiper is on 7, 8 or 9; pushing pushbutton 4 opens that short. Script: power on, then a 5 s settle (the power-on run with both buttons up brings the dial from c0 to rest at c9; the start position and that rest are construction state, not printed, and not asserted). Five games follow the printed start: set the players' buttons, push pushbutton 4, until the dial leaves its rest contact (dial gap; p.57 'Release pushbutton 4 as the rotary switch knob starts to turn'), release pushbutton 4 at once, then until the printed win position and, after a 5 s advance, expect it again so the assertion is where the dial rests, not a pass-through. Games 1-4 hold the players' buttons fixed for the whole game, ordered so each starts at the opposite end from where it should finish: pb1 up pb6 down (different, 9 to 7), both up (same, 7 to 9), pb1 down pb6 up (different, 9 to 7), both down (same, 7 to 9). Game 5 is the tug: pb1 up pb6 down (different) at the re-set, then 770 ms after pb4 is released player 1 pushes pb1 (same) mid-run; the dial reverses at c3 and the game ends at 9. The 770 ms is a script choice (the page prints no time). Because it is a fixed time, at run rates of 70 rpm and above the dial reaches 7 before the tug lands and game 5 ends at 7; a scratch rate sweep passes every assert from 10 to 60 rpm. pb4 is released when the dial leaves its rest contact, about 30 ms after the push at 45 rpm. In this order every re-set moves the wiper away from the 7-9 arc, so the restored STOP short catches it only at the far end. The tug's reversal prints a false '! dial chatter' line (O-R15: a drive-sign change through relay 6's transfer); no assert depends on it. A re-set that must cross the arc (same from rest at 9, or different from rest at 7) depends on the hold, since a prompt release lets the STOP short stop the wiper on 8 or 7; it is left out and stays with the overrun question in open-questions.md. Not asserted: the rotation direction itself (counterclockwise/clockwise, i.e. that 9 is reached from 10 and 7 from 6) is dial position over time, a derived observable left to Step 7 (open-questions.md C13, O-R11); the trace shows 9 entered from c10 and 7 from c6 in every game. No printed claim is made about lamps, so none is asserted. Run rate and coast remain profile fallbacks (O-R3, O-R5)."
+}

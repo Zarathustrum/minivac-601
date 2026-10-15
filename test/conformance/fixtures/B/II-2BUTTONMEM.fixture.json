@@ -1,0 +1,48 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-2BUTTONMEM",
+  "source": "BK2 printed p.11 = book2-3-4.pdf PDF p.17; ERRATA sheet p.1",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1+/1H", "1X/1C", "1G/1C", "1B/1-", "2-/2Y", "2Z/1F", "1A/1C"],
+  "errata_applied": [
+    { "id": "ER-05", "from": "1A/1C", "to": "1A/1G" }
+  ],
+  "wires": ["1+/1Y", "1+/1H", "1X/1C", "1G/1C", "1B/1-", "2-/2Y", "2Z/1F", "1A/1G"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "no" }],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "nc" }],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "no" }],
+      "cite": "BK2 printed p.11 = book2-3-4.pdf PDF p.17",
+      "quote": "Pushbutton 1 serves as the \"forget 0 remember 1\" signal and pushbutton 2 provides the \"forget 1 remember 0\" signal."
+    }
+  ]
+}

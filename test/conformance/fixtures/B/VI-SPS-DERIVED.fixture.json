@@ -1,0 +1,1662 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "VI-SPS-DERIVED",
+  "source": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone (wire list, control table, rules, outcome list and To Play), image-read; Step 7 speculative derivation from topology",
+  "tier": "B",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/2F",
+    "1G/3G",
+    "1H/4H",
+    "1H/5L",
+    "1K/3K",
+    "1L/1X",
+    "1L/3H",
+    "1Y/2Y",
+    "2C/4X",
+    "2F/3F",
+    "2G/4G",
+    "2H/5H",
+    "2X/3L",
+    "2Y/3Y",
+    "3A/5K",
+    "3A/4A",
+    "3B/4B",
+    "3C/4C",
+    "3F/4F",
+    "3G/5G",
+    "3H/6H",
+    "3K/5K",
+    "3L/5H",
+    "3X/5L",
+    "3Y/4Y",
+    "4B/4-",
+    "4C/5X",
+    "4F/5F",
+    "4G/6G",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5Y/6Y",
+    "6A/6G",
+    "6B/6-",
+    "6C/6X",
+    "6F/6-",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A), tier D game routed as smoke plus the stated rule: every expect is derived by hand from the 41-wire list (programs.json VI-SPS wiresEffective = wiresCorrected = wiresPrinted, no erratum names p.59) and the p.59 rules and outcome list, not from a printed trace. Topology: player 2 pushbuttons drive relay pairs only (4 -> relays 1, 2; 5 -> 3, 4; 6 -> 5, 6, each C-F through its indicator lamp); player 1 pushbuttons drive relay arms only; N.O. contacts route the arm to outLamp1 (player 1 wins), outLamp6 (player 2 wins) or outLamp3 + outLamp4 (tie). The circuit is combinational with no hold path, so a result shows only while both buttons are down. Script: power on; all nine move pairs, player 1 pressing and holding, player 2 pressing 100 ms later (To Play: \"Player 1 should move just before player 2 moves since the relays will move after player 2 indicates his move\"), the expect taken with both held, then player 2 releasing, then player 1; press and release are separate steps. Hold times, the 100 ms gap and the 200 ms advances before each expect are script choices, not source timing. Derived beyond print: equal moves are a tie (Step 7 notes VI-SPS; closed-world inference), which lamps stay dark in each outcome, relay and indicator-lamp states, nothing moving before player 2 pushes, and the release state (checked once, game 1).",
+  "wires": [
+    "1A/1G",
+    "1B/1-",
+    "1C/2C",
+    "1F/2F",
+    "1G/3G",
+    "1H/4H",
+    "1H/5L",
+    "1K/3K",
+    "1L/1X",
+    "1L/3H",
+    "1Y/2Y",
+    "2C/4X",
+    "2F/3F",
+    "2G/4G",
+    "2H/5H",
+    "2X/3L",
+    "2Y/3Y",
+    "3A/5K",
+    "3A/4A",
+    "3B/4B",
+    "3C/4C",
+    "3F/4F",
+    "3G/5G",
+    "3H/6H",
+    "3K/5K",
+    "3L/5H",
+    "3X/5L",
+    "3Y/4Y",
+    "4B/4-",
+    "4C/5X",
+    "4F/5F",
+    "4G/6G",
+    "4Y/5Y",
+    "5C/6C",
+    "5F/6F",
+    "5Y/6Y",
+    "6A/6G",
+    "6B/6-",
+    "6C/6X",
+    "6F/6-",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, smoke: power on, no pushbutton down; rest state unprinted; derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; with no pushbutton down no coil C node and no arm is plus, so all six relays rest and all twelve lamps are dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, To Play para 1 (the relays will move after player 2 indicates his move); state before player 2 is unprinted; derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; player 1 holds pushbutton 1 only: plus reaches 1L, 3H, 6H, but every coil C node (1C-6C) sits only on a player 2 N.O. contact (4X, 5X, 6X), so all relays rest, every N.O. contact is open and all lamps stay dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, equal moves read as a tie, Step 7 notes VI-SPS (the page prints \"Tie: lights 3 and 4 come on\" but never names which pairs tie; closed-world inference); player 1 scissors (pushbutton 1) held, player 2 scissors (pushbutton 4) held: tie; derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 4 energises relays 1 and 2 (C-F through indicator lamps 1 and 2, so both lit); pushbutton 1 puts plus on 1L; relay 1 operated closes 1L-1K, so 1K/3K/3A/4A is plus and outLamp3, outLamp4 light; 3H and 6H stay open (relays 3, 6 at rest), so outLamp1, outLamp6 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, state after player 2 releases is unprinted; derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 4 open removes plus from 1C/2C, relays 1 and 2 drop (no relay contact feeds any coil), 1L-1K opens, so outLamp3 and outLamp4 go dark although player 1 still holds pushbutton 1",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, equal moves read as a tie, Step 7 notes VI-SPS (the page prints \"Tie: lights 3 and 4 come on\" but never names which pairs tie; closed-world inference); player 1 paper (pushbutton 2) held, player 2 paper (pushbutton 5) held: tie; derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 5 energises relays 3 and 4 (C-F through indicator lamps 3 and 4, so both lit); pushbutton 2 puts plus on 3L; relay 3 operated closes 3L-3K, so outLamp3, outLamp4 light; 5H and 2H stay open (relays 5, 2 at rest), so outLamp1, outLamp6 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, equal moves read as a tie, Step 7 notes VI-SPS (the page prints \"Tie: lights 3 and 4 come on\" but never names which pairs tie; closed-world inference); player 1 stone (pushbutton 3) held, player 2 stone (pushbutton 6) held: tie; derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 6 energises relays 5 and 6 (C-F through indicator lamps 5 and 6, so both lit); pushbutton 3 puts plus on 5L; relay 5 operated closes 5L-5K, so outLamp3, outLamp4 light; 1H and 4H stay open (relays 1, 4 at rest), so outLamp1, outLamp6 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, rules of the game and outcome list; which lamps stay dark and the relay and indicator states are unprinted; player 1 scissors (pushbutton 1) held, player 2 paper (pushbutton 5) held: player 1 wins (scissors cut paper); derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 5 energises relays 3 and 4 (C-F through indicator lamps 3 and 4, so both lit); pushbutton 1 puts plus on 3H; relay 3 operated closes 3H-3G, so 3G/1G/1A is plus and outLamp1 lights; 1L and 6H open (relays 1, 6 at rest); 4H-4G closed but 4H (pushbutton 3 net) floats, so outLamp6 dark; 3L-3K closed but 3L (pushbutton 2 net) floats, so outLamp3, outLamp4 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, rules of the game and outcome list; which lamps stay dark and the relay and indicator states are unprinted; player 1 scissors (pushbutton 1) held, player 2 stone (pushbutton 6) held: player 2 wins (stone breaks scissors); derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 6 energises relays 5 and 6 (C-F through indicator lamps 5 and 6, so both lit); pushbutton 1 puts plus on 6H; relay 6 operated closes 6H-6G, so 6G/6A is plus and outLamp6 lights; 1L and 3H open (relays 1, 3 at rest); 5H-5G and 5L-5K closed but 5H (pushbutton 2 net) and 5L (pushbutton 3 net) float, so outLamp1, outLamp3, outLamp4 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, rules of the game and outcome list; which lamps stay dark and the relay and indicator states are unprinted; player 1 paper (pushbutton 2) held, player 2 stone (pushbutton 6) held: player 1 wins (paper covers stone); derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 6 energises relays 5 and 6 (C-F through indicator lamps 5 and 6, so both lit); pushbutton 2 puts plus on 5H; relay 5 operated closes 5H-5G, so 5G/3G/1G/1A is plus and outLamp1 lights; 3L and 2H open (relays 3, 2 at rest); 5L-5K closed but 5L (pushbutton 3 net) floats and 6H-6G closed but 6H (pushbutton 1 net) floats, so outLamp3, outLamp4, outLamp6 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, rules of the game and outcome list; which lamps stay dark and the relay and indicator states are unprinted; player 1 paper (pushbutton 2) held, player 2 scissors (pushbutton 4) held: player 2 wins (scissors cut paper); derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 4 energises relays 1 and 2 (C-F through indicator lamps 1 and 2, so both lit); pushbutton 2 puts plus on 2H; relay 2 operated closes 2H-2G, so 2G/4G/6G/6A is plus and outLamp6 lights; 3L and 5H open (relays 3, 5 at rest); 1H-1G and 1L-1K closed but 1H (pushbutton 3 net) and 1L (pushbutton 1 net) float, so outLamp1, outLamp3, outLamp4 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, rules of the game and outcome list; which lamps stay dark and the relay and indicator states are unprinted; player 1 stone (pushbutton 3) held, player 2 scissors (pushbutton 4) held: player 1 wins (stone breaks scissors); derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 4 energises relays 1 and 2 (C-F through indicator lamps 1 and 2, so both lit); pushbutton 3 puts plus on 1H; relay 1 operated closes 1H-1G, so outLamp1 lights; 5L and 4H open (relays 5, 4 at rest); 1L-1K closed but 1L (pushbutton 1 net) floats and 2H-2G closed but 2H (pushbutton 2 net) floats, so outLamp3, outLamp4, outLamp6 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK6 printed p.59 = book5-6.pdf PDF p.65, Scissors, Paper or Stone, rules of the game and outcome list; which lamps stay dark and the relay and indicator states are unprinted; player 1 stone (pushbutton 3) held, player 2 paper (pushbutton 5) held: player 2 wins (paper covers stone); derived from topology: every pushbutton arm (1Y-6Y) is plus (6Y/6+ and the Y chain); every coil F end (1F-6F) is minus (F chain to 6-); outLamp1, 3, 4, 6 B ends are minus (1B/1-, 3B/4B/4-, 6B/6-); outLamp2 and outLamp5 are unwired. Player 2 drives coils only, each pair C-F through its own indicator lamp: pushbutton 4 (4X) feeds 1C/2C, pushbutton 5 (5X) feeds 3C/4C, pushbutton 6 (6X) feeds 5C/6C. Player 1 drives arms only: pushbutton 1 (1X) feeds 1L, 3H, 6H; pushbutton 2 (2X) feeds 3L, 5H, 2H; pushbutton 3 (3X) feeds 5L, 1H, 4H. N.O. contacts reach the lamps: 1G, 3G, 5G = outLamp1 (1A); 2G, 4G, 6G = outLamp6 (6A); 1K, 3K, 5K = outLamp3 and outLamp4 in parallel (3A/4A). No N.C. contact (J, N, Z) is wired and no relay contact feeds a coil, so there is no hold path; pushbutton 5 energises relays 3 and 4 (C-F through indicator lamps 3 and 4, so both lit); pushbutton 3 puts plus on 4H; relay 4 operated closes 4H-4G, so 4G/6G/6A is plus and outLamp6 lights; 5L and 1H open (relays 5, 1 at rest); 3H-3G and 3L-3K closed but 3H (pushbutton 1 net) and 3L (pushbutton 2 net) float, so outLamp1, outLamp3, outLamp4 dark; outLamp2, outLamp5 unwired, dark",
+      "quote": "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\".",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    }
+  ]
+}

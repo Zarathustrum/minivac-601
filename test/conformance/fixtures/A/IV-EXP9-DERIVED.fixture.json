@@ -1,0 +1,1203 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP9-DERIVED",
+  "source": "BK4 printed pp.81-82 = book2-3-4.pdf PDF pp.87-88 (Experiment 9: The Accumulator); wiring is the Experiment 8 program, BK4 printed p.80 = PDF p.86 (programs.json IV-EXP9 wiresEffective, 67 wires); Step 7 speculative derivation from topology",
+  "tier": "A",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/1S",
+    "1B/1-",
+    "1C/3U",
+    "1F/2F",
+    "1G/2W",
+    "1H/2A",
+    "1J/2U",
+    "1K/1T",
+    "1L/2R",
+    "1N/1R",
+    "1N/2T",
+    "1U/M10",
+    "1V/1T",
+    "2B/2-",
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2L/2S",
+    "2N/4U",
+    "2S/2V",
+    "3A/3S",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3H/4Z",
+    "3J/3R",
+    "3J/4T",
+    "3K/4R",
+    "3L/4X",
+    "3V/3T",
+    "3T/4R",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4K/5Z",
+    "4L/5A",
+    "4N/5X",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6C/M10",
+    "6E/6-",
+    "6G/6R",
+    "6H/6X",
+    "6J/6K",
+    "6L/6Z",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+"
+  ],
+  "errata_applied": [],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 67-wire Experiment 8 accumulator and the p.82 rule ('capable of performing both additions and shifts'), not printed. Topology: a six-bit adder of the slide-switch number (switch 1 high order, LEFT = 1 = target 0) and the three-bit pushbutton number (pushbuttons 4, 5, 6 = 4, 2, 1), ripple carry on two-rail nets R5/T5, J3/K3, N1/T1 and on relays 5, 4, 3, 2, 1; relay 6 never operates (6F unwired) and its rest contacts are static straps; carry out of bit 1 lights relay indicator light 6 through M10. Script: the p.82 worked example 110 x 1010 exactly as the printed IV-EXP9 fixture runs it (its printed expects are not repeated here), with derived expects after each 'enter the number which you recorded in the slide switches' step (000110 and 011110, buttons released; Step 7 notes, O-C20), then three addition cases chosen to exercise every carry path: 111100 + 100 overflows the 111111 limit (lights 000000, indicator 6 ON), 000011 + 111 = 001010, 011111 + 001 = 100000. The case inputs are script choices; the page prints no outcome for them. Lit indicator lights 1, 2, 3, 5 share their coil's current and are not asserted. A 1 s advance precedes each expect so a light that just went out is not still 'dim'. ER-26 concerns the printed final reading only and changes no wire.",
+  "wires": [
+    "1A/1S",
+    "1B/1-",
+    "1C/3U",
+    "1F/2F",
+    "1G/2W",
+    "1H/2A",
+    "1J/2U",
+    "1K/1T",
+    "1L/2R",
+    "1N/1R",
+    "1N/2T",
+    "1U/M10",
+    "1V/1T",
+    "2B/2-",
+    "2C/3G",
+    "2F/3F",
+    "2G/4S",
+    "2H/4Y",
+    "2K/4W",
+    "2L/2+",
+    "2L/2S",
+    "2N/4U",
+    "2S/2V",
+    "3A/3S",
+    "3B/3-",
+    "3C/4G",
+    "3F/4E",
+    "3G/3N",
+    "3H/4Z",
+    "3J/3R",
+    "3J/4T",
+    "3K/4R",
+    "3L/4X",
+    "3V/3T",
+    "3T/4R",
+    "4A/4V",
+    "4B/4-",
+    "4E/5F",
+    "4F/5S",
+    "4G/5U",
+    "4H/4N",
+    "4K/5Z",
+    "4L/5A",
+    "4N/5X",
+    "4Y/5Y",
+    "5B/5-",
+    "5C/6K",
+    "5F/6E",
+    "5G/6S",
+    "5H/5+",
+    "5K/6W",
+    "5L/6A",
+    "5N/6U",
+    "5R/6T",
+    "5T/6R",
+    "5T/5V",
+    "5Y/6V",
+    "6B/6-",
+    "6C/M10",
+    "6E/6-",
+    "6G/6R",
+    "6H/6X",
+    "6J/6K",
+    "6L/6Z",
+    "6N/6T",
+    "6V/6Y",
+    "6Y/6+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.82 = book2-3-4.pdf PDF p.88 (Experiment 9 worked example 110 x 1010); display rule BK4 printed p.80 = PDF p.86 (Experiment 8 left shift step 1); rule: with no pushbutton down the lights show the slide-switch number; derived by hand from the Experiment 8 wiring: no pushbutton down, so every carry rail is the 0 rail (R5 via 6Y-6Z-6L-6N, J3 via 4Y-4Z-3H-3J, N1 via 2S-2T) and each light follows its own switch: 000110; relay 4 is fed 5R-5S-4F with switch 5 LEFT, so it is the only operated relay; relays 1, 2, 3, 5 and 6 rest; switch 1 RIGHT keeps M10 dead. three ripple-carry adder stages plus three carry-only stages: switch n is bit n (switch 1 high order), pushbuttons 4, 5, 6 add 4, 2, 1 (arms 4Y/5Y/6Y at plus); stage 6: relay 5 (6X-6H-6J-5C, relay 6 never operates because 6F is unwired) = pushbutton 6, light 6 = s6 xor relay 5 (6V-6U/6W-5N/5K-5L-6A), carry rails 6S-6R = T5 (carry 1) and 6Z-6L-6N / 6S-6T = R5 (carry 0); stage 5: relay 4 (5S-4F, 4E at minus) = s5 xor carry, light 5 = relay 4 xor pushbutton 5 (4L-4K-5Z / 4L-4N-5X), relay 3 = carry out (T5-5V-5U-3C or 5X-4H-4G-3C); stage 4: relay 2 (2C on 3G/3N) = pushbutton 4 xor relay 3, light 4 = s4 xor relay 2 (4V-4U/4W-2N/2K), carry rails K3 (3L-3K, or 2G-4S-4R) and J3 (3H-3J, or 2G-4S-4T); stage 3: light 3 = 3S on J3 (LEFT) or K3 (RIGHT), relay 1 = s3 and K3 (3V-3U-1C); stage 2: light 2 = s2 xor relay 1 (2V-2U/2W-1J/1G-1H-2A), carry rails T1 (2S-2R-1L-1K) and N1 (2T, or 1L-1N); stage 1: light 1 = 1S on N1 (LEFT) or T1 (RIGHT); overflow = s1 and T1 through 1V-1U-M10-6C to relay indicator light 6 (6E at minus). Every load returns to minus, so a cold net is fully off; indicator lights 1, 2, 3, 5 sit in their coil's series path (nC fed, nE unwired) and are asserted only when dark; indicator light 4 has 4C unwired and is always dark",
+      "quote": "Record this number on a piece of paper and release the pushbuttons. Enter the number which you recorded in the slide switches and perform a left shift one bit as described in experiment 8. | Enter a binary number by setting the slide switches appropriately. (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) The number is now displayed in the binary output lights.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.82 = book2-3-4.pdf PDF p.88 (Experiment 9 worked example 110 x 1010); display rule BK4 printed p.80 = PDF p.86 (Experiment 8 left shift step 1); rule: with no pushbutton down the lights show the slide-switch number; derived by hand from the Experiment 8 wiring: no pushbutton down: light 2 via 2V-2U-1J-1H (relay 1 out), light 3 via 3S-3R on J3, light 4 via 4V-4U-2N-2L (relay 2 out), light 5 via 4L-4K-5Z-5Y with relay 4 in (5R-5S-4F, switch 5 LEFT), lights 1 and 6 dark (1S-1T on dead T1; 6V-6W-5K open); 011110. three ripple-carry adder stages plus three carry-only stages: switch n is bit n (switch 1 high order), pushbuttons 4, 5, 6 add 4, 2, 1 (arms 4Y/5Y/6Y at plus); stage 6: relay 5 (6X-6H-6J-5C, relay 6 never operates because 6F is unwired) = pushbutton 6, light 6 = s6 xor relay 5 (6V-6U/6W-5N/5K-5L-6A), carry rails 6S-6R = T5 (carry 1) and 6Z-6L-6N / 6S-6T = R5 (carry 0); stage 5: relay 4 (5S-4F, 4E at minus) = s5 xor carry, light 5 = relay 4 xor pushbutton 5 (4L-4K-5Z / 4L-4N-5X), relay 3 = carry out (T5-5V-5U-3C or 5X-4H-4G-3C); stage 4: relay 2 (2C on 3G/3N) = pushbutton 4 xor relay 3, light 4 = s4 xor relay 2 (4V-4U/4W-2N/2K), carry rails K3 (3L-3K, or 2G-4S-4R) and J3 (3H-3J, or 2G-4S-4T); stage 3: light 3 = 3S on J3 (LEFT) or K3 (RIGHT), relay 1 = s3 and K3 (3V-3U-1C); stage 2: light 2 = s2 xor relay 1 (2V-2U/2W-1J/1G-1H-2A), carry rails T1 (2S-2R-1L-1K) and N1 (2T, or 1L-1N); stage 1: light 1 = 1S on N1 (LEFT) or T1 (RIGHT); overflow = s1 and T1 through 1V-1U-M10-6C to relay indicator light 6 (6E at minus). Every load returns to minus, so a cold net is fully off; indicator lights 1, 2, 3, 5 sit in their coil's series path (nC fed, nE unwired) and are asserted only when dark; indicator light 4 has 4C unwired and is always dark",
+      "quote": "The output lights now show 011110. Record this number on a piece of paper and release the pushbuttons. Enter the number which you just recorded in the slide switches and shift left one bit. | Enter a binary number by setting the slide switches appropriately. (A slide switch RIGHT represents 0; a slide switch LEFT represents 1.) The number is now displayed in the binary output lights.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "BK4 printed p.82 = book2-3-4.pdf PDF p.88 (Experiment 9: 'capable of performing both additions and shifts'; 'The limit of this accumulator is 111111 (63).'); rule: the accumulator adds the pushbutton number to the switch number, 6 bits, so 111100 (60) + 100 (4) = 64 exceeds the limit; derived by hand from the Experiment 8 wiring: switches 111100, pushbutton 4 down: relay 3 out, so 4X-3L-3N-2C operates relay 2, light 4 dark (2N open), carry 1 on K3 by 2H-2G-4S-4R (switch 4 LEFT); light 3 dark (3R on J3, J3 dead with 4Z open and 4T off the arm); relay 1 in by K3-3V-3U-1C; light 2 dark (1J open, 2W off the arm); carry 1 on T1 by 2S-2R-1L-1K; light 1 dark (1R on N1, dead); overflow T1-1V-1U-M10-6C lights relay indicator light 6. Stages 5-6: no button, switches RIGHT, relays 4 and 5 rest, lights 5 and 6 dark. Lights 000000 with indicator 6 ON. three ripple-carry adder stages plus three carry-only stages: switch n is bit n (switch 1 high order), pushbuttons 4, 5, 6 add 4, 2, 1 (arms 4Y/5Y/6Y at plus); stage 6: relay 5 (6X-6H-6J-5C, relay 6 never operates because 6F is unwired) = pushbutton 6, light 6 = s6 xor relay 5 (6V-6U/6W-5N/5K-5L-6A), carry rails 6S-6R = T5 (carry 1) and 6Z-6L-6N / 6S-6T = R5 (carry 0); stage 5: relay 4 (5S-4F, 4E at minus) = s5 xor carry, light 5 = relay 4 xor pushbutton 5 (4L-4K-5Z / 4L-4N-5X), relay 3 = carry out (T5-5V-5U-3C or 5X-4H-4G-3C); stage 4: relay 2 (2C on 3G/3N) = pushbutton 4 xor relay 3, light 4 = s4 xor relay 2 (4V-4U/4W-2N/2K), carry rails K3 (3L-3K, or 2G-4S-4R) and J3 (3H-3J, or 2G-4S-4T); stage 3: light 3 = 3S on J3 (LEFT) or K3 (RIGHT), relay 1 = s3 and K3 (3V-3U-1C); stage 2: light 2 = s2 xor relay 1 (2V-2U/2W-1J/1G-1H-2A), carry rails T1 (2S-2R-1L-1K) and N1 (2T, or 1L-1N); stage 1: light 1 = 1S on N1 (LEFT) or T1 (RIGHT); overflow = s1 and T1 through 1V-1U-M10-6C to relay indicator light 6 (6E at minus). Every load returns to minus, so a cold net is fully off; indicator lights 1, 2, 3, 5 sit in their coil's series path (nC fed, nE unwired) and are asserted only when dark; indicator light 4 has 4C unwired and is always dark",
+      "quote": "The accumulator, which is wired on the console from experiment 8, is a device which is capable of performing both additions and shifts. | Select other numbers and multiply them on the accumulator. The limit of this accumulator is 111111 (63).",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.82 = book2-3-4.pdf PDF p.88 (Experiment 9: 'capable of performing both additions and shifts'; 'The limit of this accumulator is 111111 (63).'); rule: the accumulator adds the pushbutton number to the switch number, so 000011 (3) + 111 (7) = 001010 (10); derived by hand from the Experiment 8 wiring: switches 000011, pushbuttons 4, 5, 6 down: relay 5 in (6X-6H-6J-5C), light 6 dark (5L-5K-6W, 6W off the arm), carry 1 on T5 by 5H-5G-6S-6R; relay 4 out (5S-5R on R5, dead with 6Z open); light 5 ON by 4L-4N-5X-5Y; relay 3 in by T5-5V-5U-3C; stage 4: 4X-3L-3K puts carry 1 on K3, relay 2 out (3N open, 4Z open), light 4 dark (4W-2K open); light 3 ON by 3S-3T on K3; relay 1 out (3V-3W, 3W unwired); light 2 dark; N1 by 2S-2T; light 1 dark (1T on dead T1); indicator 6 dark (1V-1W). Lights 001010. three ripple-carry adder stages plus three carry-only stages: switch n is bit n (switch 1 high order), pushbuttons 4, 5, 6 add 4, 2, 1 (arms 4Y/5Y/6Y at plus); stage 6: relay 5 (6X-6H-6J-5C, relay 6 never operates because 6F is unwired) = pushbutton 6, light 6 = s6 xor relay 5 (6V-6U/6W-5N/5K-5L-6A), carry rails 6S-6R = T5 (carry 1) and 6Z-6L-6N / 6S-6T = R5 (carry 0); stage 5: relay 4 (5S-4F, 4E at minus) = s5 xor carry, light 5 = relay 4 xor pushbutton 5 (4L-4K-5Z / 4L-4N-5X), relay 3 = carry out (T5-5V-5U-3C or 5X-4H-4G-3C); stage 4: relay 2 (2C on 3G/3N) = pushbutton 4 xor relay 3, light 4 = s4 xor relay 2 (4V-4U/4W-2N/2K), carry rails K3 (3L-3K, or 2G-4S-4R) and J3 (3H-3J, or 2G-4S-4T); stage 3: light 3 = 3S on J3 (LEFT) or K3 (RIGHT), relay 1 = s3 and K3 (3V-3U-1C); stage 2: light 2 = s2 xor relay 1 (2V-2U/2W-1J/1G-1H-2A), carry rails T1 (2S-2R-1L-1K) and N1 (2T, or 1L-1N); stage 1: light 1 = 1S on N1 (LEFT) or T1 (RIGHT); overflow = s1 and T1 through 1V-1U-M10-6C to relay indicator light 6 (6E at minus). Every load returns to minus, so a cold net is fully off; indicator lights 1, 2, 3, 5 sit in their coil's series path (nC fed, nE unwired) and are asserted only when dark; indicator light 4 has 4C unwired and is always dark",
+      "quote": "The accumulator, which is wired on the console from experiment 8, is a device which is capable of performing both additions and shifts.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 1,
+        "target": 1000
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 2,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 3,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 4,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "switch",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "settle",
+      "maxMs": 500
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp1",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed p.82 = book2-3-4.pdf PDF p.88 (Experiment 9: 'capable of performing both additions and shifts'; 'The limit of this accumulator is 111111 (63).'); rule: the accumulator adds the pushbutton number to the switch number, so 011111 (31) + 001 (1) = 100000 (32), a carry through every stage; derived by hand from the Experiment 8 wiring: switches 011111, pushbutton 6 down: relay 5 in, light 6 dark (6W off the arm), carry 1 on T5 (6S-6R); relay 4 out (R5 dead); light 5 dark (5X open); relay 3 in (T5-5V-5U-3C); pushbutton 4 up, so 4Z-3H-3G-2C operates relay 2; light 4 dark (2N open); carry 1 on K3 (2G-4S-4R); light 3 dark (J3 dead); relay 1 in (K3-3V-3U-1C); light 2 dark (1J open); T1 by 2S-2R-1L-1K; light 1 ON by 1S-1T on T1; indicator 6 dark (switch 1 RIGHT, 1V-1W). Lights 100000. three ripple-carry adder stages plus three carry-only stages: switch n is bit n (switch 1 high order), pushbuttons 4, 5, 6 add 4, 2, 1 (arms 4Y/5Y/6Y at plus); stage 6: relay 5 (6X-6H-6J-5C, relay 6 never operates because 6F is unwired) = pushbutton 6, light 6 = s6 xor relay 5 (6V-6U/6W-5N/5K-5L-6A), carry rails 6S-6R = T5 (carry 1) and 6Z-6L-6N / 6S-6T = R5 (carry 0); stage 5: relay 4 (5S-4F, 4E at minus) = s5 xor carry, light 5 = relay 4 xor pushbutton 5 (4L-4K-5Z / 4L-4N-5X), relay 3 = carry out (T5-5V-5U-3C or 5X-4H-4G-3C); stage 4: relay 2 (2C on 3G/3N) = pushbutton 4 xor relay 3, light 4 = s4 xor relay 2 (4V-4U/4W-2N/2K), carry rails K3 (3L-3K, or 2G-4S-4R) and J3 (3H-3J, or 2G-4S-4T); stage 3: light 3 = 3S on J3 (LEFT) or K3 (RIGHT), relay 1 = s3 and K3 (3V-3U-1C); stage 2: light 2 = s2 xor relay 1 (2V-2U/2W-1J/1G-1H-2A), carry rails T1 (2S-2R-1L-1K) and N1 (2T, or 1L-1N); stage 1: light 1 = 1S on N1 (LEFT) or T1 (RIGHT); overflow = s1 and T1 through 1V-1U-M10-6C to relay indicator light 6 (6E at minus). Every load returns to minus, so a cold net is fully off; indicator lights 1, 2, 3, 5 sit in their coil's series path (nC fed, nE unwired) and are asserted only when dark; indicator light 4 has 4C unwired and is always dark",
+      "quote": "The accumulator, which is wired on the console from experiment 8, is a device which is capable of performing both additions and shifts.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

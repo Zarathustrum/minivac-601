@@ -1,0 +1,439 @@
+                                                                          ca
+
+
+
+
+                                                          |
+                                      ——
+
+
+Minivac 601/60}0                                                               ah
+                                                                               a
+
+
+
+  Capacitor/Resistor                              Manual                       Lat
+                                                                               Poa
+                                                                               fae
+
+                                                              ®
+
+
+                                                     G
+
+
+
+
+Copyright © 1962
+        by         \
+ SCIENTIFIC            |   |          _. . Creative circuits, expanded
+DEVELOPMENT                           arithmetic capabilities and more
+CORPORATION                    sophisticated programs using capacitors
+                                                          and resistors
+   ake daeot
+       ass.
+                                                                    be
+                                                                   Oo
+
+
+
+                                                               4)
+
+                                                 RED-RED
+                                                                           represen
+                                                                           represents no
+                                                                                            ia“O
+                                                 FOLD                      represents +5 %
+
+                                 ce of:
+    This resistor has a resistan
+                                                 92 ohms +5%
+
+                                                         The Use of Resistors
+
+        In general, resistors are use d when it is necessary or desirable to control a Voltage-currons
+                                              two points is fixed, the current flowing from one point
+ ratio. For example, if the voltage between
+ to the other depends upon the resistance between the two age wa re ould b maybe varied 5
+ changing the resistance of this current path. As an example of why                          it would be desirable to vary
+ current flow, we will examine the MINIVAC’s relays.            :      ;
+       We have seen that the relay with its associated contacts is a bi-stable element; that is, it
+ can be wired to stay in either of two positions —                       on or off.   We   turn a relay ON by supplying
+sufficient current to it, or we could say, by providing sufficient voltage across the relay coil. Con.
+versely, we turn a relay OFF by decreasing the current to it — that is, by removing the voltage
+difference across the relay coil — until the relay turns off.
+      However, in order to function as a bi-stable element, the relay must be able to remain either
+on or off once it is positioned.            This requires the use of a normally-open contact — either G and H
+or K and | — which leaves.only one contact free for additional circuitry. To increase the capabili-
+ties of the relay, it would be desirable to have both contacts (G, H and J and K, L, and N) avail-
+able. This can be accomplished through the appropriate use of a resistor.
+    _ Consider what happens when a relay coil is energized; current flows through the coil, pro-
+ducing a magnetic force which pulls the relay arm against the core of the coil. The switching
+oo “ ve arm is basically dependent upon the amount of magnetic force produced in the
+   y coll,    this in turn is dependent upon the current to the relay coil and the gap between the
+core of the coil and th                                  ifi                           .                 .
+the arm will pull in.             e relay arm.    Specifically, the greater the magnetic force the more likely that
+ee      The peadorigci
+        dong                        relay    Pee
+                                              is directly Proportional          to the voltage across the coil (V =
+R                                 e say that the magnetic       force in a relay coil is dependent upon the voltage
+across the      coi]
+the pede       a                     pee           the core and the arm.        For a given gap, the greater the voltage
+force.                                      | Tor a given voltage, the smaller the gap, the greater the magnetic
+        Since the      gap   on                      A
+required to tah ee Ans                      ae       is very small, less voltage is required to hold it in than is
+it turns on. The voltage at which “ee a which a relay turns off is less than the voltage at which
+which a relay turns off is called fi relay turns. on is called the ‘‘pull-in” voltage; the voltage at
+csienes so that there is a great sifeigea ee voltage. The MINIVAC's relays are deliberately
+       we gradually increase t             tween the “‘pull-in’’ and ‘drop-out’ voltages.
+dies
+ar    aii the
+   m will                      lowernor
+                             a a
+                      "9 at If
+                : relay,
+          “drop-out”                                                         Larceny
+                                                                        willare
+                                                               this weeee
+                                                         relay coil,
+                                                   cana thay
+                                                Baraat
+                                          erageWe
+                                             !
+                                      voltage,                                               : the relay
+                                                                                the relay coil,
+                                                                                                               2 pullin”
+                                                                                      Phically as:
+                                                                                            wired into
+Enter   at the top of the ‘ “RESISTANCE” Y column the value o f the resistor which you have
+                                                                 follow  these steps:
+Sie ecre ‘Start with the highest possible value.) Now
+      1, Turn power on. If the relay remains OFF (the light will remain off) ,place a check in the
+         “RELAY OFF”’ column.
+     2. Push and release the pushbutton,     If the relay remains ON (the light will remain on) after
+        the pushbutton is released, place a check in the RELAY ON” column.
+     3. Remove the resistor which is wired into the circuit. Replace it with the next highest value
+         resistor and enter this value in the RESISTANCE’          column.
+
+                      :
+Repeat these steps using                                              i
+                           decreasing values of resistance until you find the lowest ; resistance aths
+which the relay will vena both off and on.         (You will have checks in both the “RELAY OFF
+and “RELAY ON” column for this value.)
+
+      This is the bias resistor for the relay. When you have carried out this procedure for each
+relay, enter the bias resistance value for each relay on this chart:
+
+                             relay       value of bias resistance (in ohms)
+                               ]                         Qg,   =
+                              2                          Qp    =
+                              3                          Og    —
+                              4                          Ope   =
+
+                              5)                         Qp5   =
+                              6                          Ce
+
+ (Notice that the notation for a particular relay’s bias resistance is given as ‘omega’
+subscripts Bl, B2, etc. When given as a program instruction, two consecutive connect
+stated:                                                                   is     Mi
+                                                IF/Op4
+                                               031/14
+This means: use the bias resistance for relay 1 to connect IF and 1J.               ‘
+      Note: You may find that more than one value of resistance will meet th
+bias resistor for a relay. In this case, record both in the preceding chart. Wher
+bias resistor in a program, try the lower valued resistor first: if the program doe
+erly, substitute the higher valued bias resistor for the relay.            “te 2,
+                                                                             ae |   es
+                                                                                    ae
+
+                                                                    va
+
+
+
+                               CAPACITANCE AND CAPACITOR
+      Capacitance is that property of an element which allows it to.
+ponents which exhibit this storage characteristic are called      capac
+      A capacitor generally consists of two very thin metal shee
+ (non-conducting) material, Wires are connected to the       meta
+the capacitor. (The sandwiched sheets are usually f
+     If direct current is supplied to the capacitor, the c P
+equal amounts of positive and negative charge accumulat
+capacitor may be presented as: —              tS
+   2. Change the program for the automatic counter:
+                remove                           leap/2L
+                                                 5F/6N
+
+
+                                                 VA/IL
+                                                 1K/D18
+                                                 IN/6J
+                                                 leap/D16
+                                                 2L/DO
+                                                 5F/6K
+
+ * This is an optional connection.   Use a 15, 22 or 33 ohm resistor to decrease the speed of the mofor.
+
+ 3. Set the rotary switch at 0 and turn power on. When the counter reaches 10000 (16),
+                                                                                        the
+    counter stops and the rotary switch makes a full revolution. When the rotary switch
+                                                                                        has
+      returned to Q it stops and the counter begins counting again from zero.                                                              ee
+        Note:     the full program for the automatic counter with rotary switch control is:
+                             1A/IC      2E/2G                          3H/Qo»         5C/5H
+                             IA/IL      2E/2—                          Q20/4K         5E/5G
+                             1B/1+     2F/3N                           3J/3+    SE /5—
+                             IC/IH_ —/2F/Qno                           3cap/4L_ -«455F/6K
+                             1E/1G      Oy                             INAS         5a 0--
+                             1E/1—     2H/Qo»                          4B/4+ .         \Qg5/53 }
+                             1F/2N      Q50/3K                         4C/4H —— /5H/Qo5
+                            /1F/Qp4     25/2+                          4E/4G    ~—s- (Q,, /6N
+                            \Qn1/1) 2   2L/DO>                   =     40/4 etre
+                           (1/222)                2cap/3L              ——4E/5N     Scap/6L
+                            Qo0/2K                 3A/3C              4E/Ona \e gg OC/6F ean
+                            1J/1+                  3B/3+               Q54/4J }    (6C/Qa2\
+                            1K/D18                3C/3H              (4H/Q50\    Qo /6E,
+                            1N/6J                  3E/3G              O22/5K}. 2 6E(6—
+                              Icap/D16         ~—-3E/3—                43/4"                8" D15/M—er
+                             2A/2C                3F/4N                4cap/5L                DI7/Mt
+                             2B/2+               (3F/Qzs               5A/5C                 D182. \ Se
+                             2C/2H               (733                  9B/3+            ~        \Q/DI9 J                       |     ae
+                                                                                                                                    =
+  * Optional                                                                                                ay   a
+                                                                                                                     5   ~
+                                                                                                                                    a:7
+                                                                             Paar   |                                        wy 8
+                                                                                             ,       i np        Cad         = ; a
+
+
+
+
+                                                                                    ;
+Experiment 8: Counters for Bases 9, 10, 11, 12, 13, 14,
+                                                        5 and 16.
+      The counters in the previous experiments
+This is known as the “8421 code” and represdispla     y numbers
+                                                ents the weight ¢
+                                                                                                 accordir
+counter. By using an appropriate code — that is, by
+play numbers in bases other than decimal                weigh
+                                            or binary,
+      As we pointed out in Book IV, it is possible to coi
+ten as a base (see Book IV, page 67, ff.). When we
+use a single character to represent each number u
+                                                     et
+For convenience, we use alphabetic characters    fo
+                                                    t   ‘
+                                ly 4 times 6:
+          As an example, multip
+                                     to 6.
+               Set the rotary switch
+               Remove       D6/D7.
+
+                           ton 66 4 and hold it down while the rotary
+                    pushbutHe
+               Push ie
+               bik                                                    switch makes 4 complete revolu.
+                       tions.
+                                          binary:
+              The product is displayed in
+                       11000 = 24
+                                          te coun tor to keep          track of the revolutions and stop the
+       Full-scale computers use a Sep ara
+                                              reac hed. This step can be simulated on the MINIVvac
+ motor automatically when the multiplier is
+                                                     lutions of the rotary switch and stop the rotor
+ by using a second MINIVAC to count the revo
+   tomatically.                                                    P         i   follows.
+                                                                  which
+ é     ‘Lene this program wired on the MINIVAC for the experiment
+
+ Experiment     11;      Division with a Counter
+      ivisi       arried out on a computer by using a down counter just as an up counfar
+ was as netaren ealtein ein     The dividend is entered on the down counter and the divisor
+ is entered on the rotary switch.           As the rotary switch turns, the counter counts down (towards
+ zero).    The quotient is the number of revolutions which the rotary switch completed before the
+remainder (displayed on the counter) is less than the divisor.          ;     ;
+      The counter used in Experiment 10 for multiplication 1s actually five flip-flops connected
+together. Referring to Experiment 2 (Fast Flip-Flop) we see that with this flip-flop the
+binary output light complements the relay indicator light. If we turn on the power with the
+program      from Experiment         10 wired, binary output lights 1 through     5 will show:
+                D0:         070,40          (all lights off)
+However, relay indicator lights 1 through 5 show the complement of O 0 0 O O, or:
+                Sips   bce [estes     fom   (all lights on)
+When we push pushbutton 6, the binary output lights display the count up from zero. At the same
+time, the relay indicator lights are displaying the complement of each count; they are, in fact,
+displaying the count down from 3].
+      We can therefore use the same program for division that we used for multiplication by
+observing the relay indicafor lights which are acting as a down
+                                                                counter.
+Procedure:
+j;. wit pid, Ae from Experiment 10 wired, set the rotary switch to 0
+                                                                                    and turn power on.
+    ed            re in the down counter (on the relay indicator lights) is 11111 or 31.
+                € dividend into the counter, we must turn off the appropriate
+    by plugging one                                                                 relays. This is done
+                  i end of a programming g wirewire jinto M+:
+    to the F terminal of the relays which                                        is   wire i
+    a    e                                  are to be AMET ATA 9 9 De
+    y esis ny entered on the rotary switch                                          ui     seene
+                                                          by removing the connection from the divisor’
+      g            xt higher digit,                                                                    s
+                                       (For example, if the divisor is
+      nee                                   .                             7, remove D7/D8.)
+      ed hd Pisdecpthid Add nspushin    madeg by  pushb         6 and holding it down. ‘The quotient is the
+     :downParle
+            counter
+                  es. is less than the divi sor,r
+                                                     theutton
+                                                          rotary switch before the number displayed in the
+                                                    | h € numb er   finally   j
+                                                                            displayed   in the down   c re)unte
+                                                                                                              ter iIs
+      As an example, we will divide 22 by
+                                          5;
+             Enter 22 (10110)          in the dow
+                        (This turns off relays Pigs by fouching the wire from
+                                                                              M+ to 2F and OF
+             Enter 5 (00101) on the rotary switch by removing D5/D6
+   Counter   (oscillator operated) :
+
+
+
+
+   Counter controlling rotary switch:
+  Set the slide switches (see above) and set the rotar y switch at 0. Turn power on.
+                                                                                        The counter
+  automatically counts to 17; when it reaches 17. th Aol         Stops and the rotary switch makes
+  a full revolution. When the rotary switch stops, t e counter begins counting from
+                                                                                          zero            again
+   and the cycle is repeated.
+   Decimal to binary converter:
+   Set the slide switches (see above).         Enter a decimal number from 0 through 10 on the rotary
+   switch. Turn power on,
+  The rotary switch returns to zero and output lights 1 throu gh 5 display the binary equivalent
+   of the decimal number entered.
+   “Counter method” multiplier:
+   Set the slide switches. Select two numbers to be multiplied together (the limit of the product
+   is 31.) Enter the larger number on the rotary switch by removing the rotary switch connection
+   from the number to the next higher number.              (For example, to enter 8 remove D8/D9 )
+   Turn power on. Hold pushbutton | down while the rotary switch makes as many revolutions
+   as the multiplier. (For example, if the number in the rotary switch is to be multiplied by 4,
+   hold pushbutton      1 down   while       the rotary switch    makes   four complete   revolutions.)    The
+   product will be displayed in binary on lights 1 through 5. Replace the connection on the
+   rotary switch before proceeding.
+   ‘Counter method” divider:
+   Set the slide switches (see above) and turn power on. Enter the dividend in binary on
+   relay indicator lights] through 5. (Turn a light off by touching a wire from M+ to the F
+   terminal of the relay. Enter the number from right to left.)
+   Enter the divisor on the rotary switch by removing the rotary switch connection from the num-
+   ber to the next higher number.        (For example, to enter 5, remove D5/D6.)
+   Push pushbutton 1 and hold it down while the rotary switch turns. The quotient is the number
+   of complete revolutions the rotary switch makes before the number displayed on the relay
+   indicator lights is less than the divisor. The number displayed on the relay indicator lights is
+   the remainder.
+
+Experiment 13:   Four-Bit Automatic Shift Register
+                                                                                          automatically
+      The capacitors and resistors allow us to build a four-bit shift register which will
+shift left one bit each time a pushbutton is pushed.   (For  other shift registers see Book IV, page 80
+and page 86.)    When    the shift command           is given, each stage of the shift register transfers its
+information to the next stage to the left.
+     The circuit program and diagram for the shift register are:
+                                       ieee )              (iF                  5G/5+
+                     1E/I—                                                    (aren
+                                         Q     Jar          4F/Qna    )
+
+                     |yh                 2G/2+              Ong /4+             Qo2/6N
+                     1G/2F               2H/6R              4G/4+                J
+                     1H/1 cap            2)/Om
+                     1S/Qon              3C/3H
+
+                     1K/3F             (0s )
+                     1L/2 cap           Qp3/3+
+                     IN/4 com            3G/3+
+                     1Y/1+               may
+                     aaa                 4E/4—               Qps/S+
+                                   es RIG WT, ‘Turn pews!
+                                                                           ©”|
+            Set all slide switch                                                                       e matrix; indicate the
+                                                               st  mo ve      is to | on the gam
+                                         first. Thi    s   fir
+             The machine moves                                                                                 ine’s “play” wire
+            machine's firs    t  Mov e   by:
+                                                                       ac in g  th e fr ee  end of the mach
+                                             it h dial to2 1;
+                                                                    pl
+                    setting the rotary sw                            game matrix.
+                                                    on   | 0      he                                                 re in a TOP
+                                                                                                d of his ‘play’ wi
+                          BO TT OM     ter min alif
+                    in a                                                           e fr ee   en
+                                                                     ac in  g   th
+                                                  t move by pl
+            The pla    yer indicates his firs
+                  ;         the   game matrix.
+                                                                                                                           6 down
+            pais) move = is NOW completed                       Set slide switch | LEFT. Hold pushbutton .
+                                                                                           at  the mach ine' s  next  move
+            The first
+                                         s. Th            e rotary switch stops
+            until the rotary switch stop                                               the rotary switch)
+                                                           On e ine’s last move (from
+            Set slide switch 1 RIGHT
+                                        and  indi cate the                             ponding BOTTOM
+                                       of  the  mac  hines  pla y'’ wire to the corres
+            by moving the    free  end
+            terminal on the game matrix.
+                                                            g the free end of his “play” wire to a TOP
+            The player indicates his next move by movin
+            terminal on the game matrix.
+                                                     Set slide switch 2 CER    Hold pushbutton 6 down
+            The second move is now completed.                         at the mach ine s next move.
+                  the rotar y swit ch stops . The rotary switch stops
+            until
+                                                         h 3 for the third move, 4 for the fourth move,
+       Steps 5 through 7 are repeated, using slide switcthe game; the player must keep track of the
+etc.   The machine will not indicate the results of                                                                        ;
+game so that he will know when he has won.
+                                                    to move into an occupied square; or, if may
+      Occasionally the machine will cheat by trying
+                                                          ne, hold down pushbuttons | and 2
+stubbornly refuse to move at all. To discipline the machi
+                                                                cheating, release all three push-
+while pushing pushbutton 6. If the machine still insists upon
+buttons and push pushbuttons 3 and 6.
+
+ Experiment 20:        Music Composer |
+                                                                                     to “compose”
+      There are a number of programs in existence which allow full-scale computers
+music. Many of these programs are based on one of two fundamen    tal   technique s:
+      The “‘functional’’ technique: Specific rules for harmony, rhythm, sequence of notes, etc.
+               are programmed           as mathematical       functions.        The computer           is then programmed           to
+            generate random numbers; each random number is substituted for a variable in the
+            functions. Every random number generated eventually becomes a note.
+       The “‘sampling’’ technique: Specific rules for harmony, rhythm, sequence of notes, etc. are
+            programmed as mathematical functions. The computer is then programmed to randomly
+            select notes; each note is compared against the rules. If a randomly generated note
+           does not agree with the rules, it is discarded and another note is selected.
+       We     can program            the MINIVAC      to ‘‘compose’’       music    using the “functional”             technique.
+The rules must, of course, be very simple. The rules which we will use are:
+          There are only four possible notes,
+          There are only two possible time values for each note.
+     When the program is wired, the four possible not    i    indi                                               i
+6. Light 2 will indicate the time value pita note. 8 Will Ne eas                                        oapas ahis 2 oe
+
+
+
+
+                                                                 LIGHT   2 OFF = dicunee       NOTE)
+                                                                 LIGHT   2 ON   =    (EIGHTH   NoTE)
+                   LIGHT   ON:   3
+MINIVAC   601/6010     AND   THE MINIVAC   MANUAL
+
+ARE   PRODUCTS   OF;
+
+
+
+
+                             372 Main Street, Watertown, Massachusetts
+

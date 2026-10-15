@@ -1,0 +1,1189 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP11-DERIVED",
+  "source": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure), image-read; errata.pdf p.3 (no entry for p.84 or p.85); Step 7 speculative derivation from topology",
+  "tier": "C1",
+  "confidence": "unverified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1E/D10",
+    "1F/2F",
+    "1G/3com",
+    "1H/1L",
+    "1K/6K",
+    "1L/2L",
+    "2E/D9",
+    "2F/3F",
+    "2G/5G",
+    "2H/2L",
+    "2H/3H",
+    "2K/3com",
+    "3A/3com",
+    "3B/3-",
+    "3E/D7",
+    "3F/4F",
+    "3G/6E",
+    "3H/3L",
+    "3K/4K",
+    "3L/4L",
+    "4A/4com",
+    "4B/4-",
+    "4E/D6",
+    "4F/5F",
+    "4G/5com",
+    "4H/4L",
+    "4H/5H",
+    "4K/4com",
+    "5A/5com",
+    "5B/5-",
+    "5E/D5",
+    "5F/6F",
+    "5G/6G",
+    "5H/5L",
+    "5K/4com",
+    "5L/6L",
+    "6A/6com",
+    "6B/6-",
+    "6E/D3",
+    "6F/6-",
+    "6G/6com",
+    "6H/6L",
+    "6H/6+",
+    "6K/5com",
+    "D1/6com",
+    "D2/5com",
+    "D4/4com",
+    "D8/3com",
+    "D16/M+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1E/D10",
+    "1F/2F",
+    "1G/3com",
+    "1H/1L",
+    "1K/6K",
+    "1L/2L",
+    "2E/D9",
+    "2F/3F",
+    "2G/5G",
+    "2H/2L",
+    "2H/3H",
+    "2K/3com",
+    "3A/3com",
+    "3B/3-",
+    "3E/D7",
+    "3F/4F",
+    "3G/6E",
+    "3H/3L",
+    "3K/4K",
+    "3L/4L",
+    "4A/4com",
+    "4B/4-",
+    "4E/D6",
+    "4F/5F",
+    "4G/5com",
+    "4H/4L",
+    "4H/5H",
+    "4K/4com",
+    "5A/5com",
+    "5B/5-",
+    "5E/D5",
+    "5F/6F",
+    "5G/6G",
+    "5H/5L",
+    "5K/4com",
+    "5L/6L",
+    "6A/6com",
+    "6B/6-",
+    "6E/D3",
+    "6F/6-",
+    "6G/6com",
+    "6H/6L",
+    "6H/6+",
+    "6K/5com",
+    "D1/6com",
+    "D2/5com",
+    "D4/4com",
+    "D8/3com",
+    "D16/M+"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 1: D1/6com feeds lamp 6 (6A, lamp, 6B/6-) direct; no coil pad, lights 3-6 read 0001 = 1; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c2"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 2: D2/5com feeds lamp 5 (5A/5com, 5B/5-) direct; no coil pad, lights 3-6 read 0010 = 2; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 67500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c3"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 3: D3/6E pulls relay 6 (6F/6-); its arm 6H/6+ closes 6G/6com (lamp 6) and 6K/5com (lamp 5), lights 3-6 read 0011 = 3; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 90000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c4"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 4: D4/4com feeds lamp 4 (4A/4com, 4B/4-) direct; no coil pad, lights 3-6 read 0100 = 4; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 112500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c5"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "no"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 5: D5/5E pulls relay 5 (5F/6F/6-); arm 5H (on the H/L arm chain to 6H/6+) closes 5G/6G/6com (lamp 6) and 5K/4com (lamp 4), lights 3-6 read 0101 = 5; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 135000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c6"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "no"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 6: D6/4E pulls relay 4; arm 4H closes 4G/5com (lamp 5) and 4K/4com (lamp 4), lights 3-6 read 0110 = 6; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 157500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "no"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 7: D7/3E pulls relay 3; 3K/4K/4com lights lamp 4 and 3G/6E pulls relay 6 off the arm chain, whose 6G/6com and 6K/5com light lamps 6 and 5, lights 3-6 read 0111 = 7; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 180000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c8"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 8: D8/3com feeds lamp 3 (3A/3com, 3B/3-) direct; no coil pad, lights 3-6 read 1000 = 8; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 202500000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c9"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "no"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 9: D9/2E pulls relay 2; 2G/5G/6G/6com lights lamp 6 and 2K/3com lights lamp 3, lights 3-6 read 1001 = 9; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 225000000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 1000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c10"
+        },
+        {
+          "dev": "relay1",
+          "v": "no"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 10: D10/1E pulls relay 1; 1G/3com lights lamp 3 and 1K/6K/5com lights lamp 5, lights 3-6 read 1010 = 10; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        },
+        {
+          "dev": "relay1",
+          "v": "nc"
+        },
+        {
+          "dev": "relay2",
+          "v": "nc"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        },
+        {
+          "dev": "relay4",
+          "v": "nc"
+        },
+        {
+          "dev": "relay5",
+          "v": "nc"
+        },
+        {
+          "dev": "relay6",
+          "v": "nc"
+        },
+        {
+          "dev": "outLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp1",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp2",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp3",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp4",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp5",
+          "v": "off"
+        },
+        {
+          "dev": "indLamp6",
+          "v": "off"
+        }
+      ],
+      "cite": "BK4 printed pp.84-85 = book2-3-4.pdf PDF pp.90-91 (decoding rule and procedure, image-read); derived from topology and the p.85 rule, not printed: p.84-85 tie no lamp to a bit weight (O-C19), the weights come from the wiring (light 3 = 8, 4 = 4, 5 = 2, 6 = 1), the same order Book IV prints on p.77 (PDF p.83) for lights 3-6; hand at pad N puts + (D16/M+) on DN; position 0: D0 is unwired and the hand returned by the shortest path over the unwired pads D11-D15, so no pad is fed and every relay operated earlier has released, lights 3-6 read 0000 = 0; every relay arm (1H-1L-2L-2H-3H-3L-4L-4H-5H-5L-6L-6H) is strapped to + by 6H/6+, and every coil F end is chained 1F..6F/6- to minus; lamps 1 and 2 and every nC are unwired, so output lamps 1-2 and all indicator lamps stay dark; no contact feeds a coil except 3G/6E, so nothing latches and every relay not named is released (nc)",
+      "quote": "In this method, the computer is programmed to recognize a decimal number by the location of the input pulse; a series of direct contacts then convert this pulse to the appropriate binary number. The following program mechanizes such a method. Setting the rotary switch to any number from 0 through 10 will cause the equivalent binary number to appear in the output lights. [...] Enter any decimal number from 0 through 10 by turning the rotary switch to the desired position. The binary equivalent of the decimal number will appear in the binary output lights. (A light ON represents 1; a light OFF represents 0.)",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ],
+  "note": "Step 7 speculative fixture (derivation A): every expect is derived by hand from the 49-wire topology and the p.84-85 decoding rule, not printed. No erratum touches Book IV pp.84-85. Topology: the wiper D16 is strapped to M+; pads D1, D2, D4 and D8 feed lamp nodes 6com, 5com, 4com and 3com (lights 6, 5, 4, 3) direct; pads D3, D5, D6, D7, D9 and D10 pull relays 6, 5, 4, 3, 2 and 1, whose N.O. contacts (G and K, arms all on +) put + on two lamp nodes each, and relay 3 also pulls relay 6 through 3G/6E. The decoded pattern is the binary of the pad number with light 3 = 8 and light 6 = 1 (O-C19 asks whether that order counts as printed). Script choices, not printed: positions 1-10 are entered in order by hand, one pad per grab, each held 1000 ms (hand_slew_mrpm 30 rpm crosses 22.5 deg in about 125 ms); the final return to 0 goes by the shortest path over unwired pads 11-15 and dwells 3000 ms so lamps cool before the check that every relay has released. Construction state is dial on D0, restated by the first dialGrab."
+}

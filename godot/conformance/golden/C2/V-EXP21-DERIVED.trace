@@ -1,0 +1,224 @@
+#!mv601-trace 1
+# id=V-EXP21-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=37
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=0 minTickGap=9 marginal=false
+     0.0 > switch6 target=1000
+    26.9 * sw6 nc->mid
+    33.0 * sw6 mid->no
+   200.0 > power on
+     0.0 * power off->on
+    31.2 * dial c0->gap
+    52.0 * dial gap->c1
+    55.3 * outLamp6 off->dim
+    74.4 * outLamp6 dim->on
+    74.5 ? dial=c1 outLamp6=on  "[p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\""
+    74.5 ? relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off  "[p.35:] While in the search mode, the radar system is a simple signalling system. [p.35:] Set slide switch 6 RIGHT and turn power on. The system is now operating in the search mode. Light 3 will flash on whenever the system detects an object signal (a connection on the rotary switch dial). [ER-39:] \"Light 6 will flash on whenever . . .\""
+   115.0 * dial c1->gap
+   131.3 * outLamp6 on->dim
+   135.8 * dial gap->c2
+   186.9 * outLamp6 dim->off
+   198.3 * dial c2->gap
+   219.2 * dial gap->c3
+   281.7 * dial c3->gap
+   302.5 * dial gap->c4
+   365.0 * dial c4->gap
+   385.8 * dial gap->c5
+   448.3 * dial c5->gap
+   469.2 * dial gap->c6
+   531.7 * dial c6->gap
+   552.5 * dial gap->c7
+   615.0 * dial c7->gap
+   635.8 * dial gap->c8
+   698.3 * dial c8->gap
+   719.2 * dial gap->c9
+   719.3 ? dial=c9  "[p.35:] When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan."
+   719.3 ? relay2=nc relay3=nc relay5=nc relay6=nc outLamp6=off  "[p.35:] When operating in the search mode, the system constantly scans its environment, signalling the operator when it senses an object in the path of its scan."
+   719.3 > switch6 target=0
+   746.2 * sw6 no->mid
+   752.3 * sw6 mid->nc
+   781.7 * dial c9->gap
+   802.5 * dial gap->c10
+   865.0 * dial c10->gap
+   885.8 * dial gap->c11
+   948.3 * dial c11->gap
+   969.2 * dial gap->c12
+  1031.7 * dial c12->gap
+  1052.5 * dial gap->c13
+  1115.0 * dial c13->gap
+  1135.8 * dial gap->c14
+  1198.3 * dial c14->gap
+  1219.2 * dial gap->c15
+  1281.7 * dial c15->gap
+  1302.5 * dial gap->c0
+  1365.0 * dial c0->gap
+  1385.8 * dial gap->c1
+  1389.1 * outLamp6 off->dim
+  1397.4 * relay6 nc->mid
+  1398.7 * relay6 mid->no
+  1398.8 ? relay6=no  "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  1398.8 ? relay2=nc relay3=nc relay4=nc relay5=nc dial=c1 outLamp1=off outLamp2=off  "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  1408.3 * outLamp6 dim->on
+  1410.4 * relay5 nc->mid
+  1411.6 * outLamp3 off->dim  indLamp5 off->dim
+  1411.7 * relay5 mid->no
+  1449.2 * dial c1->gap
+  1459.0 * relay6 no->mid
+  1459.9 * relay6 mid->nc
+  1463.2 * outLamp2 off->dim  indLamp3 off->dim
+  1470.0 * indLamp4 off->dim
+  1470.4 * dial gap->c2
+  1471.4 * relay2 nc->mid
+  1472.1 * relay4 nc->mid
+  1472.7 * relay2 mid->no
+  1473.4 * relay4 mid->no
+  1473.7 * outLamp1 off->dim  indLamp2 off->dim
+  1475.3 * outLamp3 dim->on  indLamp5 dim->on
+  1475.5 * outLamp6 on->dim
+  1482.4 * outLamp2 dim->on  indLamp3 dim->on
+  1487.1 * relay5 no->mid
+  1488.0 * relay5 mid->nc
+  1497.4 * relay4 no->mid
+  1498.3 * relay3 nc->mid  relay4 mid->nc
+  1499.6 * relay3 mid->no
+  1499.7 ? relay3=no  "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal."
+  1499.7 ? relay2=no relay5=nc relay6=nc  "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal."
+  1509.8 * outLamp3 on->dim  indLamp5 on->dim
+  1531.3 * outLamp6 dim->off
+  1535.3 * dial c2->gap
+  1556.2 * dial gap->c1
+  1557.9 * outLamp6 off->dim
+  1565.4 * outLamp3 dim->off  indLamp5 dim->off
+  1567.9 * relay6 nc->mid
+  1569.2 * relay6 mid->no
+  1569.3 ? relay6=no  "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  1569.3 ? relay2=no relay3=no relay5=nc dial=c1  "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  1572.3 * outLamp3 off->dim  indLamp5 off->dim
+  1573.7 * outLamp1 dim->on  indLamp2 dim->on
+  1577.1 * outLamp6 dim->on
+  1581.2 * relay5 nc->mid
+  1582.5 * relay5 mid->no
+  1620.0 * dial c1->gap
+  1629.7 * relay6 no->mid
+  1630.6 * relay6 mid->nc
+  1641.1 * dial gap->c0
+  1643.4 * relay4 nc->mid
+  1644.7 * relay4 mid->no
+  1645.4 * outLamp3 dim->on  indLamp5 dim->on
+  1645.7 * relay2 no->mid
+  1646.4 * outLamp6 on->dim
+  1646.6 * relay2 mid->nc
+  1655.9 * indLamp4 dim->on
+  1658.4 * relay5 no->mid
+  1659.3 * relay5 mid->nc
+  1664.8 * indLamp4 on->dim
+  1665.1 * relay4 no->mid
+  1666.0 * relay4 mid->nc
+  1666.8 * relay3 no->mid
+  1666.9 * outLamp2 on->dim  indLamp3 on->dim
+  1667.7 * relay3 mid->nc
+  1667.8 ? relay3=nc  "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal."
+  1667.8 ? relay2=nc relay5=nc relay6=nc  "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal."
+  1676.7 * outLamp3 on->dim  indLamp5 on->dim
+  1678.9 * outLamp1 on->dim  indLamp2 on->dim
+  1702.2 * outLamp6 dim->off
+  1706.6 * dial c0->gap
+  1721.8 * indLamp4 dim->off
+  1724.1 * outLamp2 dim->off  indLamp3 dim->off
+  1727.5 * dial gap->c1
+  1729.2 * outLamp6 off->dim
+  1732.3 * outLamp3 dim->off  indLamp5 dim->off
+  1734.7 * outLamp1 dim->off  indLamp2 dim->off
+  1739.1 * relay6 nc->mid
+  1740.4 * relay6 mid->no
+  1740.5 ? relay6=no  "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  1740.5 ? relay2=nc relay3=nc relay4=nc relay5=nc dial=c1  "[p.36:] Set slide switch 6 LEFT. The system is now operating in the track mode. Notice that the rotary switch oscillates about the object signal. [p.35:] It again sweeps past, reverses and continues in this fashion until given other instructions or until the object signal is out of range."
+  1744.9 * outLamp3 off->dim  indLamp5 off->dim
+  1748.4 * outLamp6 dim->on
+  1752.3 * relay5 nc->mid
+  1753.6 * relay5 mid->no
+  1790.8 * dial c1->gap
+  1800.6 * relay6 no->mid
+  1801.5 * relay6 mid->nc
+  1804.4 * outLamp2 off->dim  indLamp3 off->dim
+  1810.7 * indLamp4 off->dim
+  1812.0 * dial gap->c2
+  1812.9 * outLamp1 off->dim  indLamp2 off->dim
+  1813.0 * relay2 nc->mid
+  1813.7 * relay4 nc->mid
+  1814.3 * relay2 mid->no
+  1815.0 * relay4 mid->no
+  1815.9 * outLamp3 dim->on  indLamp5 dim->on
+  1817.3 * outLamp6 on->dim
+  1823.6 * outLamp2 dim->on  indLamp3 dim->on
+  1828.7 * relay5 no->mid
+  1829.6 * relay5 mid->nc
+  1838.9 * relay4 no->mid
+  1839.8 * relay4 mid->nc
+  1839.9 * relay3 nc->mid
+  1841.2 * relay3 mid->no
+  1841.3 ? relay2=no relay3=no relay6=nc  "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal."
+  1841.3 > disconnect cord=36
+  1841.3 > connect cord=37 a=hole:M+#1 b=hole:D9#1 r_uohm=0
+  1851.5 * outLamp3 on->dim  indLamp5 on->dim
+  1873.1 * outLamp6 dim->off
+  1876.9 * dial c2->gap
+  1897.9 * dial gap->c1
+  1907.2 * outLamp3 dim->off  indLamp5 dim->off
+  1912.5 * outLamp1 dim->on  indLamp2 dim->on
+  1960.8 * dial c1->gap
+  1981.8 * dial gap->c0
+  2044.7 * dial c0->gap
+  2065.6 * dial gap->c15
+  2128.6 * dial c15->gap
+  2149.5 * dial gap->c14
+  2212.5 * dial c14->gap
+  2233.4 * dial gap->c13
+  2296.3 * dial c13->gap
+  2317.3 * dial gap->c12
+  2380.2 * dial c12->gap
+  2401.2 * dial gap->c11
+  2464.1 * dial c11->gap
+  2485.1 * dial gap->c10
+  2548.0 * dial c10->gap
+  2569.0 * dial gap->c9
+  2572.3 * outLamp6 off->dim
+  2580.7 * relay6 nc->mid
+  2582.0 * relay6 mid->no
+  2582.1 ? relay6=no  "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial."
+  2582.1 ? relay2=no relay3=no relay5=nc dial=c9  "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial."
+  2591.5 * outLamp6 dim->on
+  2593.8 * relay5 nc->mid
+  2594.9 * outLamp3 off->dim  indLamp5 off->dim
+  2595.1 * relay5 mid->no
+  2632.8 * dial c9->gap
+  2642.5 * relay6 no->mid
+  2643.4 * relay6 mid->nc
+  2653.9 * dial gap->c8
+  2656.3 * relay4 nc->mid
+  2657.6 * relay4 mid->no
+  2658.5 * relay2 no->mid
+  2659.1 * outLamp6 on->dim
+  2659.4 * relay2 mid->nc  outLamp3 dim->on  indLamp5 dim->on
+  2668.3 * indLamp4 dim->on
+  2671.3 * relay5 no->mid
+  2672.2 * relay5 mid->nc
+  2678.0 * relay4 no->mid  indLamp4 on->dim
+  2678.9 * relay4 mid->nc
+  2679.7 * relay3 no->mid
+  2679.9 * outLamp2 on->dim  indLamp3 on->dim
+  2680.6 * relay3 mid->nc
+  2680.7 ? relay2=nc relay3=nc relay6=nc  "[p.35:] The feedback in this case is information about the presence or absence of the object signal. The control action initiated by a computer system is to reverse the direction of scan immediately when the object signal is lost. It sweeps past the \"object signal\" until it has lost it and then reverses its direction, returning to the object signal."
+  2689.2 * outLamp3 on->dim  indLamp5 on->dim
+  2691.9 * outLamp1 on->dim  indLamp2 on->dim
+  2714.9 * outLamp6 dim->off
+  2719.5 * dial c8->gap
+  2734.8 * indLamp4 dim->off
+  2737.0 * outLamp2 dim->off  indLamp3 dim->off
+  2740.4 * dial gap->c9
+  2742.1 * outLamp6 off->dim
+  2744.9 * outLamp3 dim->off  indLamp5 dim->off
+  2747.7 * outLamp1 dim->off  indLamp2 dim->off
+  2752.0 * relay6 nc->mid
+  2753.3 * relay6 mid->no
+  2753.4 ? relay6=no  "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial."
+  2753.4 ? relay2=nc relay3=nc relay4=nc relay5=nc dial=c9  "[p.36:] If you now move the object signal, the system will continue to search until it finds the new location and will then resume tracking it. [p.35:] You may move the object signal by changing the connection on the rotary switch dial."

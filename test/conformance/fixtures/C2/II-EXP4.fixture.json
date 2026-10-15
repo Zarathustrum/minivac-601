@@ -1,0 +1,58 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP4",
+  "source": "BK2-4 printed p.13 = book2-3-4.pdf PDF p.19",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["5+/5Y", "5X/5C", "5F/5-", "5+/5H", "5G/6C", "6F/6-", "6+/6H", "6G/D17", "D18/M-"],
+  "errata_applied": [],
+  "wires": ["5+/5Y", "5X/5C", "5F/5-", "5+/5H", "5G/6C", "6F/6-", "6+/6H", "6G/D17", "D18/M-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "advance", "ms": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 5, "target": 1000 } },
+    {
+      "k": "until",
+      "obs": [{ "dev": "relay5", "v": "no" }],
+      "maxMs": 1000,
+      "cite": "BK2-4 printed p.13 = book2-3-4.pdf PDF p.19",
+      "quote": "Turn power ON. Push pushbutton 5. This energizes relay 5 (turns it ON)"
+    },
+    {
+      "k": "until",
+      "obs": [{ "dev": "relay6", "v": "no" }],
+      "maxMs": 1000,
+      "cite": "BK2-4 printed p.13 = book2-3-4.pdf PDF p.19",
+      "quote": "This energizes relay 5 (turns it ON) and causes current to flow through the switch contacts of relay 5 to relay 6. [...] If relay 5 is ON, turn relay 6 ON."
+    },
+    {
+      "k": "until",
+      "obs": [{ "dev": "dial", "v": "c8" }],
+      "maxMs": 6000,
+      "cite": "BK2-4 printed p.13 = book2-3-4.pdf PDF p.19 (procedure); BK1 printed p.22 = book1.pdf PDF p.24 (MOTOR DRIVE: the motor turns the rotary switch)",
+      "quote": "[p.13:] The rotary switch is controlled by the Processing Unit. [...] Relay 6 controls the operation of the motor. [...] If relay 6 is ON, turn motor ON. [BK1 p.22:] Current must flow through the motor to make it run and turn the rotary switch."
+    },
+    {
+      "k": "until",
+      "obs": [{ "dev": "dial", "v": "c0" }],
+      "maxMs": 6000,
+      "cite": "BK2-4 printed p.13 = book2-3-4.pdf PDF p.19 (procedure); BK1 printed p.22 = book1.pdf PDF p.24 (MOTOR DRIVE: the motor turns the rotary switch)",
+      "quote": "[p.13:] The rotary switch is controlled by the Processing Unit. [...] Relay 6 controls the operation of the motor. [...] If relay 6 is ON, turn motor ON. [BK1 p.22:] Current must flow through the motor to make it run and turn the rotary switch."
+    },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay5", "v": "no" }, { "dev": "relay6", "v": "no" }],
+      "cite": "BK2-4 printed p.13 = book2-3-4.pdf PDF p.19",
+      "quote": "If pushbutton 5 is DOWN, turn relay 5 ON. If relay 5 is ON, turn relay 6 ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 5, "target": 0 } },
+    { "k": "advance", "ms": 3000 }
+  ],
+  "digest": {
+    "eventCount": 61,
+    "moverTransitions": [0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 32]
+  },
+  "note": "Printed claims only (Phase 5 Step 6). Wire list image-read from book2-3-4.pdf PDF p.19 (printed p.13) at 300 dpi by the author and independently at 400 dpi by the round-1 reviewer: all 9 lines match wiresPrinted. The errata sheet's BOOK II block (errata.pdf PDF p.1) lists pages 10, 11 and 14 only, so wires = as_printed and errata_applied is empty. The whole experiment (heading, wire list, figure, procedure) is on printed p.13 = PDF p.19; programs.json's printedPage 12-13 / pdfPage 18 points one page early, where PDF p.18 (printed p.12) carries the single input flip-flop and no Experiment 4 text. Script: power on and push pushbutton 5 (printed); holding it while the dial turns, then releasing it, are script choices (the page states only the DOWN case and prints no release step). Asserted: relay 5 ON and relay 6 ON while pushbutton 5 is DOWN, and the motor ON. The state vector has no motor observable, so motor ON is witnessed by the dial on Book I p.22 (book1.pdf PDF p.24) 'Current must flow through the motor to make it run and turn the rotary switch': two pass-through untils on contacts c8 then c0, opposite pads whichever way the dial turns, so passing both proves the wiper moved; 6000 ms caps cover more than two revolutions at 25 rpm. Not asserted: the relay indicator lights (not mentioned on the page), anything after pushbutton 5 is released (relays dropping, motor stopping, where the dial rests), the dial's start position (construction state, not printed) and direction of travel. Rotary geometry, run rate and coast remain profile fallbacks O-R1, O-R3, O-R5."
+}

@@ -1,0 +1,265 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP16",
+  "source": "BK5 printed pp.29-30 = book5-6.pdf PDF pp.35-36; errata.pdf PDF p.4 (sheet carries no printed page number) 'page 30: \"CQ\" transmitter program correction: change 5X/6E to 5X/6C'",
+  "tier": "C2",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6E",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "errata_applied": [
+    {
+      "id": "ER-36",
+      "from": "5X/6E",
+      "to": "5X/6C"
+    }
+  ],
+  "wires": [
+    "5A/D3",
+    "5B/5-",
+    "5X/6C",
+    "5Y/6Y",
+    "6A/D4",
+    "6B/6-",
+    "6C/6-",
+    "6F/6G",
+    "6F/D17",
+    "6G/6X",
+    "6H/6+",
+    "6H/6Y",
+    "D3/D5",
+    "D4/D6",
+    "D5/D8",
+    "D6/D10",
+    "D8/D9",
+    "D9/D11",
+    "D16/D17",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "Set the rotary switch at 0 and turn power on."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c15"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.30 = book5-6.pdf PDF p.36",
+      "quote": "As the rotary switch turns, lights 5 and 6 will flash the CQ signal."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c0"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35",
+      "quote": "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35",
+      "quote": "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35",
+      "quote": "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35",
+      "quote": "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp5",
+          "v": "off"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35",
+      "quote": "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 5000,
+      "cite": "Books V-VI printed p.29 = book5-6.pdf PDF p.35",
+      "quote": "Once turned on, this system will continue to \"transmit\" the CQ call until it is turned off."
+    }
+  ],
+  "digest": {
+    "eventCount": 72,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      42
+    ]
+  },
+  "note": "Asserts only printed observables: the dial starts at 0, turns, and both output lights flash after pb6 is pressed and released; the dial comes round again and both lights flash again. The printed stop step (push pushbutton 5) is dropped under the Step 6 manual-defect stop rule: with ER-36 applied as printed (5X/6C, 6C/6- kept), closing pb5 joins 5Y (+, via 6Y/6H/6+) to 6C (-), a direct programming short that trips the latched breaker; in the simulator this does halt transmission (relay 6 drops, dial stops, lamps go dark), so the step is dropped under the Step 6 manual-defect stop rule, not because its observable fails; recorded in open-questions.md as O-C9. With pb5 never pressed, 5X is inert, so the remaining assertions hold under both 5X/6E and 5X/6C. The CQ dash/dot order against dial position is derived from Morse code and the wiring (Step 7), so it is not asserted. Rotary geometry, run rate, coast, and fitted motor resistances remain profile fallbacks O-R1, O-R3, and O-R5."
+}

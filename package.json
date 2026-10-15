@@ -1,0 +1,50 @@
+{
+  "name": "minivac-601",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "MINIVAC 601 simulator — core, conformance, inspector",
+  "bin": {
+    "minivac-trace": "bin/minivac-trace"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.core.json --noEmit && tsc -p tsconfig.tools.json --noEmit",
+    "pretest": "npm run lint",
+    "test": "vitest run",
+    "test:browser": "playwright test",
+    "lint": "eslint src test tools",
+    "check-docs": "node tools/check-docs.ts",
+    "check-profile": "node tools/check-profile.ts",
+    "check-netlist": "node tools/check-netlist.ts",
+    "check-reachability": "node tools/corpus-reachability.ts",
+    "gen-panel-layout": "node tools/gen-panel-layout.ts",
+    "sync-data": "node tools/sync-data.ts",
+    "export-proof": "node tools/export-proof.ts",
+    "gen-solver-kat": "node tools/gen-solver-kat.ts",
+    "parity": "node tools/parity.ts",
+    "bless": "node test/conformance/bless.ts",
+    "gen-manifest": "node tools/gen-manifest.ts",
+    "extract-corpus": "node tools/extract-corpus.ts",
+    "corpus-smoke": "node tools/corpus-smoke.ts",
+    "motor-sweep": "node tools/motor-sweep.ts",
+    "motor-sweep:check": "node tools/motor-sweep.ts --check",
+    "test:printed": "vitest run test/conformance -t \"\\\\[printed\\\\]\"",
+    "test:speculative": "vitest run test/conformance -t \"\\\\[speculative\\\\]\""
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "26.0.0",
+    "ajv": "8.20.0",
+    "eslint": "10.9.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.68.0",
+    "vite": "8.2.2",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": ">=26"
+  }
+}

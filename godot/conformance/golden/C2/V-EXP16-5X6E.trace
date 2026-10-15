@@ -1,0 +1,154 @@
+#!mv601-trace 1
+# id=V-EXP16-5X6E contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=20
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=122 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   500.0 ? breaker=ok relay6=nc dial=c0 outLamp5=off outLamp6=off indLamp6=off  "Set the rotary switch at 0 and turn power on."
+   500.0 > button6 target=1000
+   511.2 * pb6 nc->mid
+   513.7 * pb6 mid->no
+   523.7 * indLamp6 off->dim
+   525.8 * relay6 nc->mid
+   527.1 * relay6 mid->no
+   545.1 * dial c0->gap
+   564.2 * indLamp6 dim->on
+   566.0 * dial gap->c1
+   600.0 > button6 target=0
+   611.2 * pb6 no->mid
+   613.7 * pb6 mid->nc
+   628.6 * dial c1->gap
+   649.5 * dial gap->c2
+   700.0 > dialGrab targetUdeg=67500000
+   718.2 * dial c2->gap
+   749.5 * dial gap->c3
+   752.8 * outLamp5 off->dim
+   771.9 * outLamp5 dim->on
+  1300.0 ? breaker=ok relay6=no dial=c3 outLamp5=on outLamp6=off indLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1300.0 > dialGrab targetUdeg=90000000
+  1346.8 * dial c3->gap
+  1367.0 * outLamp5 on->dim
+  1378.1 * dial gap->c4
+  1381.4 * outLamp6 off->dim
+  1400.5 * outLamp6 dim->on
+  1422.6 * outLamp5 dim->off
+  1900.0 ? relay6=no dial=c4 outLamp5=off outLamp6=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  1900.0 > dialGrab targetUdeg=157500000
+  1946.8 * dial c4->gap
+  1967.0 * outLamp6 on->dim
+  1978.1 * dial gap->c5
+  1981.4 * outLamp5 off->dim
+  2000.5 * outLamp5 dim->on
+  2022.6 * outLamp6 dim->off
+  2071.8 * dial c5->gap
+  2090.7 * outLamp5 on->dim
+  2103.1 * dial gap->c6
+  2106.0 * outLamp6 off->dim
+  2125.2 * outLamp6 dim->on
+  2146.3 * outLamp5 dim->off
+  2196.8 * dial c6->gap
+  2215.7 * outLamp6 on->dim
+  2228.1 * dial gap->c7
+  2271.3 * outLamp6 dim->off
+  2500.0 ? relay6=no dial=c7 outLamp5=off outLamp6=off  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  2500.0 > dialRelease
+  2531.3 * dial c7->gap
+  2552.2 * dial gap->c8
+  2555.5 * outLamp5 off->dim
+  2574.6 * outLamp5 dim->on
+  2574.7 ? outLamp5=on  "This circuit uses the turning of the rotary switch to generate a sequence of dots and dashes representing the amateur radio call \"CQ\" in Morse Code."
+  2615.3 * dial c8->gap
+  2631.6 * outLamp5 on->dim
+  2636.2 * dial gap->c9
+  2640.4 * outLamp5 dim->on
+  2699.1 * dial c9->gap
+  2717.2 * outLamp5 on->dim
+  2720.0 * dial gap->c10
+  2723.3 * outLamp6 off->dim
+  2742.4 * outLamp6 dim->on
+  2772.9 * outLamp5 dim->off
+  2783.1 * dial c10->gap
+  2799.4 * outLamp6 on->dim
+  2804.0 * dial gap->c11
+  2805.9 * outLamp5 off->dim
+  2825.1 * outLamp5 dim->on
+  2855.0 * outLamp6 dim->off
+  2867.1 * dial c11->gap
+  2874.7 > button5 target=1000
+  2883.6 * outLamp5 on->dim
+  2885.9 * pb5 nc->mid
+  2888.0 * dial gap->c12
+  2888.4 * pb5 mid->no
+  2899.2 * relay6 no->mid
+  2900.1 * relay6 mid->nc
+  2912.3 * relay6 nc->mid
+  2913.6 * relay6 mid->no
+  2926.8 * relay6 no->mid
+  2927.7 * relay6 mid->nc
+  2937.7 * relay6 nc->mid
+  2939.0 * relay6 mid->no
+  2939.2 * outLamp5 dim->off
+  2952.2 * relay6 no->mid
+  2952.2 ! relay6 chatter 9 transitions in 80.0ms — suppressed 240.0ms
+  2953.1 * relay6 mid->nc
+  2963.1 * relay6 nc->mid
+  2964.4 * relay6 mid->no
+  2974.7 > button5 target=0
+  2977.6 * relay6 no->mid
+  2978.5 * relay6 mid->nc
+  2985.9 * pb5 no->mid
+  2988.4 * pb5 mid->nc
+  2988.5 * relay6 nc->mid
+  2990.6 * relay6 mid->nc
+  3012.5 * indLamp6 on->dim
+  3068.2 * indLamp6 dim->off
+  4474.7 ? breaker=ok relay6=nc outLamp5=off outLamp6=off indLamp6=off  "To stop transmission, push pushbutton 5."
+  4474.7 > dialGrab targetUdeg=67500000
+  4484.3 * dial c12->gap
+  4515.6 * dial gap->c13
+  4609.3 * dial c13->gap
+  4640.6 * dial gap->c14
+  4734.3 * dial c14->gap
+  4765.6 * dial gap->c15
+  4859.3 * dial c15->gap
+  4890.6 * dial gap->c0
+  4984.3 * dial c0->gap
+  5015.6 * dial gap->c1
+  5109.3 * dial c1->gap
+  5140.6 * dial gap->c2
+  5234.3 * dial c2->gap
+  5265.6 * dial gap->c3
+  5974.7 > dialRelease
+  6974.7 ? breaker=ok relay6=nc dial=c3 outLamp5=off outLamp6=off  "To stop transmission, push pushbutton 5."
+  6974.7 > button6 target=1000
+  6985.9 * pb6 nc->mid
+  6988.4 * pb6 mid->no
+  6991.7 * outLamp5 off->dim
+  6998.5 * indLamp6 off->dim
+  7000.7 * relay6 nc->mid
+  7002.0 * relay6 mid->no
+  7010.8 * outLamp5 dim->on
+  7020.1 * dial c3->gap
+  7027.0 * outLamp5 on->dim
+  7039.1 * indLamp6 dim->on
+  7041.0 * dial gap->c4
+  7044.3 * outLamp6 off->dim
+  7063.4 * outLamp6 dim->on
+  7074.7 > button6 target=0
+  7082.7 * outLamp5 dim->off
+  7085.9 * pb6 no->mid
+  7088.4 * pb6 mid->nc
+  7104.1 * dial c4->gap
+  7120.4 * outLamp6 on->dim
+  7125.0 * dial gap->c5
+  7127.3 * outLamp5 off->dim
+  7146.4 * outLamp5 dim->on
+  7176.0 * outLamp6 dim->off
+  7188.1 * dial c5->gap
+  7204.5 * outLamp5 on->dim
+  7209.0 * dial gap->c6
+  7211.0 * outLamp6 off->dim
+  7230.1 * outLamp6 dim->on
+  7260.1 * outLamp5 dim->off
+  7272.0 * dial c6->gap
+  7274.7 ? breaker=ok relay6=no indLamp6=on  "Push pushbutton 6. This provides the input command \"start transmission.\""

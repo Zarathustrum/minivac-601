@@ -1,0 +1,188 @@
+#!mv601-trace 1
+# id=ER-ALTCOUNTER-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=48
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=12 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "As pushbutton 6 is pushed and released again and again, this device will store in binary code the number of times the pushbutton has been pushed."
+   220.1 > button6 target=1000
+   231.3 * pb6 nc->mid
+   233.8 * pb6 mid->no
+   237.1 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+   245.4 * relay5 nc->mid
+   246.7 * relay5 mid->no
+   256.2 * outLamp3 dim->on  indLamp6 dim->on
+   257.0 * outLamp6 dim->on
+   477.1 > button6 target=0
+   488.3 * pb6 no->mid
+   490.8 * pb6 mid->nc
+   502.0 * relay6 nc->mid
+   503.3 * relay6 mid->no
+   508.5 * indLamp5 off->dim
+   547.4 * indLamp5 dim->on
+   728.6 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no pb6=nc outLamp1=off outLamp2=off outLamp4=off outLamp5=off outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off  "Use the procedure on page 72 of Book IV. | 1. Turn power ON. Push pushbutton 6 and release. Binary output lights 4, 5 and 6 will read OFF, OFF, ON or 001. The Binary Counter is displaying a 1."
+   728.6 > button6 target=1000
+   739.8 * pb6 nc->mid
+   742.3 * pb6 mid->no
+   753.5 * relay5 no->mid
+   754.4 * relay5 mid->nc
+   757.7 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+   765.8 * relay3 nc->mid
+   767.1 * relay3 mid->no
+   777.0 * outLamp2 dim->on  indLamp4 dim->on
+   777.7 * outLamp5 dim->on
+   997.8 > button6 target=0
+  1009.0 * pb6 no->mid
+  1011.5 * pb6 mid->nc
+  1019.8 * relay6 no->mid
+  1019.9 * relay4 nc->mid
+  1020.7 * relay6 mid->nc
+  1021.2 * relay4 mid->no
+  1021.4 * outLamp3 on->dim  indLamp6 on->dim
+  1033.2 * indLamp5 on->dim
+  1033.7 * outLamp6 on->dim
+  1077.5 * outLamp3 dim->off  indLamp6 dim->off
+  1088.8 * indLamp5 dim->off
+  1089.4 * outLamp6 dim->off
+  1253.8 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc pb6=nc outLamp1=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp5=off indLamp6=off  "Use the procedure on page 72 of Book IV. | 2. Push pushbutton 6 again and release. Binary output lights 4, 5 and 6 will now read OFF, ON, OFF or 010. The Binary Counter is now displaying a 2."
+  1253.8 > button6 target=1000
+  1265.0 * pb6 nc->mid
+  1267.5 * pb6 mid->no
+  1270.8 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  1279.2 * relay5 nc->mid
+  1280.5 * relay5 mid->no
+  1285.8 * indLamp3 off->dim
+  1290.0 * outLamp3 dim->on  indLamp6 dim->on
+  1290.8 * outLamp6 dim->on
+  1325.5 * indLamp3 dim->on
+  1510.9 > button6 target=0
+  1522.1 * pb6 no->mid
+  1524.6 * pb6 mid->nc
+  1536.0 * relay6 nc->mid
+  1537.3 * relay6 mid->no
+  1542.6 * indLamp5 off->dim
+  1581.8 * indLamp5 dim->on
+  1762.7 ? relay1=nc relay2=nc relay3=no relay4=no relay5=no relay6=no pb6=nc outLamp1=off outLamp4=off outLamp5=on outLamp6=on indLamp1=off indLamp2=off  "Use the procedure on page 72 of Book IV. | 3. Push and release pushbutton 6 several times. Each time after releasing the pushbutton, note the binary number displayed in lights 4, 5 and 6. Compare your numbers with the table of binary numbers on page 66."
+  1762.7 > button6 target=1000
+  1773.9 * pb6 nc->mid
+  1776.4 * pb6 mid->no
+  1787.5 * relay5 no->mid
+  1788.4 * relay5 mid->nc
+  1800.2 * relay3 no->mid
+  1801.1 * relay3 mid->nc
+  1804.4 * outLamp1 off->dim  outLamp4 off->dim  indLamp2 off->dim
+  1812.3 * relay1 nc->mid
+  1813.6 * relay1 mid->no
+  1823.8 * outLamp1 dim->on  indLamp2 dim->on
+  1824.6 * outLamp4 dim->on
+  2044.7 ? relay1=no relay2=nc relay3=nc relay4=no relay5=nc relay6=no pb6=no outLamp4=on outLamp5=on outLamp6=on  "When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter."
+  2044.7 > button6 target=0
+  2055.9 * pb6 no->mid
+  2058.4 * pb6 mid->nc
+  2065.7 * relay6 no->mid
+  2066.1 * relay2 nc->mid
+  2066.3 * relay4 no->mid
+  2066.6 * relay6 mid->nc
+  2067.2 * relay4 mid->nc
+  2067.3 * outLamp3 on->dim  indLamp6 on->dim
+  2067.4 * relay2 mid->no
+  2067.5 * outLamp2 on->dim  indLamp4 on->dim
+  2079.2 * indLamp3 on->dim
+  2079.3 * outLamp5 on->dim  indLamp5 on->dim
+  2079.6 * outLamp6 on->dim
+  2123.1 * outLamp2 dim->off  indLamp4 dim->off
+  2123.4 * outLamp3 dim->off  indLamp6 dim->off
+  2134.8 * indLamp3 dim->off
+  2134.9 * outLamp5 dim->off  indLamp5 dim->off
+  2135.3 * outLamp6 dim->off
+  2299.7 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc pb6=nc outLamp2=off outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Use the procedure on page 72 of Book IV. | 3. Push and release pushbutton 6 several times. Each time after releasing the pushbutton, note the binary number displayed in lights 4, 5 and 6. Compare your numbers with the table of binary numbers on page 66."
+  2299.7 > button6 target=1000
+  2310.9 * pb6 nc->mid
+  2313.4 * pb6 mid->no
+  2316.7 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  2325.1 * relay5 nc->mid
+  2326.4 * relay5 mid->no
+  2335.9 * outLamp3 dim->on  indLamp6 dim->on
+  2336.7 * outLamp6 dim->on
+  2556.8 > button6 target=0
+  2568.0 * pb6 no->mid
+  2570.5 * pb6 mid->nc
+  2581.9 * relay6 nc->mid
+  2583.2 * relay6 mid->no
+  2588.5 * indLamp5 off->dim
+  2627.8 * indLamp5 dim->on
+  2808.6 ? relay1=no relay2=no relay3=nc relay4=nc relay5=no relay6=no pb6=nc outLamp2=off outLamp4=on outLamp5=off outLamp6=on indLamp1=off indLamp3=off indLamp4=off  "Use the procedure on page 72 of Book IV. | 3. Push and release pushbutton 6 several times. Each time after releasing the pushbutton, note the binary number displayed in lights 4, 5 and 6. Compare your numbers with the table of binary numbers on page 66."
+  2808.6 > button6 target=1000
+  2819.8 * pb6 nc->mid
+  2822.3 * pb6 mid->no
+  2833.4 * relay5 no->mid
+  2834.3 * relay5 mid->nc
+  2837.6 * outLamp2 off->dim  outLamp5 off->dim  indLamp4 off->dim
+  2845.8 * relay3 nc->mid
+  2847.1 * relay3 mid->no
+  2852.5 * indLamp1 off->dim
+  2857.0 * outLamp2 dim->on  indLamp4 dim->on
+  2857.8 * outLamp5 dim->on
+  2892.5 * indLamp1 dim->on
+  3077.9 > button6 target=0
+  3089.1 * pb6 no->mid
+  3091.6 * pb6 mid->nc
+  3099.8 * relay6 no->mid
+  3100.1 * relay4 nc->mid
+  3100.7 * relay6 mid->nc
+  3101.3 * outLamp3 on->dim  indLamp6 on->dim
+  3101.4 * relay4 mid->no
+  3113.2 * indLamp5 on->dim
+  3113.7 * outLamp6 on->dim
+  3157.6 * outLamp3 dim->off  indLamp6 dim->off
+  3168.9 * indLamp5 dim->off
+  3169.5 * outLamp6 dim->off
+  3333.8 ? relay1=no relay2=no relay3=no relay4=no relay5=nc relay6=nc pb6=nc outLamp3=off outLamp4=on outLamp5=on outLamp6=off indLamp3=off indLamp5=off indLamp6=off  "Use the procedure on page 72 of Book IV. | 3. Push and release pushbutton 6 several times. Each time after releasing the pushbutton, note the binary number displayed in lights 4, 5 and 6. Compare your numbers with the table of binary numbers on page 66."
+  3333.8 > button6 target=1000
+  3345.0 * pb6 nc->mid
+  3347.5 * pb6 mid->no
+  3350.8 * outLamp3 off->dim  outLamp6 off->dim  indLamp6 off->dim
+  3359.3 * relay5 nc->mid
+  3360.6 * relay5 mid->no
+  3366.0 * indLamp3 off->dim
+  3370.2 * outLamp3 dim->on  indLamp6 dim->on
+  3370.9 * outLamp6 dim->on
+  3406.0 * indLamp3 dim->on
+  3591.0 > button6 target=0
+  3602.2 * pb6 no->mid
+  3604.7 * pb6 mid->nc
+  3616.3 * relay6 nc->mid
+  3617.6 * relay6 mid->no
+  3622.9 * indLamp5 off->dim
+  3662.5 * indLamp5 dim->on
+  3843.0 ? relay1=no relay2=no relay3=no relay4=no relay5=no relay6=no pb6=nc outLamp4=on outLamp5=on outLamp6=on  "Use the procedure on page 72 of Book IV. | 3. Push and release pushbutton 6 several times. Each time after releasing the pushbutton, note the binary number displayed in lights 4, 5 and 6. Compare your numbers with the table of binary numbers on page 66."
+  3843.0 > button6 target=1000
+  3854.2 * pb6 nc->mid
+  3856.7 * pb6 mid->no
+  3867.8 * relay5 no->mid
+  3868.7 * relay5 mid->nc
+  3880.5 * relay3 no->mid
+  3881.4 * relay3 mid->nc
+  3893.9 * relay1 no->mid
+  3894.8 * relay1 mid->nc
+  4118.3 ? relay1=nc relay2=no relay3=nc relay4=no relay5=nc relay6=no pb6=no outLamp4=on outLamp5=on outLamp6=on  "When pushing pushbutton 6, be sure to hold the pushbutton down long enough for any carry to propagate to the highest stage of the counter."
+  4118.3 > button6 target=0
+  4129.5 * pb6 no->mid
+  4132.0 * pb6 mid->nc
+  4138.1 * relay6 no->mid
+  4138.5 * relay4 no->mid
+  4138.9 * relay2 no->mid
+  4139.0 * relay6 mid->nc
+  4139.4 * relay4 mid->nc
+  4139.8 * relay2 mid->nc  outLamp3 on->dim  indLamp6 on->dim
+  4139.9 * outLamp2 on->dim  indLamp4 on->dim
+  4140.1 * outLamp1 on->dim  indLamp2 on->dim
+  4153.8 * outLamp5 on->dim  indLamp1 on->dim  indLamp5 on->dim
+  4153.9 * outLamp4 on->dim  indLamp3 on->dim
+  4154.0 * outLamp6 on->dim
+  4195.6 * outLamp2 dim->off  outLamp3 dim->off  indLamp4 dim->off  indLamp6 dim->off
+  4195.7 * outLamp1 dim->off  indLamp2 dim->off
+  4209.4 * outLamp5 dim->off  indLamp1 dim->off  indLamp5 dim->off
+  4209.5 * outLamp4 dim->off  indLamp3 dim->off
+  4209.6 * outLamp6 dim->off
+  4374.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc pb6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "You will notice that the counter repeats after it has reached 7."

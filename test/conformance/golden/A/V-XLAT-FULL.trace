@@ -1,0 +1,95 @@
+#!mv601-trace 1
+# id=V-XLAT-FULL contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=28
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=279 minTickGap=9 marginal=false
+     0.0 > switch1 target=1000
+     0.0 > switch2 target=1000
+     0.0 > switch3 target=1000
+     0.0 > power on
+     0.0 * power off->on
+     3.3 * outLamp1 off->dim  outLamp5 off->dim  outLamp6 off->dim  indLamp1 off->dim  indLamp3 off->dim  indLamp4 off->dim
+    11.7 * relay3 nc->mid
+    13.0 * relay3 mid->no
+    16.3 * outLamp2 off->dim
+    22.8 * outLamp1 dim->on  outLamp5 dim->on  outLamp6 dim->on  indLamp1 dim->on  indLamp4 dim->on
+    26.9 * sw1 nc->mid  sw2 nc->mid  sw3 nc->mid
+    30.5 * outLamp1 on->dim  indLamp1 on->dim  indLamp4 on->dim
+    33.0 * sw1 mid->no  sw2 mid->no  sw3 mid->no
+    35.6 * outLamp1 dim->on
+    36.3 * outLamp4 off->dim  indLamp2 off->dim
+    37.8 * relay3 no->mid
+    38.7 * relay3 mid->nc
+    42.0 * outLamp3 off->dim
+    42.9 * outLamp6 on->dim
+    50.8 * indLamp2 dim->off
+    51.1 * indLamp3 dim->off
+    55.4 * outLamp4 dim->on
+    61.1 * outLamp3 dim->on
+    71.0 * outLamp2 dim->off
+    86.1 * indLamp1 dim->off  indLamp4 dim->off
+   100.8 * outLamp6 dim->off
+   620.9 ? relay1=nc relay2=nc relay3=nc relay4=nc outLamp1=on outLamp2=off outLamp3=on outLamp4=on outLamp5=on outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+   620.9 > switch1 target=0
+   647.8 * sw1 no->mid
+   653.9 * sw1 mid->nc
+   657.2 * indLamp1 off->dim  indLamp4 off->dim
+   668.1 * outLamp1 on->dim  outLamp4 on->dim
+   676.3 * indLamp1 dim->on  indLamp4 dim->on
+   723.8 * outLamp1 dim->off  outLamp4 dim->off
+  1200.8 ? relay1=nc relay2=nc relay3=nc relay4=nc outLamp1=off outLamp2=off outLamp3=on outLamp4=off outLamp5=on outLamp6=off indLamp1=on indLamp2=off indLamp3=off indLamp4=on indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+  1200.8 > switch2 target=0
+  1227.7 * sw2 no->mid
+  1233.8 * sw2 mid->nc
+  1237.1 * outLamp1 off->dim  indLamp3 off->dim
+  1248.0 * outLamp3 on->dim
+  1256.2 * outLamp1 dim->on  indLamp3 dim->on
+  1303.7 * outLamp3 dim->off
+  1780.7 ? relay1=nc relay2=nc relay3=nc relay4=nc outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=on indLamp2=off indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+  1780.7 > switch3 target=0
+  1807.6 * sw3 no->mid
+  1813.7 * sw3 mid->nc
+  1817.0 * outLamp6 off->dim
+  1824.9 * relay3 nc->mid
+  1826.2 * relay3 mid->no
+  1829.5 * outLamp2 off->dim
+  1836.2 * outLamp6 dim->on
+  1845.1 * indLamp3 on->dim
+  1848.7 * outLamp2 dim->on
+  1900.8 * indLamp3 dim->off
+  2368.8 ? relay1=nc relay2=nc relay3=no relay4=nc outLamp1=on outLamp2=on outLamp3=off outLamp4=off outLamp5=on outLamp6=on indLamp1=on indLamp2=off indLamp3=off indLamp4=on indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+  2368.8 > switch2 target=1000
+  2395.7 * sw2 nc->mid
+  2401.8 * sw2 mid->no
+  2405.1 * indLamp2 off->dim
+  2415.9 * outLamp1 on->dim  outLamp2 on->dim
+  2424.2 * indLamp2 dim->on
+  2471.5 * outLamp1 dim->off  outLamp2 dim->off
+  2948.7 ? relay1=nc relay2=nc relay3=no relay4=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=on indLamp1=on indLamp2=on indLamp3=off indLamp4=on indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+  2948.7 > switch1 target=1000
+  2975.6 * sw1 nc->mid
+  2981.7 * sw1 mid->no
+  2985.0 * outLamp1 off->dim  outLamp4 off->dim
+  2995.8 * indLamp1 on->dim  indLamp4 on->dim
+  3004.2 * outLamp1 dim->on  outLamp4 dim->on
+  3051.5 * indLamp1 dim->off  indLamp4 dim->off
+  3528.6 ? relay1=nc relay2=nc relay3=no relay4=nc outLamp1=on outLamp2=off outLamp3=off outLamp4=on outLamp5=on outLamp6=on indLamp1=off indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+  3528.6 > switch2 target=0
+  3555.5 * sw2 no->mid
+  3561.6 * sw2 mid->nc
+  3564.9 * outLamp2 off->dim  indLamp1 off->dim  indLamp4 off->dim
+  3575.7 * outLamp4 on->dim  indLamp2 on->dim
+  3584.2 * outLamp2 dim->on  indLamp1 dim->on  indLamp4 dim->on
+  3631.4 * outLamp4 dim->off  indLamp2 dim->off
+  4108.5 ? relay1=nc relay2=nc relay3=no relay4=nc outLamp1=on outLamp2=on outLamp3=off outLamp4=off outLamp5=on outLamp6=on indLamp1=on indLamp2=off indLamp3=off indLamp4=on indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""
+  4108.5 > switch3 target=1000
+  4135.4 * sw3 nc->mid
+  4141.5 * sw3 mid->no
+  4145.5 * relay3 no->mid
+  4146.4 * relay3 mid->nc
+  4149.7 * indLamp3 off->dim
+  4164.5 * outLamp6 on->dim
+  4165.7 * outLamp2 on->dim
+  4168.8 * indLamp3 dim->on
+  4220.2 * outLamp6 dim->off
+  4221.3 * outLamp2 dim->off
+  4688.9 ? relay1=nc relay2=nc relay3=nc relay4=nc outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=on outLamp6=off indLamp1=on indLamp2=off indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "Read the German sentence from the lights as indicated above. The German sentence will be in the proper order and will be complete except for the conjunction which must be supplied if Pete and Eve are indicated as input: supply \"und\" for \"and\"; \"oder\" for \"or.\""

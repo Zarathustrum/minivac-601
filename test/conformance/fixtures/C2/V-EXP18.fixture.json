@@ -1,0 +1,237 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP18",
+  "source": "Books V-VI printed p.31 = book5-6.pdf PDF p.37 (Experiment 18: Automatic Transmission with Differential Spacing); ERRATA sheet ER-37, errata.pdf p.4 'page 31: Note — Light 6 flashes on very briefly when indicating a dot.' (prose only, no wire change; scope shared with Experiment 17, and its 'three successive dots' fits this program's SOS)",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "3E/3H",
+    "3F/3-",
+    "3J/6A",
+    "4C/5C",
+    "4C/4F",
+    "4E/5E",
+    "5C/5F",
+    "5E/D19",
+    "5F/6K",
+    "6A/D1",
+    "6B/6-",
+    "6C/6-",
+    "6E/D9",
+    "6F/6G",
+    "6G/D4",
+    "6H/D16",
+    "6L/D18",
+    "D1/D2",
+    "D2/D3",
+    "D3/D6",
+    "D6/D7",
+    "D7/D8",
+    "D8/D11",
+    "D11/D12",
+    "D12/D13",
+    "D16/D17",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "3E/3H",
+    "3F/3-",
+    "3J/6A",
+    "4C/5C",
+    "4C/4F",
+    "4E/5E",
+    "5C/5F",
+    "5E/D19",
+    "5F/6K",
+    "6A/D1",
+    "6B/6-",
+    "6C/6-",
+    "6E/D9",
+    "6F/6G",
+    "6G/D4",
+    "6H/D16",
+    "6L/D18",
+    "D1/D2",
+    "D2/D3",
+    "D3/D6",
+    "D6/D7",
+    "D7/D8",
+    "D8/D11",
+    "D11/D12",
+    "D12/D13",
+    "D16/D17",
+    "D17/M+",
+    "D18/M-"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Turn power on. The system will immediately begin transmitting \"SOS\". Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "ERRATA sheet ER-37, errata.pdf p.4, Book V 'page 31' entry",
+      "quote": "Note — Light 6 flashes on very briefly when indicating a dot. The three successive dots may be so rapid and so close together that they are almost indistinguishable."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot."
+    },
+    {
+      "k": "advance",
+      "ms": 10000
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off."
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        },
+        {
+          "dev": "relay3",
+          "v": "no"
+        }
+      ],
+      "maxMs": 3000,
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off."
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": false
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 500
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off."
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "outLamp6",
+          "v": "off"
+        },
+        {
+          "dev": "relay3",
+          "v": "nc"
+        }
+      ],
+      "cite": "Books V-VI printed p.31 = book5-6.pdf PDF p.37",
+      "quote": "Light 6 and relay 3 will both indicate dots and dashes: they will remain on longer for a dash than for a dot. The computer will continue to transmit \"SOS\" until the power is turned off."
+    }
+  ],
+  "digest": {
+    "eventCount": 4137,
+    "moverTransitions": [0, 0, 1444, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 263]
+  },
+  "note": "Printed-only assertions. Wire list image-read at 300 dpi against PDF p.37 and matches the 28 printed wires; ER-37 is prose only and changes no wire. No initial dial setting is printed for this experiment, so the dial starts where the machine constructs it. Script follows the printed procedure: turn power on, let it transmit, turn power off ('until the power is turned off'). Untils assert that light 6 lights and relay 3 operates soon after power on (p.31 'immediately begin transmitting'), that light 6 goes dark again after a flash (ER-37 'flashes on very briefly'; p.31 'remain on'), that a second flash follows, and, after a further 10 s run, that light 6 still flashes and relay 3 still operates ('continue to transmit'); the two expects after power off assert light 6 dark and relay 3 released. Relay 3 'on' is read as relay3=no (armature pulled in). Sequential untils with 3000 ms caps do not tie a flash to a dot, a dash, or a dial position. Left for Step 7 as derived: the SOS on/off sequence against dial position (programs.json printedUnprinted); the nine-element count implied by the printed Morse table 'S: · · · / O: — — — / S: · · ·'; the 'remain on longer for a dash than for a dot' duration comparison; and the ER-37 slowed revolution ('slow the rotary switch down by holding the pointer knob back during one revolution'), whose per-dot assertions would need the derived dot-to-position mapping. At the profile's run rate the three S contacts give one unbroken light-6 'on' (the ~21 ms gaps between the S contacts never reach dim; the ~25 ms gaps between the O contacts dip to dim for about 4 ms). ER-37 says only 'almost indistinguishable', so the full merge is a simulator result left for Step 7; relay 3, self-interrupting through its own N.C. contact (3E/3H, 3J/6A), buzzes on each contact and falls quiet in each gap. Rotary geometry, run rate, coast, and fitted motor resistances remain profile fallbacks O-R1, O-R3, and O-R5. Trips the knife-edge trigger (minTickGap 4 below 6); the bless gate's robustness check held."
+}

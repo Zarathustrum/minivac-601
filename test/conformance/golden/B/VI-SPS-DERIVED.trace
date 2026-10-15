@@ -1,0 +1,258 @@
+#!mv601-trace 1
+# id=VI-SPS-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=41
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=19 minTickGap=9 marginal=false
+     0.0 > power on
+     0.0 * power off->on
+   220.1 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+   220.1 > button1 target=1000
+   231.3 * pb1 nc->mid
+   233.8 * pb1 mid->no
+   365.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+   365.0 > button4 target=1000
+   376.2 * pb4 nc->mid
+   378.7 * pb4 mid->no
+   388.6 * indLamp1 off->dim  indLamp2 off->dim
+   389.7 * relay1 nc->mid
+   389.9 * relay2 nc->mid
+   391.0 * relay1 mid->no
+   391.2 * relay2 mid->no
+   394.3 * outLamp3 off->dim  outLamp4 off->dim
+   413.4 * outLamp3 dim->on  outLamp4 dim->on
+   429.1 * indLamp1 dim->on  indLamp2 dim->on
+   649.2 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=off indLamp1=on indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+   649.2 > button4 target=0
+   660.4 * pb4 no->mid
+   662.9 * pb4 mid->nc
+   665.1 * relay1 no->mid  relay2 no->mid
+   666.0 * relay1 mid->nc  relay2 mid->nc
+   671.5 * indLamp1 on->dim  indLamp2 on->dim
+   685.5 * outLamp3 on->dim  outLamp4 on->dim
+   727.1 * indLamp1 dim->off  indLamp2 dim->off
+   741.1 * outLamp3 dim->off  outLamp4 dim->off
+   905.6 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+   905.6 > button1 target=0
+   916.8 * pb1 no->mid
+   919.3 * pb1 mid->nc
+  1050.5 > button2 target=1000
+  1061.7 * pb2 nc->mid
+  1064.2 * pb2 mid->no
+  1195.4 > button5 target=1000
+  1206.6 * pb5 nc->mid
+  1209.1 * pb5 mid->no
+  1219.0 * indLamp3 off->dim  indLamp4 off->dim
+  1220.4 * relay3 nc->mid
+  1220.6 * relay4 nc->mid
+  1221.7 * relay3 mid->no
+  1221.9 * relay4 mid->no
+  1225.0 * outLamp3 off->dim  outLamp4 off->dim
+  1244.1 * outLamp3 dim->on  outLamp4 dim->on
+  1259.5 * indLamp3 dim->on  indLamp4 dim->on
+  1479.6 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  1479.6 > button5 target=0
+  1490.8 * pb5 no->mid
+  1493.3 * pb5 mid->nc
+  1495.4 * relay4 no->mid
+  1495.5 * relay3 no->mid
+  1496.3 * relay4 mid->nc
+  1496.4 * relay3 mid->nc
+  1501.9 * indLamp3 on->dim  indLamp4 on->dim
+  1515.9 * outLamp3 on->dim  outLamp4 on->dim
+  1557.5 * indLamp3 dim->off  indLamp4 dim->off
+  1571.5 * outLamp3 dim->off  outLamp4 dim->off
+  1736.0 > button2 target=0
+  1747.2 * pb2 no->mid
+  1749.7 * pb2 mid->nc
+  1880.9 > button3 target=1000
+  1892.1 * pb3 nc->mid
+  1894.6 * pb3 mid->no
+  2025.8 > button6 target=1000
+  2037.0 * pb6 nc->mid
+  2039.5 * pb6 mid->no
+  2049.4 * indLamp5 off->dim  indLamp6 off->dim
+  2051.2 * relay5 nc->mid
+  2051.4 * relay6 nc->mid
+  2052.5 * relay5 mid->no
+  2052.7 * relay6 mid->no
+  2055.8 * outLamp3 off->dim  outLamp4 off->dim
+  2074.9 * outLamp3 dim->on  outLamp4 dim->on
+  2089.8 * indLamp5 dim->on  indLamp6 dim->on
+  2309.9 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no outLamp1=off outLamp2=off outLamp3=on outLamp4=on outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=on indLamp6=on  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  2309.9 > button6 target=0
+  2321.1 * pb6 no->mid
+  2323.6 * pb6 mid->nc
+  2325.7 * relay5 no->mid  relay6 no->mid
+  2326.6 * relay5 mid->nc  relay6 mid->nc
+  2332.2 * indLamp5 on->dim  indLamp6 on->dim
+  2346.1 * outLamp3 on->dim  outLamp4 on->dim
+  2387.8 * indLamp5 dim->off  indLamp6 dim->off
+  2401.7 * outLamp3 dim->off  outLamp4 dim->off
+  2566.2 > button3 target=0
+  2577.4 * pb3 no->mid
+  2579.9 * pb3 mid->nc
+  2711.1 > button1 target=1000
+  2722.3 * pb1 nc->mid
+  2724.8 * pb1 mid->no
+  2856.0 > button5 target=1000
+  2867.2 * pb5 nc->mid
+  2869.7 * pb5 mid->no
+  2879.6 * indLamp3 off->dim  indLamp4 off->dim
+  2881.0 * relay3 nc->mid
+  2881.2 * relay4 nc->mid
+  2882.3 * relay3 mid->no
+  2882.5 * relay4 mid->no
+  2885.6 * outLamp1 off->dim
+  2904.5 * outLamp1 dim->on
+  2919.8 * indLamp3 dim->on  indLamp4 dim->on
+  3139.9 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  3139.9 > button5 target=0
+  3151.1 * pb5 no->mid
+  3153.6 * pb5 mid->nc
+  3155.7 * relay4 no->mid
+  3155.8 * relay3 no->mid
+  3156.6 * relay4 mid->nc
+  3156.7 * relay3 mid->nc
+  3162.2 * indLamp3 on->dim  indLamp4 on->dim
+  3176.2 * outLamp1 on->dim
+  3217.9 * indLamp3 dim->off  indLamp4 dim->off
+  3231.9 * outLamp1 dim->off
+  3396.3 > button1 target=0
+  3407.5 * pb1 no->mid
+  3410.0 * pb1 mid->nc
+  3541.2 > button1 target=1000
+  3552.4 * pb1 nc->mid
+  3554.9 * pb1 mid->no
+  3686.1 > button6 target=1000
+  3697.3 * pb6 nc->mid
+  3699.8 * pb6 mid->no
+  3709.7 * indLamp5 off->dim  indLamp6 off->dim
+  3711.5 * relay5 nc->mid
+  3711.7 * relay6 nc->mid
+  3712.8 * relay5 mid->no
+  3713.0 * relay6 mid->no
+  3716.3 * outLamp6 off->dim
+  3735.2 * outLamp6 dim->on
+  3749.9 * indLamp5 dim->on  indLamp6 dim->on
+  3970.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=on indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=on indLamp6=on  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  3970.0 > button6 target=0
+  3981.2 * pb6 no->mid
+  3983.7 * pb6 mid->nc
+  3985.8 * relay5 no->mid  relay6 no->mid
+  3986.7 * relay5 mid->nc  relay6 mid->nc
+  3992.3 * indLamp5 on->dim  indLamp6 on->dim
+  4006.2 * outLamp6 on->dim
+  4048.0 * indLamp5 dim->off  indLamp6 dim->off
+  4061.9 * outLamp6 dim->off
+  4226.3 > button1 target=0
+  4237.5 * pb1 no->mid
+  4240.0 * pb1 mid->nc
+  4371.2 > button2 target=1000
+  4382.4 * pb2 nc->mid
+  4384.9 * pb2 mid->no
+  4516.1 > button6 target=1000
+  4527.3 * pb6 nc->mid
+  4529.8 * pb6 mid->no
+  4539.7 * indLamp5 off->dim  indLamp6 off->dim
+  4541.5 * relay5 nc->mid
+  4541.7 * relay6 nc->mid
+  4542.8 * relay5 mid->no
+  4543.0 * relay6 mid->no
+  4546.1 * outLamp1 off->dim
+  4565.0 * outLamp1 dim->on
+  4579.9 * indLamp5 dim->on  indLamp6 dim->on
+  4800.0 ? relay1=nc relay2=nc relay3=nc relay4=nc relay5=no relay6=no outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=off indLamp2=off indLamp3=off indLamp4=off indLamp5=on indLamp6=on  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  4800.0 > button6 target=0
+  4811.2 * pb6 no->mid
+  4813.7 * pb6 mid->nc
+  4815.8 * relay5 no->mid  relay6 no->mid
+  4816.7 * relay5 mid->nc  relay6 mid->nc
+  4822.3 * indLamp5 on->dim  indLamp6 on->dim
+  4836.2 * outLamp1 on->dim
+  4878.0 * indLamp5 dim->off  indLamp6 dim->off
+  4891.9 * outLamp1 dim->off
+  5056.3 > button2 target=0
+  5067.5 * pb2 no->mid
+  5070.0 * pb2 mid->nc
+  5201.2 > button2 target=1000
+  5212.4 * pb2 nc->mid
+  5214.9 * pb2 mid->no
+  5346.1 > button4 target=1000
+  5357.3 * pb4 nc->mid
+  5359.8 * pb4 mid->no
+  5369.7 * indLamp1 off->dim  indLamp2 off->dim
+  5370.8 * relay1 nc->mid
+  5371.0 * relay2 nc->mid
+  5372.1 * relay1 mid->no
+  5372.3 * relay2 mid->no
+  5375.6 * outLamp6 off->dim
+  5394.5 * outLamp6 dim->on
+  5409.9 * indLamp1 dim->on  indLamp2 dim->on
+  5630.0 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=on indLamp1=on indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  5630.0 > button4 target=0
+  5641.2 * pb4 no->mid
+  5643.7 * pb4 mid->nc
+  5645.9 * relay1 no->mid  relay2 no->mid
+  5646.8 * relay1 mid->nc  relay2 mid->nc
+  5652.3 * indLamp1 on->dim  indLamp2 on->dim
+  5666.3 * outLamp6 on->dim
+  5708.0 * indLamp1 dim->off  indLamp2 dim->off
+  5722.0 * outLamp6 dim->off
+  5886.4 > button2 target=0
+  5897.6 * pb2 no->mid
+  5900.1 * pb2 mid->nc
+  6031.3 > button3 target=1000
+  6042.5 * pb3 nc->mid
+  6045.0 * pb3 mid->no
+  6176.2 > button4 target=1000
+  6187.4 * pb4 nc->mid
+  6189.9 * pb4 mid->no
+  6199.8 * indLamp1 off->dim  indLamp2 off->dim
+  6200.9 * relay1 nc->mid
+  6201.1 * relay2 nc->mid
+  6202.2 * relay1 mid->no
+  6202.4 * relay2 mid->no
+  6205.5 * outLamp1 off->dim
+  6224.4 * outLamp1 dim->on
+  6240.0 * indLamp1 dim->on  indLamp2 dim->on
+  6460.1 ? relay1=no relay2=no relay3=nc relay4=nc relay5=nc relay6=nc outLamp1=on outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp1=on indLamp2=on indLamp3=off indLamp4=off indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  6460.1 > button4 target=0
+  6471.3 * pb4 no->mid
+  6473.8 * pb4 mid->nc
+  6476.0 * relay1 no->mid  relay2 no->mid
+  6476.9 * relay1 mid->nc  relay2 mid->nc
+  6482.4 * indLamp1 on->dim  indLamp2 on->dim
+  6496.4 * outLamp1 on->dim
+  6538.1 * indLamp1 dim->off  indLamp2 dim->off
+  6552.1 * outLamp1 dim->off
+  6716.5 > button3 target=0
+  6727.7 * pb3 no->mid
+  6730.2 * pb3 mid->nc
+  6861.4 > button3 target=1000
+  6872.6 * pb3 nc->mid
+  6875.1 * pb3 mid->no
+  7006.3 > button5 target=1000
+  7017.5 * pb5 nc->mid
+  7020.0 * pb5 mid->no
+  7029.9 * indLamp3 off->dim  indLamp4 off->dim
+  7031.3 * relay3 nc->mid
+  7031.5 * relay4 nc->mid
+  7032.6 * relay3 mid->no
+  7032.8 * relay4 mid->no
+  7036.1 * outLamp6 off->dim
+  7055.0 * outLamp6 dim->on
+  7070.1 * indLamp3 dim->on  indLamp4 dim->on
+  7290.2 ? relay1=nc relay2=nc relay3=no relay4=no relay5=nc relay6=nc outLamp1=off outLamp2=off outLamp3=off outLamp4=off outLamp5=off outLamp6=on indLamp1=off indLamp2=off indLamp3=on indLamp4=on indLamp5=off indLamp6=off  "In this modern version of a very old game, MINIVAC acts as referee and indicates \"win\" or \"tie\"."
+  7290.2 > button5 target=0
+  7301.4 * pb5 no->mid
+  7303.9 * pb5 mid->nc
+  7306.0 * relay4 no->mid
+  7306.1 * relay3 no->mid
+  7306.9 * relay4 mid->nc
+  7307.0 * relay3 mid->nc
+  7312.5 * indLamp3 on->dim  indLamp4 on->dim
+  7326.4 * outLamp6 on->dim
+  7368.2 * indLamp3 dim->off  indLamp4 dim->off
+  7382.1 * outLamp6 dim->off
+  7546.5 > button3 target=0
+  7557.7 * pb3 no->mid
+  7560.2 * pb3 mid->nc

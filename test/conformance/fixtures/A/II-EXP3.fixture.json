@@ -1,0 +1,35 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "II-EXP3",
+  "source": "BK2 printed p.9 = book2-3-4.pdf PDF p.15",
+  "tier": "A",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1R", "1S/1A", "1B/1-"],
+  "errata_applied": [],
+  "wires": ["1+/1R", "1S/1A", "1B/1-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "on" }],
+      "cite": "BK2 printed p.9 step 1 = book2-3-4.pdf PDF p.15",
+      "quote": "Turn power ON. Move slide switch to the left. Light 1 comes ON to indicate that a \"one\" (binary data) is being stored in SECONDARY STORAGE, Section 1."
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 30 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK2 printed p.9 step 2 = book2-3-4.pdf PDF p.15",
+      "quote": "Move slide switch 1 to the right. Light 1 goes OFF to indicate that a \"zero\" (binary data) is now being stored in SECONDARY STORAGE, Section 1."
+    }
+  ]
+}

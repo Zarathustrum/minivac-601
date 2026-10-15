@@ -1,0 +1,387 @@
+Minivac 601
+  in *
+
+
+
+
+maintenance
+   manual
+SC IEN TIFIC DEVELOPMENT CORP.
+3 7 2 M a in S t r e e t , W a t e r t o w n , M a s s a c h u s e t t s
+     M INIVAC 601 has been carefully designed to give consis­
+tent and reliable operation.   Like any large-scale computer,
+M INIVAC requires routine maintenance to keep it in top operat­
+ing condition. This routine maintenance is easy to perform and
+takes little time. Conscientious maintenance w ill insure that
+M INIVAC is always ready for operation.
+
+                    ROUTINE MAINTENANCE
+
+Cleaning: Keep the computer console clean by carefully wiping
+it with a damp cloth.
+
+Storage: When the computer is not in use, store the power
+cord in the compartment under the power panel. Access to the
+storage compartment is through the three-inch hole in the bot­
+tom of the computer.
+     Program w ires should be kept in the transparent bag sup­
+plied. Keep the wires free from kinks and knots. When the
+computer is put aw ay, it should be kept in its cardboard ship­
+ping box.
+
+Relay Contacts: Clean the relay contacts by drawing a piece
+of clean, dry paper between the closed contacts. Do not use a
+cleaning solution. To clean the normally open contacts, gently
+push the plastic crossbar to the left to close, the contacts. Then
+draw a piece of clean, dry paper between them. The relay con­
+tacts w ill require cleaning once or twice a year.
+
+Oiling: The rotary switch shaft and the motor shaft w ill require
+oiling once or twice a year. Remove the bottom panel from the
+computer by unscrewing the screws from the rubber feet.- Place
+one or two drops of a high-grade, lightweight machine oil (not
+a heavy household oil) on the motor bearings at each end of the
+motor shaft. Replace the bottom panel.
+     Remove the pointer knob of the rotary switch and put two or
+three drops of oil on the bearing. Work the oil into the bearing
+by turning the shaft back and forth a fe w times.
+     Replace the pointer knob and realign it by connecting a light
+through one of the switch contacts on the rotary switch dial.
+Adjust the position of the knob on the shaft so the light comes
+on when the knob is pointing at the connected switch position.
+
+                      Adjustment and Repair
+
+      In addition to routine maintenance, M INIVAC may occasion­
+ally require minor adjustment and/or repair. A screwdriver is
+normally the only tool required for repair. Under some circum­
+stances, however, a soldering iron or a drill may be necessary.
+      All M INIVAC parts are conservatively designed to give last­
+ing service. The lights are operated at less than their rated
+voltage to extend their operating life. The transformer and the
+rectifier are capable of accepting repeated overloads.
+      The power supply is rated at 1.5 amps continuous with a
+nominal 12 volts output. All switches are rated at 3 amps; relay
+contacts are rated in excess of 3 amps. To provide low contact
+resistance, the rotary switch uses silver-plated circuits. The rotary
+switch contact fingers are made of berryllium copper; the drive
+shaft is made of stainless steel running in an oil-impregnated
+bronze bearing. The drive motor is operated at less than one-
+third rated voltage.
+      Should you find that your M INIVAC is not operating prop­
+erly, check first to see that routine maintenance has been carried
+out. The following sections describe trouble-shooting and repair
+techniques for the various parts of the M INIVAC.
+Power Supply:
+    If the power cord is plugged into a live 110-volt AC outlet
+    and the power light does not come on when the power
+    switch is turned on, there may be a fault in the power sup­
+    ply. Proceed with the following steps until the fault is
+    found, then follow the repair instructions:
+
+     1. Check to see that a short-circuit is not connected across
+        the power supply terminals (+ and —): remove all pro-
+
+                                 2
+   gram w ire connections to the power supply terminals.
+
+2. Push the circuit breaker button to re-set the circuit breaker
+   if it has "blow n."
+3. Check to see that power is actually being supplied to
+   the + and — terminals by connecting an output light to
+   the terminals + and — with programming wires. The
+   unloaded power supply outlet voltage should be ap­
+   proximately 13 volts.
+
+4. Check the 110 volt outlet with a lamp or other appliance
+   to see that power is being supplied to the outlet.
+
+5. Unplug the M INIVAC power cord. Remove the bottom
+   panel from the computer by unscrewing the rubber
+   feet. Push the power panel out of the computer console
+   through the holes in the dividing section.
+
+6. Check all power connections to be sure they are secure.
+   The power supply circuit diagram is:
+
+
+
+
+              Power S u p p ly Circuit Diagram
+7. With the power cord unplugged, connect a binary output
+   light between the transformer center top (yellow wire)
+   and the center terminal on the rectifier. Program wires
+   with alligator clips attached are convenient for this pur­
+   pose.
+   Turn the power switch on and plug in the power cord.
+   Do NOT touch any power supply components while
+   power is connected. If the binary output light comes on,
+   the trouble is in the circuit breaker, the power light or the
+   power switch. If the binary output light does not come
+   on, the trouble is in the transformer, the rectifier or the
+   power switch.
+8. Check the power light by connecting a binary output
+   light to the power light terminals. If the binary output
+   light comes on when power is on, the power light is
+   burned out. Remove the burned-out power light and
+   replace it with a new light assembly, connecting the leads
+   to the power supply terminals.
+9. Check the circuit breaker:
+   Connect a binary output light between the + power
+   supply terminal and the circuit breaker terminal which
+   leads to the transformer. If the output light does not
+   come on when power is on, the trouble is the transformer
+   or the rectifier. If the output light comes on, proceed
+   with the next step. Connect a binary output light be­
+   tween the + power supply terminal and the circuit break­
+   er terminal which leads to the power light. If the output
+   light comes on when power is on, the trouble is not in
+   the circuit breaker. If the output light does not come
+   on, even when the circuit breaker is pushed, the circuit
+   breaker is defective.
+   To replace the circuit breaker: remove the leads from
+   the terminals; bend up the tabs which hold the circuit
+   breaker in place and remove the defective unit. Insert
+   a new circuit breaker and replace the leads.
+10. Check the power switch as follows:
+    Using program wires with alligator clips, connect the DC
+    output contacts (located beneath the power panel) to an
+    output light. Turn power on; if the output light does
+    not come on, the power switch is defective.
+    To replace the power switch, remove the leads from the
+    terminals and drill out the rivets which hold the switch.
+    Insert a new power switch, fastening it with machine
+    screws and nuts. Replace the leads.
+    Check the AC input contacts with an ordinary household
+    lamp. Connect the lamp to the black (primary) trans­
+    former leads. It w ill be necessary to pierce the insulation
+    of one of the leads. After the A C input contacts have
+    been checked, the insulation must be repaired.
+    Turn the power switch on and plug the power cord in.
+    Do not touch any of the power supply components while
+    the power is connected. If the lamp comes on, the AC
+    imput contacts are in correct working order.
+
+11. Check the transformer with an output light. Disconnect
+    the two yellow /black w ires from the rectifier.
+    Connect an output light between the yellow lead and
+    one yellow /black lead. Turn the power switch on and
+    plug the power cord in. The light w ill come on if the
+    transformer is operating correctly. Continue the trans­
+    former check by connecting an output light between
+    the yellow lead and the second yellow/black lead.
+    If the transformer is defective, it must be removed and
+    replaced with a new unit.
+
+12. If the transformer checks out but there is not proper
+    DC output between the transformer center top (yellow
+    lead) and the center terminal on the rectifier, the rec­
+    tifier is defective and must be replaced.
+
+                            5
+Program Wires:
+     The program wires are made to last for the life of the com­
+     puter if they are properly used. When removing program
+     wires from the computer console, do not pull them out by the
+     w ire. Grasp the taper pin and remove it from the terminal.
+     Be sure to keep the wires free from kinks and knots.
+     If program wires become lost or damaged, new sets may
+     be purchased from Scientific Development Corporation.
+     (See spare parts list).
+Lights:
+     Check the binary lights and the relay indicator lights by
+     connecting them to the 4- and — power supply terminals.
+     The lights are conservatively operated and should not re­
+     quire replacement for at least a year. To replace a light,
+     cut the leads % inch from the terminal and remove the
+     defective light from the panel. Insert a new light assembly
+     and solder the new leads in place.
+Pushbuttons:
+    Check a pushbutton by connecting it in series with two
+    lights as indicated:
+
+
+
+
+               Circuit Diagram   —       Pushbutton Check
+
+
+                                     6
+    Turn power on. Light 1 should come on. Push the push­
+    button. Light 1 should go off and light 2 should come on.
+    To replace a defective pushbutton switch:
+      Pull the red plastic button off the pushbutton; unscrew
+      the exposed mounting screw. Cut the pushbutton switch
+      leads (located underneath the console) and remove the
+      unit. Insert a new pushbutton switch, screwing it into
+      place. Solder the new leads in place. Replace the red
+      plastic button on the switch shaft.
+Relays;
+     Check a relay by connecting the coil with power through a
+     pushbutton as indicated:
+
+
+
+
+                 Circuit Diagram — Relay Check
+
+
+    Turn power on. Lights 1 and 3 should come on. Push the
+    pushbutton. Lights 1 and 3 should go off and lights 2 and 4
+    should come on.
+    If a relay snaps on and off but does not make proper con­
+
+                              7
+       nection through the relay contacts, the contacts may need
+       cleaning (see routine maintenance). If the switch arms are
+       not meeting the contacts with proper pressure, gently bend
+       the switch arm to increase the contact pressure. The switch
+       arm should engage the normally open and normally closed
+       contacts and should push them slightly as they meet.
+       To replace a defective relay, disconnect the eight connec­
+       tions to the relay and remove the unit by unscrewing the
+       relay mounting screws. Insert a new relay and replace the
+       eight connectors. To assure proper connection, compare
+       the connections on the new relay with another relay's.
+Slide Switches:
+     Check a slide switch by connecting binary output lights to
+     the terminals as indicated:
+
+
+
+
+                                      3A                      4B   4-
+                                           OX 3B        4A,
+
+
+
+
+  •+
+
+
+
+  •+      z
+                Circuit Diagram   —    S lid e Switch Check
+
+
+       Set the slide switch RIGHT. Turn power on. Lights 1 and 3
+       should come on. Move the slide switch to the LEFT. Lights
+       1 and 3 should go off and lights 2 and 4 should come on.
+
+                                      8
+     To replace a defective slide switch:
+       Cut all six connections to the slide switch. Drill out the
+       rivets which hold the unit in place.
+       Install a new switch with machine screws and nuts.
+       Solder all connections in place, using other slide switch
+       units as guides.
+Rotary Switch:
+     The circuit diagram for the rotary switch motor drive is:
+
+
+
+
+           Circuit Diagram — Rotary Switch M otor Drive
+
+
+    Check the motor drive by connecting power to the RUN
+    terminals (D17 and D18). Turn power on. The rotary
+    switch pointer knob should turn. Reverse the power con­
+    nections: the pointer knob should turn in the opposite di­
+    rection. Connect a short circuit across the STOP terminals
+    (D18 and D19): the pointer knob should stop turning.
+    If the pointer knob does not rotate, connect power momen­
+    tarily across the STOP terminals: the knob should turn very
+    rapidly. If the knob does turn, the trouble may be a bad
+    connection or an open resistor. If the knob does not turn,
+    the trouble may be a bad connection or a defective motor.
+    It is also possible that the motor shaft is not properly en-
+
+                                9
+gaging the drive wheel. Check the rotary switch by con­
+ necting D16 (the switch arm) to + and connecting output
+lights through the rotary switch contacts, DO through D15
+Check the knob alignment to be sure that the knob has not
+turned on the drive shaft. If proper contacts are not being
+made, check the assembly under the panel: the rotary
+switch contacts may require cleaning.
+The rotary switch mechanism is accessible when the bottom
+panel of the computed is removed. If the motor does not
+turn the rotary switch:
+
+  1. Check all electrical connections.
+
+  2. Check the drive wheel to be sure that it is free to
+     rotate.
+
+  3. Check each of the two resistors by connecting power
+     across them. The resistors should heat up in about
+     20 seconds. If a resistor does not heat up, it is de­
+     fective. Replace a defective resistor by cutting its
+     leads and soldering a new unit of the same resistance
+     in place.
+
+  4. Check the motor by unsoldering the motor leads and
+     connecting them directly to the power terminals. If
+     the motor does not rotate it is defective and must be
+     replaced with a new unit.
+
+  5. To assure proper friction drive, adjust the motor bracket
+     and spring the motor shaft against the edge of the
+     drive wheel.
+
+
+
+
+                           10
+                  MINIVAC 601 - SPARE PARTS
+
+     The following spare parts are available from Scientific De­
+velopment Corporation for repairing M INIVAC 601:
+
+
+P a rt N o .   D e scrip tio n                              Price
+
+   6431        Circuit Breaker                               T.00
+
+   6432        Slide Switch                                  .50
+
+   6433        Rectifier                                     3.00
+
+   6 434       Transformer                                  io.oo
+   6435        Light Assembly                                1.00
+
+   6436        Pushbutton Switch                              .75
+   6437        Relay                                         6.00
+
+   6471        Motor                                         4.00
+
+   6472        Drive W heel Assembly                         2.00
+
+   6473        Complete Rotary Switch Assembly              20.00
+
+   6490        Set of 100 Programming W ires                12.00
+
+   6491        Set of 2 test w ires with clips               1.00
+
+
+                                                          € -13- ^
+                                                           31°
+                                                          6 "V7 S
+
+
+
+
+     To avoid C.O.D. charges please send check or money order
+with your spare parts order directly to:
+
+               Scientific Development Corporation
+               372 Main Street
+               Watertown 72, Massachusetts
+
+
+     There is a handling charge of 25 cents for orders less than
+ $5.00.
+
+                                       11
+

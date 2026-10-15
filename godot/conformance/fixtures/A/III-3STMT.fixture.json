@@ -1,0 +1,31 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "III-3STMT",
+  "source": "BK3 printed p.36 = book2-3-4.pdf PDF p.42; ER-07 replaces the diagram without changing the program list",
+  "tier": "A",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": ["1+/1Y", "1X/2Y", "2X/3A", "3B/3-"],
+  "errata_applied": [],
+  "wires": ["1+/1Y", "1X/2Y", "2X/3A", "3B/3-"],
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "off" }],
+      "cite": "BK3 printed p.37 = book2-3-4.pdf PDF p.43",
+      "quote": "Therefore both pushbutton 1 and pushbutton 2 must be pushed before light 3 comes ON."
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 200 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.37 = book2-3-4.pdf PDF p.43",
+      "quote": "Using the circuit and representation indicated above, pushing both pushbutton 1 and pushbutton 2 indicates to the computer that both statements A and B are true ... it can indicate that statement C must also be true"
+    }
+  ]
+}

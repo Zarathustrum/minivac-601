@@ -1,0 +1,452 @@
+{
+  "topic": "ADVERSARIAL VERIFICATION of find-programs.json (MINIVAC 601 manual programs as jack-connection lists)",
+  "verifier": "subagent verify-programs",
+  "date": "2026-08-30",
+  "target_file": "docs/research/raw/find-programs.json",
+  "posture": "Default was to refute. Where I could not refute, I re-read the primary page myself and say so.",
+
+  "sources_i_opened_myself": [
+    {"file": "docs/research/raw/pdf/errata.pdf", "note": "'Notes and Corrections to the Minivac Manual', Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts. 4pp. Byte-identical twin on disk at minivac601-errata.pdf. PRIMARY. The finder never opened it - the string 'errata' appears 0 times in find-programs.json.", "read_as": "full OCR text + page image (PDF p3 @200dpi)"},
+    {"file": "docs/research/raw/pdf/book5-6.pdf", "pages_imaged": [11, 58, 62], "dpi": [130, 130, 110]},
+    {"file": "docs/research/raw/pdf/book2-3-4.pdf", "pages_imaged": [15, 17, 49], "dpi": [150, 130, 130]},
+    {"file": "docs/research/raw/pdf/book1.pdf", "pages_imaged": [25], "dpi": 130},
+    {"file": "docs/research/raw/pdf/book2-3-4.pdf", "pages_ocr": "1-6, 11-22, 47-50, 59", "note": "pdftotext -layout"},
+    {"file": "docs/research/raw/pdf/book5-6.pdf", "pages_ocr": "5-6, 36, 48-50, 63"},
+    {"file": "docs/research/raw/pdf/book7-capacitor-resistor.pdf", "note": "header read only - titled 'Minivac 601/6010 Capacitor/Resistor Manual'"}
+  ],
+  "image_reads_spent": 8,
+
+  "headline": "The finder's transcription work is accurate: I re-read five programs from page images at random (Tic-Tac-Toe 72 lines, Traffic Light 22 lines, Traffic Light w/ Pedestrian Control 26 lines, Relay AND 10 lines, basic sequence recognition 38 lines, Book I Exp 12+13 15 lines) and found ZERO transcription errors and zero hallucinated lines. The refutations are therefore not about accuracy - they are about (a) a whole primary source the finder never opened, (b) ~13 programs it never transcribed, (c) one 'anomaly' it invented, and (d) several 'not settled by the sources' items that ARE settled.",
+
+  "refuted": [
+    {
+      "id": "R1",
+      "claim": "find-programs.json D2 / VI-TICTACTOE per_line_flags: the printed line '4G/5N' in the Tic-Tac-Toe table is anomalous; '4N/5N' would be the ordered reading and is the plausible intended line.",
+      "correction": "REFUTED. '4G/5N' is correct as printed and is not a typographic error. It is the middle member of a three-link chain that the same table prints in full: 3G/4N (col 2), 4G/5N (col 3), 5G/6N (col 4). The finder noticed 4G/5N sits out of alphabetical order after 4L/M6t but did not notice that 5G/6N sits out of order in EXACTLY the same relative slot in column 4 (immediately after 5L/M4t). Two identical out-of-order placements in consecutive columns is a printing pattern, not a typo. The finder's proposed '4N/5N' would break the relay-G-to-relay-N chain and is wrong; the simulator must wire 4G/5N. The finder also missed the parallel that 3G, 4G and 5G each appear twice in the table (3G/D7 + 3G/4N, 4G/D5 + 4G/5N, 5G/D3 + 5G/6N), so '4G appears twice' is not evidence of an error either.",
+      "evidence": "book5-6.pdf PDF page 62 (printed p56), read at 110 dpi. Column 2 rows 7-8: '3G/D7', '3G/4N'. Column 3 rows 3 and 9: '4G/D5', '4G/5N'. Column 4 rows 2 and 6: '5G/6N', '6G/D1'. [verified]",
+      "severity": "high - the finder's flag would tempt an implementer to 'fix' a correct line"
+    },
+    {
+      "id": "R2",
+      "claim": "VI-TICTACTOE.footnotes_as_printed = ['* this is the machine's \"play\" wire   (attached to M10)', '** this is the player's \"play\" wire  (attached to M11)'].",
+      "correction": "REFUTED as verbatim. The page prints only '* this is the machine's \"play\" wire' and '** this is the player's \"play\" wire'. The parenthetical '(attached to M10)' / '(attached to M11)' is the finder's own gloss, inserted into a field explicitly named 'as_printed'. The gloss happens to be true (the table's last two lines are M10/free* and M11/free**) but it is inference sitting inside a verbatim field on a program tagged [verified].",
+      "evidence": "book5-6.pdf PDF page 62 (printed p56) @110 dpi, the two footnote lines directly under the table. [verified]",
+      "severity": "low content, high hygiene"
+    },
+    {
+      "id": "R3",
+      "claim": "Program II-3STMT, 'Computer representation of three statements', book: 'Book II', printed_page 36.",
+      "correction": "REFUTED on book attribution. Printed page 36 is in BOOK III, not Book II. Books II/III/IV are continuously paginated in one volume: the CONTENTS page gives Book II = pp.1-33 (Appendix ends p32), Book III begins at p35, Book IV begins at p66. The errata sheet independently files 'page 36: circuit diagram for COMPUTER REPRESENTATION OF THREE STATEMENTS' under the heading BOOK III. The PDF page (42) the finder cites is right; the book label is wrong.",
+      "evidence": "book2-3-4.pdf PDF page 5 (CONTENTS). errata.pdf, 'Notes and Corrections by page', BOOK III block. [verified]",
+      "severity": "medium - a fixture set keyed on book name would mis-file it"
+    },
+    {
+      "id": "R4",
+      "claim": "not_settled_by_the_sources: 'Whether the six section minus terminals (1- .. 6-) and plus terminals are one common supply rail or six separately-fused nodes. ... no page says so.' And headline_findings: 'M+ and M- ... Whether they are physically part of the MATRIX block or a separate motor-power pair is NOT settled by the manuals.'",
+      "correction": "REFUTED - both are settled, in print, by a primary source the finder never opened. The errata sheet states flatly: 'All + and - terminals are connected together. For example, a connection to 1+ is the same as a connection to 3+, 6+, or M+. Similarly, a connection to 2- is the same as a connection to 4-, 5-, or M-.' So every section plus terminal and M+ are one node; every section minus terminal and M- are one node. This also disposes of the finder's discrepancy D3 (Book I Exp 12 '6-/D18' vs Exp 13 '5-/D18'): both are the same node, no typo exists.",
+      "evidence": "errata.pdf, page 1, left column, second paragraph. [verified]",
+      "severity": "high - this is a first-order simulator netlist fact"
+    },
+    {
+      "id": "R5",
+      "claim": "D7 / not_settled: how many COMMON terminals there physically are is 'NOT settled by the manuals; must be settled from the panel photograph.'",
+      "correction": "DOWNGRADED to essentially settled. The errata sheet enumerates common-terminal sets by hole count: 'common terminals are any set of terminals which are interconnected: for instance, the two terminals at 6R, the six at M10, or the four at 3com.' So '3com' is one terminal with FOUR interconnected holes, and there is a com terminal per section (1com..6com). That makes Book I's 'The four COMMON terminals are connected together' a count of the four holes of one COMMON terminal, exactly as the preceding sentence in Book I ('The terminals with four holes labeled COMMON') already implies. Book I is not contradicting Books III-VI; the finder read an ambiguity into it. I re-read the Book I sentence and it is quoted accurately by the finder - the quote is fine, the 'unresolvable' conclusion is not.",
+      "evidence": "errata.pdf page 1, left column, third paragraph. book1.txt lines 1310-1322 (printed p25, AUXILIARY TERMINALS). [verified for the errata text; the inference that 'four' = holes is [likely]]",
+      "severity": "medium"
+    },
+    {
+      "id": "R6",
+      "claim": "transcription_policy.tag_meaning defines [verified] as 'read by me in a rendered page image ... OR unambiguous body prose in a clean OCR layer that I cross-checked against a second printing of the same program.'",
+      "correction": "REFUTED as a policy deviation. The project rule is [verified] = read in a primary source page image or the panel photograph. The finder's second clause admits OCR-only claims to [verified] on the strength of self-consistency, which is precisely the failure mode the brief warns about ('The OCR is good on body text and unreliable on display headings, tables, and figure callouts' - and every program listing IS a display block, not body text). In practice the finder's OCR reads survived my spot checks, so this did not produce a wrong claim in my sample; but the tag on any program marked verified without an image read should be read as [likely].",
+      "evidence": "find-programs.json lines 38-42 vs the project brief's rule 2. [verified]",
+      "severity": "medium - hygiene, affects how downstream agents should trust the 'verified' count of 32"
+    },
+    {
+      "id": "R7",
+      "claim": "VI-TICTACTOE.expected_behaviour: 'The machine always moves first, and its first move is always the CENTRE of the game matrix (matrix square 9). [verified]'",
+      "correction": "PARTIALLY REFUTED. The printed prose (Book VI p55) says only 'the machine's first move will always be to the center of the game matrix'. It does not say 'matrix square 9'. The identification of centre with square 9 comes from the panel numbering, which the finder itself states elsewhere is 'NOT settled by this page - it must come from the panel photograph' and which it never opened. Inference inside a [verified] claim.",
+      "evidence": "book5-6.pdf PDF p61 (printed p55) prose, and find-programs.json's own note under VI-TICTACTOE.notes conceding the geometry is unsettled. [verified that the page does not print '9']",
+      "severity": "low"
+    },
+    {
+      "id": "R8",
+      "claim": "III-MINDREADING connection list begins '5V/4S' with no flag.",
+      "correction": "SILENT CORRECTION. The Book III printing reads '5V/45'; the errata sheet's Book III block says 'page 54: program correction for \"Mind Reading\" program - change 5V/45 to 5V/4S'. The finder printed the corrected form as if it were the printed form, with no per_line_flag - the same class of silent normalisation the brief forbids. (The Book VI reprint, PDF p63, genuinely does print '5V/4S', so the corrected value is right; only the provenance is misstated.)",
+      "evidence": "errata.pdf, BOOK III block, 'page 54'. book5-6.pdf PDF p63 OCR line 32 reads '5V/4S'. [verified]",
+      "severity": "low"
+    },
+    {
+      "id": "R9",
+      "claim": "D4: Book V Exp 4 vs Exp 5 rotary/motor connections are a 'discrepancy'; 'Exp 4 puts TWO rotary terminals on M-.'",
+      "correction": "DOWNGRADED - not a discrepancy. Both printings are image-confirmed by me and both are electrically sensible. Exp 4: D16/M- (wiper to minus), D17/M-, D18/M+ (motor across the rail, one polarity). Exp 5: D16/M-, D17/M+ (motor the other polarity) with D18 taken over by the pedestrian interrupt (5J/D18). Given R4 (all + are one node, all - are one node) there is nothing anomalous about two rotary terminals landing on M-. Record it as a polarity/wiring difference between two programs, not as a printing discrepancy needing resolution.",
+      "evidence": "book5-6.pdf PDF page 11 (printed p5) @130 dpi, both program blocks read in full. [verified]",
+      "severity": "low"
+    }
+  ],
+
+  "downgraded": [
+    "VI-TICTACTOE tag 'verified' stands for the 72 connections (I re-read all four columns independently and they match line for line), but its expected_behaviour item about matrix square 9 must drop to [unverified] - see R7.",
+    "All programs the finder tagged [verified] on the strength of OCR-plus-cross-printing rather than an image read should be treated as [likely] until image-read - see R6.",
+    "D2 (Tic-Tac-Toe '4G/5N') should be struck from discrepancies_recorded_not_resolved entirely - see R1.",
+    "D3 (Book I '6-/D18' vs '5-/D18') should drop from 'discrepancy' to 'same node, no discrepancy' - see R4.",
+    "D4 (traffic light M+/M- pattern) should drop from 'discrepancy' to 'two programs, two motor polarities' - see R9.",
+    "D7 (four vs six COMMON terminals) should drop from 'not settled' to 'settled by errata: six com terminals, four interconnected holes each' - see R5.",
+    "not_settled item 'Whether the six section minus terminals and plus terminals are one common supply rail' - struck, settled by errata - see R4.",
+    "not_settled item 'Whether Book I Experiment 12's 6-/D18 or Experiment 13's 5-/D18 is the typo' - struck, neither, same node.",
+    "II-3STMT book attribution Book II -> Book III - see R3."
+  ],
+
+  "upgraded": [
+    {
+      "id": "U1",
+      "was": "III-RELAYAND anomaly: 'The obvious intended wiring is 1G/2H in place of 2+/2H. That substitution is MY INFERENCE and is tagged [unverified].'",
+      "now": "[verified] by primary source. The errata sheet, BOOK III block: 'page 43: ... program correction for \"Relay AND Circuit\" - change 2+/2H to 1G/2H.' The finder's inference was exactly right and is now documented. I separately image-confirmed that the printed program is the ten lines the finder gives, ending 2+/2H, 2G/3A, 3B/3-, AND that the circuit DIAGRAM on the same page already draws 1G wired to 2H (the diagram is correct; only the program list is wrong). Simulator should ship the AND circuit as 1+/1Y, 1X/1C, 1F/1-, 2+/2Y, 2X/2C, 2F/2-, 1+/1H, 1G/2H, 2G/3A, 3B/3-.",
+      "evidence": "errata.pdf BOOK III 'page 43'; book2-3-4.pdf PDF page 49 (printed p43) @130 dpi."
+    },
+    {
+      "id": "U2",
+      "was": "V-EXP14 per_line_flag: '4F/5G ... Could be a print/OCR error for 4F/4G. Not image-verified. [unverified]'",
+      "now": "[verified] by primary source. errata.pdf, BOOK V block: 'page 24: Experiment 14 program correction: change 4F/5G to 4F/4G.' Image-read from errata.pdf PDF p3 @200 dpi. The finder's suspicion was right and the printed text really is 4F/5G."
+    },
+    {
+      "id": "U3",
+      "was": "I-EXP12 per_line_flag: '6-/D18 ... was NOT image-verified ... Recorded, not resolved. [unverified]'",
+      "now": "[verified]. I image-read book1.pdf PDF page 25 (printed p23) at 130 dpi. Experiment 12's program is printed in two columns and reads exactly: 6+/5Y, 5X/D17 | 6-/D18, 6-/6Y, 6X/D19. Experiment 13's combined program reads exactly: 6+/D16, D2/6A, 6-/6B | D1/5A, 5B/6B, 6+/5Y, 5X/D17 | 5-/D18, 6-/6Y, 6X/D19. Both finder lists are correct, in order, complete."
+    },
+    {
+      "id": "U4",
+      "was": "III-RELAYOR tagged [likely], 11 connections, quoted only indirectly.",
+      "now": "[verified]. Image-read from book2-3-4.pdf PDF page 49 @130 dpi. Printed program: 1+/1Y, 1X/1C, 1F/1-, 2+/2Y, 2X/2C, 2F/2-, 1+/1H, 1G/3A, 2+/2H, 2G/3A, 3B/3-. Eleven lines, matches the finder exactly."
+    },
+    {
+      "id": "U5",
+      "was": "VI-SEQREC / D1: the Combination Lock printing reads 5A/6J while Secret Code and Electronic Maze read 6A/6J; 'Both are primary. Recorded, not resolved.'",
+      "now": "The observation is CONFIRMED - I independently image-read book5-6.pdf PDF page 58 (printed p52) at 130 dpi and the Combination Lock printing does read '5A/6J', in column 4 row 3, in a 38-line block otherwise identical to the finder's list. But the finder should have resolved it, and it is resolvable from the same page: the 38-line circuit contains '6B/6-' and contains NO 5B connection at all. A light needs both its A and its B terminal wired, so '5A/6J' would leave light 5 with no return path AND leave light 6 (whose 6B/6- IS wired) undriven - while the same page's prose says 'light 6 comes on when an error is made'. 6A/6J is therefore the correct reading and the Combination Lock printing carries a 6->5 typo. Tag the conclusion [likely] (electrical inference from image-verified text), not [verified]."
+    },
+    {
+      "id": "U6",
+      "was": "not_settled: 'The exact rotary-switch dial speed ... which every timing program depends on.'",
+      "now": "Still not settled numerically, but partly addressed: errata.pdf page 1 right column instructs 'try carrying out the procedure slowly; some programs are not designed for high-speed operation', and the BOOK IV note on page 72 warns the three-bit counter 'strains' the relays and supplies a whole alternate circuit that bypasses the relay indicator lights 'so that full voltage is supplied to the relay coils'. That is direct primary evidence that relay pull-in is marginal and voltage-dependent in the real machine - a modelling fact the finder did not have."
+    }
+  ],
+
+  "missed": [
+    {
+      "id": "M1",
+      "severity": "CRITICAL",
+      "what": "The errata sheet - docs/research/raw/pdf/errata.pdf (duplicate at minivac601-errata.pdf) - was never opened. It sits in the same directory as the three book PDFs the finder did read. It is primary: 'Notes and Corrections to the Minivac Manual', Scientific Development Corporation, 372 Main Street, Watertown, Massachusetts, issued 'In response to questions from MINIVAC owners.' It contains program-level corrections to EIGHT programs the finder transcribed, one complete additional program, two complete circuit-modification sets, and several global electrical facts.",
+      "detail": "See errata_program_corrections and errata_global_facts below for the full transcription."
+    },
+    {
+      "id": "M2",
+      "severity": "CRITICAL",
+      "what": "Every program in Book II. The finder's 84-program list contains exactly one Book II entry, and that entry (II-3STMT) is actually Book III (see R3). Book II - 'What is a Digital Computer?' - contains at least eleven wiring programs, listed with full transcriptions below in missed_programs_book_ii. Two of them are directly corrected by the errata sheet, which is how I found the gap.",
+      "detail": "Experiments 1-7 plus four memory-circuit programs, printed pp.6-15."
+    },
+    {
+      "id": "M3",
+      "severity": "high",
+      "what": "Two Book III programs: 'The Operation EITHER BUT NOT BOTH' (printed p41, pushbutton XOR, 5 connections) and 'The Relay EITHER BUT NOT BOTH Circuit' (printed p44, 11 connections). The Book III CONTENTS page lists 'The Relay EITHER BUT NOT BOTH circuit ... 44' between the Relay NOT circuit (which the finder DID transcribe as III-RELAYNOT) and the next section, so it was skipped inside a range the finder was already reading.",
+      "detail": "See missed_programs_book_iii."
+    },
+    {
+      "id": "M4",
+      "severity": "medium",
+      "what": "The errata's alternate THREE-BIT BINARY COUNTER program (48 connections, 4 columns x 12 rows) - a complete program that appears in no book. The errata says the Book IV counter 'strains' the relays and that this alternate 'by-passes the relay indicator lights so that full voltage is supplied to the relay coils'. Any conformance suite that runs IV-EXP1 needs this one too.",
+      "detail": "See errata_alternate_counter."
+    },
+    {
+      "id": "M5",
+      "severity": "medium",
+      "what": "The errata's Book V pages 21-22 note: 'when programming a geometric form or a numeral for recognition, be sure that the connections from M10 are made to the TOP terminals in the matrix.' The finder's headline finding about V-EXP12 (Arabic Numeral Recognition) mentions 'four wires each on M10 and M11' but not the top-terminal rule, which is exactly the sort of thing a simulator gets wrong."
+    },
+    {
+      "id": "M6",
+      "severity": "low",
+      "what": "Two further PDFs sit in raw/pdf that the finder neither read nor listed as out of scope: maintenance-manual.pdf (relay/motor adjustment - bears on the relay timing model) and book7-capacitor-resistor.pdf, whose cover reads 'Minivac 601/6010 Capacitor/Resistor Manual' and which contains rotary-switch program fragments. The latter is a 601/6010 JOINT document and is a live 6010-contamination risk for any later agent; it should be explicitly scoped in or out."
+    },
+    {
+      "id": "M7",
+      "severity": "low",
+      "what": "The errata's four game notes for Book VI, which change observable behaviour the finder recorded: Secret Code and Electronic Maze re-set by turning power off then on; Combination Lock re-sets by turning the rotary switch through one complete revolution; Tic-Tac-Toe 'if the game is a tie, MINIVAC will indicate a tie on the fifth move but will not indicate a move into the last available space'; Match Game's 'To Play' text is corrected to 'Turn the rotary switch to 15' (i.e. the dial is set by hand, NOT by pushbutton 3 as the finder's procedure_as_printed step 1 says); Mind Reading Trick - zero is considered even; Reaction Time Tester - add dummy rotary connections or cover the dial."
+    }
+  ],
+
+  "errata_global_facts": [
+    {"claim": "All + and - terminals are connected together. A connection to 1+ is the same as 3+, 6+, or M+. A connection to 2- is the same as 4-, 5-, or M-.", "tag": "verified", "cite": "errata.pdf p1 left col"},
+    {"claim": "Common terminals are any set of interconnected terminals - 'the two terminals at 6R, the six at M10, or the four at 3com'. Programs may be routed through unused common terminals to save wire length: 1X/6A == 1X/4R + 4R/6A, or 1X/4com + 4com/6A.", "tag": "verified", "cite": "errata.pdf p1 left col"},
+    {"claim": "Power must be OFF while wiring or unwiring a program, to prevent accidental short circuits.", "tag": "verified", "cite": "errata.pdf p1 left col"},
+    {"claim": "A programming error can cause a short circuit; the circuit breaker must be pushed after correcting it.", "tag": "verified", "cite": "errata.pdf p1 right col"},
+    {"claim": "Some programs are not designed for high-speed operation; carry the procedure out slowly.", "tag": "verified", "cite": "errata.pdf p1 right col"},
+    {"claim": "Relay arms can be physically obstructed by short programming wires; long wires are recommended so wires do not interfere with relay arm movement.", "tag": "verified", "cite": "errata.pdf p1 right col"},
+    {"claim": "The rotary switch pointer can stop BETWEEN adjacent terminals (e.g. between D6 and D7) and make proper contact with neither - a real failure mode the simulator may want to model or explicitly exclude.", "tag": "verified", "cite": "errata.pdf p3, BOOK V page 11 note"},
+    {"claim": "SDC was preparing a second edition of the Minivac Manual; correspondence to the Editor, Linda G. Sprague.", "tag": "verified", "cite": "errata.pdf p4"},
+    {"claim": "The errata sheet's own address line, printed at the foot: '372 Main Street, Watertown, Massachusetts'. This is a THIRD primary attestation of the Watertown address (with the Book V-VI and Book II-III-IV copyright pages) and does NOT resolve the standing Watertown-vs-Cambridge panel-legend discrepancy - it only weights the paper side. Do not treat it as resolving it.", "tag": "verified", "cite": "errata.pdf p1 header and p4 footer"}
+  ],
+
+  "errata_program_corrections": [
+    {"book": "I", "printed_page": 13, "target": "circuit diagram (Exp 6 Manual Relay Operation area)", "correction": "delete the line connecting 1B and 2B on the circuit diagram", "affects_finder_program": "I-EXP6 (diagram only, program list unchanged)", "tag": "verified"},
+    {"book": "I", "printed_page": 24, "target": "MOTOR REVERSING circuit diagram", "correction": "diagram incorrectly labeled - change 6Y to 6V", "affects_finder_program": "I-EXP14 (diagram only; I confirmed by OCR that the printed PROGRAM list already reads 6V/D17, so the finder's six-line list is correct as-is)", "tag": "verified"},
+    {"book": "I", "printed_page": 28, "target": "Problems 7 and 18", "correction": "Problem 7: light 1 and relay 1 should both be on only if both pushbutton 1 and pushbutton 2 are DOWN. Problem 18: pushbutton 5 is used to keep the rotary switch from stopping at D0 when pushbutton 6 is being held down.", "affects_finder_program": "I-PROBLEMS (which the finder tagged [unverified] wholesale)", "tag": "verified"},
+    {"book": "II", "printed_page": 10, "target": "third complete paragraph, second line", "correction": "change DOWN to ON", "tag": "verified"},
+    {"book": "II", "printed_page": 11, "target": "TWO-BUTTON RELAY MEMORY CIRCUIT", "correction": "change 1A/1C to 1A/1G; delete the 1A/1C connection on the circuit diagram", "affects_finder_program": "NONE - the finder never transcribed this program", "tag": "verified"},
+    {"book": "II", "printed_page": 14, "target": "Experiment 6 (Arithmetic)", "correction": "change 2Z/2C to 2X/2C", "affects_finder_program": "NONE - never transcribed", "tag": "verified"},
+    {"book": "III", "printed_page": 36, "target": "circuit diagram for COMPUTER REPRESENTATION OF THREE STATEMENTS", "correction": "the errata entry is present but its body is not legible in the OCR layer and was cut off in my page image; NOT TRANSCRIBED. Needs a targeted image read of errata.pdf p2 right column.", "affects_finder_program": "II-3STMT (mislabelled; actually Book III)", "tag": "unverified"},
+    {"book": "III", "printed_page": 38, "target": "first statement set (1x1=1)", "correction": "insert 'THEN' between statements B and C", "tag": "verified"},
+    {"book": "III", "printed_page": 40, "target": "paragraph below COMPUTER REPRESENTATION OF THREE 'NOT' STATEMENTS", "correction": "second sentence should read 'Light 3 comes ON if pushbutton 1 is pushed and . . .'", "tag": "verified"},
+    {"book": "III", "printed_page": 41, "target": "note", "correction": "EITHER BUT NOT BOTH is often referred to as the EXCLUSIVE OR", "tag": "verified"},
+    {"book": "III", "printed_page": 43, "target": "Relay AND Circuit program", "correction": "change 2+/2H to 1G/2H", "affects_finder_program": "III-RELAYAND - resolves the finder's D5", "tag": "verified"},
+    {"book": "III", "printed_page": 43, "target": "second line on page", "correction": "should read '. . . relay 2 is ON (=1) then light 3 will be ON (=1). Symbolically. . .'", "tag": "verified"},
+    {"book": "III", "printed_page": 46, "target": "complementarity laws", "correction": "should be written 1) A x notA = 0   2) A + notA = 1", "tag": "verified"},
+    {"book": "III", "printed_page": 54, "target": "Mind Reading program", "correction": "change 5V/45 to 5V/4S. Note: zero is considered an even number for this problem.", "affects_finder_program": "III-MINDREADING - see R8", "tag": "verified"},
+    {"book": "III", "printed_page": 58, "target": "three-girls problem condition", "correction": "'It is impossible that the statements Sara should and Camille could not can both be true' should be stated as C x S = error, or notC + notS = truth", "affects_finder_program": "III-3GIRLS-BOOLEAN", "tag": "verified"},
+    {"book": "III", "printed_page": 59, "target": "circuit diagram for 'Boolean Solution'", "correction": "incorrectly labeled - change 1R, 1S, 1T on the far right slide switch to 3R, 3S, 3T respectively", "affects_finder_program": "III-3GIRLS-BOOLEAN", "tag": "verified"},
+    {"book": "III", "printed_page": 61, "target": "CIRCUIT REPRESENTATION", "correction": "incorrect - insert 'E' before the negative power connection", "tag": "verified"},
+    {"book": "III", "printed_page": 62, "target": "Farmer/Goose/Corn/Wolf procedure", "correction": "follow these steps: place the farmer and an additional passenger in the boat (move the appropriate slide switches LEFT); move the boat across the river (push pushbutton 6 to cross, pushbutton 1 for the return trip); unload the boat (move the slide switches RIGHT); repeat until the farmer and all his possessions are across. The farmer may make trips alone.", "affects_finder_program": "III-FARMER", "tag": "verified"},
+    {"book": "IV", "printed_page": 69, "target": "single-input flip-flop", "correction": "push pushbutton 6 SLOWLY when operating it; light 6 will go off and on, indicating the state of the whole flip-flop", "affects_finder_program": "IV-FF1 / IV-FF2", "tag": "verified"},
+    {"book": "IV", "printed_page": 71, "target": "chart title", "correction": "change 'Pushbutton carry' to 'Pushbutton'", "tag": "verified"},
+    {"book": "IV", "printed_page": 72, "target": "Three-Bit Binary Counter", "correction": "the design strains the relays; if the Book IV counter does not perform correctly, use the alternate program and circuit supplied on the errata sheet (see errata_alternate_counter). The alternate circuit by-passes the relay indicator lights so that full voltage is supplied to the relay coils.", "affects_finder_program": "IV-EXP1", "tag": "verified"},
+    {"book": "IV", "printed_page": 73, "target": "Experiments 2 and 3", "correction": "Exp 2 - use the alternate counter circuit if necessary. Exp 3 - if the alternate circuit was used for Exp 1 and 2, use it here too; to make the alternate circuit a universal counter REMOVE 3N/4N, 5N/6N and ADD 3K/4V, 5K/6V, 3N/4S, 5N/6S, 4J/4W, 6J/6W, 4N/4R, 6N/6R. Exception to the p73 procedure: the counter counts UP when BOTH slide switch 4 and slide switch 6 are LEFT, and counts DOWN when BOTH are RIGHT.", "affects_finder_program": "IV-EXP2, IV-EXP3", "tag": "verified"},
+    {"book": "IV", "printed_page": 77, "target": "Experiment 6 note", "correction": "the connections to M10 indicate the 'end-around carry' - the carry out of the high order stage, used when the adder is converted to a subtractor for Experiment 7", "affects_finder_program": "IV-EXP6", "tag": "verified"},
+    {"book": "IV", "printed_page": 79, "target": "Experiment 7 three-bit subtractor, alternate-counter variant", "correction": "first build the adder and modify it for a subtractor, then REMOVE 2C/2G, 3C/3G, 5C/6K, 6C/6F, 6F/M10 and ADD 2E/2G, 3E/3G, 5E/6K, 6C/M10, 6F/M+. Relay indicator light 6 ON indicates an end-around carry, i.e. the subtraction proceeded properly.", "affects_finder_program": "IV-EXP7", "tag": "verified"},
+    {"book": "IV", "printed_page": 80, "target": "note", "correction": "an accumulator must be capable of shifting and so must include a shift register; a shift register need not be capable of accumulating (see automatic shift register, p86)", "tag": "verified"},
+    {"book": "IV", "printed_page": 82, "target": "binary value", "correction": "decimal 60 is 111100 in binary; it is written incorrectly in two places", "tag": "verified"},
+    {"book": "IV", "printed_page": 83, "target": "Experiment 10 (Division) program", "correction": "REMOVE 2C/3G, 2Y/6S, 3C/4G, 5C/6K, 6F/M10. ADD 2E/3G, 2Y/3G, 3E/4G, 5E/6K, 6C/M10, 6F/M+.", "affects_finder_program": "IV-EXP10 - I confirmed all five removal targets are present in the finder's 56-line list, so the correction lands cleanly. Corrected list is 57 lines.", "tag": "verified"},
+    {"book": "V", "printed_page": 2, "target": "Experiment 1 note", "correction": "moving either slide switch will change the light to the opposite state (ON or OFF), regardless of the position of the other slide switch", "affects_finder_program": "V-EXP1 - matches the finder's expected_behaviour", "tag": "verified"},
+    {"book": "V", "printed_page": 10, "target": "second sentence on page", "correction": "should read 'The same will be true for a train moving right through. . . .'", "affects_finder_program": "V-EXP7", "tag": "verified"},
+    {"book": "V", "printed_page": 11, "target": "Experiment 8 (Two-Floor Elevator), 'To use the program'", "correction": "first sentence should read: 'Set the elevator at the first floor by pushing pushbutton 5.'", "affects_finder_program": "V-EXP8 - the finder's initial_settings says 'setting the pointer knob of the rotary switch at 1', which is the UNCORRECTED text", "tag": "verified"},
+    {"book": "V", "printed_page": 11, "target": "Experiment 9 (Three-Floor Elevator) program", "correction": "change 4G/4H to 4G/5H; change D16/M- to D16/M+. Plus, if performance is unsatisfactory: REMOVE 5F/6C, 6C/6- and ADD 5F/6E, 6E/6-, 4E/6C.", "affects_finder_program": "V-EXP9 - the finder's 48-line list contains 4G/4H, D16/M-, 5F/6C and 6C/6-, all four correction targets, unflagged", "tag": "verified"},
+    {"book": "V", "printed_page": 12, "target": "Automatic Toll Collector program", "correction": "REMOVE 3J/4X, 3N/6Y, 4H/5N, 4K/5N, 5L/6G. ADD 3J/4K, 3Y/4Y, 4J/4X, 4X/6L, 5N/6K.", "affects_finder_program": "V-EXP10 - all five removal targets are present in the finder's 55-line list, unflagged. Corrected list is 55 lines.", "tag": "verified"},
+    {"book": "V", "printed_page": "21-22", "target": "character/numeral recognition", "correction": "when programming a geometric form or a numeral for recognition, be sure that the connections from M10 are made to the TOP terminals in the matrix", "affects_finder_program": "V-EXP12", "tag": "verified"},
+    {"book": "V", "printed_page": 24, "target": "Experiment 14 (Sequence Control with Manual Operation) program", "correction": "change 4F/5G to 4F/4G", "affects_finder_program": "V-EXP14 - confirms the finder's flagged suspicion exactly; see U2", "tag": "verified"},
+    {"book": "V", "printed_page": 25, "target": "Automatic Sequence Control", "correction": "to re-set, turn power OFF then ON again", "affects_finder_program": "V-EXP15", "tag": "verified"},
+    {"book": "V", "printed_page": 30, "target": "'CQ' transmitter program", "correction": "change 5X/6E to 5X/6C, and correct the circuit diagram to correspond", "affects_finder_program": "V-EXP16 - the finder's 20-line list contains 5X/6E, unflagged", "tag": "verified"},
+    {"book": "V", "printed_page": 31, "target": "note", "correction": "light 6 flashes on very briefly when indicating a dot; three successive dots may be nearly indistinguishable - slow the rotary switch by holding the pointer knob back during one revolution", "affects_finder_program": "V-EXP18", "tag": "verified"},
+    {"book": "V", "printed_page": 33, "target": "Experiment 19 note", "correction": "always turn the pointer knob CLOCKWISE when indicating a letter for coding", "affects_finder_program": "V-EXP19", "tag": "verified"},
+    {"book": "V", "printed_page": 35, "target": "last paragraph, third sentence", "correction": "should read 'Light 6 will flash on whenever . . .'", "affects_finder_program": "V-EXP21", "tag": "verified"},
+    {"book": "VI", "printed_page": 51, "target": "The Secret Code", "correction": "to re-set the game, turn power off then on", "affects_finder_program": "VI-SECRETCODE", "tag": "verified"},
+    {"book": "VI", "printed_page": 52, "target": "The Combination Lock", "correction": "to re-set the game, turn the rotary switch through one complete revolution", "affects_finder_program": "VI-COMBOLOCK", "tag": "verified"},
+    {"book": "VI", "printed_page": 53, "target": "The Electronic Maze", "correction": "to re-set the game, turn power off then on", "affects_finder_program": "VI-MAZE", "tag": "verified"},
+    {"book": "VI", "printed_page": 55, "target": "The Match Game, 'To Play the Match Game'", "correction": "the first two sentences should be changed to: 'Turn the rotary switch to 15, indicating that there are 15 matches in the pile.'", "affects_finder_program": "VI-MATCHGAME - the finder's procedure step 1 ('Push the re-set button (pushbutton 3). The rotary switch dial will turn to 15') is the UNCORRECTED text; per errata the dial is turned by hand", "tag": "verified"},
+    {"book": "VI", "printed_page": 55, "target": "Tic-Tac-Toe", "correction": "if the game is a tie, MINIVAC will indicate a tie on the fifth move but will not indicate a move into the last available space", "affects_finder_program": "VI-TICTACTOE", "tag": "verified"},
+    {"book": "VI", "printed_page": 57, "target": "The Mind Reading Trick", "correction": "zero is considered even for this problem", "affects_finder_program": "VI-MINDREADING", "tag": "verified"},
+    {"book": "VI", "printed_page": 60, "target": "Reaction Time Tester", "correction": "to prevent the players anticipating the start signal, either make dummy connections to the rotary switch or cover the dial with an inverted box", "affects_finder_program": "VI-REACTION", "tag": "verified"}
+  ],
+
+  "errata_alternate_counter": {
+    "name": "THREE-BIT BINARY COUNTER - ALTERNATE CIRCUIT (Middle Stage Only diagram; full program supplied)",
+    "source": "errata.pdf page 2, right column",
+    "read_from": "OCR text layer of errata.pdf; NOT image-verified. Several lines carry classic OCR damage (leading 1 read as I or l, plus sign spaced).",
+    "tag": "likely",
+    "layout": "4 columns x 12 rows, read column-major, 48 connections",
+    "connections": ["1A/2E","1B/1C","1B/2B","1C/2C","1E/2G","1F/2F","1F/1H","1G/1+","1H/4A","1J/2H","2A/4E","2B/3B","2C/2-","2E/2J","2G/2N","2H/3L","2L/2-","3A/6E","3B/4B","3C/4C","3E/4G","3F/3H","3F/4F","3G/3+","3H/5A","3J/4H","3N/4N","4B/5B","4C/4-","4E/4J","4G/4N","4H/5L","4L/4-","5B/6B","5C/6C","5E/6G","5F/6F","5F/5H","5G/5+","5H/6A","5J/6H","5N/6N","6C/6-","6E/6J","6G/6N","6H/6X","6L/6-","6Y/6+"],
+    "per_line_flags": [
+      {"line": "1F/1H", "note": "OCR printed 'IF/TH'; normalised on grammar. [unverified]"},
+      {"line": "6L/6-", "note": "OCR printed '61/6-'; '6L' is the only legal reading in the grammar, but not image-verified. [unverified]"},
+      {"line": "1B/1C", "note": "OCR clean."}
+    ],
+    "procedure": "Use the procedure on page 72 of Book IV. When pushing pushbutton 6, hold it down long enough for any carry to propagate to the highest stage of the counter.",
+    "needs": "One image read of errata.pdf page 2 right column at 300+ dpi to promote this to [verified]."
+  },
+
+  "missed_programs_book_ii": {
+    "note": "All from book2-3-4.pdf. Book II printed page N = PDF page N+6. These are complete programs the finder's file does not contain at all.",
+    "programs": [
+      {
+        "id": "II-EXP1",
+        "name": "Experiment 1: Binary Input",
+        "printed_page": 6,
+        "pdf_page": 12,
+        "tag": "likely",
+        "read_from": "pdftotext -layout OCR of PDF p12; clean typeset block, not image-verified",
+        "layout": "5 columns x 5 rows, column-major, 25 connections",
+        "connections": ["1X/2X","2X/3X","3X/4X","4X/5X","5X/6Y","6Z/6+","6Y/5H","5H/4H","4H/3H","3H/2H","2H/1H","1Y/1G","1G/1C","1F/1-","2Y/2G","2G/2C","2F/2-","3Y/3G","3G/3C","3F/3-","4Y/4G","4G/4C","4F/4-","5Y/5G","5G/5C"],
+        "behaviour": "Pushbutton down = 1, up = 0; each section's relay latches the bit and the relay indicator light shows it. Pushbutton 6 clears all six relays. Worked example in the text stores 10011 (19)."
+      },
+      {
+        "id": "II-EXP2",
+        "name": "Experiment 2: Decimal Input",
+        "printed_page": 7,
+        "pdf_page": 13,
+        "tag": "likely",
+        "read_from": "OCR of PDF p13",
+        "layout": "5 columns x 5 rows, column-major, 25 connections",
+        "connections": ["1H/2H","2H/3H","3H/4H","4H/5H","5H/6Y","6Z/6+","6Y/5X","5Y/D16","D1/1G","1G/1C","1F/1-","D2/2G","2G/2C","2F/2-","D3/3G","3G/3C","3F/3-","D4/4G","4G/4C","4F/4-","D5/5G","5G/5C","5F/5-"],
+        "connection_count_note": "The OCR block yields 23 distinct lines in a 5x5 grid; two cells appear to be blank in columns 4 and 5. NOT image-verified - the count needs an image read before use. [unverified as to count]",
+        "behaviour": "Turn the DECIMAL INPUT-OUTPUT knob to a digit 1-5 and push pushbutton 5 to store it; the relay indicator light of that section number comes on. Pushbutton 6 clears. Text notes decimal input is limited to 0-15 in general but this program covers 1-5."
+      },
+      {
+        "id": "II-EXP3",
+        "name": "Experiment 3: Secondary Storage",
+        "printed_page": 9,
+        "pdf_page": 15,
+        "tag": "verified",
+        "read_from": "page image, book2-3-4.pdf PDF p15 @150 dpi",
+        "connections": ["1+/1R","1S/1A","1B/1-"],
+        "connection_count": 3,
+        "behaviour": "Slide switch left = 1 (light 1 ON), right = 0 (light 1 OFF). Convention stated on the same page: switch right = 0, switch left = 1."
+      },
+      {
+        "id": "II-MANUALMEM",
+        "name": "Manual Relay Memory Circuit",
+        "printed_page": 10,
+        "pdf_page": 16,
+        "tag": "likely",
+        "read_from": "OCR of PDF p16",
+        "connections": ["1+/1Y","1+/1H","1X/1C","1-/1F","1G/1A","1B/1-"],
+        "connection_count": 6,
+        "behaviour": "Relay 1 remembers 1 only while pushbutton 1 is held down; releasing it reverts to 0."
+      },
+      {
+        "id": "II-SELFLOCK",
+        "name": "Self-Locking Relay Memory Circuit",
+        "printed_page": 10,
+        "pdf_page": 16,
+        "tag": "likely",
+        "read_from": "OCR of PDF p16",
+        "connections": ["1+/1Y","1+/1H","1X/1C","1-/1F","1G/1A","1B/1-","1C/1A"],
+        "connection_count": 7,
+        "behaviour": "Adds 1C/1A, giving a second current path through the relay's own normally-open contact - the relay latches ON and cannot be cleared except by removing power."
+      },
+      {
+        "id": "II-2BUTTONMEM",
+        "name": "Two-Button Relay Memory Circuit (two-input flip-flop)",
+        "printed_page": 11,
+        "pdf_page": 17,
+        "tag": "verified",
+        "read_from": "page image, book2-3-4.pdf PDF p17 @130 dpi",
+        "connections": ["1+/1Y","1+/1H","1X/1C","1G/1C","1B/1-","2-/2Y","2Z/1F","1A/1C"],
+        "connection_count": 8,
+        "errata": "errata.pdf, BOOK II page 11: change 1A/1C to 1A/1G, and delete the 1A/1C connection on the circuit diagram. Corrected last line = 1A/1G.",
+        "behaviour": "Pushbutton 1 = 'forget 0, remember 1'; pushbutton 2 (normally-closed contacts, via 2Z) = 'forget 1, remember 0'. Book II names this the two-input flip-flop."
+      },
+      {
+        "id": "II-FF1",
+        "name": "The Single Input Flip-Flop (Book II printing)",
+        "printed_page": "11-12",
+        "pdf_page": 17,
+        "tag": "likely",
+        "read_from": "OCR of PDF p17-18",
+        "connections": ["1-/1B","1-/1C","1A/1E","1E/2G","1F/2F","1H/1F","1G/1Y","1Y/1+","1X/1J","1J/2H","2J/2E","2E/2A","2B/2-","2-/2C"],
+        "connection_count": 14,
+        "behaviour": "One pushbutton (1) toggles the stored bit. Light 1 ON = remembering 1. NOTE: this is a Book II printing, distinct from the finder's IV-FF1 / IV-FF2 (Book IV, printed pp.69-70). Whether the three printings are the same 14 wires is NOT settled - needs a side-by-side image read.",
+        "warning": "Do NOT assume this equals the finder's IV-FF1 (16 connections) or IV-FF2 (14 connections). Three separate printings exist."
+      },
+      {
+        "id": "II-EXP4",
+        "name": "Experiment 4: Control",
+        "printed_page": "12-13",
+        "pdf_page": 18,
+        "tag": "likely",
+        "read_from": "OCR of PDF p18",
+        "connections": ["5+/5Y","5X/5C","5F/5-","5+/5H","5G/6C","6F/6-","6+/6H","6G/D17","D18/M-"],
+        "connection_count": 9,
+        "behaviour": "Pushbutton 5 energises relay 5; relay 5's contacts energise relay 6; relay 6 closes the motor RUN circuit. A chain demonstrating that the processing unit controls the machine's own operations."
+      },
+      {
+        "id": "II-EXP5",
+        "name": "Experiment 5: Decision Making (equality comparator)",
+        "printed_page": 13,
+        "pdf_page": 19,
+        "tag": "likely",
+        "read_from": "OCR of PDF p19",
+        "connections": ["1+/1H","1H/1L","1L/1X","1Y/1C","1F/1-","1X/2X","2Y/2C","2F/2-","1J/2H","2J/2K","1K/2L","2K/3C","3F/3-"],
+        "connection_count": 13,
+        "behaviour": "Pushbuttons 1 and 2 carry the two binary numbers to compare. Relay 3 comes ON if they are equal, goes OFF if not."
+      },
+      {
+        "id": "II-EXP6",
+        "name": "Experiment 6: Arithmetic (one-bit adder)",
+        "printed_page": 14,
+        "pdf_page": 20,
+        "tag": "likely",
+        "read_from": "OCR of PDF p20",
+        "connections": ["1+/1H","1H/1L","1L/1Y","1Y/2Y","2Z/2C","2F/2-","1X/1C","1F/1-","1G/2G","2H/2A","2B/2-","1N/2K","1K/2N","2L/1A","1B/1-"],
+        "connection_count": 15,
+        "errata": "errata.pdf, BOOK II page 14: change 2Z/2C to 2X/2C.",
+        "behaviour": "Pushbuttons 1 and 2 are the addends (up = 0, down = 1). Light 1 ON = answer 1; light 2 ON = answer 2; no lights = 0."
+      },
+      {
+        "id": "II-EXP7",
+        "name": "Experiment 7: Decimal Output",
+        "printed_page": 15,
+        "pdf_page": 21,
+        "tag": "likely",
+        "read_from": "OCR of PDF p21; the block is 4 columns and includes a stray '6Z' label above the table that may be part of a diagram, not the program",
+        "connections": ["1R/D1","1S/2S","2R/D2","2S/3S","3R/D3","3S/4S","4R/D4","4S/5S","5R/D5","5S/6S","6R/D6","6S/D19","D18/D16","D16/M-","D17/6X","6Y/6+"],
+        "connection_count": 16,
+        "count_warning": "The OCR grid is 4 columns of 5 with one short column; my reconstruction is 16 lines but the layout is ambiguous and the isolated '6Z' is unexplained. NOT image-verified. [unverified as to completeness]",
+        "behaviour": "Slide switches 1-6 (secondary storage) drive the rotary switch to display the stored number as decimal output. All switches start RIGHT."
+      }
+    ]
+  },
+
+  "missed_programs_book_iii": [
+    {
+      "id": "III-XOR-PB",
+      "name": "The Operation 'EITHER BUT NOT BOTH' (pushbutton XOR)",
+      "book": "Book III",
+      "printed_page": 41,
+      "pdf_file": "book2-3-4.pdf",
+      "pdf_page": 47,
+      "tag": "likely",
+      "read_from": "pdftotext -layout OCR of PDF p47",
+      "connections": ["1+/1Y","1Z/2X","1X/2Z","2Y/3A","3B/3-"],
+      "connection_count": 5,
+      "behaviour": "Light 3 = statement C. The program uses the pushbutton contacts so that light 3 comes on if either pushbutton 1 or pushbutton 2 is pushed, but not if both are. errata.pdf notes this operation is 'often referred to as the EXCLUSIVE OR'."
+    },
+    {
+      "id": "III-RELAYXOR",
+      "name": "The Relay EITHER BUT NOT BOTH Circuit",
+      "book": "Book III",
+      "printed_page": 44,
+      "pdf_file": "book2-3-4.pdf",
+      "pdf_page": 50,
+      "tag": "likely",
+      "read_from": "pdftotext -layout OCR of PDF p50",
+      "connections": ["1+/1Y","1X/1C","1F/1-","1+/1H","1J/2G","1G/2J","2+/2Y","2X/2C","2F/2-","2H/3A","3B/3-"],
+      "connection_count": 11,
+      "behaviour": "Relay XOR using the cross-coupled J/G contact pair of the two relays. Completes the Book III set of four relay logic circuits (AND, OR, NOT, EITHER-BUT-NOT-BOTH); the finder transcribed the first three and stopped."
+    }
+  ],
+
+  "confirmed_unchanged": [
+    {"program": "VI-TICTACTOE", "what": "All 72 connections, in the finder's exact order (column-major, 4 columns x 18 rows). Zero errors. Procedure text and the two footnote markers confirmed.", "how": "book5-6.pdf PDF p62 @110 dpi, all four columns read.", "tag": "verified"},
+    {"program": "V-EXP4 Traffic Light", "what": "All 22 connections including D16/M-, D17/M-, D18/M+ and D11/D12.", "how": "book5-6.pdf PDF p11 @130 dpi.", "tag": "verified"},
+    {"program": "V-EXP5 Traffic Light with Pedestrian Control", "what": "All 26 connections; the absence of a D13/D14 line is real, as the finder noted.", "how": "book5-6.pdf PDF p11 @130 dpi.", "tag": "verified"},
+    {"program": "III-RELAYAND", "what": "Exactly ten printed lines, ending 2+/2H, 2G/3A, 3B/3-. Also: the circuit DIAGRAM on the same page already draws 1G to 2H, so diagram and program list disagree in the original - the errata sides with the diagram.", "how": "book2-3-4.pdf PDF p49 @130 dpi.", "tag": "verified"},
+    {"program": "III-RELAYOR", "what": "All 11 connections.", "how": "book2-3-4.pdf PDF p49 @130 dpi.", "tag": "verified"},
+    {"program": "VI-SEQREC (Combination Lock printing)", "what": "All 38 connections, and the anomalous line really does read 5A/6J.", "how": "book5-6.pdf PDF p58 @130 dpi.", "tag": "verified"},
+    {"program": "VI-COMBOLOCK", "what": "The 'Now add the connection D16/M+' line, the combination table (D13/6com, D2/5com, D11/4com, D10/3com, D6/2com, D9/1com, D8/6E*) with 'left to 10' genuinely carrying two rows, and the asterisk footnote.", "how": "book5-6.pdf PDF p58 @130 dpi.", "tag": "verified"},
+    {"program": "VI-SECRETCODE", "what": "The re-coding example '2T/1com to 2T/2com and 6W/2com to 6W/1com', the starred-connection footnote, and 'you will be able to generate 63 different codes'.", "how": "book5-6.pdf PDF p58 @130 dpi.", "tag": "verified"},
+    {"program": "I-EXP12 and I-EXP13", "what": "Both lists complete and in order; '6-/D18' (Exp 12) and '5-/D18' (Exp 13) both genuinely printed.", "how": "book1.pdf PDF p25 @130 dpi.", "tag": "verified"},
+    {"program": "I-EXP14", "what": "The printed PROGRAM list reads 6+/6R, 6+/6W, 6-/6T, 6T/6U, 6S/D18, 6V/D17 - so the errata's 'change 6Y to 6V' applies only to the circuit diagram, and the finder's list needs no change.", "how": "book1.pdf OCR of PDF p26, clean typeset program block.", "tag": "likely"},
+    {"program": "V-JOBSELECT and V-ASSOCMEM", "what": "Connection counts (5 and 40) confirmed against the OCR grids.", "how": "book5-6.pdf OCR of PDF p48 and p50.", "tag": "likely"},
+    {"program": "coverage of Books V and VI", "what": "Complete. I checked both CONTENTS pages against the finder's program list: all 21 Book V experiments, all four Book V non-experiment circuits (translation, job selection, associative memory, maze solver, flashing lights, super circuit) and all eleven Book VI games are present. 'Mate Selection' (Book V p42) has no separate program - the text says it reuses the Job Selection program with different questionnaires, so its absence is correct.", "how": "book5-6.pdf PDF p5-6 (CONTENTS), p48-50.", "tag": "verified"},
+    {"program": "coverage of Book I", "what": "All 14 experiments present.", "tag": "likely"}
+  ],
+
+  "still_not_settled": [
+    "The Watertown vs Cambridge address split. Three paper primaries (Book II-III-IV copyright page, Book V-VI copyright page, errata sheet header and footer) all say '372 Main Street, Watertown, Massachusetts'; the panel legend reportedly says Cambridge. I did not open the panel photograph - it is another agent's primary. Still unresolved, and the errata does not resolve it.",
+    "The ring order of the nine matrix squares behind Tic-Tac-Toe's 'move 4 / move 5 squares to the right' rule. Nothing in Book VI, Book I or the errata restates the numbering. Needs the panel photograph.",
+    "Book II Experiment 2 and Experiment 7 connection counts (23 and 16 by my OCR reconstruction, in grids whose column breaks are ambiguous). Needs one image read each of book2-3-4.pdf PDF p13 and p21.",
+    "The errata's Book III page 36 correction body, which is illegible in the OCR layer and was cut off in my image. Needs a targeted read of errata.pdf page 2, right column.",
+    "The errata's alternate three-bit binary counter program: transcribed from OCR only, two lines carry OCR damage. Needs errata.pdf page 2 right column at 300+ dpi.",
+    "Whether Book II's single-input flip-flop (14 wires) is the same program as Book IV's IV-FF1 (16 wires) and IV-FF2 (14 wires). Three printings, not cross-checked.",
+    "Book I answer pages (printed 29-32) - the finder's 20 problem answers remain hand-lettered and [unverified]; the errata adds notes for Problems 7 and 18 but not the wiring.",
+    "Rotary-switch dial speed in rpm. Still nowhere in the manuals or the errata.",
+    "Whether book7-capacitor-resistor.pdf (a joint '601/6010' document) is in scope, and whether the maintenance manual's relay/motor adjustment data should feed the timing model."
+  ],
+
+  "claim_counts": {
+    "refuted": 9,
+    "downgraded": 9,
+    "upgraded": 6,
+    "missed_programs_recovered": 14,
+    "errata_corrections_recovered": 44,
+    "programs_i_re_read_from_page_images": 10,
+    "transcription_errors_found_in_re_read_programs": 0
+  },
+
+  "verdict": "The finder's transcriptions are trustworthy - I re-read ten programs from page images and found not one wrong or hallucinated line, including the 72-line Tic-Tac-Toe table it claimed as its centrepiece. The file's failures are of scope and of judgement: it never opened errata.pdf, sitting in the same directory, which corrects eight of its own transcribed programs, adds a 48-wire program, and settles three of its 'not settled by the sources' items outright; it transcribed zero of Book II's eleven programs and skipped two Book III circuits; and its one flagged Tic-Tac-Toe 'anomaly' is a false alarm that would corrupt a correct line if acted on."
+}

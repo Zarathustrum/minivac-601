@@ -1,0 +1,142 @@
+#!mv601-trace 1
+# id=IV-EXP6-DERIVED contract=1.1.0 netlist=fnv1a64:2354ceebf3f8c566 profile=MV601-REF-A/fnv1a64:92c1419fd8cdd210 wires=48
+# rules settleTicks=200 chatterN=8 relayWinTicks=800 relayQuietTicks=2400 buttonWinTicks=2000 buttonQuietTicks=6000 switchWinTicks=4800 switchQuietTicks=14400 dialWinTicks=3332 dialQuietTicks=9996
+# margins minDecisionUa=5 minTickGap=9 marginal=false
+     0.0 > switch4 target=1000
+     0.0 > switch5 target=1000
+     0.0 > switch6 target=1000
+     0.0 > power on
+     0.0 * power off->on
+     3.2 * outLamp4 off->dim  outLamp6 off->dim
+    11.2 * relay4 nc->mid
+    12.5 * relay4 mid->no
+    15.8 * outLamp5 off->dim
+    22.3 * outLamp4 dim->on  outLamp6 dim->on
+    26.9 * sw4 nc->mid  sw5 nc->mid  sw6 nc->mid
+    30.9 * outLamp4 on->dim  outLamp6 on->dim
+    32.7 * relay4 no->mid
+    33.0 * sw4 mid->no  sw5 mid->no  sw6 mid->no
+    33.6 * relay4 mid->nc
+    86.2 * outLamp5 dim->off
+    86.5 * outLamp4 dim->off  outLamp6 dim->off
+   579.9 ? relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp3=off outLamp4=off outLamp5=off outLamp6=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off  "In this experiment we will build a device which is capable of adding together two 3-bit binary numbers and displaying a result of not more than 4 binary bits. ... The high order stage of the adder is wired so that the carry from it is displayed by light 3."
+   579.9 > switch4 target=0
+   606.8 * sw4 no->mid
+   612.9 * sw4 mid->nc
+   616.2 * outLamp4 off->dim
+   635.1 * outLamp4 dim->on
+  1159.8 ? relay2=nc relay3=nc relay4=nc relay5=nc relay6=nc outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp2=off indLamp3=off indLamp4=off indLamp5=off  "In this experiment we will build a device which is capable of adding together two 3-bit binary numbers and displaying a result of not more than 4 binary bits. ... The high order stage of the adder is wired so that the carry from it is displayed by light 3."
+  1159.8 > button4 target=1000
+  1159.8 > button6 target=1000
+  1171.0 * pb4 nc->mid  pb6 nc->mid
+  1173.5 * pb4 mid->no  pb6 mid->no
+  1183.4 * indLamp2 off->dim  indLamp5 off->dim
+  1184.7 * relay2 nc->mid
+  1185.2 * relay5 nc->mid
+  1186.0 * relay2 mid->no
+  1186.5 * relay5 mid->no
+  1189.3 * outLamp3 off->dim
+  1189.8 * outLamp6 off->dim
+  1205.2 * outLamp4 on->dim
+  1208.4 * outLamp3 dim->on
+  1208.8 * outLamp6 dim->on
+  1223.9 * indLamp2 dim->on  indLamp5 dim->on
+  1260.8 * outLamp4 dim->off
+  1744.0 ? relay2=no relay3=nc relay4=nc relay5=no relay6=nc outLamp3=on outLamp4=off outLamp5=off outLamp6=on indLamp2=on indLamp3=off indLamp4=off indLamp5=on  "The answer will be displayed in binary output lights 3, 4, 5 and 6. For example, if lights 3 and 6 are ON and lights 4 and 5 are OFF, the answer is 1001 (9)."
+  1744.0 > switch5 target=0
+  1744.0 > switch6 target=0
+  1744.0 > button5 target=1000
+  1755.2 * pb5 nc->mid
+  1757.7 * pb5 mid->no
+  1761.0 * outLamp5 off->dim
+  1770.9 * sw5 no->mid  sw6 no->mid
+  1777.0 * sw5 mid->nc  sw6 mid->nc
+  1780.0 * outLamp5 dim->on
+  1787.0 * indLamp3 off->dim
+  1788.5 * relay3 nc->mid
+  1789.8 * relay3 mid->no
+  1791.2 * outLamp6 on->dim
+  1793.2 * relay2 no->mid
+  1794.1 * relay2 mid->nc
+  1797.4 * outLamp4 off->dim
+  1799.5 * indLamp2 on->dim
+  1816.4 * outLamp4 dim->on
+  1827.4 * indLamp3 dim->on
+  1846.8 * outLamp6 dim->off
+  1855.2 * indLamp2 dim->off
+  2375.3 ? relay2=nc relay3=no relay4=nc relay5=no relay6=nc outLamp3=on outLamp4=on outLamp5=on outLamp6=off indLamp2=off indLamp3=on indLamp4=off indLamp5=on  "In this experiment we will build a device which is capable of adding together two 3-bit binary numbers and displaying a result of not more than 4 binary bits. ... The high order stage of the adder is wired so that the carry from it is displayed by light 3."
+  2375.3 > switch4 target=1000
+  2375.3 > switch5 target=1000
+  2402.2 * sw4 nc->mid  sw5 nc->mid
+  2406.9 * relay3 no->mid
+  2407.8 * relay3 mid->nc
+  2408.3 * sw4 mid->no  sw5 mid->no
+  2413.2 * indLamp3 on->dim
+  2417.7 * indLamp2 off->dim
+  2419.0 * relay2 nc->mid
+  2419.4 * relay4 nc->mid
+  2420.3 * relay2 mid->no
+  2420.7 * relay4 mid->no
+  2427.2 * outLamp3 on->dim
+  2434.3 * relay3 nc->mid
+  2435.6 * relay3 mid->no
+  2439.4 * relay2 no->mid
+  2439.8 * outLamp5 on->dim
+  2440.3 * relay2 mid->nc
+  2441.8 * indLamp3 dim->on
+  2442.4 * outLamp3 dim->on
+  2451.6 * outLamp4 on->dim
+  2473.7 * indLamp2 dim->off
+  2495.4 * outLamp5 dim->off
+  2507.2 * outLamp4 dim->off
+  2971.7 ? relay2=nc relay3=no relay4=no relay5=no relay6=nc outLamp3=on outLamp4=off outLamp5=off outLamp6=off indLamp2=off indLamp3=on indLamp4=off indLamp5=on  "In this experiment we will build a device which is capable of adding together two 3-bit binary numbers and displaying a result of not more than 4 binary bits. ... The high order stage of the adder is wired so that the carry from it is displayed by light 3."
+  2971.7 > button4 target=0
+  2971.7 > button5 target=0
+  2971.7 > switch5 target=0
+  2982.9 * pb4 no->mid  pb5 no->mid
+  2985.4 * pb4 mid->nc  pb5 mid->nc
+  2987.6 * relay3 no->mid
+  2988.5 * relay3 mid->nc
+  2988.7 * outLamp5 off->dim
+  2994.0 * indLamp3 on->dim
+  2998.6 * sw5 no->mid
+  3003.3 * outLamp3 on->dim
+  3004.5 * relay4 no->mid
+  3004.7 * sw5 mid->nc
+  3005.4 * relay4 mid->nc
+  3017.8 * relay3 nc->mid
+  3019.1 * relay3 mid->no
+  3028.6 * indLamp2 off->dim
+  3029.1 * indLamp3 dim->on
+  3030.3 * relay2 nc->mid
+  3031.6 * relay2 mid->no
+  3034.9 * outLamp4 off->dim
+  3053.9 * outLamp4 dim->on
+  3056.8 * outLamp5 dim->off
+  3058.9 * outLamp3 dim->off
+  3068.9 * indLamp2 dim->on
+  3589.0 ? relay2=no relay3=no relay4=nc relay5=no relay6=nc outLamp3=off outLamp4=on outLamp5=off outLamp6=off indLamp2=on indLamp3=on indLamp4=off indLamp5=on  "In this experiment we will build a device which is capable of adding together two 3-bit binary numbers and displaying a result of not more than 4 binary bits. ... The high order stage of the adder is wired so that the carry from it is displayed by light 3."
+  3589.0 > button6 target=0
+  3589.0 > switch4 target=0
+  3600.2 * pb6 no->mid
+  3602.7 * pb6 mid->nc
+  3604.8 * relay5 no->mid
+  3605.7 * relay5 mid->nc
+  3609.0 * outLamp6 off->dim
+  3609.5 * relay3 no->mid
+  3610.4 * relay3 mid->nc
+  3611.3 * indLamp5 on->dim
+  3613.9 * relay4 nc->mid
+  3614.2 * relay2 no->mid
+  3615.1 * relay2 mid->nc
+  3615.2 * relay4 mid->no
+  3615.9 * sw4 no->mid  indLamp3 on->dim
+  3618.5 * outLamp5 off->dim
+  3620.6 * indLamp2 on->dim
+  3622.0 * sw4 mid->nc
+  3628.1 * outLamp6 dim->on
+  3637.5 * outLamp5 dim->on
+  3666.9 * indLamp5 dim->off
+  3671.5 * indLamp3 dim->off
+  3676.2 * indLamp2 dim->off
+  4196.3 ? relay2=nc relay3=nc relay4=no relay5=nc relay6=nc outLamp3=off outLamp4=on outLamp5=on outLamp6=on indLamp2=off indLamp3=off indLamp4=off indLamp5=off  "In this experiment we will build a device which is capable of adding together two 3-bit binary numbers and displaying a result of not more than 4 binary bits. ... The high order stage of the adder is wired so that the carry from it is displayed by light 3."

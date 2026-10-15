@@ -1,0 +1,263 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "V-EXP8",
+  "source": "Books V-VI printed pp.10-11 = book5-6.pdf PDF pp.16-17; errata.pdf PDF p.3 'page 11' Experiment 8 procedure entry (ER-30)",
+  "tier": "C2",
+  "confidence": "likely",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "5A/6C",
+    "5B/5-",
+    "5B/6B",
+    "5C/5-",
+    "5C/5H",
+    "5F/6X",
+    "5G/6E",
+    "5L/5X",
+    "5N/6E",
+    "5Y/6Y",
+    "6A/6K",
+    "6C/6G",
+    "6J/D17",
+    "6F/6-",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6L/6-",
+    "6N/D18",
+    "6Y/D1",
+    "D1/M+",
+    "D7/M-",
+    "D16/D19"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "5A/6C",
+    "5B/5-",
+    "5B/6B",
+    "5C/5-",
+    "5C/5H",
+    "5F/6X",
+    "5G/6E",
+    "5L/5X",
+    "5N/6E",
+    "5Y/6Y",
+    "6A/6K",
+    "6C/6G",
+    "6J/D17",
+    "6F/6-",
+    "6G/6N",
+    "6H/6+",
+    "6J/6K",
+    "6L/6-",
+    "6N/D18",
+    "6Y/D1",
+    "D1/M+",
+    "D7/M-",
+    "D16/D19"
+  ],
+  "script": [
+    {
+      "k": "do",
+      "cmd": {
+        "k": "power",
+        "on": true
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 3000
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16; errata.pdf PDF p.3 'page 11: First sentence under \"To use the program\" (experiment 8) should read'",
+      "quote": "[errata, p.11:] Set the 'elevator' at the first floor by pushing pushbutton 5. / [p.10:] The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor. Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.10 = book5-6.pdf PDF p.16; errata.pdf PDF p.3 'page 11: First sentence under \"To use the program\" (experiment 8) should read'",
+      "quote": "[errata, p.11:] Set the 'elevator' at the first floor by pushing pushbutton 5. / [p.10:] The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor. Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.11 = book5-6.pdf PDF p.17; printed p.10 = PDF p.16",
+      "quote": "[p.11:] To call the \"elevator\" to the second floor, push pushbutton 6. The \"elevator\" will immediately move to the second floor (the pointer knob will point to 7). / [p.10:] The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor. Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c7"
+        },
+        {
+          "dev": "outLamp6",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.11 = book5-6.pdf PDF p.17; printed p.10 = PDF p.16",
+      "quote": "[p.11:] To call the \"elevator\" to the second floor, push pushbutton 6. The \"elevator\" will immediately move to the second floor (the pointer knob will point to 7). / [p.10:] The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor. Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 1000
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 200
+    },
+    {
+      "k": "do",
+      "cmd": {
+        "k": "button",
+        "n": 5,
+        "target": 0
+      }
+    },
+    {
+      "k": "advance",
+      "ms": 100
+    },
+    {
+      "k": "until",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        }
+      ],
+      "maxMs": 15000,
+      "cite": "Books V-VI printed p.11 = book5-6.pdf PDF p.17; printed p.10 = PDF p.16",
+      "quote": "[p.11:] To return the \"elevator\" to the first floor, push pushbutton 5. / [p.10:] The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor. Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+    },
+    {
+      "k": "advance",
+      "ms": 5000
+    },
+    {
+      "k": "expect",
+      "obs": [
+        {
+          "dev": "dial",
+          "v": "c1"
+        },
+        {
+          "dev": "outLamp5",
+          "v": "on"
+        }
+      ],
+      "cite": "Books V-VI printed p.11 = book5-6.pdf PDF p.17; printed p.10 = PDF p.16",
+      "quote": "[p.11:] To return the \"elevator\" to the first floor, push pushbutton 5. / [p.10:] The rotary switch dial at 1 indicates that the elevator is at the first floor; the dial at 7 indicates that the elevator is at the second floor. Similarly, binary output light 5 on indicates that the elevator is at the first floor; binary output light 6 on indicates that the elevator is at the second floor."
+    }
+  ],
+  "digest": {
+    "eventCount": 105,
+    "moverTransitions": [
+      0,
+      0,
+      0,
+      0,
+      4,
+      6,
+      0,
+      0,
+      0,
+      0,
+      8,
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      50
+    ]
+  },
+  "note": "Wires are the printed 23 unchanged: ER-30 (errata.pdf PDF p.3, 'page 11') corrects only the procedure, replacing 'by setting the pointer knob of the rotary switch at 1' with 'by pushing pushbutton 5', so errata_applied is empty and the script sets the first floor with a pb5 push instead of a dial grab. Each push is a 200 ms press then release; the page prints no hold time. Each floor claim is an until on the dial position, then a 5 s advance and an expect, so the assertion is where the dial rests, not a pass-through. Only the printed 'on' half of the floor map is asserted (light 5 on at the first floor, light 6 on at the second); the page does not state that the other floor light is off, so that and the relay indicator lights are left to Step 7. Book V printed p.26 (PDF p.32) reuses this circuit for manual control with feedback; its claims (pb6 moves the knob to 7 and light 6 comes on; at 1, light 5 comes on) are the same rest observables asserted here, and its uncorrected 'set the pointer knob at 1' start is not scripted. The dial's start position (c0) and its power-on run to c7 (relay 6 is released at power-on; the dial lands on c7 at 512.5 ms and rests there until the first pb5 push at 3 s) are construction state, not printed. 'Immediately' is not quantified, so no timing is asserted beyond the until window. Motor sweep (the four tools/motor-sweep.ts axes run on this fixture): FRAGILE on coast_udeg_stop_shorted, passing 0-16.875 deg and failing from 19.6875 deg (script[8]: the braked coast carries the wiper off pad 1); the profile value 5 deg passes and is not tuned. run_mrpm (25-60 rpm), contact_arc_udeg (fails only at 1.4-4.2 deg) and coast_udeg_drive_removed (0-45 deg) are ROBUST. Knife-edge trigger: minDecisionUa 8, relay 6's drop-out when relay 5 shorts its coil (5H/5G to 6E) on the pb6 push, is below min_decision_ua 14; minTickGap 9; all 6 bless robustness perturbations held, so the fixture is not marginal. Rotary geometry, run rate and coast remain profile fallbacks (O-R1, O-R3, O-R5)."
+}

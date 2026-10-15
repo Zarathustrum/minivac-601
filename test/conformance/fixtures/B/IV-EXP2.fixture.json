@@ -1,0 +1,89 @@
+{
+  "schema": "minivac.fixture/1",
+  "id": "IV-EXP2",
+  "source": "docs/research/programs.md#IV-EXP2",
+  "tier": "B",
+  "confidence": "verified",
+  "profile": "MV601-REF-A",
+  "contract": "1.1.0",
+  "as_printed": [
+    "1A/2E", "1B/1-", "1C/2C", "1E/2G", "1F/2F", "1F/1H", "1G/1+", "1J/2H", "1J/4K", "2A/4E", "2B/2-",
+    "2C/3C", "2E/2J", "2F/4A", "3A/6E", "3B/3-", "3C/4C", "3E/4G", "3F/3H", "3F/4F", "3G/3+", "3J/4H",
+    "3J/6K", "3L/4L", "3N/4H", "4B/4-", "4C/5C", "4E/4J", "4F/5A", "5B/5-", "5C/6C", "5E/6G", "5F/6F",
+    "5F/5H", "5G/5+", "5J/6H", "5J/6X", "5L/6L", "5N/6H", "6A/6F", "6B/6-", "6C/6-", "6E/6J", "6Y/6+"
+  ],
+  "errata_applied": [],
+  "wires": [
+    "1A/2E", "1B/1-", "1C/2C", "1E/2G", "1F/2F", "1F/1H", "1G/1+", "1J/2H", "1J/4K", "2A/4E", "2B/2-",
+    "2C/3C", "2E/2J", "2F/4A", "3A/6E", "3B/3-", "3C/4C", "3E/4G", "3F/3H", "3F/4F", "3G/3+", "3J/4H",
+    "3J/6K", "3L/4L", "3N/4H", "4B/4-", "4C/5C", "4E/4J", "4F/5A", "5B/5-", "5C/6C", "5E/6G", "5F/6F",
+    "5F/5H", "5G/5+", "5J/6H", "5J/6X", "5L/6L", "5N/6H", "6A/6F", "6B/6-", "6C/6-", "6E/6J", "6Y/6+"
+  ],
+  "note": "Experiment 2 prints no wiring: Experiment 1's text, which runs onto printed p.73 (PDF p.79), ends just above the Experiment 2 heading with 'Leave the Binary Counter on the MINIVAC for Experiment 2.', so as_printed and wires are the Experiment 1 list printed on p.72 (PDF p.78), image-checked against programs.json wiresEffective, 44 wires. ER-22 (errata.pdf p.3, 'page 73') reads 'Experiment 2 — use the above circuit if necessary.'; the above circuit is the alternate counter (ER-ALTCOUNTER). It is a conditional substitution, not a wire edit, so errata_applied is empty and this fixture runs the printed counter. The lamp patterns for 2 and for 010 combine p.73's displayed number with p.72's 'Binary output lights 4, 5 and 6' readings. For 5, p.73 prints no lamp pattern; lights 4 and 6 come from row 11 of the p.71 SEQUENCE OF OPERATIONS chart, which prints Flip-Flop B = 1 (a misprint, programs.md IV-EXP1), so light 5 is not asserted at count 5, as in IV-EXP1-SLOW. The counter is started from power-on; p.73 does not print the starting state, so none is asserted. Press and release timing follows IV-EXP1-SLOW; the page prints no timing. Release steps carry the counter collapse tag.",
+  "script": [
+    { "k": "do", "cmd": { "k": "power", "on": true } },
+    { "k": "settle", "maxMs": 200 },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "off" }
+    ], "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 2; light order and pattern from printed p.72 = PDF p.78, Procedure step 2", "quote": "to add 2 and 3: push and release pushbutton 6 twice; the counter will display the binary number 2. | Binary output lights 4, 5 and 6 will now read OFF, ON, OFF or 010. The Binary Counter is now displaying a 2." },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "on" }, { "dev": "outLamp6", "v": "on" }
+    ], "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 paras 2 and 4; lamp states from printed p.71 = PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 11, Light 4 = Flip-Flop A and Light 6 = Flip-Flop C per the block diagram; row 11 prints Flip-Flop B = 1, a chart misprint, so light 5 is not asserted; ER-20", "quote": "Now push the pushbutton 3 more times and the counter will display the answer—the binary number 5. | At this point your counter should be displaying binary 5. | 1 | NO | 1 | NO | 1 | UP | 5" },
+
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "advance", "ms": 80 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 }, "collapse": true },
+    { "k": "settle", "maxMs": 200 },
+    { "k": "advance", "ms": 100 },
+    { "k": "expect", "obs": [
+      { "dev": "outLamp4", "v": "off" }, { "dev": "outLamp5", "v": "on" }, { "dev": "outLamp6", "v": "off" }
+    ], "cite": "Book IV printed p.73 = book2-3-4.pdf PDF p.79, Experiment 2 para 4; light order from printed p.72 = PDF p.78, Procedure step 2", "quote": "Now push button 6 five more times. The pushbutton has now been pushed ten times | The counter will display 010. | Binary output lights 4, 5 and 6 will now read OFF, ON, OFF or 010." }
+  ]
+}
