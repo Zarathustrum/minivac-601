@@ -2,6 +2,15 @@
 
 Update before ending a session. Forward-looking state only; settled choices are in `docs/DECISIONS.md`.
 
+## 2026-10-16 — The panel logotype fits its plate; work is on `main`. **Next: Tom's end review.**
+
+- **Logotype** (Tom's smoke test: Godot clipped it at the panel's right edge). Both builds now set
+  "Minivac 601" in Arial Bold, at the same size, centred on its point. It spans 0.738–0.971 of panel
+  width, inside the upper-right plate (0.728–0.981). Arial Black had made it 110% of the plate's width;
+  on PH2 the title is 83%, with about the same letter height. New checks: the browser test "fits the
+  logotype inside its plate" and the Godot geometry check `logotype-fit`.
+- **Branch.** `feature/phase-5-corpus` is merged and deleted. New work goes on `main`.
+
 ## 2026-10-15 — Phase 5 closed; the public copy is on GitHub (private). **Next: Tom's end review.**
 
 - **Step 9 done.** The full gate passed, the public-exposure audit ran, and Tom made the publish
