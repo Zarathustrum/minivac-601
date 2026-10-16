@@ -106,6 +106,15 @@ test('keeps the fixed panel geometry contained and aligned', async ({ page }, te
   expect(fitted!.width).toBeGreaterThan(fitted!.height);
 });
 
+test('fits the logotype inside its plate', async ({ page }) => {
+  const plate = await page.locator('.console-plate[data-plate="upper-right"]').boundingBox();
+  const logo = await page.locator('[data-legend="right/logotype"]').boundingBox();
+  expect(plate).not.toBeNull();
+  expect(logo).not.toBeNull();
+  expect(logo!.x).toBeGreaterThanOrEqual(plate!.x);
+  expect(logo!.x + logo!.width).toBeLessThanOrEqual(plate!.x + plate!.width);
+});
+
 test('loads the exact production demo manifest, profile lifecycle, and D2/source facts', async ({ page }) => {
   const selector = page.getByRole('combobox', { name: 'Select demo' });
   expect(await selector.locator('option').evaluateAll((options) => options.map((option) => ({

@@ -18,6 +18,7 @@ public static class PanelTheme
     public static readonly Vector2 Arrowhead = new(6, 4);
     public const double BracketTickDepth = 0.006;
     public const double TwoLineLegendWidth = 0.05;
+    public const double LogotypeTracking = -0.06;
     public static double RelayCrossbarShift(int travel) =>
         travel * TactileTheme.CrossbarShift.Value / 1000 - TactileTheme.CrossbarShift.Value / 2;
     public static double DialPointerDegrees(long udeg) => udeg / TactileTheme.DialRotation.Value;

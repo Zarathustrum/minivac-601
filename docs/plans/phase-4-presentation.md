@@ -1324,7 +1324,7 @@ amended here and in the dated record, never widened silently in the test.
 | `Chrome.cs` | P2 | Presentation | `Godot.CanvasLayer`, `Godot.Control` and its subclasses |
 | `PanelLayout.cs` | P2 | Engine-free | `System`, `System.Text.Json`; Godot value types |
 | `PanelTheme.cs` | P2 | Engine-free | `System`; `Godot.Color`, `Godot.Vector2` |
-| `PanelView.cs` | P2 | Presentation | `Godot.Control`, `Button`, `Panel`, `Line2D`, `TextureRect`, `Label`, `Godot.Vector2`, `Godot.Color` |
+| `PanelView.cs` | P2 | Presentation | `Godot.Control`, `Button`, `Panel`, `Line2D`, `TextureRect`, `Label`, `FontVariation`, `SystemFont`, `Godot.Vector2`, `Godot.Color` |
 | `Stage.cs` | P2 | Presentation | `Godot.Control`, `Godot.InputEvent*`, `Godot.Vector2` |
 | `Commands.cs` | P2 | Engine-free | `System` + Contract (`Command`, `CmdResult`) |
 | `Controls.cs` | P2 | Presentation | `Godot.Control`, `Button`, `Range`/`Slider`, `Godot.InputEvent*`, `Godot.Vector2` |
