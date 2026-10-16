@@ -1027,6 +1027,21 @@ public partial class Acceptance : Node
         var controls = Node<Controls>("Controls");
         Check("3.2.9", "styled-controls", controls.Buttons.All(button => button.Flat),
             controls.Buttons.Count(button => button.Flat) + "/" + controls.Buttons.Count);
+        CheckLogotype("3.2.9", panel);
+    }
+
+    // Inside its plate and centred on its point, like the web build's .panel-logo.
+    private void CheckLogotype(string gate, PanelView panel)
+    {
+        var logo = panel.GetNode<Label>("Legend_right_logotype");
+        var point = _layout.Legends.Single(legend => legend.Id == "right/logotype").X * panel.Size.X;
+        var plate = _layout.Plates.Single(item => item.Id == "upper-right");
+        var rect = logo.GetRect();
+        var fits = logo.GetMinimumSize().X <= rect.Size.X + 0.5f &&
+            Math.Abs(rect.GetCenter().X - point) <= 1 &&
+            rect.Position.X >= plate.X * panel.Size.X && rect.End.X <= (plate.X + plate.Width) * panel.Size.X;
+        Check(gate, "logotype-fit", fits,
+            (rect.Position.X / panel.Size.X).ToString("0.0000") + "-" + (rect.End.X / panel.Size.X).ToString("0.0000"));
     }
 
     private void RunGeometry3D(Stage3D stage)
@@ -1105,6 +1120,7 @@ public partial class Acceptance : Node
         Check("3.2.9a", "styled-controls", controls.Buttons.All(button => button.Flat),
             controls.Buttons.Count(button => button.Flat) + "/" + controls.Buttons.Count);
         Check("3.2.15", "rects-match", rectMatches == 392, rectMatches + "/392");
+        CheckLogotype("3.2.9a", panel);
 
         viewport.Size = new Vector2I((int)TactileTheme.SubViewportSize.Value.X, (int)TactileTheme.SubViewportSize.Value.Y);
         panel.Size = TactileTheme.SubViewportSize.Value;

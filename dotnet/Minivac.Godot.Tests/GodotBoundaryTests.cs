@@ -70,7 +70,7 @@ public sealed class GodotBoundaryTests
                 ["Color", "Vector2"], [], []),
             ["PanelView.cs"] = new(
                 false, CoreSurface.None, false,
-                ["Control", "Button", "Panel", "Line2D", "TextureRect", "Label", "Vector2", "Color"], [], []),
+                ["Control", "Button", "Panel", "Line2D", "TextureRect", "Label", "FontVariation", "SystemFont", "Vector2", "Color"], [], []),
             ["Stage.cs"] = new(
                 false, CoreSurface.None, false,
                 ["Control", "InputEvent*", "Vector2"], [], []),
@@ -175,10 +175,10 @@ public sealed class GodotBoundaryTests
         "AudioStreamPlaybackPolyphonic", "AudioStreamPlayer",
         "AudioStreamPolyphonic", "BaseMaterial3D", "BoxShape3D", "Button", "Camera3D",
         "CanvasLayer", "CollisionShape3D", "Color", "ConfigFile", "Control", "DirAccess",
-        "DirectionalLight3D", "Engine", "Environment", "Error", "FileAccess", "GD", "ImmediateMesh", "Input",
+        "DirectionalLight3D", "Engine", "Environment", "Error", "FileAccess", "FontVariation", "GD", "ImmediateMesh", "Input",
         "InputEvent*", "Label", "Line2D", "Mesh", "MeshInstance3D", "Node", "Node3D", "OS",
         "Panel", "QuadMesh", "Range", "RichTextLabel", "SceneTree", "Slider",
-        "StandardMaterial3D", "SubViewport", "SurfaceTool", "TextureRect", "Time",
+        "StandardMaterial3D", "SubViewport", "SurfaceTool", "SystemFont", "TextureRect", "Time",
         "Transform3D", "Vector2", "Vector2I", "Vector3", "Viewport", "ViewportTexture",
         "WorldEnvironment",
     };

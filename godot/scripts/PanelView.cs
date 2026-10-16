@@ -51,6 +51,7 @@ public partial class PanelView : Control
     private readonly Dictionary<Label, string> _legendForms = [];
     private readonly Dictionary<string, Button> _holes = new(StringComparer.Ordinal);
     private PanelLayout? _layout;
+    private FontVariation? _logotypeFont;
 
     public IReadOnlyDictionary<string, Button> Holes => _holes;
     public PanelLayout Layout => _layout ?? throw new InvalidOperationException("panel view: not initialized");
@@ -121,6 +122,14 @@ public partial class PanelView : Control
             node.Set("autowrap_mode", legend.Form == "two-line" ? 2 : 0);
             node.SetMeta("legend", legend.Id);
             node.AddThemeColorOverride("font_color", PanelTheme.ConsoleCream);
+            if (legend.Form == "logotype")
+            {
+                _logotypeFont = new FontVariation
+                {
+                    BaseFont = new SystemFont { FontNames = ["Arial", "Helvetica"], FontWeight = 700 },
+                };
+                node.AddThemeFontOverride("font", _logotypeFont);
+            }
             AddChild(node);
             _placements.Add(new Placement(node, legend.X, legend.Y, width, height, centered, true));
             _legendForms.Add(node, legend.Form);
@@ -171,9 +180,13 @@ public partial class PanelView : Control
     private void ApplyLayout()
     {
         if (_layout is null || Size.X <= 0 || Size.Y <= 0) return;
+        foreach (var pair in _legendForms)
+            pair.Key.AddThemeFontSizeOverride("font_size", Math.Max(6, (int)Math.Floor(Size.X * LegendFontSize(pair.Value))));
+        if (_logotypeFont is not null)
+            _logotypeFont.SpacingGlyph = (int)Math.Floor(PanelTheme.LogotypeTracking * Size.X * LegendFontSize("logotype") + 0.5);
         foreach (var placement in _placements)
         {
-            var width = (float)(placement.Width * Size.X);
+            var width = placement.Width > 0 ? (float)(placement.Width * Size.X) : placement.View.GetCombinedMinimumSize().X;
             var height = (float)(placement.Height * (placement.HeightFromWidth ? Size.X : Size.Y));
             placement.View.Size = new Vector2(width, height);
             var halfWidth = placement.Centered ? width / 2 : 0;
@@ -182,8 +195,6 @@ public partial class PanelView : Control
                 (float)(placement.X * Size.X - halfWidth),
                 (float)(placement.Y * Size.Y - halfHeight));
         }
-        foreach (var pair in _legendForms)
-            pair.Key.AddThemeFontSizeOverride("font_size", Math.Max(6, (int)Math.Floor(Size.X * LegendFontSize(pair.Value))));
         foreach (var stroke in _strokes)
         {
             var normalized = StrokePoints(stroke.Item);
@@ -215,7 +226,7 @@ public partial class PanelView : Control
     private static (double Width, double Height, bool Centered) LegendBox(string form) => form switch
     {
         "two-line" => (PanelTheme.TwoLineLegendWidth, 0.022, true),
-        "logotype" => (0.18, 0.06, true),
+        "logotype" => (0, 0.06, true),
         "fine-print" => (0.25, 0.018, true),
         "band-title" => (0.18, 0.018, true),
         "block-title" => (0.16, 0.022, true),
