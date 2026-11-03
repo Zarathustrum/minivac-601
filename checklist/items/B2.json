@@ -1,0 +1,12 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "B2",
+  "kind": "basic",
+  "prompt": "Connect 1+ to 1Y, 1X to 1A, and 1B to 1−. Power on, then press button 1 and keep holding it.",
+  "cords": ["1+/1Y", "1X/1A", "1B/1-"],
+  "expect": [
+    { "dev": "power", "v": "on" },
+    { "dev": "pb1", "v": "no" },
+    { "dev": "outLamp1", "v": "on" }
+  ]
+}

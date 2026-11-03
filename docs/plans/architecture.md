@@ -108,7 +108,8 @@ May import from core: `contract.ts` (types) and `trace.ts` (the formatter). Noth
 needs a derived quantity it either computes it from `State` or `State` grows a field — it never
 reaches into the solver.
 
-`src/main.ts` is the deliberately small composition root outside that boundary. It alone imports
+`src/app.ts` (`startApp`, called by the one-line `src/main.ts`; moved there 2026-11-03 so the
+stage 3 dev page can reuse it) is the deliberately small composition root outside that boundary. It alone imports
 `loadNetlist`, `loadProfile`, `createMachine`, the raw netlist, the shipped REF-A profile and
 `mountInspector`; it validates the two data inputs, constructs the `Machine`, and passes the
 machine plus the raw netlist view into the adapter. This seam resolves construction without making

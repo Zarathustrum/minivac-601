@@ -107,6 +107,8 @@ unproven, so W1 proves it before anything is built on top.
 
 ## 2026-08-30 — Phase 1 Wave 1a spec readings (orchestrator)
 
+Orchestrator working choice, not Tom-approved.
+
 Where architecture §3 contradicted itself or the code, the Phase 1 orchestrator took these
 readings. They are its working choices, not Tom's rulings; the solver, the KAT and their tests
 implement them.
@@ -222,6 +224,8 @@ restate that explanation.
 - The counter pair establishes a resolved causal story; its mechanism remains open.
 
 ## 2026-09-01 — Wave C: registered counter-pair measurement (orchestrator)
+
+Orchestrator working choice, not Tom-approved.
 
 - **What it is** — a preregistered measurement of the Book IV counter (`IV-EXP1`, 44 wires) and
   `ER-ALTCOUNTER` (48 wires) as literal wire lists, run by `npm run check-profile -- --counter`
@@ -859,3 +863,390 @@ Tom's rulings before an unattended run.
   force-push.
 - **Phase 5 closed** `[settled]` — Tom, 2026-10-15: Step 9 is done. The queue generator
   (`rank-corpus`), its spec and the generated queue are retired; the run rules above stay as record.
+
+## 2026-10-31 — `minivac-control`: the CLI core for an LLM operating the machine
+
+The first step of a project in which an LLM operates the simulator through tools. Its spec and
+decision record live outside this repo (the "Minivac hands" spec and plan, 2026-10-31, and its
+2026-10-30 decision record).
+
+- **Shape** `[settled]` — Tom, 2026-10-31: v1 is operate-only, with no scoring. The deliverable is a
+  tool table over the core: one entry per contract command, plus a state read and load-program,
+  each with a JSON schema derived from `src/core/contract.ts` and a handler that calls
+  `Machine.apply` and returns its `CmdResult`. The session is a replayable command log on disk,
+  rebuilt on every call. The CLI is the first adapter; MCP comes later, only if Bash friction shows.
+- **Name and batching** `[settled]` — Tom, 2026-10-31: the CLI is `minivac-control`. One call may
+  carry several commands, applied in order, with one settle at the end.
+- **First slice** — the 2026-10-31 build covers `power`, `connect`, `disconnect`, `button`,
+  `switch`, the state read and `wait` (the time step, below). `breaker`, `relayGrab`/`relayRelease`,
+  `dialGrab`/`dialRelease` and load-program are later steps of the same plan, not dropped.
+
+## 2026-10-31 — `minivac-control` time, session file and code location (orchestrator)
+
+Orchestrator working choices, not Tom-approved. They follow the spec page's recommendations for its
+open items O1, O2 and O7.
+
+- **Time (O1)** — the contract has no time command; only `Machine.advance` moves time. Every
+  state-changing call ends with one capped settle, the fixture `settle` step with the conformance
+  runner's semantics (quiet for `settle_quiet_ticks` with no observable change and an empty motion
+  mask, or the cap). It is logged as an explicit step, so replay is exact. The default cap is 500 ms,
+  the commonest settle cap in the fixtures; `--settle-ms` overrides it. `wait <ms>` is the fixture
+  `advance` step and may sit inside a batch. A call that hits the cap says the machine did not
+  settle; that is a result, not an error. Two things that rule does not watch, found in the build:
+  the dial motor is not in `motionMask`, so a turning dial can settle between contact changes; and a
+  lamp filament still cooling can settle at `dim` (open question O-C28, Tom's call). The CLI keeps
+  the runner's rule and adds a note line for each instead.
+- **Session file (O2)** — its own schema, `minivac.session/1`, because `minivac.fixture/1` requires
+  provenance fields a new session cannot fill. It holds `profile`, `contract` and a `script` of
+  fixture-shaped `do`, `settle` and `advance` steps in order, wiring included as `connect` and
+  `disconnect` steps, so replay is exact even when wiring changes mid-session. v1 cords run hole to
+  hole only. `connect` takes the manual's shorthand (`1+/1Y`) and takes the lowest free hole on each
+  terminal and the lowest free cord id; for a connect-only session that is the fixture loader's
+  `allocateHoles` result, which has no notion of a disconnect. The file stores the resolved holes
+  and cord id, so replay never re-allocates. A batch is atomic: a rejected command writes nothing,
+  so a session file always replays clean. The file also records the netlist and profile hashes;
+  replay refuses a session recorded against different data. A changing call holds an exclusive
+  `<session>.lock` from read to write, so parallel calls on one session cannot lose a batch; a
+  killed call can leave the lock behind, and the error message says to delete it.
+- **Code location (O7)** — outside `src/core/`. The tool table and settle logic are in `src/hands/`,
+  with no filesystem access, so a later browser pane can reuse them. Session file I/O and the CLI are
+  in `tools/hands/`, and the entry point is `bin/minivac-control`, beside `bin/minivac-trace`.
+
+## 2026-10-31 — Checklist: P2 with extras, the first nine items
+
+- **Wiring items (P2)** `[settled]` — Tom, 2026-10-31. A wiring item pairs a prompt with an existing
+  conformance fixture. The check replays the operator's session, turns its cords into a wire list,
+  puts that list into a copy of the fixture with `errata_applied` emptied, and runs the conformance
+  runner. A circuit wired differently from the book passes if it behaves the same.
+- **Extras** `[settled]` — Tom, 2026-10-31: an item may append script steps to that copy, so
+  properties the manual never asserted are checked too. (The orchestrator's reason, put to Tom with
+  the question: without them a lamp wired straight to + passes III-RELAYOR, and III-XOR-PB never
+  checks the case where no button is pressed.)
+- **First items (O5)** `[settled]` — Tom, 2026-10-31: I-EXP4, I-EXP5, III-XOR-PB, III-RELAYOR and
+  IV-EXP4, picked from the fixtures that are tier A, verified, on the reference profile, with no
+  mid-script rewiring and no marginal mechanism. (Orchestrator note: III-NOT meets those criteria
+  but asserts nothing, so 18 fixtures qualify, not the spec page's 19.)
+- **Basic items** `[settled]` — Tom, 2026-10-31: literal operating instructions ("plug one end
+  there, the other over there"), checked against the operator's own session: the exact cords and
+  a few end-state observables, with no fixture. Four to start: one cord pair, a held button, an
+  unplug, a slide switch. Tom approved the prompt wording of all nine items.
+- **Day-zero probe (P4)** `[settled]` — Tom, 2026-10-31: skipped; the CLI runs measure the same thing.
+
+## 2026-10-31 — Checklist mechanics (orchestrator)
+
+Orchestrator working choices, not Tom-approved.
+
+- **Separate checker** — `bin/minivac-check <item> <session>`, not a `minivac-control` subcommand,
+  so an operator restricted to `minivac-control` cannot reach the yardstick, and the skill never
+  mentions it. Output `PASS`, `FAIL` (with the first failing line and its manual quote) or `ERROR`
+  (a run that could not be judged: no cords, hole allocation failure, rejected reference command,
+  corrupt session); exit 0, 1 or 2.
+- **Where** — items in `checklist/items/` with their own schema. Not under `data/`, which
+  `npm run sync-data` mirrors whole into the Godot build.
+- **Lamp reads** — a basic check advances 500 ms after replay before reading the end state, and
+  extras read a lamp turning off with `until` or after an `advance`, because a settle can return
+  while a filament is still cooling through `dim` (open question O-C28).
+- **Run records** — each run's session file, transcript and verdict are kept as run records,
+  which the public snapshot leaves out; the transcripts carry local paths.
+
+## 2026-10-31 — Operating items, load-program, the stage-1 bar, lamp settle
+
+- **Operating items (O3)** `[settled]` — Tom, 2026-10-31: the checklist has wiring items and
+  operating items. An operating item asks the operator to run a program, for example "load the
+  binary counter and count to three", and is checked against the operator's own session.
+- **load-program on items (O4)** `[settled]` — Tom, 2026-10-31: not on wiring items, where it skips
+  the wiring the item tests, so the checker fails a wiring session that used it; allowed on
+  operating items.
+- **What load-program loads** `[settled]` — Tom, 2026-10-31: `load-program <ID>` takes the `wires`
+  of a conformance fixture by its id, so every program in the corpus is loadable, not only the
+  demo library. It adds connect steps to the session, marked as a load in the log, and does not
+  power on or press anything.
+- **Stage-1 bar (O6)** `[settled]` — Tom, 2026-10-31: stage 1 closes when every v1 item has passed
+  at least once from a fresh Claude Code session, every result reproduces from its session file and
+  records the model, and one human-in-the-loop cycle is on record (read the failures, edit the
+  skill, rerun). That cycle ran on 2026-10-31.
+- **Lamp settle (O-C28)** `[settled]` — Tom, 2026-10-31: settle keeps the conformance runner's rule
+  and does not wait for lamp filaments. `minivac-control` prints a note when a lamp is still
+  warming or cooling; checks wait the transient out.
+
+## 2026-10-31 — Operating-item and load-program mechanics (orchestrator)
+
+Orchestrator working choices, not Tom-approved.
+
+- **Operate items** — an item names a `program` fixture, ordered `steps`, and an end state. The
+  check runs in order: the session's final cords must run the program (the wiring-item check, with
+  no extras, so loaded and hand-wired both count); the steps must appear in the log, in order,
+  after the last wiring change; the end state is read after 500 ms more of simulated time. Commands
+  sent with no simulated time between them land on one tick, so only the last command per control
+  counts toward a step: `button 1 down + button 1 up` in one call does not press the button, in the
+  checker or in the machine.
+- **First two** — OP1 runs `IV-EXP1-SLOW` (the plain `IV-EXP1` fixture does not exist; SLOW follows
+  the printed sequence chart and is not marginal); OP2 runs `V-EXP2`, the burglar alarm, where only a
+  checkpoint can show the reset took effect, since light 5 is on after power-on and after the alarm
+  alike; its wiring check borrows `V-EXP2-DERIVED`'s steps as extras. OP2's end state after the door closes comes from `V-EXP2-DERIVED`, not from print.
+- **Load marker** — `load-program` writes `{"k":"load","program":"<ID>","cords":N}` before its N
+  connect steps; replay checks the count. Older session files still load.
+
+## 2026-10-31 — Checkpoints on operating items; O4 for basic items
+
+- **Checkpoints** `[settled]` — Tom, 2026-10-31: an operating item's step may carry expected
+  observables that must hold once the call containing it settles (read after the same 500 ms lamp
+  wait as the end state), so a reset that never took effect or a count reached by another route
+  fails. They are machine state, not the turn and tool-call metrics the yardstick ruling defers.
+  Power-on is not a required step; checkpoints and the end state show it.
+- **load-program on basic items** `[settled]` — Tom, 2026-10-31: refused, as on wiring items (O4).
+- **Nothing after the last step** (orchestrator working choice, not Tom-approved) — once an
+  operating item's last step on a control has matched, no later command on that control may
+  follow, so "count to three" fails at eleven presses (the counter wraps back to 3) and at four.
+
+## 2026-11-01 — Stage 1 closed; open items ruled; Claude rung on Sonnet
+
+- **Stage 1** `[settled]` — Tom, 2026-11-01: closed against the O6 bar (11/11 PASS).
+- **Nothing after the last step** `[settled]` — Tom, 2026-11-01: kept. This was the orchestrator's
+  working choice in the previous entry; it is now ruled.
+- **OP2's relay-6 latch** `[settled]` — Tom, 2026-11-01: kept. OP2's extras pin relay 6 as the
+  latch, copied verbatim from `V-EXP2-DERIVED`; this stays a derived topology under
+  `FALLBACK-CHECKLIST-EXTRA`.
+- **Dial item** `[settled]` — Tom, 2026-11-01: add a checklist item that uses the dial, as the plan
+  asked. Not built yet.
+- **Run diagnostics** `[settled]` — Tom, 2026-11-01: keep the turns and cost columns in run
+  results, labelled as diagnostics, not a score.
+- **O9 Claude rung** `[settled]` — Tom, 2026-11-01: the main Claude rung is Sonnet 5.5 in place of
+  Opus 5.5; Haiku 5.5 stays.
+
+## 2026-11-01 — Skill tuning: gemma as the main target
+
+- **Tuning target** `[settled]` — Tom, 2026-11-01: the skill-tuning loop takes gemma-4-26b
+  as its main target, with qwen3.8-flash-next as the second. qwen3.8-27b is
+  only a regression guard. This changes the earlier ruled order, which tuned on qwen3.8-flash-next
+  then qwen3.8-27b and only re-ran Gemma, because the local-model probe
+  gave gemma the failures a skill edit can reach
+  and qwen almost none. gpt-oss-120b is parked for now.
+
+## 2026-11-01 — Skill-tuning loop: Opus driver, pooled keep rule
+
+- **Driver** `[settled]` — Tom, 2026-11-01: the skill-tuning loop (a driver script kept private) is
+  driven by Opus through `claude -p`, not Sonnet.
+- **Keep rule** `[settled]` — Tom, 2026-11-01, approving the orchestrator's proposal after round
+  1:
+  - A candidate is judged on pass rates against the best skill's pooled record: every evaluation
+    of it, plus the 3x baseline for the original.
+  - gemma or qwen3.8-flash-next may supply the gain of 2 in 22.
+  - gemma may lose at most 1 in 22, the targets' pooled held-out rate at most 1 in 12, and 27b
+    at most 1 in 11.
+  - flash runs 2 samples.
+  - Round 1's edit is rescored under this rule, with its grading language removed.
+- **Grading language** (orchestrator working choice, not Tom-approved): the skill must read as
+  operating instructions. Candidates that add grading words ("counts as a fail", "graded",
+  "scored", "wiring check", and similar) are rejected unscored.
+- **Result of the first run:** no edit kept.
+- **v01 adopted** `[settled]` — Tom, 2026-11-01: the repo skill takes v01, the load-program rule
+  with its grading language removed. It "made Qwen better and didn't hurt Gemma": qwen3.8-flash-next
+  97% against 89%, gemma 66% against 69%. That is inside the allowed loss, and only the gain bar
+  rejected it. The skill stays open to further tuning. The Claude rungs have not yet run on it.
+
+## 2026-11-02 — Skill r14 and tool aids for local models (orchestrator)
+
+Orchestrator working choices under Tom's goal "get gemma passing tests, then try gpt-oss-120b";
+not yet reviewed by Tom.
+
+- **Skill r14 adopted into the repo skill.** Hand-written, not from the tuning loop. It adds an
+  order of work (find the manual's circuit before wiring, even when it looks simple), a lookup
+  recipe (`programs.md` by behaviour, then the fixture's `wires` through `manifest.json`), testing
+  every input combination, one procedure step per call with nothing after the last, `press`
+  already releases, use the session path the task names, and leave a finished circuit plugged in.
+  - gemma-4-26b: 62/66 pooled over two 3-sample runs, against 26/33 on the skill at `56d59f3`.
+  - qwen3.8-flash-next and qwen3.8-27b: 33/33 each, no regression.
+  - gpt-oss-120b: 61/65 valid runs over two batches.
+  - Candidate r15 scored 28/33 and was not adopted.
+  - The Claude rungs have not run on r14.
+- **Tool aids** (no change to `src/core/`, the contract, or any fixture, golden or manifest):
+  - `disconnect all`; `new`'s "already exists" error names it.
+  - Under the harness's session pin, a refused path prints the call to resend with the pinned path.
+  - `help terminals` ends with a pointer to `programs.md` and the fixtures' `wires`.
+  - `help terminals` says never to join a lamp's two ends (all 3 of gemma's failing III-RELAYOR
+    circuits under r14-r16 had a `3A/3B` cord), and names the manuals' three-cord way for
+    pushbutton n to work relay n (`n+/nY`, `nX/nC`, `nF/n-`, used by 15 programs). Added after r14
+    was adopted; their full 3x run was in progress at commit time.
+  - `--help`: `load-program` is for load or run tasks only; a finished circuit stays plugged in.
+  - The model loop's `grep` ignores case. `MINIVAC_LLM_REQUIRE_API_BASE` stops a run at the first
+    response another server answered.
+- **gpt-oss-120b runs at concurrency 1** with the fallback guard.
+- **Gemma at about 94% accepted** `[settled]` — Tom, 2026-11-02: gemma-4-26b's result with r14
+  (31/33 on two full runs; III-RELAYOR passes about 60% of the time) is accepted. No further
+  tuning for III-RELAYOR now; next are the qwen check on the current help text, then Sonnet and
+  Haiku.
+- **Cloud fallback stays on** `[settled]` — Tom, 2026-11-02: cloud fallback for gpt-oss-120b stays
+  on; the harness guard already invalidates and retries any fallback-served run.
+
+## 2026-11-02 — Claude rungs, skill candidate r19, gpt-oss at concurrency 3
+
+- **Claude on r14** (orchestrator): Sonnet 5.5 30/33, Haiku 5.5 30/33, all
+  served by api.anthropic.com. Both failed only OP2, by holding button 3 down.
+- **Skill candidate r19, not adopted** (orchestrator): r14 plus two procedure rules. A pushbutton
+  push is one `button <n> press` whatever the task calls it. List the steps from the task's own
+  words before the first press, not from the manual's longer procedure. Haiku: OP2 9/9, all items
+  33/33. r17 and r18 were steps to it. On the
+  other models: both qwens 33/33; gemma-4-26b 30/33 and 28/33, against 31/33 twice on r14. gemma
+  used `load-program` on a wiring item in 5 of 12 IV-EXP4 and III-XOR-PB runs (0 of 12 on r14), and
+  r19's "leave every button up" broke B2 ("keep holding it"). r20 fixes the hold rule (gemma B2
+  6/6, Haiku B2 and OP2 6/6) but not the `load-program` habit, so neither is adopted and the repo
+  skill stays r14. For Tom: r14 costs Claude OP2
+  (30/33); r20 costs gemma-4-26b about two runs in 33.
+- **gemma-4-31b (QAT) on r14: 33/33**, about 3.1 hours of model time for the 33 runs.
+- **gpt-oss-120b at concurrency 3**: 33/33, no retries, no fallback-served response.
+- **Haiku ahead of gemma; skill r20 adopted** `[settled]` — Tom, 2026-11-02: "let's prioritize
+  haiku over gemma and make sure qwen didnt break". r20 on all 11 items x3: Haiku 33/33, qwen3.8-27b
+  33/33, qwen3.8-flash-next 33/33. The accepted cost is
+  gemma-4-26b at about 28-30/33 against 31/33 on r14. r21 (r14 plus only the press/hold rule) was
+  tried in between: Haiku OP2 6/6, gemma IV-EXP4 3/6.
+  - Why r20 over r21 (orchestrator): with Haiku ahead of gemma, r20 had the stronger Haiku record
+    (33/33 on all items under r19; B2 and OP2 6/6 on r20). r20's planning bullet guards against
+    Haiku's double reset press (1 run in 3 on r17), which r21 lacks. r21 did not spare gemma
+    either: IV-EXP4 3/6 against 6/6 on r14. r21 never had a full 11x3 run.
+
+## 2026-11-02 — Dial item OP3; orchestrator choices ratified
+
+- **Dial item** `[settled]` — Tom, 2026-11-02: an operate item, OP3, on `I-EXP11` (Book I
+  Experiment 11, Manual Operation of Rotary Switch; tier C1, verified, five cords). No fixture that
+  uses the dial is tier A. Prompt: "Load the manual rotary switch circuit, turn the pointer to 1,
+  then to 2." Its two checkpoints are I-EXP11's own expects for positions 1 and 2.
+- **Dial steps match any angle** `[settled]` — Tom, 2026-11-02: a dial step is taken by a dial
+  hold at any angle, and its checkpoint, which the checker requires to name `dial`, carries the
+  position. On MV601-REF-A contact 1 holds from about 15 to 30 degrees and contact 2 from about
+  37.5 to 52.5 (measured with `minivac-control`).
+- **Dial release after the last step** `[settled]` — Tom, 2026-11-02: a `dial release` after the
+  last dial step is not a further command under "nothing after the last step". With no motor wired
+  the pointer stays put; if a wired motor moves it, the end state catches it.
+- **Orchestrator choices ratified** `[settled]` — Tom, 2026-11-02 ("keep all"): these working
+  choices are now rulings, as recorded in their entries:
+  - 2026-10-31 time, session file and code location: the capped settle per call and `wait` (O1),
+    `minivac.session/1` (O2), code outside `src/core/` with `bin/minivac-control` (O7);
+  - 2026-10-31 checklist mechanics: the separate `bin/minivac-check`, items in `checklist/items/`,
+    lamp reads, the run records;
+  - 2026-10-31 operating-item and load-program mechanics;
+  - 2026-11-01 the grading-language rule for skill candidates;
+  - 2026-11-02 the tool aids: `disconnect all`, the `help terminals` lines, the `--help` lines,
+    the case-insensitive `grep`, `MINIVAC_LLM_REQUIRE_API_BASE`.
+  Rebuilding the session on every call (the 2026-10-31 "Shape" ruling) is not reopened here; whether
+  stage 3 keeps a live machine instead is a separate open question.
+
+## 2026-11-02 — Stage 2 closed
+
+- **Stage 2** `[settled]` — Tom, 2026-11-02: closed. The record it closes on: the hands loop
+  (`tools/hands-api/openai-loop.ts`), skill r20, and the checklist runs: the first 11 items on the
+  local and Claude rungs, OP3 on the local rungs, each with its results
+  record. Sonnet 5.5 on r20 and the Claude rungs on OP3 are parked, not owed.
+
+## 2026-11-02 — Stage 3 shape: machine in the page, local loop, default route
+
+- **Machine** `[settled]` — Tom, 2026-11-02: the chat pane operates the web build's own live
+  machine in the page, through the `src/hands/` tool table (filesystem-free so a browser pane can
+  reuse it, 2026-10-31 O7). Nothing is rebuilt per call in the pane; `minivac-control` keeps
+  rebuilding the session on every call for checklist runs.
+- **Model loop (O12)** `[settled]` — Tom, 2026-11-02: a local process on the dev machine holds the
+  LiteLLM key, calls the model, and passes tool calls to the page over a localhost WebSocket. The
+  pane is dev-only; the public static build stays keyless and unchanged.
+- **Default route** `[settled]` — Tom, 2026-11-02: a selectable default route serving
+  qwen3.8-flash-next (33/33 on r20, 3/3 on OP3), which may fall back to a cloud model on error or
+  timeout.
+
+## 2026-11-02 — Stage 3 plan rulings
+
+Tom approved the stage 3 plan on 2026-11-02; like the pane, it stays out of the public copy.
+
+- **Instant calls** `[settled]` — Tom, 2026-11-02: in the pane each model call runs synchronously
+  through the tool table and the panel shows the settled state. Real-time animation of a call is
+  out of v1.
+- **Frozen and locked** `[settled]` — Tom, 2026-11-02: in pane mode simulated time moves only inside
+  the model's calls, as with the CLI, and the panel takes no input. Ending the session hands back
+  the machine as the model left it, live and unlocked.
+- **Stage 3 bar** `[settled]` — Tom, 2026-11-02: every checklist item passes at least once from the
+  pane on the default route, run x3; each result reproduces from its exported session file; and Tom has
+  used the pane hands-on.
+- **Public copy** `[settled]` — Tom, 2026-11-02: the public copy excludes the pane entirely,
+  with its tests.
+
+## 2026-11-03 — Stage 3 build: orchestrator working choices
+
+Orchestrator working choices made while building the plan, not Tom-approved.
+
+- **Text identical by construction** — Node parses the model's words and renders the text with the
+  CLI's own code; the page returns data. The transfer test runs 15 recorded model sequences through
+  the CLI and the pane engine and requires identical text, exit codes and sessions.
+- **Rejected batches validated, not rebuilt** — `validateBatch` checks a call before it touches the
+  live machine; a live run that rejects after validation passed ends the session.
+- **Remount, not resync** — after each call the page remounts on the same machine, frozen and
+  locked. The live trace and sound stay blank in pane mode; the pane's transcript shows the calls.
+- **The server** — a separate Node process (`ws` 8.22.0), not Vite's socket; 127.0.0.1 only, a
+  per-launch token, exact Origin and Host checks, a route allowlist; key and base URL from env
+  only and never sent to the page; gateway error bodies stay in the transcript.
+- **Invalid runs** — any engine error ends the pane session and marks the run invalid, as does a
+  page disconnect or reload while a session is live; SIGINT/SIGTERM mark live runs interrupted;
+  `run.json` says `running` while a turn is in flight. New session hands the machine back live (as
+  End session does) and clears the transcript.
+- **`run.json`** — openai-loop's keys summed across user messages, plus `prompts`, `errors` (per
+  prompt) and `invalid`. `read_file pane.json` reads the run's current `session.json`.
+- **File tools** — the model's `grep` stops after 10 s; the tools refuse hidden path parts,
+  `node_modules` and `.git` in any case, and links that lead outside the repo.
+- **Fallbacks** — a hands-on session only flags a fallback-served reply (its badge turns before
+  its calls run). The checklist driver refuses one before it touches the machine and retries, up to
+  3 attempts; an HTTP error with no served base counts as off-primary; a turn that threw is a
+  driver error, not graded.
+- **Public copy** — also leaves out the stage 3 plan. `tools/check-dist.ts` runs after every build
+  and is carried, naming the pane strings it looks for.
+
+## 2026-11-03 — Pane hands-on: show the model working; cord animation deferred
+
+Tom's first hands-on session (tic-tac-toe wired) went quiet
+for a long reply (2,580 tokens before one 70-cord batch), and then every cord appeared at once.
+
+- **Model working** `[settled]` — Tom, 2026-11-03: yes. While a request to the model is out, the
+  pane shows "waiting for <route> · request <n> · <s> s" at the transcript's end until the reply
+  is in (the server's `requesting` frame, PANE_PROTOCOL 3).
+- **Cord-by-cord animation** `[deferred]` — Tom, 2026-11-03: deferred. A batch still lands at once,
+  per "Instant calls" (2026-11-02).
+
+## 2026-11-03 — The model's file tools read only the manuals' research and the fixtures; `connect` takes a free end
+
+Tom's second hands-on session (tic-tac-toe again) hit the two
+free-ended leads in `VI-TICTACTOE.fixture.json`, which `connect` could not plug, and the model
+went through `src/`, `tools/hands/`, `dotnet/` and `dist/` looking for a way. Across the Oct–Nov
+run transcripts, 4 checklist runs had also read their own `checklist/items/<id>.json`, which holds
+the end state they are graded on.
+
+- **File-tool scope** `[settled]` — Tom, 2026-11-03: narrow. `read_file`, `grep` and `list_files`
+  read only `docs/research/` and `test/conformance/fixtures/` (the skill's lookups:
+  `tools/hands-api/repo-files.ts` READABLE), plus the run's own session file; above those trees a
+  listing or grep shows only the way down. Runs from here on are not like-for-like with the
+  earlier checklist runs, which could read the whole repository.
+- **Free cord ends** `[settled]` — Tom, 2026-11-03: `connect <A>/free` plugs a cord into A with its
+  other end hanging free (the contract's `free` end), as tic-tac-toe's two leads are; `state` shows
+  it as `M10/free (M10#3 free)`, and a move is `disconnect <id>` then `connect <A>/<B>`, as the
+  fixture plays it. The checker counts such a cord as an extra cord on a basic item and leaves it
+  out of a wire item's circuit, since it joins nothing. The skill is unchanged; `--help` names
+  the syntax.
+
+## 2026-11-03 — Stage 3 closed
+
+- **Stage 3** `[settled]` — Tom, 2026-11-03: closed, and with it the hands roadmap. The record it
+  closes on: the chat pane and its plan (both kept out of the public copy); the checklist from the
+  pane on the default route, every item passing at least once and each verdict reproducing from
+  its session file; and Tom's three hands-on sessions, the third wiring tic-tac-toe and making the
+  machine's first move. Cord-by-cord animation stays deferred. The orchestrator working choices of
+  2026-11-03 ("Stage 3 build") stay working choices until Tom rules on them.
+
+## 2026-11-03 — Public snapshot calls
+
+The public GitHub copy is public now, so each snapshot is published for good. For the snapshot of
+stages 2 and 3:
+
+- **Tools** `[settled]` — Tom, 2026-11-03: everything the snapshot carries goes public except
+  the skill-tuning driver, which names the lab's models and routes.
+- **Doc scrub** `[settled]` — Tom, 2026-11-03: the public DECISIONS and STATUS lose lab and
+  personal detail: gateway routes, infrastructure and server placement, keys, spend caps, billing
+  and costs, and personal goals. Public model names, pass rates and Tom's attributed rulings stay.
+- **References** `[settled]` — Tom, 2026-11-03: the public DECISIONS, STATUS and `CLAUDE.md` lose
+  paths to the private run records, the chat pane and the skill-tuning driver, and the public
+  `package.json` loses the pane's dev script. Code comments that mention the pane stay, so later snapshots do not conflict on
+  them.

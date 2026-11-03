@@ -18,6 +18,7 @@ interface TestMachine extends Machine {
   readonly name: string;
   readonly applied: Command[];
   advanced: number;
+  drained: number;
 }
 
 interface MountedLoop {
@@ -36,6 +37,7 @@ function machine(name: string, events: string[], rejectAt: number | null = null)
     name,
     applied,
     advanced: 0,
+    drained: 0,
     apply(command): ReturnType<Machine['apply']> {
       const index = applied.length;
       applied.push(command);
@@ -46,7 +48,7 @@ function machine(name: string, events: string[], rejectAt: number | null = null)
     snapshot(): State { return {} as State; },
     observables(): Int32Array { return new Int32Array(33); },
     motionMask(): number { return 0; },
-    drainEvents(): [] { return []; },
+    drainEvents(): [] { this.drained++; return []; },
   };
 }
 
@@ -289,6 +291,89 @@ describe('demo session lifecycle', () => {
     expect(() => h.session.reset()).toThrow('session: disposed');
     expect(() => h.session.switchProfile('MV601-IDEAL')).toThrow('session: disposed');
     expect(() => h.session.loadDemo(demo('DEMO-B'))).toThrow('session: disposed');
+    expect(() => h.session.adopt(machine('guest', h.events), {
+      demo: demo('MANUAL'),
+      profileId: 'MV601-REF-A',
+      frozen: true,
+      locked: true,
+    })).toThrow('session: disposed');
     expect(h.machines).toHaveLength(1);
+    expect(h.liveMounts()).toBe(0);
+  });
+});
+
+describe('adopting a caller-owned machine', () => {
+  const locked = { demo: demo('MANUAL'), profileId: 'MV601-IDEAL', frozen: true, locked: true } as const;
+
+  it('disposes the current mount and mounts it with no replay, tick or drain', () => {
+    const h = harness();
+    h.session.loadDemo(demo('DEMO-A', { k: 'power', on: true }));
+    const guest = machine('guest', h.events);
+
+    h.session.adopt(guest, locked);
+
+    expect(h.events).toEqual(['create:m1:MV601-REF-A', 'apply:m1:0', 'mount:m1', 'dispose:m1', 'mount:guest']);
+    expect(guest.applied).toEqual([]);
+    expect(guest.advanced).toBe(0);
+    expect(guest.drained).toBe(0);
+    expect(h.machines).toHaveLength(1);
+    expect(h.contexts.at(-1)).toEqual({
+      demoId: 'MANUAL',
+      profileId: 'MV601-IDEAL',
+      frozen: true,
+      locked: true,
+    });
+    expect(Object.isFrozen(h.contexts.at(-1))).toBe(true);
+    expect(h.liveMounts()).toBe(1);
+  });
+
+  it('remounts the same machine on every adopt, frozen or live, and never touches it', () => {
+    const h = harness();
+    const guest = machine('guest', h.events);
+
+    h.session.adopt(guest, locked);
+    h.session.adopt(guest, locked);
+    h.session.adopt(guest, { ...locked, frozen: false, locked: false });
+
+    expect(h.events).toEqual([
+      'mount:guest', 'dispose:guest', 'mount:guest', 'dispose:guest', 'mount:guest',
+    ]);
+    expect(h.contexts.map(({ frozen, locked: isLocked }) => [frozen, isLocked])).toEqual([
+      [true, true], [true, true], [false, false],
+    ]);
+    expect(guest.applied).toEqual([]);
+    expect(guest.advanced).toBe(0);
+    expect(guest.drained).toBe(0);
+    expect(h.maxLiveMounts()).toBe(1);
+  });
+
+  it('replays the adopted demo on a fresh machine and the adopted profile on reset', () => {
+    const h = harness();
+    h.session.loadDemo(demo('DEMO-A', { k: 'power', on: true }));
+    const guest = machine('guest', h.events);
+    h.session.adopt(guest, { ...locked, frozen: false, locked: false });
+
+    h.session.reset();
+    h.session.switchProfile('MV601-REF-A');
+
+    expect(h.events.slice(4)).toEqual([
+      'mount:guest',
+      'create:m2:MV601-IDEAL', 'dispose:guest', 'mount:m2',
+      'create:m3:MV601-REF-A', 'dispose:m2', 'mount:m3',
+    ]);
+    expect(h.machines.slice(1).map((candidate) => candidate.applied)).toEqual([[], []]);
+    expect(guest.applied).toEqual([]);
+    expect(h.contexts.slice(-2)).toEqual([
+      { demoId: 'MANUAL', profileId: 'MV601-IDEAL' },
+      { demoId: 'MANUAL', profileId: 'MV601-REF-A' },
+    ]);
+  });
+
+  it('leaves nothing mounted when mounting the adopted machine fails', () => {
+    const h = harness([], ['guest']);
+    h.session.loadDemo(demo('DEMO-A'));
+
+    expect(() => h.session.adopt(machine('guest', h.events), locked)).toThrow('test mount failed: guest');
+    expect(h.liveMounts()).toBe(0);
   });
 });

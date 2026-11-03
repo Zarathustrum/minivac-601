@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "minivac.session/1, the minivac-control session file. Steps reuse the conformance fixture schema's step definitions by $ref (registered under its $id minivac.fixture/1). This schema carries no $id on purpose: with one, the relative fixture $ref would resolve against it and fail. Replay (src/hands/table.ts) further restricts connect steps to hole-to-hole cords.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "profile", "contract", "netlistHash", "profileHash", "script"],
+  "properties": {
+    "schema": { "const": "minivac.session/1" },
+    "profile": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9-]*$" },
+    "contract": { "type": "string", "minLength": 1 },
+    "netlistHash": { "type": "string", "pattern": "^fnv1a64:[0-9a-f]{16}$" },
+    "profileHash": { "type": "string", "pattern": "^fnv1a64:[0-9a-f]{16}$" },
+    "script": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "$ref": "minivac.fixture/1#/$defs/doStep" },
+          { "$ref": "minivac.fixture/1#/$defs/advanceStep" },
+          { "$ref": "minivac.fixture/1#/$defs/settleStep" },
+          {
+            "$comment": "A load-program marker: the next `cords` steps are that program's connect steps. Replay checks that and otherwise skips it.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["k", "program", "cords"],
+            "properties": {
+              "k": { "const": "load" },
+              "program": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+              "cords": { "type": "integer", "minimum": 1, "maximum": 256 }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

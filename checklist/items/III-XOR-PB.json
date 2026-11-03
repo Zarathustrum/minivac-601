@@ -1,0 +1,21 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "III-XOR-PB",
+  "kind": "wire",
+  "prompt": "Light 3 on when I press button 1 or button 2, but not both.",
+  "fixture": "test/conformance/fixtures/A/III-XOR-PB.fixture.json",
+  "note": "Extra: both buttons released at the end -> light 3 off, the neither-pushed case the page does not print (C-17). Without it a NAND (light 3 fed through both N.C. contacts in parallel) passes the reference. The expect is copied from III-XOR-PB-DERIVED script[19].",
+  "extra": [
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp3", "v": "off" }],
+      "cite": "BK3 printed p.41 = book2-3-4.pdf PDF p.47, stated rule EITHER BUT NOT BOTH (pushbutton 1 = A, pushbutton 2 = B, light 3 = C; either pushed -> light 3 ON, both pushed -> light 3 NOT ON); ER-10 names it EXCLUSIVE OR; derived from topology: neither pushed again at the end of the sequence (C-17, not printed). Arm 2Y returns to 2Z, which is dead with arm 1Y on 1Z; 3A dead, light 3 dark",
+      "quote": "The program uses the contacts so that if either pushbutton 1 or pushbutton 2 is pushed, light 3 will come ON. Light 3 will NOT come on if both pushbuttons 1 and 2 are pushed.",
+      "tag": "unverified",
+      "source": "FALLBACK-DERIVED-TOPOLOGY"
+    }
+  ]
+}

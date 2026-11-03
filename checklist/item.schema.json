@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "minivac.checkitem/1, one checklist item. A wire item names a conformance fixture whose script (plus optional extra steps) is the yardstick for the operator's wiring; a basic item names the exact cords, optionally the cords that must have been plugged at some point (`connected`), and the end-state observables of the operator's own session; an operate item names a program fixture its final cords must run (plus optional extra steps), the commands (`steps`, each with an optional checkpoint) the operator must send after wiring it, and end-state observables. Steps and observables reuse the conformance fixture schema's $defs by $ref (registered under its $id minivac.fixture/1). No $id here on purpose, as in tools/hands/session.schema.json: with one, the relative fixture $ref would resolve against it and fail. The checker (tools/checklist/check.ts) further checks that fixture exists and that each cord parses as a terminal wire.",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "id", "kind", "prompt", "fixture"],
+      "properties": {
+        "schema": { "const": "minivac.checkitem/1" },
+        "id": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+        "kind": { "const": "wire" },
+        "prompt": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 },
+        "fixture": { "type": "string", "pattern": "^test/conformance/fixtures/[A-Za-z0-9/._-]+\\.fixture\\.json$" },
+        "extra": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "minivac.fixture/1#/$defs/doStep" },
+              { "$ref": "minivac.fixture/1#/$defs/advanceStep" },
+              { "$ref": "minivac.fixture/1#/$defs/settleStep" },
+              { "$ref": "minivac.fixture/1#/$defs/expectStep" },
+              { "$ref": "minivac.fixture/1#/$defs/untilStep" }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "id", "kind", "prompt", "cords", "expect"],
+      "properties": {
+        "schema": { "const": "minivac.checkitem/1" },
+        "id": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+        "kind": { "const": "basic" },
+        "prompt": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 },
+        "cords": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[^/]+/[^/]+$" }
+        },
+        "connected": {
+          "$comment": "Terminal pairs some accepted connect step in the session must have joined, even if a later step unplugged it.",
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "pattern": "^[^/]+/[^/]+$" }
+        },
+        "expect": { "$ref": "minivac.fixture/1#/$defs/observableList" }
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "id", "kind", "prompt", "program", "steps", "expect"],
+      "properties": {
+        "schema": { "const": "minivac.checkitem/1" },
+        "id": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+        "kind": { "const": "operate" },
+        "prompt": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 },
+        "program": { "type": "string", "pattern": "^test/conformance/fixtures/[A-Za-z0-9/._-]+\\.fixture\\.json$" },
+        "extra": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "minivac.fixture/1#/$defs/doStep" },
+              { "$ref": "minivac.fixture/1#/$defs/advanceStep" },
+              { "$ref": "minivac.fixture/1#/$defs/settleStep" },
+              { "$ref": "minivac.fixture/1#/$defs/expectStep" },
+              { "$ref": "minivac.fixture/1#/$defs/untilStep" }
+            ]
+          }
+        },
+        "steps": {
+          "$comment": "Contract commands (`cmd`) that must appear in this order among the session's effective commands after its last connect, disconnect or load (of several commands on one control with no time between them, only the last counts), with no further command on a control after its last step. An optional `expect` is a fixture expect step (observables plus cite, quote and any tag/source) that must hold once the call holding that command has settled, read after 500 ms more in a copy. A dialGrab step is taken by a dial hold at any angle, so the checker requires its checkpoint to name `dial`. The checker refuses connect and disconnect here.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["cmd"],
+            "properties": {
+              "cmd": { "$ref": "minivac.fixture/1#/$defs/command" },
+              "expect": { "$ref": "minivac.fixture/1#/$defs/expectStep" }
+            }
+          }
+        },
+        "expect": { "$ref": "minivac.fixture/1#/$defs/observableList" }
+      }
+    }
+  ]
+}

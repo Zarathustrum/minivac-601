@@ -1,0 +1,70 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "OP3",
+  "kind": "operate",
+  "prompt": "Load the manual rotary switch circuit, turn the pointer to 1, then to 2.",
+  "program": "test/conformance/fixtures/C1/I-EXP11.fixture.json",
+  "note": "Book I Experiment 11, Manual Operation of Rotary Switch (printed p.21 = book1.pdf PDF p.23). Turning the pointer is `dial hold <degrees>`: position k is k x 22.5 degrees, and on MV601-REF-A contact 1 holds from about 15 to 30 degrees and contact 2 from about 37.5 to 52.5 (measured with minivac-control, 2026-11-02). A dial step matches a dial hold at any angle and its checkpoint carries the position, so a pointer on the right contact passes whatever angle put it there. Both checkpoints are I-EXP11's own expects for positions 1 and 2. No fixture that uses the dial is tier A; I-EXP11 is tier C1, verified, five cords.",
+  "steps": [
+    {
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 22500000
+      },
+      "expect": {
+        "k": "expect",
+        "obs": [
+          {
+            "dev": "dial",
+            "v": "c1"
+          },
+          {
+            "dev": "outLamp5",
+            "v": "on"
+          }
+        ],
+        "cite": "BK1 printed p.21 = book1.pdf PDF p.23",
+        "quote": "Light 5 comes ON and remains ON as long as the pointer points at number 1."
+      }
+    },
+    {
+      "cmd": {
+        "k": "dialGrab",
+        "targetUdeg": 45000000
+      },
+      "expect": {
+        "k": "expect",
+        "obs": [
+          {
+            "dev": "dial",
+            "v": "c2"
+          },
+          {
+            "dev": "outLamp5",
+            "v": "off"
+          },
+          {
+            "dev": "outLamp6",
+            "v": "on"
+          }
+        ],
+        "cite": "BK1 printed p.21 = book1.pdf PDF p.23",
+        "quote": "Rotate the pointer to number 2. Light 5 goes OFF and light 6 comes ON."
+      }
+    }
+  ],
+  "expect": [
+    {
+      "dev": "dial",
+      "v": "c2"
+    },
+    {
+      "dev": "outLamp5",
+      "v": "off"
+    },
+    {
+      "dev": "outLamp6",
+      "v": "on"
+    }
+  ]
+}

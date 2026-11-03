@@ -1,0 +1,55 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "III-RELAYOR",
+  "kind": "wire",
+  "prompt": "Use two relays: button 1 drives relay 1, button 2 drives relay 2, and light 3 comes on if either relay is pulled in.",
+  "fixture": "test/conformance/fixtures/A/III-RELAYOR.fixture.json",
+  "note": "Extras: all four input combinations, each asserting light 3 and both relays (button 1 alone: relay 1 in, relay 2 out; both: both in, light 3 on; button 2 alone: relay 2 in, relay 1 out; neither: both out, light 3 off). The reference asserts only light 3 for the two one-button cases, so light 3 wired straight to + and -, the buttons wired straight to light 3 with no relay, and the relay EITHER-BUT-NOT-BOTH circuit (III-RELAYXOR's wiring) all pass it.",
+  "extra": [
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 } },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "no" }, { "dev": "relay2", "v": "nc" }, { "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; derived, not printed: pushbutton 1 alone pulls in relay 1 only, and relay 1's 1H-1G feeds 3A",
+      "quote": "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "no" }, { "dev": "relay2", "v": "no" }, { "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; derived, not printed: both relays ON. Relay 1's 1H-1G and relay 2's 2H-2G are parallel paths from + to 3A",
+      "quote": "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "nc" }, { "dev": "relay2", "v": "no" }, { "dev": "outLamp3", "v": "on" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; derived, not printed: pushbutton 2 alone pulls in relay 2 only, and relay 2's 2H-2G feeds 3A",
+      "quote": "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "relay1", "v": "nc" }, { "dev": "relay2", "v": "nc" }, { "dev": "outLamp3", "v": "off" }],
+      "cite": "BK3 printed p.43 = book2-3-4.pdf PDF p.49; derived, not printed: neither relay ON. Both N.O. contacts 1G and 2G are open, so 3A is dead",
+      "quote": "If either relay 1, controlled by pushbutton 1, or relay 2, controlled by pushbutton 2, are ON, then light 3 will come ON.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    }
+  ]
+}

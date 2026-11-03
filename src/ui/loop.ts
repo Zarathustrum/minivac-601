@@ -12,12 +12,25 @@ export type Frame = (nowMs: number) => void;
 const TICK_US = 100;
 const MAX_CATCH_UP_US = 50_000;
 
-/** The sole wall-time-to-tick conversion. Headless callers continue to use `advance(exactTicks)`. */
-export function createFrameLoop(machine: FrameTarget, sample: TickSample, render: FrameRender): Frame {
+/**
+ * The sole wall-time-to-tick conversion. Headless callers continue to use `advance(exactTicks)`.
+ * A `frozen` loop renders every frame but never advances or drains the machine: its owner moves
+ * simulated time itself, and wall time credits nothing.
+ */
+export function createFrameLoop(
+  machine: FrameTarget,
+  sample: TickSample,
+  render: FrameRender,
+  frozen = false,
+): Frame {
   let lastMs: number | null = null;
   let carryUs = 0;
   let nextBoundaryTick = machine.snapshot().tick;
   return (nowMs: number): void => {
+    if (frozen) {
+      render(machine.snapshot());
+      return;
+    }
     if (lastMs === null) lastMs = nowMs;
     // A backwards clock (or a resumed tab reporting an earlier stamp) contributes no credit: a
     // negative delta would floor to a negative tick count and hand `carryUs` almost a full tick.

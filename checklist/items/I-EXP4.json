@@ -1,0 +1,22 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "I-EXP4",
+  "kind": "wire",
+  "prompt": "Make light 2 come on only while I'm holding buttons 1 and 2 together.",
+  "fixture": "test/conformance/fixtures/A/I-EXP4.fixture.json",
+  "note": "Extra: both buttons released -> light 2 off. The printed procedure never asserts the neither-pushed case, so a circuit lit with neither button down (e.g. the series path in parallel with a path through both N.C. contacts) would pass the reference script.",
+  "extra": [
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp2", "v": "off" }],
+      "cite": "BK1 printed p.10 = book1.pdf PDF p.12; derived, not printed: neither pushbutton pushed. Pushbutton 2 up leaves 2X open, so the series path from + to light 2 is broken",
+      "quote": "It does NOT light because the connection from + to the light is broken by pushbutton 2.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    }
+  ]
+}

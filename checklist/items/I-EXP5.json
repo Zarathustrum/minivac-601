@@ -1,0 +1,22 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "I-EXP5",
+  "kind": "wire",
+  "prompt": "Wire light 1 so either button 1 or button 2 turns it on.",
+  "fixture": "test/conformance/fixtures/A/I-EXP5.fixture.json",
+  "note": "Extra: both buttons released again at the end -> light 1 off. The reference asserts off only at power-on, before any press, so a circuit that latches the light on (a relay holding itself in) would pass it.",
+  "extra": [
+    { "k": "do", "cmd": { "k": "button", "n": 1, "target": 0 } },
+    { "k": "do", "cmd": { "k": "button", "n": 2, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp1", "v": "off" }],
+      "cite": "BK1 printed p.11 = book1.pdf PDF p.13; derived, not printed: neither pushbutton pushed after the presses. The page prints this state at power-on only; no N.O. contact is closed, so light 1 has no path from +",
+      "quote": "The light does not come on because there is not a closed circuit.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    }
+  ]
+}

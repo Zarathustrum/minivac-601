@@ -1,0 +1,11 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "B1",
+  "kind": "basic",
+  "prompt": "Plug a cord from 1+ to 1A and another from 1B to 1−, then turn the power on.",
+  "cords": ["1+/1A", "1B/1-"],
+  "expect": [
+    { "dev": "power", "v": "on" },
+    { "dev": "outLamp1", "v": "on" }
+  ]
+}

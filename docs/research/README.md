@@ -5,8 +5,8 @@ documents (Books I–VII, the Maintenance Manual and the errata sheet, held here
 plus three panel photographs, verified adversarially, and written down with the confidence of
 every claim attached to it.
 
-**Read `open-questions.md` before you write code.** It carries the five blocking gaps, the
-named fallbacks you must adopt in place of the missing numbers, and every claim a verifier
+**Read `open-questions.md` before you write code.** It carries the five original blocking gaps
+(G4 has since closed), the named fallbacks you must adopt in place of the missing numbers, and every claim a verifier
 refuted. Provenance — what was read, at what resolution, by whom, and how the tags were
 assigned — lives in `METHOD.md`.
 
@@ -63,11 +63,16 @@ clear is printed for exactly one circuit, B4 p.70, and is carried package-wide u
 | `jack-map.md` | The terminal namespace and the fixed netlist behind it. Designator grammar, per-section and right-column inventories, internal busses, switching tables, hole counts, netlist-pinning fixtures. |
 | `components.md` | Electrical behaviour. Relay, lamps, pushbutton, slide switch, COMMON, CAPACITOR, power supply — plus the **solver-class ruling**, the named electrical profile `MV601-REF-A`, the named timing profile `MV601-TIMING-A`, and the acceptance fixtures with SDC's own printed expected states. |
 | `rotary.md` | The motorised dial. Contact structure, the two-resistor motor drive, RUN/STOP semantics, braking and coast, speed, the eight programming idioms, the clock role, and what the Gardi replica does and does not settle. |
-| `programs.md` | The 98-record program corpus with the errata applied, the fixture tier system (A / B / C1 / C2 / D), the conformance seed sets, and all 46 errata corrections. |
+| `programs.md` | The program corpus with the errata applied, the fixture tier system (A / B / C1 / C2 / D), the conformance seed sets, and all 46 errata corrections. |
 | `history-and-artifacts.md` | Document provenance, scan hashes, surviving units, panel variants, the oracle-only ruling on existing emulators, the Gardi replica's evidentiary status, company dates and prices. Historical narrative only — no behaviour. |
 | `open-questions.md` | Everything unresolved: the four blocking gaps still open (G1–G3, G5), the one open cross-file contradiction (C14), the register of refuted claims, and every non-blocking open question with its named fallback. |
 | `METHOD.md` | Provenance and method. How the find/verify/gap/critic passes were run and how tags were assigned. |
 | `raw/` | **Pristine captures. Never edited.** The find/verify/gap JSON, the PDFs, the rendered page images, the photographs. If something in `raw/` is wrong, the correction goes in a research file and in `open-questions.md`, never in `raw/`. |
+
+The `programs.md` header says 98 non-MM records; the [tracked extracted corpus](../../test/conformance/corpus/programs.json)
+contains 99 non-MM records (including Tic-Tac-Toe) plus three Maintenance Manual checks.
+[STATUS](../STATUS.md#open-for-toms-end-review) records the count discrepancy under *Corpus inputs found and not fixed*.
+The extractor hashes `programs.md`, so correcting its count also requires a separate corpus update.
 
 ---
 
@@ -166,6 +171,7 @@ by name so a later measurement can replace one cleanly. Full definitions in the 
 | `FITTED-CAPS` | `1cap`..`6cap` modelled as installed, far plate on the minus rail; a config flag, not a fact | `jack-map.md` §8 |
 | `POLARIZED-ELECTROLYTIC` | Capacitor construction: polarised, far plate negative, rating above the ~13 V rail | `jack-map.md` §8 |
 | `FALLBACK-DERIVED-TOPOLOGY` | A Step 7 speculative expectation: two independent topology derivations agree on it, or an adjudicator ruled; never verification | `open-questions.md` O-C29; `docs/plans/phase-5-corpus.md` Step 7 |
+| `FALLBACK-CHECKLIST-EXTRA` | A checklist item's appended expectation, derived once from the circuit's stated function; decides an operator's pass, never verification | `open-questions.md` O-C30; `checklist/items/` |
 | `FALLBACK-PWRUP-COLD` | Any unprinted power-up state recorded as `[unverified]` under this source label | `programs.md` §2 (the anti-fabrication rule) and §5 (the fallback definition) |
 
 ---

@@ -1,0 +1,34 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "IV-EXP4",
+  "kind": "wire",
+  "prompt": "Build the half-adder: slide switch 6 and button 6 are the inputs, lights 5 and 6 show carry and sum.",
+  "fixture": "test/conformance/fixtures/A/IV-EXP4.fixture.json",
+  "note": "Extras: carry (light 5) off for 1 + 0 and for 0 + 1. The procedure names only light 6 in those two steps, so light 5 wired to pushbutton 6 alone (ignoring the switch) passes the reference.",
+  "extra": [
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 0 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp5", "v": "off" }],
+      "cite": "BK4 printed p.75 procedure = book2-3-4.pdf PDF p.81; derived, not printed: slide switch LEFT (A = 1), pushbutton 6 up (B = 0), so carry out is 0 (p.74 table; p.75 light 5 = carry out)",
+      "quote": "Release pushbutton 6 and move slide switch 6 to the LEFT. Input A is now 1; input B is 0. Light 6 comes ON, indicating that the sum is 1: 1 + 0 = 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    },
+    { "k": "do", "cmd": { "k": "switch", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "do", "cmd": { "k": "button", "n": 6, "target": 1000 } },
+    { "k": "settle", "maxMs": 500 },
+    { "k": "advance", "ms": 500 },
+    {
+      "k": "expect",
+      "obs": [{ "dev": "outLamp5", "v": "off" }],
+      "cite": "BK4 printed p.75 procedure = book2-3-4.pdf PDF p.81; derived, not printed: slide switch RIGHT (A = 0), pushbutton 6 down (B = 1), so carry out is 0 (p.74 table; p.75 light 5 = carry out)",
+      "quote": "Push pushbutton 6 and hold it down. Input B is now 1. Light 6 comes ON, indicating that the sum is 1.",
+      "tag": "unverified",
+      "source": "FALLBACK-CHECKLIST-EXTRA"
+    }
+  ]
+}

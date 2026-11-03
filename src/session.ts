@@ -16,10 +16,26 @@ export interface DemoSessionOptions {
 export interface SessionContext {
   readonly demoId: string;
   readonly profileId: string;
+  /** Set only by `adopt`: the console renders without advancing time, and takes no input. */
+  readonly frozen?: boolean;
+  readonly locked?: boolean;
+}
+
+export interface AdoptContext {
+  /** What a later reset or profile switch replays on a fresh machine; never replayed onto this one. */
+  readonly demo: SessionDemo;
+  readonly profileId: string;
+  readonly frozen: boolean;
+  readonly locked: boolean;
 }
 
 export interface DemoSession {
   loadDemo(demo: SessionDemo): void;
+  /**
+   * Mount a machine the caller built and keeps driving: no replay, no tick, no drain. A mount
+   * failure leaves nothing mounted.
+   */
+  adopt(machine: Machine, context: AdoptContext): void;
   reset(): void;
   switchProfile(profileId: string): void;
   dispose(): void;
@@ -91,6 +107,20 @@ export function createDemoSession(options: DemoSessionOptions): DemoSession {
     loadDemo(demo): void {
       requireLive();
       replace(demo, profileId);
+    },
+
+    adopt(machine, context): void {
+      requireLive();
+      disposeMount();
+      unmount = options.mount(machine, Object.freeze({
+        demoId: context.demo.id,
+        profileId: context.profileId,
+        frozen: context.frozen,
+        locked: context.locked,
+      }));
+      mountedMachine = machine;
+      loadedDemo = context.demo;
+      profileId = context.profileId;
     },
 
     reset(): void {

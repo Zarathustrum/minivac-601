@@ -1,0 +1,139 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "OP1",
+  "kind": "operate",
+  "prompt": "Load the binary counter and count to three.",
+  "program": "test/conformance/fixtures/B/IV-EXP1-SLOW.fixture.json",
+  "note": "Book IV Experiment 1, the three-bit binary counter (printed pp.71-72 = book2-3-4.pdf PDF pp.77-78). Counting is pushing and releasing pushbutton 6. Each release carries a checkpoint copied from IV-EXP1-SLOW: the printed BINARY COUNTER - SEQUENCE OF OPERATIONS chart (p.71) rows 3, 5 and 7, read with light 4 = 4's, light 5 = 2's, light 6 = 1's (p.72): 001, 010, 011 with the button up. Power on is not a step; the checkpoints and the end state prove it. No further pushbutton 6 command may follow the third release (eleven presses also end on 011). Press timing, measured on MV601-REF-A: `button 6 down` and `button 6 up` as separate calls with the default settle count 0->1->2->3; so do --settle-ms 50 or more, and `button 6 down + wait 30 + button 6 up` in one call. `button 6 down + button 6 up` in one call moves nothing (zero time between) and does not count.",
+  "steps": [
+    {
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "expect": {
+        "k": "expect",
+        "obs": [
+          {
+            "dev": "outLamp4",
+            "v": "off"
+          },
+          {
+            "dev": "outLamp5",
+            "v": "off"
+          },
+          {
+            "dev": "outLamp6",
+            "v": "on"
+          },
+          {
+            "dev": "pb6",
+            "v": "nc"
+          }
+        ],
+        "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 3; output-light assignment on printed p.72",
+        "quote": "0 | NO | 0 | NO | 1 | UP | 1"
+      }
+    },
+    {
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "expect": {
+        "k": "expect",
+        "obs": [
+          {
+            "dev": "outLamp4",
+            "v": "off"
+          },
+          {
+            "dev": "outLamp5",
+            "v": "on"
+          },
+          {
+            "dev": "outLamp6",
+            "v": "off"
+          },
+          {
+            "dev": "pb6",
+            "v": "nc"
+          }
+        ],
+        "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 5; rendered source image confirms Flip-Flop C = 0; ER-20",
+        "quote": "0 | NO | 1 | NO | 0 | UP | 2"
+      }
+    },
+    {
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 1000
+      }
+    },
+    {
+      "cmd": {
+        "k": "button",
+        "n": 6,
+        "target": 0
+      },
+      "expect": {
+        "k": "expect",
+        "obs": [
+          {
+            "dev": "outLamp4",
+            "v": "off"
+          },
+          {
+            "dev": "outLamp5",
+            "v": "on"
+          },
+          {
+            "dev": "outLamp6",
+            "v": "on"
+          },
+          {
+            "dev": "pb6",
+            "v": "nc"
+          }
+        ],
+        "cite": "Book IV printed p.71 = book2-3-4.pdf PDF p.77, BINARY COUNTER — SEQUENCE OF OPERATIONS row 7; ER-20",
+        "quote": "0 | NO | 1 | NO | 1 | UP | 3"
+      }
+    }
+  ],
+  "expect": [
+    {
+      "dev": "outLamp4",
+      "v": "off"
+    },
+    {
+      "dev": "outLamp5",
+      "v": "on"
+    },
+    {
+      "dev": "outLamp6",
+      "v": "on"
+    },
+    {
+      "dev": "pb6",
+      "v": "nc"
+    }
+  ]
+}

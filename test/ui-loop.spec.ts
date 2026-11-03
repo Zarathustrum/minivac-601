@@ -58,6 +58,36 @@ describe('inspector frame accounting', () => {
     expect(advanced).toBe(0);
   });
 
+  it('renders every frozen frame from the standing state and never advances or drains', () => {
+    const loaded = loadFixture(new URL(
+      './conformance/fixtures/A/MM-RLY-CHECK.fixture.json',
+      import.meta.url,
+    ).pathname);
+    const real = loadedMachine(loaded);
+    expect(real.apply({ k: 'power', on: true })).toEqual({ ok: true });
+    real.advance(500);
+    real.drainEvents();
+    const standing = real.snapshot();
+    let advances = 0;
+    let drains = 0;
+    const machine = {
+      advance(ticks: number): void { advances++; real.advance(ticks); },
+      snapshot: () => real.snapshot(),
+      observables: () => real.observables(),
+      drainEvents(): Event[] { drains++; return real.drainEvents(); },
+    };
+    const rendered: State[] = [];
+    const frame = createFrameLoop(machine, () => {
+      throw new Error('a frozen loop sampled a tick');
+    }, (state) => rendered.push(state), true);
+
+    for (const nowMs of [0, 16, 50, 1000, 60_000]) frame(nowMs);
+
+    expect(advances).toBe(0);
+    expect(drains).toBe(0);
+    expect(rendered).toEqual(Array.from({ length: 5 }, () => standing));
+  });
+
   it('matches exact-tick headless state and event order on wired MM-RLY-CHECK', () => {
     const loaded = loadFixture(new URL(
       './conformance/fixtures/A/MM-RLY-CHECK.fixture.json',

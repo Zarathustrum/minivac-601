@@ -1,0 +1,12 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "B3",
+  "kind": "basic",
+  "prompt": "Plug 3+ into 3A and 3B into 3−, power on, then pull the cord out of 3A.",
+  "cords": ["3B/3-"],
+  "connected": ["3+/3A"],
+  "expect": [
+    { "dev": "power", "v": "on" },
+    { "dev": "outLamp3", "v": "off" }
+  ]
+}

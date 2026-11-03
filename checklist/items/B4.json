@@ -1,0 +1,12 @@
+{
+  "schema": "minivac.checkitem/1",
+  "id": "B4",
+  "kind": "basic",
+  "prompt": "Connect 2+ to 2V, 2W to 2A, 2B to 2−, power on, and slide switch 2 to the right.",
+  "cords": ["2+/2V", "2W/2A", "2B/2-"],
+  "expect": [
+    { "dev": "power", "v": "on" },
+    { "dev": "sw2", "v": "no" },
+    { "dev": "outLamp2", "v": "on" }
+  ]
+}

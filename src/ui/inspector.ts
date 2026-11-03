@@ -57,6 +57,13 @@ export interface InspectorOptions {
   readonly audio?: Pick<AudioRouter, 'control' | 'sample' | 'frame' | 'reset'>;
   readonly help?: Pick<HelpCreditsView, 'control' | 'dialog'>;
   readonly startWithFreeCord?: boolean;
+  /** Render the machine as it stands every frame, never advancing it: no ticks, trace or sound. */
+  readonly frozen?: boolean;
+  /**
+   * Make the stage and the drawer's cord and demo controls inert, and never start with a free
+   * cord: the console sends the machine no command, on mount, while mounted or on unmount.
+   */
+  readonly locked?: boolean;
 }
 
 export interface LampProjection {
@@ -393,6 +400,7 @@ export function createInspectorFrame(
   trace: Pick<TraceView, 'frame' | 'flush'>,
   audio: Pick<AudioRouter, 'sample' | 'frame'> | undefined,
   render: (state: State) => void,
+  frozen = false,
 ): Frame {
   return createFrameLoop(
     machine,
@@ -405,6 +413,7 @@ export function createInspectorFrame(
       audio?.frame(state);
       render(state);
     },
+    frozen,
   );
 }
 
@@ -507,6 +516,10 @@ export function mountInspector(
   const document = root.ownerDocument;
   const view = document.defaultView;
   if (view === null) throw new Error('inspector: document has no window');
+  const frozen = options.frozen === true;
+  const locked = options.locked === true;
+  // Simulated time stands still in a frozen console, so it plays nothing; the mute control stays.
+  const audio = frozen ? undefined : options.audio;
 
   root.replaceChildren();
   root.className = 'console-app';
@@ -580,6 +593,11 @@ export function mountInspector(
   drawer.append(drawerClose);
   if (options.experience !== undefined) drawer.append(options.experience);
   drawer.append(cordPanel, voltagePanel, notesPanel, tracePanel);
+  // Locked: the panel, its cords and the cord and demo controls take no input. The drawer still
+  // opens, so voltages and notes stay readable. The experience element outlives this mount.
+  stage.inert = locked;
+  cordPanel.inert = locked;
+  if (options.experience !== undefined) options.experience.inert = locked;
   const workspace = element(document, 'main', 'console-workspace');
   workspace.append(stage, drawer);
   root.append(toolbar, workspace);
@@ -597,6 +615,8 @@ export function mountInspector(
   const drawerController = createDrawerController(drawerToggle, drawer, drawerClose);
 
   function applyCommand(command: Command): CmdResult {
+    // Inert controls cannot get here; the throw keeps a locked console off the machine regardless.
+    if (locked) throw new Error('inspector: a locked console sends no commands');
     const acceptedState = machine.snapshot();
     const result = machine.apply(command);
     if (!result.ok) {
@@ -906,11 +926,12 @@ export function mountInspector(
     status.title = 'tick ' + state.tick + ' · rail ' + state.railMv + ' mV · supply ' + state.supplyUa + ' µA';
   }
 
-  if (cordController.snapshot().length === 0 && options.startWithFreeCord !== false) addFreeCord();
+  const startWithFreeCord = options.startWithFreeCord !== false && !locked;
+  if (cordController.snapshot().length === 0 && startWithFreeCord) addFreeCord();
   else renderCords();
   renderState(lastState);
-  options.audio?.frame(lastState);
-  const frame = createInspectorFrame(machine, trace, options.audio, renderState);
+  audio?.frame(lastState);
+  const frame = createInspectorFrame(machine, trace, audio, renderState, frozen);
   const stopFrameLoop = startFrameLoop(frame);
   let disposed = false;
   return (): void => {

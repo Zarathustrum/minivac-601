@@ -393,6 +393,11 @@ lookup requires one and only one matching loaded fixture; the output path is
 
 ## Asserted artifact inventories
 
+The fixture and demo rows below record the 2026-09-03 port handoff, not the current inventory.
+The tracked [fixture manifest](../../test/conformance/fixtures/manifest.json) has 155 entries, and
+the [demo loader](../../src/demo-library.ts) requires 17 demos after Phase 5 (see
+`docs/STATUS.md`, 2026-10-14 and *Full gate*). Read the current artifacts for current counts.
+
 | Artifact | Exact inventory |
 |---|---|
 | Tier A fixtures / goldens | 21 / 21: `I-EXP1` through `I-EXP7`, `I-EXP8-STEP5`, `I-EXP10`, `II-EXP5`, `II-EXP6`, `III-3STMT`, `III-XOR-PB`, `III-RELAYAND`, `III-RELAYOR`, `III-RELAYNOT`, `III-RELAYXOR`, `V-EXP1`, `MM-PB-CHECK`, `MM-RLY-CHECK`, `MM-SW-CHECK` |

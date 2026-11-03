@@ -11,10 +11,24 @@ Web first (TypeScript, Vite, browser), plus a Godot 4 desktop build in `godot/` 
 ## Read these first
 
 - `docs/PROJECT-BRIEF.md` — the spec, and the Step 0 questions with Tom's answers.
-- `docs/DECISIONS.md` — settled choices. Don't re-litigate without new info.
-- `docs/STATUS.md` — forward-looking state: what's done, what's next. Update before ending a session.
+- `docs/DECISIONS.md` — the decision record. Tom's rulings and approvals in it are settled: don't re-litigate them without new info. Entries headed "(orchestrator)" are working choices, not Tom-approved.
+- `docs/STATUS.md` — session state: what's done, what's parked, dated check results. Update before ending a session. It carries no authority, and its "Open for Tom's end review" list is evidence, not approval.
 - `docs/research/` — verified Minivac 601 facts. `METHOD.md` explains how the package was produced and how to re-verify. `open-questions.md` lists what is still unverified.
 - `docs/plans/` — architecture and per-phase plans.
+
+## Where things are
+
+- `src/` — `core/` the DOM-free simulator, `ui/` rendering and input; `app.ts` (the composition root, which `main.ts` calls), `session.ts`, `demo-library.ts`, `web-audio.ts` assemble the web app.
+  `hands/` is the filesystem-free tool table that `minivac-control` drives (DECISIONS, 2026-10-31).
+- `test/` — Vitest specs; `conformance/` golden fixtures and their runner, `browser/` Playwright tests.
+- `dotnet/` — the C# port of the core, its conformance runner, trace tool and tests (`Minivac.sln`).
+- `godot/` — the Godot 4 desktop build: scenes, scripts, export presets; `godot/data/` is mirrored from `data/` by `npm run sync-data`.
+- `tools/` — check, generator and sync scripts behind the `npm run` targets.
+- `data/` — shared tables: netlist, panel layout, demo library, profiles, KATs. `bin/minivac-trace` is the fixture-trace CLI; `bin/minivac-control` operates the machine from the shell over a session file (`tools/hands/`); `public/` holds web audio assets.
+- **Reading paths.** Implementation and operations: README, `src/core/`, `docs/plans/architecture.md`, `docs/port/CSHARP-PORT.md`. Checks and recorded state: README commands, `docs/STATUS.md` "Full gate", `docs/DECISIONS.md`. Research and outcomes: `docs/research/` (`METHOD.md` first), `docs/plans/`, `docs/DECISIONS.md`.
+- **Canonical:** `docs/PROJECT-BRIEF.md`, Tom's rulings in `docs/DECISIONS.md`, `docs/research/`, `docs/plans/architecture.md`, `docs/port/`. `docs/research/open-questions.md` is the notes record inside that package: read it before writing code. **Completed plans** (their design sections remain reference): `docs/plans/phase-2-console.md`, `phase-3-godot.md`, `phase-4-presentation.md`; `phase-5-corpus.md` is the record of the completed Phase 5 run. **Session state:** `docs/STATUS.md` carries no authority despite sitting in `docs/`. **Working material:** `docs/research/raw/` (pristine captures; see its README), `docs/plans/phase-4-s3-review-findings.md`, `docs/plans/phase-5-step7-notes.md`.
+- **Record equivalents:** decisions = `docs/DECISIONS.md`; notes = `docs/research/open-questions.md`; session state = `docs/STATUS.md`.
+- **Handoffs:** none are tracked. Any handoff or session-state note carries no authority; a saved plan is not a fresh instruction from Tom.
 
 ## Engineering rules
 

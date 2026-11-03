@@ -58,14 +58,21 @@ describe('Wave 7 adapter boundary and frozen versions', () => {
     expect([...coreImports].sort()).toEqual([...allowedCore].sort());
   });
 
-  it('keeps the composition root on the exact ruled loaders, factory, data and inspector', () => {
+  it('keeps the page entry to the one composition call', () => {
     const source = readFileSync(new URL('../src/main.ts', import.meta.url), 'utf8');
+    expect(imports(source)).toEqual(['./app.ts']);
+    expect(source).toBe("import { startApp } from './app.ts';\n\nstartApp();\n");
+  });
+
+  it('keeps the composition root on the exact ruled loaders, factory, data and inspector', () => {
+    const source = readFileSync(new URL('../src/app.ts', import.meta.url), 'utf8');
     expect(imports(source).sort()).toEqual([
       '../data/demo-library.json',
       '../data/netlist.json?raw',
       '../data/profiles/MV601-IDEAL.json',
       '../data/profiles/MV601-REF-A.json',
       '../data/public-assets.json',
+      './core/contract.ts',
       './core/machine.ts',
       './core/netlist.ts',
       './core/profile.ts',
