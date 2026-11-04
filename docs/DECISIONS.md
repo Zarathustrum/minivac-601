@@ -860,7 +860,7 @@ Tom's rulings before an unattended run.
   of truth. Each update applies this repo's diff since the last snapshot to the public copy, runs the
   exposure grep and the full gate, and lands as a new commit titled "snapshot of private <sha>".
   While the GitHub repo is private the snapshot may be re-squashed; once it is public, never
-  force-push.
+  force-push. (Titles superseded 2026-11-03, "Public commit titles".)
 - **Phase 5 closed** `[settled]` — Tom, 2026-10-15: Step 9 is done. The queue generator
   (`rank-corpus`), its spec and the generated queue are retired; the run rules above stay as record.
 
@@ -1165,7 +1165,7 @@ Tom approved the stage 3 plan on 2026-11-02; like the pane, it stays out of the 
   pane on the default route, run x3; each result reproduces from its exported session file; and Tom has
   used the pane hands-on.
 - **Public copy** `[settled]` — Tom, 2026-11-02: the public copy excludes the pane entirely,
-  with its tests.
+  with its tests. (Superseded 2026-11-03, "Chat pane in the public copy".)
 
 ## 2026-11-03 — Stage 3 build: orchestrator working choices
 
@@ -1249,4 +1249,42 @@ stages 2 and 3:
 - **References** `[settled]` — Tom, 2026-11-03: the public DECISIONS, STATUS and `CLAUDE.md` lose
   paths to the private run records, the chat pane and the skill-tuning driver, and the public
   `package.json` loses the pane's dev script. Code comments that mention the pane stay, so later snapshots do not conflict on
-  them.
+  them. (The pane clauses are superseded 2026-11-03, "Chat pane in the public copy".)
+
+## 2026-11-03 — Public commit titles
+
+- **Titles say what the snapshot adds** `[settled]` — Tom, 2026-11-03: a public commit is titled
+  for what it adds, in `[SCOPE]: description` form, and does not name the private repo or a private
+  sha. The last snapshot is the private source repo's `public-snapshot` tag, which
+  `tools/public-snapshot.sh mark <rev>` moves after the public commit lands.
+- **One-time force-push** `[settled]` — Tom, 2026-11-03: the four public commits were retitled and
+  force-pushed to GitHub and the staging repo (`74c91fc` → `87015c2`, trees byte-identical,
+  authors and dates kept; 0 forks, 0 stars at the time). The old head stays on the public copy's
+  local branch `backup/pre-retitle-74c91fc`. Never force-push again stands.
+
+## 2026-11-03 — Chat pane in the public copy
+
+- **The pane is public** `[settled]` — Tom, 2026-11-03, approving the plan: the public copy carries
+  the chat pane (`dev.html`, `src/pane/`, `tools/hands-pane/server.ts` and its guide, their tests
+  and fixtures) as a local tool for a model of your own: any OpenAI-compatible endpoint with tool
+  calls, with your own key. The public static build stays keyless and unchanged. This supersedes
+  the 2026-11-02 "Public copy" ruling and the pane clauses of 2026-11-03 "References".
+- **The checklist driver stays private** `[settled]` — Tom, 2026-11-03:
+  `tools/hands-pane/run-checklist.ts` and its browser test are not carried; its fallback guard
+  needs a LiteLLM proxy's served-by header.
+- **The stage 3 plan is carried** `[settled]` — Tom, 2026-11-03: `docs/plans/stage-3-chat-pane.md`
+  is scrubbed at source and carried, so the pane's citations of it resolve.
+- **Routes from the environment** `[settled]` — Tom, 2026-11-03: the server takes the models the
+  page may pick from `MINIVAC_PANE_ROUTES` (comma-separated, the default first) and refuses to start
+  without it.
+- **Working choices stay working choices** `[settled]` — Tom, 2026-11-03: the 2026-11-03 "Stage 3
+  build" working choices are published as they are, still not Tom-approved.
+
+Orchestrator working choices, not Tom-approved:
+
+- **Scrub at source** — every carried pane file is made public-safe here, so a snapshot carries it
+  unchanged; `test/private/` holds the specs that read private files and is not carried.
+- **Run folder** — `MINIVAC_PANE_RUNS`, default `pane-runs/`; `.gitignore` covers it and `.env*`.
+  The startup line names the folder.
+- **No badge without a served-by header** — a reply from an endpoint that does not say who served
+  it gets no "served by ?" badge; fallbacks, cost and a failed request still show.

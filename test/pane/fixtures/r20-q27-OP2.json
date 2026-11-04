@@ -1,0 +1,11 @@
+{
+  "source": "2026-11-02-r20-full/qwen3.8-27b/s1/OP2",
+  "covers": ["load-program","batch","press","wait"],
+  "calls": [
+    ["--help"],
+    ["new","pane.json"],
+    ["pane.json","load-program","V-EXP2","+","power","on","+","wait","300","+","state"],
+    ["pane.json","button","1","press","+","state"],
+    ["pane.json","button","3","press","+","state"]
+  ]
+}

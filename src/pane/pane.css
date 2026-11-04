@@ -1,0 +1,141 @@
+/* The dev chat pane (dev.html only). The console keeps its own layout in its column: it fits its
+   1.80:1 surface to whatever width it gets, as it does at any window size. */
+body.pane-dev {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24rem;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+body.pane-dev #app { min-width: 0; min-height: 0; }
+
+.pane {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  min-width: 0;
+  height: 100dvh;
+  color: #d6e0e9;
+  background: var(--shell-panel);
+  border-left: 1px solid var(--shell-border);
+}
+
+.pane-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.65rem 0.8rem;
+  background: #171d24;
+  border-bottom: 1px solid #3e4b58;
+}
+
+.pane-title { flex: none; margin: 0; font-size: 1rem; letter-spacing: 0.04em; white-space: nowrap; }
+
+.pane-status {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: #9fb0c0;
+  font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pane-transcript {
+  display: grid;
+  align-content: start;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.8rem;
+  overflow: auto;
+  list-style: none;
+}
+
+.pane-entry {
+  min-width: 0;
+  padding: 0.5rem 0.6rem;
+  background: #1f2730;
+  border: 1px solid var(--shell-border);
+  border-radius: 4px;
+}
+
+.pane-user { background: #213242; border-color: #3d5a73; }
+.pane-note { color: #9fb0c0; background: transparent; border-style: dashed; }
+.pane-working { color: #9fb0c0; background: transparent; border-style: dashed; font-style: italic; }
+.pane-error { color: #ffd6cf; background: #3a1f1c; border-color: #8a342e; }
+
+.pane-text { margin: 0.25rem 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+.pane-badge {
+  display: inline-block;
+  margin: 0 0 0.3rem;
+  padding: 0.1rem 0.4rem;
+  color: #b9c8d6;
+  font-size: 0.78rem;
+  background: #26303a;
+  border: 1px solid #526273;
+  border-radius: 3px;
+  overflow-wrap: anywhere;
+}
+
+.pane-badge[hidden] { display: none; }
+.pane-badge-fallback { color: #1b1300; font-weight: 700; background: #f2b84b; border-color: #ffd27a; }
+.pane-badge-failed { color: #ffd6cf; background: #5a2620; border-color: #a9473d; }
+
+.pane-call { margin-top: 0.35rem; }
+
+.pane-call-head {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.pane-call-output {
+  max-height: 18rem;
+  margin: 0.3rem 0 0;
+  padding: 0.4rem;
+  overflow: auto;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #11151a;
+  border-radius: 3px;
+}
+
+.pane-form {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 1px solid var(--shell-border);
+}
+
+.pane-input {
+  width: 100%;
+  resize: vertical;
+  color: inherit;
+  font: inherit;
+  background: #11151a;
+  border: 1px solid #526273;
+  border-radius: 3px;
+  padding: 0.4rem;
+}
+
+.pane-controls { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.pane-route {
+  color: inherit;
+  font: inherit;
+  background: #26303a;
+  border: 1px solid #526273;
+  border-radius: 3px;
+}
+
+.pane-button:hover:not(:disabled) { background: #344252; }
+.pane-button:disabled, .pane-route:disabled { opacity: 0.5; }
+
+/* Narrow windows: the pane goes under the console instead of beside it. */
+@media (max-width: 900px) {
+  body.pane-dev { grid-template-columns: minmax(0, 1fr); height: auto; overflow: auto; }
+  .pane { height: 70dvh; border-left: 0; border-top: 1px solid var(--shell-border); }
+}

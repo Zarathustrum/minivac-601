@@ -39,6 +39,10 @@ bin/minivac-control s.json state
 
 - `bin/minivac-check <item.json> <session.json>` grades a `minivac-control` session against one checklist item in `checklist/items/` and prints `PASS`, `FAIL` (with the failing manual quote or the mismatches) or `ERROR`; exit 0, 1 or 2. A wire item replays the session's final cords through the item's reference conformance fixture, so any circuit that behaves as the manual says passes; a basic item checks the session's exact cords and end state; an operate item checks that the session's cords run a named program, that the operator sent its steps and the state after each checkpointed step, and its end state. See `checklist/README.md`.
 
+## Chat pane
+
+`npm run dev:pane` serves `dev.html`, the console with a chat pane beside the panel, where a model of your own operates the page's machine through `minivac-control`: any OpenAI-compatible endpoint with tool calls, local or hosted, with your own key. A local server, `tools/hands-pane/server.ts`, holds the key and runs the model; the page never sees the key, and `npm run build` carries none of it. Setup and use: [`tools/hands-pane/README.md`](tools/hands-pane/README.md).
+
 ## .NET / Godot build
 
 The .NET and Godot toolchain, the data sync (`npm run sync-data`), the exports and the packaged `--selftest` proof are documented in [`docs/port/CSHARP-PORT.md`](docs/port/CSHARP-PORT.md). The .NET SDK is pinned in `global.json`.

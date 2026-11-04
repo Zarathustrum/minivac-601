@@ -1,7 +1,7 @@
-// The public build carries nothing of the dev-only chat pane (DECISIONS, 2026-11-02, "Public copy"):
-// dist/ holds no dev.html, and no file in it names the pane's environment (MINIVAC_LLM), its
-// server (hands-pane) or its source (src/pane). `npm run build` runs it after `vite build`
-// (package.json postbuild).
+// The static build carries nothing of the chat pane, a local dev tool (DECISIONS, 2026-11-02,
+// "Stage 3 shape": the public static build stays keyless): dist/ holds no dev.html, and no file in
+// it names the pane's environment (MINIVAC_LLM), its server (hands-pane) or its source (src/pane).
+// `npm run build` runs it after `vite build` (package.json postbuild).
 //
 // Usage: node tools/check-dist.ts [<dist dir>]   exit 1 on any finding
 

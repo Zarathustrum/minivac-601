@@ -1,0 +1,12 @@
+{
+  "source": "2026-11-02-r20-full/claude-haiku-5-5/s3/OP2",
+  "covers": ["new-refusal","press","wait"],
+  "calls": [
+    ["--help"],
+    ["pane.json","new","pane.json","connect","1X/6F","+","connect","1Y/2Y","+","connect","2Y/2-","+","connect","2Z/3Y","+","connect","3Z/4Y","+","connect","4Z/5Y","+","connect","5A/5+","+","connect","5B/5J","+","connect","5E/5+","+","connect","5F/5H","+","connect","5J/6J","+","connect","5Z/6Y","+","connect","6C/6+","+","connect","6F/6L","+","connect","6H/6-","+","connect","6K/6Z","+","power","on","+","wait","300","+","state"],
+    ["new","pane.json"],
+    ["pane.json","connect","1X/6F","+","connect","1Y/2Y","+","connect","2Y/2-","+","connect","2Z/3Y","+","connect","3Z/4Y","+","connect","4Z/5Y","+","connect","5A/5+","+","connect","5B/5J","+","connect","5E/5+","+","connect","5F/5H","+","connect","5J/6J","+","connect","5Z/6Y","+","connect","6C/6+","+","connect","6F/6L","+","connect","6H/6-","+","connect","6K/6Z","+","power","on","+","wait","300","+","state"],
+    ["pane.json","button","1","press","+","state"],
+    ["pane.json","button","3","press","+","state"]
+  ]
+}

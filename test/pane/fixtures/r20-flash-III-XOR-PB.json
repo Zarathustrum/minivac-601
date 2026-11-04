@@ -1,0 +1,15 @@
+{
+  "source": "2026-11-02-r20-full/qwen3.8-flash-next/s2/III-XOR-PB",
+  "covers": ["first-word","wait","state"],
+  "calls": [
+    ["--help"],
+    ["help","terminals"],
+    ["new","pane.json"],
+    ["connect","1+/1Y","+","connect","1Z/2X","+","connect","1X/2Z","+","connect","2Y/3A","+","connect","3B/3-","+","power","on","+","state"],
+    ["pane.json","connect","1+/1Y","+","connect","1Z/2X","+","connect","1X/2Z","+","connect","2Y/3A","+","connect","3B/3-","+","power","on","+","state"],
+    ["pane.json","button","1","down","+","state"],
+    ["pane.json","button","2","down","+","wait","200","+","state"],
+    ["pane.json","button","1","up","+","wait","200","+","state"],
+    ["pane.json","button","2","up","+","wait","200","+","state"]
+  ]
+}

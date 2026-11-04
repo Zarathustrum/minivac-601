@@ -1,0 +1,15 @@
+{
+  "source": "2026-11-02-r20-full/qwen3.8-flash-next/s1/IV-EXP4",
+  "covers": ["wait","state"],
+  "calls": [
+    ["--help"],
+    ["help","terminals"],
+    ["new","pane.json"],
+    ["pane.json","connect","5A/6U","+","connect","5B/5-","+","connect","6A/6S","+","connect","6B/6-","+","connect","6R/6Z","+","connect","6T/6X","+","connect","6T/6V","+","connect","6Y/6+","+","power","on","+","state"],
+    ["pane.json","switch","6","right","+","wait","500","+","state"],
+    ["pane.json","button","6","down","+","wait","500","+","state"],
+    ["pane.json","button","6","up","+","switch","6","left","+","wait","500","+","state"],
+    ["pane.json","button","6","down","+","wait","500","+","state"],
+    ["pane.json","button","6","up","+","wait","200","+","state"]
+  ]
+}

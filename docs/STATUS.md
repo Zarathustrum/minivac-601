@@ -3,6 +3,25 @@
 Update before ending a session. The newest dated section is this checkout's forward-looking state; older
 "Next" lines are historical snapshots. Settled choices are in `docs/DECISIONS.md`.
 
+## 2026-11-03 — The chat pane goes public as a bring-your-own-model tool. **Next: nothing owed.**
+
+- Routes come from `MINIVAC_PANE_ROUTES` and runs go to `MINIVAC_PANE_RUNS` (default `pane-runs/`);
+  a reply with no served-by header gets no badge. The pane tree, its tests and the stage 3 plan are
+  public-safe at source; `tools/hands-pane/README.md` is the guide. The checklist driver and
+  `test/private/` stay private (DECISIONS, 2026-11-03, "Chat pane in the public copy").
+- Checks, 2026-11-03: typecheck, lint, Vitest 74 files (2037 passed, 1 expected fail), build with
+  check-dist, and the browser suite (51 passed) all clean. B1 from the pane passed twice on live
+  models: through the LiteLLM gateway on the default route with the fallback guard on (the
+  checklist driver, `.env.pane`), and against a vLLM server directly, with no proxy, where no reply
+  carried a badge and the run went to `pane-runs/`, which git ignores.
+
+## 2026-11-03 — Public snapshot of stages 2–3 published. **Next: nothing owed.**
+
+- The snapshot of stages 2 and 3 is published, per DECISIONS 2026-11-03 "Public snapshot calls".
+  Its gate passed 15/15; the scrub had the exposure grep (now with the lab's route and
+  infrastructure names), a wide grep, and an independent cold review, whose eight findings were
+  fixed.
+
 ## 2026-11-03 — Stage 3 closed; the hands roadmap is done. **Next: nothing owed; parked items below.**
 
 - Tom closed stage 3 (DECISIONS 2026-11-03, "Stage 3 closed") after his third pane session wired

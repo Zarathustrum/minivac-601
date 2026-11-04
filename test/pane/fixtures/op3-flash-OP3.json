@@ -1,0 +1,12 @@
+{
+  "source": "2026-11-02-op3/qwen3.8-flash-next/s1/OP3",
+  "covers": ["load-program","dial","wait"],
+  "calls": [
+    ["--help"],
+    ["help","terminals"],
+    ["new","pane.json"],
+    ["pane.json","load-program","I-EXP11","+","power","on","+","state"],
+    ["pane.json","dial","hold","22.5","+","wait","200","+","state"],
+    ["pane.json","dial","hold","45","+","wait","200","+","state"]
+  ]
+}

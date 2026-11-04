@@ -1,0 +1,25 @@
+{
+  "source": "2026-11-02-r21/gemma-4-26b/s4/IV-EXP4",
+  "covers": ["batch-rejection","disconnect-all","breaker","press","wait"],
+  "calls": [
+    ["--help"],
+    ["help","terminals"],
+    ["new","pane.json"],
+    ["pane.json","connect","5A/6U","+","connect","5B/5-","+","connect","6A/6S","+","connect","6B/6-","+","connect","6R/6Z","+","connect","6T/6X","+","connect","6T/6V","+","connect","6Y/6+","+","state"],
+    ["pane.json","power","on","+","state"],
+    ["pane.json","disconnect","all","+","breaker","reset","+","state"],
+    ["pane.json","connect","5A/6U","+","connect","5B/5-","+","connect","6A/6S","+","connect","6B/6-","+","connect","6R/6Z","+","connect","6T/6X","+","connect","6T/6V","+","connect","6Y/6+","+","state"],
+    ["pane.json","switch","6","right","+","state"],
+    ["pane.json","button","6","press","+","state"],
+    ["pane.json","button","6","down","+","state"],
+    ["pane.json","button","6","down","+","wait","1000","+","button","6","up","+","state"],
+    ["pane.json","switch","6","left","+","state"],
+    ["pane.json","switch","6","left","+","state"],
+    ["pane.json","load-program","IV-EXP4","+","state"],
+    ["pane.json","disconnect","all","+","state"],
+    ["pane.json","button","6","down","+","wait","1000","+","button","6","up","+","state"],
+    ["pane.json","switch","6","left","+","state"],
+    ["pane.json","button","6","down","+","wait","1000","+","button","6","up","+","state"],
+    ["pane.json","switch","6","right","+","button","6","down","+","wait","1000","+","state"]
+  ]
+}

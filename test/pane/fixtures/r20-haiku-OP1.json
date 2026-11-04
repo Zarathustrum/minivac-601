@@ -1,0 +1,14 @@
+{
+  "source": "2026-11-02-r20-full/claude-haiku-5-5/s3/OP1",
+  "covers": ["new-refusal","unknown-program","load-program","press","wait"],
+  "calls": [
+    ["--help"],
+    ["pane.json","new","+","load-program","IV-EXP1","+","power","on","+","state"],
+    ["new","pane.json"],
+    ["pane.json","load-program","IV-EXP1","+","power","on","+","state"],
+    ["pane.json","load-program","IV-EXP1-SLOW","+","power","on","+","state"],
+    ["pane.json","button","6","press","+","state"],
+    ["pane.json","button","6","press","+","state"],
+    ["pane.json","button","6","press","+","wait","200","+","state"]
+  ]
+}

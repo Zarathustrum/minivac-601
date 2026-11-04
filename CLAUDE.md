@@ -18,7 +18,7 @@ Web first (TypeScript, Vite, browser), plus a Godot 4 desktop build in `godot/` 
 
 ## Where things are
 
-- `src/` — `core/` the DOM-free simulator, `ui/` rendering and input; `app.ts` (the composition root, which `main.ts` calls), `session.ts`, `demo-library.ts`, `web-audio.ts` assemble the web app.
+- `src/` — `core/` the DOM-free simulator, `ui/` rendering and input; `app.ts` (the composition root, which `main.ts` calls), `session.ts`, `demo-library.ts`, `web-audio.ts` assemble the web app. `pane/` is the chat pane's page side, its UI and DOM-free engine; its server is `tools/hands-pane/` (guide in its README; plan `docs/plans/stage-3-chat-pane.md`).
   `hands/` is the filesystem-free tool table that `minivac-control` drives (DECISIONS, 2026-10-31).
 - `test/` — Vitest specs; `conformance/` golden fixtures and their runner, `browser/` Playwright tests.
 - `dotnet/` — the C# port of the core, its conformance runner, trace tool and tests (`Minivac.sln`).

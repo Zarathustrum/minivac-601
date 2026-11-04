@@ -1,0 +1,19 @@
+{
+  "source": "2026-11-02-skill-r14/gemma-4-26b/s3/III-RELAYOR",
+  "covers": ["batch-rejection","disconnect-all","new-refusal","press"],
+  "calls": [
+    ["new","pane.json"],
+    ["help","terminals"],
+    ["pane.json","connect","1X/1E","+","connect","1F/1-","+","connect","1C/1F","+","connect","1+/1G","+","connect","1H/3A","+","connect","2X/2E","+","connect","2F/1-","+","connect","2C/2F","+","connect","1+/2G","+","connect","2H/3A","+","connect","3B/1-","+","power","on","+","state"],
+    ["pane.json","connect","1X/1E","+","connect","1F/1-","+","connect","1C/1F","+","connect","2X/2E","+","connect","2F/1-","+","connect","2C/2F","+","state"],
+    ["pane.json","connect","1+/1G","+","connect","1H/3A","+","connect","1+/2G","+","connect","2H/3A","+","connect","3B/M-","+","state"],
+    ["pane.json","power","on","+","state"],
+    ["pane.json","button","1","press","+","state"],
+    ["pane.json","button","2","press","+","state"],
+    ["pane.json","disconnect","all","+","new"],
+    ["pane.json","disconnect","all","+","connect","1+/1Y","+","connect","1X/1E","+","connect","1F/1-","+","connect","1C/1F","+","connect","1+/1G","+","connect","1H/3A","+","connect","2+/2Y","+","connect","2X/2E","+","connect","2F/1-","+","connect","2C/2F","+","connect","1+/2G","+","connect","2H/3A","+","connect","3B/M-","+","power","on","+","state"],
+    ["pane.json","disconnect","all","+","connect","1+/1Y","+","connect","1X/1E","+","connect","1F/1-","+","connect","1C/1F","+","connect","1+/1G","+","connect","1H/3A","+","connect","2+/2Y","+","connect","2X/2E","+","connect","2F/1-","+","connect","2C/2F","+","connect","M+/2G","+","connect","2H/3A","+","connect","3B/M-","+","power","on","+","state"],
+    ["pane.json","button","1","press","+","state"],
+    ["pane.json","button","2","press","+","state"]
+  ]
+}

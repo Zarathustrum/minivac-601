@@ -1,0 +1,10 @@
+{
+  "source": "2026-11-02-r20-full/claude-haiku-5-5/s1/B4",
+  "covers": ["new-refusal","missing","state"],
+  "calls": [
+    ["pane.json","new","pane.json"],
+    ["pane.json","connect","2+/2V","+","connect","2W/2A","+","connect","2B/2-","+","power","on","+","switch","2","right","+","state"],
+    ["new","pane.json"],
+    ["pane.json","connect","2+/2V","+","connect","2W/2A","+","connect","2B/2-","+","power","on","+","switch","2","right","+","state"]
+  ]
+}

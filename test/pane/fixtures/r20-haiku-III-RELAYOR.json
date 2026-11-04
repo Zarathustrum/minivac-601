@@ -1,0 +1,17 @@
+{
+  "source": "2026-11-02-r20-full/claude-haiku-5-5/s1/III-RELAYOR",
+  "covers": ["new-refusal","wait","state"],
+  "calls": [
+    ["--help"],
+    ["help","terminals"],
+    ["pane.json","new","pane.json"],
+    ["new","pane.json"],
+    ["pane.json","connect","1+/1Y","+","connect","1X/1C","+","connect","1F/1-","+","connect","2+/2Y","+","connect","2X/2C","+","connect","2F/2-","+","connect","1+/1H","+","connect","1G/3A","+","connect","2+/2H","+","connect","2G/3A","+","connect","3B/3-","+","power","on","+","state"],
+    ["pane.json","button","1","up","+","button","2","up","+","wait","300","+","state"],
+    ["pane.json","button","1","down","+","wait","300","+","state"],
+    ["pane.json","button","1","up","+","wait","300","+","state"],
+    ["pane.json","button","2","down","+","wait","300","+","state"],
+    ["pane.json","button","1","down","+","wait","300","+","state"],
+    ["pane.json","button","1","up","+","button","2","up","+","wait","300","+","state"]
+  ]
+}

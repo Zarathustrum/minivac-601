@@ -1,0 +1,12 @@
+{
+  "source": "2026-11-02-r20-full/qwen3.8-27b/s1/B3",
+  "covers": ["disconnect","wait"],
+  "calls": [
+    ["--help"],
+    ["help","terminals"],
+    ["new","pane.json"],
+    ["pane.json","connect","3+/3A","+","connect","3B/3-"],
+    ["pane.json","power","on","+","state"],
+    ["pane.json","disconnect","3+/3A","+","wait","500","+","state"]
+  ]
+}

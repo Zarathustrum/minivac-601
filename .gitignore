@@ -12,3 +12,5 @@ godot/obj/
 godot/export/
 godot/**/*.import
 docs/research/raw/pdf/pages/
+pane-runs/
+.env*
