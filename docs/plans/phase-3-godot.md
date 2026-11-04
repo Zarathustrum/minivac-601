@@ -418,7 +418,7 @@ the picker, a `Free` button per end, and a `Remove` button. **Add free cord** (t
 label) allocates the cord, selects end `a` and opens the picker (551–561). The picker is a search
 field (*Find terminal or hole*, matching terminal **and** hole ids, `src/ui/stage-controls.ts`
 362–375, 445–451), a **Free** action, a **Cancel** action, Escape-to-cancel (464–468), and one row
-per terminal carrying its per-hole buttons and a per-terminal **Touch <id>** button that applies
+per terminal carrying its per-hole buttons and a per-terminal **Touch `<id>`** button that applies
 `{k:'touch'}` while held and returns the end to `free` on pointer up, pointer cancel, lost
 capture, key up, blur or dispose (406, 419–439). Touch requires the end to be `free`.
 
@@ -637,7 +637,7 @@ G4; its 2D and 3D scene design is not part of this committed tree.
 | Dial | keyboard step while not pointer-held | `{dialGrab, targetUdeg: slider}` then `{dialRelease}` (243–247) |
 | Add free cord | activate | `{connect, cord: lowest unused 0..255, a: free, b: free, r_uohm: 0}`, then end `a` selected and the picker opened; no command if exhausted (*All 256 cord ids are in use.*) |
 | Remove | activate | `{disconnect, cord}` |
-| Endpoint → hole / tray / Free / picker hole | valid drop or choice | `{disconnect, cord}` then `{connect, cord, a', b', r_uohm}`; on connect failure, `{connect}` of the byte-identical original; if that fails too, no further command, *Cord rollback rejected: <why>.*, cord list rebuilt from `State.cords` |
+| Endpoint → hole / tray / Free / picker hole | valid drop or choice | `{disconnect, cord}` then `{connect, cord, a', b', r_uohm}`; on connect failure, `{connect}` of the byte-identical original; if that fails too, no further command, *Cord rollback rejected: `<why>`.*, cord list rebuilt from `State.cords` |
 | Endpoint → occupied hole (dragged endpoint excluded from occupancy), outside, Escape, cancel, same end | — | no command |
 | Touch (picker) | press while the end is free | `{disconnect}` then `{connect … {touch, term}}` |
 | Touch (picker) | release / cancel / lost capture / key up / blur / dispose | `{disconnect}` then `{connect … free}` |
@@ -662,10 +662,10 @@ Byte-identical in the Godot build; each pinned by a Godot-side test with the lit
 
 Status strings that carry verbatim but are not pinned by a test in either build — the thirteen at
 `src/ui/inspector.ts` 529, 533, 554, 566, 570, 573, 582, 596, 665, 668, 681, 723, 732 (*Accepted:
-<k>* / *Rejected: <why>*, *All 256 cord ids are in use.*, *Cord endpoint connected.*, *Cord change
-rejected: <why>.*, *Cord rollback rejected: <why>.*, *Cord change cancelled.*, *Cord drop
-cancelled.*, *Cord move cancelled.*, *<hole> is occupied.*, *Touch requires a free cord end.*,
-*Touching terminal <t>.*, *Choose a terminal or Free for cord <n><SIDE>.*, *Select a cord end
+`<k>`* / *Rejected: `<why>`*, *All 256 cord ids are in use.*, *Cord endpoint connected.*, *Cord change
+rejected: `<why>`.*, *Cord rollback rejected: `<why>`.*, *Cord change cancelled.*, *Cord drop
+cancelled.*, *Cord move cancelled.*, *`<hole>` is occupied.*, *Touch requires a free cord end.*,
+*Touching terminal `<t>`.*, *Choose a terminal or Free for cord `<n><SIDE>`.*, *Select a cord end
 first.*) and the cord-panel hint at 465–470.
 
 ## Appendix E — inventories the tests assert
