@@ -186,7 +186,7 @@ Update before ending a session. The newest dated section is this checkout's forw
   calls (DECISIONS, *2026-10-15 — Public copy calls*). The public copy is a scrubbed single-commit
   snapshot of this repo: personal and lab-specific text removed, MIT `LICENSE` and `NOTICE` added. It
   passed the full gate before the push. Making it public is Tom's step.
-- **Updates to the public copy** arrive as new commits titled "snapshot of private <sha>", each
+- **Updates to the public copy** arrive as new commits titled "snapshot of private `<sha>`", each
   checked by the exposure grep and the full gate.
 - **Pushbutton latch** (DECISIONS, *2026-10-15 — Pushbutton latch*): shift-click, or Shift+Space /
   Shift+Enter, keeps a pushbutton down, so one mouse can hold two.

@@ -65,8 +65,8 @@ another port, because the server accepts only the page origins it was given.
 - While a session is live the panel is **frozen** (simulated time moves only inside the model's
   calls) and **locked** (it takes no clicks). It redraws after each call, and the transcript shows
   each call with the text the model was given.
-- While a request to the model is out, the transcript ends in "waiting for <route> · request <n> ·
-  <s> s". A long reply, such as a whole circuit in one batch, holds that line until it is in.
+- While a request to the model is out, the transcript ends in `waiting for <route> · request <n> · <s> s`.
+  A long reply, such as a whole circuit in one batch, holds that line until it is in.
 - **Stop** ends the model's turn. **End session** hands you the machine as the model left it, live
   and unlocked. **New session** does the same and clears the transcript. Reloading the page ends the
   session, and its run is marked invalid.

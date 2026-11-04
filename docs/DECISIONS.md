@@ -858,7 +858,7 @@ Tom's rulings before an unattended run.
   Tom's yes. Going public is his call.
 - **Updates** `[settled]` — Tom approved the orchestrator's recommendation: this repo stays the source
   of truth. Each update applies this repo's diff since the last snapshot to the public copy, runs the
-  exposure grep and the full gate, and lands as a new commit titled "snapshot of private <sha>".
+  exposure grep and the full gate, and lands as a new commit titled "snapshot of private `<sha>`".
   While the GitHub repo is private the snapshot may be re-squashed; once it is public, never
   force-push. (Titles superseded 2026-11-03, "Public commit titles".)
 - **Phase 5 closed** `[settled]` — Tom, 2026-10-15: Step 9 is done. The queue generator
@@ -1202,7 +1202,7 @@ Tom's first hands-on session (tic-tac-toe wired) went quiet
 for a long reply (2,580 tokens before one 70-cord batch), and then every cord appeared at once.
 
 - **Model working** `[settled]` — Tom, 2026-11-03: yes. While a request to the model is out, the
-  pane shows "waiting for <route> · request <n> · <s> s" at the transcript's end until the reply
+  pane shows `waiting for <route> · request <n> · <s> s` at the transcript's end until the reply
   is in (the server's `requesting` frame, PANE_PROTOCOL 3).
 - **Cord-by-cord animation** `[deferred]` — Tom, 2026-11-03: deferred. A batch still lands at once,
   per "Instant calls" (2026-11-02).
