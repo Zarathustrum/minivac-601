@@ -7,10 +7,12 @@ public partial class Chrome : CanvasLayer
 {
     private Control _root = null!;
     private Action<float, float, float, float> _layoutStage = null!;
+    private Action<float> _insetStage3D = _ => { };
 
     public event Action? DrawerOpened;
 
     public Toolbar Toolbar { get; private set; } = null!;
+    public Banner Banner { get; private set; } = null!;
     public Drawer Drawer { get; private set; } = null!;
     public CordList CordList { get; private set; } = null!;
     public Picker Picker { get; private set; } = null!;
@@ -19,6 +21,12 @@ public partial class Chrome : CanvasLayer
     public DemoExperience DemoExperience { get; private set; } = null!;
     public Diagnostics Diagnostics { get; private set; } = null!;
     public HelpCredits HelpCredits { get; private set; } = null!;
+    // The right-hand column's head: Cords | Chat (docs/plans/godot-chat-pane.md, "Layout").
+    public Control ColumnTabs { get; private set; } = null!;
+    public Button CordsTab { get; private set; } = null!;
+    public Button ChatTab { get; private set; } = null!;
+    public ChatDock? Chat { get; private set; }
+    public bool ChatSelected { get; private set; }
 
     public void Initialize(
         Action<float, float, float, float> layoutStage,
@@ -73,6 +81,22 @@ public partial class Chrome : CanvasLayer
 
         Toolbar = new Toolbar();
         _root.AddChild(Toolbar);
+
+        // After the toolbar in the tree, so Tab goes toolbar, column tabs, then the dock.
+        ColumnTabs = new Control
+        {
+            Name = "ColumnTabs",
+            MouseFilter = Control.MouseFilterEnum.Stop,
+            MouseForcePassScrollEvents = false,
+        };
+        _root.AddChild(ColumnTabs);
+        CordsTab = AddTab("CordsTab", "Cords", "Show the cord list", () => SelectColumn(chat: false));
+        ChatTab = AddTab("ChatTab", "Chat", "Show the chat with a model of your own (/ from the console)", () => SelectColumn(chat: true));
+        CordsTab.ButtonPressed = true;
+
+        Banner = new Banner();
+        _root.AddChild(Banner);
+        Banner.Initialize();
 
         Drawer = new Drawer();
         _root.AddChild(Drawer);
@@ -147,6 +171,49 @@ public partial class Chrome : CanvasLayer
             HelpCredits.Open,
             preferences.AudioMuted);
         LayoutChrome();
+        // A CanvasLayer gets no NotificationResized; its root Control does.
+        _root.Resized += LayoutChrome;
+    }
+
+    /// <summary>Mounts the chat dock under the column tabs. <paramref name="insetStage3D"/> gets the 3D framing's right inset.</summary>
+    public void AttachChat(ChatDock dock, Action<float> insetStage3D)
+    {
+        Chat = dock ?? throw new ArgumentNullException(nameof(dock));
+        _insetStage3D = insetStage3D ?? throw new ArgumentNullException(nameof(insetStage3D));
+        _root.AddChild(dock);
+        _root.MoveChild(dock, ColumnTabs.GetIndex() + 1);
+        dock.BindSelect(() => SelectColumn(chat: true));
+        dock.LiveChanged += live => ChatTab.Text = live ? "Chat ●" : "Chat";
+        SelectColumn(ChatSelected, focus: false);
+    }
+
+    /// <summary>Selects the column's tab; selecting Chat focuses the dock.</summary>
+    public void SelectColumn(bool chat, bool focus = true)
+    {
+        ChatSelected = chat && Chat is not null;
+        if (ChatSelected && Picker.IsOpen) Picker.Close();
+        CordsTab.ButtonPressed = !ChatSelected;
+        ChatTab.ButtonPressed = ChatSelected;
+        CordList.Visible = !ChatSelected;
+        if (Chat is not null) Chat.Visible = ChatSelected;
+        LayoutChrome();
+        if (ChatSelected && focus) Chat!.FocusInput();
+    }
+
+    private Button AddTab(string name, string text, string tooltip, Action pressed)
+    {
+        var tab = new Button
+        {
+            Name = name,
+            Text = text,
+            TooltipText = tooltip,
+            ToggleMode = true,
+            FocusMode = Control.FocusModeEnum.All,
+        };
+        // A toggle button flips itself on press; the selection, not the click, decides its state.
+        tab.Pressed += pressed;
+        ColumnTabs.AddChild(tab);
+        return tab;
     }
 
     private void OpenDrawer(Control returnFocus)
@@ -163,16 +230,53 @@ public partial class Chrome : CanvasLayer
 
     public void Relayout() => LayoutChrome();
 
+    /// <summary>
+    /// The chrome's half of the lock: the picker and drawer close, Library, Blank panel, Reset and
+    /// Profile grey out, and the banner shows. Camera, Sound and Help stay live.
+    /// </summary>
+    public void SetLocked(bool locked)
+    {
+        if (locked)
+        {
+            if (Picker.IsOpen) Picker.Close();
+            if (Drawer.Visible) Drawer.Close();
+        }
+        Toolbar.SetLocked(locked);
+        Banner.Visible = locked;
+        LayoutChrome();
+    }
+
     private void LayoutChrome()
     {
         if (_root is null) return;
-        _layoutStage(12, 56, -272, -12);
+        // The banner spans the stage under the toolbar; the flat stage moves down below it, and in 3D
+        // (which fills the window) it overlays the view as the cord list does.
+        // The column is 248 px for Cords and 360 px for Chat; the flat stage's right inset follows it,
+        // and in 3D (which fills the window) the camera frames the console left of the dock.
+        var columnWidth = ChatSelected ? ChatDock.ColumnWidth : 248;
+        var stageTop = Banner.Visible ? 56 + Banner.BannerHeight + 8 : 56;
+        _layoutStage(12, stageTop, -(columnWidth + 24), -12);
+        _insetStage3D(ChatSelected ? columnWidth + 24 : 0);
         Toolbar.Position = new(12, 12);
         Toolbar.Size = new(1120, 36);
+        Banner.Position = new(12, 56);
+        Banner.Size = new(Math.Max(0, _root.Size.X - columnWidth - 36), Banner.BannerHeight);
 
         var right = Math.Max(0, _root.Size.X - 260);
-        CordList.Position = new(right, 56);
-        CordList.Size = new(248, Math.Max(100, _root.Size.Y - 68));
+        var column = Math.Max(0, _root.Size.X - columnWidth - 12);
+        ColumnTabs.Position = new(column, 56);
+        ColumnTabs.Size = new(columnWidth, 36);
+        CordsTab.Position = Vector2.Zero;
+        CordsTab.Size = new(columnWidth / 2 - 4, 36);
+        ChatTab.Position = new(columnWidth / 2 + 4, 0);
+        ChatTab.Size = new(columnWidth / 2 - 4, 36);
+        CordList.Position = new(right, 100);
+        CordList.Size = new(248, Math.Max(100, _root.Size.Y - 112));
+        if (Chat is not null)
+        {
+            Chat.Position = new(column, 100);
+            Chat.Size = new(columnWidth, Math.Max(100, _root.Size.Y - 112));
+        }
         Picker.Position = new(Math.Max(0, right - 300), 56);
         Picker.Size = new(288, Math.Max(100, _root.Size.Y - 68));
 

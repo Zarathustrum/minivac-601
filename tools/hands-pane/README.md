@@ -115,3 +115,105 @@ stays in your browser history until the server restarts. Do not expose the port 
   page origin, `MINIVAC_PANE_ORIGINS`).
 - A turn that ends at once with `http_<status>`: the endpoint refused the request. Its reply is in
   the run's `transcript.jsonl`; the page shows only the status.
+
+## In the Godot build
+
+The same chat, against the same server, with the machine living in the Godot desktop build
+instead of the web page. Godot connects to the server as the page does and answers its requests
+from a C# port of the page's engine (`dotnet/Minivac.Hands/`); the server still runs the model,
+parses its words and writes the text, so the model reads the same output either way. The design
+and its rulings: `docs/plans/godot-chat-pane.md` and `docs/DECISIONS.md` (2026-11-11, "Chat pane in
+the Godot build").
+
+### What you need
+
+Everything under "What you need" and "Set it up" above, plus the Godot build's toolchain: the .NET
+SDK that `global.json` pins (10.0.x) and Godot 4.7.2 mono. `docs/port/CSHARP-PORT.md` covers both,
+the one-time import and `npm run sync-data`.
+
+### Run it
+
+1. Start the server exactly as for the web page:
+   `node --env-file=.env.pane tools/hands-pane/server.ts`. `npm run dev:pane` is not needed, but the
+   link it prints still names the page origin `http://127.0.0.1:5173`, because the server admits
+   only an allowed origin and Godot sends the link's own origin as its Origin.
+2. Build and open the Godot build: `dotnet build godot/Minivac.Godot.sln`, then
+   `"$GODOT" --path godot`, with `GODOT` set to your Godot 4.7.2 mono binary.
+3. Select the Chat tab at the top of the right-hand column, or press `/`. The link of a running
+   server is already in the field; press Connect. The status line reads `connected`. If the field
+   is empty, paste the link the server printed.
+
+Or give the link at launch, quoted so the shell leaves the `#` and `&` alone:
+`"$GODOT" --path godot -- --pane-link '<link>'`.
+
+### What differs from the web pane
+
+- While a session is live a banner across the top of the stage says the model has the machine,
+  repeats the waiting line, and carries Stop and End session.
+- The panel is locked and frozen as on the web, but the camera stays free: orbit, zoom, pan, Fit,
+  Wire, the flat and 3D toggle, Sound and Help all work.
+- After each call the cords that call added carry a yellow ring, in both views, until the next
+  call, New session or End session. A call that adds more than 12 cords shows no rings. Lamps,
+  relays and controls get no mark.
+- The model's reply renders a small markdown subset: bold, italic, code, code blocks, headings and
+  bullets. A link prints as `text (url)` and is not clickable. Anything else stays as typed. The
+  web pane shows the reply as plain text.
+- The transcript shows at most 4 KiB of each field and 16 KiB (and 50 calls) of each reply, with
+  a last line saying how much is shown. The run folder's `transcript.jsonl` has all of a reply
+  that succeeded.
+- Quitting the app ends the session and its run is marked invalid, as a reload does on the web.
+- The link is filled in for you. A running server keeps its link in `~/.minivac/pane-link`, a file
+  only your account can read, and removes it when it stops; the app reads that file when it starts,
+  when Chat is selected, when its window regains focus and when a connection ends. The app itself
+  saves nothing. Text you typed in the field is left alone.
+- The window opens at up to 80 % of the screen and the toolbar, the right-hand column and their
+  text scale with the window when you resize it.
+- No screen-reader support is claimed for the Godot build. The dock works from the keyboard, with
+  visible focus and a tooltip on every control.
+
+### Safety in the Godot build
+
+- The app connects only to 127.0.0.1, whatever host the link names.
+- `--pane-link` puts the token in the process's arguments, which other accounts on the same
+  machine can read. On a shared machine, paste the link instead.
+- The link file holds the launch token while the server runs. It is created readable by your
+  account only (mode 0600, in a 0700 folder); a server that is killed outright leaves it behind,
+  and its token is then useless, because a new server makes a new one.
+- A web page and the Godot build can be connected at once. Each gets its own session and its own
+  run folder.
+
+### Godot's messages
+
+The status line and the transcript say, in these words:
+
+- `disconnected: could not connect to 127.0.0.1:<port>: the pane server is not running, or it does
+  not allow this link's origin (<origin>)`: start the server, or paste its latest link. Godot
+  cannot tell a server that is down from one that refuses the origin.
+- `disconnected: the server refused the token: paste the link the pane server printed last`.
+- `disconnected: this build and the pane server are different versions: rebuild this app or
+  restart the pane server`.
+- `disconnected: the pane server did not answer within 10 s: check that it is running and that the
+  link is its latest, then press Connect`.
+- `disconnected: the pane server closed the connection before it was ready (<code>)`.
+- `disconnected: the pane server connection closed (<code>); press Connect to connect again`, with
+  the transcript line `The pane server connection closed; run <run> is marked invalid.` when a
+  session was live. End session then hands the panel back.
+- `disconnected: the pane server did not answer End session within 15 s, so this app closed the
+  connection; press Connect to connect again`.
+- `disconnected: could not send to the pane server (<error>); press Connect to connect again`, or
+  `could not send hello to the pane server (<error>)` while connecting.
+- Under the link field: `not a link: paste the URL the pane server printed
+  (http://…/dev.html#t=…&port=…)`, `the link has no token (#t=…): paste the whole URL the pane
+  server printed`, or `the link's port is not a whole number from 1 to 65535`.
+- `The console could not show the machine: <error>`: the app could not show the model's machine;
+  End session hands the panel back.
+
+### Its end-to-end check
+
+`npm run godot-pane-e2e` starts this server with a scripted fake model (no real model is called)
+and runs the Godot build headless against it: the model wires checklist item B1 from the dock,
+lamp 1 lights, the panel stays locked until End session and is live after it, the exported session
+passes `bin/minivac-check`, and the model was shown the web page engine's text byte for byte. A
+second case quits the app mid-session and checks that the run is marked invalid. It needs `dotnet`
+on PATH, `GODOT` set, and the project imported once; it builds the Godot project's C# first and
+fails, never skips, when any of those is missing.

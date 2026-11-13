@@ -18,6 +18,7 @@ public partial class CordList : Control
     private Control _content = null!;
     private State.Cord[] _rendered = [];
     private bool _hasRendered;
+    private bool _renderedLocked;
     private float _scrollOffset;
 
     public Button AddButton { get; private set; } = null!;
@@ -57,10 +58,14 @@ public partial class CordList : Control
     public void Render()
     {
         var current = _cords!.CordsState;
-        if (_hasRendered && _rendered.SequenceEqual(current)) return;
+        var locked = _cords.Locked;
+        if (_hasRendered && _renderedLocked == locked && _rendered.SequenceEqual(current)) return;
         var focusedName = IsInsideTree() ? GetViewport().GuiGetFocusOwner()?.Name.ToString() : null;
         _rendered = current.ToArray();
         _hasRendered = true;
+        _renderedLocked = locked;
+        // Locked rows are greyed and inert; scrolling stays free.
+        AddButton.Disabled = locked;
         foreach (var row in _rows) row.QueueFree();
         _rows.Clear();
         _endpointButtons.Clear();
@@ -97,7 +102,13 @@ public partial class CordList : Control
         _rows.Add(row);
         AddEndpoint(row, cord, CordSide.A, 0, rowIndex);
         AddEndpoint(row, cord, CordSide.B, 30, rowIndex);
-        var remove = new Button { Name = "Remove_" + cord.id, Text = "Remove Cord " + cord.id, FocusMode = FocusModeEnum.All };
+        var remove = new Button
+        {
+            Name = "Remove_" + cord.id,
+            Text = "Remove Cord " + cord.id,
+            FocusMode = FocusModeEnum.All,
+            Disabled = _cords!.Locked,
+        };
         var cordId = cord.id;
         remove.Pressed += () =>
         {
@@ -119,6 +130,7 @@ public partial class CordList : Control
             Name = "Cord_" + cord.id + "_" + side,
             Text = "Cord " + cord.id + "  " + side + ": " + EndLabel(end),
             FocusMode = FocusModeEnum.All,
+            Disabled = _cords!.Locked,
         };
         button.Pressed += () => _picker!.Open(endpoint, button);
         BindScrolling(button, rowIndex);
@@ -126,7 +138,13 @@ public partial class CordList : Control
         button.Position = new Vector2(0, y);
         _endpointButtons.Add(CordModel.EndpointKey(endpoint), button);
 
-        var free = new Button { Name = "Free_" + cord.id + "_" + side, Text = "Free", FocusMode = FocusModeEnum.All };
+        var free = new Button
+        {
+            Name = "Free_" + cord.id + "_" + side,
+            Text = "Free",
+            FocusMode = FocusModeEnum.All,
+            Disabled = _cords.Locked,
+        };
         free.Pressed += () =>
         {
             _cords!.Replace(endpoint, new CordEnd.Free());

@@ -10,6 +10,7 @@ public static class PanelTheme
     public static Color ConsoleRed => TactileTheme.ConsoleRed.Value;
     public static Color ConsoleRedLit => TactileTheme.ConsoleRedLit.Value;
     public static readonly Color FocusBlue = Color.FromHtml("79c9ff");
+    public static Color CordMark => TactileTheme.CordMarkColour.Value;
 
     public static double RelayWidth => TactileTheme.RelayBody.Value.X;
     public static double RelayHeight => TactileTheme.RelayBody.Value.Y;

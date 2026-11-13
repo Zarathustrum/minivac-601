@@ -1880,6 +1880,7 @@ choices the original seventy-four-row table left unnamed; they do not alter any 
 | `jewelKnurl` | 24 teeth; 0.0006 W alternating-radius depth | chosen | P6 | chosen redraw token; PH3 establishes knurling but not tooth count or depth | O-P18 |
 | `lampSurface` | base alpha 0.65; roughness 0.45 | chosen | P6 | chosen redraw token; translucency and diffusion are unsourced. This is the 3D lens's base material only: it neither replaces nor multiplies the unchanged 2D alpha `milli / 1000`, and emission remains independently linear with no added persistence | O-P14 |
 | `sceneLighting` | neutral `#ffffff`; directional energy 1.25 at pitch/yaw (−45°, −30°); flat ambient energy 0.35 | chosen | P6 | chosen neutral presentation illumination for material display; no source specifies original lighting. Runtime framed captures determine whether this minimal setup is adequate; it makes no factual claim about original lighting | O-P18 |
+| `cordMarkColour` | `#ffcc00` | chosen | C5 | chosen presentation token; the chat's cord mark (docs/plans/godot-chat-pane.md, "Cord marks"), not a modeled machine colour | O-P10 |
 
 The twelve engineering camera tokens carry no O-P row deliberately: they describe a virtual camera,
 not the machine, so they belong in the presentation-rule log, not in the research register — and

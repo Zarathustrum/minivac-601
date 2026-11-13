@@ -94,6 +94,50 @@ public sealed class CorePurityTests
         Assert.Empty(violations);
     }
 
+    // The hands port (docs/plans/godot-chat-pane.md, C1) runs inside the Godot build but keeps the
+    // core's purity: it references the core only and reads no file, clock or engine type.
+    [Fact]
+    public void Hands_project_references_only_the_core()
+    {
+        var projectPath = Path.Combine(FindRepositoryRoot(), "dotnet", "Minivac.Hands", "Minivac.Hands.csproj");
+        using var stream = OpenRead(projectPath);
+        var project = XDocument.Load(stream);
+
+        Assert.DoesNotContain(project.Descendants(), element => element.Name.LocalName == "PackageReference");
+        Assert.Equal(
+            ["../Minivac.Core/Minivac.Core.csproj"],
+            project.Descendants().Where(element => element.Name.LocalName == "ProjectReference")
+                .Select(element => (string?)element.Attribute("Include") ?? "").ToArray());
+    }
+
+    [Fact]
+    public void Hands_source_contains_no_banned_dependency_operation_or_file_access()
+    {
+        var violations = new List<string>();
+        foreach (var source in SourceFiles("Minivac.Hands"))
+        {
+            var executable = MaskCommentsAndLiterals(ReadText(source));
+            foreach (var banned in BannedCorePatterns)
+            {
+                foreach (Match match in banned.Pattern.Matches(executable))
+                    violations.Add(Describe(source, executable, match.Index, banned.Name));
+            }
+
+            foreach (Match match in Pattern(@"\bMath\s*\.\s*([A-Za-z_]\w*)").Matches(executable))
+            {
+                var member = match.Groups[1].Value;
+                if (!AllowedMathMembers.Contains(member))
+                    violations.Add(Describe(source, executable, match.Index, $"Math.{member}"));
+            }
+
+            foreach (Match match in DirectFileSystemIo.Matches(executable))
+                violations.Add(Describe(source, executable, match.Index, match.Value));
+        }
+
+        Assert.NotEmpty(SourceFiles("Minivac.Hands"));
+        Assert.Empty(violations);
+    }
+
     [Fact]
     public void Scanner_masks_literal_text_but_preserves_interpolation_expressions()
     {

@@ -18,7 +18,29 @@ public partial class Cords : Control
         }
     }
 
+    /// <summary>
+    /// The chat's mark on a cord the model's last call added (docs/plans/godot-chat-pane.md, "Cord marks"):
+    /// a static ring centred on the cord's midpoint, hollow so the cord's own colour shows through, in the
+    /// one presentation token over a dark keyline. It takes no input.
+    /// </summary>
+    internal sealed partial class CordMark : Control
+    {
+        public int Cord { get; init; }
+        public Color Colour => PanelTheme.CordMark;
+        public float Radius { get; set; }
+        public float Stroke { get; set; }
+
+        public override void _Draw()
+        {
+            DrawArc(Size / 2, Radius, 0, (float)Math.Tau, 48, PanelTheme.ConsoleDark, Stroke + 2, true);
+            DrawArc(Size / 2, Radius, 0, (float)Math.Tau, 48, Colour, Stroke, true);
+        }
+    }
+
     private readonly Dictionary<int, Line2D> _lines = [];
+    private readonly Dictionary<int, CordMark> _marks = [];
+    private static readonly IReadOnlySet<int> NoMarks = new HashSet<int>();
+    private IReadOnlySet<int> _marked = NoMarks;
     private readonly Dictionary<string, EndpointGrip> _trayGrips = [];
     private Func<Command, CmdResult>? _apply;
     private Func<State>? _state;
@@ -30,7 +52,12 @@ public partial class Cords : Control
     private bool _tactile;
 
     public string LastStatus { get; private set; } = "";
+    /// <summary>While locked no hole, grip, cord list or picker input starts a cord change.</summary>
+    public bool Locked { get; private set; }
+    public bool Dragging => _drag is not null;
     public IReadOnlyList<State.Cord> CordsState => _cords;
+    /// <summary>The flat line drawn for <paramref name="cord"/>, or null.</summary>
+    internal Line2D? LineOf(int cord) => _lines.GetValueOrDefault(cord);
     public DropResolution? LastDropResolution { get; private set; }
     public int TrayGripCount => _trayGrips.Count;
     public Control TrayGrip(int cord, CordSide side)
@@ -55,9 +82,11 @@ public partial class Cords : Control
         }
     }
 
-    public void Render(State state)
+    /// <summary>Draws the machine's cords; <paramref name="marked"/> are the cord ids that carry the chat's mark.</summary>
+    public void Render(State state, IReadOnlySet<int>? marked = null)
     {
         _cords = state.cords;
+        _marked = marked ?? NoMarks;
         RebuildLines();
         var occupied = new List<string>();
         foreach (var cord in _cords)
@@ -83,10 +112,22 @@ public partial class Cords : Control
         return projected;
     }
 
+    // A drag in progress is cancelled and a touch ended, on the machine still mounted, before the lock.
+    public void SetLocked(bool locked)
+    {
+        if (locked && !Locked)
+        {
+            if (_drag is not null) CancelDrag();
+            EndTouch();
+        }
+        Locked = locked;
+    }
+
     internal void SetTactile(bool tactile)
     {
         _tactile = tactile;
         foreach (var line in _lines.Values) line.Visible = !tactile;
+        foreach (var mark in _marks.Values) mark.Visible = !tactile;
         QueueRedraw();
     }
 
@@ -262,7 +303,7 @@ public partial class Cords : Control
         {
             if (button.Pressed)
             {
-                if (_drag is null && EndpointAtHole(hole) is { } endpoint) BeginDrag(endpoint);
+                if (_drag is null && !Locked && EndpointAtHole(hole) is { } endpoint) BeginDrag(endpoint);
                 AcceptEvent();
             }
         }
@@ -330,7 +371,48 @@ public partial class Cords : Control
             obsolete.Add(pair.Key);
         }
         foreach (var id in obsolete) _lines.Remove(id);
+        RebuildMarks();
         QueueRedraw();
+    }
+
+    // One ring per marked cord, at the midpoint of its line; a hole across sets the size, so it scales with the view.
+    private void RebuildMarks()
+    {
+        var hole = (float)(PanelTheme.HoleDiameter * ActiveSize().X);
+        var radius = hole * 0.95f;
+        var stroke = Math.Max(2, hole * 0.3f);
+        var half = radius + stroke / 2 + 1;
+        foreach (var pair in _lines)
+        {
+            if (!_marked.Contains(pair.Key)) continue;
+            if (!_marks.TryGetValue(pair.Key, out var mark))
+            {
+                mark = new CordMark
+                {
+                    Cord = pair.Key,
+                    Name = "CordMark_" + pair.Key,
+                    MouseFilter = MouseFilterEnum.Ignore,
+                    Visible = !_tactile,
+                };
+                AddChild(mark);
+                _marks.Add(pair.Key, mark);
+            }
+            var points = pair.Value.Points;
+            mark.Radius = radius;
+            mark.Stroke = stroke;
+            mark.Size = new Vector2(half * 2, half * 2);
+            mark.Position = (points[0] + points[^1]) / 2 - mark.Size / 2;
+            mark.QueueRedraw();
+        }
+        var obsolete = new List<int>();
+        foreach (var pair in _marks)
+        {
+            if (_lines.ContainsKey(pair.Key) && _marked.Contains(pair.Key)) continue;
+            // Freed at once: a mark takes no input, and a new mark for a reused id keeps its name.
+            pair.Value.Free();
+            obsolete.Add(pair.Key);
+        }
+        foreach (var id in obsolete) _marks.Remove(id);
     }
 
     private Vector2 DrawPoint(CordEnd end, EndpointRef endpoint, IReadOnlyList<FreeTraySlot> slots) =>
@@ -364,6 +446,7 @@ public partial class Cords : Control
                 var endpoint = slot.Endpoint;
                 grip.GuiInput += input =>
                 {
+                    if (Locked) return;
                     if (input is InputEventMouseButton mouse && (int)mouse.ButtonIndex == 1 && mouse.Pressed)
                     {
                         BeginDrag(endpoint);

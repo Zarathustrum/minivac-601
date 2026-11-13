@@ -3,6 +3,379 @@
 Update before ending a session. The newest dated section is this checkout's forward-looking state; older
 "Next" lines are historical snapshots. Settled choices are in `docs/DECISIONS.md`.
 
+## 2026-11-12 — Godot chat pane: link pre-fill and a UI that scales. **Next: Tom's word on the pre-filled link and the scaled window under a real mouse; his pick of the teletype cue; then the full gate once more.**
+
+- **Built** (rulings and working choices in `docs/DECISIONS.md`, same date): the pane server
+  writes its link to `~/.minivac/pane-link`; the dock fills its field from it; the 2D UI scales
+  with the window (`canvas_items` stretch) and the window opens at up to 80 % of the screen.
+- **Checks** (orchestrator's runs, the macOS arm64 development host, uncommitted tree on `c024b0d`): `tsc --noEmit` clean
+  and `test/pane/server.spec.ts` 34/34, both run before the later Godot-side edits, which touched
+  no TypeScript; `dotnet test dotnet/Minivac.Godot.Tests` 382/382; Godot acceptance, windowed, at
+  1152 × 640: boot 9/9, commands 8/8 flat and 3D, session 9/9, frozen-copy 7/7, keyboard 8/8 flat
+  and 3D, geometry 8/8, geometry-3d 10/10, popouts 21/21, a11y 1/1, lock 29/29 flat and 3D, chat
+  67/67, chat-3d 66/66, cords 4/4, lamps 2/2, manual 3/3; and at 1728 × 960: boot, commands,
+  keyboard and lock flat and 3D, geometry, geometry-3d, popouts, chat, chat-3d and cords, same
+  counts. **Not run:** the full gate, `godot-pane-e2e`, the exports.
+- **Tom's look at the relaunched build:** he connected from it and ran `2026-11-12-pane-3`
+  ("clear the booard", 5 turns, 4 tool calls, 15 s, stop `done`; marked invalid because the window
+  was closed with the session open). He has not said whether the link was the pre-filled one or
+  how the scaled window felt under a real mouse. Twice during the build a Connect on the pre-filled field was refused by a
+  live server ("the server refused the token") while the orchestrator was injecting keystrokes
+  into the window Tom was also using; the suspected cause is a stray `/` typed into the field,
+  unconfirmed. The same link connected through `--pane-link`.
+- **The run Tom made meanwhile:** `2026-11-12-pane-2`, the default route, "wire up tic-tac-toe", 14
+  turns, 16 tool calls, 138 s, stop `done`. Its 72 cords are the fixture `VI-TICTACTOE`'s 70 wires
+  plus the two play wires (M10 to 6com, M11 free); replayed, the dial rests at c9.
+- **Review loop, same day** (Tom's `/review-loop 3`, scope: the 32 non-test source files changed
+  since 2026-11-11; claude opus high, codex gpt-6-astra high, agy Gemini 3.8 Flash Medium; artifacts
+  in `.review-loop-2026-11-12T22-12-16Z` and `.review-loop-2026-11-12T22-29-41Z`). Three rounds in
+  two runs: 21 findings fixed, 3 skipped (one design choice, one false positive, one coverage
+  request). agy reviewed round 1 only: it timed out at 900 s in the next round and was dropped, so
+  rounds 2 and 3 had two reviewers. Twice the fixer's work failed the boundary allow list and the
+  orchestrator repaired it by hand: `Picker.cs` now calls the inherited `IsInstanceValid`, and
+  `HelpCredits.cs`'s row gained `InputEvent*` and `Key` for keyboard scrolling in Help. **That row
+  change is the orchestrator's, not Tom-approved.** Commits `f4ffd0f` to `fc4a579`,
+  pushed on Tom's word.
+- **Found after the loop** (`1b64bed`, pushed): the two tests that start the server through its
+  command-line entry wrote, then deleted, the tester's own `~/.minivac/pane-link`, wiping a running
+  server's link. Both now give the server a temporary HOME. `godot-pane-e2e` not rerun.
+- **Checks on the final tree:** typecheck clean; `vitest run test/pane` 77/77;
+  `Minivac.Godot.Tests` 387/387; `Minivac.Hands.Tests` 137/137; Godot acceptance, windowed, at
+  1152 x 640, every suite listed above with the same counts. `lock` failed its `audio-back` check
+  once in five runs today (28/29) and passed the rest; cause not looked into. **Not run:** the
+  full gate, `godot-pane-e2e`, `npm run transfer` and `parity` (the loop changed nothing in
+  `dotnet/Minivac.Hands/`), the exports.
+
+## 2026-11-12 — Godot chat pane: Tom's first hands-on session; five findings repaired. **Next: Tom's look at the repaired build; his pick of the teletype cue; then the full gate once more.**
+
+- **The session.** Tom ran the Godot build (Debug, editor binary) on the second development host against the unchanged
+  pane server and the default route: "wire up tic-tac-toe". Run `2026-11-12-pane-1`: 6 turns, 8 tool
+  calls, 72 cords plugged in one call, power on, 95 s, no fallbacks. This is the first time a real
+  model, a real mouse and a real clipboard drove the build; until now every input was injected and
+  every model scripted. The run is marked invalid because the window was closed with the session
+  still open; its transcript is complete.
+- **Five findings, all repaired the same day** (rulings in DECISIONS 2026-11-12):
+  1. The first-run help dialog was wider than the window, with "Close help" and the title bar off
+     screen (Phase 4 code). Its page now wraps inside a scroll box and the dialog keeps 82 % of the
+     window. `boot` `help-fits-window`: before `dialog=0,10+1291x584` (later pages 3892 px wide),
+     after `pages=7/7 dialog=104,58+944x524 inside`.
+  2. Toolbar labels overlapped (Phase 4 code: every button 76 px wide). Each button is now as wide
+     as its label. `toolbar-labels-fit`: before `row=1127/1120` with four overlaps, after
+     `row=1015/1120`.
+  3. Tool output in the dock broke lines inside words. The output block and the call line now wrap
+     between words.
+  4. Cord marks ringed all 72 cords. By Tom's ruling a call that adds more than 12 cords shows none.
+  5. Replies showed raw markdown. By Tom's ruling the Godot dock renders a small subset
+     (`godot/scripts/ChatMarkdown.cs`); the web pane is unchanged.
+- **Review of repair 5** (one independent pass, the markdown converter and the label swap only).
+  The escape held: about twenty BBCode tag kinds typed as model text, tags split across the
+  converter's own tags, and literal `[lb]`/`[rb]` all showed as typed in a Godot 4.7.2 label. It
+  found rendering faults in the first version, all repaired: crossing tags (`***both***` printed a
+  stray `[/b]` and left the rest of the reply bold), bold around a code span left as typed, fences
+  that dropped text, characters lost from `x*y + z*w`, and a regex cost of 60 to 90 ms on a
+  hostile 4 KiB line with no test. The converter is now one left-to-right pass per line: the same
+  lines take about 0.2 ms.
+- **Checks on the final tree** (orchestrator's runs, the second development host, uncommitted tree on `fb7d16b`):
+  - `dotnet build dotnet/Minivac.sln -c Release -warnaserror` and both Godot builds: 0 warnings,
+    0 errors. `dotnet test dotnet/Minivac.Godot.Tests`: 381/381 (293 before; 88 new: one marks
+    case and 87 markdown cases, among them a seeded property test, seed 601, 4,000 strings).
+  - Godot acceptance, windowed: boot 9/9; commands 8/8, flat and 3D; session 9/9; frozen-copy
+    7/7; keyboard 8/8, flat and 3D; geometry 8/8; geometry-3d 10/10; popouts 21/21; a11y 1/1; lock
+    29/29, flat and 3D; chat 67/67; chat-3d 66/66.
+  - `npm run godot-pane-e2e`: 2/2 (`pane-e2e` 13/13, `pane-quit` 7/7). `check-docs`: 0 findings.
+    `git diff --check`: clean.
+  - Each new check was shown failing on the code before its fix (the worker's runs, not repeated
+    by the orchestrator).
+- **Not run: the full gate.** The repairs were checked with the suites they touch. The full gate
+  ("Full gate" below, last run on `d462d1c`) runs once more after the cue is settled.
+- **Not verified:** the repaired build under Tom's own hands; a screen reader on the rendered reply
+  (its label is now a focus stop for assistive tech); Linux and Windows at runtime, as before.
+- **Known and left:** `lock`, `lock-3d` and `keyboard` need a window; run headless they fail on
+  the committed code too (stage size 0). Prose `__init__` renders as a bold "init". The panel is
+  not locked between Send and the model's `create`, which took about a minute in this run; Tom has
+  not asked for that to change.
+
+## 2026-11-12 — Chat pane in the Godot build: C0 to C6 built, the full gate run once. **Next: Tom's hands-on session in the Godot build; Tom's pick of the teletype cue.**
+
+- **C6, the end-to-end run:** `npm run godot-pane-e2e` starts the unchanged pane server with the
+  web e2e's scripted fake model (now shared from `test/browser/scripted-model.ts`) and runs the
+  Godot build headless through the real socket. `pane-e2e` 13/13: the model wires checklist item
+  B1 from the dock, lamp 1 lights, the machine is adopted, frozen and locked from `create` until
+  End session and live after it. In Node: the run folder holds the three files, `run.json` ends
+  `done` and is not invalid, `bin/minivac-check checklist/items/B1.json` prints `PASS B1`, and
+  the text the model was shown equals the web engine's byte for byte. `pane-quit` 7/7: quitting
+  with a session live marks the run invalid. About 3 s in all. Not covered: a turn interrupted by
+  quitting, the pasted-link path against the real server (the `chat` suite covers it on the fake),
+  and the two suites were not broken on purpose to prove they fail.
+- **The full gate, once, 2026-11-12, on `d462d1c` with a clean tree, on the second development host:**
+  - typecheck, lint, `check-profile`, `check-netlist`, `check-reachability`, `check-docs` (0
+    findings), `git diff --check`: pass.
+  - `dotnet build dotnet/Minivac.sln -c Release -warnaserror` and the Godot C# build: 0 warnings,
+    0 errors. `dotnet test dotnet/Minivac.sln -c Release`: `Minivac.Core.Tests` 262/262 (15 min),
+    `Minivac.Hands.Tests` 137/137, `Minivac.Godot.Tests` 293/293.
+  - `parity`: 155 fixtures and 7 CLI cases. `transfer`: 58/58. `godot-pane-e2e`: 2/2.
+  - `npm run build` with the dist check: pass. `npm run test:browser`: 51 passed, 18 skipped.
+  - `npx vitest run`: the gate's run had one failure of 2041, a 5 s timeout in
+    `test/check-profile.spec.ts` ("two runs produce byte-identical reports", 5.6 s) while the
+    windowed Godot suites ran beside it. Rerun alone on the same commit: 74 files, 2040 passed,
+    1 expected fail.
+  - Godot acceptance, windowed: boot 8/8; commands 8/8, flat and 3D; session 9/9; frozen-copy
+    7/7; cords 4/4, lamps 2/2, manual 3/3 and keyboard 8/8, each flat and 3D; geometry 8/8 and
+    geometry-3d 10/10; trace-equality 11/11; handles 108/108; popouts 21/21; renderer 2/2; a11y
+    1/1; audio 9/9; visuals 5/5; budget 1/1 (mean 3.624722 ms, p95 3.692000 ms); lock 29/29 and
+    lock-3d 29/29; chat 59/59 and chat-3d 58/58; headless3d 5/5 (headless).
+  - `--headless -- --selftest`, editor build, 440 s, and inside the macOS export, 1451 s; both
+    print `profile-kat=1/1 w3-derived-kat=9/9 contraction=1/1 solver-kat=21/21 netlist-kat=40/40
+    fixtures=155/155 goldens=155/155 probes=8/8 probe-pins=46/46 collapse=8/8 static=2/2`. The
+    export's proof-host line: `proof host=macOS cpu=Apple M4 Max arch=arm64 audio=Dummy
+    method=forward_plus driver=metal`.
+  - Exports (`npm run export-proof`, verification artifacts in scratch, nothing signed or
+    distributed): macOS Universal 2 with arm64 and x86_64 payloads; Linux x86_64; Windows x86_64.
+    The Linux and Windows exports were produced and checked for structure only: neither was run,
+    and the macOS x86_64 payload was not run under Rosetta.
+  - Key-like strings in everything added since `afe87a1`: 0 found.
+  - **`npm audit`: FAIL, 15 advisories (12 moderate, 3 high)** against dev dependencies: `vite`
+    8.2.2, `vitest` 4.1.11 with `@vitest/mocker`, `brace-expansion`, `fast-uri`, `minimatch`,
+    `source-map-js`. The lockfile last changed on 2026-11-03 and this build did not touch it.
+    Clearing them means moving the exact pins of `vite` and `vitest`, which is not this plan's
+    work; it waits for Tom.
+  - `export-proof` runs `godot-mono` from PATH. A symlink of that name to the Godot binary hung
+    the export at 0% CPU; a two-line wrapper script that execs the binary works.
+
+- **Second review** (independent, read-only, on `f569d39`, the finished chat): the lock held (no
+  path found that changes a locked machine, no stale machine carried into a new session) and the
+  reviewer's own run against the real server with a stub model ended cleanly. Accepted and
+  repaired, each with a test that failed first; counts rerun by the orchestrator:
+  - A long string in the transcript froze the app (64 KiB of words, 5.6 s; 1 MiB, never back).
+    Each displayed field is now cut at 4 KiB and a model entry at 16 KiB and 50 calls, with a
+    last line saying how much is shown. Measured: a full 16 KiB entry costs about 115 ms once, a
+    typical reply about 70 ms, and a request sent after a 1 MiB turn is answered in 7 ms.
+  - A frame holding an unpaired surrogate was dropped whole, and a dropped `done` left the dock
+    busy until restart. Server strings are now read leniently (the unpaired half shows as the
+    replacement character) and `done`, `ended` and `error` frames are always read.
+  - "connecting…" had no way out, and neither did a server that never answers End session. No
+    `ready` within 10 s falls to could-not-connect; no `ended` within 15 s closes the link and
+    takes the connection-lost path, so the panel can be ended locally.
+  - The link field's undo history restored the token. The field is replaced after it is read.
+  - The banner's Stop and End session ignored the enable rules; they now follow the dock's.
+  - A failed adopt would have left the console locked; it now stays live and unlocked.
+  - Control characters in model text showed as glyphs; the display drops them.
+  - Four planted bugs had passed the suites; the suites now catch all four (the worker's run).
+    The scripted session now sends the `session` and `state` requests the real server sends.
+  - Checks after the repairs, windowed: `chat` 59/59, `chat-3d` 58/58, `lock` 29/29, `lock-3d`
+    29/29; boot 8/8, session 9/9, cords 4/4, keyboard 8/8, geometry 8/8, visuals 5/5, a11y 1/1,
+    audio 9/9; filtered `dotnet test` 209/209; both solutions build 0 warnings / 0 errors.
+  - Left as they are, for Tom: `--pane-link` shows the token in the process arguments, which
+    other accounts on the machine can read (the plan specifies the flag); calls run on the main
+    thread, so one `wait 60000` froze the window 29.8 s in a Debug build ("instant calls").
+  - Not bounded: 50 capped entries arriving in one frame cost about 1.1 s. Only a flooding
+    server does that.
+
+- **C5, cord marks:** after each `run` reply, the cords that call added carry a yellow ring at
+  their midpoint in both views, until the next `run`, New session or End session. The set is
+  read from the reply in `ChatModel.AddedCords`: every cord id in a successful result's `cord` or
+  `cords` that is still in the reply's view. A refused batch or an error clears the marks; a
+  `state` or `session` request does not. The colour is one new presentation token,
+  `cordMarkColour` `#ffcc00` (84 tokens, was 83; Appendix H of the Phase 4 plan has its row).
+  Marks are drawn only while the chat holds the machine. Checks, 2026-11-12, rerun by the
+  orchestrator, windowed:
+  - `chat` 54/54 and `chat-3d` 53/53 (were 39 and 38). The new checks read the mark nodes: which
+    cords carry one, its colour, that it sits on its own cord, and zero mark nodes after each
+    clear. The worker broke the marks four ways to prove the suites fail (never cleared, 52/54
+    and 49/54; wrong cord, 44/53; drawn on the first cord's line, 47/54).
+  - `dotnet test`, filtered: C2 to C5, the token table and boundary tests, 184/184. Both
+    solutions build 0 warnings / 0 errors.
+  - Existing suites: cords 4/4 and cords-3d 4/4; geometry 8/8 and geometry-3d 10/10; visuals
+    5/5; lock 26/26 and lock-3d 26/26; boot 8/8; renderer 2/2. The worker also ran headless3d
+    5/5.
+  - Known limits: the ring sits at the cord's midpoint, which can land on a small label or an
+    empty hole; nothing keeps it clear of labels. In 3D it draws on top of everything.
+- **The teletype cue is not built.** Six synthesized candidates, with a generator and an
+  audition script, are scratch files outside the tree; Tom picks one by ear or drops the cue.
+  The gate above ran without it. Adding it moves `data/public-assets.json` and the inventory
+  test's count, so those checks and the audio suite rerun then.
+
+- **C4, the dock:** the right column has `Cords | Chat` tabs; `ChatModel.cs` (no Godot types) is
+  the dock's state and rules, ported message for message from `src/pane/ui.ts`, and `ChatDock.cs`
+  draws it. The Godot project now references `Minivac.Hands`: each `request` frame is answered by
+  `PaneJson.Answer` on the main thread, the machine is adopted after `create` and after every
+  `run`, and released on `ended`. `--pane-link <url>` after `--` connects at launch; `/` is the
+  new `chat_focus` action. The dock root has `MouseForcePassScrollEvents = false` (Tom's ruling).
+  Checks, 2026-11-12, rerun by the orchestrator, windowed:
+  - `chat` 39/39 and `chat-3d` 38/38 on the scripted fake transport: every row of the plan's
+    states table, a whole scripted session with each frame the dock sends, keyboard-only
+    operation, the focus rules, the wheel over the dock in both views, the 8,000-character cap
+    and the layout numbers. The worker broke two behaviours to prove the suites fail: the wheel
+    property removed (`chat-3d` 36/38) and Shift+Enter made to send (`chat` 35/38).
+  - `dotnet test`, filtered: C2, C3, C4 and boundary tests, 159/159. Both solutions build
+    0 warnings / 0 errors.
+  - Existing suites: lock 26/26 and lock-3d 26/26; boot 8/8; session 9/9; commands 8/8, flat and
+    3D; cords-3d 4/4; keyboard 8/8; geometry 8/8 and geometry-3d 10/10; popouts 21/21; a11y 1/1.
+    The worker also ran cords 4/4, keyboard-3d 8/8, manual 3/3 flat and 3D, headless3d 5/5.
+  - Against the real, unchanged server with an unreachable model (the worker's throwaway run, not
+    a suite): `--pane-link` reached "connected"; a sent message came back as the server's error
+    and showed as an error entry; End session ended the run, which was not marked invalid.
+  - Measured at 1152 x 640: with Chat selected the dock is 360 px wide and the flat console is
+    756 x 420 (868 x 482 with Cords); a hole is 7.9 px across in the fit view. In 3D the console
+    keeps its size and is centred left of the dock by a lens shift.
+  - Not exercised by the suites: the four `--pane-link` lines in `Boot.Start` (the real-server
+    run used the same calls), toggling flat and 3D with Chat selected, resizing the window in 3D,
+    keyboard scrolling of the transcript, a real keyboard, an IME, the OS clipboard.
+  - The message box can hold more than 8,000 characters for one frame before the cap trims it;
+    the server refuses a longer message either way.
+
+- **C2, adopt, freeze and lock:** `Session.Adopt` shows a machine someone else owns, frozen and
+  locked, as a blank manual panel; `Boot.Adopt(Machine)` and `Boot.Release()` are what C4 calls.
+  `FrameLoop` has a render-only mode. While locked, `Session.Apply` refuses (the choke point),
+  panel controls, cord drags, the cord list, the picker and the toolbar's Library, Blank panel,
+  Reset and Profile are off, and the camera, Fit, Wire, the view toggle, Sound and Help stay live.
+  Machine audio resets on adopt and is not driven while adopted. `Banner.cs` is the strip across
+  the stage, with Stop and End session as events for C4. Checks, 2026-11-12, rerun by the
+  orchestrator, windowed:
+  - **Zero-applies suite:** `lock` 26/26 and `lock-3d` 26/26. A counting wrapper sees no apply,
+    advance or drain while 29 input paths are exercised with injected events in each view, and
+    the same paths reach the machine after release. The worker broke the lock two ways to prove
+    it fails: a pushbutton guard removed (20/26), and the choke point plus a cord guard removed
+    (9/26, with applies counted).
+  - Existing suites: session 9/9; commands 8/8, flat and 3D; cords 4/4, flat and 3D; keyboard
+    8/8, flat and 3D. The worker also ran manual 3/3 flat and 3D, audio 9/9, trace-equality
+    11/11, a11y 1/1, boot 8/8, headless3d 5/5. "Full gate" below records commands and keyboard
+    as 7/7; both suites hold 8 checks and C2 did not change them, so that record is stale.
+  - `dotnet test`, filtered: C2, C3, boundary and frame-trace tests, 134/134. Both solutions
+    build 0 warnings / 0 errors.
+  - Not exercised by the suite: the picker's hold-to-touch buttons, focus-out releases, Escape
+    cancel paths, and the F key (the suite calls the view toggle directly).
+  - Seen once, cause unknown: in one `lock-3d` run the motor sound did not report playing in the
+    same frame as release. The check now looks a few frames later and has passed since.
+  - The banner is 64 px high and moves the flat stage down 72 px while a machine is adopted; in 3D
+    it overlays the stage.
+- **C1 review** (independent, read-only, on `f5ea72d`): no divergence between the two engines on
+  about 6,600 server-built requests, 295,528 number formats and four non-English cultures.
+  Accepted and repaired (the C1 bullet below has the repairs): a lone UTF-16 surrogate in a cord-end word ends the run in C#
+  where the web refuses it; the transfer test sat in default `npm test` and could run a stale
+  tool; four of ten planted bugs passed it; `PaneJson.Answer` could throw on malformed JSON.
+  Deferred: the purity facts are regex scans that other APIs could slip past (the source is
+  clean). Measured: C# Release runs the core at about 2.1 times V8's time per tick, Debug about
+  6.5 times, so a call that waits 60 s of simulated time blocks the Godot main thread for about
+  10 s in Release; 70 connects and a 500 ms settle take 23 ms.
+
+- **C1, the hands table and the engine in C#:** `dotnet/Minivac.Hands/` (references
+  `Minivac.Core` only; `Minivac.Core` did not change) ports `src/hands/table.ts` and
+  `src/pane/engine.ts`, with `PaneJson.Answer` as the request-in, reply-out JSON boundary that
+  Godot will call. `dotnet/Minivac.Hands.Transfer/` is the JSON-lines tool, and
+  `dotnet/Minivac.Hands.Tests/` the xunit ports. Checks, 2026-11-11, rerun by the orchestrator:
+  - Both solutions build 0 warnings / 0 errors. `Minivac.Hands.Tests` 123/123;
+    `CorePurityTests` 12/12 (two new facts hold the hands project to the core's purity rules).
+  - **Transfer test** (`test/pane/transfer.spec.ts`), 28/28: all 15 recorded sequences plus 11
+    added ones, driven through the server's own `callOnPage`. Each reply is equal after parsing
+    and byte-identical as JSON text, each call renders the same text, and the sessions end equal.
+    `npx vitest run test/pane test/hands`: 254/254. Typecheck and lint clean.
+  - **Repairs after the C1 review, 2026-11-12** (counts rerun by the orchestrator): the
+    transfer test moved to `test/pane/transfer.dotnet.ts`, out of the default Vitest include,
+    and runs with `npm run transfer` (`vitest.transfer.config.ts`), which builds the tool in
+    Release with warnings as errors first and fails when `dotnet` is missing or the build fails.
+    `npm test` no longer needs .NET; `tools/public-snapshot.sh gate` runs `transfer` after
+    `parity`. Strings read from request JSON go through `Js.Text`/`Js.Name`, which keep an
+    escaped lone surrogate as one UTF-16 unit as `JSON.parse` does (System.Text.Json throws on
+    it, which had turned a model's `connect \ud800/free` into a fatal engine error).
+    `PaneJson.Answer` never throws: unparseable text answers `{ error: 'the page engine threw:
+    ...' }` and leaves the session alone. Added boundary cases (exactly `PATH_LIMIT` transitions,
+    a lamp moving at an unsettled cap, a press with both arguments bad, lone surrogates) and a
+    seeded random differential (seed 601, 24 sessions of 40 calls). Checks, 2026-11-12:
+    `npm run transfer` 58/58 in 61 s; `Minivac.Hands.Tests` 137/137; `CorePurityTests` 12/12;
+    `npx vitest run test/pane test/hands` 226/226 without .NET. The review's four surviving C#
+    mutants (`PATH_LIMIT` 6→5, no cap-tick lamp reading, `<` on the head length, press checking
+    the time first) each fail the new transfer test.
+  - Not reached by the transfer test, covered in xunit only: the int32 tick-limit refusals, and
+    "the page machine failed/refused a validated batch". Not covered anywhere: the
+    `tick_us != 100` profile refusal (no such profile) and `bad_cord_id` with all 256 ids in use.
+  - Not ported from `table.spec.ts`: the Ajv schema and description checks, and the session-file
+    module's own assertions (Node-only code outside the port).
+  - `[likely]` .NET's shortest round-trip digits equal V8's for every double; tested on 20 values.
+- **Found in the core, not changed:** `Minivac.Core/Terminals.cs` quotes terminal names in its
+  error text with the default `JsonSerializer.Serialize`, which escapes `+` and the minus sign
+  where TypeScript's `JSON.stringify` writes them as they are. The hands port builds its own
+  messages and does not depend on it. No fixture or golden shows the difference.
+
+- **C3, the link and the socket** (built in a worktree, in parallel with C1): `PaneLink`,
+  `PaneProtocol`, `PaneTransport` (the seam and the scripted fake), `PaneSocket`
+  (`WebSocketPeer`) and `PaneConnection` (the link state machine, no Godot types) in
+  `godot/scripts/`, with five allow-list rows. Nothing is wired into `Boot.cs` or the scene yet,
+  and `--pane-link` is parsed but not read at launch; both are C4's. Checks, 2026-11-11:
+  both solutions build 0 warnings / 0 errors; `C3PaneProtocolTests` 79/79,
+  `C3PaneConnectionTests` 18/18, `GodotBoundaryTests` 22/22. Against the real, unchanged server,
+  headless: a good link reaches ready; a wrong token, token-refused; a wrong origin and no server,
+  could-not-connect; the server killed while connected, connection lost. That run used a
+  throwaway harness; there is no permanent real-socket suite. The two refusal texts are still the
+  web page's words ("this page…", "open the URL…"); C4 rewords them for the dock.
+- Tom ruled at the C0 stop: the dock root sets `MouseForcePassScrollEvents = false` (DECISIONS).
+
+- Tom approved the plan to build on 2026-11-11 (DECISIONS, same entry, "Approved to build"). The
+  plan's status line says so; the bullets at the end of this section that call it unapproved
+  predate that.
+- **Build host.** The build runs on a second development host, by Tom's choice on 2026-11-11, which had no Godot and
+  no .NET SDK. Installed user-local, no Homebrew, no admin rights: Godot 4.7.2 mono from the
+  official release (SHA-512 matched against the release's sums; notarized) in `~/Applications`,
+  and .NET SDK 10.0.403 from Microsoft's install script in `~/.dotnet`. Homebrew's `dotnet-sdk`
+  cask is now 11.0.100, which `global.json` (10.0.400, `latestPatch`) does not accept. The macOS
+  proof host on record is still the macOS arm64 development host (`docs/port/CSHARP-PORT.md`).
+- **New-host baseline, 2026-11-11:** `dotnet build` of both solutions, 0 warnings / 0 errors.
+  `npx vitest run test/conformance`: 19 files, 286/286 in 612 s. The .NET suites and the Godot
+  self-test have not completed a run on this host yet. The core suite passes 258 tests in 29 s
+  and then runs `All_manifest_fixture_traces_are_repeatable_and_byte_equal_to_goldens`, the whole
+  corpus twice, which had not finished after 28 minutes; it is slow, not shown to be hung, and it
+  runs to completion in the C6 gate.
+- **C0 probes** `[verified: run 2026-11-11 on Godot 4.7.2, the second development host]`, against the server as it is:
+  - **Admission: pass, no fallback.** `WebSocketPeer.HandshakeHeaders = ["Origin: <origin>"]`,
+    set before `ConnectToUrl`, with the origin of the link the server prints, passes the Origin,
+    Host and token checks and gets `ready`. Godot sends no Origin of its own. No Origin or a wrong
+    one gets the server's 403, which Godot reports only as closed-before-open with code -1: the
+    same as no server at all. A wrong token is open, then closed 4001 "bad token"; another
+    protocol, 4002. So the dock can tell token refused, other build and could-not-connect apart,
+    and cannot tell a refused Origin from a server that is down. `FALLBACK-GCP-ORIGIN` not taken.
+  - **Frames: pass with `FALLBACK-GCP-FRAME`.** At the default 65535-byte buffers a 65536-byte
+    frame fails each way: outbound, `SendText` returns `OutOfMemory` and the socket stays open
+    with the frame unsent; inbound, the socket closes 1009. With both buffers at 4 MiB, the
+    server's own `maxPayload`, frames up to 4,194,304 bytes cross both ways byte-identical
+    (length and SHA-256). Both must be set before `ConnectToUrl`; the inbound size is fixed at
+    the handshake. Measured with the real parser, renderer and engine: the largest frame of a
+    70-cord session is the `run` reply, 18,598 bytes; the largest overall is the `session` reply,
+    about 48 bytes per log step (291,487 bytes at 6,014 steps). The build uses 4 MiB.
+  - **The plan's frame fact was wrong in one detail:** `create` never carries a log (217 bytes,
+    always the fresh session). The log travels from Godot to the server as the `session` reply.
+  - **Keys: pass, flat and 3D, headless and windowed.** With a `TextEdit` focused, F, W, R and the
+    arrows do not reach the stage or the camera and the characters land in the box; Escape
+    releases focus and the keys work again. In 3D, focusing the box clears the panel
+    SubViewport's focus, so there is one focus owner.
+  - **Wheel: pass in flat; FAIL in 3D, with no fallback named in the plan.** A wheel over a
+    `MouseFilter = Stop` control still dollies the 3D camera, because
+    `Control.MouseForcePassScrollEvents` defaults to true and the event reaches
+    `OrbitCamera._UnhandledInput`. With that property false on the control, there is no zoom in
+    either view, including over a default Button inside it, and a `ScrollContainer` scrolls
+    without zooming in both. Tom ruled the same day: the dock root sets it false in C4.
+  - **Headless socket: pass.** A `--headless` run held the socket for 65 s, exchanged 13 frames
+    and closed 1000. `Poll()` was called once per `_Process` frame; a slower rate was not tested.
+  - **Two clients on one server** `[verified: tools/hands-pane/server.ts, connect and onMessage]`:
+    every admitted socket gets its own connection, session and run folder. A web page and the
+    Godot build can be connected at once, and neither sees the other's machine.
+  - **Quitting mid-session:** `Quit()` sends no close frame (the server sees 1006), and the server
+    logs "the page disconnected, run marked invalid" for a quit, a kill, and a clean close alike.
+    Only End session leaves a valid run.
+- **Found, not changed** `[likely: injected key events, not a real keyboard]`: with nothing
+  focused, +, = and − do not zoom the flat stage. `Stage.HandleStageKey` compares
+  `InputEventKey.AsText()` to "+", "=", "-" and "_", and Godot returns "Plus", "Equal" and
+  "Minus". Outside this plan; for Tom to confirm by hand.
+- No code changed in C0. The probe sources and logs are scratch files, not in the tree.
+- Tom ruled on the proposal's open questions (DECISIONS 2026-11-11, "Chat pane in the Godot
+  build"): Godot as a WebSocket client of the existing pane server; camera free
+  while the panel is locked; cord marks, cords only; the machine silent during calls, with a
+  teletype cue as a maybe; the Chat tab visible.
+- The plan is `docs/plans/godot-chat-pane.md`, phases C0 to C6. It is written, not approved to
+  build. Its "Working choices" and its proposed done bar are the orchestrator's and wait for Tom.
+- Docs only: no code changed. The one check run, 2026-11-11: `npm run check-docs` on Node 26.12.0,
+  0 findings, 12 allow anchors verified. The new plan and DECISIONS entry are clean on the public
+  snapshot's exposure patterns.
+
 ## 2026-11-03 — The chat pane goes public as a bring-your-own-model tool. **Next: nothing owed.**
 
 - Routes come from `MINIVAC_PANE_ROUTES` and runs go to `MINIVAC_PANE_RUNS` (default `pane-runs/`);
@@ -316,10 +689,13 @@ closed on 2026-10-15 (above; DECISIONS, *Public copy calls*).
 - `check-docs`: 0 findings, every allow anchor present.
 - .NET: the solution builds with 0 warnings / 0 errors; the core and Godot suites pass.
 - Parity: every manifest fixture plus the CLI cases.
+- Transfer (`npm run transfer`, added 2026-11-12 with the Godot chat pane's C1; not part of the gate
+  recorded above): the C# pane engine against `src/pane/engine.ts`, byte for byte.
 - `npm audit`: 0 vulnerabilities.
 - Scoped secret scan over the changed text files: 0 findings.
 - `git diff --check` clean.
-- The Godot acceptance matrix (UI suites windowed; see Known limitations). Pass counts at Phase 4
+- The Godot acceptance matrix (UI suites windowed; see Known limitations). The 2026-11-12 run at
+  the top of this file has the current counts, with the lock and chat suites. Pass counts at Phase 4
   close: boot 8/8; commands 7/7 in flat and 3D; session 9/9; frozen-copy 7/7; cords 4/4, lamps 2/2,
   manual 3/3 and keyboard 7/7, each in flat and 3D; geometry 7/7 flat and 9/9 3D; trace-equality
   11/11; budget 1/1 (mean 3.288476 ms, p95 3.441100 ms); handles 108/108; popouts 21/21; renderer 2/2;

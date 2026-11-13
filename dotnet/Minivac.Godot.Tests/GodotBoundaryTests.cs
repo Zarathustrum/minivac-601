@@ -61,7 +61,7 @@ public sealed class GodotBoundaryTests
                 ["ConfigFile", "Node"], [], []),
             ["Chrome.cs"] = new(
                 false, CoreSurface.None, false,
-                ["CanvasLayer", "Control"], [], []),
+                ["CanvasLayer", "Control", "Button", "Vector2"], [], []),
             ["PanelLayout.cs"] = new(
                 false, CoreSurface.None, false,
                 ["Vector2"], [], []),
@@ -98,6 +98,9 @@ public sealed class GodotBoundaryTests
             ["Toolbar.cs"] = new(
                 false, CoreSurface.None, false,
                 ["Control", "Button"], [], []),
+            ["Banner.cs"] = new(
+                false, CoreSurface.None, false,
+                ["Control", "Panel", "Label", "Button", "Vector2"], [], []),
             ["Drawer.cs"] = new(
                 false, CoreSurface.None, false,
                 ["Control", "Button"], [], []),
@@ -109,7 +112,7 @@ public sealed class GodotBoundaryTests
                 ["Control", "RichTextLabel", "Label"], [], []),
             ["HelpCredits.cs"] = new(
                 false, CoreSurface.None, false,
-                ["AcceptDialog", "Control", "OS"], [], []),
+                ["AcceptDialog", "Control", "OS", "ScrollContainer", "Label", "TextServer", "InputEvent*", "Key"], [], []),
             ["AudioSchedule.cs"] = new(
                 false, CoreSurface.ContractAndTrace, false,
                 [], [], []),
@@ -160,6 +163,32 @@ public sealed class GodotBoundaryTests
             ["TactileTheme.cs"] = new(
                 false, CoreSurface.None, false,
                 ["Color", "Vector2"], [], []),
+            ["PaneLink.cs"] = new(
+                false, CoreSurface.None, false,
+                [], [], []),
+            ["PaneProtocol.cs"] = new(
+                false, CoreSurface.None, false,
+                [], [], []),
+            ["PaneTransport.cs"] = new(
+                false, CoreSurface.None, false,
+                [], [], []),
+            ["PaneConnection.cs"] = new(
+                false, CoreSurface.None, false,
+                [], [], []),
+            ["PaneSocket.cs"] = new(
+                false, CoreSurface.None, false,
+                ["WebSocketPeer", "Error"], [], []),
+            ["ChatModel.cs"] = new(
+                false, CoreSurface.ContractAndTrace, false,
+                [], [], []),
+            ["ChatMarkdown.cs"] = new(
+                false, CoreSurface.None, false,
+                [], [], []),
+            ["ChatDock.cs"] = new(
+                false, CoreSurface.None, false,
+                ["Control", "Container", "Panel", "PanelContainer", "VBoxContainer", "HBoxContainer", "ScrollContainer",
+                    "Label", "RichTextLabel", "Button", "LineEdit", "TextEdit", "OptionButton", "StyleBoxFlat", "Theme", "SystemFont", "FontVariation",
+                    "TextServer", "HorizontalAlignment", "Colors", "Color", "Vector2", "InputEvent*", "Key"], [], []),
         };
 
     private static AllowListRow GeometryRow() => new(
@@ -180,7 +209,9 @@ public sealed class GodotBoundaryTests
         "Panel", "QuadMesh", "Range", "RichTextLabel", "SceneTree", "Slider",
         "StandardMaterial3D", "SubViewport", "SurfaceTool", "SystemFont", "TextureRect", "Time",
         "Transform3D", "Vector2", "Vector2I", "Vector3", "Viewport", "ViewportTexture",
-        "WorldEnvironment",
+        "WebSocketPeer", "WorldEnvironment",
+        "Container", "PanelContainer", "VBoxContainer", "HBoxContainer", "ScrollContainer", "LineEdit", "TextEdit",
+        "OptionButton", "StyleBoxFlat", "Theme", "TextServer", "HorizontalAlignment", "Colors",
     };
 
     private static readonly HashSet<string> DetectionOnlyGodotApis = new(StringComparer.Ordinal)

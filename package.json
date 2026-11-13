@@ -29,6 +29,8 @@
     "export-proof": "node tools/export-proof.ts",
     "gen-solver-kat": "node tools/gen-solver-kat.ts",
     "parity": "node tools/parity.ts",
+    "transfer": "vitest run --config vitest.transfer.config.ts",
+    "godot-pane-e2e": "vitest run --config vitest.godot-e2e.config.ts",
     "bless": "node test/conformance/bless.ts",
     "gen-manifest": "node tools/gen-manifest.ts",
     "extract-corpus": "node tools/extract-corpus.ts",

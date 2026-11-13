@@ -69,6 +69,8 @@ public partial class HelpCredits : AcceptDialog
     private Control _licenseButton = null!;
     private Control _reduceMotionButton = null!;
     private Control _viewModeButton = null!;
+    private ScrollContainer _scroll = null!;
+    private Label _text = null!;
     private int _pageIndex;
     private bool _initialized;
     private bool _closing;
@@ -104,6 +106,28 @@ public partial class HelpCredits : AcceptDialog
         Exclusive = true;
         Unresizable = false;
         MinSize = new(640, 520);
+        // The page shows wrapped in a scroll box, so the dialog keeps the size Open gives it inside the window.
+        // DialogText still holds the page; its own label, which would size the dialog to the text, is hidden.
+        WrapControls = false;
+        GetLabel().Visible = false;
+        // Focusable with a visible border, so a page longer than the dialog scrolls from the keyboard, as the chat transcript does.
+        _scroll = new ScrollContainer
+        {
+            Name = "HelpScroll",
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            FocusMode = Control.FocusModeEnum.All,
+            DrawFocusBorder = true,
+            TooltipText = "Help text: the arrow keys, Page Up, Page Down, Home and End scroll it",
+        };
+        _scroll.GuiInput += OnScrollInput;
+        _text = new Label
+        {
+            Name = "HelpText",
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+        };
+        _scroll.AddChild(_text);
+        AddChild(_scroll);
 
         var ok = GetOkButton();
         ok.Text = "Close help";
@@ -135,6 +159,26 @@ public partial class HelpCredits : AcceptDialog
         CloseRequested += Close;
         RenderPage();
         if (InitiallyOpen && IsInsideTree()) Open();
+    }
+
+    private void OnScrollInput(InputEvent input)
+    {
+        if (input is not InputEventKey { Pressed: true } key) return;
+        var bar = _scroll.GetVScrollBar();
+        var page = Math.Max(24, _scroll.Size.Y - 24);
+        double? to = key.Keycode switch
+        {
+            Key.Up => bar.Value - 40,
+            Key.Down => bar.Value + 40,
+            Key.Pageup => bar.Value - page,
+            Key.Pagedown => bar.Value + page,
+            Key.Home => 0,
+            Key.End => bar.MaxValue,
+            _ => null,
+        };
+        if (to is not { } value) return;
+        _scroll.AcceptEvent();
+        _scroll.ScrollVertical = (int)Math.Clamp(value, 0, bar.MaxValue);
     }
 
     public override void _Ready()
@@ -223,6 +267,8 @@ public partial class HelpCredits : AcceptDialog
     private void RenderPage()
     {
         DialogText = _pages.Count == 0 ? "" : _pages[_pageIndex];
+        _text.Text = DialogText;
+        _scroll.ScrollVertical = 0;
         _previousButton.Set("disabled", _pageIndex == 0);
         _nextButton.Set("disabled", _pageIndex == _pages.Count - 1);
 

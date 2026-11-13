@@ -79,6 +79,16 @@ public partial class Toolbar : Control
         Sound.ButtonPressed = !muted;
     }
 
+    // While the model has the machine these four apply nothing: greyed, with the reason in the tooltip.
+    public void SetLocked(bool locked)
+    {
+        foreach (var button in new[] { Library, BlankPanel, Reset, Profile })
+        {
+            button.Disabled = locked;
+            button.TooltipText = locked ? button.Text + " (off while the model has the machine)" : button.Text;
+        }
+    }
+
     public override void _Notification(int what)
     {
         if (what == NotificationResized) ApplyLayout();
@@ -92,15 +102,31 @@ public partial class Toolbar : Control
         return button;
     }
 
+    // Each button as wide as its own label needs, 4 px apart.
     private void ApplyLayout()
     {
         var x = 0f;
         foreach (var child in GetChildren())
         {
             if (child is not Button button) continue;
+            var width = button == Sound ? SoundWidth() : button.GetMinimumSize().X;
             button.Position = new(x, 0);
-            button.Size = new(76, 36);
-            x += 80;
+            button.Size = new(width, 36);
+            x += width + 4;
         }
+    }
+
+    // Sound keeps the wider of its two texts, so toggling it moves nothing.
+    private float SoundWidth()
+    {
+        var shown = Sound.Text;
+        var width = 0f;
+        foreach (var text in new[] { "Sound on", "Sound muted" })
+        {
+            Sound.Text = text;
+            width = Math.Max(width, Sound.GetMinimumSize().X);
+        }
+        Sound.Text = shown;
+        return width;
     }
 }

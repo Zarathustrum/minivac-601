@@ -27,11 +27,12 @@
 // session.json after `new` and after every successful call, which read_file gives for pane.json.
 
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
-import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { appendFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { createServer, STATUS_CODES } from 'node:http';
 import type { IncomingMessage } from 'node:http';
 import type { AddressInfo } from 'node:net';
-import { join, relative, resolve } from 'node:path';
+import { homedir } from 'node:os';
+import { dirname, join, relative, resolve } from 'node:path';
 import { WebSocketServer } from 'ws';
 import type { RawData, WebSocket } from 'ws';
 import type { BatchReply as EngineBatchReply, EngineError } from '../../src/pane/engine.ts';
@@ -298,15 +299,38 @@ export function redact(text: string, base: string, key: string): string {
     .replace(/[A-Za-z0-9_+=-]{32,}/g, keyLike);
 }
 
-/** This process's live servers, so a SIGINT or SIGTERM can mark their runs before it exits. */
+/**
+ * Where a running server leaves its link, so the Godot dock can fill its link field from it
+ * (godot/scripts/PaneLink.cs, FilePath). Tom, 2026-11-12, docs/DECISIONS.md.
+ */
+export const LINK_FILE = join(homedir(), '.minivac', 'pane-link');
+
+/**
+ * Write the link to a file only this user can read. The function it returns removes the file,
+ * unless a later server has put its own link there.
+ */
+export function publishLink(path: string, url: string): () => void {
+  mkdirSync(dirname(path), { recursive: true, mode: 0o700 });
+  rmSync(path, { force: true });  // a mode applies only to a file that is created
+  writeFileSync(path, url + '\n', { mode: 0o600 });
+  return () => {
+    try {
+      if (readFileSync(path, 'utf8') === url + '\n') rmSync(path);
+    } catch {
+      // already gone
+    }
+  };
+}
+
+/** This process's live servers, so a SIGINT, SIGTERM or SIGHUP can mark their runs before it exits. */
 const live = new Set<(why: string) => void>();
 
 /**
- * On SIGINT or SIGTERM, mark every live pane run invalid (a running turn's stop becomes
- * `interrupted`), write its run.json, and exit.
+ * On SIGINT, SIGTERM or SIGHUP (the server's terminal closed), mark every live pane run invalid
+ * (a running turn's stop becomes `interrupted`), write its run.json, and exit, which fires 'exit'.
  */
 export function exitOnSignals(): void {
-  for (const [signal, code] of [['SIGINT', 130], ['SIGTERM', 143]] as const) {
+  for (const [signal, code] of [['SIGINT', 130], ['SIGTERM', 143], ['SIGHUP', 129]] as const) {
     process.once(signal, () => {
       for (const interrupt of live) interrupt('interrupted: the pane server got ' + signal + ' mid-session');
       process.exit(code);
@@ -324,9 +348,12 @@ export async function startPaneServer(options: PaneServerOptions): Promise<PaneS
   const secrets = secretsOf(base, key);
 
   // No string reaches the page with the key or the gateway's address in it, whatever its source: any
-  // text the model is given (a file it reads, a tool's output) may hold them.
+  // text the model is given (a file it reads, a tool's output) may hold them. `ready` is exempt: its
+  // routes are the operator's own names, which the page sends back verbatim, and a short placeholder
+  // key that overlaps one (key `local`, route `local-model`) must not rewrite it.
   function send(conn: Conn, out: ServerMessage): void {
     if (!conn.closed && conn.ws.readyState === conn.ws.OPEN) {
+      if (out.type === 'ready') return conn.ws.send(JSON.stringify(out));
       conn.ws.send(JSON.stringify(out, (_name, value: unknown) => (typeof value === 'string' ? scrub(value, secrets) : value)));
     }
   }
@@ -483,8 +510,11 @@ export async function startPaneServer(options: PaneServerOptions): Promise<PaneS
   }
 
   async function onEnd(conn: Conn): Promise<void> {
+    const session = conn.session;
     conn.controller?.abort();
     await conn.turn;
+    // The turn (an engine failure) or an earlier end may have finished this session: one `ended` per session.
+    if (session !== null && conn.session !== session) return;
     finish(conn);
   }
 
@@ -683,6 +713,12 @@ async function main(): Promise<void> {
   const options = optionsFromEnv(process.env);
   const server = await startPaneServer({ ...options, log: (line) => process.stdout.write(line + '\n') });
   exitOnSignals();
+  try {
+    process.once('exit', publishLink(LINK_FILE, server.url));
+  } catch (problem) {
+    // The link file is a convenience: the URL below still connects.
+    process.stderr.write('pane server: the link file ' + LINK_FILE + ' was not written: ' + message(problem) + '\n');
+  }
   const runs = relative(REPO, options.runsRoot);
   process.stdout.write('minivac pane server on 127.0.0.1:' + server.port + ', runs in ' +
     (runs.startsWith('..') ? options.runsRoot : runs) + '/\n' +

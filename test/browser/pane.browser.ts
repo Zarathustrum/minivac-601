@@ -1,11 +1,10 @@
 // The chat pane end to end (docs/plans/stage-3-chat-pane.md, step 10): dev.html on the Playwright
 // dev server, the pane server started here in-process, and a scripted fake model on node:http in
-// place of the gateway. No real model is called. Desktop only: the pane is a desktop dev tool.
+// place of the gateway (scripted-model.ts, shared with the Godot build's run). No real model is
+// called. Desktop only: the pane is a desktop dev tool.
 
 import { expect, test } from '@playwright/test';
 import { mkdtempSync, readdirSync, readFileSync, rmSync } from 'node:fs';
-import { createServer } from 'node:http';
-import type { AddressInfo } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,52 +12,11 @@ import { checkItem, readItem } from '../../tools/checklist/check.ts';
 import { readSession } from '../../tools/hands/session-file.ts';
 import { startPaneServer } from '../../tools/hands-pane/server.ts';
 import { closeDrawer, nextPaint } from './console-helpers.ts';
+import { control, PRIMARY, scriptedModel } from './scripted-model.ts';
 
-const PRIMARY = 'http://primary.test/v1';
 const FALLBACK = 'http://fallback.test/v1';
 const ROUTES = ['model-a', 'model-b'];
 const B1 = fileURLToPath(new URL('../../checklist/items/B1.json', import.meta.url));
-
-/**
- * A model that answers the nth request with the nth reply, served by `servedBy(n)` (from 0), the
- * primary by default, once `hold(n)` settles. A null `servedBy` sends no served-by header, as an
- * endpoint without a LiteLLM proxy in front does.
- */
-async function scriptedModel(replies: object[], servedBy: (n: number) => string | null = () => PRIMARY,
-  hold: (n: number) => Promise<void> = () => Promise.resolve()):
-  Promise<{ base: string; requests: () => number; close: () => Promise<void> }> {
-  let requests = 0;
-  const server = createServer((req, res) => {
-    req.resume();
-    req.on('end', () => {
-      const n = requests++;
-      const message = replies[n];
-      void hold(n).then(() => {
-        const base = servedBy(n);
-        res.writeHead(message === undefined ? 500 : 200,
-          { 'Content-Type': 'application/json', ...(base === null ? {} : { 'x-litellm-model-api-base': base }) });
-        res.end(JSON.stringify(message === undefined ? { error: 'script exhausted' } :
-          { choices: [{ message, finish_reason: 'stop' }], usage: { prompt_tokens: 10, completion_tokens: 2 } }));
-      });
-    });
-  });
-  await new Promise<void>((done) => server.listen(0, '127.0.0.1', done));
-  return {
-    base: 'http://127.0.0.1:' + (server.address() as AddressInfo).port + '/v1',
-    requests: () => requests,
-    close: () => new Promise<void>((done) => {
-      server.closeAllConnections();
-      server.close(() => done());
-    }),
-  };
-}
-
-function control(id: string, args: string): object {
-  return {
-    role: 'assistant', content: null,
-    tool_calls: [{ id, type: 'function', function: { name: 'minivac_control', arguments: JSON.stringify({ args }) } }],
-  };
-}
 
 const ON = /(?:^|\s)on(?:\s|$)/u;
 const OFF = /(?:^|\s)off(?:\s|$)/u;

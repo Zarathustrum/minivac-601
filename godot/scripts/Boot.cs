@@ -4,6 +4,7 @@ using System.Text.Json;
 using Godot;
 using Minivac.Conformance;
 using Minivac.Core;
+using Minivac.Hands;
 
 namespace Minivac.Godot;
 
@@ -21,7 +22,12 @@ public partial class Boot : Node
     private PanelView? _panel;
     private Stage? _stage2D;
     private Stage3D? _stage3D;
+    private ChatDock? _chat;
+    private float _stage3DInset;
     private string _selectedDemoId = "";
+    // While set, the machine belongs to the caller of Adopt and the demo controls are ignored.
+    private Machine? _adopted;
+    private long _lastRenderUs;
 
     public override void _Ready()
     {
@@ -51,6 +57,7 @@ public partial class Boot : Node
             return;
         }
 
+        FitWindowToScreen();
         try
         {
             Start(source);
@@ -59,6 +66,20 @@ public partial class Boot : Node
         {
             Refuse("MINIVAC 601 refused to start.\n" + error.Message);
         }
+    }
+
+    // The base window (project.godot, 1152 x 640) is small on a large or high-density screen. Open at the
+    // largest whole-aspect size that fits in 80 % of the screen; the stretch setting scales the 2D UI with
+    // it. Never smaller than the base. Tom, 2026-11-12: "window and text really small".
+    private void FitWindowToScreen()
+    {
+        if (DisplayServer.GetName() == "headless") return;
+        var window = GetWindow();
+        var available = DisplayServer.ScreenGetUsableRect(window.CurrentScreen).Size;
+        var scale = Math.Min(available.X * 0.8 / window.ContentScaleSize.X, available.Y * 0.8 / window.ContentScaleSize.Y);
+        if (scale <= 1) return;
+        window.Size = new Vector2I((int)(window.ContentScaleSize.X * scale), (int)(window.ContentScaleSize.Y * scale));
+        window.MoveToCenter();
     }
 
     public override void _ExitTree()
@@ -77,13 +98,23 @@ public partial class Boot : Node
             AddChild(loop);
             return new Session(createMachine, loop, trace, sample: SampleConsole, render: RenderConsole);
         });
+        // A link given at launch connects at once; it is not saved (docs/plans/godot-chat-pane.md, C3).
+        if (_chat is not null && PaneLink.FromArgs(OS.GetCmdlineUserArgs()) is { } link)
+        {
+            _chrome?.SelectColumn(chat: true, focus: false);
+            _chat.ConnectLink(link);
+        }
+        // A running pane server's link is filled into the dock's field (Tom, 2026-11-12, docs/DECISIONS.md).
+        var linkFile = PaneLink.FilePath(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile));
+        _chat?.BindLinkSource(() => global::Godot.FileAccess.FileExists(linkFile) ? global::Godot.FileAccess.GetFileAsString(linkFile).Trim() : "");
     }
 
     internal void BuildConsole(
         IArtifactSource source,
         Func<Func<string, Machine>, TraceView, Session> makeSession,
         string preferencesPath = Preferences.DefaultPath,
-        string? forcedViewMode = null)
+        string? forcedViewMode = null,
+        IPaneTransport? paneTransport = null)
     {
         var version = Engine.GetVersionInfo();
         var engineVersion = version["string"].AsString();
@@ -194,8 +225,25 @@ public partial class Boot : Node
         });
 
         _session = makeSession(CreateMachine, trace);
+
+        // The chat dock: a fresh engine per pane session, over the profiles in the page's order.
+        _chat = new ChatDock();
+        _chat.Initialize(new ChatModel(
+            new PaneConnection(paneTransport ?? new PaneSocket()),
+            () => new PaneEngine(netlist, [referenceProfile, idealProfile]),
+            Adopt,
+            Release));
+        _chrome.AttachChat(_chat, InsetStage3D);
+        _chrome.Banner.StopPressed += () => _chat.Act(_chat.Model.Stop);
+        _chrome.Banner.EndSessionPressed += () => _chat.Act(_chat.Model.EndSession);
+        _chat.SessionButtonsChanged += _chrome.Banner.SetButtons;
+        _chat.WaitingTextChanged += text => _chrome!.Banner.WaitingText = text;
+
         LoadDemo(_demoLibrary.Demos[0].Id);
     }
+
+    internal ChatDock CurrentChat =>
+        _chat ?? throw new InvalidOperationException("console: chat dock is not mounted");
 
     internal Session CurrentSession =>
         _session ?? throw new InvalidOperationException("console: session is not mounted");
@@ -204,6 +252,58 @@ public partial class Boot : Node
         _demoLibrary ?? throw new InvalidOperationException("console: demo library is not mounted");
 
     internal string CurrentViewMode => _stage3D is null ? "flat" : "3d";
+
+    internal bool Adopted => _adopted is not null;
+
+    /// <summary>
+    /// Show <paramref name="machine"/> frozen and locked, as a blank manual panel on its own profile:
+    /// no replay, no tick, no command. Call it again after each change; the frame loop redraws
+    /// from the machine. Until <see cref="Release"/>, Library, Blank panel, Reset and Profile do
+    /// nothing, and no panel, cord, cord list or picker input reaches the machine.
+    /// </summary>
+    internal void Adopt(Machine machine)
+    {
+        ArgumentNullException.ThrowIfNull(machine);
+        var profileId = machine.Snapshot().profileId;
+        if (profileId is not (DemoExperience.ReferenceProfileId or DemoExperience.IdealProfileId))
+            throw new InvalidOperationException("console: unknown profile " + profileId);
+        var replaced = !ReferenceEquals(_adopted, machine);
+        // Held input is released on the machine still mounted, before the lock takes it over.
+        var locking = _adopted is null;
+        if (locking) SetLocked(true);
+        _audio?.Reset();
+        try
+        {
+            CurrentSession.Adopt(machine, new AdoptContext(DemoLibrary.MANUAL, profileId, Frozen: true, Locked: true));
+        }
+        catch
+        {
+            // The session remounted the machine it had; a console this call locked goes back to live.
+            if (locking) SetLocked(false);
+            throw;
+        }
+        _adopted = machine;
+        if (replaced) _stage3D?.ResetCords();
+        UpdateSelection(manual: true);
+        RenderConsole(machine.Snapshot(), _lastRenderUs);
+    }
+
+    /// <summary>Remount the adopted machine as it stands, live and unlocked, and hand the controls back.</summary>
+    internal void Release()
+    {
+        var machine = _adopted;
+        if (machine is null) return;
+        _audio?.Reset();
+        // Reset and profile switches afterwards start a blank manual panel, as the drawer shows.
+        CurrentSession.Adopt(
+            machine,
+            new AdoptContext(DemoLibrary.MANUAL, CurrentSession.ProfileId, Frozen: false, Locked: false));
+        // Cleared only once the remount held, so a failed one can be tried again.
+        _adopted = null;
+        SetLocked(false);
+        UpdateSelection(manual: true);
+        RenderConsole(machine.Snapshot(), _lastRenderUs);
+    }
 
     internal PanelView CurrentPanel =>
         _panel ?? throw new InvalidOperationException("console: panel is not mounted");
@@ -231,26 +331,34 @@ public partial class Boot : Node
         _audio = null;
     }
 
-    internal void SampleConsole(int tick, int[] observables, IReadOnlyList<Event> events) =>
-        _audio?.Sample(events);
+    // Machine audio is not driven while the lock is on; Adopt and Release reset it.
+    internal void SampleConsole(int tick, int[] observables, IReadOnlyList<Event> events)
+    {
+        if (_adopted is null) _audio?.Sample(events);
+    }
 
     internal void RenderConsole(State state, long nowUs)
     {
+        _lastRenderUs = nowUs;
+        // The chat's cord marks show only while the chat holds the machine (godot-chat-pane.md, "Cord marks").
+        var marked = _adopted is not null ? _chat?.Model.MarkedCords : null;
         _controls?.Render(state);
-        _cords?.Render(state);
+        _cords?.Render(state, marked);
         if (_stage3D is not null && _cords is not null && _preferences is not null)
-            _stage3D.RenderCords(_cords.Project(state.cords), nowUs, _preferences.ReduceMotion);
+            _stage3D.RenderCords(_cords.Project(state.cords), nowUs, _preferences.ReduceMotion, marked);
         _lamps?.Render(state);
         if (_stage3D is not null && _controls is not null)
             _stage3D.RenderPresentation(state, _controls);
         _chrome?.CordList.Render();
         if (_chrome is not null && _chrome.DiagnosticsMount.Visible) _chrome.Diagnostics.Render(state);
-        _audio?.Frame(state, nowUs);
+        if (_adopted is null) _audio?.Frame(state, nowUs);
     }
 
     internal void LoadDemo(string id)
     {
+        if (_adopted is not null) return;
         var demo = CurrentLibrary.Get(id);
+        ReleaseHeldInput();
         _audio?.Reset();
         CurrentSession.LoadDemo(demo);
         _stage3D?.ResetCords();
@@ -261,6 +369,8 @@ public partial class Boot : Node
 
     internal void LoadManual()
     {
+        if (_adopted is not null) return;
+        ReleaseHeldInput();
         _audio?.Reset();
         CurrentSession.LoadDemo(DemoLibrary.MANUAL);
         _stage3D?.ResetCords();
@@ -270,6 +380,8 @@ public partial class Boot : Node
 
     internal void ResetSession()
     {
+        if (_adopted is not null) return;
+        ReleaseHeldInput();
         _audio?.Reset();
         CurrentSession.Reset();
         _stage3D?.ResetCords();
@@ -279,11 +391,25 @@ public partial class Boot : Node
 
     internal void SwitchProfile(string profileId)
     {
+        if (_adopted is not null) return;
+        ReleaseHeldInput();
         _audio?.Reset();
         CurrentSession.SwitchProfile(profileId);
         _stage3D?.ResetCords();
         UpdateSelection(CurrentSession.DemoId == DemoLibrary.MANUAL.Id);
         RenderConsole(CurrentSession.CurrentMachine!.Snapshot(), 0);
+    }
+
+    // Holds and latches belong to the machine being replaced: release them on it, so the new one
+    // starts with every button up and the next click presses rather than releases. An open picker
+    // and a cord drag name the old machine's cords, so they close on it too.
+    private void ReleaseHeldInput()
+    {
+        if (_chrome is not null && _chrome.Picker.IsOpen) _chrome.Picker.Close();
+        if (_cords is not null && _cords.Dragging) _cords.CancelDrag();
+        _cords?.EndTouch();
+        _controls?.ReleaseLatches();
+        _controls?.ReleaseAll();
     }
 
     private bool ToggleSound()
@@ -317,6 +443,7 @@ public partial class Boot : Node
             _stage3D = new Stage3D();
             AddChild(_stage3D);
             _stage3D.Initialize(panel, ToggleViewMode);
+            _stage3D.Camera.SetRightInset(_stage3DInset);
         }
         else
         {
@@ -326,6 +453,13 @@ public partial class Boot : Node
             _stage2D.Initialize(panel, ToggleViewMode);
         }
         _cords?.SetTactile(_stage3D is not null);
+    }
+
+    private void SetLocked(bool locked)
+    {
+        _chrome?.SetLocked(locked);
+        _controls?.SetLocked(locked);
+        _cords?.SetLocked(locked);
     }
 
     private void SetStageView(string view)
@@ -344,6 +478,12 @@ public partial class Boot : Node
     {
         if (_stage2D is not null) _stage2D.PanBy(amount);
         else if (_stage3D is not null) _stage3D.PanBy(amount.X, amount.Y);
+    }
+
+    private void InsetStage3D(float pixels)
+    {
+        _stage3DInset = pixels;
+        _stage3D?.Camera.SetRightInset(pixels);
     }
 
     private void LayoutStage(float left, float top, float right, float bottom)

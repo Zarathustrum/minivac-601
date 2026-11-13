@@ -9,5 +9,6 @@
   <ItemGroup>
     <ProjectReference Include="../dotnet/Minivac.Core/Minivac.Core.csproj" />
     <ProjectReference Include="../dotnet/Minivac.Conformance/Minivac.Conformance.csproj" />
+    <ProjectReference Include="../dotnet/Minivac.Hands/Minivac.Hands.csproj" />
   </ItemGroup>
 </Project>

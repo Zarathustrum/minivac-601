@@ -62,6 +62,7 @@ public partial class Picker : Control
 
     public void Open(EndpointRef endpoint, Control? restoreFocus = null)
     {
+        if (_cords!.Locked) return;
         EndTouch();
         _selected = endpoint;
         _scrollOffset = 0;
@@ -150,6 +151,8 @@ public partial class Picker : Control
             }
             AddTouch(terminal.Id);
         }
+        // A new filter is a new list: show it from the top, not at the old list's scroll offset.
+        _scrollOffset = 0;
         LayoutChoices();
     }
 
@@ -215,7 +218,8 @@ public partial class Picker : Control
 
     private void RestoreFocus()
     {
-        if (_restoreFocus is not null && !_restoreFocus.IsQueuedForDeletion() && _restoreFocus.IsVisibleInTree())
+        if (_restoreFocus is not null && IsInstanceValid(_restoreFocus) && !_restoreFocus.IsQueuedForDeletion() &&
+            _restoreFocus.IsVisibleInTree())
         {
             _restoreFocus.GrabFocus();
             return;

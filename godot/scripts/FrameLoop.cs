@@ -13,6 +13,7 @@ public sealed class FrameLoop
     private readonly Machine _machine;
     private readonly Action<int, int[], IReadOnlyList<Event>> _sample;
     private readonly Action<State, long> _render;
+    private readonly bool _frozen;
     private long? _lastUs;
     private long _carryUs;
     private int _nextBoundaryTick;
@@ -20,16 +21,26 @@ public sealed class FrameLoop
     public FrameLoop(
         Machine machine,
         Action<int, int[], IReadOnlyList<Event>> sample,
-        Action<State, long> render)
+        Action<State, long> render,
+        bool frozen = false)
     {
         _machine = machine;
         _sample = sample;
         _render = render;
+        _frozen = frozen;
         _nextBoundaryTick = machine.Snapshot().tick;
     }
 
+    public bool Frozen => _frozen;
+
+    // Frozen is render-only: simulated time moves only inside the machine owner's own calls.
     public void Frame(long nowUs)
     {
+        if (_frozen)
+        {
+            _render(_machine.Snapshot(), nowUs);
+            return;
+        }
         _lastUs ??= nowUs;
         long dtUs = Math.Min(nowUs - _lastUs.Value, MaxCatchUpUs);
         long total = dtUs + _carryUs;

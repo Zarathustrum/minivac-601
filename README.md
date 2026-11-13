@@ -23,7 +23,7 @@ npm test               # Vitest; runs lint first (pretest)
 npm run test:browser   # Playwright at desktop, tablet and mobile viewports
 ```
 
-The other scripts (`check-*`, `sync-data`, `parity`, `bless`, and so on) are listed in `package.json`.
+The other scripts (`check-*`, `sync-data`, `parity`, `transfer`, `godot-pane-e2e`, `bless`, and so on) are listed in `package.json`. `parity` and `transfer` need the .NET SDK: each builds its C# tool in Release and compares it with the TypeScript, `parity` on the conformance traces and `transfer` on the chat pane's engine. `godot-pane-e2e` also needs Godot 4.7.2 mono (`GODOT`): it runs the chat end to end in the headless Godot build against the real pane server and a scripted model.
 
 ## Command-line tools
 

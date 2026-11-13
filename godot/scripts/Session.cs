@@ -6,7 +6,14 @@ namespace Minivac.Godot;
 
 public sealed record SessionDemo(string Id, IReadOnlyList<Command> Commands);
 
-public sealed record SessionContext(string DemoId, string ProfileId);
+/// <summary>Frozen and Locked are set only by <see cref="Session.Adopt"/>.</summary>
+public sealed record SessionContext(string DemoId, string ProfileId, bool Frozen = false, bool Locked = false);
+
+/// <summary>
+/// Demo is what a later reset or profile switch replays on a fresh machine; it is never replayed
+/// onto the adopted one.
+/// </summary>
+public sealed record AdoptContext(SessionDemo Demo, string ProfileId, bool Frozen, bool Locked);
 
 public sealed class Session : IDisposable
 {
@@ -19,6 +26,8 @@ public sealed class Session : IDisposable
     private Machine? _mountedMachine;
     private Action? _unmount;
     private string _profileId;
+    private bool _frozen;
+    private bool _locked;
     private bool _disposed;
 
     public Session(
@@ -46,6 +55,10 @@ public sealed class Session : IDisposable
     public Machine? CurrentMachine => _mountedMachine;
     public string? DemoId => _loadedDemo?.Id;
     public string ProfileId => _profileId;
+    public bool Frozen => _frozen;
+    public bool Locked => _locked;
+    /// <summary>Commands that reached <see cref="Apply"/> while locked; each was refused unapplied.</summary>
+    public int RefusedWhileLocked { get; private set; }
 
     public void LoadDemo(SessionDemo demo)
     {
@@ -58,6 +71,33 @@ public sealed class Session : IDisposable
     {
         ArgumentNullException.ThrowIfNull(demo);
         LoadDemo(demo.SessionDemo);
+    }
+
+    /// <summary>
+    /// Mount a machine the caller built and keeps driving: no replay, no tick, no drain. A mount
+    /// failure remounts the previous machine as it was, as <see cref="Replace"/> does, and rethrows.
+    /// </summary>
+    public void Adopt(Machine machine, AdoptContext context)
+    {
+        RequireLive();
+        ArgumentNullException.ThrowIfNull(machine);
+        ArgumentNullException.ThrowIfNull(context);
+        DisposeMount();
+        try
+        {
+            _unmount = _mount(machine, new SessionContext(context.Demo.Id, context.ProfileId, context.Frozen, context.Locked));
+        }
+        catch
+        {
+            if (_mountedMachine is not null && _loadedDemo is not null)
+                _unmount = _mount(_mountedMachine, new SessionContext(_loadedDemo.Id, _profileId, _frozen, _locked));
+            throw;
+        }
+        _mountedMachine = machine;
+        _loadedDemo = context.Demo;
+        _profileId = context.ProfileId;
+        _frozen = context.Frozen;
+        _locked = context.Locked;
     }
 
     public void Reset()
@@ -78,6 +118,14 @@ public sealed class Session : IDisposable
     {
         RequireLive();
         if (_mountedMachine is null) throw new InvalidOperationException("session: no demo loaded");
+        // The one choke point: a locked machine belongs to its owner. The panel's input paths stop
+        // before here, so reaching it is a bug, and it is refused loudly rather than reported as a
+        // contract rejection.
+        if (_locked)
+        {
+            RefusedWhileLocked++;
+            throw new InvalidOperationException("session: locked, command " + command.k + " refused");
+        }
         var acceptedState = _mountedMachine.Snapshot();
         var result = _mountedMachine.Apply(command);
         if (!result.ok) return result;
@@ -116,6 +164,8 @@ public sealed class Session : IDisposable
         var previousMachine = _mountedMachine;
         var previousDemo = _loadedDemo;
         var previousProfileId = _profileId;
+        var previousFrozen = _frozen;
+        var previousLocked = _locked;
         DisposeMount();
         Action nextUnmount;
         try
@@ -126,7 +176,9 @@ public sealed class Session : IDisposable
         {
             if (previousMachine is not null && previousDemo is not null)
             {
-                _unmount = _mount(previousMachine, new SessionContext(previousDemo.Id, previousProfileId));
+                _unmount = _mount(
+                    previousMachine,
+                    new SessionContext(previousDemo.Id, previousProfileId, previousFrozen, previousLocked));
             }
             throw;
         }
@@ -134,6 +186,8 @@ public sealed class Session : IDisposable
         _mountedMachine = machine;
         _loadedDemo = demo;
         _profileId = nextProfileId;
+        _frozen = false;
+        _locked = false;
     }
 
     private static Func<Machine, SessionContext, Action> CreateLoopMount(
@@ -144,7 +198,7 @@ public sealed class Session : IDisposable
     {
         ArgumentNullException.ThrowIfNull(loop);
         ArgumentNullException.ThrowIfNull(traceView);
-        return (machine, _) =>
+        return (machine, context) =>
         {
             traceView.Reset(machine.Observables());
             FrameLoop? mounted = null;
@@ -159,7 +213,8 @@ public sealed class Session : IDisposable
                 {
                     traceView.Flush();
                     render?.Invoke(state, nowUs);
-                });
+                },
+                context.Frozen);
             loop.Current = mounted;
             return () =>
             {

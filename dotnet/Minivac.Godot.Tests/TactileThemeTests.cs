@@ -32,7 +32,7 @@ public sealed partial class TactileThemeTests
     [
         "cordColour", "subViewport", "cordRadius", "dtStep", "convergeSteps", "rebuildEpsilon", "cordGravityWPerStep2", "cordRelaxIterations", "cordDamping", "taperPinStub", "cordSlack", "cordSegments", "tubeSides", "cameraFovDeg", "cameraWireFovDeg", "cameraElevationDeg", "cameraAzimuthDeg", "cameraDolly", "cameraDollyMinW", "cameraDefaultPose", "cameraWireDollyW", "cameraWireElevationDeg", "orbitDegPerPixel", "dollyPerWheelNotch", "panWPerPixel", "taperPinGrey",
         "consoleTeal", "consoleDark", "consoleCream", "consoleRed", "consoleRedLit", "holeHit", "lampLens", "lampBezel", "jewel", "pushbutton", "breaker", "slide", "powerSwitch", "rivet", "relayBody", "knobSquare", "crossbarShift", "dialRotation", "glowIntensity", "holeDiameterToken", "printedRingOD", "knobWedgeRadiusOverInnerCircle", "caseHeight", "caseEdgeRadius", "footCount", "footRadius", "footHeight", "footInset", "plateRecess", "lampLensProud", "lampBezelProud", "jewelBarrelProud", "pushbuttonCapProud", "pushbuttonStroke", "breakerProud", "slideActuatorProud", "crossbarProud", "knobHeight", "glowBloom", "glowHdrThreshold", "lampEmissionMax", "lampColour", "chalkyCore", "bobbinWhite", "springCopper", "chromeMetallic", "chromeRoughness", "frameFinish",
-        "jewelBezel", "meshQuality", "footColour", "slideThrow", "knobSurface", "relayForm", "jewelKnurl", "lampSurface", "sceneLighting",
+        "jewelBezel", "meshQuality", "footColour", "slideThrow", "knobSurface", "relayForm", "jewelKnurl", "lampSurface", "sceneLighting", "cordMarkColour",
     ];
 
     private static readonly (string Name, object Value, string Tag, string Source, string OpenQuestion)[] ExpectedP6Metadata =
@@ -94,14 +94,15 @@ public sealed partial class TactileThemeTests
         ("jewelKnurl", new JewelKnurlValue(24, .0006), "chosen", "chosen redraw token", "O-P18"),
         ("lampSurface", new LampSurfaceValue(.65, .45), "chosen", "chosen redraw token", "O-P14"),
         ("sceneLighting", new SceneLightingValue(Color.FromHtml("ffffff"), 1.25, new Vector2(-45, -30), .35), "chosen", "chosen neutral presentation illumination", "O-P18"),
+        ("cordMarkColour", Color.FromHtml("ffcc00"), "chosen", "chosen presentation token", "O-P10"),
     ];
 
     [Fact]
     public void Every_token_has_a_valid_tag_and_the_P6_inventory_is_exact()
     {
-        Assert.Equal(83, TactileTheme.Tokens.Count);
+        Assert.Equal(84, TactileTheme.Tokens.Count);
         Assert.Equal(ExpectedNames, TactileTheme.Tokens.Select(token => token.Name));
-        Assert.Equal(83, TactileTheme.Tokens.Select(token => token.Name).Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal(84, TactileTheme.Tokens.Select(token => token.Name).Distinct(StringComparer.Ordinal).Count());
         Assert.All(TactileTheme.Tokens, token => Assert.Contains(token.Tag, Tags));
         foreach (var expected in ExpectedP6Metadata)
         {
@@ -149,8 +150,8 @@ public sealed partial class TactileThemeTests
                 PlainCell(fields[6])));
         }
 
-        Assert.Equal(83, rows.Count);
-        Assert.Equal(83, rows.Select(row => row.Name).Distinct(StringComparer.Ordinal).Count());
+        Assert.Equal(84, rows.Count);
+        Assert.Equal(84, rows.Select(row => row.Name).Distinct(StringComparer.Ordinal).Count());
         var documented = rows.ToDictionary(row => row.Name, StringComparer.Ordinal);
         var registered = TactileTheme.Tokens.ToDictionary(token => token.Name, StringComparer.Ordinal);
         Assert.Equal(

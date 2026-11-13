@@ -9,6 +9,9 @@ public partial class CordMesh : Node3D
     private static readonly (float Cos, float Sin)[] TubeRing = BuildTubeRing();
     private readonly Dictionary<int, MeshInstance3D> _instances = [];
     private readonly Dictionary<int, Vector3[]> _builtParticles = [];
+    private readonly Dictionary<int, MeshInstance3D> _marks = [];
+    private static readonly IReadOnlySet<int> NoMarks = new HashSet<int>();
+    private ImmediateMesh _markMesh = null!;
     private CordLay _lay = new();
     private StandardMaterial3D _cordMaterial = null!;
     private StandardMaterial3D _pinMaterial = null!;
@@ -21,10 +24,12 @@ public partial class CordMesh : Node3D
         Name = "CordMeshes";
         _cordMaterial = MakeMaterial(TactileTheme.CordColour.Value);
         _pinMaterial = MakeMaterial(TactileTheme.TaperPinGrey.Value);
+        _markMesh = BuildMark();
         BuildTray(tray);
     }
 
-    internal int Render(IReadOnlyList<CordRecord> records, long nowUs, bool reduceMotion)
+    /// <summary>Lays and draws the cords; <paramref name="marked"/> are the cord ids that carry the chat's mark.</summary>
+    internal int Render(IReadOnlyList<CordRecord> records, long nowUs, bool reduceMotion, IReadOnlySet<int>? marked = null)
     {
         _lay.Reconcile(records);
         if (reduceMotion) _lay.SettleNow();
@@ -53,7 +58,33 @@ public partial class CordMesh : Node3D
             _instances.Remove(id);
             _builtParticles.Remove(id);
         }
+        RenderMarks(marked ?? NoMarks);
         return rebuilt;
+    }
+
+    // One ring per marked cord at the midpoint of its laid particles; it follows the cord as the lay settles.
+    private void RenderMarks(IReadOnlySet<int> marked)
+    {
+        foreach (var pair in _instances)
+        {
+            if (!marked.Contains(pair.Key)) continue;
+            if (!_marks.TryGetValue(pair.Key, out var mark))
+            {
+                mark = new MeshInstance3D { Name = "CordMark_" + pair.Key, Mesh = _markMesh };
+                AddChild(mark);
+                _marks.Add(pair.Key, mark);
+            }
+            var particles = _lay.Particles(pair.Key);
+            mark.Position = (particles[particles.Count / 2 - 1] + particles[particles.Count / 2]) / 2;
+        }
+        var obsolete = new List<int>();
+        foreach (var pair in _marks)
+        {
+            if (_instances.ContainsKey(pair.Key) && marked.Contains(pair.Key)) continue;
+            pair.Value.Free();
+            obsolete.Add(pair.Key);
+        }
+        foreach (var id in obsolete) _marks.Remove(id);
     }
 
     internal void Reset()
@@ -94,6 +125,8 @@ public partial class CordMesh : Node3D
         foreach (var instance in _instances.Values) instance.Free();
         _instances.Clear();
         _builtParticles.Clear();
+        foreach (var mark in _marks.Values) mark.Free();
+        _marks.Clear();
     }
 
     private bool Moved(int cordId, IReadOnlyList<Vector3> particles)
@@ -163,6 +196,49 @@ public partial class CordMesh : Node3D
     {
         AlbedoColor = color,
         ShadingMode = StandardMaterial3D.ShadingModeEnum.Unshaded,
+    };
+
+    // The chat's cord mark (docs/plans/godot-chat-pane.md, "Cord marks"): a flat ring that always faces the
+    // camera, a hole across, in the one presentation token over a dark keyline, drawn over the case and pop-outs
+    // so the default pose shows it. Hollow, so the cord's own colour shows through. Static: no motion.
+    private static ImmediateMesh BuildMark()
+    {
+        var mesh = new ImmediateMesh();
+        var radius = (float)TactileTheme.CordRadius.Value;
+        // A hole across plus a cord on each side: the default pose shows the panel smaller than the flat fit view.
+        var outer = (float)TactileTheme.HoleHit.Value + radius * 2;
+        var inner = outer - radius * 2;
+        EmitRing(mesh, MakeMarkMaterial(TactileTheme.ConsoleDark.Value, 0), inner - radius * 0.5f, outer + radius * 0.5f);
+        EmitRing(mesh, MakeMarkMaterial(TactileTheme.CordMarkColour.Value, 1), inner, outer);
+        return mesh;
+    }
+
+    private static void EmitRing(ImmediateMesh mesh, StandardMaterial3D material, float inner, float outer)
+    {
+        var segments = TactileTheme.MeshQuality.Value.RadialSegments;
+        mesh.SurfaceBegin(Mesh.PrimitiveType.Triangles, material);
+        for (var index = 0; index < segments; index++)
+        {
+            var a = Math.Tau * index / segments;
+            var b = Math.Tau * (index + 1) / segments;
+            var aIn = new Vector3((float)Math.Cos(a) * inner, (float)Math.Sin(a) * inner, 0);
+            var aOut = new Vector3((float)Math.Cos(a) * outer, (float)Math.Sin(a) * outer, 0);
+            var bIn = new Vector3((float)Math.Cos(b) * inner, (float)Math.Sin(b) * inner, 0);
+            var bOut = new Vector3((float)Math.Cos(b) * outer, (float)Math.Sin(b) * outer, 0);
+            EmitTriangle(mesh, aIn, Vector3.Back, aOut, Vector3.Back, bOut, Vector3.Back);
+            EmitTriangle(mesh, aIn, Vector3.Back, bOut, Vector3.Back, bIn, Vector3.Back);
+        }
+        mesh.SurfaceEnd();
+    }
+
+    private static StandardMaterial3D MakeMarkMaterial(Color color, int priority) => new()
+    {
+        AlbedoColor = color,
+        ShadingMode = StandardMaterial3D.ShadingModeEnum.Unshaded,
+        BillboardMode = BaseMaterial3D.BillboardModeEnum.Enabled,
+        CullMode = BaseMaterial3D.CullModeEnum.Disabled,
+        NoDepthTest = true,
+        RenderPriority = priority,
     };
 
     private static void BuildTray(Node3D tray)

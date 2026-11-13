@@ -114,8 +114,8 @@ public partial class Stage3D : Node3D
             toggleView);
     }
 
-    internal int RenderCords(IReadOnlyList<CordRecord> records, long nowUs, bool reduceMotion) =>
-        CordMeshes.Render(records, nowUs, reduceMotion);
+    internal int RenderCords(IReadOnlyList<CordRecord> records, long nowUs, bool reduceMotion, IReadOnlySet<int>? marked = null) =>
+        CordMeshes.Render(records, nowUs, reduceMotion, marked);
 
     internal void RenderPresentation(State state, Controls controls)
     {

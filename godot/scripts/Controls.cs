@@ -152,11 +152,13 @@ public partial class Controls : Control
     private RangeControl? _dial;
     private PanelControl? _dialItem;
     private bool _pointerDial;
+    private bool _locked;
 
     public IReadOnlyList<Button> Buttons => _buttons.ConvertAll(pair => pair.View).AsReadOnly();
     public IReadOnlyList<Control> Relays => _relays.ConvertAll<Control>(pair => pair.View).AsReadOnly();
     public Control Dial => _dial ?? throw new InvalidOperationException("controls: not initialized");
     public string LastStatus { get; private set; } = "";
+    public bool Locked => _locked;
     public event Action<Command>? Emitted;
 
     public void Initialize(PanelLayout layout, Func<Command, CmdResult> apply, Func<State> state)
@@ -204,11 +206,28 @@ public partial class Controls : Control
         throw new InvalidOperationException("controls: no presented range " + identity);
     }
 
+    /// <summary>
+    /// While locked no input reaches the machine: holds are released first (on the machine still
+    /// mounted), buttons are disabled, and every input handler stops before it changes a hold or a
+    /// presented value. Render keeps showing the machine.
+    /// </summary>
+    public void SetLocked(bool locked)
+    {
+        if (locked && !_locked)
+        {
+            ReleaseLatches();
+            ReleaseAll();
+        }
+        _locked = locked;
+        foreach (var pair in _buttons)
+            if (pair.Item.Kind != "breaker-button") pair.View.Disabled = locked;
+    }
+
     public void Render(State state)
     {
         foreach (var pair in _buttons)
         {
-            if (pair.Item.Kind == "breaker-button") pair.View.Disabled = !state.breakerTripped;
+            if (pair.Item.Kind == "breaker-button") pair.View.Disabled = _locked || !state.breakerTripped;
             if (pair.Item.Kind == "power-switch") pair.View.ButtonPressed = state.power;
             if (pair.View is PanelButton styled)
             {
@@ -239,6 +258,9 @@ public partial class Controls : Control
     {
         for (var section = 1; section <= 6; section++) SetButtonHold(_latchedButtons, section, false);
     }
+
+    // A held pushbutton is drawn pressed; the lock suite reads it to show none looks pressed.
+    internal bool PushHeld(int section) => ButtonHeld(section - 1);
 
     private bool ButtonHeld(int index) => _pointerButtons[index] || _keyboardButtons[index] || _latchedButtons[index];
 
@@ -382,19 +404,28 @@ public partial class Controls : Control
         }
         else if (item.Kind == "slide-switch" && item.Section is { } switchSection)
         {
-            void Activate() => Apply(Commands.Switch(switchSection, _state!().switches[switchSection - 1].travel));
+            void Activate()
+            {
+                if (!_locked) Apply(Commands.Switch(switchSection, _state!().switches[switchSection - 1].travel));
+            }
             node.Pressed += Activate;
             node.KeyboardActivate = Activate;
         }
         else if (item.Kind == "power-switch")
         {
-            void Activate() => Apply(Commands.Power(_state!().power));
+            void Activate()
+            {
+                if (!_locked) Apply(Commands.Power(_state!().power));
+            }
             node.Pressed += Activate;
             node.KeyboardActivate = Activate;
         }
         else if (item.Kind == "breaker-button")
         {
-            void Activate() => Apply(Commands.Breaker());
+            void Activate()
+            {
+                if (!_locked) Apply(Commands.Breaker());
+            }
             node.Pressed += Activate;
             node.KeyboardActivate = Activate;
         }
@@ -465,6 +496,7 @@ public partial class Controls : Control
             ReleaseAllAndFocus();
             AcceptEvent();
         }
+        else if (_locked) return;
         else if (input is InputEventMouseButton mouse && (int)mouse.ButtonIndex == 1)
         {
             // A latch toggle never sets the pointer hold, so its release is a no-op.
@@ -493,6 +525,7 @@ public partial class Controls : Control
             ReleaseAllAndFocus();
             AcceptEvent();
         }
+        else if (_locked) return;
         else if (input is InputEventMouseButton mouse && (int)mouse.ButtonIndex == 1)
         {
             if (mouse.Pressed) PointerRelayPress(section, RangeTarget(mouse.Position.X, node.Size.X, node.Maximum));
@@ -521,6 +554,7 @@ public partial class Controls : Control
             ReleaseAllAndFocus();
             AcceptEvent();
         }
+        else if (_locked) return;
         else if (input is InputEventMouseButton mouse && (int)mouse.ButtonIndex == 1)
         {
             PointerDial(mouse.Position - _dial.Size / 2, mouse.Pressed);

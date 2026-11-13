@@ -1288,3 +1288,178 @@ Orchestrator working choices, not Tom-approved:
   The startup line names the folder.
 - **No badge without a served-by header** — a reply from an endpoint that does not say who served
   it gets no "served by ?" badge; fallbacks, cost and a failed request still show.
+
+## 2026-11-11 — Chat pane in the Godot build
+
+Tom asked for a UI proposal for the web build's chat in the Godot build, ruled on its open
+questions, and directed the design and phase plan written: `docs/plans/godot-chat-pane.md`. Tom
+approved the plan to build later the same day (last bullet). The transport, camera and visibility
+rulings are the orchestrator's recommendations, which Tom asked for and then directed recorded.
+
+- **Transport** `[settled]` — Tom, 2026-11-11, on the orchestrator's recommendation: the Godot build
+  connects to the existing pane server (`tools/hands-pane/server.ts`) as a WebSocket client and
+  answers its requests from a C# port of `src/hands/` and `src/pane/engine.ts`. No model loop in
+  C#; the key stays in the server process. The 2026-09-03 rejection of a "socket bridge" was about
+  avoiding the simulator port; here the simulator is native C# and the socket carries chat frames
+  and tool-call data.
+- **Camera while locked** `[settled]` — Tom, 2026-11-11, on the orchestrator's recommendation:
+  free. "Frozen and locked" (2026-11-02) covers the panel; orbit, zoom and pan never reach the
+  machine.
+- **Cord marks** `[settled]` — Tom, 2026-11-11: "cords only". After each call the cords that call
+  added are marked until the next call. The mark is static. Lamps, relays and controls get none.
+  Cord-by-cord animation stays deferred (2026-11-03).
+- **Sound** `[settled]` — Tom, 2026-11-11: the machine is silent during the model's calls, as in
+  the web pane. Tom: "maybe add a fun 60's style beeping-teletype sound effect"; the plan carries
+  it as a cue he picks by ear and can drop.
+- **Visible** `[settled]` — Tom, 2026-11-11 ("I think maybe visible"), on the orchestrator's
+  recommendation: the Chat tab shows without a launch flag. With no server it shows a setup card.
+  The Godot build holds no key. Public distribution of the Godot build still needs Tom's explicit
+  approval (2026-09-03).
+- **Approved to build** `[settled]` — Tom, 2026-11-11: phases C0 to C6, with the orchestrator on
+  Fable by Tom's choice for this build and workers and reviewers on the Claude mapping. Fixed:
+  `tools/hands-pane/server.ts` stays unchanged, and if the Origin fallback fails and the server
+  must change, the build stops for Tom; no change to the contract, the schemas, the fixtures, the
+  goldens or the web pane's behaviour; one commit per phase, no push, no public snapshot. The
+  build stops for Tom at three points only: a C0 probe that fails with no named fallback, the
+  teletype cue (Tom picks by ear), and the hands-on session. Tom has not set the done bar: the
+  build works to the plan's proposed one, and whether to run the 12-item checklist from Godot is
+  his call at C6. The plan's "Working choices" and "Execution" sections stay the orchestrator's
+  and may change, each change recorded here as an orchestrator choice.
+
+- **Wheel over the dock in 3D** `[settled]` — Tom, 2026-11-11, at the C0 stop: the probe that the
+  wheel over a mouse-stopping control does not zoom failed in the 3D view, with no fallback named
+  in the plan. The dock root sets `MouseForcePassScrollEvents = false` in C4, the fix the probe
+  ran in both views. Not chosen: a wheel guard in `OrbitCamera` (it would change the cord list
+  and toolbar too), and leaving the leak.
+- **Build host** `[settled]` — Tom, 2026-11-11: a second development host, with Godot 4.7.2 mono and .NET SDK
+  10.0.403 installed user-local without Homebrew or admin rights (STATUS, 2026-11-11).
+
+Orchestrator working choices, not Tom-approved: the plan's "Working choices" section (the dock as
+a tab in the right column, the pasted server link, the hands port as its own project, and the
+rest), and its proposed done bar.
+
+Orchestrator working choices made during the build, not Tom-approved (2026-11-11):
+
+- The orchestrator builds no slice itself; the plan's Execution section had it building C2 and
+  C4. Every phase goes to one worker, and the orchestrator checks the evidence, integrates and
+  commits.
+- C3 was built in parallel with C1, in its own worktree, and committed first. The plan listed
+  them in order. To make that safe the link layer does not know the engine's payload types: a
+  `request` frame goes up as its id, its `op` and the frame's raw JSON text, and a `reply` is
+  sent from an id and raw JSON spliced in unchanged, so the engine's own JSON code (C1) is the
+  only reader and writer of those shapes.
+- The pasted link is stricter than the web page's: a port is decimal digits only, 1 to 65535
+  (the page's `Number()` also takes `0x1F` and `1e3`), and only `http` and `https` links are
+  read.
+- A frame that cannot be sent closes the link: a failed `hello` reads as could-not-connect, a
+  failed send after `ready` as connection lost. A reply the server never gets would leave it
+  waiting.
+- A refused Origin and a server that is not running get one message naming both, because Godot
+  reports them identically (C0).
+- The transfer test is stricter than the plan's working choice: replies must be byte-identical as
+  JSON text, not only equal after parsing. It is a Vitest spec outside the default include
+  (`test/pane/transfer.dotnet.ts`, `npm run transfer`), which builds the C# tool in Release
+  before it runs, as `npm run parity` does, so `npm test` needs no .NET and a stale tool cannot
+  be tested. It also carries a seeded random differential (seed 601). From the C1 review,
+  2026-11-12.
+- `PaneJson.Answer` answers text it cannot parse with an engine error, not silence, so the
+  server never waits on a request that got no reply. The server cannot send such text.
+- The lock refuses at `Session.Apply` by throwing: the contract has no "locked" refusal reason,
+  and the contract does not change.
+- The banner has two lines, not the sketch's three: the headline, then the waiting line, with Stop
+  and End session on the right. It moves the flat stage down 72 px while a session is live.
+- Where the plan's states table and the web pane's code differ, the dock follows the web code:
+  New session stays on while connecting, and the status reads "connected" after a session that
+  ended in an error.
+- Selecting Chat focuses the link field while the setup card shows, and the message box once
+  there is a link. The plan said the message box always.
+- The dock's words are the web pane's except where they say page, reload or URL. Token refused:
+  "paste the link the pane server printed last". Other build: "this build and the pane server
+  are different versions: rebuild this app or restart the pane server".
+- In 3D the camera frames the console left of the dock by shifting the lens, not by narrowing
+  the view, so the console keeps its size.
+- The cord mark is a hollow ring at the cord's midpoint with a dark keyline, in `#ffcc00`, a
+  yellow that is no cord, lamp, panel or focus colour. Its token cites O-P10, the cord
+  presentation question, because the token table requires every chosen token to name one.
+- "Until the next call" means until the next `run`. A `state` request does not clear the marks:
+  it changes nothing, and the server sends a `session` request after every successful call, so
+  clearing on any request would erase each mark as it appeared.
+- The transcript shows at most 4 KiB of each field and 16 KiB and 50 calls of one model entry,
+  where the web page shows everything. One Godot label holding 64 KiB of words blocked the app
+  for 5.6 s. The run folder keeps the full text of a successful turn, and the cut line says so
+  only there. From the second review, 2026-11-12.
+- The dock gives up on connecting after 10 s without `ready`, and closes the link 15 s after End
+  session if no `ended` comes. Neither is a retry: Connect is pressed again.
+- The `npm audit` advisories the C6 gate found are left alone: they are against dev dependencies
+  this plan did not touch, and clearing them moves the pinned `vite` and `vitest`.
+- The C6 gate ran the macOS export and its self-test on the second development host and produced the Linux and
+  Windows exports without running them. The export templates were installed user-local for it.
+- An unknown `op` gets no reply from Godot. The web page sends a reply frame with no `reply`
+  key. The server never sends an unknown `op`.
+
+## 2026-11-12 — Godot chat pane: rulings from the hands-on session
+
+Tom ran the Godot build against the pane server and the default route on the second development host (run
+`2026-11-12-pane-1`, "wire up tic-tac-toe"). The session and its five findings are in
+`docs/STATUS.md`. Two findings needed a ruling.
+
+**Tom's rulings:**
+
+- **Cord marks stop at 12.** A `run` that adds 12 cords or fewer marks them; a `run` that adds
+  more shows no marks. The model plugged all 72 Tic-Tac-Toe cords in one call and every cord got
+  a ring, which picked nothing out. This amends the 2026-11-11 ruling "After each call, the cords
+  that call added are marked."
+- **The Godot dock renders markdown in the model's reply; the web pane does not, for now.** Both
+  builds showed `**bold**` and backticks as typed. Tom chose to render a small subset in Godot
+  only, knowing the two builds then differ. Rendering in the web pane is a proposed to-do, not
+  approved work.
+
+**Orchestrator working choices in the repairs (not Tom-approved):**
+
+- The markdown subset is deliberately narrower than CommonMark, and when in doubt the text stays as
+  typed. `*` and `_` mark emphasis only at word boundaries, so `a*b*c`, `2*3*4` and
+  `snake_case_name` are unchanged. A run pairs only with a run of the same marker and length;
+  pairs that would cross stay as typed. Tables, images, numbered lists and HTML are not rendered.
+  Prose `__init__` renders as a bold "init", as CommonMark does.
+- Links print as `text (url)` and are never clickable: the dock opens nothing the model names.
+- Every character the model typed reaches the label through one escape (`[` to BBCode's `[lb]`),
+  so the only tags in the label are the converter's own `b`, `i` and `code`. From the review of
+  the repair, which ran about twenty tag kinds through a Godot 4.7.2 label and found none active.
+- The help dialog shows its page in a scroll box at 82 % of the window. Wrapping the dialog's own
+  label was tried first: the dialog shrank to its 640 px minimum width and grew to 730 to 766 px
+  tall, past the 640 px window.
+- Toolbar buttons are as wide as their own labels, 4 px apart; Sound keeps the wider of its two
+  texts so toggling it moves nothing. Labels and order did not change.
+- The reviewed part was the markdown repair alone; the other four repairs were checked by their
+  own acceptance cases and the orchestrator's read.
+
+## 2026-11-12 — Godot chat pane: the link is filled in; the UI scales with the window
+
+**Tom's rulings:**
+
+- **The dock's link field is pre-filled from a file the pane server writes.** Tom ran the build,
+  saw the empty field and said "this should be pre-filled". Asked where the link should come from
+  (a server-written file, the clipboard, the last link remembered by the app, or the app starting
+  the server), he chose the file. The server writes its link to `~/.minivac/pane-link` when it
+  starts and removes it when it exits. This replaces the working choice "The token is never
+  saved" in `docs/plans/godot-chat-pane.md`. Connect is still the user's press.
+- **The 2D UI scales with the window, and the window opens larger.** Tom, on a 3440 × 1440
+  display: "window and text really small, almost impossible to read, resize window does not
+  resize 2d UI".
+
+**Orchestrator working choices (not Tom-approved):**
+
+- The file is `~/.minivac/pane-link`, mode 0600 in a 0700 folder, one line. Only the server's
+  command-line entry writes it; `startPaneServer` (what the tests call) does not. A server
+  removes the file on exit only if it still holds that server's own link.
+- The dock reads the file at start, when Chat is selected, when the window regains focus and when
+  a connection ends. It replaces a link it filled in itself and never text the user typed.
+- The file is read through Godot's `FileAccess` in `Boot.cs`, because the boundary test forbids
+  `System.IO` in the scripts.
+- Scaling is the project setting `window/stretch/mode="canvas_items"` with `aspect="expand"` over
+  the unchanged 1152 × 640 base. The app opens its window at the largest size of that aspect that
+  fits in 80 % of the screen's usable area, never below the base; acceptance and selftest runs
+  keep the base size.
+- The acceptance harness now injects pointer events in canvas coordinates (`inLocalCoords`), so a
+  suite means the same thing at any window size. Before, `commands` and `lock` failed at
+  1728 × 960 under the stretch setting because the injected positions were scaled twice.

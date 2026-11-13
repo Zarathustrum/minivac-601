@@ -230,6 +230,12 @@ public static class TactileTheme
         new("lampSurface", new(.65, .45), "chosen", "chosen redraw token", "O-P14");
     public static readonly TactileToken<SceneLightingValue> SceneLighting =
         new("sceneLighting", new(Color.FromHtml("ffffff"), 1.25, new Vector2(-45, -30), .35), "chosen", "chosen neutral presentation illumination", "O-P18");
+    // The chat's cord mark (docs/plans/godot-chat-pane.md, "Cord marks"): presentation only, not a
+    // modeled machine colour. Chosen to be none of the cord, lamp or focus colours and to stand off the
+    // dark panel, the teal bands and case, and the red cords; a ConsoleDark keyline separates it from
+    // cream. O-P10 is the cord-presentation question that says a cord colour is a chosen token, never a fact.
+    public static readonly TactileToken<Color> CordMarkColour =
+        new("cordMarkColour", Color.FromHtml("ffcc00"), "chosen", "chosen presentation token", "O-P10");
 
     public static IReadOnlyList<ITactileToken> Tokens { get; } =
     [
@@ -316,5 +322,6 @@ public static class TactileTheme
         JewelKnurl,
         LampSurface,
         SceneLighting,
+        CordMarkColour,
     ];
 }

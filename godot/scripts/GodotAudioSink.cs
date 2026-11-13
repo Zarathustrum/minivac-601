@@ -53,6 +53,8 @@ public sealed class GodotAudioSink : IAudioSink, IDisposable
     public int RoomBusIndex { get; }
     public int PendingRelayCount => _relayQueue.Count;
     public long DroppedRelayCount { get; private set; }
+    /// <summary>The direction of the motor cue last started, 0 when stopped (the player's Playing flag can drop on its own).</summary>
+    public int MotorDirection => _motorDirection;
     public bool MotorLoops => MotorPlayer.Stream.Get("loop_mode").AsInt64() == 1;
 
     public void Start()

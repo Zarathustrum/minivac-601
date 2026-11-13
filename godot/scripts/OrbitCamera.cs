@@ -24,6 +24,7 @@ public partial class OrbitCamera : Camera3D
     private Vector3 _target;
     private Gesture _gesture;
     private bool _wireFramed;
+    private float _rightInset;
     private Func<bool> _panelHasFocus = null!;
     private Action<InputEvent> _forwardKey = null!;
     private Action _releasePanelFocus = null!;
@@ -32,6 +33,7 @@ public partial class OrbitCamera : Camera3D
     public Pose CurrentPose => _pose;
     public Vector3 Target => _target;
     public bool GestureActive => _gesture.Active;
+    public float RightInset => _rightInset;
 
     public void Initialize(
         Func<bool> panelHasFocus,
@@ -50,7 +52,18 @@ public partial class OrbitCamera : Camera3D
         _toggleView = toggleView;
         Current = true;
         Input.MouseMode = Input.MouseModeEnum.Visible;
+        GetViewport().SizeChanged += ApplyFraming;
         ResetPose();
+    }
+
+    /// <summary>
+    /// While the chat dock is open the console is framed in the area left of it, <paramref name="pixels"/>
+    /// wide on the right; 0 frames the whole window.
+    /// </summary>
+    public void SetRightInset(float pixels)
+    {
+        _rightInset = Math.Max(0, pixels);
+        ApplyFraming();
     }
 
     public void ResetPose()
@@ -171,5 +184,24 @@ public partial class OrbitCamera : Camera3D
             (float)(-Math.Cos(azimuth) * planar),
             (float)(Math.Sin(elevation) * _pose.DollyW));
         LookAt(_target, Vector3.Up);
+        ApplyFraming();
+    }
+
+    // A lens shift (a frustum offset) moves the view's centre to the middle of the area left of the inset,
+    // at the same field of view, so the scene still fills the window under the dock. At the default pose
+    // the console fits that area at 1152 x 640 (the chat-3d suite measures it).
+    private void ApplyFraming()
+    {
+        var window = IsInsideTree() ? GetViewport().GetVisibleRect().Size : Vector2.Zero;
+        var area = window.X - _rightInset;
+        if (_rightInset <= 0 || area <= 0 || window.Y <= 0)
+        {
+            Projection = ProjectionType.Perspective;
+            return;
+        }
+        var halfHeight = Near * Math.Tan(Fov * Math.PI / 360);
+        Projection = ProjectionType.Frustum;
+        Size = (float)(2 * halfHeight);
+        FrustumOffset = new Vector2((float)(_rightInset * halfHeight / window.Y), 0);
     }
 }

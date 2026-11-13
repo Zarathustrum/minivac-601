@@ -4,7 +4,7 @@
 
 import { spawn } from 'node:child_process';
 import { randomBytes } from 'node:crypto';
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { createServer, request } from 'node:http';
 import { createServer as createNetServer } from 'node:net';
 import type { AddressInfo } from 'node:net';
@@ -22,7 +22,8 @@ import { fileBackend } from '../../tools/hands/backend.ts';
 import { runWith } from '../../tools/hands/cli.ts';
 import { formatSession, loadRepoNetlist, loadRepoProfile, readSession } from '../../tools/hands/session-file.ts';
 import {
-  DEV_ORIGINS, FIRST_TURN_PREFIX, optionsFromEnv, redact, startPaneServer, type PaneServer, type PaneServerOptions,
+  DEV_ORIGINS, FIRST_TURN_PREFIX, LINK_FILE, optionsFromEnv, publishLink, redact, startPaneServer, type PaneServer,
+  type PaneServerOptions,
 } from '../../tools/hands-pane/server.ts';
 
 const ORIGIN = 'http://127.0.0.1:4174';
@@ -287,6 +288,22 @@ describe('pane server: a full turn', () => {
     page.send({ type: 'end' });
     expect(await page.waitFor('ended')).toStrictEqual({ type: 'ended', run: started.run });
     expect(readJson(join(dir, 'run.json'))).not.toHaveProperty('invalid');
+  });
+
+  it('answers two end frames for one session with one ended', async () => {
+    // Both ends must wait on the same turn: an end after the session is gone still answers `ended` (protocol.ts).
+    const fake = await fakeLlm([{ ...say('too late'), delayMs: 10_000 }, say('Fresh.')]);
+    const { server } = await startServer(fake);
+    const page = await connected(server);
+    page.send({ type: 'user', text: 'Start.', route: 'model-a' });
+    const run = (await page.waitFor('started')).run;
+    await eventually(() => (fake.seen.length === 1 ? true : undefined), 'the request');
+    page.send({ type: 'end' });
+    page.send({ type: 'end' });
+    await page.waitFor('ended');
+    page.send({ type: 'user', text: 'Again.', route: 'model-a' });
+    await page.waitFor('done', (frame) => frame.text === 'Fresh.');
+    expect(page.frames.filter((frame) => frame.type === 'ended')).toStrictEqual([{ type: 'ended', run }]);
   });
 
   it('continues the conversation on the next message, and a new session after end', async () => {
@@ -673,6 +690,15 @@ describe('pane server: errors', () => {
     }
   });
 
+  it('leaves the routes in ready alone when a placeholder key overlaps one', async () => {
+    const fake = await fakeLlm([say('Hello.')]);
+    const { server } = await startServer(fake, { key: 'model' });
+    const page = await connected(server);
+    expect(page.frames[0]).toStrictEqual({ type: 'ready', routes: [...ROUTES], maxUserChars: 8000 });
+    page.send({ type: 'user', text: 'Start.', route: 'model-a' });
+    expect(await page.waitFor('done')).toMatchObject({ stop: 'done' });
+  });
+
   it('keeps a turn\'s totals up to a failure later in it', async () => {
     const cost = { 'x-litellm-response-cost': '0.25' };
     const fake = await fakeLlm([
@@ -721,7 +747,9 @@ describe('pane server: configuration', () => {
         probe.close(() => done(free));
       });
     });
-    const env2: NodeJS.ProcessEnv = { ...process.env, ...env, MINIVAC_PANE_PORT: String(port) };
+    const childHome = mkdtempSync(join(tmpdir(), 'pane-home-'));
+    cleanups.push(() => rmSync(childHome, { recursive: true, force: true }));
+    const env2: NodeJS.ProcessEnv = { ...process.env, ...env, MINIVAC_PANE_PORT: String(port), HOME: childHome, USERPROFILE: childHome };
     for (const name of ['MINIVAC_PANE_ORIGINS', 'MINIVAC_PANE_PRIMARY', 'MINIVAC_PANE_MAX_TURNS', 'MINIVAC_PANE_RUNS']) delete env2[name];
     const child = spawn('node', ['tools/hands-pane/server.ts'], { cwd: home, env: env2, stdio: ['ignore', 'pipe', 'inherit'] });
     const exited = new Promise<number | null>((done) => child.on('close', done));
@@ -736,8 +764,13 @@ describe('pane server: configuration', () => {
     expect(printed).toMatch(new RegExp('^minivac pane server on 127\\.0\\.0\\.1:' + port + ', runs in pane-runs/\n' +
       'start the dev page with `npm run dev:pane` \\(Vite on 127\\.0\\.0\\.1:5173, which fails rather than move to another port\\), then open\n' +
       'http://127\\.0\\.0\\.1:5173/dev\\.html#t=[A-Za-z0-9_-]{43}&port=' + port + '\n$'));
+    // The link file goes under the child's own home, never the home of whoever runs the tests:
+    // a server they have running keeps its link.
+    const linkFile = join(childHome, '.minivac', 'pane-link');
+    expect(readFileSync(linkFile, 'utf8')).toBe(printed.trimEnd().split('\n').at(-1) + '\n');
     child.kill('SIGTERM');
     expect(await exited).toBe(143);
+    expect(existsSync(linkFile)).toBe(false);
   }, 20_000);
 
   it('takes the base URL and key from the environment only, with the dev defaults', () => {
@@ -788,6 +821,31 @@ describe('pane server: configuration', () => {
     const { server } = await startServer(fake);
     expect(server.url).toBe(ORIGIN + '/dev.html#t=' + server.token + '&port=' + server.port);
     expect(server.token).toMatch(/^[A-Za-z0-9_-]{43}$/);
+  });
+
+  it('leaves its link in a file only this user can read, and takes it away again', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'pane-link-'));
+    cleanups.push(() => rmSync(dir, { recursive: true, force: true }));
+    const path = join(dir, 'made', 'pane-link');
+    writeFileSync(join(dir, 'loose'), 'old', { mode: 0o644 });
+
+    const unpublish = publishLink(path, 'http://127.0.0.1:5173/dev.html#t=abc&port=8601');
+    expect(readFileSync(path, 'utf8')).toBe('http://127.0.0.1:5173/dev.html#t=abc&port=8601\n');
+    expect(statSync(path).mode & 0o777).toBe(0o600);
+    unpublish();
+    expect(existsSync(path)).toBe(false);
+
+    // A file left by an earlier launch with looser permissions is replaced, not written through.
+    const loose = join(dir, 'loose');
+    publishLink(loose, 'http://x/#t=new');
+    expect(statSync(loose).mode & 0o777).toBe(0o600);
+
+    // A later server's link is not removed by an earlier server's exit.
+    const first = publishLink(path, 'http://x/#t=one');
+    publishLink(path, 'http://x/#t=two');
+    first();
+    expect(readFileSync(path, 'utf8')).toBe('http://x/#t=two\n');
+    expect(LINK_FILE.endsWith(join('.minivac', 'pane-link'))).toBe(true);
   });
 
   it('keeps the checklist runs\' first-turn prefix, naming pane.json', () => {

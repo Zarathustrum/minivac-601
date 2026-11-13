@@ -8,6 +8,7 @@ using System.Text.Json;
 using Godot;
 using Minivac.Conformance;
 using Minivac.Core;
+using Minivac.Hands;
 
 namespace Minivac.Godot;
 
@@ -30,6 +31,80 @@ public partial class Acceptance : Node
         public int MotionMask() => inner.MotionMask();
         public Event[] DrainEvents() => inner.DrainEvents();
     }
+
+    // The lock suite's machine: counts every call the session makes on the adopted machine. The
+    // owner's own calls go to Inner and are not counted.
+    private sealed class CountingMachine(Machine inner) : Machine
+    {
+        public Machine Inner => inner;
+        public int Applies { get; private set; }
+        public int Advances { get; private set; }
+        public int Drains { get; private set; }
+        public int Reads { get; private set; }
+        public int Mutations => Applies + Advances + Drains;
+
+        public CmdResult Apply(Command command)
+        {
+            Applies++;
+            return inner.Apply(command);
+        }
+
+        public void Advance(int ticks)
+        {
+            Advances++;
+            inner.Advance(ticks);
+        }
+
+        public Event[] DrainEvents()
+        {
+            Drains++;
+            return inner.DrainEvents();
+        }
+
+        public State Snapshot()
+        {
+            Reads++;
+            return inner.Snapshot();
+        }
+
+        public int[] Observables()
+        {
+            Reads++;
+            return inner.Observables();
+        }
+
+        public int MotionMask()
+        {
+            Reads++;
+            return inner.MotionMask();
+        }
+    }
+
+    // A machine whose mount fails: the frame loop's mount reads its observables first (Session's loop mount).
+    private sealed class MountRefusingMachine(Machine inner) : Machine
+    {
+        public CmdResult Apply(Command command) => inner.Apply(command);
+        public void Advance(int ticks) => inner.Advance(ticks);
+        public Event[] DrainEvents() => inner.DrainEvents();
+        public State Snapshot() => inner.Snapshot();
+        public int[] Observables() => throw new InvalidOperationException("acceptance: this mount is refused");
+        public int MotionMask() => inner.MotionMask();
+    }
+
+    // What any input could visibly or electrically change; a locked path must leave all of it alone.
+    private sealed record LockProbe(
+        int Mutations,
+        int Refused,
+        bool PickerOpen,
+        bool DrawerOpen,
+        Machine? Machine,
+        bool Dragging,
+        bool PushHeld,
+        string ControlsStatus,
+        string CordsStatus,
+        int Cords);
+
+    private sealed record LockPath(string Name, Action Act, bool ReachesWhenLive);
 
     internal static readonly CannedAction[] TraceEqualityScript =
     [
@@ -130,13 +205,17 @@ public partial class Acceptance : Node
             var routedSuite = forced3D && suite.EndsWith("-3d", StringComparison.Ordinal)
                 ? suite[..^3]
                 : suite;
-            var framed = routedSuite is "budget" or "handles" or "a11y" or "visuals";
+            var framed = routedSuite is "budget" or "handles" or "a11y" or "visuals" or "lock" or "chat" or "pane-e2e" or "pane-quit";
             if (routedSuite is "budget" or "visuals") GetWindow().Size = new Vector2I(1440, 900);
+            if (routedSuite == "chat") PrepareChat();
+            // A headless run's window is 64 x 64, too small for the stage beside the dock.
+            if (routedSuite is "pane-e2e" or "pane-quit") GetWindow().Size = new Vector2I(1152, 640);
             _boot.BuildConsole(
                 _source,
                 framed ? MakeFramedSession : MakeDrivenSession,
                 _preferencesPath,
-                forced3D ? "3d" : "flat");
+                forced3D ? "3d" : "flat",
+                _chatFake);
             var loop = GetTree().Root.FindChild("Loop", true, false);
             if (framed ? loop is null : loop is not null)
             {
@@ -187,6 +266,43 @@ public partial class Acceptance : Node
             if (routedSuite == "budget")
             {
                 RunBudget();
+                return;
+            }
+
+            if (routedSuite == "lock")
+            {
+                ArmFramed("C2", () =>
+                {
+                    var controls = Node<Controls>("Controls");
+                    if (controls.Dial.Size.X <= 0 || controls.Dial.Size.Y <= 0) return;
+                    _framedStep = null;
+                    RunLock();
+                });
+                return;
+            }
+
+            if (routedSuite == "chat")
+            {
+                ArmFramed("C4", () =>
+                {
+                    var stage = _boot.CurrentStage2D;
+                    if (stage is not null && (stage.Size.X <= 0 || stage.Size.Y <= 0)) return;
+                    if (++_chatFrames < 3) return;
+                    _framedStep = null;
+                    RunChat();
+                });
+                return;
+            }
+
+            if (routedSuite is "pane-e2e" or "pane-quit")
+            {
+                ArmFramed("C6", () =>
+                {
+                    var stage = _boot.CurrentStage2D;
+                    if (stage is not null && (stage.Size.X <= 0 || stage.Size.Y <= 0)) return;
+                    _framedStep = null;
+                    RunPaneE2E(quit: routedSuite == "pane-quit");
+                });
                 return;
             }
 
@@ -252,7 +368,7 @@ public partial class Acceptance : Node
         _trace = trace;
         _session = new Session(
             profileId => new SpyMachine(createMachine(profileId), _observedCommands),
-            (machine, _) =>
+            (machine, context) =>
             {
                 trace.Reset(machine.Observables());
                 _frame = new FrameLoop(
@@ -266,7 +382,8 @@ public partial class Acceptance : Node
                     {
                         trace.Flush();
                         _boot.RenderConsole(state, nowUs);
-                    });
+                    },
+                    context.Frozen);
                 return () => { };
             });
         return _session;
@@ -311,6 +428,11 @@ public partial class Acceptance : Node
             }
             Check("3.2.1", "refusal", refusalPassed, refusalPassed ? "StartupRefusal" : "missing");
             Check("3.2.1", "refusal-clean", GetTree().Root.FindChild("Loop", true, false) is null, "1");
+            // The default window, not headless's 64 x 64: help must fit it on every page.
+            GetWindow().Size = new Vector2I(1152, 640);
+            var args = OS.GetCmdlineUserArgs();
+            var shots = Array.IndexOf(args, "--shots");
+            if (shots >= 0 && shots + 1 < args.Length) _shotDir = args[shots + 1];
             _boot.BuildConsole(_source, MakeDrivenSession, _preferencesPath);
             var help = Node<HelpCredits>("HelpCredits");
             Check("3.2.1", "default-view", _boot.CurrentViewMode == "3d", _boot.CurrentViewMode);
@@ -319,9 +441,43 @@ public partial class Acceptance : Node
             Check("3.2.1", "help-open", help.InitiallyOpen && help.IsOpen, help.IsOpen ? "1" : "0");
             Check("3.2.1", "hash", Ints.fnv1a64(cleanBytes) == "2354ceebf3f8c566", Ints.fnv1a64(cleanBytes));
             Check("3.2.1", "no-loop-node", GetTree().Root.FindChild("Loop", true, false) is null, "1");
-            _framedStep = null;
-            Finish();
+
+            // Each help page in turn, a frame or two after it shows: the dialog, its title bar and Close help inside the window.
+            var page = 0;
+            var frames = 0;
+            var outside = new List<string>();
+            ArmFramed("3.2.1", () =>
+            {
+                if (++frames < 3) return;
+                frames = 0;
+                if (page == 0) Shot("help-page-0");
+                var problem = HelpOutside(help);
+                if (problem.Length > 0) outside.Add("page" + page + ":" + problem);
+                if (help.IsOpen && page < help.Pages.Count - 1)
+                {
+                    help.NextPage();
+                    page++;
+                    return;
+                }
+                Check("3.2.1", "help-fits-window", help.IsOpen && page == help.Pages.Count - 1 && outside.Count == 0,
+                    $"pages={page + 1}/{help.Pages.Count} dialog={help.Position.X},{help.Position.Y}+{help.Size.X}x{help.Size.Y} " +
+                    (outside.Count == 0 ? "inside" : string.Join(" ", outside)));
+                _framedStep = null;
+                Finish();
+            });
         });
+    }
+
+    /// <summary>Where the help dialog (title bar included) or its Close help button leaves the window; "" when inside.</summary>
+    private string HelpOutside(HelpCredits help)
+    {
+        var window = GetViewport().GetVisibleRect();
+        var title = help.GetThemeConstant("title_height");
+        var dialog = new Rect2(help.Position.X, help.Position.Y - title, help.Size.X, help.Size.Y + title);
+        var ok = help.GetOkButton();
+        var close = new Rect2(ok.GetGlobalRect().Position + help.Position, ok.Size);
+        var inside = window.Encloses(dialog) && window.Encloses(close) && ok.IsVisibleInTree();
+        return inside ? "" : $"window={window.Size.X:0}x{window.Size.Y:0} dialog={dialog.Position.X:0},{dialog.Position.Y:0}+{dialog.Size.X:0}x{dialog.Size.Y:0} close={close.Position.X:0},{close.Position.Y:0}+{close.Size.X:0}x{close.Size.Y:0}";
     }
 
     private void RunSession()
@@ -2476,6 +2632,2072 @@ public partial class Acceptance : Node
                 : string.Join(",", details));
     }
 
+    // C2 zero-applies suite: a machine adopted frozen and locked takes no command, tick or drain
+    // from the session whatever the user does, the camera stays free, and after Release the same
+    // inputs reach it. Runs in the starting view, the other view, and back.
+    private CountingMachine _lockMachine = null!;
+    private int _bannerStops;
+    private int _bannerEnds;
+    private int _resetCordsAfter = -1;
+    private string _resetDemoAfter = "";
+
+    private void RunLock()
+    {
+        var netlist = Netlist.LoadNetlist(_source.ReadAllBytes("data/netlist.json"));
+        using var profileDocument = JsonDocument.Parse(_source.ReadAllBytes("data/profiles/MV601-REF-A.json"));
+        var profile = Profile.LoadProfile(profileDocument.RootElement);
+        var owner = Machine.CreateMachine(netlist, profile);
+        // The owner's first call: one cord hole to hole, one with a free end.
+        OwnerApply(owner, new Command.Connect(0, new CordEnd.Hole(_layout.Holes[0].Id), new CordEnd.Hole(_layout.Holes[1].Id)));
+        OwnerApply(owner, new Command.Connect(1, new CordEnd.Hole(_layout.Holes[2].Id), new CordEnd.Free()));
+        OwnerTicks(owner, 1);
+
+        // An adopt whose mount fails leaves the console as it was: unlocked, live, the same machine.
+        var chrome = Node<Chrome>("Chrome");
+        var liveBefore = _session.CurrentMachine;
+        var threw = false;
+        try
+        {
+            _boot.Adopt(new MountRefusingMachine(owner));
+        }
+        catch (InvalidOperationException)
+        {
+            threw = true;
+        }
+        var restored = threw && !_boot.Adopted && ReferenceEquals(_session.CurrentMachine, liveBefore) && !_session.Locked &&
+            !_session.Frozen && !Node<Controls>("Controls").Locked && !Node<Cords>("Cords").Locked && !chrome.Banner.Visible &&
+            !chrome.Toolbar.Library.Disabled && !chrome.Toolbar.Reset.Disabled;
+        var tickAtFailure = _session.CurrentMachine!.Snapshot().tick;
+        var waited = 0;
+        ArmFramed("C2", () =>
+        {
+            if (++waited < 4) return;
+            _framedStep = null;
+            var live = _session.CurrentMachine!.Snapshot().tick > tickAtFailure && !_session.Frozen;
+            Check("C2", "failed-adopt-stays-live", restored && live,
+                $"threw={(threw ? 1 : 0)} restored={(restored ? 1 : 0)} ticks={tickAtFailure}->{_session.CurrentMachine!.Snapshot().tick}");
+            // The console runs the motor before the lock (a machine handed back live, as Release mounts it, set up
+            // as LockRefresh sets up the owner), so the adopt must silence it.
+            var motor = Machine.CreateMachine(netlist, profile);
+            OwnerApply(motor, new Command.Connect(0, new CordEnd.Hole(_layout.Holes[0].Id), new CordEnd.Hole(_layout.Holes[1].Id)));
+            OwnerApply(motor, new Command.Connect(1, new CordEnd.Hole(_layout.Holes[2].Id), new CordEnd.Free()));
+            OwnerTicks(motor, 1);
+            var free = FreeHoles(motor.Snapshot().cords);
+            OwnerApply(motor, new Command.Power(true));
+            OwnerApply(motor, new Command.Connect(2, new CordEnd.Hole(free[5]), new CordEnd.Hole(free[6])));
+            OwnerApply(motor, new Command.Switch(1, 1000));
+            OwnerApply(motor, new Command.RelayGrab(2, 1000));
+            OwnerApply(motor, new Command.DialGrab(180_000_000));
+            OwnerTicks(motor, 20);
+            _session.Adopt(motor, new AdoptContext(DemoLibrary.MANUAL, Session.DEFAULT_PROFILE_ID, Frozen: false, Locked: false));
+            // The hand slews the dial for a moment: adopt once the router has started the motor cue.
+            var spun = 0;
+            ArmFramed("C2", () =>
+            {
+                var playing = Node<AudioRouter>("Audio").Sink is GodotAudioSink { MotorDirection: not 0 };
+                if (!playing && ++spun < 30) return;
+                _framedStep = null;
+                LockAdopt(owner);
+            });
+        });
+    }
+
+    private void LockAdopt(Machine owner)
+    {
+        var controls = Node<Controls>("Controls");
+        var cords = Node<Cords>("Cords");
+        var cordList = Node<CordList>("CordList");
+        var picker = Node<Picker>("Picker");
+        var panel = Node<PanelView>("Panel");
+        var chrome = Node<Chrome>("Chrome");
+        chrome.Banner.StopPressed += () => _bannerStops++;
+        chrome.Banner.EndSessionPressed += () => _bannerEnds++;
+
+        // Leave the live panel mid-gesture: picker open, a cord drag begun, a pushbutton held.
+        var live = _session.CurrentMachine!.Snapshot();
+        var liveCord = live.cords.First(cord => cord.a is CordEnd.Hole);
+        RoutePanelGui(panel.Holes[((CordEnd.Hole)liveCord.a).hole], MouseButtonEvent(true));
+        var wasDragging = cords.Dragging;
+        Activate(cordList.EndpointButton(liveCord.id, CordSide.B) ?? throw new InvalidOperationException("acceptance: missing endpoint"));
+        var pickerWasOpen = picker.IsOpen;
+        var push1 = FindButton(controls, "pushbutton", 1);
+        RoutePanelKey(push1, KeyEvent(Key.Space, true));
+        var wasHeld = controls.PushHeld(1);
+        chrome.Drawer.Open();
+        var drawerWasOpen = chrome.Drawer.Visible;
+        var sink = Node<AudioRouter>("Audio").Sink as GodotAudioSink;
+        var motorBefore = sink is not null && sink.MotorDirection != 0;
+
+        _lockMachine = new CountingMachine(owner);
+        _boot.Adopt(_lockMachine);
+        Check("C2", "drawer-closed-at-lock", drawerWasOpen && !chrome.Drawer.Visible,
+            $"open={(drawerWasOpen ? 1 : 0)}{(chrome.Drawer.Visible ? 1 : 0)}");
+        // Judged at once: the free-controls checks below toggle Sound, and muting stops the motor too.
+        var silenced = motorBefore && sink is not null && sink.MotorDirection == 0 && !sink.MotorPlayer.Playing;
+        Check("C2", "audio-reset-at-adopt", silenced,
+            $"motor before={(motorBefore ? 1 : 0)} after={sink?.MotorDirection}/{(sink?.MotorPlayer.Playing == true ? 1 : 0)}");
+        var adoptedClean = _lockMachine.Mutations == 0;
+        var cleared = pickerWasOpen && !picker.IsOpen && wasDragging && !cords.Dragging && wasHeld && !controls.PushHeld(1);
+        var beforeDirtyEnd = Probe();
+        // The other halves of the interrupted gestures arrive after the lock and apply nothing.
+        RoutePanelGuiAt(cords, MouseButtonEvent(false), panel.Holes[_layout.Holes[40].Id].GetGlobalRect().GetCenter());
+        RoutePanelKey(push1, KeyEvent(Key.Space, false));
+        var dirtyEndInert = Probe() == beforeDirtyEnd;
+        Check("C2", "dirty-input-cleared", cleared && dirtyEndInert,
+            $"picker={(pickerWasOpen ? 1 : 0)}{(picker.IsOpen ? 1 : 0)} drag={(wasDragging ? 1 : 0)}{(cords.Dragging ? 1 : 0)} held={(wasHeld ? 1 : 0)}{(controls.PushHeld(1) ? 1 : 0)} ends={(dirtyEndInert ? 1 : 0)}");
+
+        var adoptShape = ReferenceEquals(_session.CurrentMachine, _lockMachine) && _session.Locked && _session.Frozen &&
+            _session.DemoId == DemoLibrary.MANUAL.Id && _session.ProfileId == Session.DEFAULT_PROFILE_ID &&
+            _boot.Adopted && controls.Locked && cords.Locked && cords.CordsState.Count == 2 &&
+            Node<DemoExperience>("DemoExperience").Manual;
+        Check("C2", "adopt", adoptShape && adoptedClean,
+            $"mutations={_lockMachine.Mutations} locked={(_session.Locked ? 1 : 0)} frozen={(_session.Frozen ? 1 : 0)} cords={cords.CordsState.Count}");
+
+        var refusedBefore = _session.RefusedWhileLocked;
+        var chokeRefused = false;
+        try
+        {
+            _session.Apply(new Command.Power(true));
+        }
+        catch (InvalidOperationException)
+        {
+            chokeRefused = true;
+        }
+        Check("C2", "choke-point", chokeRefused && _session.RefusedWhileLocked == refusedBefore + 1 && _lockMachine.Applies == 0,
+            $"refused={(chokeRefused ? 1 : 0)} applies={_lockMachine.Applies}");
+        var chokeBaseline = _session.RefusedWhileLocked;
+
+        CheckLockedView("view-" + _boot.CurrentViewMode, chokeBaseline);
+        var ownerTick = owner.Snapshot().tick;
+        var framesSeen = 0;
+        ArmFramed("C2", () =>
+        {
+            if (++framesSeen < 6) return;
+            _framedStep = null;
+            var frozen = _lockMachine.Mutations == 0 && owner.Snapshot().tick == ownerTick;
+            Check("C2", "frozen", frozen, $"frames={framesSeen} advances={_lockMachine.Advances} drains={_lockMachine.Drains} tick={owner.Snapshot().tick}/{ownerTick}");
+            LockRefresh(owner, chokeBaseline);
+        });
+    }
+
+    // The owner's next call changes cords, power, a switch, a relay and the dial; adopting again
+    // must be enough for every view to follow.
+    private void LockRefresh(Machine owner, int chokeBaseline)
+    {
+        var freeHoles = FreeHoles(owner.Snapshot().cords);
+        OwnerApply(owner, new Command.Power(true));
+        OwnerApply(owner, new Command.Connect(2, new CordEnd.Hole(freeHoles[5]), new CordEnd.Hole(freeHoles[6])));
+        OwnerApply(owner, new Command.Switch(1, 1000));
+        OwnerApply(owner, new Command.RelayGrab(2, 1000));
+        OwnerApply(owner, new Command.DialGrab(180_000_000));
+        OwnerTicks(owner, 20);
+        var expected = owner.Snapshot();
+        _boot.Adopt(_lockMachine);
+        var frames = 0;
+        ArmFramed("C2", () =>
+        {
+            if (++frames < 2) return;
+            _framedStep = null;
+            var controls = Node<Controls>("Controls");
+            var cords = Node<Cords>("Cords");
+            var lamps = Node<Lamps>("Lamps");
+            var state = _session.CurrentMachine!.Snapshot();
+            var follows = new List<string>();
+            if (cords.CordsState.Count != 3 || Node<CordList>("CordList").RowCount != 3) follows.Add("cords");
+            if (FindButton(controls, "power", null).ButtonPressed != expected.power || !expected.power) follows.Add("power");
+            if (FindButton(controls, "slide-switch", 1).ButtonPressed != expected.switches[0].travel >= 500) follows.Add("switch");
+            if (controls.PresentedValue("relay2") != expected.relays[1].travel || expected.relays[1].travel == 0) follows.Add("relay");
+            if (controls.PresentedValue("dial") != expected.dial.udeg || expected.dial.udeg == 0) follows.Add("dial");
+            if (!lamps.JewelLit || lamps.Levels[0] != expected.outLamps[0].milli / 1000.0) follows.Add("lamps");
+            if (_boot.CurrentStage3D is { } stage3D &&
+                stage3D.CordMeshes.GetChildren().Count(node => node.Name.ToString().StartsWith("Cord_", StringComparison.Ordinal)) != 3)
+                follows.Add("cord-meshes");
+            Check("C2", "adopt-again-refresh", follows.Count == 0 && state.tick == expected.tick,
+                follows.Count == 0 ? "cords,power,switch,relay,dial,lamps" + (_boot.CurrentStage3D is null ? "" : ",cord-meshes") : string.Join(",", follows));
+
+            var sink = Node<AudioRouter>("Audio").Sink as GodotAudioSink;
+            var silent = expected.dial.mrpm != 0 && sink is not null && !sink.MotorPlayer.Playing && _lockMachine.Mutations == 0;
+            Check("C2", "audio-silent", silent, $"mrpm={expected.dial.mrpm} motor={(sink?.MotorPlayer.Playing == true ? 1 : 0)}");
+
+            // Without adopting again the frame loop still redraws from the machine (the plan's claim).
+            OwnerApply(owner, new Command.Switch(2, 1000));
+            OwnerTicks(owner, 2000);
+            var switchTwo = owner.Snapshot().switches[1].travel >= 500;
+            var waited = 0;
+            ArmFramed("C2", () =>
+            {
+                if (++waited < 2) return;
+                _framedStep = null;
+                var redrawn = FindButton(Node<Controls>("Controls"), "slide-switch", 2).ButtonPressed == switchTwo && switchTwo;
+                Check("C2", "redraw-without-adopt", redrawn, redrawn ? "switch2" : "stale");
+                var from = _boot.CurrentViewMode;
+                _boot.ToggleViewMode();
+                LockAfterToggle(owner, from, chokeBaseline, back: false);
+            });
+        });
+    }
+
+    private void LockAfterToggle(Machine owner, string from, int chokeBaseline, bool back)
+    {
+        var frames = 0;
+        ArmFramed("C2", () =>
+        {
+            if (++frames < 3) return;
+            var stage = _boot.CurrentStage2D;
+            if (stage is not null && (stage.Size.X <= 0 || stage.Size.Y <= 0)) return;
+            _framedStep = null;
+            var chrome = Node<Chrome>("Chrome");
+            var survives = _boot.CurrentViewMode != from && _session.Locked && _session.Frozen &&
+                Node<Controls>("Controls").Locked && Node<Cords>("Cords").Locked && chrome.Banner.Visible &&
+                chrome.Toolbar.Library.Disabled && chrome.Toolbar.Reset.Disabled && _lockMachine.Mutations == 0;
+            Check("C2", "lock-survives-toggle", survives, from + "->" + _boot.CurrentViewMode);
+            CheckLockedView("view-" + _boot.CurrentViewMode + (back ? "-again" : ""), chokeBaseline);
+            if (!back)
+            {
+                var current = _boot.CurrentViewMode;
+                _boot.ToggleViewMode();
+                LockAfterToggle(owner, current, chokeBaseline, back: true);
+                return;
+            }
+            LockRelease(owner);
+        });
+    }
+
+    private void LockRelease(Machine owner)
+    {
+        var chrome = Node<Chrome>("Chrome");
+        var controls = Node<Controls>("Controls");
+        var cords = Node<Cords>("Cords");
+        var ownerCords = owner.Snapshot().cords.Length;
+        _boot.Release();
+        var sink = Node<AudioRouter>("Audio").Sink as GodotAudioSink;
+        var released = ReferenceEquals(_session.CurrentMachine, _lockMachine) && !_session.Locked && !_session.Frozen &&
+            !_boot.Adopted && _session.DemoId == DemoLibrary.MANUAL.Id && cords.CordsState.Count == ownerCords &&
+            !chrome.Banner.Visible && !controls.Locked && !cords.Locked &&
+            !chrome.Toolbar.Library.Disabled && !chrome.Toolbar.BlankPanel.Disabled &&
+            !chrome.Toolbar.Reset.Disabled && !chrome.Toolbar.Profile.Disabled;
+        Check("C2", "release", released, $"cords={cords.CordsState.Count}/{ownerCords} locked={(_session.Locked ? 1 : 0)}");
+        // The router retries a motor start that did not take on the next frame, so judge it a few frames on.
+        var motorAtRelease = sink is not null && sink.MotorPlayer.Playing;
+        var startMutations = _lockMachine.Mutations;
+        var frames = 0;
+        ArmFramed("C2", () =>
+        {
+            if (++frames < 3) return;
+            _framedStep = null;
+            var motor = motorAtRelease || sink is not null && sink.MotorPlayer.Playing;
+            Check("C2", "audio-back", motor && _session.CurrentMachine!.Snapshot().dial.mrpm != 0,
+                (motor ? "motor" : "silent") + (motorAtRelease ? " at release" : " after frames"));
+            Check("C2", "live-time", _lockMachine.Advances > 0 && _lockMachine.Mutations > startMutations,
+                "advances=" + _lockMachine.Advances);
+            var failures = RunLockPaths(live: true);
+            Check("C2", "released-paths-" + _boot.CurrentViewMode, failures.Count == 0,
+                failures.Count == 0 ? "all reach" : "dead: " + string.Join(",", failures));
+            var resetClears = _resetCordsAfter == 0 && _resetDemoAfter == DemoLibrary.MANUAL.Id;
+            Check("C2", "reset-clears", resetClears, $"cords={_resetCordsAfter} demo={_resetDemoAfter}");
+            Finish();
+        });
+    }
+
+    // Every input path while locked: none may change the machine, the session or the view's state.
+    private void CheckLockedView(string view, int chokeBaseline)
+    {
+        var failures = RunLockPaths(live: false);
+        Check("C2", "locked-paths-" + view, failures.Count == 0 && _session.RefusedWhileLocked == chokeBaseline,
+            failures.Count == 0 ? $"{LockPaths().Count} inert" : "leaked: " + string.Join(",", failures));
+        CheckFreeControls(view);
+        CheckBanner(view);
+        var inert = _lockMachine.Mutations == 0 && _session.RefusedWhileLocked == chokeBaseline;
+        Check("C2", "zero-applies-" + view, inert,
+            $"applies={_lockMachine.Applies} advances={_lockMachine.Advances} drains={_lockMachine.Drains} refused={_session.RefusedWhileLocked - chokeBaseline}");
+    }
+
+    private List<string> RunLockPaths(bool live)
+    {
+        var failures = new List<string>();
+        foreach (var path in LockPaths())
+        {
+            Bound();
+            if (live && !path.ReachesWhenLive) continue;
+            ClearFocus();
+            var before = Probe();
+            path.Act();
+            var after = Probe();
+            var changed = before != after;
+            if (changed != live) failures.Add(path.Name);
+            NormalizeLockInput();
+        }
+        return failures;
+    }
+
+    private List<LockPath> LockPaths()
+    {
+        var controls = Node<Controls>("Controls");
+        var cords = Node<Cords>("Cords");
+        var cordList = Node<CordList>("CordList");
+        var picker = Node<Picker>("Picker");
+        var panel = Node<PanelView>("Panel");
+        var chrome = Node<Chrome>("Chrome");
+        var push1 = FindButton(controls, "pushbutton", 1);
+        var switch1 = FindButton(controls, "slide-switch", 1);
+        var power = FindButton(controls, "power", null);
+        var breaker = FindButton(controls, "breaker", null);
+        var relay = controls.Relays[0];
+        var dial = controls.Dial;
+        // The cords as shown: the machine applies a command at its next tick, and no tick runs
+        // between two paths.
+        IReadOnlyList<State.Cord> Shown() => cords.CordsState;
+        Vector2 HoleAt(string hole) => panel.Holes[hole].GetGlobalRect().GetCenter();
+        void ClickPanel(Control control, bool shift = false)
+        {
+            RoutePanelGui(control, shift ? ShiftClick(true) : MouseButtonEvent(true));
+            RoutePanelGui(control, shift ? ShiftClick(false) : MouseButtonEvent(false));
+        }
+        void DragPanel(Control control, Vector2 from, Vector2 to)
+        {
+            RoutePanelGuiAt(control, MouseButtonEvent(true), from);
+            RoutePanelMotionAt((from + to) / 2);
+            RoutePanelMotionAt(to);
+            RoutePanelGuiAt(control, MouseButtonEvent(false), to);
+        }
+        void Keys(Control control, Key key, bool shift = false)
+        {
+            var down = KeyEvent(key, true);
+            down.ShiftPressed = shift;
+            var up = KeyEvent(key, false);
+            up.ShiftPressed = shift;
+            RoutePanelKey(control, down);
+            RoutePanelKey(control, up);
+        }
+        Button ListButton(string name) =>
+            cordList.FindChild(name, true, false) as Button ?? throw new InvalidOperationException("acceptance: missing " + name);
+        var relayRect = relay.GetGlobalRect();
+        var dialRect = dial.GetGlobalRect();
+        return
+        [
+            new("push-click", () => ClickPanel(push1), true),
+            new("push-shift-click", () =>
+            {
+                ClickPanel(push1, shift: true);
+                ClickPanel(push1);
+            }, true),
+            new("switch-click", () => ClickPanel(switch1), true),
+            new("power-click", () => ClickPanel(power), true),
+            new("breaker-click", () => ClickPanel(breaker), false),
+            new("relay-drag", () => DragPanel(
+                relay,
+                relayRect.Position + new Vector2(relayRect.Size.X * 0.1f, relayRect.Size.Y / 2),
+                relayRect.Position + new Vector2(relayRect.Size.X * 0.9f, relayRect.Size.Y / 2)), true),
+            new("dial-drag", () => DragPanel(
+                dial,
+                dialRect.GetCenter() + new Vector2(0, -dialRect.Size.Y / 4),
+                dialRect.GetCenter() + new Vector2(dialRect.Size.X / 4, 0)), true),
+            new("push-space", () => Keys(push1, Key.Space), true),
+            new("push-shift-space", () =>
+            {
+                Keys(push1, Key.Space, shift: true);
+                Keys(push1, Key.Space, shift: true);
+            }, true),
+            new("switch-enter", () => Keys(switch1, Key.Enter), true),
+            new("power-enter", () => Keys(power, Key.Enter), true),
+            new("breaker-enter", () => Keys(breaker, Key.Enter), true),
+            new("relay-keys", () =>
+            {
+                foreach (var key in new[] { Key.Up, Key.Pageup, Key.End, Key.Home }) Keys(relay, key);
+            }, true),
+            new("dial-keys", () => Keys(dial, Key.Up), true),
+            new("list-add", () => Click(cordList.AddButton), true),
+            new("list-add-keyboard", () => Activate(cordList.AddButton), true),
+            new("hole-drag", () =>
+            {
+                var cord = Shown().First(item => item.a is CordEnd.Hole);
+                var from = ((CordEnd.Hole)cord.a).hole;
+                DragPanel(panel.Holes[from], HoleAt(from), HoleAt(FreeHoles(Shown())[0]));
+            }, true),
+            new("grip-drag", () =>
+            {
+                var slot = CordModel.FreeTraySlots(Shown()).First();
+                var grip = cords.TrayGrip(slot.Endpoint.Cord, slot.Endpoint.Side);
+                DragPanel(grip, grip.GetGlobalRect().GetCenter(), HoleAt(FreeHoles(Shown())[1]));
+            }, true),
+            new("grip-keyboard", () =>
+            {
+                var slot = CordModel.FreeTraySlots(Shown()).First();
+                Keys(cords.TrayGrip(slot.Endpoint.Cord, slot.Endpoint.Side), Key.Enter);
+                RoutePanelGuiAt(cords, MouseButtonEvent(false), HoleAt(FreeHoles(Shown())[2]));
+            }, true),
+            new("list-endpoint", () => Click(cordList.EndpointButton(Shown()[0].id, CordSide.A)!), true),
+            new("list-free", () =>
+            {
+                var cord = Shown().First(item => item.a is CordEnd.Hole);
+                Click(ListButton("Free_" + cord.id + "_A"));
+            }, true),
+            new("picker-choose", () =>
+            {
+                var cord = Shown()[0];
+                Click(cordList.EndpointButton(cord.id, CordSide.B)!);
+                var hole = FreeHoles(Shown())[3];
+                if (picker.IsOpen) Activate(picker.Choices.Single(choice => choice.Text == hole));
+                else picker.Open(new EndpointRef(cord.id, CordSide.B));
+            }, true),
+            new("list-remove", () => Click(ListButton("Remove_" + Shown()[^1].id)), true),
+            new("drawer-routes", () =>
+            {
+                _boot.LoadDemo(_library.Demos[1].Id);
+                _boot.SwitchProfile(DemoExperience.IdealProfileId);
+                _boot.LoadManual();
+                _boot.ResetSession();
+            }, false),
+            new("toolbar-library", () => Click(chrome.Toolbar.Library), true),
+            new("toolbar-profile", () => Click(chrome.Toolbar.Profile), true),
+            new("toolbar-reset", () =>
+            {
+                Click(chrome.Toolbar.Reset);
+                if (_boot.Adopted) return;
+                _resetCordsAfter = _session.CurrentMachine!.Snapshot().cords.Length;
+                _resetDemoAfter = _session.DemoId ?? "";
+            }, true),
+            new("toolbar-reset-keyboard", () => Activate(chrome.Toolbar.Reset), true),
+            new("toolbar-blank", () => Click(chrome.Toolbar.BlankPanel), true),
+        ];
+    }
+
+    private LockProbe Probe()
+    {
+        var controls = Node<Controls>("Controls");
+        var cords = Node<Cords>("Cords");
+        var held = false;
+        for (var section = 1; section <= 6; section++) held |= controls.PushHeld(section);
+        return new LockProbe(
+            _lockMachine.Mutations,
+            _session.RefusedWhileLocked,
+            Node<Picker>("Picker").IsOpen,
+            Node<Chrome>("Chrome").Drawer.Visible,
+            _session.CurrentMachine,
+            cords.Dragging,
+            held,
+            controls.LastStatus,
+            cords.LastStatus,
+            cords.CordsState.Count);
+    }
+
+    // Puts the console back between paths; with nothing open, dragged or latched it does nothing.
+    private void NormalizeLockInput()
+    {
+        var picker = Node<Picker>("Picker");
+        var chrome = Node<Chrome>("Chrome");
+        var cords = Node<Cords>("Cords");
+        if (picker.IsOpen) picker.Close();
+        if (chrome.Drawer.Visible) chrome.Drawer.Close();
+        if (cords.Dragging) cords.CancelDrag();
+        Node<Controls>("Controls").ReleaseLatches();
+        ClearFocus();
+    }
+
+    // Orbit, zoom, pan, Fit, Wire, Sound and Help keep working while locked and apply nothing.
+    private void CheckFreeControls(string view)
+    {
+        var chrome = Node<Chrome>("Chrome");
+        var toolbar = chrome.Toolbar;
+        var failures = new List<string>();
+        var steps = new List<(string Name, Action Act)>
+        {
+            ("wire", () => Click(toolbar.Wire)),
+            ("zoom-in", () => Click(toolbar.ZoomIn)),
+            ("zoom-out", () => Click(toolbar.ZoomOut)),
+            ("pan", () => Click(toolbar.PanLeft)),
+            ("fit", () => Click(toolbar.Fit)),
+        };
+        if (_boot.CurrentStage3D is { } stage3D)
+        {
+            var point = GetViewport().GetVisibleRect().Size * new Vector2(0.4f, 0.65f);
+            steps.Add(("orbit", () =>
+            {
+                RouteGuiAt(chrome.Toolbar, MouseButtonEvent(true, buttonIndex: MouseButton.Right), point);
+                GetViewport().PushInput(new InputEventMouseMotion { Position = point + new Vector2(40, 10), GlobalPosition = point + new Vector2(40, 10), Relative = new Vector2(40, 10) }, inLocalCoords: true);
+                RouteGuiAt(chrome.Toolbar, MouseButtonEvent(false, buttonIndex: MouseButton.Right), point + new Vector2(40, 10));
+            }));
+            steps.Add(("drag-pan", () =>
+            {
+                RouteGuiAt(chrome.Toolbar, MouseButtonEvent(true, buttonIndex: MouseButton.Middle), point);
+                GetViewport().PushInput(new InputEventMouseMotion { Position = point + new Vector2(30, 20), GlobalPosition = point + new Vector2(30, 20), Relative = new Vector2(30, 20) }, inLocalCoords: true);
+                RouteGuiAt(chrome.Toolbar, MouseButtonEvent(false, buttonIndex: MouseButton.Middle), point + new Vector2(30, 20));
+            }));
+            steps.Add(("wheel", () =>
+            {
+                RouteGuiAt(chrome.Toolbar, MouseButtonEvent(true, buttonIndex: MouseButton.WheelDown), point);
+                RouteGuiAt(chrome.Toolbar, MouseButtonEvent(false, buttonIndex: MouseButton.WheelDown), point);
+            }));
+            steps.Add(("key-wire", () => PushKey(Key.W)));
+            steps.Add(("key-reset", () => PushKey(Key.R)));
+        }
+        else
+        {
+            steps.Add(("key-pan", () => PushKey(Key.Left)));
+            steps.Add(("key-wire", () => PushKey(Key.W)));
+            steps.Add(("key-fit", () => PushKey(Key.Key0)));
+        }
+        foreach (var step in steps)
+        {
+            ClearFocus();
+            var before = Probe();
+            var viewBefore = CameraView();
+            step.Act();
+            if (Probe() != before || CameraView() == viewBefore) failures.Add(step.Name);
+        }
+
+        var bannerPoint = chrome.Banner.GetGlobalRect().GetCenter() - new Vector2(chrome.Banner.Size.X / 4, 0);
+        var viewAtBanner = CameraView();
+        RouteGuiAt(chrome.Banner, MouseButtonEvent(true, buttonIndex: MouseButton.WheelUp), bannerPoint);
+        RouteGuiAt(chrome.Banner, MouseButtonEvent(false, buttonIndex: MouseButton.WheelUp), bannerPoint);
+        if (CameraView() != viewAtBanner) failures.Add("banner-wheel-leaked");
+
+        var audio = Node<AudioRouter>("Audio");
+        var mutedBefore = audio.Muted;
+        Click(toolbar.Sound);
+        var toggled = audio.Muted != mutedBefore;
+        Click(toolbar.Sound);
+        if (!toggled || audio.Muted != mutedBefore) failures.Add("sound");
+        var help = Node<HelpCredits>("HelpCredits");
+        Click(toolbar.Help);
+        if (!help.IsOpen) failures.Add("help");
+        help.Close();
+        ClearFocus();
+        Click(toolbar.Fit);
+        Check("C2", "free-" + view, failures.Count == 0 && _lockMachine.Mutations == 0,
+            failures.Count == 0 ? steps.Count + 3 + " work" : "dead: " + string.Join(",", failures));
+    }
+
+    private string CameraView() => _boot.CurrentStage3D is { } stage3D
+        ? stage3D.Camera.CurrentPose + "/" + stage3D.Camera.Target
+        : _boot.CurrentStage2D is { } stage ? stage.View + "/" + stage.ViewScale + "/" + stage.Pan : "none";
+
+    private void CheckBanner(string view)
+    {
+        var chrome = Node<Chrome>("Chrome");
+        var banner = chrome.Banner;
+        var rect = banner.GetGlobalRect();
+        var clear = !rect.Intersects(chrome.Toolbar.GetGlobalRect()) && rect.Size.X > 0 &&
+            rect.End.X <= GetViewport().GetVisibleRect().Size.X &&
+            (_boot.CurrentStage2D is not { } stage || stage.GetGlobalRect().Position.Y >= rect.End.Y);
+        banner.WaitingText = "waiting for test-route · request 2 · 14 s";
+        var text = banner.Visible && banner.Title.Text == Banner.Headline &&
+            banner.Waiting.Text == "waiting for test-route · request 2 · 14 s";
+        banner.WaitingText = "";
+        // The banner's buttons follow the dock's rules: this lock is no chat session, so both are off and inert.
+        var stops = _bannerStops;
+        var ends = _bannerEnds;
+        Click(banner.Stop);
+        Click(banner.EndSession);
+        Activate(banner.Stop);
+        Activate(banner.EndSession);
+        var buttons = _bannerStops == stops && _bannerEnds == ends && banner.Stop.Disabled && banner.EndSession.Disabled &&
+            !_boot.CurrentChat.Model.CanStop && !_boot.CurrentChat.Model.CanEnd &&
+            banner.Stop.FocusMode == Control.FocusModeEnum.All && banner.EndSession.FocusMode == Control.FocusModeEnum.All &&
+            banner.Stop.TooltipText.Length > 0 && banner.EndSession.TooltipText.Length > 0 &&
+            banner.Waiting.Text.Length == 0;
+        ClearFocus();
+        Check("C2", "banner-" + view, clear && text && buttons && _lockMachine.Mutations == 0,
+            $"clear={(clear ? 1 : 0)} text={(text ? 1 : 0)} buttons={(buttons ? 1 : 0)}");
+    }
+
+    // ---------------------------------------------------------------- C6: end to end against the real pane server
+    // docs/plans/godot-chat-pane.md, C6. `npm run godot-pane-e2e` (test/pane/godot-e2e.godot.ts) starts
+    // tools/hands-pane/server.ts with a scripted fake model and launches this suite with the link the server
+    // printed (--pane-link). The socket is the real one. `pane-e2e`: the model wires checklist item B1, then
+    // End session; `pane-quit`: the app quits with the session live. The Node side checks the run folder.
+    // Waits are bounded by the wall clock, not frames: a headless run's frame rate is not fixed.
+
+    private const string E2EPrompt = "Plug a cord from 1+ to 1A and another from 1B to 1-, then turn the power on.";
+    private const string E2EFinalText = "Lamp 1 is on.";
+    private int _e2eWatch; // 0 before the first adopt, 1 from it until End session is pressed, 2 after
+    private int _e2eLockedFrames;
+    private int _e2eLockBreaks;
+    private string _e2eFirstBreak = "";
+
+    private void RunPaneE2E(bool quit)
+    {
+        var link = PaneLink.FromArgs(OS.GetCmdlineUserArgs());
+        if (string.IsNullOrEmpty(link))
+        {
+            HarnessFailure("no " + PaneLink.Flag + " <link> after --");
+            return;
+        }
+        // As Boot.Start connects a link given at launch.
+        ChatChrome.SelectColumn(chat: true, focus: false);
+        Dock.ConnectLink(link);
+        E2EWait("the pane server's ready", () => Dock.Model.Connection.State != PaneLinkState.Connecting, 20, () =>
+        {
+            var ready = Dock.Model.Ready && Dock.Status.Text == "connected" && Dock.Model.Connection.Routes.FirstOrDefault() == "model-a" &&
+                !_boot.Adopted && !_session.Locked && !_session.Frozen;
+            Check("C6", "connected", ready,
+                $"status={Dock.Status.Text} problem={Dock.Model.LinkProblem} routes={string.Join(",", Dock.Model.Connection.Routes)}");
+            if (!ready)
+            {
+                Finish();
+                return;
+            }
+            Dock.Message.Text = E2EPrompt;
+            E2EAfterFrames(1, () =>
+            {
+                // The dock's own send path: its Send button, enabled by the text in the box.
+                var enabled = !Dock.Send.Disabled;
+                Click(Dock.Send);
+                var sent = Dock.Model.Busy && Dock.Message.Text.Length == 0 && Dock.Model.Entries.Any(entry => entry.Kind == ChatEntryKind.User && entry.Text == E2EPrompt);
+                Check("C6", "send", enabled && sent, $"enabled={(enabled ? 1 : 0)} busy={(Dock.Model.Busy ? 1 : 0)}");
+                E2EWait("the model's turn to end (done)", () => !Dock.Model.Busy, 30, () => E2ESessionChecks(quit));
+            });
+        });
+    }
+
+    // From the first adopt until End session is pressed, every frame: the engine's machine, frozen and locked.
+    private void E2EWatchLock()
+    {
+        if (_e2eWatch == 0 && _boot.Adopted) _e2eWatch = 1;
+        if (_e2eWatch != 1) return;
+        var chrome = ChatChrome;
+        var locked = _boot.Adopted && _session.Locked && _session.Frozen && Node<Controls>("Controls").Locked && Node<Cords>("Cords").Locked &&
+            chrome.Banner.Visible && chrome.Toolbar.Library.Disabled && chrome.Toolbar.Reset.Disabled &&
+            ReferenceEquals(_session.CurrentMachine, Dock.Model.EngineMachine) && Dock.Model.Run is not null;
+        if (locked)
+        {
+            _e2eLockedFrames++;
+            return;
+        }
+        if (_e2eLockBreaks++ == 0)
+        {
+            _e2eFirstBreak = $"frame {_e2eLockedFrames}: adopted={(_boot.Adopted ? 1 : 0)} locked={(_session.Locked ? 1 : 0)} frozen={(_session.Frozen ? 1 : 0)} " +
+                $"banner={(chrome.Banner.Visible ? 1 : 0)} run={Dock.Model.Run}";
+        }
+    }
+
+    private void E2ESessionChecks(bool quit)
+    {
+        var model = Dock.Model;
+        var run = model.Run;
+        var entries = model.Entries;
+        var replies = entries.Where(entry => entry.Kind == ChatEntryKind.Model).ToList();
+        var calls = replies.SelectMany(entry => entry.Calls).ToList();
+        var transcript = run is not null && Dock.Status.Text == "session " + run &&
+            entries.Count(entry => entry.Kind == ChatEntryKind.Problem) == 0 &&
+            replies.Count == 3 && replies[^1].Text == E2EFinalText &&
+            replies.All(entry => entry.Badge == "served by http://primary.test/v1") &&
+            calls.Select(call => call.Head).SequenceEqual(["minivac-control new pane.json", "minivac-control pane.json connect 1+/1A + connect 1B/1- + power on"]) &&
+            calls.All(call => call.Open) && calls[^1].Output.Contains("ok  connect 1+/1A  -> cord 0 (1+#1 1A#1)\nok  connect 1B/1-  -> cord 1 (1B#1 1-#1)", StringComparison.Ordinal);
+        Check("C6", "transcript", transcript,
+            $"run={run} replies={replies.Count} calls={string.Join(" | ", calls.Select(call => call.Head))} problems={entries.Count(entry => entry.Kind == ChatEntryKind.Problem)}");
+
+        var lockHeld = _e2eWatch == 1 && _e2eLockBreaks == 0 && _e2eLockedFrames > 0;
+        Check("C6", "adopted-frozen-locked-from-create", lockHeld,
+            $"locked-frames={_e2eLockedFrames} breaks={_e2eLockBreaks} {_e2eFirstBreak}");
+
+        var state = _session.CurrentMachine!.Snapshot();
+        var cords = Node<Cords>("Cords");
+        var lamps = Node<Lamps>("Lamps");
+        var power = FindButton(Node<Controls>("Controls"), "power", null);
+        var views = state.power && state.outLamps[0].cls == LampClass.@on && state.cords.Length == 2 &&
+            cords.CordsState.Count == 2 && Node<CordList>("CordList").RowCount == 2 && power.ButtonPressed &&
+            lamps.Levels[0] == state.outLamps[0].milli / 1000.0 && lamps.Levels[0] > 0 && lamps.JewelLit;
+        Check("C6", "views-cords-and-lamp-" + _boot.CurrentViewMode, views,
+            $"power={(state.power ? 1 : 0)} lamp1={state.outLamps[0].cls}/{lamps.Levels[0]:0.000} cords={state.cords.Length}/{cords.CordsState.Count}");
+        var shown = ShownMarks(out var sound, out var detail);
+        Check("C6", "marks-on-last-call-cords-" + _boot.CurrentViewMode,
+            sound && model.MarkedCords.Order().SequenceEqual([0, 1]) && shown.SequenceEqual([0, 1]), detail);
+
+        if (quit)
+        {
+            // The plan's "quitting is the web's reload": the app goes with the session live; Node checks the run.
+            Check("C6", "session-live-at-quit", run is not null && _boot.Adopted && model.Ready, "run=" + run);
+            GD.Print("acceptance: quitting mid-session, run " + run);
+            Finish();
+            return;
+        }
+
+        // A panel input while the model has the machine reaches nothing.
+        var machine = _session.CurrentMachine;
+        var tick = state.tick;
+        var refused = _session.RefusedWhileLocked;
+        RoutePanelGui(power, MouseButtonEvent(true));
+        RoutePanelGui(power, MouseButtonEvent(false));
+        var clicked = Time.GetTicksMsec();
+        E2EWait("250 ms after the locked click", () => Time.GetTicksMsec() >= clicked + 250, 5, () =>
+        {
+            var after = _session.CurrentMachine!.Snapshot();
+            var inert = ReferenceEquals(_session.CurrentMachine, machine) && after.power && after.cords.Length == 2 &&
+                after.outLamps[0].cls == LampClass.@on && _session.RefusedWhileLocked == refused;
+            Check("C6", "locked-input-changes-nothing", inert, $"power={(after.power ? 1 : 0)} cords={after.cords.Length} refused={_session.RefusedWhileLocked - refused}");
+            Check("C6", "frozen-between-calls", after.tick == tick, $"tick {tick}->{after.tick} over 250 ms");
+            _boot.ToggleViewMode();
+            E2EAfterFrames(3, () =>
+            {
+                var meshes = _boot.CurrentStage3D?.CordMeshes.GetChildren().Count(node => node.Name.ToString().StartsWith("Cord_", StringComparison.Ordinal));
+                var marks3D = ShownMarks(out var sound3D, out var detail3D);
+                Check("C6", "views-and-marks-3d", _boot.CurrentViewMode == "3d" && meshes == 2 && sound3D && marks3D.SequenceEqual([0, 1]) &&
+                    _session.Locked && _boot.Adopted, $"meshes={meshes} {detail3D}");
+                _boot.ToggleViewMode();
+                E2EAfterFrames(3, () => E2EEndSession(machine!));
+            });
+        });
+    }
+
+    private void E2EEndSession(Machine machine)
+    {
+        _e2eWatch = 2;
+        var enabled = !Dock.EndSession.Disabled;
+        Click(Dock.EndSession);
+        E2EWait("the server's ended after End session", () => !_boot.Adopted && Dock.Model.Run is null && !Dock.Model.Ending, 15, () =>
+        {
+            var chrome = ChatChrome;
+            var state = _session.CurrentMachine!.Snapshot();
+            var last = Dock.Model.Entries[^1];
+            var handedBack = enabled && last.Kind == ChatEntryKind.Note && last.Text == "Session ended: the machine is live and unlocked." &&
+                Dock.Status.Text == "connected";
+            var live = !_session.Locked && !_session.Frozen && !Node<Controls>("Controls").Locked && !Node<Cords>("Cords").Locked &&
+                !chrome.Banner.Visible && !chrome.Toolbar.Library.Disabled && !chrome.Toolbar.Reset.Disabled;
+            var same = ReferenceEquals(_session.CurrentMachine, machine) && state.cords.Length == 2 && state.power &&
+                Node<Cords>("Cords").CordsState.Count == 2 && Dock.Model.MarkedCords.Count == 0 && ShownMarks(out _, out _).Length == 0;
+            Check("C6", "end-session-live-unlocked", handedBack && live, $"enabled={(enabled ? 1 : 0)} note={last.Text} status={Dock.Status.Text}");
+            Check("C6", "same-machine-circuit-plugged-in", same, $"cords={state.cords.Length} power={(state.power ? 1 : 0)} marks={Dock.Model.MarkedCords.Count}");
+            var tick = state.tick;
+            E2EWait("simulated time to run after End session", () => _session.CurrentMachine!.Snapshot().tick > tick, 5, () =>
+            {
+                Check("C6", "time-runs-after-end", true, $"tick {tick}->{_session.CurrentMachine!.Snapshot().tick}");
+                // The same panel input now reaches the machine: Power goes off.
+                var power = FindButton(Node<Controls>("Controls"), "power", null);
+                RoutePanelGui(power, MouseButtonEvent(true));
+                RoutePanelGui(power, MouseButtonEvent(false));
+                E2EWait("the power to go off after the panel click", () => !_session.CurrentMachine!.Snapshot().power, 5, () =>
+                {
+                    var after = _session.CurrentMachine!.Snapshot();
+                    Check("C6", "live-input-reaches-machine", !after.power && after.cords.Length == 2 && ReferenceEquals(_session.CurrentMachine, machine),
+                        $"power={(after.power ? 1 : 0)} cords={after.cords.Length}");
+                    Finish();
+                });
+            });
+        });
+    }
+
+    /// <summary>Runs <paramref name="then"/> once <paramref name="until"/> holds; fails the suite after <paramref name="seconds"/> of wall time.</summary>
+    private void E2EWait(string what, Func<bool> until, double seconds, Action then)
+    {
+        var deadline = Time.GetTicksMsec() + (ulong)(seconds * 1000);
+        ArmFramed("C6", () =>
+        {
+            // Bounded by the clock below, not the harness's frame count.
+            _framedFrames = 0;
+            E2EWatchLock();
+            if (!until())
+            {
+                if (Time.GetTicksMsec() < deadline) return;
+                _framedStep = null;
+                Check("C6", "timeout", false, $"waited {seconds} s for {what}; status={Dock.Status.Text}");
+                Finish();
+                return;
+            }
+            _framedStep = null;
+            then();
+        });
+    }
+
+    private void E2EAfterFrames(int frames, Action then)
+    {
+        var left = frames;
+        E2EWait(frames + " frames", () => --left < 0, 10, then);
+    }
+
+    // ---------------------------------------------------------------- C4: the chat dock
+    // docs/plans/godot-chat-pane.md, "The dock's states", "Focus" and "Layout", on the scripted transport
+    // with injected input. `--shots <dir>` saves the screenshots the orchestrator reviews.
+
+    private sealed record ChatStep(Action Act, int Wait, Func<bool>? Until, int MaxFrames);
+
+    private const string ChatLink = "http://127.0.0.1:5173/dev.html#t=c4-test-token&port=9123";
+    private const string ChatReady = "{\"type\":\"ready\",\"routes\":[\"model-a\",\"model-b\"],\"maxUserChars\":8000}";
+    private const string ChatRunFrame =
+        "{\"type\":\"request\",\"id\":2,\"op\":\"run\",\"calls\":[{\"name\":\"connect\",\"args\":{\"a\":\"1+\",\"b\":\"1A\"}}," +
+        "{\"name\":\"power\",\"args\":{\"on\":true}}],\"settleMs\":500}";
+    private const string ChatTurnFrame =
+        "{\"type\":\"turn\",\"turn\":1,\"status\":200,\"servedBy\":\"host-a\",\"fallbacks\":0,\"costUsd\":0.00125,\"offPrimary\":false," +
+        "\"content\":\"I wired terminal 1+ to 1A and switched the power on.\",\"calls\":[" +
+        "{\"name\":\"minivac_control\",\"args\":\"{\\\"args\\\":\\\"pane.json connect 1+/1A + power on\\\"}\"," +
+        "\"output\":\"ok  connect 1+/1A\\nok  power on\\nsettled after 500 ms\"}," +
+        "{\"name\":\"read_file\",\"args\":\"{\\\"path\\\":\\\"pane.json\\\"}\",\"output\":\"{ \\\"schema\\\": \\\"minivac.session/1\\\" }\"}]}";
+
+    private readonly List<ChatStep> _chatSteps = [];
+    private FakePaneTransport? _chatFake;
+    private string? _shotDir;
+    private int _chatFrames;
+    private int _chatAt;
+    private int _chatWait;
+    private Func<bool>? _chatUntil;
+    private int _chatUntilFrames;
+    private int _chatUntilMax;
+    private string _chatCreate = "";
+    private string _chatExpectedRun = "";
+    private string _chatView = "";
+    private bool _chatTyped;
+    private string _chatWaitingBefore = "";
+    private double _chatWorstFrame;
+    private ulong _chatFrameUs;
+    private int _chatFramesAfter;
+    private int _chatSentAtNew;
+    private string _chatSoundText = "";
+
+    private void PrepareChat()
+    {
+        _chatFake = new FakePaneTransport();
+        GetWindow().Size = new Vector2I(1152, 640);
+        var args = OS.GetCmdlineUserArgs();
+        var at = Array.IndexOf(args, "--shots");
+        if (at >= 0 && at + 1 < args.Length) _shotDir = args[at + 1];
+    }
+
+    private void RunChat()
+    {
+        _chatView = _boot.CurrentViewMode;
+        var netlist = Netlist.LoadNetlist(_source.ReadAllBytes("data/netlist.json"));
+        using var refADocument = JsonDocument.Parse(_source.ReadAllBytes("data/profiles/MV601-REF-A.json"));
+        using var idealDocument = JsonDocument.Parse(_source.ReadAllBytes("data/profiles/MV601-IDEAL.json"));
+        var refA = Profile.LoadProfile(refADocument.RootElement);
+        var ideal = Profile.LoadProfile(idealDocument.RootElement);
+        _chatCreate = "{\"type\":\"request\",\"id\":1,\"op\":\"create\",\"session\":" + HandsJson.Session(Table.newSession(netlist, refA)) + "}";
+        var twin = new PaneEngine(netlist, [refA, ideal]);
+        PaneJson.Answer(twin, _chatCreate);
+        _chatExpectedRun = PaneJson.Answer(twin, ChatRunFrame) ?? "";
+
+        // The dock's clocks run only when the suite ticks them (the waiting line, connect and End session limits).
+        Dock.FrameSeconds = _ => 0;
+        ChatLayoutAndSetup();
+        ChatLinkRows();
+        ChatReadyRows();
+        ChatSessionFlow();
+        ChatMarkdownReply();
+        ChatWheel();
+        ChatEngineError();
+        ChatMarks();
+        ChatLost();
+        ChatTimeouts();
+
+        _chatAt = 0;
+        _chatWait = 0;
+        ArmFramed("C4", () =>
+        {
+            if (_chatWait > 0)
+            {
+                _chatWait--;
+                return;
+            }
+            if (_chatUntil is { } until)
+            {
+                if (!until() && ++_chatUntilFrames < _chatUntilMax) return;
+                _chatUntil = null;
+            }
+            if (_chatAt >= _chatSteps.Count)
+            {
+                _framedStep = null;
+                Finish();
+                return;
+            }
+            var step = _chatSteps[_chatAt++];
+            step.Act();
+            _chatWait = step.Wait;
+            _chatUntil = step.Until;
+            _chatUntilFrames = 0;
+            _chatUntilMax = step.MaxFrames;
+        });
+    }
+
+    private void Then(Action act, int wait = 2) => _chatSteps.Add(new ChatStep(act, wait, null, 0));
+
+    private void ThenUntil(Action act, Func<bool> until, int maxFrames) => _chatSteps.Add(new ChatStep(act, 1, until, maxFrames));
+
+    private ChatDock Dock => _boot.CurrentChat;
+
+    private Chrome ChatChrome => Node<Chrome>("Chrome");
+
+    private List<string> Sent => _chatFake!.Sent;
+
+    private void ChatCheck(string check, bool passed, string detail) => Check("C4", check + "-" + _chatView, passed, detail);
+
+    /// <summary>The banner's Stop and End session mirror the dock's.</summary>
+    private bool BannerMirrors() =>
+        ChatChrome.Banner.Stop.Disabled == Dock.Stop.Disabled && ChatChrome.Banner.EndSession.Disabled == Dock.EndSession.Disabled;
+
+    private string ChatEnables()
+    {
+        var dock = Dock;
+        static char On(BaseButton button) => button.Disabled ? '0' : '1';
+        return "send=" + On(dock.Send) + " route=" + On(dock.Route) + " stop=" + On(dock.Stop) + " new=" + On(dock.NewSession) +
+            " end=" + On(dock.EndSession) + " connect=" + On(dock.ConnectButton);
+    }
+
+    private List<string> ChatKinds() =>
+        Dock.Entries.GetChildren().OfType<Control>().Where(child => child.Visible && child.HasMeta("kind"))
+            .Select(child => child.GetMeta("kind").AsString()).ToList();
+
+    private Control? ChatLastEntry() =>
+        Dock.Entries.GetChildren().OfType<Control>().LastOrDefault(child => child.HasMeta("kind") && !child.IsQueuedForDeletion());
+
+    private static string EntryText(Control? entry) => entry?.FindChild("Text", true, false) switch
+    {
+        Label label => label.Text,
+        RichTextLabel rich => rich.GetParsedText(),
+        _ => "",
+    };
+
+    private string FocusName() => GetViewport().GuiGetFocusOwner()?.Name.ToString() ?? "none";
+
+    private void ChatKey(Key key, bool shift = false, char text = '\0')
+    {
+        foreach (var pressed in new[] { true, false })
+        {
+            GetViewport().PushInput(new InputEventKey
+            {
+                Keycode = key,
+                PhysicalKeycode = key,
+                Unicode = text,
+                ShiftPressed = shift,
+                Pressed = pressed,
+            });
+        }
+    }
+
+    private void TypeText(string text)
+    {
+        foreach (var character in text)
+        {
+            var key = character switch
+            {
+                '/' => Key.Slash,
+                >= 'a' and <= 'z' => Key.A + (character - 'a'),
+                >= '0' and <= '9' => Key.Key0 + (character - '0'),
+                ' ' => Key.Space,
+                _ => Key.None,
+            };
+            ChatKey(key, text: character);
+        }
+    }
+
+    private void Shot(string name)
+    {
+        if (_shotDir is null) return;
+        DirAccess.MakeDirRecursiveAbsolute(_shotDir);
+        using var image = GetViewport().GetTexture().GetImage();
+        var path = _shotDir.TrimEnd('/') + "/" + name + ".png";
+        var saved = image.SavePng(path);
+        GD.Print("acceptance: shot " + path + " " + saved + " " + image.GetWidth() + "x" + image.GetHeight());
+    }
+
+    // The column, the insets and the 3D framing, Cords then Chat; then the No link row.
+    private void ChatLayoutAndSetup()
+    {
+        Then(() =>
+        {
+            var chrome = ChatChrome;
+            var width = GetViewport().GetVisibleRect().Size.X;
+            var cordsColumn = !chrome.ChatSelected && chrome.CordList.Visible && !Dock.Visible &&
+                chrome.CordList.Size.X == 248 && chrome.CordList.Position.X == width - 260 &&
+                chrome.ChatTab.Visible && chrome.ChatTab.Text == "Chat" && chrome.ChatTab.TooltipText.Length > 0 &&
+                chrome.CordsTab.ButtonPressed && !chrome.ChatTab.ButtonPressed;
+            var framed = ChatStageFrame(0, out var detail);
+            ChatCheck("column-cords", cordsColumn && framed, "list=248 " + detail);
+            ChatCheck("toolbar-labels-fit", ToolbarFits(out var toolbarDetail), toolbarDetail);
+            _chatSoundText = chrome.Toolbar.Sound.Text;
+            chrome.Toolbar.SetSoundMuted(true);
+        });
+        Then(() =>
+        {
+            var chrome = ChatChrome;
+            var fits = ToolbarFits(out var toolbarDetail);
+            ChatCheck("toolbar-labels-fit-muted", fits && chrome.Toolbar.Sound.Text == "Sound muted", toolbarDetail);
+            Shot("toolbar-sound-muted-" + _chatView);
+            chrome.Toolbar.SetSoundMuted(_chatSoundText == "Sound muted");
+            ClearFocus();
+            Click(chrome.ChatTab);
+        });
+        Then(() =>
+        {
+            var chrome = ChatChrome;
+            var size = GetViewport().GetVisibleRect().Size;
+            var dock = Dock;
+            var chatColumn = chrome.ChatSelected && !chrome.CordList.Visible && dock.Visible && dock.Size.X == 360 &&
+                dock.Position.X == size.X - 372 && dock.Position.Y == 100 && dock.Size.Y == size.Y - 112 &&
+                chrome.ChatTab.ButtonPressed && !chrome.CordsTab.ButtonPressed &&
+                dock.MouseFilter == Control.MouseFilterEnum.Stop && !dock.MouseForcePassScrollEvents;
+            var framed = ChatStageFrame(384, out var detail);
+            ChatCheck("column-chat", chatColumn && framed,
+                $"dock={dock.Position.X}+{dock.Size.X}x{dock.Size.Y} " + detail);
+            var row = dock.Status.Text == "not connected" && dock.SetupCard.Visible &&
+                dock.SetupText.Text.Contains("tools/hands-pane/README.md", StringComparison.Ordinal) &&
+                dock.SetupText.Text.Contains("model of your own", StringComparison.Ordinal) && dock.LinkField.Visible &&
+                ChatEnables() == "send=0 route=0 stop=0 new=1 end=0 connect=1" && ChatKinds().Count == 0 &&
+                dock.LinkField.HasFocus();
+            ChatCheck("row-no-link", row, $"status={dock.Status.Text} {ChatEnables()} focus={FocusName()}");
+            var tooltips = new Control[]
+            {
+                dock.LinkField, dock.ConnectButton, dock.Transcript, dock.Message, dock.Route, dock.Send, dock.Stop,
+                dock.NewSession, dock.EndSession, chrome.CordsTab, chrome.ChatTab,
+            };
+            var focusable = tooltips.All(control => control.TooltipText.Length > 0 && control.FocusMode == Control.FocusModeEnum.All);
+            var focusStyles = tooltips.All(control => control.HasThemeStylebox("focus")) && dock.Transcript.DrawFocusBorder;
+            ChatCheck("tooltips-focus", focusable && focusStyles, $"{tooltips.Length} controls");
+        }, 3);
+        Then(() => Shot("1-setup-card-" + _chatView), 1);
+    }
+
+    /// <summary>
+    /// Every toolbar label, Sound's in both its texts, fits inside its own button; the buttons do not overlap
+    /// and the row fits the toolbar.
+    /// </summary>
+    private bool ToolbarFits(out string detail)
+    {
+        var toolbar = ChatChrome.Toolbar;
+        var problems = new List<string>();
+        var widths = new List<string>();
+        var end = float.NegativeInfinity;
+        foreach (var button in toolbar.GetChildren().OfType<Button>())
+        {
+            var font = button.GetThemeFont("font");
+            var size = button.GetThemeFontSize("font_size");
+            var margins = button.GetThemeStylebox("normal").GetMinimumSize().X;
+            var texts = ReferenceEquals(button, toolbar.Sound) ? new[] { "Sound on", "Sound muted" } : [button.Text];
+            foreach (var text in texts)
+            {
+                var need = font.GetStringSize(text, HorizontalAlignment.Left, -1, size).X + margins;
+                if (need > button.Size.X + 0.5f) problems.Add($"{text}:{need:0}>{button.Size.X:0}");
+            }
+            if (button.Position.X < end + 4 - 0.5f) problems.Add($"{button.Name}-overlaps");
+            end = button.Position.X + button.Size.X;
+            widths.Add($"{button.Name}={button.Size.X:0}");
+        }
+        if (end > toolbar.Size.X + 0.5f) problems.Add($"row={end:0}>{toolbar.Size.X:0}");
+        detail = $"row={end:0}/{toolbar.Size.X:0} " + (problems.Count == 0 ? string.Join(",", widths) : string.Join(" ", problems));
+        return problems.Count == 0;
+    }
+
+    // Flat: the stage's right edge. 3D: the panel quad's projection inside the area left of the inset.
+    private bool ChatStageFrame(float inset, out string detail)
+    {
+        var size = GetViewport().GetVisibleRect().Size;
+        if (_boot.CurrentStage2D is { } stage)
+        {
+            var rect = stage.GetGlobalRect();
+            var panel = _boot.CurrentPanel.GetGlobalRect();
+            var right = inset == 0 ? 272 : inset;
+            detail = $"stage={rect.Position.X:0}..{rect.End.X:0}x{rect.Position.Y:0}..{rect.End.Y:0} console={panel.Size.X:0}x{panel.Size.Y:0}";
+            return Math.Abs(rect.End.X - (size.X - right)) < 0.5f && panel.End.X <= size.X - right + 0.5f;
+        }
+        var stage3D = _boot.CurrentStage3D!;
+        var camera = stage3D.Camera;
+        var mesh = (QuadMesh)stage3D.PanelQuad.Mesh;
+        var corners = new[] { new Vector3(-0.5f, -0.5f, 0), new Vector3(0.5f, -0.5f, 0), new Vector3(0.5f, 0.5f, 0), new Vector3(-0.5f, 0.5f, 0) }
+            .Select(corner => camera.UnprojectPosition(stage3D.PanelQuad.GlobalTransform * new Vector3(corner.X * mesh.Size.X, corner.Y * mesh.Size.Y, 0)))
+            .ToArray();
+        var left = corners.Min(point => point.X);
+        var right3D = corners.Max(point => point.X);
+        var top = corners.Min(point => point.Y);
+        var bottom = corners.Max(point => point.Y);
+        var axis = camera.UnprojectPosition(camera.Target);
+        var area = size.X - inset;
+        detail = $"inset={camera.RightInset:0} axis={axis.X:0.0} console={left:0}..{right3D:0}x{top:0}..{bottom:0}";
+        return camera.RightInset == inset && Math.Abs(axis.X - area / 2) < 1 && left >= 0 && right3D <= area && top >= 0 && bottom <= size.Y;
+    }
+
+    // Connecting, could not connect, token refused, other build: each shows the setup card and its status.
+    private void ChatLinkRows()
+    {
+        Then(() =>
+        {
+            TypeText(ChatLink.ToLowerInvariant());
+            ChatKey(Key.Enter);
+        });
+        Then(() =>
+        {
+            var dock = Dock;
+            var row = dock.Status.Text == "connecting…" && dock.SetupCard.Visible && dock.LinkField.Text.Length == 0 &&
+                _chatFake!.Link?.Token == "c4-test-token" && _chatFake.Link.Port == 9123 &&
+                ChatEnables() == "send=0 route=0 stop=0 new=1 end=0 connect=0";
+            ChatCheck("row-connecting", row, $"status={dock.Status.Text} field={dock.LinkField.Text.Length} {ChatEnables()}");
+            _chatFake!.Refuse();
+        });
+        foreach (var (name, code, status) in new[]
+        {
+            ("row-could-not-connect", 0, "disconnected: could not connect to 127.0.0.1:9123: the pane server is not running"),
+            ("row-refused-token", 4001, "disconnected: " + PaneConnection.BadTokenReason),
+            ("row-refused-build", 4002, "disconnected: " + PaneConnection.BadProtocolReason),
+        })
+        {
+            Then(() =>
+            {
+                var dock = Dock;
+                var row = dock.Status.Text.StartsWith(status, StringComparison.Ordinal) && dock.SetupCard.Visible &&
+                    ChatEnables() == "send=0 route=0 stop=0 new=1 end=0 connect=1" && ChatKinds().Count == 0;
+                ChatCheck(name, row, $"status={dock.Status.Text} {ChatEnables()}");
+                if (code == 0) LinkFieldForgets(dock);
+                if (code == 4002) return;
+                // Connect again by the mouse: paste into the field, then the Connect button.
+                dock.LinkField.Text = ChatLink;
+                Click(dock.ConnectButton);
+                _chatFake!.Open();
+                _chatFake.CloseFromServer(code == 0 ? 4001 : 4002);
+            });
+        }
+    }
+
+    // After Connect read the link and the field is editable again, nothing brings the token back.
+    private void LinkFieldForgets(ChatDock dock)
+    {
+        // The token is gone from the field: Undo and Redo by key and by the context menu's actions bring back nothing.
+        var clipboard = DisplayServer.ClipboardGet();
+        var field = dock.LinkField;
+        field.GrabFocus();
+        var tries = new List<string>();
+        // Undo and Redo by key, as macOS (Command) and the other desktops (Ctrl) bind them; then by the menu's actions.
+        foreach (var (name, redo) in new[] { ("undo", false), ("undo", false), ("redo", true), ("undo", false), ("undo", false) })
+        {
+            foreach (var command in new[] { true, false })
+            {
+                foreach (var pressed in new[] { true, false })
+                {
+                    GetViewport().PushInput(new InputEventKey
+                    {
+                        Keycode = Key.Z, PhysicalKeycode = Key.Z, MetaPressed = command, CtrlPressed = !command, ShiftPressed = redo, Pressed = pressed,
+                    });
+                }
+                tries.Add((command ? "cmd-" : "ctrl-") + name + "=" + field.Text.Length);
+            }
+        }
+        foreach (var item in new[] { LineEdit.MenuItems.Undo, LineEdit.MenuItems.Undo, LineEdit.MenuItems.Redo, LineEdit.MenuItems.Undo })
+        {
+            field.MenuOption((int)item);
+            tries.Add(item + "=" + field.Text.Length);
+        }
+        var gone = tries.Count == 14 && tries.All(text => text.EndsWith("=0", StringComparison.Ordinal)) && field.Text.Length == 0 && !field.Text.Contains("c4-test-token", StringComparison.Ordinal) &&
+            DisplayServer.ClipboardGet() == clipboard && field.HasFocus();
+        ChatCheck("link-field-forgets-token", gone, string.Join(" ", tries));
+        ClearFocus();
+    }
+
+    // Ready with no session; the tab order; the 8,000-character cap; the focus rules.
+    private void ChatReadyRows()
+    {
+        Then(() =>
+        {
+            Dock.LinkField.GrabFocus();
+            TypeText(ChatLink.ToLowerInvariant());
+            ChatKey(Key.Enter);
+            _chatFake!.Open();
+            _chatFake.Receive(ChatReady);
+        });
+        Then(() =>
+        {
+            var dock = Dock;
+            var hello = Sent.Count > 0 && Sent[^1] == "{\"type\":\"hello\",\"protocol\":3,\"token\":\"c4-test-token\"}";
+            var row = dock.Status.Text == "connected" && !dock.SetupCard.Visible && ChatKinds().SequenceEqual(["Note"]) &&
+                EntryText(ChatLastEntry()) == ChatModel.ReadyNote && dock.Route.ItemCount == 2 &&
+                dock.Route.GetItemText(dock.Route.Selected) == "model-a" &&
+                ChatEnables() == "send=0 route=1 stop=0 new=1 end=0 connect=0" && dock.Message.HasFocus();
+            ChatCheck("row-ready", hello && row, $"hello={(hello ? 1 : 0)} status={dock.Status.Text} kinds={string.Join(",", ChatKinds())} {ChatEnables()} focus={FocusName()}");
+            TypeText("x");
+        });
+        Then(() =>
+        {
+            ChatCheck("send-follows-box", ChatEnables() == "send=1 route=1 stop=0 new=1 end=0 connect=0", ChatEnables());
+            Shot("2-ready-" + _chatView);
+            // Tab order: toolbar, column tabs, transcript, message box, route, Send, Stop, New session, End session.
+            ChatChrome.Toolbar.PanDown.GrabFocus();
+            var path = new List<string>();
+            for (var step = 0; step < 9; step++)
+            {
+                ChatKey(Key.Tab);
+                path.Add(FocusName());
+            }
+            string[] expected = ["CordsTab", "ChatTab", "Transcript", "Message", "Route", "Send", "Stop", "NewSession", "EndSession"];
+            // Disabled Stop and End session may or may not take focus; every other control must, in order.
+            var prefix = path.TakeWhile(expected.Contains).ToList();
+            var ordered = prefix.SequenceEqual(expected.Where(prefix.Contains)) &&
+                expected.Where(name => name is not ("Stop" or "EndSession")).All(prefix.Contains);
+            ChatCheck("tab-order", ordered, string.Join(">", path));
+        }, 1);
+        Then(() =>
+        {
+            // The cap: 7,998 characters in the box, five typed, 8,000 kept.
+            var message = Dock.Message;
+            message.GrabFocus();
+            message.Text = new string('a', 7998);
+            message.SetCaretColumn(7998);
+            TypeText("bcdef");
+        });
+        Then(() =>
+        {
+            // The box caps what it is given once its text has changed (TextEdit reports a change after the frame).
+            var message = Dock.Message;
+            _chatTyped = message.Text.Length == 8000 && message.Text.EndsWith("bc", StringComparison.Ordinal);
+            message.InsertTextAtCaret("pasted text");
+        });
+        Then(() =>
+        {
+            var message = Dock.Message;
+            ChatCheck("cap-8000", _chatTyped && message.Text.Length == 8000,
+                "typed=" + (_chatTyped ? 1 : 0) + " pasted=" + message.Text.Length.ToString(System.Globalization.CultureInfo.InvariantCulture));
+            message.Text = "";
+            // A focused box keeps the stage and camera shortcuts quiet; "/" types a slash.
+            message.GrabFocus();
+            var viewBefore = CameraView();
+            var modeBefore = _boot.CurrentViewMode;
+            TypeText("/fwr");
+            ChatKey(Key.Key0, text: '0');
+            ChatKey(Key.Left);
+            ChatKey(Key.Up);
+            var quiet = CameraView() == viewBefore && _boot.CurrentViewMode == modeBefore && message.Text == "/fwr0" &&
+                message.HasFocus() && ChatChrome.ChatSelected;
+            ChatCheck("box-keeps-keys", quiet, $"text={message.Text} mode={_boot.CurrentViewMode} focus={FocusName()}");
+            var sent = Sent.Count;
+            ChatKey(Key.Escape);
+            var left = GetViewport().GuiGetFocusOwner() is null && Sent.Count == sent;
+            ChatKey(Key.W, text: 'w');
+            var live = CameraView() != viewBefore;
+            ChatCheck("escape-leaves-box", left && live, $"focus={FocusName()} shortcuts-after={(live ? 1 : 0)}");
+            message.Text = "";
+            Click(ChatChrome.Toolbar.Fit);
+            Click(ChatChrome.CordsTab);
+            ClearFocus();
+        });
+        Then(() =>
+        {
+            // "/" from the console selects Chat and focuses the box; not while a text field has focus.
+            var cordsFirst = !ChatChrome.ChatSelected;
+            ChatKey(Key.Slash, text: '/');
+            var selected = ChatChrome.ChatSelected && Dock.Message.HasFocus();
+            ChatCheck("slash-selects-chat", cordsFirst && selected, $"selected={(ChatChrome.ChatSelected ? 1 : 0)} focus={FocusName()}");
+            Click(ChatChrome.CordsTab);
+            var picker = Node<Picker>("Picker");
+            var shown = Node<Cords>("Cords").CordsState;
+            if (shown.Count > 0) picker.Open(new EndpointRef(shown[0].id, CordSide.A));
+            else Click(Node<CordList>("CordList").AddButton);
+            ChatKey(Key.Slash, text: '/');
+            var typed = !ChatChrome.ChatSelected && picker.Search.Text.EndsWith('/');
+            ChatCheck("slash-in-text-field", typed && picker.Search.HasFocus(), $"selected={(ChatChrome.ChatSelected ? 1 : 0)} search={picker.Search.Text} focus={FocusName()}");
+            picker.Close();
+            ClearFocus();
+            Click(ChatChrome.ChatTab);
+            ChatCheck("chat-tab-focuses-box", ChatChrome.ChatSelected && Dock.Message.HasFocus(), "focus=" + FocusName());
+            ClearFocus();
+        });
+    }
+
+    // The scripted session, by keyboard only: message, started, create, waiting, served, run, turn, done, end, ended.
+    private void ChatSessionFlow()
+    {
+        Then(() =>
+        {
+            ChatKey(Key.Slash, text: '/');
+            TypeText("wire pushbutton 1 to lamp 1");
+            ChatKey(Key.Enter, shift: true);
+            TypeText("then press it");
+            ChatKey(Key.Enter);
+        });
+        Then(() =>
+        {
+            var dock = Dock;
+            var user = Sent.Count > 0 && Sent[^1] == "{\"type\":\"user\",\"text\":\"wire pushbutton 1 to lamp 1\\nthen press it\",\"route\":\"model-a\"}";
+            var row = dock.Message.Text.Length == 0 && ChatKinds().Last() == "User" &&
+                ChatEnables() == "send=0 route=0 stop=1 new=1 end=0 connect=0";
+            ChatCheck("send-by-enter", user && row, $"sent={Sent[^1]} {ChatEnables()}");
+            _chatFake!.Receive("{\"type\":\"started\",\"run\":\"2026-11-12-pane-1\"}");
+            _chatFake.Receive(_chatCreate);
+        });
+        Then(() =>
+        {
+            var reply = Sent[^1] == "{\"type\":\"reply\",\"id\":1,\"reply\":\"created\"}";
+            var locked = _boot.Adopted && _session.Locked && _session.Frozen && ChatChrome.Banner.Visible &&
+                ChatChrome.Toolbar.Library.Disabled && Node<Controls>("Controls").Locked;
+            var row = Dock.Status.Text == "session 2026-11-12-pane-1" && ChatChrome.ChatTab.Text == "Chat ●" &&
+                EntryText(ChatLastEntry()) == "Session 2026-11-12-pane-1 started; the model must create pane.json." &&
+                ChatEnables() == "send=0 route=0 stop=1 new=1 end=1 connect=0";
+            ChatCheck("create-adopts-and-locks", reply && locked && row, $"reply={(reply ? 1 : 0)} locked={(locked ? 1 : 0)} status={Dock.Status.Text} tab={ChatChrome.ChatTab.Text}");
+            if (_boot.CurrentStage2D is { } stage)
+            {
+                // Banner plus dock at 1152 x 640: the console still fits the stage, holes at the fit view.
+                var rect = stage.GetGlobalRect();
+                var console = _boot.CurrentPanel.GetGlobalRect();
+                var hole = console.Size.X * PanelTheme.HoleDiameter;
+                var fits = rect.Position.Y == 128 && rect.End.X == 768 && rect.Encloses(console) && console.Size.X >= 700;
+                ChatCheck("console-with-banner", fits,
+                    $"stage={rect.Position.X:0}..{rect.End.X:0}x{rect.Position.Y:0}..{rect.End.Y:0} console={console.Size.X:0}x{console.Size.Y:0} hole={hole:0.0}px");
+            }
+            _chatFake!.Receive("{\"type\":\"requesting\",\"turn\":1,\"route\":\"model-a\"}");
+        }, 3);
+        Then(() =>
+        {
+            var dock = Dock;
+            var waiting = dock.WaitingLine.Visible && dock.WaitingLine.Text == "waiting for model-a · request 1 · 0 s" &&
+                ChatChrome.Banner.WaitingText == dock.WaitingLine.Text && dock.Entries.GetChild(-1) == dock.WaitingLine;
+            ChatCheck("row-request-out", waiting && ChatEnables() == "send=0 route=0 stop=1 new=1 end=1 connect=0" && BannerMirrors(),
+                $"waiting={dock.WaitingLine.Text} banner={ChatChrome.Banner.WaitingText} {ChatEnables()} mirrors={(BannerMirrors() ? 1 : 0)}");
+            Shot("3-request-out-" + _chatView);
+            // Stop by keyboard from the box, and by the banner; Escape in the box never stops.
+            dock.Message.GrabFocus();
+            var sent = Sent.Count;
+            ChatKey(Key.Escape);
+            var escaped = Sent.Count == sent && GetViewport().GuiGetFocusOwner() is null;
+            dock.Message.GrabFocus();
+            var path = new List<string>();
+            for (var step = 0; step < 4 && !dock.Stop.HasFocus(); step++)
+            {
+                ChatKey(Key.Tab);
+                path.Add(FocusName());
+            }
+            ChatKey(Key.Enter);
+            var stopped = Sent.Count == sent + 1 && Sent[^1] == "{\"type\":\"stop\"}";
+            Click(ChatChrome.Banner.Stop);
+            var bannerStop = Sent.Count == sent + 2 && Sent[^1] == "{\"type\":\"stop\"}";
+            ChatCheck("stop-keyboard-and-banner", escaped && stopped && bannerStop,
+                $"escape={(escaped ? 1 : 0)} path={string.Join(">", path)} stop={(stopped ? 1 : 0)} banner={(bannerStop ? 1 : 0)}");
+            ClearFocus();
+        });
+        Then(() =>
+        {
+            _chatWaitingBefore = Dock.WaitingLine.Text;
+            Dock.Model.Tick(0.75);
+        });
+        Then(() =>
+        {
+            _chatWaitingBefore += " > " + Dock.WaitingLine.Text;
+            Dock.Model.Tick(0.25);
+        });
+        Then(() =>
+        {
+            var live = _chatWaitingBefore.EndsWith("· 0 s > waiting for model-a · request 1 · 0 s", StringComparison.Ordinal) &&
+                Dock.WaitingLine.Text == "waiting for model-a · request 1 · 1 s" && ChatChrome.Banner.WaitingText == Dock.WaitingLine.Text;
+            ChatCheck("waiting-clock", live, _chatWaitingBefore + " > " + Dock.WaitingLine.Text);
+            _chatFake!.Receive("{\"type\":\"served\",\"turn\":1,\"status\":200,\"servedBy\":\"host-a\",\"fallbacks\":0,\"costUsd\":0.00125,\"offPrimary\":false}");
+            _chatFake.Receive(ChatRunFrame);
+        });
+        Then(() =>
+        {
+            var reply = Sent[^1] == "{\"type\":\"reply\",\"id\":2,\"reply\":" + _chatExpectedRun + "}" && _chatExpectedRun.StartsWith("{\"ok\":true", StringComparison.Ordinal);
+            var badge = ChatLastEntry()?.FindChild("Badge", true, false) as Label;
+            var served = !Dock.WaitingLine.Visible && ChatChrome.Banner.WaitingText.Length == 0 && ChatKinds().Last() == "Model" &&
+                badge?.Text == "served by host-a · $0.0013" && Dock.Model.LastRunReply == _chatExpectedRun;
+            var cords = Node<Cords>("Cords");
+            var power = FindButton(Node<Controls>("Controls"), "power", null);
+            var views = cords.CordsState.Count == 1 && Node<CordList>("CordList").RowCount == 1 && power.ButtonPressed &&
+                ReferenceEquals(_session.CurrentMachine, Dock.Model.EngineMachine) && _session.Locked &&
+                (_boot.CurrentStage3D is not { } stage3D ||
+                    stage3D.CordMeshes.GetChildren().Count(node => node.Name.ToString().StartsWith("Cord_", StringComparison.Ordinal)) == 1);
+            ChatCheck("run-reply-and-views", reply && served && views,
+                $"reply={(reply ? 1 : 0)} badge={badge?.Text} cords={cords.CordsState.Count} power={(power.ButtonPressed ? 1 : 0)}");
+            _chatFake!.Receive(ChatTurnFrame);
+        }, 3);
+        Then(() =>
+        {
+            var entry = ChatLastEntry()!;
+            var fold0 = entry.FindChild("Fold_0", true, false) as Button;
+            var fold1 = entry.FindChild("Fold_1", true, false) as Button;
+            var out0 = entry.FindChild("Output_0", true, false) as Label;
+            var out1 = entry.FindChild("Output_1", true, false) as Label;
+            var shown = EntryText(entry) == "I wired terminal 1+ to 1A and switched the power on." &&
+                fold0?.Text == "▾ minivac-control pane.json connect 1+/1A + power on" && out0 is { Visible: true } &&
+                out0.Text.StartsWith("ok  connect 1+/1A", StringComparison.Ordinal) &&
+                fold1?.Text == "▸ read_file {\"path\":\"pane.json\"}" && out1 is { Visible: false };
+            ChatCheck("row-reply-landed", shown, $"fold0={fold0?.Text} open0={out0?.Visible} fold1={fold1?.Text} open1={out1?.Visible}");
+            // Tool output and its fold break lines between words, not inside them.
+            var wrap = new Control?[] { fold0, fold1, out0, out1 }.Select(control => control switch
+            {
+                Label label => label.AutowrapMode,
+                Button button => button.AutowrapMode,
+                _ => (TextServer.AutowrapMode)(-1),
+            }).ToArray();
+            ChatCheck("output-word-wrap", wrap.All(mode => mode == TextServer.AutowrapMode.WordSmart), string.Join(",", wrap));
+            Shot("4-reply-tool-call-" + _chatView);
+            if (fold0 is null || fold1 is null || out0 is null || out1 is null) return;
+            Click(fold1);
+            fold0.GrabFocus();
+            ChatKey(Key.Enter);
+            var folded = out1.Visible && !out0.Visible && fold1.Text.StartsWith('▾') && fold0.Text.StartsWith('▸');
+            Click(fold0);
+            Click(fold1);
+            folded &= out0.Visible && !out1.Visible;
+            ChatCheck("fold-buttons", folded, $"open0={out0.Visible} open1={out1.Visible}");
+            ClearFocus();
+            _chatFake!.Receive("{\"type\":\"done\",\"stop\":\"done\",\"text\":\"I wired terminal 1+ to 1A.\"}");
+        });
+        Then(() =>
+        {
+            var sentBefore = Sent.Count;
+            Click(ChatChrome.Banner.Stop);
+            Dock.Model.Stop();
+            var stopInert = Sent.Count == sentBefore && ChatChrome.Banner.Stop.Disabled;
+            ChatCheck("done-enables", ChatEnables() == "send=0 route=1 stop=0 new=1 end=1 connect=0" && !Dock.Model.Busy && BannerMirrors() && stopInert,
+                $"{ChatEnables()} mirrors={(BannerMirrors() ? 1 : 0)} stop-inert={(stopInert ? 1 : 0)}");
+            // End session from the box by keyboard: Tab to it, Enter.
+            Dock.Message.GrabFocus();
+            var path = new List<string>();
+            for (var step = 0; step < 6 && !Dock.EndSession.HasFocus(); step++)
+            {
+                ChatKey(Key.Tab);
+                path.Add(FocusName());
+            }
+            ChatKey(Key.Enter);
+            var ended = Sent[^1] == "{\"type\":\"end\"}" && ChatEnables() == "send=0 route=1 stop=0 new=0 end=0 connect=0";
+            // While ending, the banner's End session is off too, and no press sends a second end.
+            var sent = Sent.Count;
+            Click(ChatChrome.Banner.EndSession);
+            Dock.Model.EndSession();
+            Dock.Model.NewSession();
+            var once = Sent.Count == sent && BannerMirrors() && ChatChrome.Banner.EndSession.Disabled;
+            ChatCheck("end-by-keyboard", ended && once, $"path={string.Join(">", path)} {ChatEnables()} once={(once ? 1 : 0)}");
+            _chatFake!.Receive("{\"type\":\"ended\",\"run\":\"2026-11-12-pane-1\"}");
+        });
+        Then(() =>
+        {
+            var chrome = ChatChrome;
+            var released = !_boot.Adopted && !_session.Locked && !_session.Frozen && !chrome.Banner.Visible &&
+                !chrome.Toolbar.Library.Disabled && !Node<Controls>("Controls").Locked && !Node<Cords>("Cords").Locked &&
+                Node<Cords>("Cords").CordsState.Count == 1 && Dock.Model.LastRunReply is null;
+            var row = Dock.Status.Text == "connected" && chrome.ChatTab.Text == "Chat" &&
+                EntryText(ChatLastEntry()) == "Session ended: the machine is live and unlocked." &&
+                ChatEnables() == "send=0 route=1 stop=0 new=1 end=0 connect=0" && BannerMirrors();
+            ChatCheck("row-ended-released", released && row, $"adopted={(_boot.Adopted ? 1 : 0)} locked={(_session.Locked ? 1 : 0)} status={Dock.Status.Text} {ChatEnables()}");
+        }, 3);
+        Then(() => Shot("7-ended-" + _chatView), 1);
+    }
+
+    // The final reply of run 2026-11-12-pane-1 ("wire up tic-tac-toe") and part of one call's output from it.
+    private const string ChatRealReply =
+        "\n\nTic-Tac-Toe (Book VI, printed pp. 55–56, program `VI-TICTACTOE`) is fully wired and powered on.\n\n" +
+        "**What I did:**\n" +
+        "- Consulted the manuals: found the Tic-Tac-Toe reference table in `docs/research/programs.md` §1 and its fixture " +
+        "`test/conformance/fixtures/C2/VI-TICTACTOE.fixture.json`, and used its corrected wire list (errata applied — including " +
+        "keeping the printed `4G/5N`, which is correct as printed and must not be \"fixed\").\n" +
+        "- Plugged all 72 cords myself with `connect` in one batch:\n" +
+        "  - The 70 jack-to-jack wires of the printed table (relay chains, dial contacts D1–D9, motor block `2L/D18`, `2N/D19`, " +
+        "`M-/D17`, wiper `2E/D16`, matrix top/bottom contacts for squares 1–8, `M9b/M11`, `6com/D9`, etc.).\n" +
+        "  - The two footnoted free-ended \"play\" wires: cord 70 on `M10` (machine's play wire) and cord 71 on `M11` " +
+        "(player's play wire), each left free exactly as printed.\n" +
+        "- Switched power on.\n\n" +
+        "**Verification:** `state` shows all 72 cords exactly where the table specifies, `power on`, `breaker ok` (no + to – short " +
+        "anywhere), and the machine rests cleanly — all relays released, all lamps off, dial at c0. It's ready to play: per the " +
+        "printed procedure, the machine's free play wire end would go in `6com`, then hold pushbutton 6 while pressing pushbutton 1 " +
+        "for the machine's opening move to the centre (matrix square 9).";
+
+    private const string ChatRealOutput =
+        "RIGHT COLUMN\n" +
+        "  M+, M-          more + and - taps (printed as plain + and - on the panel)   [Errata]\n" +
+        "  M1t..M9t, M1b..M9b  free 2-hole junctions; a cell's t and b are NOT joined  [Book I p.25]\n" +
+        "  M10, M11        free 6-hole junctions, not joined to each other             [Errata]\n" +
+        "  D16             rotary dial wiper ARM. It touches D0..D15, one at a time: the\n" +
+        "                  pad at the dial's position (observable dial c0..c15; gap = between pads). [Book I p.20]";
+
+    // The model's reply renders its markdown; its text stays raw in the model; the wheel over it scrolls the transcript.
+    private void ChatMarkdownReply()
+    {
+        Then(() =>
+        {
+            ClearFocus();
+            _chatFake!.Receive("{\"type\":\"turn\",\"turn\":5,\"status\":200,\"servedBy\":\"host-a\",\"fallbacks\":0,\"costUsd\":0,\"offPrimary\":false," +
+                "\"content\":" + PaneProtocol.Quote(ChatRealReply) + ",\"calls\":[{\"name\":\"minivac_control\",\"args\":" +
+                PaneProtocol.Quote("{\"args\": \"help terminals\"}") + ",\"output\":" + PaneProtocol.Quote(ChatRealOutput) + "}]}");
+        }, 4);
+        Then(() =>
+        {
+            var entry = ChatLastEntry()!;
+            var raw = Dock.Model.Entries[^1].Text;
+            var text = entry.FindChild("Text", true, false) as RichTextLabel;
+            var parsed = text?.GetParsedText() ?? "";
+            var label = text is { BbcodeEnabled: true, FitContent: true, ScrollActive: false, MouseFilter: Control.MouseFilterEnum.Pass,
+                AutowrapMode: TextServer.AutowrapMode.WordSmart } &&
+                text.Text == ChatMarkdown.ToBBCode(raw) && raw.Contains("**What I did:**", StringComparison.Ordinal);
+            var rendered = parsed.Contains("What I did:", StringComparison.Ordinal) && parsed.Contains("program VI-TICTACTOE)", StringComparison.Ordinal) &&
+                !parsed.Contains("**", StringComparison.Ordinal) && !parsed.Contains('`');
+            // The dock's own overrides, not the theme's defaults: an emboldened normal font and the dock's monospace font.
+            var fonts = text is not null && text.HasThemeFontOverride("bold_font") && text.HasThemeFontOverride("mono_font") &&
+                text.GetThemeFont("bold_font") is FontVariation { VariationEmbolden: > 0 } bold && bold.BaseFont == text.GetThemeFont("normal_font") &&
+                text.GetThemeFont("mono_font") is SystemFont mono && mono.FontNames.Contains("Menlo");
+            var user = Dock.Entries.GetChildren().OfType<Control>().LastOrDefault(child => child.HasMeta("kind") && child.GetMeta("kind").AsString() == "User");
+            var plain = user?.FindChild("Text", true, false) is Label && entry.FindChild("Output_0", true, false) is Label &&
+                entry.FindChild("Badge", true, false) is Label;
+            ChatCheck("markdown-reply", label && rendered && fonts && plain,
+                $"label={(label ? 1 : 0)} rendered={(rendered ? 1 : 0)} fonts={(fonts ? 1 : 0)} plain={(plain ? 1 : 0)} parsed={parsed.Length}");
+            Dock.Transcript.ScrollVertical = (int)entry.Position.Y;
+        });
+        Then(() =>
+        {
+            Shot("markdown-reply-" + _chatView);
+            var entry = ChatLastEntry()!;
+            Dock.Transcript.ScrollVertical = (int)(entry.Position.Y + entry.Size.Y) - (int)Dock.Transcript.Size.Y;
+        });
+        Then(() =>
+        {
+            Shot("tool-output-" + _chatView);
+            var dock = Dock;
+            var text = (Control)ChatLastEntry()!.FindChild("Text", true, false)!;
+            dock.Transcript.ScrollVertical = (int)(ChatLastEntry()!.Position.Y + text.Position.Y);
+        });
+        Then(() =>
+        {
+            // The wheel over the rendered reply itself: the transcript scrolls, the 3D camera does not move.
+            var dock = Dock;
+            var text = (Control)ChatLastEntry()!.FindChild("Text", true, false)!;
+            var area = text.GetGlobalRect().Intersection(dock.Transcript.GetGlobalRect());
+            var point = area.GetCenter();
+            var view = CameraView();
+            var before = dock.Transcript.ScrollVertical;
+            RouteGuiAt(text, MouseButtonEvent(true, buttonIndex: MouseButton.WheelDown), point);
+            RouteGuiAt(text, MouseButtonEvent(false, buttonIndex: MouseButton.WheelDown), point);
+            var down = dock.Transcript.ScrollVertical;
+            RouteGuiAt(text, MouseButtonEvent(true, buttonIndex: MouseButton.WheelUp), point);
+            RouteGuiAt(text, MouseButtonEvent(false, buttonIndex: MouseButton.WheelUp), point);
+            var up = dock.Transcript.ScrollVertical;
+            var scrolled = area.Size.Y > 0 && down > before && up < down;
+            ChatCheck("wheel-over-reply-scrolls-not-zooms", scrolled && CameraView() == view,
+                $"scroll={before}>{down}>{up} area={area.Size.Y:0} camera={(CameraView() == view ? "still" : "moved")}");
+            ClearFocus();
+            _chatFake!.Receive("{\"type\":\"turn\",\"turn\":6,\"status\":200,\"servedBy\":\"host-a\",\"fallbacks\":0,\"costUsd\":0,\"offPrimary\":false," +
+                "\"content\":" + PaneProtocol.Quote(ChatBracketReply) + ",\"calls\":[]}");
+        });
+        Then(() =>
+        {
+            // BBCode the model typed shows as typed through the live label; the pairs it renders are balanced, so the
+            // text after them is not swallowed into a tag (the label exposes no per-character font to read).
+            var text = ChatLastEntry()!.FindChild("Text", true, false) as RichTextLabel;
+            var parsed = text?.GetParsedText() ?? "";
+            var shown = parsed == "[url=http://x]y[/url] [img]res://icon.svg[/img] a[0] both after" &&
+                text!.Text == "[lb]url=http://x]y[lb]/url] [lb]img]res://icon.svg[lb]/img] [code]a[lb]0][/code] [b][i]both[/i][/b] after";
+            ChatCheck("markdown-brackets-inert", shown, $"parsed={parsed} bbcode={text?.Text}");
+            Dock.Transcript.ScrollVertical = (int)Dock.Transcript.GetVScrollBar().MaxValue;
+        });
+        Then(() => Shot("markdown-brackets-" + _chatView));
+    }
+
+    private const string ChatBracketReply = "[url=http://x]y[/url] [img]res://icon.svg[/img] `a[0]` ***both*** after";
+
+    // The wheel over the dock scrolls the transcript and never zooms; Tom's 3D ruling.
+    private void ChatWheel()
+    {
+        // No wait before the first sample: the frame that lays the entry out is the one measured.
+        _chatSteps.Add(new ChatStep(Act: () =>
+        {
+            _chatWorstFrame = 0;
+            _chatFramesAfter = 0;
+            _chatFrameUs = Time.GetTicksUsec();
+            var words = string.Concat(Enumerable.Repeat("word ", (1 << 20) / 5));
+            _chatFake!.Receive("{\"type\":\"turn\",\"turn\":9,\"status\":200,\"servedBy\":\"host-a\",\"fallbacks\":0,\"costUsd\":0," +
+                "\"offPrimary\":false,\"content\":" + PaneProtocol.Quote("\u001b[1mbold\u001b[0m " + words) + ",\"calls\":[]}");
+        }, Wait: 0, Until: () =>
+        {
+            var now = Time.GetTicksUsec();
+            _chatWorstFrame = Math.Max(_chatWorstFrame, (now - _chatFrameUs) / 1e6);
+            _chatFrameUs = now;
+            return ++_chatFramesAfter >= 6;
+        }, MaxFrames: 12));
+        Then(() =>
+        {
+            var entry = ChatLastEntry();
+            var text = EntryText(entry);
+            var cut = entry?.FindChild("Cut", true, false) as Label;
+            var shown = text.StartsWith("[1mbold[0m word ", StringComparison.Ordinal) && text.EndsWith('…') &&
+                text.Length == ChatModel.DisplayCap + 1 && !text.Contains('\u001b') &&
+                cut is not null && cut.Text.EndsWith("the run folder's transcript.jsonl has all of it]", StringComparison.Ordinal);
+            ChatCheck("big-turn-cut-and-quick", shown && _chatWorstFrame < 0.25,
+                $"shown={text.Length} cut={cut?.Text} worst-frame={_chatWorstFrame * 1000:0} ms");
+        }, 1);
+        Then(() =>
+        {
+            for (var line = 1; line <= 8; line++) _chatFake!.Receive("{\"type\":\"error\",\"message\":\"filler line " + line + " for the wheel check\"}");
+        }, 4);
+        Then(() =>
+        {
+            var dock = Dock;
+            var bar = dock.Transcript.GetVScrollBar();
+            var view = CameraView();
+            var before = dock.Transcript.ScrollVertical;
+            void Wheel(Control over, MouseButton button)
+            {
+                var point = over.GetGlobalRect().GetCenter();
+                RouteGuiAt(over, MouseButtonEvent(true, buttonIndex: button), point);
+                RouteGuiAt(over, MouseButtonEvent(false, buttonIndex: button), point);
+            }
+            Wheel(dock.Transcript, MouseButton.WheelUp);
+            var scrolled = dock.Transcript.ScrollVertical < before && bar.MaxValue > dock.Transcript.Size.Y;
+            var after = dock.Transcript.ScrollVertical;
+            Wheel(dock.Transcript, MouseButton.WheelDown);
+            scrolled &= dock.Transcript.ScrollVertical > after;
+            // One notch at a time: an up and a down in a row would cancel out in the camera's pose.
+            var leaks = new List<string>();
+            if (CameraView() != view) leaks.Add("transcript");
+            foreach (var over in new Control[] { dock.Send, dock.Status, dock.Message, dock.NewSession, dock.Route, ChatChrome.ChatTab })
+            {
+                foreach (var button in new[] { MouseButton.WheelUp, MouseButton.WheelDown })
+                {
+                    Wheel(over, button);
+                    if (CameraView() == view) continue;
+                    leaks.Add(over.Name + ":" + button);
+                    view = CameraView();
+                }
+            }
+            ChatCheck("wheel-scrolls-not-zooms", scrolled && leaks.Count == 0,
+                $"scroll={before}>{after}>{dock.Transcript.ScrollVertical} max={bar.MaxValue:0} leaks={(leaks.Count == 0 ? "none" : string.Join(",", leaks))}");
+            // New session by the mouse: end, then a clear transcript with one note. The banner's End session
+            // pressed while it ends sends nothing and does not turn the pending clear into a plain end.
+            Click(dock.NewSession);
+            _chatSentAtNew = Sent.Count;
+            Dock.Model.EndSession();
+        });
+        Then(() =>
+        {
+            var sent = Sent[^1] == "{\"type\":\"end\"}" && Sent.Count == _chatSentAtNew;
+            _chatFake!.Receive("{\"type\":\"ended\",\"run\":null}");
+            ChatCheck("new-session-sends-end", sent, Sent[^1]);
+        });
+        Then(() =>
+        {
+            var cleared = ChatKinds().SequenceEqual(["Note"]) && EntryText(ChatLastEntry()) == "New session: the next message starts from nothing.";
+            ChatCheck("new-session-clears", cleared, string.Join(",", ChatKinds()));
+        });
+    }
+
+    // An engine error ends the session: the error entry, the machine still locked, End session on.
+    private void ChatEngineError()
+    {
+        Then(() =>
+        {
+            Dock.Message.GrabFocus();
+            TypeText("try again");
+            ChatKey(Key.Enter);
+            _chatFake!.Receive("{\"type\":\"started\",\"run\":\"2026-11-12-pane-2\"}");
+            _chatFake.Receive(_chatCreate);
+            _chatFake.Receive("{\"type\":\"request\",\"id\":2,\"op\":\"run\",\"calls\":null,\"settleMs\":500}");
+        });
+        Then(() =>
+        {
+            var reply = Sent[^1].StartsWith("{\"type\":\"reply\",\"id\":2,\"reply\":{\"error\":", StringComparison.Ordinal);
+            ChatCheck("engine-error-reply", reply && _boot.Adopted, Sent[^1].Length > 90 ? Sent[^1][..90] : Sent[^1]);
+            _chatFake!.Receive("{\"type\":\"done\",\"stop\":\"error\",\"text\":\"the page engine failed: the page could not check this batch\"}");
+            _chatFake.Receive("{\"type\":\"ended\",\"run\":\"2026-11-12-pane-2\",\"error\":\"the page engine failed: the page could not check this batch\"}");
+        });
+        Then(() =>
+        {
+            var kinds = ChatKinds();
+            var row = kinds.TakeLast(2).SequenceEqual(["Problem", "Problem"]) &&
+                EntryText(ChatLastEntry()) == "The session ended: the page engine failed: the page could not check this batch. End session unlocks the panel." &&
+                _boot.Adopted && _session.Locked && ChatChrome.Banner.Visible && Dock.Status.Text == "connected" &&
+                ChatEnables() == "send=0 route=1 stop=0 new=1 end=1 connect=0";
+            ChatCheck("row-error", row, $"kinds={string.Join(",", kinds)} status={Dock.Status.Text} {ChatEnables()}");
+        }, 3);
+        Then(() =>
+        {
+            Shot("6-error-" + _chatView);
+            Click(ChatChrome.Banner.EndSession);
+            var sent = Sent[^1] == "{\"type\":\"end\"}";
+            _chatFake!.Receive("{\"type\":\"ended\",\"run\":null}");
+            ChatCheck("banner-end-session", sent, Sent[^1]);
+        }, 1);
+        Then(() => ChatCheck("error-then-released", !_boot.Adopted && !_session.Locked && !ChatChrome.Banner.Visible, $"adopted={(_boot.Adopted ? 1 : 0)}"));
+    }
+
+    // Connection lost mid-session: the run is marked invalid; End session releases locally; Connect is back.
+    private void ChatLost()
+    {
+        Then(() =>
+        {
+            Dock.Message.GrabFocus();
+            TypeText("once more");
+            ChatKey(Key.Enter);
+            _chatFake!.Receive("{\"type\":\"started\",\"run\":\"2026-11-12-pane-3\"}");
+            _chatFake.Receive(_chatCreate);
+            _chatFake.Receive(MarkRun(MarkConnect("2+", "2A")));
+            _chatFake.Receive("{\"type\":\"requesting\",\"turn\":1,\"route\":\"model-a\"}");
+        });
+        Then(() =>
+        {
+            ChatCheck("lost-precondition", _boot.Adopted && Dock.WaitingLine.Visible, $"adopted={(_boot.Adopted ? 1 : 0)}");
+            _chatFake!.CloseFromServer(-1);
+        });
+        Then(() =>
+        {
+            var dock = Dock;
+            var row = dock.Status.Text.StartsWith("disconnected: the pane server connection closed (no close frame)", StringComparison.Ordinal) &&
+                EntryText(ChatLastEntry()) == "The pane server connection closed; run 2026-11-12-pane-3 is marked invalid." &&
+                !dock.WaitingLine.Visible && ChatChrome.Banner.WaitingText.Length == 0 && dock.SetupCard.Visible &&
+                _boot.Adopted && _session.Locked && ChatEnables() == "send=0 route=0 stop=0 new=1 end=1 connect=1" &&
+                !Dock.Model.Busy && BannerMirrors();
+            ChatCheck("row-connection-lost", row, $"status={dock.Status.Text} {ChatEnables()} busy={(Dock.Model.Busy ? 1 : 0)}");
+            // A fresh engine: every cord on the console is one that run added.
+            MarksCheck("lost-keeps-marks", AddedSince([]), 1);
+            var sent = Sent.Count;
+            Click(dock.EndSession);
+            var released = !_boot.Adopted && !_session.Locked && Sent.Count == sent && !Dock.Model.CanEnd && Dock.Model.CanConnect &&
+                EntryText(ChatLastEntry()) == "Session ended: the machine is live and unlocked.";
+            ChatCheck("lost-end-releases-locally", released, $"adopted={(_boot.Adopted ? 1 : 0)} sent={Sent.Count - sent}");
+            NoMarksCheck("lost-end-clears");
+        }, 3);
+    }
+
+    // The clocks, driven by the suite: End session with no ended drops the link after 15 s and the panel comes back;
+    // a link that never says ready falls to could not connect after 10 s.
+    private void ChatTimeouts()
+    {
+        Then(() =>
+        {
+            Dock.LinkField.GrabFocus();
+            TypeText(ChatLink.ToLowerInvariant());
+            ChatKey(Key.Enter);
+            _chatFake!.Open();
+            _chatFake.Receive(ChatReady);
+        });
+        Then(() =>
+        {
+            Dock.Message.GrabFocus();
+            TypeText("hang");
+            ChatKey(Key.Enter);
+            _chatFake!.Receive("{\"type\":\"started\",\"run\":\"2026-11-12-pane-t\"}");
+            _chatFake.Receive(_chatCreate);
+            _chatFake.Receive("{\"type\":\"done\",\"stop\":\"done\",\"text\":\"\"}");
+        });
+        Then(() =>
+        {
+            ClearFocus();
+            Click(ChatChrome.Banner.EndSession);
+            Dock.Model.Tick(14.75);
+        });
+        Then(() =>
+        {
+            var waiting = Sent[^1] == "{\"type\":\"end\"}" && Dock.Model.Ending && Dock.Model.Ready && _boot.Adopted && !_chatFake!.ClosedByClient;
+            ChatCheck("end-waits-fifteen-seconds", waiting, $"ending={(Dock.Model.Ending ? 1 : 0)} status={Dock.Status.Text}");
+            Dock.Model.Tick(0.25);
+        });
+        Then(() =>
+        {
+            var kinds = Dock.Model.Entries.TakeLast(2).Select(entry => entry.Text).ToList();
+            var dropped = Dock.Status.Text == "disconnected: " + ChatModel.EndTimeoutReason && _chatFake!.ClosedByClient &&
+                kinds.SequenceEqual(["The pane server connection closed; run 2026-11-12-pane-t is marked invalid.", "Session ended: the machine is live and unlocked."]) &&
+                !_boot.Adopted && !_session.Locked && !ChatChrome.Banner.Visible && !Dock.Model.Busy &&
+                ChatEnables() == "send=0 route=0 stop=0 new=1 end=0 connect=1" && BannerMirrors();
+            ChatCheck("end-timeout-releases", dropped, $"status={Dock.Status.Text} adopted={(_boot.Adopted ? 1 : 0)} {ChatEnables()}");
+            Dock.LinkField.GrabFocus();
+            TypeText(ChatLink.ToLowerInvariant());
+            ChatKey(Key.Enter);
+            Dock.Model.Tick(9.75);
+        });
+        Then(() =>
+        {
+            var connecting = Dock.Status.Text == "connecting…";
+            Dock.Model.Tick(0.25);
+            var row = connecting && Dock.Model.StatusText == "disconnected: " + PaneConnection.NoAnswerReason && Dock.Model.CanConnect;
+            ChatCheck("connect-timeout", row, $"connecting={(connecting ? 1 : 0)} status={Dock.Model.StatusText}");
+            ClearFocus();
+        });
+    }
+
+    // ---------------------------------------------------------------- C5: the cord marks
+    // docs/plans/godot-chat-pane.md, "Cord marks": after each run reply the cords it added carry a mark in
+    // the view under test, until the next run reply, New session or End session. The expected cords come
+    // from the console's own cord state before and after each run, not from the parser under test.
+
+    private IReadOnlyList<State.Cord> _marksBefore = [];
+
+    private static string MarkRun(params string[] calls) =>
+        "{\"type\":\"request\",\"id\":7,\"op\":\"run\",\"calls\":[" + string.Join(",", calls) + "],\"settleMs\":200}";
+
+    /// <summary>A run, then the session and state reads the real server sends after every successful call.</summary>
+    private void ReceiveRun(params string[] calls)
+    {
+        _chatFake!.Receive(MarkRun(calls));
+        _chatFake.Receive("{\"type\":\"request\",\"id\":8,\"op\":\"session\"}");
+        _chatFake.Receive("{\"type\":\"request\",\"id\":9,\"op\":\"state\"}");
+    }
+
+    private static string MarkConnect(string a, string b) => "{\"name\":\"connect\",\"args\":{\"a\":\"" + a + "\",\"b\":\"" + b + "\"}}";
+
+    private static string[] MarkPairs(params string[] pairs) =>
+        pairs.Select(pair => MarkConnect(pair.Split('/')[0], pair.Split('/')[1])).ToArray();
+
+    private const string MarkPower = "{\"name\":\"power\",\"args\":{\"on\":true}}";
+
+    private static string EndKey(CordEnd end) => end switch
+    {
+        CordEnd.Hole hole => hole.hole,
+        CordEnd.Touch touch => "touch:" + touch.term,
+        _ => "free",
+    };
+
+    private static string CordKey(State.Cord cord) => cord.id + ":" + EndKey(cord.a) + "/" + EndKey(cord.b);
+
+    /// <summary>The cords on the console now that were not there, with the same ends, before the run.</summary>
+    private int[] AddedSince(IReadOnlyList<State.Cord> before)
+    {
+        var old = before.Select(CordKey).ToHashSet(StringComparer.Ordinal);
+        return Node<Cords>("Cords").CordsState.Where(cord => !old.Contains(CordKey(cord))).Select(cord => cord.id).Order().ToArray();
+    }
+
+    /// <summary>
+    /// The cords that carry a drawn mark in the view on screen, from the nodes themselves. Each mark must be
+    /// visible, in the one token, and sit on its own cord's midpoint; the other view's marks must not show.
+    /// </summary>
+    private int[] ShownMarks(out bool sound, out string detail)
+    {
+        static int Id(Node node) => int.Parse(node.Name.ToString()["CordMark_".Length..], System.Globalization.CultureInfo.InvariantCulture);
+        var cords = Node<Cords>("Cords");
+        var flat = cords.GetChildren().OfType<Cords.CordMark>().ToList();
+        var token = TactileTheme.CordMarkColour.Value;
+        var problems = new List<string>();
+        int[] ids;
+        if (_boot.CurrentStage3D is { } stage)
+        {
+            if (flat.Any(mark => mark.Visible)) problems.Add("flat-mark-visible-in-3d");
+            var marks = stage.CordMeshes.GetChildren().OfType<MeshInstance3D>()
+                .Where(node => node.Name.ToString().StartsWith("CordMark_", StringComparison.Ordinal) && !node.IsQueuedForDeletion()).ToList();
+            ids = marks.Select(Id).Order().ToArray();
+            foreach (var mark in marks)
+            {
+                var id = Id(mark);
+                var material = mark.Mesh?.GetSurfaceCount() == 2 ? mark.Mesh.SurfaceGetMaterial(1) as StandardMaterial3D : null;
+                var cord = stage.CordMeshes.GetNodeOrNull<MeshInstance3D>("Cord_" + id);
+                if (!mark.IsVisibleInTree() || material is null || material.AlbedoColor != token || !material.NoDepthTest ||
+                    material.BillboardMode != BaseMaterial3D.BillboardModeEnum.Enabled || cord is null)
+                {
+                    problems.Add("mark-" + id);
+                    continue;
+                }
+                var particles = stage.CordMeshes.Lay.Particles(id);
+                var middle = (particles[particles.Count / 2 - 1] + particles[particles.Count / 2]) / 2;
+                if (mark.Position.DistanceTo(middle) > 1e-5f) problems.Add("off-cord-" + id);
+            }
+        }
+        else
+        {
+            ids = flat.Select(mark => mark.Cord).Order().ToArray();
+            var hole = (float)(PanelTheme.HoleDiameter * cords.Size.X);
+            foreach (var mark in flat)
+            {
+                var id = mark.Cord;
+                var line = cords.LineOf(id);
+                if (!mark.IsVisibleInTree() || mark.Colour != token || mark.MouseFilter != Control.MouseFilterEnum.Ignore ||
+                    line is null || !line.Visible || mark.Radius < hole * 0.9f)
+                {
+                    problems.Add("mark-" + id);
+                    continue;
+                }
+                var middle = (line.Points[0] + line.Points[^1]) / 2;
+                if ((mark.Position + mark.Size / 2).DistanceTo(middle) > 0.5f) problems.Add("off-cord-" + id);
+            }
+        }
+        sound = problems.Count == 0;
+        detail = "shown=[" + string.Join(",", ids) + "]" + (sound ? "" : " problems=" + string.Join(",", problems));
+        return ids;
+    }
+
+    private void MarksCheck(string check, int[] expected, int count)
+    {
+        var shown = ShownMarks(out var sound, out var detail);
+        Check("C5", check + "-" + _chatView, sound && expected.Length == count && shown.SequenceEqual(expected),
+            $"view={_boot.CurrentViewMode} expected=[{string.Join(",", expected)}] {detail}");
+    }
+
+    /// <summary>No mark node anywhere in the tree, in either view's subtree.</summary>
+    private void NoMarksCheck(string check)
+    {
+        var nodes = Descendants(GetTree().Root).Count(node => node is Cords.CordMark || node.Name.ToString().StartsWith("CordMark_", StringComparison.Ordinal));
+        Check("C5", check + "-" + _chatView, nodes == 0 && !_boot.Adopted, $"mark-nodes={nodes} adopted={(_boot.Adopted ? 1 : 0)}");
+    }
+
+    private void ChatMarks()
+    {
+        int[] marked = [];
+        Then(() =>
+        {
+            NoMarksCheck("no-marks-before-session");
+            Dock.Message.GrabFocus();
+            TypeText("mark the cords");
+            ChatKey(Key.Enter);
+            _chatFake!.Receive("{\"type\":\"started\",\"run\":\"2026-11-12-pane-m\"}");
+            _chatFake.Receive(_chatCreate);
+        });
+        Then(() =>
+        {
+            ClearFocus();
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkConnect("1+", "1A"), MarkConnect("2+", "2A"), MarkConnect("3+", "3A"));
+        });
+        Then(() =>
+        {
+            MarksCheck("run-marks-three", AddedSince(_marksBefore), 3);
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkConnect("4G", "5K"), MarkPower, MarkConnect("4R", "5T"));
+        }, 3);
+        Then(() =>
+        {
+            marked = AddedSince(_marksBefore);
+            MarksCheck("run-marks-two-of-five", Node<Cords>("Cords").CordsState.Count == 5 ? marked : [], 2);
+            Click(ChatChrome.Toolbar.Fit);
+            ClearFocus();
+        }, 3);
+        Then(() =>
+        {
+            Shot("c5-fit-two-of-five-" + _chatView);
+            Click(ChatChrome.Toolbar.Wire);
+            ClearFocus();
+        }, 3);
+        Then(() =>
+        {
+            Shot("c5-wire-two-of-five-" + _chatView);
+            MarksCheck("wire-view-keeps-marks", marked, 2);
+            Click(ChatChrome.Toolbar.Fit);
+            ClearFocus();
+            _boot.ToggleViewMode();
+        }, 3);
+        Then(() =>
+        {
+            MarksCheck("toggle-keeps-marks", marked, 2);
+            Shot("c5-fit-two-of-five-toggled-to-" + _boot.CurrentViewMode);
+            _boot.ToggleViewMode();
+        }, 8);
+        Then(() =>
+        {
+            MarksCheck("toggle-back-keeps-marks", marked, 2);
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun("{\"name\":\"wait\",\"args\":{\"ms\":10}}");
+        }, 8);
+        Then(() =>
+        {
+            MarksCheck("run-adding-none-clears", AddedSince(_marksBefore), 0);
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkConnect("5+", "5A"));
+        }, 3);
+        Then(() =>
+        {
+            MarksCheck("run-marks-only-one", AddedSince(_marksBefore), 1);
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            _chatFake!.Receive(MarkRun(MarkConnect("6+", "6A"), MarkConnect("ZZ", "1A")));
+        }, 3);
+        Then(() =>
+        {
+            var refused = Sent[^1].StartsWith("{\"type\":\"reply\",\"id\":7,\"reply\":{\"ok\":false", StringComparison.Ordinal);
+            MarksCheck("refused-batch-clears", refused ? AddedSince(_marksBefore) : [-1], 0);
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkConnect("5-", "5B"), MarkConnect("6+", "6A"));
+        }, 3);
+        Then(() =>
+        {
+            MarksCheck("run-marks-before-end", AddedSince(_marksBefore), 2);
+            _chatFake!.Receive("{\"type\":\"done\",\"stop\":\"done\",\"text\":\"\"}");
+            Click(Dock.EndSession);
+            _chatFake.Receive("{\"type\":\"ended\",\"run\":\"2026-11-12-pane-m\"}");
+        }, 3);
+        Then(() =>
+        {
+            NoMarksCheck("end-session-clears");
+            Dock.Message.GrabFocus();
+            TypeText("new wiring");
+            ChatKey(Key.Enter);
+            _chatFake!.Receive("{\"type\":\"started\",\"run\":\"2026-11-12-pane-n\"}");
+            _chatFake.Receive(_chatCreate);
+        }, 3);
+        Then(() =>
+        {
+            ClearFocus();
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkConnect("1+", "1A"), MarkConnect("2+", "2A"));
+        });
+        Then(() =>
+        {
+            MarksCheck("run-marks-before-new", AddedSince(_marksBefore), 2);
+            // Tom, 2026-11-12: a run that adds more than 12 cords marks none.
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkPairs("3C/4C", "3F/4F", "3G/4G", "3H/4H", "3J/4J", "5C/6C", "5F/6F", "5G/6G", "5H/6H", "5J/6J", "3L/4L", "5L/6L", "3X/4X"));
+        }, 3);
+        Then(() =>
+        {
+            var added = AddedSince(_marksBefore);
+            MarksCheck("run-adding-thirteen-marks-none", added.Length == 13 ? [] : [-1], 0);
+            Click(ChatChrome.Toolbar.Fit);
+            ClearFocus();
+        }, 3);
+        Then(() =>
+        {
+            Shot("c5-thirteen-no-marks-" + _chatView);
+            _marksBefore = Node<Cords>("Cords").CordsState;
+            ReceiveRun(MarkPairs("3A/4A", "5A/6A"));
+        }, 3);
+        Then(() =>
+        {
+            MarksCheck("run-marks-two-after-thirteen", AddedSince(_marksBefore), 2);
+            Shot("c5-two-marks-after-thirteen-" + _chatView);
+            _chatFake!.Receive("{\"type\":\"done\",\"stop\":\"done\",\"text\":\"\"}");
+            Click(Dock.NewSession);
+            _chatFake.Receive("{\"type\":\"ended\",\"run\":\"2026-11-12-pane-n\"}");
+        }, 3);
+        Then(() => NoMarksCheck("new-session-clears"), 3);
+    }
+
+    private static void OwnerApply(Machine owner, Command command)
+    {
+        if (!owner.Apply(command).ok) throw new InvalidOperationException("acceptance: owner command rejected " + command.k);
+    }
+
+    private static void OwnerTicks(Machine owner, int ticks)
+    {
+        for (var index = 0; index < ticks; index++)
+        {
+            owner.Advance(1);
+            owner.DrainEvents();
+        }
+    }
+
+    private string[] FreeHoles(IReadOnlyList<State.Cord> cords)
+    {
+        var occupied = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var cord in cords)
+        {
+            if (cord.a is CordEnd.Hole a) occupied.Add(a.hole);
+            if (cord.b is CordEnd.Hole b) occupied.Add(b.hole);
+        }
+        // From the middle of the panel, clear of the chrome in the flat view.
+        return _layout.Holes.Skip(_layout.Holes.Count / 3).Select(hole => hole.Id).Where(id => !occupied.Contains(id)).ToArray();
+    }
+
+    private static void Click(Control control)
+    {
+        RouteGui(control, MouseButtonEvent(true));
+        RouteGui(control, MouseButtonEvent(false));
+    }
+
+    private void ClearFocus()
+    {
+        GetViewport().GuiGetFocusOwner()?.ReleaseFocus();
+        _boot.CurrentStage3D?.PanelViewport.GuiGetFocusOwner()?.ReleaseFocus();
+    }
+
+    private void PushKey(Key key)
+    {
+        ClearFocus();
+        GetViewport().PushInput(KeyEvent(key, true));
+        GetViewport().PushInput(KeyEvent(key, false));
+    }
+
+    // A key reaches a panel control the way a person's does: in flat through the focused control,
+    // in 3D through the camera, which forwards it into the panel's viewport.
+    private void RoutePanelKey(Control control, InputEventKey key)
+    {
+        var focus = GetViewport().GuiGetFocusOwner();
+        if (focus is not null && !ReferenceEquals(focus, control)) focus.ReleaseFocus();
+        if (!control.HasFocus() && control.FocusMode != Control.FocusModeEnum.None) control.GrabFocus();
+        GetViewport().PushInput(key);
+    }
+
+    private void RoutePanelMotionAt(Vector2 pixel)
+    {
+        var motion = new InputEventMouseMotion { Position = pixel, GlobalPosition = pixel, ButtonMask = MouseButtonMask.Left };
+        if (_boot.CurrentStage3D is not { } stage)
+        {
+            GetViewport().PushInput(motion, inLocalCoords: true);
+            return;
+        }
+        stage.InputSurface.Forward(motion, PanelWorldPoint(stage, pixel));
+    }
+
     private void LoadManual()
     {
         _boot.LoadManual();
@@ -2696,8 +4918,10 @@ public partial class Acceptance : Node
         if (_clock.Elapsed.TotalSeconds > 60) throw new HarnessTimeout();
     }
 
+    // By name and type: a demo entry's "Controls" row label shares the panel controls' name.
     private T Node<T>(string name) where T : Node =>
-        GetTree().Root.FindChild(name, true, false) as T ?? throw new InvalidOperationException("acceptance: missing node " + name);
+        GetTree().Root.FindChildren(name, "", true, false).OfType<T>().FirstOrDefault() ??
+        throw new InvalidOperationException("acceptance: missing node " + name);
 
     private static IEnumerable<Node> Descendants(Node root)
     {
@@ -2769,7 +4993,7 @@ public partial class Acceptance : Node
         {
             if (control.FocusMode != Control.FocusModeEnum.None) control.GrabFocus();
         }
-        control.GetViewport().PushInput(input);
+        control.GetViewport().PushInput(input, inLocalCoords: true);
     }
 
     private void RoutePanelGui(Control control, InputEvent input)
@@ -2814,7 +5038,7 @@ public partial class Acceptance : Node
     {
         input.Position = globalPosition;
         input.GlobalPosition = globalPosition;
-        control.GetViewport().PushInput(input);
+        control.GetViewport().PushInput(input, inLocalCoords: true);
     }
 
     private static InputEventKey KeyEvent(Key key, bool pressed) => new()

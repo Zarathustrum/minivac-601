@@ -391,6 +391,76 @@ lookup requires one and only one matching loaded fixture; the output path is
 > The C# policy and the TS bless now differ on a tripped fixture that passes robustness; C# refuses
 > it.
 
+## The hands port
+
+Added 2026-11-12 for the chat pane in the Godot build (`docs/plans/godot-chat-pane.md`, C1 and C4).
+The Godot build answers the pane server's requests itself, so the page's engine has a C# port. Node
+keeps parsing the model's words and writing the text it reads; only the data crosses.
+
+| TypeScript | C# |
+|---|---|
+| `src/hands/table.ts` (`replay`, `validateBatch`, `runBatch`, `stateView`, `sessionOf`, `newSession`) | `dotnet/Minivac.Hands/Table.cs` |
+| `src/pane/engine.ts` (`create`, `run`, `state`, `session`) | `dotnet/Minivac.Hands/Engine.cs` (`PaneEngine`) |
+| `src/pane/ui.ts` `answer` | `PaneJson.Answer` in `Engine.cs` |
+| the JavaScript value semantics the table relies on | `Js.cs` |
+| `JSON.stringify` of the table's and core's values | `HandsJson.cs` |
+
+- **Boundaries.** `Minivac.Hands` references `Minivac.Core` and nothing else, and is held to the
+  core's purity rules: no package, no engine type, no file, clock or culture. Two
+  `CorePurityTests` facts check the project file and scan the source with the core's banned
+  patterns `[verified: dotnet/Minivac.Core.Tests/CorePurityTests.cs]`. They are regex scans, which
+  another API could slip past. `Minivac.Core` did not change for the port.
+- **Arguments stay JavaScript values.** The table reads `args.n`, `args.ms` and the rest as
+  whatever `JSON.parse` made of the request, and the machine's `Number.isInteger` checks decide
+  what is refused. The port keeps the parsed JSON (`JsonElement`, an absent property is undefined)
+  and applies the same checks before it builds a typed `Command`. Every refusal reason and detail
+  string is the TypeScript's: Node renders them into the text the model sees. Strings go through
+  `Js.Text`/`Js.Name`, which keep an escaped lone surrogate as one UTF-16 unit, as `JSON.parse`
+  does; `System.Text.Json` would throw on it.
+- **JSON exactly as `JSON.stringify` writes it.** `HandsJson` writes every key in the order the
+  TypeScript object literal declares it. The reason is the text, not the data: Node re-prints a
+  parsed reply in parse order (`state --json` through `JSON.stringify(snapshot, null, 2)`, the
+  session file step by step), so a key out of order changes the bytes the model reads. Numbers use
+  .NET's shortest round-trip form, which equals V8's on the values tested `[likely: 20 values in
+  the C1 tests; the C1 review compared 295,528 formats]`.
+- **`PaneJson.Answer` is the boundary.** One request frame's JSON text in, the reply's JSON text out
+  (null for an unknown `op`, as the page sends no reply). It never throws: text that does not parse
+  answers `{ "error": "the page engine threw: ..." }` and leaves the engine as it was. Godot's
+  `ChatModel` and the transfer tool answer every request through it.
+- **Godot references it.** `godot/Minivac.Godot.csproj` references `Minivac.Hands` (C4). Each
+  `request` frame is answered on the main thread, and the console adopts the engine's machine after
+  `create` and every `run`. A call that waits long in simulated time blocks the window for its run
+  time (the C1 review measured about 10 s for a 60 s wait in Release).
+
+### Conformance check: `npm run transfer`
+
+`dotnet/Minivac.Hands.Transfer/` builds `minivac-hands-transfer`: one `PaneEngine` on the repo's
+netlist and the page's two profiles, in the page's order, reading one request per stdin line and
+writing one reply per stdout line. `test/pane/transfer.dotnet.ts` (`vitest.transfer.config.ts`)
+first builds the tool in Release with warnings as errors, so it never runs a stale binary, and fails
+when `dotnet` is missing. It then sends the 15 recorded sequences in `test/pane/fixtures/`, added
+word sequences, raw requests Node's parser never builds, and a seeded random differential (seed
+601) through the server's own `callOnPage`, once over `src/pane/engine.ts` and once over the tool.
+Each reply must be equal after parsing and byte-identical as JSON text, each call must render the
+same text, and the final sessions must match. It is outside the default `npm test`, which needs no
+.NET.
+
+`dotnet/Minivac.Hands.Tests/` holds the xunit ports of `test/hands/table.spec.ts` and
+`validate-batch.spec.ts`, plus the `Js` and engine cases, and covers what the transfer test cannot
+reach (the int32 tick-limit refusals). Not ported: the Ajv schema checks and the session-file
+module's own assertions, which are Node-only code.
+
+The Godot side over the real socket is checked by `npm run godot-pane-e2e`
+(`test/pane/godot-e2e.godot.ts`): the unchanged pane server with a scripted model, and the headless
+Godot build's `pane-e2e` and `pane-quit` acceptance suites (`tools/hands-pane/README.md`).
+
+### Toolchain on the chat build host
+
+The chat build ran on a second development host, a macOS ARM64 machine, installed user-local with no Homebrew and no
+admin rights: Godot 4.7.2 mono from the official release, and .NET SDK 10.0.403 from Microsoft's
+install script in `~/.dotnet` (F35–F37). Homebrew's `dotnet-sdk` cask is no longer the way to get the
+pinned SDK. The macOS proof host on record for the exports is still the macOS arm64 development host.
+
 ## Asserted artifact inventories
 
 The fixture and demo rows below record the 2026-09-03 port handoff, not the current inventory.
@@ -479,6 +549,9 @@ These are evidence references, not replacement requirements. Facts tagged `[like
 | F32 | `[verified]` | `dotnet/runtime#64591`, #10137 and #8289: automatic FMA contraction was declined. |
 | F33 | `[verified]` | Godot mono host and export sources: desktop uses CoreCLR through `hostfxr`; iOS uses NativeAOT; Android selects CoreCLR or Mono. |
 | F34 | `[verified]` | Godot *Complying with licenses* and dotnet/runtime `LICENSE.TXT`: MIT licensing and notice mechanism. |
+| F35 | `[verified]` | Run on the second development host, 2026-11-11: Godot 4.7.2 mono from the official `4.7.2-stable` release, its SHA-512 matched against the release's sums file, notarized, installed in `~/Applications`. |
+| F36 | `[verified]` | Run on the second development host, 2026-11-11: .NET SDK 10.0.403 from Microsoft's `dotnet-install` script in `~/.dotnet` builds both solutions with 0 warnings and 0 errors under `global.json` (10.0.400, `latestPatch`). |
+| F37 | `[verified]` | Checked 2026-11-11: Homebrew's `dotnet-sdk` cask is now 11.0.100, which `global.json` rejects (`latestPatch` stays within 10.0.4xx). F4's 10.0.400 cask pairing no longer holds. |
 
 ## Divergence log
 
